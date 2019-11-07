@@ -11,7 +11,7 @@ const allowedBlocks = [
     'core/heading',
     'core/spacer',
     'straightvisions/sv-gutenform-input',
-    'straightvisions/sv-gutenform-text',
+    'straightvisions/sv-gutenform-textarea',
     'straightvisions/sv-gutenform-submit',
 ];
 

@@ -7,16 +7,16 @@ import save from './save';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-text', {
-	title: __( 'Text Field', 'sv_gutenform' ),
-	description: __( 'An text field for longer messages.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-gutenform-textarea', {
+	title: __( 'Textarea', 'sv_gutenform' ),
+	description: __( 'An textarea for longer messages.', 'sv_gutenform' ),
 	icon,
 	parent: ['straightvisions/sv-gutenform'],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Text', 'sv_gutenform' ),
-		__( 'Text', 'sv_gutenform' ),
-		__( 'Field', 'sv_gutenform' ),
+		__( 'SV Gutenform Textarea', 'sv_gutenform' ),
+		__( 'Textarea', 'sv_gutenform' ),
+		__( 'Message', 'sv_gutenform' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
