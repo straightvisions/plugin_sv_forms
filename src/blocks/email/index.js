@@ -7,16 +7,16 @@ import save from './save';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-input', {
-	title: __( 'Input Field', 'sv_gutenform' ),
-	description: __( 'An input field for the form.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-gutenform-email', {
+	title: __( 'E-Mail', 'sv_gutenform' ),
+	description: __( 'A field for an e-mail adress.', 'sv_gutenform' ),
 	icon,
 	parent: ['straightvisions/sv-gutenform'],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Input', 'sv_gutenform' ),
-		__( 'Input', 'sv_gutenform' ),
-		__( 'Field', 'sv_gutenform' ),
+		__( 'SV Gutenform E-Mail', 'sv_gutenform' ),
+		__( 'E-Mail Input', 'sv_gutenform' ),
+		__( 'E-Mail', 'sv_gutenform' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
@@ -26,17 +26,13 @@ registerBlockType( 'straightvisions/sv-gutenform-input', {
 		defaultValue: {
 			type: 'string',
 		},
-		type: {
-			type: 'string',
-			default: 'text',
-		},
 		label: {
 			type: 'string',
-			default: __( 'Label', 'sv_gutenform' ),
+			default: __( 'Text Label', 'sv_gutenform' ),
 		},
 		placeholder: {
 			type: 'string',
-			default: __( 'Placeholder', 'sv_gutenform' ),
+			default: __( 'Text', 'sv_gutenform' ),
 		},
 		name: {
 			type: 'string',

@@ -2,7 +2,6 @@
 const { __ } = wp.i18n;
 const {
     PanelBody,
-    SelectControl,
     TextControl,
     ToggleControl,
 } = wp.components;
@@ -14,7 +13,6 @@ export default ( { props } ) => {
     const { 
         setAttributes,
         attributes: {
-            type,
             label,
             placeholder,
             name,
@@ -36,18 +34,6 @@ export default ( { props } ) => {
             title={ __( 'Input Settings', 'sv_gutenform' ) }
             initialOpen={ true }
         >
-            <SelectControl
-                label={ __( 'Type', 'sv_gutenform' ) }
-                value={ type }
-                options={ [
-                    { label: 'Text', value: 'text' },
-                    { label: 'E-Mail', value: 'email' },
-                    { label: 'Telephone', value: 'tel' },
-                    { label: 'URL', value: 'url' },
-                    { label: 'Secret', value: 'password' },
-                ] }
-                onChange={ ( value ) => { setAttributes( { type: value } ) } }
-            />
             <TextControl
                 label={ __( 'Label', 'sv_gutenform' ) }
                 value={ label }

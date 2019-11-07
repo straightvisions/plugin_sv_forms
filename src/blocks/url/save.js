@@ -2,7 +2,6 @@ export default ( { attributes } ) => {
     const {
         // Input Settings
         defaultValue,
-        type,
         name,
         placeholder,
         label,
@@ -23,9 +22,9 @@ export default ( { attributes } ) => {
                 : null
             }
             <input
+                type='url'
                 id={ name }
                 name={ name }
-                type={ type }
                 value={ defaultValue }
                 placeholder={ placeholder }
                 className={ [ textColorClass, backgroundColorClass ] }

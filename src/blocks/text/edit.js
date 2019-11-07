@@ -14,7 +14,6 @@ export default withSelect( ( select, props ) => {
         attributes: {
             // Input Settings
             defaultValue,
-            type,
             name,
             placeholder,
             label,
@@ -32,9 +31,9 @@ export default withSelect( ( select, props ) => {
         <Fragment>
             <InspectorControls props={ props } />
             <TextControl
+                type='text'
                 name={ name }
                 label={ label }
-                type={ type }
                 value={ defaultValue }
                 placeholder={ placeholder }
                 className={ [ textColorClass, backgroundColorClass, className ] }
