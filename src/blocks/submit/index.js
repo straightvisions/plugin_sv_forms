@@ -8,7 +8,7 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 
 registerBlockType( 'straightvisions/sv-gutenform-submit', {
-	title: __( 'Submit Button' ),
+	title: __( 'Submit Button', 'sv_gutenform' ),
 	description: __( 'The submit button for the form.', 'sv_gutenform' ),
 	icon,
 	parent: ['straightvisions/sv-gutenform'],

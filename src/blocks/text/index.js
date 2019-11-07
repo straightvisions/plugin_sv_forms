@@ -7,15 +7,15 @@ import save from './save';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-input', {
-	title: __( 'Input Field', 'sv_gutenform' ),
-	description: __( 'An input field for the form.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-gutenform-text', {
+	title: __( 'Text Field', 'sv_gutenform' ),
+	description: __( 'An text field for longer messages.', 'sv_gutenform' ),
 	icon,
 	parent: ['straightvisions/sv-gutenform'],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Input', 'sv_gutenform' ),
-		__( 'Input', 'sv_gutenform' ),
+		__( 'SV Gutenform Text', 'sv_gutenform' ),
+		__( 'Text', 'sv_gutenform' ),
 		__( 'Field', 'sv_gutenform' ),
 	],
 	supports: {
@@ -25,10 +25,6 @@ registerBlockType( 'straightvisions/sv-gutenform-input', {
 		// Input Settings
 		defaultValue: {
 			type: 'string',
-		},
-		type: {
-			type: 'string',
-			default: 'text',
 		},
 		label: {
 			type: 'string',

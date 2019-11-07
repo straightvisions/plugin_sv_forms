@@ -26,7 +26,6 @@ export default withSelect( ( select, props ) => {
         <Fragment>
             <InspectorControls props={ props } />
             <RichText
-                tagName="div"
                 className={ [ textColorClass, backgroundColorClass, className ] }
                 style={{ color: textColor, backgroundColor: backgroundColor }}
                 value={ text }

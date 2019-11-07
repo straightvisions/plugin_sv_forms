@@ -8,7 +8,7 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 
 registerBlockType( 'straightvisions/sv-gutenform', {
-	title: __( 'SV Gutenform' ),
+	title: __( 'SV Gutenform', 'sv_gutenform' ),
 	description: __( 'Create a form.', 'sv_gutenform' ),
 	icon,
 	category: 'straightvisions',
