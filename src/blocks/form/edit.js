@@ -28,8 +28,15 @@ const template = [
 ];
 
 export default withSelect( ( select, props ) => {
-    return props;
-} )( ( props ) => {
+    const { getAuthors } = select( 'core' );
+
+    return {
+        props,
+        data: {
+            authors: getAuthors(),
+        }
+    };
+} )( ( { props, data } ) => {
     // Block Properties
     const {
         className,
@@ -41,7 +48,7 @@ export default withSelect( ( select, props ) => {
 
     return (
         <Fragment className={ className }>
-            <InspectorControls props={ props } />
+            <InspectorControls props={ props } data={ data } />
             <form action={ action } method={ method } className={ className }>
 				<InnerBlocks 
 					allowedBlocks={ allowedBlocks }

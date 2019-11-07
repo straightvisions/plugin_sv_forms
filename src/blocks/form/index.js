@@ -21,6 +21,17 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		align:[ 'wide', 'full' ],
 	},
 	attributes: {
+		// Form Settings
+		adminMail: {
+			type: 'string',
+			default: 'disabled',
+		},
+		adminMailUser: {
+			type: 'number',
+		},
+		adminMailCustom: {
+			type: 'string',
+		},
 		action: {
 			type: 'string',
 		},
