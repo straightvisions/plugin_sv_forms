@@ -22,6 +22,13 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 	},
 	attributes: {
 		// Form Settings
+		action: {
+			type: 'string',
+		},
+		method: {
+			type: 'string',
+			default: 'POST',
+		},
 		adminMail: {
 			type: 'string',
 			default: 'disabled',
@@ -32,12 +39,12 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		adminMailCustom: {
 			type: 'string',
 		},
-		action: {
-			type: 'string',
+		confirmationMail: {
+			type: 'boolean',
+			default: false,
 		},
-		method: {
+		confirmationMailContent: {
 			type: 'string',
-			default: 'POST',
 		},
 
 		// Advanced

@@ -1,10 +1,15 @@
 // Required Components
 const { __ } = wp.i18n;
+const { withState } = wp.compose;
+const { RichText } = wp.blockEditor;
 const { 
     PanelBody,
+    Button,
+    Modal,
     TextControl,
     RadioControl,
     SelectControl,
+    ToggleControl,
 } = wp.components;
 
 export default ( { props, data } ) => {
@@ -14,13 +19,36 @@ export default ( { props, data } ) => {
     const { 
         setAttributes,
         attributes: {
+            action,
+            method,
             adminMail,
             adminMailUser,
             adminMailCustom,
-            action,
-            method,
+            confirmationMail,
+            confirmationMailContent,
         }
     } = props;
+
+    const EditConfirmationMail = withState({
+        isOpen: false,
+    })( ( { isOpen, setState } ) => (
+        <div>
+            <Button isDefault onClick={ () => setState({ isOpen: true }) }>
+                { __( 'Edit Mail Content', 'sv_gutenform' ) }
+            </Button>
+            { isOpen && (
+                <Modal
+                    title="This is my modal"
+                    onRequestClose={ () => setState({ isOpen: false }) }
+                    shouldCloseOnEsc={ false }
+                >
+                    <Button isPrimary onClick={ () => setState({ isOpen: false }) }>
+                         { __( 'Save & Close', 'sv_gutenform' ) }
+                    </Button>
+                </Modal>
+            ) }
+        </div>
+    ));
 
     // Returns a list of authors as select options
     const authorOptions = () => {
@@ -80,6 +108,16 @@ export default ( { props, data } ) => {
                     value={ adminMailCustom }
                     onChange={ ( value ) => { setAttributes( { adminMailCustom: value } ) } }
                 />
+                : null
+            }
+            <ToggleControl
+                label={ __( 'Confirmation Mail', 'sv_gutenform' ) }
+                checked={ confirmationMail }
+                onChange={ () => setAttributes( { confirmationMail: ! confirmationMail } ) }
+            />
+            {
+                confirmationMail
+                ? <EditConfirmationMail />
                 : null
             }
         </PanelBody>
