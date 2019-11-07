@@ -20,8 +20,8 @@ export default ( { props } ) => {
         }
     } = props;
 
-    // Returns a converted string, that is valid for the name-attribute
-    function getName( string ) {
+    // Returns a converted string, that is valid for the most input attributes
+    function getValidString( string ) {
         if ( ! string ) return '';
 
         const convertedString = string.replace( /[^A-Z0-9]+/ig, '-' );
@@ -39,7 +39,7 @@ export default ( { props } ) => {
                 value={ label }
                 onChange={ ( value ) => { 
                     setAttributes( { label: value } ) 
-                    setAttributes( { name: getName( value ) } )
+                    setAttributes( { name: getValidString( value ) } )
                 } }
             />
             <TextControl
@@ -49,8 +49,8 @@ export default ( { props } ) => {
             />
             <TextControl
                 label={ __( 'Name', 'sv_gutenform' ) }
-                value={ getName( name ) }
-                onChange={ ( value ) => setAttributes( { name: getName( value ) } )  }
+                value={ getValidString( name ) }
+                onChange={ ( value ) => setAttributes( { name: getValidString( value ) } )  }
             />
             <ToggleControl
                 label={ __( 'Disabled', 'sv_gutenform' ) }

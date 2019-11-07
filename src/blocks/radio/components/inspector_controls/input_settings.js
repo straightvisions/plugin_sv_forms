@@ -13,8 +13,8 @@ export default ( { props } ) => {
     const { 
         setAttributes,
         attributes: {
+            value,
             label,
-            placeholder,
             name,
             disabled,
         }
@@ -39,13 +39,13 @@ export default ( { props } ) => {
                 value={ label }
                 onChange={ ( value ) => { 
                     setAttributes( { label: value } ) 
-                    setAttributes( { name: getValidString( value ) } )
+                    setAttributes( { value: getValidString( value ) } )
                 } }
             />
             <TextControl
-                label={ __( 'Placeholder', 'sv_gutenform' ) }
-                value={ placeholder }
-                onChange={ ( value ) => setAttributes( { placeholder: value } )  }
+                label={ __( 'Value', 'sv_gutenform' ) }
+                value={ getValidString( value ) }
+                onChange={ ( value ) => setAttributes( { value: getValidString( value ) } )  }
             />
             <TextControl
                 label={ __( 'Name', 'sv_gutenform' ) }

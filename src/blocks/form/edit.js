@@ -13,6 +13,8 @@ const allowedBlocks = [
     'straightvisions/sv-gutenform-text',
     'straightvisions/sv-gutenform-email',
     'straightvisions/sv-gutenform-url',
+    'straightvisions/sv-gutenform-checkbox',
+    'straightvisions/sv-gutenform-radio',
     'straightvisions/sv-gutenform-textarea',
     'straightvisions/sv-gutenform-submit',
 ];
