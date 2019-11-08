@@ -1,0 +1,3 @@
+[submodule "src/core_plugin"]
+	path = src/core_plugin
+	url = ../sv_core_plugin.git
