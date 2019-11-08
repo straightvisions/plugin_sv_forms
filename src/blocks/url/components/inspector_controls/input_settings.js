@@ -16,7 +16,6 @@ export default ( { props } ) => {
             label,
             placeholder,
             name,
-            disabled,
         }
     } = props;
 
@@ -43,19 +42,14 @@ export default ( { props } ) => {
                 } }
             />
             <TextControl
-                label={ __( 'Placeholder', 'sv_gutenform' ) }
-                value={ placeholder }
-                onChange={ ( value ) => setAttributes( { placeholder: value } )  }
-            />
-            <TextControl
                 label={ __( 'Name', 'sv_gutenform' ) }
                 value={ getValidString( name ) }
                 onChange={ ( value ) => setAttributes( { name: getValidString( value ) } )  }
             />
-            <ToggleControl
-                label={ __( 'Disabled', 'sv_gutenform' ) }
-                checked={ disabled }
-                onChange={ () => setAttributes( { disabled: ! disabled } )  }
+            <TextControl
+                label={ __( 'Placeholder', 'sv_gutenform' ) }
+                value={ placeholder }
+                onChange={ ( value ) => setAttributes( { placeholder: value } )  }
             />
         </PanelBody>
     );

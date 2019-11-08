@@ -17,13 +17,23 @@ export default withSelect( ( select, props ) => {
             name,
             placeholder,
             label,
-            disabled,
+
+            // Validation Settings
+            required,
+            minlength,
+            maxlength,
 
             // Color Settings
             textColor,
             textColorClass,
             backgroundColor,
             backgroundColorClass,
+
+            // Advanced Settings
+            autofocus,
+            autocomplete,
+            readonly,
+            disabled,
         } 
     } = props;
 
@@ -34,11 +44,17 @@ export default withSelect( ( select, props ) => {
                 type='email'
                 name={ name }
                 label={ label }
-                value={ defaultValue }
-                placeholder={ placeholder }
-                className={ [ textColorClass, backgroundColorClass, className ] }
-                style={{ color: textColor, backgroundColor: backgroundColor }}
+                required={ required }
                 disabled={ disabled }
+                readonly={ readonly }
+                value={ defaultValue }
+                minlength={ minlength }
+                maxlength={ maxlength }
+                autofocus={ autofocus }
+                placeholder={ placeholder }
+                autocomplete={ autocomplete }
+                style={{ color: textColor, backgroundColor: backgroundColor }}
+                className={ [ textColorClass, backgroundColorClass, className ] }
                 onChange={ ( value ) => setAttributes( { defaultValue: value } ) }
             />
         </Fragment>

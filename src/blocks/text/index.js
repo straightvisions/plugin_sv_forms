@@ -30,16 +30,26 @@ registerBlockType( 'straightvisions/sv-gutenform-text', {
 			type: 'string',
 			default: __( 'Text Label', 'sv_gutenform' ),
 		},
+		name: {
+			type: 'string',
+		},
 		placeholder: {
 			type: 'string',
 			default: __( 'Text', 'sv_gutenform' ),
 		},
-		name: {
-			type: 'string',
-		},
-		disabled: {
+
+		// Validation Settings
+		required: {
 			type: 'boolean',
 			default: false,
+		},
+		minlength: {
+			type: 'number',
+			default: 0,
+		},
+		maxlength: {
+			type: 'number',
+			default: 0,
 		},
 
 		// Color Settings
@@ -56,7 +66,23 @@ registerBlockType( 'straightvisions/sv-gutenform-text', {
 			type: 'string',
 		},
 
-		// Advanced
+		// Advanced Settings
+		autofocus: {
+			type: 'boolean',
+			default: false,
+		},
+		autocomplete: {
+			type: 'boolean',
+			default: false,
+		},
+		readonly: {
+			type: 'boolean',
+			default: false,
+		},
+		disabled: {
+			type: 'boolean',
+			default: false,
+		},
 		className: {
 			type: 'string',
 		},
