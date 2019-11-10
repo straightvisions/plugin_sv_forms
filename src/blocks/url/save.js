@@ -5,13 +5,23 @@ export default ( { attributes } ) => {
         name,
         placeholder,
         label,
-        disabled,
+
+        // Validation Settings
+        required,
+        minlength,
+        maxlength,
 
         // Color Settings
         textColor,
         textColorClass,
         backgroundColor,
         backgroundColorClass,
+
+        // Advanced Settings
+        autofocus,
+        autocomplete,
+        readonly,
+        disabled,
     } = attributes;
 
     return (
@@ -25,14 +35,21 @@ export default ( { attributes } ) => {
                 type='url'
                 id={ name }
                 name={ name }
+                label={ label }
+                required={ required }
+                disabled={ disabled }
+                readonly={ readonly }
                 value={ defaultValue }
+                minlength={ minlength > 0 ? minlength : '' }
+                maxlength={ maxlength > 0 ? maxlength : '' }
+                autofocus={ autofocus }
                 placeholder={ placeholder }
+                autocomplete={ autocomplete ? 'on' : 'off' }
                 className={ [ textColorClass, backgroundColorClass ] }
                 style={{ 
                     color: ! textColorClass ? textColor : null, 
                     backgroundColor: ! backgroundColorClass ? backgroundColor : null, 
                 }}
-                disabled={ disabled }
             />
         </fieldset>
     );

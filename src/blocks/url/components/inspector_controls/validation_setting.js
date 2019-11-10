@@ -22,7 +22,7 @@ export default ( { props } ) => {
     return(
         <PanelBody
             title={ __( 'Validation Settings', 'sv_gutenform' ) }
-            initialOpen={ true }
+            initialOpen={ false }
         >
             <ToggleControl
                 label={ __( 'Required', 'sv_gutenform' ) }
@@ -31,7 +31,7 @@ export default ( { props } ) => {
             />
             <RangeControl
                 label={ __( 'Min. Length', 'sv_gutenform' ) }
-                help={ __( 'Defines the min. character length.', 'sv_gutenform' ) }
+                help={ __( 'Defines the min. character length. 0 = Disabled', 'sv_gutenform' ) }
                 value={ minlength }
                 onChange={ ( value ) => setAttributes( { minlength: value } ) }
                 min={ 0 }
@@ -39,7 +39,7 @@ export default ( { props } ) => {
             />
             <RangeControl
                 label={ __( 'Max. Length', 'sv_gutenform' ) }
-                help={ __( 'Defines the max. character length.', 'sv_gutenform' ) }
+                help={ __( 'Defines the max. character length. 0 = Disabled', 'sv_gutenform' ) }
                 value={ maxlength }
                 onChange={ ( value ) => setAttributes( { maxlength: value } ) }
                 min={ 0 }
