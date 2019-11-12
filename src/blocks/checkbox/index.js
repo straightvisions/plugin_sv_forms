@@ -11,7 +11,7 @@ registerBlockType( 'straightvisions/sv-gutenform-checkbox', {
 	title: __( 'Checkbox', 'sv_gutenform' ),
 	description: __( 'A checkbox for an option to select.', 'sv_gutenform' ),
 	icon,
-	parent: ['straightvisions/sv-gutenform'],
+	//parent: ['straightvisions/sv-gutenform'],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Checkbox', 'sv_gutenform' ),

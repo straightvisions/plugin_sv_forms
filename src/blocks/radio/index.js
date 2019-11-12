@@ -11,7 +11,7 @@ registerBlockType( 'straightvisions/sv-gutenform-radio', {
 	title: __( 'Radio', 'sv_gutenform' ),
 	description: __( 'A radio button for an option to select.', 'sv_gutenform' ),
 	icon,
-	parent: ['straightvisions/sv-gutenform'],
+	//parent: ['straightvisions/sv-gutenform'],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Radio', 'sv_gutenform' ),

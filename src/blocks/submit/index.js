@@ -11,7 +11,7 @@ registerBlockType( 'straightvisions/sv-gutenform-submit', {
 	title: __( 'Submit Button', 'sv_gutenform' ),
 	description: __( 'The submit button for the form.', 'sv_gutenform' ),
 	icon,
-	parent: ['straightvisions/sv-gutenform'],
+	//parent: ['straightvisions/sv-gutenform'],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Submit', 'sv_gutenform' ),

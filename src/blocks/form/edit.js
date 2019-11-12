@@ -45,7 +45,7 @@ export default withSelect( ( select, props ) => {
             <InspectorControls props={ props } data={ data } />
             <form method='POST' className={ className }>
 				<InnerBlocks 
-					allowedBlocks={ allowedBlocks }
+					//allowedBlocks={ allowedBlocks }
 					template={ template }
 					templateLock={ false }
 				/>
