@@ -3,11 +3,40 @@ namespace sv_gutenform;
 
 class sv_gutenform extends modules {
 	public function init() {
-		$this->register_blocks();
+		$this->register_scripts()->register_blocks();
 
 		// Actions Hooks & Filter
 		add_filter( 'block_categories', array( $this, 'register_block_category' ), 10, 2 );
 		add_action( 'init', array( $this, 'register_block_assets' ) );
+	}
+
+	public function register_scripts(): sv_posts {
+		// Stylesheets
+		$this->get_script( 'common' )
+			 ->set_path( 'lib/frontend/css/common.css' );
+
+		$this->get_script( 'form' )
+			 ->set_path( 'lib/frontend/css/form.css' );
+
+		$this->get_script( 'submit' )
+			 ->set_path( 'lib/frontend/css/submit.css' );
+
+		$this->get_script( 'text' )
+			 ->set_path( 'lib/frontend/css/text.css' );
+
+		$this->get_script( 'url' )
+			 ->set_path( 'lib/frontend/css/url.css' );
+
+		$this->get_script( 'email' )
+			 ->set_path( 'lib/frontend/css/email.css' );
+
+		$this->get_script( 'checkbox' )
+			 ->set_path( 'lib/frontend/css/checkbox.css' );
+
+		$this->get_script( 'textarea' )
+			 ->set_path( 'lib/frontend/css/textarea.css' );
+
+		return $this;
 	}
 
 	protected function check_gutenberg() {
