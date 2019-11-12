@@ -37,19 +37,13 @@ export default withSelect( ( select, props ) => {
         }
     };
 } )( ( { props, data } ) => {
-    // Block Properties
-    const {
-        className,
-        attributes: {
-            action,
-            method,
-        },
-    } = props;
+     // Block Properties
+     const { className } = props;
 
     return (
         <Fragment className={ className }>
             <InspectorControls props={ props } data={ data } />
-            <form action={ action } method={ method } className={ className }>
+            <form method='POST' className={ className }>
 				<InnerBlocks 
 					allowedBlocks={ allowedBlocks }
 					template={ template }

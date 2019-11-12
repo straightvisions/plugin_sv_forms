@@ -19,8 +19,6 @@ export default ( { props, data } ) => {
     const { 
         setAttributes,
         attributes: {
-            action,
-            method,
             adminMail,
             adminMailUser,
             adminMailCustom,
@@ -66,20 +64,6 @@ export default ( { props, data } ) => {
             title={ __( 'Form Settings', 'sv_gutenform' ) }
             initialOpen={ false }
         >
-            <TextControl
-                label={ __( 'Action', 'sv_gutenform' ) }
-                value={ action }
-                onChange={ ( value ) => setAttributes( { action: value } ) }
-            />
-            <RadioControl
-                label={ __( 'Method', 'sv_gutenform' ) }
-                selected={ method }
-                options={ [
-                    { label: 'POST', value: 'POST' },
-                    { label: 'GET', value: 'GET' },
-                ] }
-                onChange={ ( value ) => { setAttributes( { method: value } ) } }
-            />
             <SelectControl
                 label={ __( 'Admin Mail', 'sv_gutenform' ) }
                 value={ adminMail }
