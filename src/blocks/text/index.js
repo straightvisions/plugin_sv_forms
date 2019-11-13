@@ -2,7 +2,6 @@
 import './editor.scss';
 import icon from './icons/block';
 import edit from './edit';
-import save from './save';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
@@ -53,16 +52,22 @@ registerBlockType( 'straightvisions/sv-gutenform-text', {
 		},
 
 		// Color Settings
-		textColor: {
+		labelColor: {
 			type: 'string',
 		},
-		textColorClass: {
+		labelColorClass: {
 			type: 'string',
 		},
-		backgroundColor: {
+		inputColor: {
 			type: 'string',
 		},
-		backgroundColorClass: {
+		inputColorClass: {
+			type: 'string',
+		},
+		inputBackgroundColor: {
+			type: 'string',
+		},
+		inputBackgroundColorClass: {
 			type: 'string',
 		},
 
@@ -88,5 +93,7 @@ registerBlockType( 'straightvisions/sv-gutenform-text', {
 		},
 	},
 	edit,
-	save,
+	save: () => {
+		return null;
+	}
 } );

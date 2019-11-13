@@ -13,8 +13,9 @@ export default ( { props } ) => {
     const { 
         setAttributes,
         attributes: {
-            textColor,
-            backgroundColor,
+            labelColor,
+            inputColor,
+            inputBackgroundColor,
         }
     } = props;
 
@@ -37,20 +38,28 @@ export default ( { props } ) => {
     // Color Settings
     let colorSettings = [
         {
-            value: textColor,
+            value: labelColor,
             onChange: ( value ) => { 
-                setAttributes({ textColor: value }),
-                setAttributes({ textColorClass: getColorClass( value ) })
+                setAttributes({ labelColor: value }),
+                setAttributes({ labelColorClass: getColorClass( value ) })
             },
-            label: __( 'Text', 'sv_gutenform' ),
+            label: __( 'Label', 'sv_gutenform' ),
         },
         {
-            value: backgroundColor,
+            value: inputColor,
             onChange: ( value ) => { 
-                setAttributes({ backgroundColor: value }),
-                setAttributes({ backgroundColorClass: getColorClass( value, 'background-color' ) })
+                setAttributes({ inputColor: value }),
+                setAttributes({ inputColorClass: getColorClass( value ) })
             },
-            label: __( 'Background', 'sv_gutenform' ),
+            label: __( 'Input', 'sv_gutenform' ),
+        },
+        {
+            value: inputBackgroundColor,
+            onChange: ( value ) => { 
+                setAttributes({ inputBackgroundColor: value }),
+                setAttributes({ inputBackgroundColorClass: getColorClass( value, 'background-color' ) })
+            },
+            label: __( 'Input Background', 'sv_gutenform' ),
         },
     ];
 

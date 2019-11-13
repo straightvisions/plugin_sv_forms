@@ -10,7 +10,7 @@ class sv_gutenform extends modules {
 		add_action( 'init', array( $this, 'register_block_assets' ) );
 	}
 
-	public function register_scripts(): sv_posts {
+	public function register_scripts(): sv_gutenform {
 		// Stylesheets
 		$this->get_script( 'common' )
 			 ->set_path( 'lib/frontend/css/common.css' );
