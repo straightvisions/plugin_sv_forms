@@ -13,6 +13,10 @@ export default ( { props } ) => {
     const { 
         setAttributes,
         attributes: {
+            // Input Settings
+            isRecipient,
+
+            // Validation Settings
             required,
             minlength,
             maxlength,
@@ -26,7 +30,7 @@ export default ( { props } ) => {
         >
             <ToggleControl
                 label={ __( 'Required', 'sv_gutenform' ) }
-                checked={ required }
+                checked={ required || isRecipient ? true : false  }
                 onChange={ () => setAttributes( { required: ! required } )  }
             />
             <RangeControl

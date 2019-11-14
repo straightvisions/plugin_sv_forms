@@ -8,6 +8,7 @@ class sv_gutenform extends modules {
 		// Actions Hooks & Filter
 		add_filter( 'block_categories', array( $this, 'register_block_category' ), 10, 2 );
 		add_action( 'init', array( $this, 'register_block_assets' ) );
+		add_action( 'wp_ajax_sv_gutenform_submit', array( $this, 'ajax_sv_gutenform_submit' ) );
 	}
 
 	public function register_scripts(): sv_gutenform {
@@ -53,13 +54,6 @@ class sv_gutenform extends modules {
 	}
 
 	public function register_block_assets() {	
-		wp_register_style(
-			'sv-gutenform-style',
-			plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ),
-			array( 'wp-editor' ),
-			filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' )
-		);
-
 		wp_register_script(
 			'sv-gutenform-block',
 			$this->get_root()->get_url( '../dist/blocks.build.js' ),
@@ -117,4 +111,70 @@ class sv_gutenform extends modules {
 			)
 		);
 	}	
+
+	// Ajax - Mail Methods
+	public function send_mail( $to, string $subject, array $message ): sv_gutenform {
+		add_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
+		wp_mail( $to, $subject, $message['html'] );
+		remove_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
+
+		return $this;
+	}
+
+	public function get_form_data( array $data, bool $is_plain = false ): string {
+		$message = $is_plain ? '' : '<ul>';
+
+		foreach( $data as $entry ) {
+			$message .= $is_plain ? '' : '<li>';
+			$message .= $entry['name'] . ': ' . $entry['value'];
+			$message .= $is_plain ? "\n" : '</li>';
+		}
+
+		$message .= $is_plain ? '' : '</ul>';
+
+		return $message;
+	}
+
+	public function get_mail_template( string $template, array $data ): array {
+		$template_plain	= $this->get_path( 'lib/mails/tpl/' . $template . '_plain.php' );
+		$template_html 	= $this->get_path( 'lib/mails/tpl/' . $template . '_html.php' );
+		$message_plain	= '';
+		$message_html	= '';
+
+		ob_start();
+		if ( file_exists( $template_plain ) ) {
+			require_once( $template_plain );
+		}
+		$message_plain = ob_get_contents();
+		ob_end_clean();
+
+		ob_start();
+		if ( file_exists( $template_html ) ) {
+			require_once( $template_html );
+		}
+		$message_html = ob_get_contents();
+		ob_end_clean();
+
+		return array( 'plain' => $message_plain, 'html' => $message_html );
+	}
+
+	public function send_admin_mail( array $attr, array $data ): sv_gutenform {
+		if ( ! $attr || ! $data || $attr['adminMail'] === 'disabled' ) return $this;
+
+		$to 		= $attr['adminMail'];
+		$subject 	= 'SV Gutenform - ' . __( 'New Form Submit', 'sv_posts' );
+		$message	= $this->get_mail_template( 'admin', $data );
+
+		$this->send_mail( $to, $subject, $message );
+
+		return $this;
+	}
+
+	// This function will be called on form submit via Ajax
+	public function ajax_sv_gutenform_submit() {
+		if ( ! isset( $_POST) || empty( $_POST ) ) return;
+
+		//$this->send_admin_mail( $attributes['form'], $_POST['data'] );
+		$this->ajaxStatus( 'success', 'Form was submitted', $_POST['post_id'] );
+	}
 }

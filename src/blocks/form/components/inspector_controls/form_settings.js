@@ -1,13 +1,11 @@
 // Required Components
 const { __ } = wp.i18n;
 const { withState } = wp.compose;
-const { RichText } = wp.blockEditor;
 const { 
     PanelBody,
     Button,
     Modal,
     TextControl,
-    RadioControl,
     SelectControl,
     ToggleControl,
 } = wp.components;
@@ -23,7 +21,6 @@ export default ( { props, data } ) => {
             adminMailUser,
             adminMailCustom,
             confirmationMail,
-            confirmationMailContent,
         }
     } = props;
 
@@ -72,7 +69,13 @@ export default ( { props, data } ) => {
                     { label: 'Send to Author', value: 'author' },
                     { label: 'Send to Mail', value: 'custom' },
                 ] }
-                onChange={ ( value ) => { setAttributes( { adminMail: value } ) } }
+                onChange={ ( value ) => { 
+                    setAttributes( { adminMail: value } ) 
+                    
+                    if ( value === 'author' ) {
+                        setAttributes( { adminMailUser: authorOptions()[0].value } )
+                    }
+                } }
             />
             {
                 adminMail === 'author'
@@ -80,7 +83,7 @@ export default ( { props, data } ) => {
                     label={ __( 'Author', 'sv_gutenform' ) }
                     value={ adminMailUser }
                     options={ authorOptions() }
-                    onChange={ ( value ) => { setAttributes( { adminMailUser: value } ) } }
+                    onChange={ ( value ) => setAttributes( { adminMailUser: value } ) }
                 />
                 : null
             }
@@ -90,7 +93,7 @@ export default ( { props, data } ) => {
                     label={ __( 'E-Mail', 'sv_gutenform' ) }
                     type='email'
                     value={ adminMailCustom }
-                    onChange={ ( value ) => { setAttributes( { adminMailCustom: value } ) } }
+                    onChange={ ( value ) => setAttributes( { adminMailCustom: value } ) }
                 />
                 : null
             }

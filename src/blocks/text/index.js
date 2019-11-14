@@ -34,7 +34,6 @@ registerBlockType( 'straightvisions/sv-gutenform-text', {
 		},
 		placeholder: {
 			type: 'string',
-			default: __( 'Text', 'sv_gutenform' ),
 		},
 
 		// Validation Settings

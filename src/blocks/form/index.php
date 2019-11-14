@@ -4,12 +4,9 @@ namespace sv_gutenform;
 class form extends sv_gutenform {	
 	public function init() {
 		$this->register_block();
-
-		// Actions Hooks & Filter
-		add_action( 'wp_ajax_sv_gutenform_submit', array( $this, 'ajax_sv_gutenform_submit' ) );
 	}
 
-	public function render_block( array $attr, string $content ): string {
+	public function load_scripts(): form {
 		if ( did_action( 'wp_enqueue_scripts' ) ) {
 			$this->load_block_assets();
 		} else {
@@ -20,11 +17,28 @@ class form extends sv_gutenform {
 			array_merge(
 				$this->get_parent()->get_script( 'form_js' )->get_localized(),
 				array(
-					'form_attr' => $attr,
+					'post_id' => get_the_ID(),
 				)
 			)
 		);
 
+		return $this;
+	}
+
+	// Saves and updates the forms inside the post meta
+	public function update_meta( array $attr ): form {
+		//var_dump( get_post_meta( get_the_ID(), 'sv_gutenform_attributes', true ) );
+
+		return $this;
+	}
+
+	public function init_block( array $attr, string $content ): string {
+		$this->load_scripts()->update_meta( $attr );
+
+		return $this->render_block( $attr, $content );
+	}
+
+	public function render_block( array $attr, string $content ): string {
 		ob_start();
 		
 		require_once( $this->get_path( 'lib/frontend/tpl/form.php' ) );
@@ -58,7 +72,7 @@ class form extends sv_gutenform {
 			'straightvisions/sv-gutenform', array(
 				'editor_script' 	=> 'sv-gutenform-block',
 				'editor_style'  	=> 'sv-gutenform-block-editor',
-				'render_callback'	=> array( $this, 'render_block' ),
+				'render_callback'	=> array( $this, 'init_block' ),
 				'attributes'		=> array(
 					// Form Settings
 					'adminMail' => array(
@@ -86,38 +100,5 @@ class form extends sv_gutenform {
 				),
 			)
 		);
-	}
-
-	public function send_mail( $to, string $subject, string $message ): bool {
-		return wp_mail( $to, $subject, $message );
-	}
-
-	public function send_admin_mail( $attr, $data ): form {
-		if ( $attr['adminMail'] === 'disabled' ) return $this;
-
-		// Retrieves the mail adress
-		switch ( $attr['adminMail'] ) {
-			case 'author':
-				$to = get_the_author_meta( 'user_email', $attr['adminMailuser'] );
-				break;
-			case 'custom':
-				if ( empty( $attr['adminMailCustom'] ) ) return $this;
-				if ( ! is_email( $attr['adminMailCustom'] ) ) return $this;
-				
-				$to = $attr['adminMailCustom'];
-				break;
-		}
-
-		$this->send_mail( $to, 'Form Submit', 'Name: Peter' );
-	}
-
-	// This function will be called via Ajax
-	public function ajax_sv_gutenform_submit() {
-		if ( ! isset( $_POST) || empty( $_POST ) ) return;
-
-		$attr = $_POST['formAttr'];
-		$data = $_POST['formData'];
-
-		$this->ajaxStatus( 'success', 'Admin Mail was sent', $data );
 	}
 }

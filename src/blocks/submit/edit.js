@@ -12,7 +12,7 @@ export default withSelect( ( select, props ) => {
         className,
         attributes: {
             // Text
-            text,
+            content,
 
             // Color Settings
             textColor,
@@ -28,8 +28,8 @@ export default withSelect( ( select, props ) => {
             <RichText
                 className={ [ textColorClass, backgroundColorClass, className ] }
                 style={{ color: textColor, backgroundColor: backgroundColor }}
-                value={ text }
-                onChange={ ( value ) => setAttributes( { text: value } ) } 
+                value={ content }
+                onChange={ ( value ) => setAttributes( { content: value } ) } 
             />
         </Fragment>
     ); 

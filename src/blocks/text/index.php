@@ -176,7 +176,9 @@ class text extends sv_gutenform {
 		$attr[]		= 'name="' . $this->block_attr['name'] . '"';
 
 		// Value
-		$attr[]		= 'value="' . $this->block_attr['defaultValue'] . '"';
+		if ( isset( $this->block_attr['defaultValue'] ) ) {
+			$attr[]		= 'value="' . $this->block_attr['defaultValue'] . '"';
+		}
 
 		// Placeholder
 		$attr[]		= 'placeholder="' . $this->block_attr['placeholder'] . '"';

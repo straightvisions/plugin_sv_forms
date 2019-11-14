@@ -13,8 +13,8 @@ export default ( { props } ) => {
         setAttributes,
         attributes: {
             label,
-            placeholder,
             name,
+            placeholder,
         }
     } = props;
 

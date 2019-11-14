@@ -1,14 +1,16 @@
 <?php
-/**
- * Plugin Name: SV Gutenform
- * Plugin URI: 
- * Description: Build forms in Gutenberg with ease.
- * Author: adrianchudzynski
- * Author URI: https://profiles.wordpress.org/adrianchudzynski/
- * Version: 1.4.00
- * License: GPL2+
- * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
- */
+/*
+	Version: 1.4.00
+	Plugin Name: SV Gutenform
+	Text Domain: sv_gutenform
+	Description: Build forms in Gutenberg with ease.
+	Plugin URI: https://straightvisions.com/
+	Author: straightvisions GmbH
+	Author URI: https://straightvisions.com
+	Domain Path: /languages
+	License: GPL-3.0-or-later
+	License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
+*/
 
 if ( ! class_exists( '\sv_dependencies\init' ) ) {
 	require_once( 'src/core_plugin/dependencies/sv_dependencies.php' );

@@ -1,10 +1,10 @@
 // Required Components
 import InspectorControls from './components/inspector_controls';
 
-const { __ } = wp.i18n;
-const { withSelect } = wp.data;
-const { Fragment } = wp.element;
-const { InnerBlocks } = wp.blockEditor;
+const { __ }            = wp.i18n;
+const { withSelect }    = wp.data;
+const { Fragment }      = wp.element;
+const { InnerBlocks }   = wp.blockEditor;
 
 // Allowed Blocks
 const allowedBlocks = [
@@ -25,6 +25,18 @@ const template = [
         content: __( 'Contact', 'sv_gutenform' ), 
         level: 3,
     }],
+    ['straightvisions/sv-gutenform-text', {
+        label: __( 'Name', 'sv_gutenform' ),
+        name: 'name',
+        required: true,
+        autofocus: true,
+    }],
+    ['straightvisions/sv-gutenform-email', {
+        label: __( 'E-Mail', 'sv_gutenform' ),
+        name: 'email',
+        isRecipient: true,
+    }],
+    ['straightvisions/sv-gutenform-submit'],
 ];
 
 export default withSelect( ( select, props ) => {

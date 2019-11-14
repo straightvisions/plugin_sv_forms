@@ -23,7 +23,7 @@ registerBlockType( 'straightvisions/sv-gutenform-submit', {
 	},
 	attributes: {
 		// Text
-		text: {
+		content: {
 			type: 'string',
 			default: __( 'Submit', 'sv_gutenform' ),
 		},

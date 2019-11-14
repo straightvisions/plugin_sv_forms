@@ -14,8 +14,9 @@ export default ( { props } ) => {
         setAttributes,
         attributes: {
             label,
-            placeholder,
             name,
+            placeholder,
+            isRecipient,
         }
     } = props;
 
@@ -50,6 +51,15 @@ export default ( { props } ) => {
                 label={ __( 'Placeholder', 'sv_gutenform' ) }
                 value={ placeholder }
                 onChange={ ( value ) => setAttributes( { placeholder: value } )  }
+            />
+            <ToggleControl 
+                label={ __( 'Is Recipient?', 'sv_gutenform' ) }
+                help={ __( 'When checked, an confirmation mail will be sent to this e-mail.', 'sv_gutenform' ) }
+                checked={ isRecipient }
+                onChange={ () => { 
+                    setAttributes( { isRecipient: ! isRecipient } )
+                    setAttributes( { required: ! isRecipient } )
+                } }
             />
         </PanelBody>
     );

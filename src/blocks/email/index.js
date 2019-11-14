@@ -2,7 +2,6 @@
 import './editor.scss';
 import icon from './icons/block';
 import edit from './edit';
-import save from './save';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
@@ -35,7 +34,10 @@ registerBlockType( 'straightvisions/sv-gutenform-email', {
 		},
 		placeholder: {
 			type: 'string',
-			default: __( 'E-Mail', 'sv_gutenform' ),
+		},
+		isRecipient: {
+			type: 'boolean',
+			default: false,
 		},
 
 		// Validation Settings
@@ -88,5 +90,7 @@ registerBlockType( 'straightvisions/sv-gutenform-email', {
 		},
 	},
 	edit,
-	save,
+	save: () => {
+		return null;
+	}
 } );

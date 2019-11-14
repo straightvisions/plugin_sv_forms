@@ -1,6 +1,6 @@
 export default ( { attributes } ) => {
     const {
-        text,
+        content,
         textColor,
         textColorClass,
         backgroundColor,
@@ -16,7 +16,7 @@ export default ( { attributes } ) => {
             }}
             type='submit'
         >
-            { text }
+            { content }
         </button>
     );
 };

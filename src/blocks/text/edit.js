@@ -1,9 +1,9 @@
 // Required Components
 import InspectorControls from './components/inspector_controls';
 
-const { withSelect } = wp.data;
-const { Fragment } = wp.element;
-const { TextControl } = wp.components;
+const { withSelect }    = wp.data;
+const { Fragment }      = wp.element;
+const { TextControl }   = wp.components;
 
 export default withSelect( ( select, props ) => {
     return props;
