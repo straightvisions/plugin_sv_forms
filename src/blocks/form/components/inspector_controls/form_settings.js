@@ -17,6 +17,7 @@ export default ( { props, data } ) => {
     const { 
         setAttributes,
         attributes: {
+            ID,
             adminMail,
             adminMailUser,
             adminMailCustom,

@@ -27,7 +27,6 @@ class form extends sv_gutenform {
 
 	// Saves and updates the forms inside the post meta
 	public function update_meta( array $attr ): form {
-		//var_dump( get_post_meta( get_the_ID(), 'sv_gutenform_attributes', true ) );
 
 		return $this;
 	}
@@ -74,6 +73,11 @@ class form extends sv_gutenform {
 				'editor_style'  	=> 'sv-gutenform-block-editor',
 				'render_callback'	=> array( $this, 'init_block' ),
 				'attributes'		=> array(
+					// Hidden
+					'ID' => array(
+						'type' 		=> 'number',
+					),
+
 					// Form Settings
 					'adminMail' => array(
 						'type'		=> 'string',

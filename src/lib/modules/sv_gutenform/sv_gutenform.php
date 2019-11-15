@@ -54,6 +54,15 @@ class sv_gutenform extends modules {
 	}
 
 	public function register_block_assets() {	
+		register_meta( 'post', '_sv_gutenform_forms', array (
+			'show_in_rest' 	=> true,
+			'type' 			=> 'string',
+			'single' 		=> true,
+			'auth_callback' => function() {
+				return current_user_can( 'edit_posts' );
+			}
+		));
+
 		wp_register_script(
 			'sv-gutenform-block',
 			$this->get_root()->get_url( '../dist/blocks.build.js' ),
