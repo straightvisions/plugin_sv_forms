@@ -2,6 +2,7 @@
 import './editor.scss';
 import icon from './icons/block';
 import edit from './edit';
+import save from './save';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
@@ -51,7 +52,5 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		},
 	},
 	edit,
-	save: () => {
-		return <InnerBlocks.Content />;
-	}
+	save,
 } );

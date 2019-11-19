@@ -19,7 +19,7 @@ class text extends sv_gutenform {
 
 		ob_start();
 		
-		require_once( $this->get_path( 'lib/frontend/tpl/text.php' ) );
+		require( $this->get_path( 'lib/frontend/tpl/text.php' ) );
 
 		$output = ob_get_contents();
 		ob_end_clean();

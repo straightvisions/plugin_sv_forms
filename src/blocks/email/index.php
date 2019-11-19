@@ -19,7 +19,7 @@ class email extends sv_gutenform {
 
 		ob_start();
 		
-		require_once( $this->get_path( 'lib/frontend/tpl/email.php' ) );
+		require( $this->get_path( 'lib/frontend/tpl/email.php' ) );
 
 		$output = ob_get_contents();
 		ob_end_clean();

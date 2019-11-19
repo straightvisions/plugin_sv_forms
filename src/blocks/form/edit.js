@@ -39,40 +39,16 @@ const template = [
     ['straightvisions/sv-gutenform-submit'],
 ];
 
-// Checks if the current form exists in the meta
-const checkForms = ( forms, props ) => {
-    const { editPost } = wp.data.dispatch( 'core/editor' );
-    const {
-        setAttributes,
-        attributes,
-    } = props;
-
-    if ( ! forms ) {
-        const newForms = {
-            0: attributes,
-        };
-
-        editPost( { meta: { _sv_gutenform_forms: JSON.stringify( newForms ) } } );
-        setAttributes({ ID: 0 });
-    } else if ( ! Number.isInteger( attributes.ID ) ) {
-        let formsObject             = JSON.parse( forms );
-        const latestFormID          = Object.keys( formsObject ).length - 1;
-        const newFormID             = latestFormID + 1; 
-
-        formsObject[ newFormID ]    = attributes;
-        editPost( { meta: { _sv_gutenform_forms: JSON.stringify( formsObject ) } } );
-        setAttributes({ ID: newFormID });
-    }
-
-    console.log(forms);
-}
-
 export default withSelect( ( select, props ) => {
-    const { getAuthors } = select( 'core' );
-    const { getEditedPostAttribute } = select( 'core/editor' );
-    const forms = getEditedPostAttribute( 'meta' )._sv_gutenform_forms;
-
-    //checkForms( forms, props );
+    const { getAuthors }    = select( 'core' );
+    const { getBlocks }     = select( 'core/block-editor' );
+    
+    // Check for copy of existing block
+    if ( Number.isInteger( props.attributes.ID ) ) {
+        const blocksObject      = getBlocks();
+        const blockFormsArray   = blocksObject.filter( block => { return block.name === 'straightvisions/sv-gutenform'; } );
+        
+    }
 
     return {
         props,
@@ -82,12 +58,13 @@ export default withSelect( ( select, props ) => {
     };
 } )( ( { props, data } ) => {
     // Block Properties
-    const { className } = props;
+    const { className, attributes: { ID } } = props;
 
     return (
         <Fragment className={ className }>
             <InspectorControls props={ props } data={ data } />
             <form method='POST' className={ className }>
+                <div>Form ID - { ID }</div>
 				<InnerBlocks 
 					//allowedBlocks={ allowedBlocks }
 					template={ template }

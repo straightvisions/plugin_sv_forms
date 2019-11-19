@@ -25,22 +25,14 @@ class form extends sv_gutenform {
 		return $this;
 	}
 
-	// Saves and updates the forms inside the post meta
-	public function update_meta( array $attr ): form {
-
-		return $this;
-	}
-
 	public function init_block( array $attr, string $content ): string {
-		$this->load_scripts()->update_meta( $attr );
-
-		return $this->render_block( $attr, $content );
+		return $this->load_scripts()->render_block( $attr, $content );
 	}
 
 	public function render_block( array $attr, string $content ): string {
 		ob_start();
-		
-		require_once( $this->get_path( 'lib/frontend/tpl/form.php' ) );
+
+		require( $this->get_path( 'lib/frontend/tpl/form.php' ) );
 
 		$output = ob_get_contents();
 		ob_end_clean();
