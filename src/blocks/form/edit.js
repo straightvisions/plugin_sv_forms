@@ -39,32 +39,44 @@ const template = [
     ['straightvisions/sv-gutenform-submit'],
 ];
 
-export default withSelect( ( select, props ) => {
-    const { getAuthors }    = select( 'core' );
-    const { getBlocks }     = select( 'core/block-editor' );
-    
-    // Check for copy of existing block
-    if ( Number.isInteger( props.attributes.ID ) ) {
-        const blocksObject      = getBlocks();
-        const blockFormsArray   = blocksObject.filter( block => { return block.name === 'straightvisions/sv-gutenform'; } );
-        
-    }
-
-    return {
-        props,
-        data: {
-            authors: getAuthors(),
+// Functions
+const checkBlockIds = ( props, data ) => {
+    const { 
+        clientId,
+        setAttributes,
+        attributes: {
+            blockId,
         }
+    } = props;
+    const setBlockId    = blockId => setAttributes({ blockId });
+    const isDuplicate   = ( blockId ) => data.blocks.find( block => {
+        return block.attributes.blockId === blockId ? true : false;
+    } );
+
+    // Checks if the block is new one or a duplicate from an existing one
+    if ( ! blockId || ( blockId !== clientId && isDuplicate( blockId ) ) ) {
+        setBlockId( clientId );
+        props.attributes.blockId = clientId;
+    }
+}
+
+export default withSelect( ( select, props ) => {
+    const { getBlocks }     = select( 'core/block-editor' );
+    const { getAuthors }    = select( 'core' );
+    const data = {
+        authors: getAuthors(),
+        blocks: getBlocks(),
     };
+
+    return { props, data };
 } )( ( { props, data } ) => {
-    // Block Properties
-    const { className, attributes: { ID } } = props;
+    // Makes sure that all new added blocks have a unique blockId
+    checkBlockIds( props, data );
 
     return (
-        <Fragment className={ className }>
+        <Fragment className={ props.className }>
             <InspectorControls props={ props } data={ data } />
-            <form method='POST' className={ className }>
-                <div>Form ID - { ID }</div>
+            <form method='POST' className={ props.className }>
 				<InnerBlocks 
 					//allowedBlocks={ allowedBlocks }
 					template={ template }

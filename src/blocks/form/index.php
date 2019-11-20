@@ -66,8 +66,8 @@ class form extends sv_gutenform {
 				'render_callback'	=> array( $this, 'init_block' ),
 				'attributes'		=> array(
 					// Hidden
-					'ID' => array(
-						'type' 		=> 'number',
+					'blockId' => array(
+						'type' 		=> 'string',
 					),
 
 					// Form Settings

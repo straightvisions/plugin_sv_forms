@@ -1,78 +1,63 @@
 // Required Components
-const { InnerBlocks }               = wp.blockEditor;
 const { editPost }                  = wp.data.dispatch( 'core/editor' );
 const { getBlocks }                 = wp.data.select( 'core/block-editor' );
 const { getEditedPostAttribute }    = wp.data.select( 'core/editor' );
+const { InnerBlocks }               = wp.blockEditor;
 
-// Stores if the meta was saved and makes sure that it will be only saved once per post save/update
-let metaSaved                       = false;
+// Variables
+let postIsUpdated                   = false;
+
+// Functions
+// Removes missing blocks from the meta object and returns the updated meta array
+const removeMissingBlocks = ( metaArray, metaObject, blocksArray ) => {
+    metaArray.map( key => {
+        const remove = blocksArray.map( block => { 
+            return key !== block.attributes.blockId ? true : false; 
+        } );
+
+        if ( remove ) {
+            delete metaObject[ key ];
+        }
+    } );
+
+    return Object.keys( metaObject );
+}
+
+// Updated the post meta
+const updateMeta = () => {
+    const postBlocks        = getBlocks();
+    const postHasMeta       = typeof getEditedPostAttribute( 'meta' ) === 'object' ? true : false;
+    const postHasBlocks     = Object.keys( postBlocks ).length > 0 ? true : false;
+
+    if ( ! postIsUpdated && postHasBlocks && postHasMeta ) {
+        const meta          = getEditedPostAttribute( 'meta' )._sv_gutenform_forms;
+        let metaObject      = meta && meta !== "" ? JSON.parse( meta ) : {};
+        let metaArray       = Object.keys( metaObject );
+        const blocksArray   = postBlocks.filter( block => { return block.name === 'straightvisions/sv-gutenform'; } );
+        const hasMetaValues = metaArray.length > 0 ? true : false;
+        const hasBlocks     = blocksArray.length > 0 ? true : false;
+
+        if ( hasBlocks ) {
+            if ( hasMetaValues ) {
+                metaArray = removeMissingBlocks( metaArray, metaObject, blocksArray );
+            }
+
+            // Updates the values in the meta object
+            blocksArray.map( block => {
+                metaObject[ block.attributes.blockId ] = block.attributes;
+            } );
+
+            // Updates the post meta
+            editPost( { meta: { _sv_gutenform_forms: JSON.stringify( metaObject ) } } );
+
+            // Sets the postIsUpdated to true, so the post meta get's only updated once, even when there are more instances of the SV Gutenform Block
+            postIsUpdated = true;
+        }
+    }
+}
 
 export default () => {
-    const metaObject    = getEditedPostAttribute( 'meta' );
-    const blocksObject  = getBlocks();
-
-    // When the post get's saved/updated meta will be available
-    if ( typeof metaObject === 'object' && ! metaSaved ) {
-        // When post has blocks
-        if ( Object.keys( blocksObject ).length > 0 ) {
-            const blockFormsArray   = blocksObject.filter( block => { return block.name === 'straightvisions/sv-gutenform'; } );
-
-            // When post has SV Gutenform Blocks
-            if ( blockFormsArray.length > 0 ) {
-                let metaFormsObject     = {};
-                if ( metaObject._sv_gutenform_forms && metaObject._sv_gutenform_forms !== "" ) {
-                    metaFormsObject = JSON.parse( metaObject._sv_gutenform_forms );
-                }
-    
-                let metaFormsArray      = Object.keys( metaFormsObject );
-
-                 // Removes missing forms from meta
-                if ( metaFormsArray.length > 0 ) {
-                    metaFormsArray.map( ID => {
-                        const remove = blockFormsArray.map( block => {
-                            const blockID = block.attributes.ID;
-
-                            if ( Number.isInteger( blockID ) ) {
-                                return blockID !== ID ? true : false;
-                            }
-
-                            return true;
-                        } )[0];
-
-                        if ( remove ) {
-                            delete metaFormsObject[ ID ];
-                        }
-                    } );
-
-                    metaFormsArray = Object.keys( metaFormsObject );
-                }
-
-                // Adds and updated forms
-                const lastFormID    = metaFormsArray.length - 1;
-                let newFormID       = lastFormID + 1; 
-
-                // Needs check for copy of existing block
-                blockFormsArray.map( block => {
-                    // Block does not have the ID attribute
-                    if ( ! Number.isInteger( block.attributes.ID ) ) {
-                        block.attributes.ID = newFormID;
-                        metaFormsObject[ newFormID ] = block.attributes;
-
-                        newFormID++;
-                    } else {
-                        metaFormsObject[ block.attributes.ID ] = block.attributes;
-                    }
-                } );
-
-                console.log(metaFormsObject);
-                console.log(blockFormsArray);
-                // Updates the meta value
-                editPost( { meta: { _sv_gutenform_forms: JSON.stringify( metaFormsObject ) } } );
-            }
-        }
-
-        metaSaved = true;
-    }
+    updateMeta();
 
     return <InnerBlocks.Content />;
 }

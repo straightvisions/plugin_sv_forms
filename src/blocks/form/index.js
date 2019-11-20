@@ -23,8 +23,8 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 	},
 	attributes: {
 		// Hidden
-		ID: {
-			type: 'number',
+		blockId: {
+			type: 'string',
 		},
 
 		// Form Settings
