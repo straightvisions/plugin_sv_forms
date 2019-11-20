@@ -6,7 +6,7 @@ class form extends sv_gutenform {
 		$this->register_block();
 	}
 
-	public function load_scripts(): form {
+	public function load_scripts( string $form_id ): form {
 		if ( did_action( 'wp_enqueue_scripts' ) ) {
 			$this->load_block_assets();
 		} else {
@@ -18,6 +18,7 @@ class form extends sv_gutenform {
 				$this->get_parent()->get_script( 'form_js' )->get_localized(),
 				array(
 					'post_id' => get_the_ID(),
+					'form_id' => $form_id,
 				)
 			)
 		);
@@ -26,7 +27,7 @@ class form extends sv_gutenform {
 	}
 
 	public function init_block( array $attr, string $content ): string {
-		return $this->load_scripts()->render_block( $attr, $content );
+		return $this->load_scripts( $attr['blockId'] )->render_block( $attr, $content );
 	}
 
 	public function render_block( array $attr, string $content ): string {

@@ -133,10 +133,12 @@ class sv_gutenform extends modules {
 	public function get_form_data( array $data, bool $is_plain = false ): string {
 		$message = $is_plain ? '' : '<ul>';
 
-		foreach( $data as $entry ) {
-			$message .= $is_plain ? '' : '<li>';
-			$message .= $entry['name'] . ': ' . $entry['value'];
-			$message .= $is_plain ? "\n" : '</li>';
+		foreach( $data as $input ) {
+			if ( $input['name'] !== 'form_id' ) {
+				$message .= $is_plain ? '' : '<li>';
+				$message .= $input['name'] . ': ' . $input['value'];
+				$message .= $is_plain ? "\n" : '</li>';
+			}
 		}
 
 		$message .= $is_plain ? '' : '</ul>';
@@ -167,10 +169,23 @@ class sv_gutenform extends modules {
 		return array( 'plain' => $message_plain, 'html' => $message_html );
 	}
 
-	public function send_admin_mail( array $attr, array $data ): sv_gutenform {
-		if ( ! $attr || ! $data || $attr['adminMail'] === 'disabled' ) return $this;
+	public function get_admin_mail( object $attr ): string {
+		switch( $attr->adminMail ) {
+			case 'author':
+				$email_adress = get_the_author_meta( 'user_email', intval( $attr->adminMailUser ) );
+				break;
+			case 'custom':
+				$email_adress = $attr->adminMailCustom;
+				break;
+		}
 
-		$to 		= $attr['adminMail'];
+		return $email_adress;
+	}
+
+	public function send_admin_mail( object $attr, array $data ): sv_gutenform {
+		if ( ! $attr || ! $data || $attr->adminMail === 'disabled' ) return $this;
+
+		$to 		= $this->get_admin_mail( $attr );
 		$subject 	= 'SV Gutenform - ' . __( 'New Form Submit', 'sv_posts' );
 		$message	= $this->get_mail_template( 'admin', $data );
 
@@ -179,11 +194,30 @@ class sv_gutenform extends modules {
 		return $this;
 	}
 
+	public function get_form_id( array $data ) {
+		foreach( $data as $input ) {
+			if ( $input['name'] === 'form_id' ) {
+				return $input['value'];
+			}
+		}
+
+		return false;
+	}
+
 	// This function will be called on form submit via Ajax
 	public function ajax_sv_gutenform_submit() {
 		if ( ! isset( $_POST) || empty( $_POST ) ) return;
+		
+		// Variables
+		$post_id	= intval( $_POST['post_id'] );
+		$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_gutenform_forms', true ) );
+		$form_data	= $_POST['form_data'];
+		$form_id	= $this->get_form_id( $form_data );
 
-		//$this->send_admin_mail( $attributes['form'], $_POST['data'] );
-		$this->ajaxStatus( 'success', 'Form was submitted', $_POST['post_id'] );
+		if ( $form_id ) {
+			$form_attr = $post_meta->$form_id;
+
+			$this->send_admin_mail( $form_attr, $form_data );
+		}
 	}
 }

@@ -7,11 +7,11 @@ jQuery( 'form.straightvisions-block-sv-gutenform' ).submit( function( e ) {
     jQuery.post( localized.ajaxurl, {
         action: 'sv_gutenform_submit',
         nonce: localized.nonce,
-        data: jQuery( this ).serializeArray(),
         post_id: localized.post_id,
+        form_data: jQuery( this ).serializeArray(),
     }, function( response ) {
         response = JSON.parse( response );
 
-        console.log(response);
+        //console.log(response);
     });
 } );
