@@ -5,6 +5,6 @@
         </label>
     <?php } ?>
     <textarea <?php echo $this->get_input_attr(); ?>>
-        <?php echo $attr['defaultValue']; ?>
+        <?php echo isset( $attr['defaultValue'] ) ? $attr['defaultValue'] : ''; ?>
     </textarea>
 </div>
