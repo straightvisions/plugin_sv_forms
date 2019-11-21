@@ -1,9 +1,9 @@
 // Required Components
 import InspectorControls from './components/inspector_controls';
 
-const { withSelect }    = wp.data;
-const { Fragment }      = wp.element;
-const { TextControl }   = wp.components;
+const { withSelect }        = wp.data;
+const { Fragment }          = wp.element;
+const { TextareaControl }   = wp.components;
 
 export default withSelect( ( select, props ) => {
     return props;
@@ -13,7 +13,7 @@ export default withSelect( ( select, props ) => {
         className,
         setAttributes,
         attributes: {
-            // Input Settings
+            // Textarea Settings
             defaultValue,
             label,
             name,
@@ -21,20 +21,18 @@ export default withSelect( ( select, props ) => {
 
             // Validation Settings
             required,
-            minlength,
             maxlength,
 
             // Color Settings
             labelColor,
             labelColorClass,
-            inputColor,
-            inputColorClass,
-            inputBackgroundColor,
-            inputBackgroundColorClass,
+            textareaColor,
+            textareaColorClass,
+            textareaBackgroundColor,
+            textareaBackgroundColorClass,
 
             // Advanced Settings
             autofocus,
-            autocomplete,
             readonly,
             disabled,
         } 
@@ -65,7 +63,7 @@ export default withSelect( ( select, props ) => {
             <InspectorControls props={ props } />
             <div className={ className }>
                 <Label />
-                <TextControl
+                <TextareaControl
                     type='text'
                     name={ name }
                     label={ label }
@@ -73,13 +71,11 @@ export default withSelect( ( select, props ) => {
                     disabled={ disabled }
                     readonly={ readonly }
                     value={ defaultValue }
-                    minlength={ minlength > 0 ? minlength : -1 }
                     maxlength={ maxlength > 0 ? maxlength : -1 }
                     autofocus={ autofocus }
                     placeholder={ placeholder }
-                    autocomplete={ autocomplete }
-                    style={{ color: inputColor, backgroundColor: inputBackgroundColor }}
-                    className={ [ inputColorClass, inputBackgroundColorClass ] }
+                    style={{ color: textareaColor, backgroundColor: textareaBackgroundColor }}
+                    className={ [ textareaColorClass, textareaBackgroundColorClass ] }
                     onChange={ ( value ) => setDefaultValue( value ) }
                     hideLabelFromVision={ true }
                 />

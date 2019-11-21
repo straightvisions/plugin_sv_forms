@@ -66,7 +66,7 @@ export default withSelect( ( select, props ) => {
             <div className={ className }>
                 <Label />
                 <TextControl
-                    type='text'
+                    type='url'
                     name={ name }
                     label={ label }
                     required={ required }

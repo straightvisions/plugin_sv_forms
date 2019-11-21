@@ -31,13 +31,20 @@ const template = [
         required: true,
         autofocus: true,
     }],
-    /*
     ['straightvisions/sv-gutenform-email', {
         label: __( 'E-Mail', 'sv_gutenform' ),
         name: 'email',
-        isRecipient: true,
+        required: true,
     }],
-    */
+    ['straightvisions/sv-gutenform-url', {
+        label: __( 'Website', 'sv_gutenform' ),
+        name: 'website',
+    }],
+    ['straightvisions/sv-gutenform-textarea', {
+        label: __( 'Message', 'sv_gutenform' ),
+        name: 'message',
+        required: true,
+    }],
     ['straightvisions/sv-gutenform-submit'],
 ];
 
