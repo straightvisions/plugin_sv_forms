@@ -21,17 +21,17 @@ const removeMissingBlocks = ( metaArray, metaObject, blocksArray ) => {
 }
 
 // Updated the post meta
-const updateMeta = ( blockId ) => {
-    const postBlocks        = getBlocks();
-    const postHasMeta       = typeof getEditedPostAttribute( 'meta' ) === 'object' ? true : false;
-    const postHasBlocks     = Object.keys( postBlocks ).length > 0 ? true : false;
+const updateMeta = blockId => {
+    const postBlocks    = getBlocks();
+    const postHasMeta   = typeof getEditedPostAttribute( 'meta' ) === 'object' ? true : false;
+    const postHasBlocks = Object.keys( postBlocks ).length > 0 ? true : false;
 
     if ( postHasBlocks && postHasMeta ) {
         const blocksArray   = postBlocks.filter( block => { return block.name === 'straightvisions/sv-gutenform'; } );
         const hasBlocks     = blocksArray.length > 0 ? true : false;
 
         if ( hasBlocks ) {
-            const isFirstBlock  = blockId === blocksArray[0].attributes.blockId ? true : false;
+            const isFirstBlock = blockId === blocksArray[0].attributes.blockId ? true : false;
 
             if ( isFirstBlock ) {
                 const meta          = getEditedPostAttribute( 'meta' )._sv_gutenform_forms;

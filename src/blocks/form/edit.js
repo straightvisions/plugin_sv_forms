@@ -31,11 +31,13 @@ const template = [
         required: true,
         autofocus: true,
     }],
+    /*
     ['straightvisions/sv-gutenform-email', {
         label: __( 'E-Mail', 'sv_gutenform' ),
         name: 'email',
         isRecipient: true,
     }],
+    */
     ['straightvisions/sv-gutenform-submit'],
 ];
 
@@ -49,7 +51,7 @@ const checkBlockIds = ( props, data ) => {
         }
     } = props;
     const setBlockId    = blockId => setAttributes({ blockId });
-    const isDuplicate   = ( blockId ) => data.blocks.find( block => {
+    const isDuplicate   = blockId => data.blocks.find( block => {
         return block.attributes.blockId === blockId ? true : false;
     } );
 

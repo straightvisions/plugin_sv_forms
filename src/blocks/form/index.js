@@ -4,9 +4,8 @@ import icon from './icons/block';
 import edit from './edit';
 import save from './save';
 
-const { __ } = wp.i18n;
+const { __ } 				= wp.i18n;
 const { registerBlockType } = wp.blocks
-const { InnerBlocks } = wp.blockEditor;
 
 registerBlockType( 'straightvisions/sv-gutenform', {
 	title: __( 'SV Gutenform', 'sv_gutenform' ),

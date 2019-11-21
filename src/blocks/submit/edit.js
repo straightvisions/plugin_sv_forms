@@ -1,17 +1,18 @@
 // Required Components
 import InspectorControls from './components/inspector_controls';
 
-const { withSelect } = wp.data;
-const { Fragment } = wp.element;
-const { RichText } = wp.blockEditor;
+const { withSelect }    = wp.data;
+const { Fragment }      = wp.element;
+const { RichText }      = wp.blockEditor;
 
 export default withSelect( ( select, props ) => {
     return props;
 } )( ( props ) => {
+    // Block Properties
     const {
         className,
         attributes: {
-            // Text
+            // Content
             content,
 
             // Color Settings
@@ -22,6 +23,9 @@ export default withSelect( ( select, props ) => {
         } 
     } = props;
 
+    // Functions
+    const setContent = content => setAttributes({ content });
+
     return (
         <Fragment>
             <InspectorControls props={ props } />
@@ -29,7 +33,7 @@ export default withSelect( ( select, props ) => {
                 className={ [ textColorClass, backgroundColorClass, className ] }
                 style={{ color: textColor, backgroundColor: backgroundColor }}
                 value={ content }
-                onChange={ ( value ) => setAttributes( { content: value } ) } 
+                onChange={ value => setContent( value ) } 
             />
         </Fragment>
     ); 

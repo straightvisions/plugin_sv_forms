@@ -17,27 +17,33 @@ export default ( { props } ) => {
         }
     } = props;
 
+    // Functions
+    const setAutofocus      = autofocus     =>  setAttributes({ autofocus });
+    const setAutocomplete   = autocomplete  =>  setAttributes({ autocomplete });
+    const setReadonly       = readonly      =>  setAttributes({ readonly });
+    const setDisabled       = disabled      =>  setAttributes({ disabled });
+
     return(
         <Fragment>
             <ToggleControl
                 label={ __( 'Autofocus', 'sv_gutenform' ) }
                 checked={ autofocus }
-                onChange={ () => setAttributes( { autofocus: ! autofocus } )  }
+                onChange={ () => setAutofocus( ! autofocus )  }
             />
             <ToggleControl
                 label={ __( 'Autocomplete', 'sv_gutenform' ) }
                 checked={ autocomplete }
-                onChange={ () => setAttributes( { autocomplete: ! autocomplete } )  }
+                onChange={ () => setAutocomplete( ! autocomplete )  }
             />
             <ToggleControl
                 label={ __( 'Read Only', 'sv_gutenform' ) }
                 checked={ readonly }
-                onChange={ () => setAttributes( { readonly: ! readonly } )  }
+                onChange={ () => setReadonly( ! readonly )  }
             />
             <ToggleControl
                 label={ __( 'Disabled', 'sv_gutenform' ) }
                 checked={ disabled }
-                onChange={ () => setAttributes( { disabled: ! disabled } )  }
+                onChange={ () => setDisabled( ! disabled )  }
             />
         </Fragment>
     );

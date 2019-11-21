@@ -18,14 +18,17 @@ export default ( { props } ) => {
         }
     } = props;
 
-    // Returns a converted string, that is valid for the most input attributes
-    function getValidString( string ) {
+    // Functions
+    const setLabel          = label         => setAttributes({ label });
+    const setName           = name          => setAttributes({ name });
+    const setPlaceholder    = placeholder   => setAttributes({ placeholder });
+    const getSlug           = string => {
         if ( ! string ) return '';
 
-        const convertedString = string.replace( /[^A-Z0-9]+/ig, '-' );
+        const slug = string.replace( /[^A-Z0-9]+/ig, '-' ).toLowerCase();
 
-        return convertedString.toLowerCase();
-    }
+        return slug;
+    };
 
     return(
         <PanelBody
@@ -35,20 +38,20 @@ export default ( { props } ) => {
             <TextControl
                 label={ __( 'Label', 'sv_gutenform' ) }
                 value={ label }
-                onChange={ ( value ) => { 
-                    setAttributes( { label: value } ) 
-                    setAttributes( { name: getValidString( value ) } )
+                onChange={ value => { 
+                    setLabel( value );
+                    setName( getSlug( value ) );
                 } }
             />
             <TextControl
                 label={ __( 'Name', 'sv_gutenform' ) }
-                value={ getValidString( name ) }
-                onChange={ ( value ) => setAttributes( { name: getValidString( value ) } )  }
+                value={ getSlug( name ) }
+                onChange={ value => setName( getSlug( value ) )  }
             />
             <TextControl
                 label={ __( 'Placeholder', 'sv_gutenform' ) }
                 value={ placeholder }
-                onChange={ ( value ) => setAttributes( { placeholder: value } )  }
+                onChange={ value => setPlaceholder( value )  }
             />
         </PanelBody>
     );

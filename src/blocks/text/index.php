@@ -41,43 +41,43 @@ class text extends sv_gutenform {
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
 					// Input Settings
-					'defaultValue' => array(
+					'defaultValue' 	=> array(
 						'type'		=> 'string',
 					),
-					'label' => array(
+					'label' 		=> array(
 						'type'		=> 'string',
 						'default'	=> __( 'Text Label', 'sv_posts' ),
 					),
-					'name' => array(
+					'name' 			=> array(
 						'type'		=> 'string',
 					),
-					'placeholder' => array(
+					'placeholder' 	=> array(
 						'type'		=> 'string',
 						'default'	=> __( 'Text', 'sv_posts' ),
 					),
 
 					// Validation Settings
-					'required' => array(
+					'required' 		=> array(
 						'type'		=> 'bool',
 						'default'	=> false,
 					),
-					'minlength' => array(
+					'minlength' 	=> array(
 						'type'		=> 'number',
 						'default'	=> 0,
 					),
-					'maxlength' => array(
+					'maxlength' 	=> array(
 						'type'		=> 'number',
 						'default'	=> 0,
 					),
 
 					// Color Settings
-					'labelColor' => array(
+					'labelColor' 	=> array(
 						'type'		=> 'string',
 					),
 					'labelColorClass' => array(
 						'type'		=> 'string',
 					),
-					'inputColor' => array(
+					'inputColor' 	=> array(
 						'type'		=> 'string',
 					),
 					'inputColorClass' => array(
@@ -91,19 +91,19 @@ class text extends sv_gutenform {
 					),
 
 					// Advanced Settings
-					'autofocus' => array(
+					'autofocus' 	=> array(
 						'type'		=> 'bool',
 						'default'	=> false,
 					),
-					'autocomplete' => array(
+					'autocomplete' 	=> array(
 						'type'		=> 'bool',
 						'default'	=> false,
 					),
-					'disabled' => array(
+					'disabled' 		=> array(
 						'type'		=> 'bool',
 						'default'	=> false,
 					),
-					'className' => array(
+					'className' 	=> array(
 						'type'		=> 'string',
 					),
 				),
@@ -177,7 +177,7 @@ class text extends sv_gutenform {
 
 		// Value
 		if ( isset( $this->block_attr['defaultValue'] ) ) {
-			$attr[]		= 'value="' . $this->block_attr['defaultValue'] . '"';
+			$attr[]	= 'value="' . $this->block_attr['defaultValue'] . '"';
 		}
 
 		// Placeholder

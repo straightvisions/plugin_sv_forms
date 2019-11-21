@@ -82,13 +82,6 @@ class form extends sv_gutenform {
 					'adminMailCustom' => array(
 						'type'		=> 'string',
 					),
-					'confirmationMail' => array(
-						'type'		=> 'boolean',
-						'default'	=> false,
-					),
-					'confirmationMailContent' => array(
-						'type'		=> 'string',
-					),
 
 					// Advanced
 					'className' => array(

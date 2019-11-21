@@ -2,9 +2,8 @@
 import './editor.scss';
 import icon from './icons/block';
 import edit from './edit';
-import save from './save';
 
-const { __ } = wp.i18n;
+const { __ } 				= wp.i18n;
 const { registerBlockType } = wp.blocks
 
 registerBlockType( 'straightvisions/sv-gutenform-submit', {
@@ -42,11 +41,13 @@ registerBlockType( 'straightvisions/sv-gutenform-submit', {
 			type: 'string',
 		},
 
-		// Advanced
+		// Advanced Settings
 		className: {
 			type: 'string',
 		},
 	},
 	edit,
-	save,
+	save: () => {
+		return null;
+	}
 } );

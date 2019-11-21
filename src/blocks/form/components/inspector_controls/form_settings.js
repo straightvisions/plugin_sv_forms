@@ -1,13 +1,9 @@
 // Required Components
 const { __ } = wp.i18n;
-const { withState } = wp.compose;
 const { 
     PanelBody,
-    Button,
-    Modal,
     TextControl,
     SelectControl,
-    ToggleControl,
 } = wp.components;
 
 export default ( { props, data } ) => {
@@ -20,33 +16,20 @@ export default ( { props, data } ) => {
             adminMail,
             adminMailUser,
             adminMailCustom,
-            confirmationMail,
         }
     } = props;
 
-    const EditConfirmationMail = withState({
-        isOpen: false,
-    })( ( { isOpen, setState } ) => (
-        <div>
-            <Button isDefault onClick={ () => setState({ isOpen: true }) }>
-                { __( 'Edit Mail Content', 'sv_gutenform' ) }
-            </Button>
-            { isOpen && (
-                <Modal
-                    title="This is my modal"
-                    onRequestClose={ () => setState({ isOpen: false }) }
-                    shouldCloseOnEsc={ false }
-                >
-                    <Button isPrimary onClick={ () => setState({ isOpen: false }) }>
-                         { __( 'Save & Close', 'sv_gutenform' ) }
-                    </Button>
-                </Modal>
-            ) }
-        </div>
-    ));
+    // Functions
+    const setAdminMail          = ( adminMail )         => { 
+        setAttributes( { adminMail } );
 
-    // Returns a list of authors as select options
-    const authorOptions = () => {
+        if ( adminMail === 'author' ) {
+            setAdminMailUser( getAuthorOptions()[0].value );
+        }
+    };
+    const setAdminMailUser      = adminMailUser     => setAttributes({ adminMailUser });
+    const setAdminMailCustom    = adminMailCustom   => setAttributes({ adminMailCustom });
+    const getAuthorOptions      = ()                => {
         let options = [];
 
         data.authors.map( author => {
@@ -54,7 +37,38 @@ export default ( { props, data } ) => {
         } );
 
         return options;
-    }
+    };
+
+    // Conditional Components
+    const AdminMailAuthor = () => {
+        if ( adminMail === 'author' ) {
+            return (
+                <SelectControl
+                    label={ __( 'Author', 'sv_gutenform' ) }
+                    value={ adminMailUser }
+                    options={ getAuthorOptions() }
+                    onChange={ ( value ) => setAdminMailUser( value ) }
+                />
+            );
+        }
+
+        return null;
+    };
+
+    const AdminMailCustom = () => {
+        if ( adminMail === 'custom' ) {
+            return (
+                <TextControl
+                    label={ __( 'E-Mail', 'sv_gutenform' ) }
+                    type='email'
+                    value={ adminMailCustom }
+                    onChange={ ( value ) => setAdminMailCustom( value ) }
+                />
+            );
+        }
+
+        return null;
+    };
 
     return(
         <PanelBody 
@@ -69,44 +83,10 @@ export default ( { props, data } ) => {
                     { label: 'Send to Author', value: 'author' },
                     { label: 'Send to Mail', value: 'custom' },
                 ] }
-                onChange={ ( value ) => { 
-                    setAttributes( { adminMail: value } ) 
-                    
-                    if ( value === 'author' ) {
-                        setAttributes( { adminMailUser: authorOptions()[0].value } )
-                    }
-                } }
+                onChange={ ( value ) => setAdminMail( value ) }
             />
-            {
-                adminMail === 'author'
-                ? <SelectControl
-                    label={ __( 'Author', 'sv_gutenform' ) }
-                    value={ adminMailUser }
-                    options={ authorOptions() }
-                    onChange={ ( value ) => setAttributes( { adminMailUser: value } ) }
-                />
-                : null
-            }
-            {
-                adminMail === 'custom'
-                ? <TextControl
-                    label={ __( 'E-Mail', 'sv_gutenform' ) }
-                    type='email'
-                    value={ adminMailCustom }
-                    onChange={ ( value ) => setAttributes( { adminMailCustom: value } ) }
-                />
-                : null
-            }
-            <ToggleControl
-                label={ __( 'Confirmation Mail', 'sv_gutenform' ) }
-                checked={ confirmationMail }
-                onChange={ () => setAttributes( { confirmationMail: ! confirmationMail } ) }
-            />
-            {
-                confirmationMail
-                ? <EditConfirmationMail />
-                : null
-            }
+            <AdminMailAuthor />
+            <AdminMailCustom />
         </PanelBody>
     );
 }

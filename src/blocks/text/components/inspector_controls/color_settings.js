@@ -19,45 +19,55 @@ export default ( { props } ) => {
         }
     } = props;
 
+    // Functions
+    const setLabelColor                 = labelColor                => setAttributes({ labelColor });
+    const setLabelColorClass            = labelColorClass           => setAttributes({ labelColorClass });
+    const setInputColor                 = inputColor                => setAttributes({ inputColor });
+    const setInputColorClass            = inputColorClass           => setAttributes({ inputColorClass });
+    const setInputBackgroundColor       = inputBackgroundColor      => setAttributes({ inputBackgroundColor });
+    const setInputBackgroundColorClass  = inputBackgroundColorClass => setAttributes({ inputBackgroundColorClass });
+    
     // Returns an color object if this color is defined in the editor
-    function getColorObject( color ) {
-        const settings = wp.data.select( 'core/editor' ).getEditorSettings();
-        const colorObject = getColorObjectByColorValue( settings.colors, color );
+    const getColorObject = color => {
+        const settings      = wp.data.select( 'core/editor' ).getEditorSettings();
+        const colorObject   = getColorObjectByColorValue( settings.colors, color );
 
         return colorObject;
-    }
+    };
 
     // Returns the classname of the given color, if it's defined in the editor
-    function getColorClass( color, type = 'color' ) {
+    const getColorClass = ( color, isBackgroundColor = false ) => {
         if ( ! color ) return '';
         if ( ! getColorObject( color ) ) return '';
 
+        const type = isBackgroundColor ? 'background-color' : 'color';
+
         return getColorClassName( type, getColorObject( color ).slug );
-    }
+    };
     
     // Color Settings
     let colorSettings = [
         {
             value: labelColor,
-            onChange: ( value ) => { 
-                setAttributes({ labelColor: value }),
-                setAttributes({ labelColorClass: getColorClass( value ) })
+            onChange: value => { 
+                setLabelColor( value );
+                setLabelColorClass( getColorClass( value ) );
             },
             label: __( 'Label', 'sv_gutenform' ),
         },
         {
             value: inputColor,
-            onChange: ( value ) => { 
-                setAttributes({ inputColor: value }),
-                setAttributes({ inputColorClass: getColorClass( value ) })
+            onChange: value => { 
+                setInputColor( value );
+                setInputColorClass( getColorClass( value ) );
             },
             label: __( 'Input', 'sv_gutenform' ),
         },
         {
             value: inputBackgroundColor,
-            onChange: ( value ) => { 
-                setAttributes({ inputBackgroundColor: value }),
-                setAttributes({ inputBackgroundColorClass: getColorClass( value, 'background-color' ) })
+            onChange: value => { 
+                setInputBackgroundColor( value );
+                setInputBackgroundColorClass( getColorClass( value, true ) );
             },
             label: __( 'Input Background', 'sv_gutenform' ),
         },
