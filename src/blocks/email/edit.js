@@ -41,7 +41,7 @@ export default withSelect( ( select, props ) => {
     } = props;
 
     // Functions
-    const setDefaultValue = defaultValue => setAttributes( { defaultValue } );
+    const setDefaultValue = defaultValue => setAttributes({ defaultValue });
 
     // Conditional Components
     const Label = () => {

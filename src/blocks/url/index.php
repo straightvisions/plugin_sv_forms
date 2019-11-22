@@ -53,7 +53,6 @@ class url extends sv_gutenform {
 					),
 					'placeholder' 	=> array(
 						'type'		=> 'string',
-						'default'	=> __( 'URL', 'sv_posts' ),
 					),
 
 					// Validation Settings
@@ -181,7 +180,9 @@ class url extends sv_gutenform {
 		}
 
 		// Placeholder
-		$attr[]		= 'placeholder="' . $this->block_attr['placeholder'] . '"';
+		if ( isset( $this->block_attr['placeholder'] ) ) {
+			$attr[]		= 'placeholder="' . $this->block_attr['placeholder'] . '"';
+		}
 
 		// Required
 		if ( isset( $this->block_attr['required'] ) && $this->block_attr['required'] ) {
