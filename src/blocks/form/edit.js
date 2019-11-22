@@ -46,6 +46,7 @@ const template = [
         required: true,
     }],
     ['straightvisions/sv-gutenform-submit'],
+    ['straightvisions/sv-gutenform-thank-you'],
 ];
 
 // Functions

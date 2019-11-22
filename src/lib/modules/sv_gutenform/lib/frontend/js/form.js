@@ -5,7 +5,7 @@ const localized     = js_sv_gutenform_modules_sv_gutenform_scripts_form_js;
 const showThankYou  = form => {
     const el        = form.find( '.straightvisions-block-sv-gutenform-thank-you' );
 
-    if ( el ) {
+    if ( el.length > 0 ) {
         el.insertAfter( form );
 
 
