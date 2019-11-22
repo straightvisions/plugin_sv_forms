@@ -1,0 +1,28 @@
+.straightvisions-block-sv-gutenform-submit {
+	margin-bottom: .5em;
+}
+
+.straightvisions-block-sv-gutenform-submit button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background: #fff;
+	border-radius: 0;
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgba( 0, 0, 0, .5 );
+	box-shadow: none;
+	display: block;
+	font-size: 1.2em;
+	margin: 0;
+	max-width: 100%;
+	padding: .75em 1em;
+	cursor: pointer;
+	color: rgba( 0, 0, 0, .75 );
+	transition: color .25s ease, border-color .25s ease;
+}
+
+.straightvisions-block-sv-gutenform-submit button:hover,
+.straightvisions-block-sv-gutenform-submit button:focus {
+	color: rgb( 0, 0, 0 );
+	border-color: rgb( 0, 0, 0 );
+}
