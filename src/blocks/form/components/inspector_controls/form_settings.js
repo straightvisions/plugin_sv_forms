@@ -55,21 +55,6 @@ export default ( { props, data } ) => {
         return null;
     };
 
-    const AdminMailCustom = () => {
-        if ( adminMail === 'custom' ) {
-            return (
-                <TextControl
-                    label={ __( 'E-Mail', 'sv_gutenform' ) }
-                    type='email'
-                    value={ adminMailCustom }
-                    onChange={ ( value ) => setAdminMailCustom( value ) }
-                />
-            );
-        }
-
-        return null;
-    };
-
     return(
         <PanelBody 
             title={ __( 'Form Settings', 'sv_gutenform' ) }
@@ -86,7 +71,16 @@ export default ( { props, data } ) => {
                 onChange={ ( value ) => setAdminMail( value ) }
             />
             <AdminMailAuthor />
-            <AdminMailCustom />
+            {
+                adminMail === 'custom' 
+                ? <TextControl
+                    label={ __( 'E-Mail', 'sv_gutenform' ) }
+                    type='email'
+                    value={ adminMailCustom }
+                    onChange={ ( value ) => setAdminMailCustom( value ) }
+                />
+                : null
+            }
         </PanelBody>
     );
 }
