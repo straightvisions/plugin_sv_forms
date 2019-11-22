@@ -1,14 +1,13 @@
-.straightvisions-block-sv-gutenform-text {
+.wp-block-straightvisions-sv-gutenform-text {
 	margin-bottom: .5em;
 }
 
-.straightvisions-block-sv-gutenform-text label {
+.wp-block-straightvisions-sv-gutenform-text label {
 	display: block;
-	font-size: 1em;
 	margin-bottom: .5em;
 }
 
-.straightvisions-block-sv-gutenform-text input {
+.wp-block-straightvisions-sv-gutenform-text input {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	background: #fff;
@@ -18,7 +17,6 @@
 	border-color: rgba( 0, 0, 0, .5 );
 	box-shadow: none;
 	display: block;
-	font-size: 1.2em;
 	margin: 0;
 	max-width: 100%;
 	padding: .75em 1em;
@@ -27,8 +25,8 @@
 	transition: color .25s ease, border-color .25s ease;
 }
 
-.straightvisions-block-sv-gutenform-text input:hover,
-.straightvisions-block-sv-gutenform-text input:focus {
+.wp-block-straightvisions-sv-gutenform-text input:hover,
+.wp-block-straightvisions-sv-gutenform-text input:focus {
 	color: rgb( 0, 0, 0 );
 	border-color: rgb( 0, 0, 0 );
 }

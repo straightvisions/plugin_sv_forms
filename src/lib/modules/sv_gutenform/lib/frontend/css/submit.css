@@ -1,8 +1,8 @@
-.straightvisions-block-sv-gutenform-submit {
+.wp-block-straightvisions-sv-gutenform-submit {
 	margin-bottom: .5em;
 }
 
-.straightvisions-block-sv-gutenform-submit button {
+.wp-block-straightvisions-sv-gutenform-submit button {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	background: #fff;
@@ -12,17 +12,17 @@
 	border-color: rgba( 0, 0, 0, .5 );
 	box-shadow: none;
 	display: block;
-	font-size: 1.2em;
 	margin: 0;
 	max-width: 100%;
 	padding: .75em 1em;
 	cursor: pointer;
 	color: rgba( 0, 0, 0, .75 );
+	text-decoration: none;
 	transition: color .25s ease, border-color .25s ease;
 }
 
-.straightvisions-block-sv-gutenform-submit button:hover,
-.straightvisions-block-sv-gutenform-submit button:focus {
+.wp-block-straightvisions-sv-gutenform-submit button:hover,
+.wp-block-straightvisions-sv-gutenform-submit button:focus {
 	color: rgb( 0, 0, 0 );
 	border-color: rgb( 0, 0, 0 );
 }

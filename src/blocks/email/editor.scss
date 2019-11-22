@@ -1,0 +1,32 @@
+.wp-block-straightvisions-sv-gutenform-email {
+	margin-bottom: .5em;
+}
+
+.wp-block-straightvisions-sv-gutenform-email label {
+	display: block;
+	margin-bottom: .5em;
+}
+
+.wp-block-straightvisions-sv-gutenform-email input.components-text-control__input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background: #fff;
+	border-radius: 0;
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgba( 0, 0, 0, .5 );
+	box-shadow: none;
+	display: block;
+	margin: 0;
+	max-width: 100%;
+	padding: .75em 1em;
+	color: rgba( 0, 0, 0, .75 );
+	width: 100%;
+	transition: color .25s ease, border-color .25s ease;
+}
+
+.wp-block-straightvisions-sv-gutenform-email input.components-text-control__input:hover,
+.wp-block-straightvisions-sv-gutenform-email input.components-text-control__input:focus {
+	color: rgb( 0, 0, 0 );
+	border-color: rgb( 0, 0, 0 );
+}

@@ -107,7 +107,7 @@ class textarea extends sv_gutenform {
 	// Returns a string with all classes for the input wrapper
 	public function get_wrapper_class(): string {
 		$class 			= array();
-		$class[]		= 'straightvisions-block-sv-gutenform-textarea';
+		$class[]		= 'wp-block-straightvisions-sv-gutenform-textarea';
 
 		// Alignment
 		if ( isset( $this->block_attr['align'] ) ) { 

@@ -4,7 +4,5 @@
             <?php echo $attr['label']; ?>
         </label>
     <?php } ?>
-    <textarea <?php echo $this->get_input_attr(); ?>>
-        <?php echo isset( $attr['defaultValue'] ) ? $attr['defaultValue'] : ''; ?>
-    </textarea>
+    <textarea <?php echo $this->get_input_attr(); ?>><?php echo isset( $attr['defaultValue'] ) ? $attr['defaultValue'] : ''; ?></textarea>
 </div>

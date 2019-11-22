@@ -3,7 +3,7 @@ const localized     = js_sv_gutenform_modules_sv_gutenform_scripts_form_js;
 
 // Functions
 const showThankYou  = form => {
-    const el        = form.find( '.straightvisions-block-sv-gutenform-thank-you' );
+    const el        = form.find( '.wp-block-straightvisions-sv-gutenform-thank-you' );
 
     if ( el.length > 0 ) {
         el.insertAfter( form );
@@ -15,7 +15,7 @@ const showThankYou  = form => {
     }
 }
 
-jQuery( 'form.straightvisions-block-sv-gutenform' ).submit( function( e ) {
+jQuery( 'form.wp-block-straightvisions-sv-gutenform' ).submit( function( e ) {
     e.preventDefault();
     
     const form  = jQuery( this );

@@ -73,7 +73,7 @@ class submit extends sv_gutenform {
 	// Returns a string with all classes for the button wrapper
 	public function get_wrapper_class(): string {
 		$class 			= array();
-		$class[]		= 'straightvisions-block-sv-gutenform-submit';
+		$class[]		= 'wp-block-straightvisions-sv-gutenform-submit';
 
 		// Alignment
 		if ( isset( $this->block_attr['align'] ) ) { 
