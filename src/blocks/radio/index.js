@@ -3,22 +3,19 @@ import './editor.scss';
 import icon from './icons/block';
 import edit from './edit';
 
-const { __ } 	= wp.i18n;
-const { 
-	registerBlockType, 
-	registerBlockStyle 
-} 				= wp.blocks;
+const { __ } 				= wp.i18n;
+const { registerBlockType }	= wp.blocks;
 
-registerBlockType( 'straightvisions/sv-gutenform-checkbox', {
-	title: __( 'Checkbox', 'sv_gutenform' ),
-	description: __( 'A checkbox that can be checked.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-gutenform-radio', {
+	title: __( 'Radio Button', 'sv_gutenform' ),
+	description: __( 'A radio button, that can be selected.', 'sv_gutenform' ),
 	icon,
 	//parent: ['straightvisions/sv-gutenform'],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Checkbox', 'sv_gutenform' ),
-		__( 'Checkbox Input', 'sv_gutenform' ),
-		__( 'Checkbox', 'sv_gutenform' ),
+		__( 'SV Gutenform Radio Button', 'sv_gutenform' ),
+		__( 'Radio Button', 'sv_gutenform' ),
+		__( 'Radio', 'sv_gutenform' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
@@ -30,19 +27,13 @@ registerBlockType( 'straightvisions/sv-gutenform-checkbox', {
 		},
 		label: {
 			type: 'string',
-			default: __( 'Checkbox Label', 'sv_gutenform' ),
+			default: __( 'Radio Button Label', 'sv_gutenform' ),
 		},
 		name: {
 			type: 'string',
 		},
 		value: {
 			type: 'string',
-		},
-
-		// Validation Settings
-		required: {
-			type: 'boolean',
-			default: false,
 		},
 
 		// Color Settings
@@ -67,15 +58,3 @@ registerBlockType( 'straightvisions/sv-gutenform-checkbox', {
 		return null;
 	}
 } );
-
-registerBlockStyle( 'straightvisions/sv-gutenform-checkbox', [ 
-	{
-		name: 'checkbox',
-		label: 'Checkbox',
-		isDefault: true,
-	},
-	{
-		name: 'toggle',
-		label: 'Toggle',
-	}
-]);

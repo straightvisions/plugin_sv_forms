@@ -1,0 +1,46 @@
+/* General */
+.wp-block-straightvisions-sv-gutenform-radio {
+	display: flex;
+    align-items: center;
+	margin-bottom: .5em;
+}
+
+.wp-block-straightvisions-sv-gutenform-radio input[type="radio"] + label {
+	margin: 0 0 0 .75em;
+}
+
+/* Style: Radio (Default) */
+.wp-block-straightvisions-sv-gutenform-radio input[type="radio"] {
+	position: relative;
+	width: 18px;
+	height: 18px;
+	margin: 0;
+	outline: none !important;
+	border: 2px solid rgba( 50, 50, 48, 1 );
+	border-radius: 18px;
+	background-color: #FFFFFF;
+	box-shadow: none;
+	cursor: pointer;
+	-webkit-appearance: none;
+	transition: .2s ease;
+}
+
+.wp-block-straightvisions-sv-gutenform-radio input[type="radio"]::before  {
+	content: '';
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	right: 0;
+	bottom: 0;
+	width: 10px;
+	height: 10px;
+	outline: none !important;
+    background-color: rgb( 50, 50, 48 );
+    border-radius: 10px;
+	transform: scale( 0 );
+	transition: transform .2s ease;
+}
+
+.wp-block-straightvisions-sv-gutenform-radio input[type="radio"]:checked::before  {
+	transform: scale( 1 );
+}

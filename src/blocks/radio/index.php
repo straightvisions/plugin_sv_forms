@@ -1,7 +1,7 @@
 <?php
 namespace sv_gutenform;
 
-class checkbox extends sv_gutenform {
+class radio extends sv_gutenform {
 	protected $block_attr 	= array();
 
 	public function init() {
@@ -19,7 +19,7 @@ class checkbox extends sv_gutenform {
 
 		ob_start();
 		
-		require( $this->get_path( 'lib/frontend/tpl/checkbox.php' ) );
+		require( $this->get_path( 'lib/frontend/tpl/radio.php' ) );
 
 		$output = ob_get_contents();
 		ob_end_clean();
@@ -29,13 +29,13 @@ class checkbox extends sv_gutenform {
 
 	public function load_block_assets() {
 		if ( ! is_admin() ) {
-			$this->get_parent()->get_script( 'checkbox' )->set_is_enqueued();
+			$this->get_parent()->get_script( 'radio' )->set_is_enqueued();
 		}
 	}
 
 	private function register_block() {
 		register_block_type(
-			'straightvisions/sv-gutenform-checkbox', array(
+			'straightvisions/sv-gutenform-radio', array(
 				'editor_script' 	=> 'sv-gutenform-block',
 				'editor_style'  	=> 'sv-gutenform-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
@@ -46,19 +46,13 @@ class checkbox extends sv_gutenform {
 					),
 					'label' 		=> array(
 						'type'		=> 'string',
-						'default'	=> __( 'Checkbox Label', 'sv_posts' ),
+						'default'	=> __( 'Radio Label', 'sv_posts' ),
 					),
 					'name' 			=> array(
 						'type'		=> 'string',
 					),
 					'value' 		=> array(
 						'type'		=> 'string',
-					),
-
-					// Validation Settings
-					'required' 		=> array(
-						'type'		=> 'bool',
-						'default'	=> false,
 					),
 
 					// Color Settings
@@ -86,7 +80,7 @@ class checkbox extends sv_gutenform {
 	// Returns a string with all classes for the input wrapper
 	public function get_wrapper_class(): string {
 		$class 			= array();
-		$class[]		= 'wp-block-straightvisions-sv-gutenform-checkbox';
+		$class[]		= 'wp-block-straightvisions-sv-gutenform-radio';
 
 		// Alignment
 		if ( isset( $this->block_attr['align'] ) ) { 
@@ -138,7 +132,7 @@ class checkbox extends sv_gutenform {
 		$attr 		= array();
 
 		// Type
-		$attr[]		= 'type="checkbox"';
+		$attr[]		= 'type="radio"';
 
 		// ID
 		$attr[]		= 'id="' . $this->block_attr['value'] . '"';
@@ -152,11 +146,6 @@ class checkbox extends sv_gutenform {
 		// Checked
 		if ( isset( $this->block_attr['isChecked'] ) && $this->block_attr['isChecked'] ) {
 			$attr[]	= 'checked';
-		}
-
-		// Required
-		if ( isset( $this->block_attr['required'] ) && $this->block_attr['required'] ) {
-			$attr[] = 'required';
 		}
 
 		// Disabled

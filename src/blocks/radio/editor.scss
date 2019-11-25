@@ -1,0 +1,82 @@
+/* General */
+.wp-block-straightvisions-sv-gutenform-radio {
+	display: flex;
+    align-items: center;
+	margin-bottom: .5em;
+}
+
+.wp-block-straightvisions-sv-gutenform-radio label {
+	margin: 0 0 0 .75em;
+}
+
+/* Resets Editor Styles */
+.wp-block-straightvisions-sv-gutenform-radio .components-base-control {
+	line-height: 1;
+}
+
+.wp-block-straightvisions-sv-gutenform-radio .components-base-control__field,
+.wp-block-straightvisions-sv-gutenform-radio .components-checkbox-control__input-container {
+	margin: 0;
+}
+
+.wp-block-straightvisions-sv-gutenform-radio .components-checkbox-control__label,
+.wp-block-straightvisions-sv-gutenform-radio .components-checkbox-control__input-container > svg {
+	display: none;
+}
+
+.wp-block-straightvisions-sv-gutenform-radio input[type="radio"],
+.wp-block-straightvisions-sv-gutenform-radio input[type="radio"]::before {
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+/* Style: Radio (Default) */
+.wp-block-straightvisions-sv-gutenform-radio input[type="radio"] {
+	position: relative;
+	width: 18px;
+	height: 18px;
+	margin: 0;
+	border: 2px solid rgb( 50, 50, 48 ) !important;
+	border-radius: 18px;
+	background-color: #FFFFFF !important;
+	cursor: pointer;
+	-webkit-appearance: none;
+	transition: .2s ease;
+}
+
+.wp-block-straightvisions-sv-gutenform-radio .components-base-control {
+	width: 18px;
+}
+
+.wp-block-straightvisions-sv-gutenform-radio input[type="radio"]::before {
+	content: '';
+	position: absolute;
+	display: block;
+	top: 2px;
+	left: 2px;
+	right: 0;
+	bottom: 0;
+	width: 10px;
+	height: 10px;
+	margin: 0;
+	background-color: rgb( 50, 50, 48 );
+	border-radius: 10px;
+	transform: scale( 0 );
+	transition: transform .2s ease;
+}
+
+.wp-block-straightvisions-sv-gutenform-radio input[type="radio"]:checked::before {
+	content: '';
+	position: absolute;
+	display: block;
+	top: 2px;
+	left: 2px;
+	right: 0;
+	bottom: 0;
+	width: 10px;
+	height: 10px;
+	margin: 0;
+	background-color: rgb( 50, 50, 48 );
+	transform: scale( 1 );
+	transition: transform .2s ease;
+}
