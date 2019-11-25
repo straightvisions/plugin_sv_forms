@@ -54,6 +54,10 @@ class email extends sv_gutenform {
 					'placeholder' 	=> array(
 						'type'		=> 'string',
 					),
+					'isRecipient' 	=> array(
+						'type'		=> 'bool',
+						'default'	=> false,
+					),
 
 					// Validation Settings
 					'required' 		=> array(

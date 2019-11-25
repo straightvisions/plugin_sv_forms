@@ -3,6 +3,7 @@ const { __ } = wp.i18n;
 const {
     PanelBody,
     TextControl,
+    ToggleControl,
 } = wp.components;
 
 export default ( { props } ) => {
@@ -15,6 +16,7 @@ export default ( { props } ) => {
             label,
             name,
             placeholder,
+            isRecipient,
         }
     } = props;
 
@@ -22,6 +24,7 @@ export default ( { props } ) => {
     const setLabel          = label         => setAttributes({ label });
     const setName           = name          => setAttributes({ name });
     const setPlaceholder    = placeholder   => setAttributes({ placeholder });
+    const setRecipient      = isRecipient   => setAttributes({ isRecipient });
     const getSlug           = string => {
         if ( ! string ) return '';
 
@@ -52,6 +55,12 @@ export default ( { props } ) => {
                 label={ __( 'Placeholder', 'sv_gutenform' ) }
                 value={ placeholder }
                 onChange={ value => setPlaceholder( value )  }
+            />
+            <ToggleControl
+                label={ __( 'Is Recipient?', 'sv_gutenform' ) }
+                help={ __( 'This E-Mail adress will recieve a confirmation mail.', 'sv_gutenform' ) }
+                checked={ isRecipient }
+                onChange={ () => setRecipient( ! isRecipient )  }
             />
         </PanelBody>
     );

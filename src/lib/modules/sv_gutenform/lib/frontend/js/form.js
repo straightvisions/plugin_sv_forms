@@ -27,7 +27,7 @@ jQuery( 'form.wp-block-straightvisions-sv-gutenform' ).submit( function( e ) {
         form_data: form.serializeArray(),
     }, function( response ) {
         //response = JSON.parse( response );
-        showThankYou( form );
 
+        showThankYou( form );
     });
 } );

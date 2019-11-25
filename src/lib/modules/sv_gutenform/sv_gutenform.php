@@ -121,6 +121,29 @@ class sv_gutenform extends modules {
 		);
 	}	
 
+	// Ajax - Getter Methods
+	public function get_input_value( string $name, array $data, bool $single = true ) {
+		if ( $single ) {
+			$values = array();
+		}
+
+		foreach( $data as $input ) {
+			if ( $input['name'] === $name ) {
+				if ( $single ) {
+					return $input['value'];
+				} else {
+					$values[] = $input['value'];
+				}
+			}
+		}
+
+		if ( ! $single ) {
+			return $values;
+		}
+
+		return false;
+	}
+
 	// Ajax - Mail Methods
 	public function send_mail( $to, string $subject, array $message ): sv_gutenform {
 		add_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
@@ -146,7 +169,7 @@ class sv_gutenform extends modules {
 		return $message;
 	}
 
-	public function get_mail_template( string $template, array $data ): array {
+	public function get_mail_template( string $template, array $data = array() ): array {
 		$template_plain	= $this->get_path( 'lib/mails/tpl/' . $template . '_plain.php' );
 		$template_html 	= $this->get_path( 'lib/mails/tpl/' . $template . '_html.php' );
 		$message_plain	= '';
@@ -169,6 +192,7 @@ class sv_gutenform extends modules {
 		return array( 'plain' => $message_plain, 'html' => $message_html );
 	}
 
+	// Ajax - Admin Mail
 	public function get_admin_mail( object $attr ): string {
 		switch( $attr->adminMail ) {
 			case 'author':
@@ -194,14 +218,36 @@ class sv_gutenform extends modules {
 		return $this;
 	}
 
-	public function get_form_id( array $data ) {
-		foreach( $data as $input ) {
-			if ( $input['name'] === 'form_id' ) {
-				return $input['value'];
-			}
-		}
+	// Ajax - User Mail
+	public function get_user_mail( object $attr, array $data ) {
+		// Checks if the input "recipient" exists and returns the recipient input names
+		$input_names = $this->get_input_value( 'recipient', $data, false );
 
-		return false;
+		if ( ! $input_names || count( $input_names ) < 1 ) return '';
+
+		if ( count( $input_names > 1 ) ) {
+			$email_adresses = array();
+
+			foreach( $input_names as $name ) {
+				$email_adresses[] = $this->get_input_value( $name, $data );
+			}
+
+			return $email_adresses;
+		} else {
+			return $this->get_input_value( $input_names[0], $data );
+		}
+	}
+
+	public function send_user_mail( object $attr, array $data ): sv_gutenform {
+		if ( ! $attr || ! $data ) return $this;
+
+		$to 		= $this->get_user_mail( $attr, $data );
+		$subject 	= 'SV Gutenform - ' . __( 'Thank You!', 'sv_posts' );
+		$message	= $this->get_mail_template( 'user' );
+
+		$this->send_mail( $to, $subject, $message );
+
+		return $this;
 	}
 
 	// This function will be called on form submit via Ajax
@@ -212,12 +258,13 @@ class sv_gutenform extends modules {
 		$post_id	= intval( $_POST['post_id'] );
 		$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_gutenform_forms', true ) );
 		$form_data	= $_POST['form_data'];
-		$form_id	= $this->get_form_id( $form_data );
+		$form_id	= $this->get_input_value( 'form_id', $form_data );
 
 		if ( $form_id ) {
 			$form_attr = $post_meta->$form_id;
 
-			$this->send_admin_mail( $form_attr, $form_data );
+			$this->send_admin_mail( $form_attr, $form_data )
+				 ->send_user_mail( $form_attr, $form_data );
 		}
 	}
 }

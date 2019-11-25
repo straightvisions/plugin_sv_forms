@@ -35,6 +35,10 @@ registerBlockType( 'straightvisions/sv-gutenform-email', {
 		placeholder: {
 			type: 'string',
 		},
+		isRecipient: {
+			type: 'boolean',
+			default: false,
+		},
 
 		// Validation Settings
 		required: {
