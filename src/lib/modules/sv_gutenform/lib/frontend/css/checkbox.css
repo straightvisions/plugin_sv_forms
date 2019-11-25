@@ -1,0 +1,90 @@
+/* General */
+.wp-block-straightvisions-sv-gutenform-checkbox {
+	display: flex;
+    align-items: center;
+	margin-bottom: .5em;
+}
+
+.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"] + label {
+	margin: 0 0 0 .75em;
+}
+
+/* Style: Checkbox (Default) */
+.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"],
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox input[type="checkbox"] {
+	position: relative;
+	width: 18px;
+	height: 18px;
+	margin: 0;
+	outline: none !important;
+	border: 2px solid rgba( 50, 50, 48, 1 );
+	border-radius: 0;
+	background-color: #FFFFFF;
+	box-shadow: none;
+	cursor: pointer;
+	-webkit-appearance: none;
+	transition: .2s ease;
+}
+
+.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"]::before,
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox input[type="checkbox"]::before {
+	content: '';
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	right: 0;
+	bottom: 0;
+	width: 10px;
+	height: 10px;
+	outline: none !important;
+	background-color: rgb( 50, 50, 48 );
+	transform: scale( 0 );
+	transition: transform .2s ease;
+}
+
+.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"]:checked::before,
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox input[type="checkbox"]:checked::before {
+	transform: scale( 1 );
+}
+
+
+/* Style: Toggle */
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"] {
+	position: relative;
+	width: 36px;
+	height: 18px;
+	margin: 0;
+	outline: none !important;
+	border: 1px solid rgba( 50, 50, 48, .1 );
+	border-radius: 20px;
+	background-color: rgb( 206, 201, 189 );
+	box-shadow: none;
+	cursor: pointer;
+	-webkit-appearance: none;
+	transition: background-color .2s ease, border-color .2s ease;
+}
+
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"]::before {
+	content: '';
+	position: absolute;
+	top: -1px;
+	left: 0;
+	width: 18px;
+	height: 18px;
+	outline: none !important;
+	border-radius: 100%;
+	background-color: #FFFFFF;
+	transform: scale( .7 );
+	transition: left .2s ease;
+}
+
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"]:checked {
+	background-color: rgb( 50, 50, 48 );
+	border-color: rgb( 50, 50, 48 );
+}
+
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"]:checked::before {
+	left: 17px;
+	margin: 0;
+	outline: none;
+}

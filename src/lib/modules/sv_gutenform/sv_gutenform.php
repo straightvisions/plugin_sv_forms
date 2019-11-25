@@ -34,6 +34,9 @@ class sv_gutenform extends modules {
 		$this->get_script( 'textarea' )
 			 ->set_path( 'lib/frontend/css/textarea.css' );
 
+		$this->get_script( 'checkbox' )
+			 ->set_path( 'lib/frontend/css/checkbox.css' );
+
 		$this->get_script( 'thank_you' )
 			 ->set_path( 'lib/frontend/css/thank_you.css' );
 
