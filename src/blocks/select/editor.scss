@@ -1,0 +1,37 @@
+.sv-gutenform-select-options {
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sv-gutenform-select-options .sv-gutenform-select-option {
+    background: rgba( 0, 0, 0, .06 );
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.sv-gutenform-select-options .sv-gutenform-select-option > div:last-of-type,
+.sv-gutenform-select-options .sv-gutenform-select-option > div:last-of-type > div,
+.sv-gutenform-select-options .sv-gutenform-select-option > .sv-gutenform-select-option-flex > div {
+    margin-bottom: 0 !important;
+}
+
+.sv-gutenform-select-options .sv-gutenform-select-option > .sv-gutenform-select-option-flex {
+    display: flex;
+    align-items: flex-start;
+}
+
+.sv-gutenform-select-options .sv-gutenform-select-option > .sv-gutenform-select-option-flex > div:first-of-type {
+    margin-right: 5px;
+}
+
+.sv-gutenform-select-options .sv-gutenform-select-option > .components-icon-button {
+    margin-left: auto;
+    padding: 0;
+}
+
+.sv-gutenform-select-options .sv-gutenform-select-option > .components-icon-button > svg {
+    width: 18px;
+    height: 18px;
+}

@@ -40,6 +40,9 @@ class sv_gutenform extends modules {
 		$this->get_script( 'radio' )
 			 ->set_path( 'lib/frontend/css/radio.css' );
 
+		$this->get_script( 'select' )
+			 ->set_path( 'lib/frontend/css/select.css' );
+
 		$this->get_script( 'thank_you' )
 			 ->set_path( 'lib/frontend/css/thank_you.css' );
 

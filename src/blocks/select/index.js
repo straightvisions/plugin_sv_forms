@@ -6,48 +6,38 @@ import edit from './edit';
 const { __ } 				= wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-text', {
-	title: __( 'Text', 'sv_gutenform' ),
-	description: __( 'A field for short texts.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-gutenform-select', {
+	title: __( 'Select', 'sv_gutenform' ),
+	description: __( 'Create a select field.', 'sv_gutenform' ),
 	icon,
 	//parent: ['straightvisions/sv-gutenform'],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Text', 'sv_gutenform' ),
-		__( 'Text Input', 'sv_gutenform' ),
-		__( 'Text', 'sv_gutenform' ),
+		__( 'SV Gutenform Select', 'sv_gutenform' ),
+		__( 'Select Field', 'sv_gutenform' ),
+		__( 'Select', 'sv_gutenform' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
 	},
-	attributes: {
+	attributes: {		
 		// Input Settings
 		defaultValue: {
 			type: 'string',
 		},
 		label: {
 			type: 'string',
-			default: __( 'Text Label', 'sv_gutenform' ),
+			default: __( 'Select Label', 'sv_gutenform' ),
 		},
 		name: {
 			type: 'string',
 		},
-		placeholder: {
-			type: 'string',
-		},
-
-		// Validation Settings
-		required: {
+		multiple: {
 			type: 'boolean',
 			default: false,
 		},
-		minlength: {
-			type: 'number',
-			default: 0,
-		},
-		maxlength: {
-			type: 'number',
-			default: 0,
+		options: {
+			type: 'string',
 		},
 
 		// Color Settings
@@ -57,25 +47,9 @@ registerBlockType( 'straightvisions/sv-gutenform-text', {
 		labelColorClass: {
 			type: 'string',
 		},
-		inputColor: {
-			type: 'string',
-		},
-		inputColorClass: {
-			type: 'string',
-		},
-		inputBackgroundColor: {
-			type: 'string',
-		},
-		inputBackgroundColorClass: {
-			type: 'string',
-		},
 
 		// Advanced Settings
 		autofocus: {
-			type: 'boolean',
-			default: false,
-		},
-		autocomplete: {
 			type: 'boolean',
 			default: false,
 		},

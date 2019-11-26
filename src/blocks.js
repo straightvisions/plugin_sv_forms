@@ -5,5 +5,6 @@ import './blocks/url/index.js';
 import './blocks/textarea/index.js';
 import './blocks/checkbox/index.js';
 import './blocks/radio/index.js';
+import './blocks/select/index.js';
 import './blocks/submit/index.js';
 import './blocks/thank_you/index.js';
