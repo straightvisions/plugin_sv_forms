@@ -52,7 +52,7 @@ export default withSelect( ( select, props ) => {
     // Functions
     const setCheck = isChecked => { 
         radioBlocks.forEach( radioBlock => {
-            if ( radioBlock.clientId !== props.clientId ) {
+            if ( radioBlock.clientId !== props.clientId && radioBlock.attributes.name === props.attributes.name ) {
                 radioBlock.attributes.isChecked = false;
             } else {
                 setAttributes({ isChecked });
