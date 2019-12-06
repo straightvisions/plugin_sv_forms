@@ -262,6 +262,7 @@ class sv_gutenform extends modules {
 	// This function will be called on form submit via Ajax
 	public function ajax_sv_gutenform_submit() {
 		if ( ! isset( $_POST) || empty( $_POST ) ) return;
+		if ( ! wp_verify_nonce( $_POST['nonce'], 'sv_gutenform_submit' ) ) return;
 		
 		// Variables
 		$post_id	= intval( $_POST['post_id'] );

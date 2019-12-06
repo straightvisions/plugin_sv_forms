@@ -67,7 +67,7 @@ export default ( { props } ) => {
     const OptionEntry = ({ index, label, value }) => (
         <div className='sv-gutenform-select-option'>
             <div className='sv-gutenform-select-option-flex'>
-            <TextControl
+                <TextControl
                     label={ __( 'Label', 'sv_gutenform' ) }
                     value={ label }
                     onChange={ value => updateOption( index, 'label', value ) }
