@@ -6,26 +6,10 @@ const { Fragment }          = wp.element;
 const { CheckboxControl }   = wp.components;
 
 export default withSelect( ( select, props ) => {
-    const blocks    = select('core/block-editor').getBlocks();
-    let radioBlocks = [];
-
-
-    blocks.forEach( block => {
-        if ( block.name === 'straightvisions/sv-gutenform' && block.innerBlocks.length > 0 ) {
-            block.innerBlocks.forEach( innerBlock => {
-                if ( innerBlock.name === 'straightvisions/sv-gutenform-radio' ) {
-                    radioBlocks.push( innerBlock );
-                }
-            } );
-        }
-    });
-
-
     return { 
         props,
-        radioBlocks
     };
-} )( ({ props, radioBlocks }) => {
+} )( ({ props }) => {
     // Block Properties
     const {
         className,
@@ -50,15 +34,7 @@ export default withSelect( ( select, props ) => {
     } = props;
 
     // Functions
-    const setCheck = isChecked => { 
-        radioBlocks.forEach( radioBlock => {
-            if ( radioBlock.clientId !== props.clientId && radioBlock.attributes.name === props.attributes.name ) {
-                radioBlock.attributes.isChecked = false;
-            } else {
-                setAttributes({ isChecked });
-            }
-        } );
-    };
+    const setIsChecked = isChecked => setAttributes({ isChecked });
 
     // Conditional Components
     const Label = () => {
@@ -87,7 +63,7 @@ export default withSelect( ( select, props ) => {
                     required={ required }
                     disabled={ disabled }
                     checked={ isChecked }
-                    onChange={ () => setCheck( true ) }
+                    onChange={ () => setIsChecked( ! isChecked ) }
                 />
                 <Label />
             </div>
