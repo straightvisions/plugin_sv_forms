@@ -1,98 +1,109 @@
-// Required Components
 import InspectorControls from './components/inspector_controls';
 
-const { __ }            = wp.i18n;
-const { withSelect }    = wp.data;
-const { Fragment }      = wp.element;
-const { InnerBlocks }   = wp.blockEditor;
+const { 
+    Component,
+    Fragment 
+}                                   = wp.element;
+const { __ }                        = wp.i18n;
+const { InnerBlocks }               = wp.blockEditor;
+const { 
+    select, 
+    dispatch 
+}                                   = wp.data;
+const { editPost }                  = dispatch( 'core/editor' );
+const { getEditedPostAttribute }    = select( 'core/editor' );
+const { getAuthors }                = select( 'core' );
 
-// Allowed Blocks
-const allowedBlocks = [
-    'core/heading',
-    'core/spacer',
-    'straightvisions/sv-gutenform-text',
-    'straightvisions/sv-gutenform-email',
-    'straightvisions/sv-gutenform-url',
-    'straightvisions/sv-gutenform-checkbox',
-    'straightvisions/sv-gutenform-radio',
-    'straightvisions/sv-gutenform-textarea',
-    'straightvisions/sv-gutenform-submit',
-];
+export default class extends Component {
+    constructor(props) {
+        super(...arguments);
 
-// Default Form Template
-const template = [
-    ['core/heading', { 
-        content: __( 'Contact', 'sv_gutenform' ), 
-        level: 3,
-    }],
-    ['straightvisions/sv-gutenform-text', {
-        label: __( 'Name', 'sv_gutenform' ),
-        name: 'name',
-        required: true,
-        autofocus: true,
-    }],
-    ['straightvisions/sv-gutenform-email', {
-        label: __( 'E-Mail', 'sv_gutenform' ),
-        name: 'email',
-        required: true,
-    }],
-    ['straightvisions/sv-gutenform-url', {
-        label: __( 'Website', 'sv_gutenform' ),
-        name: 'website',
-    }],
-    ['straightvisions/sv-gutenform-textarea', {
-        label: __( 'Message', 'sv_gutenform' ),
-        name: 'message',
-        required: true,
-    }],
-    ['straightvisions/sv-gutenform-submit'],
-    ['straightvisions/sv-gutenform-thank-you'],
-];
+        this.props      = props;
+        this.state      = {};
+        this.template   = [
+            ['core/heading', { 
+                content: __( 'Contact', 'sv_gutenform' ), 
+                level: 3,
+            }],
+            ['straightvisions/sv-gutenform-text', {
+                label: __( 'Name', 'sv_gutenform' ),
+                name: 'name',
+                required: true,
+                autofocus: true,
+            }],
+            ['straightvisions/sv-gutenform-email', {
+                label: __( 'E-Mail', 'sv_gutenform' ),
+                name: 'email',
+                required: true,
+            }],
+            ['straightvisions/sv-gutenform-url', {
+                label: __( 'Website', 'sv_gutenform' ),
+                name: 'website',
+            }],
+            ['straightvisions/sv-gutenform-textarea', {
+                label: __( 'Message', 'sv_gutenform' ),
+                name: 'message',
+                required: true,
+            }],
+            ['straightvisions/sv-gutenform-submit'],
+            ['straightvisions/sv-gutenform-thank-you'],
+        ];
+    }
 
-// Functions
-const checkBlockIds = ( props, data ) => {
-    const { 
-        clientId,
-        setAttributes,
-        attributes: {
-            blockId,
+    componentDidMount() {
+        if ( ! this.doesFormExist() ) {
+            this.props.attributes.blockId = this.props.clientId;
+            this.updatePostMeta( 'add' );
         }
-    } = props;
-    const setBlockId    = blockId => setAttributes({ blockId });
-    const isDuplicate   = blockId => data.blocks.find( block => {
-        return block.attributes.blockId === blockId ? true : false;
-    } );
+    }
 
-    // Checks if the block is new one or a duplicate from an existing one
-    if ( ! blockId || ( blockId !== clientId && isDuplicate( blockId ) ) ) {
-        setBlockId( clientId );
-        props.attributes.blockId = clientId;
+    componentDidUpdate() {
+        this.state.authors = getAuthors();
+        this.updatePostMeta( 'add' );
+    }
+
+    componentWillUnmount() {
+        this.updatePostMeta( 'remove' );
+    }
+
+    doesFormExist() {
+        const currentMeta = getEditedPostAttribute( 'meta' );
+        const currentForms  = currentMeta._sv_gutenform_forms ? JSON.parse( currentMeta._sv_gutenform_forms ) : false;
+
+        if ( ! currentForms || ! currentForms[ this.props.attributes.blockId ] ) return false;
+
+        return true;
+    }
+
+    updatePostMeta( action ) {
+        const currentMeta = getEditedPostAttribute( 'meta' );
+        let currentForms  = currentMeta._sv_gutenform_forms ? JSON.parse( currentMeta._sv_gutenform_forms ) : {};
+
+        switch ( action ) {
+            case 'add':
+                    currentForms[ this.props.attributes.blockId ] = this.props.attributes;
+                break;
+            case 'remove':
+                delete currentForms[ this.props.attributes.blockId ];
+                break;
+        }
+
+        const newMeta = { ...currentMeta, _sv_gutenform_forms: JSON.stringify( currentForms ) };
+
+        editPost( { meta: newMeta } );
+    }
+
+    render() {
+        return (
+            <Fragment className={ this.props.className }>
+                <InspectorControls props={ this.props } data={ this.state } />
+                <form method='POST' className={ this.props.className }>
+                    <InnerBlocks 
+                        template={ this.template }
+                        templateLock={ false }
+                    />
+                </form>
+            </Fragment>
+        );
     }
 }
-
-export default withSelect( ( select, props ) => {
-    const { getBlocks }     = select( 'core/block-editor' );
-    const { getAuthors }    = select( 'core' );
-    const data = {
-        authors: getAuthors(),
-        blocks: getBlocks(),
-    };
-
-    return { props, data };
-} )( ( { props, data } ) => {
-    // Makes sure that all new added blocks have a unique blockId
-    checkBlockIds( props, data );
-
-    return (
-        <Fragment className={ props.className }>
-            <InspectorControls props={ props } data={ data } />
-            <form method='POST' className={ props.className }>
-				<InnerBlocks 
-					//allowedBlocks={ allowedBlocks }
-					template={ template }
-					templateLock={ false }
-				/>
-			</form>
-        </Fragment>
-    );
-} );

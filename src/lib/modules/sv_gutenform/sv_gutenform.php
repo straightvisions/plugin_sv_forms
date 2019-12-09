@@ -132,9 +132,7 @@ class sv_gutenform extends modules {
 
 	// Ajax - Getter Methods
 	public function get_input_value( string $name, array $data, bool $single = true ) {
-		if ( $single ) {
-			$values = array();
-		}
+		$values = array();
 
 		foreach( $data as $input ) {
 			if ( $input['name'] === $name ) {
@@ -146,11 +144,7 @@ class sv_gutenform extends modules {
 			}
 		}
 
-		if ( ! $single ) {
-			return $values;
-		}
-
-		return false;
+		return $values;
 	}
 
 	// Ajax - Mail Methods
@@ -217,7 +211,7 @@ class sv_gutenform extends modules {
 
 	public function send_admin_mail( object $attr, array $data ): sv_gutenform {
 		if ( ! $attr || ! $data || $attr->adminMail === 'disabled' ) return $this;
-
+		
 		$to 		= $this->get_admin_mail( $attr );
 		$subject 	= 'SV Gutenform - ' . __( 'New Form Submit', 'sv_posts' );
 		$message	= $this->get_mail_template( 'admin', $data );
@@ -234,7 +228,7 @@ class sv_gutenform extends modules {
 
 		if ( ! $input_names || count( $input_names ) < 1 ) return '';
 
-		if ( count( $input_names > 1 ) ) {
+		if ( count( $input_names ) > 1 ) {
 			$email_adresses = array();
 
 			foreach( $input_names as $name ) {
@@ -270,11 +264,10 @@ class sv_gutenform extends modules {
 		$form_data	= $_POST['form_data'];
 		$form_id	= $this->get_input_value( 'form_id', $form_data );
 
-		if ( $form_id ) {
+		if ( $form_id && $post_meta->$form_id ) {
 			$form_attr = $post_meta->$form_id;
-
-			$this->send_admin_mail( $form_attr, $form_data )
-				 ->send_user_mail( $form_attr, $form_data );
+			
+			$this->send_admin_mail( $form_attr, $form_data )->send_user_mail( $form_attr, $form_data );
 		}
 	}
 }
