@@ -1,28 +1,23 @@
 // Required Components
 import InspectorControls from './components/inspector_controls';
 
-const { withSelect }        = wp.data;
-const { Fragment }          = wp.element;
-const { CheckboxControl }   = wp.components;
+const { withSelect }    = wp.data;
+const { Fragment }      = wp.element;
+const { RadioControl }  = wp.components;
 
 export default withSelect( ( select, props ) => {
-    return { 
-        props,
-    };
-} )( ({ props }) => {
+    return props;
+} )( ( props ) => {
     // Block Properties
     const {
         className,
         setAttributes,
         attributes: {
             // Input Settings
-            isChecked,
+            defaultValue,
             label,
             name,
-            value,
-
-            // Validation Settings
-            required,
+            options,
 
             // Color Settings
             labelColor,
@@ -33,14 +28,17 @@ export default withSelect( ( select, props ) => {
         } 
     } = props;
 
+    const parsedOptions = options ? JSON.parse( options ) : [];
+
     // Functions
-    const setIsChecked = isChecked => setAttributes({ isChecked });
+    const setDefaultValue = defaultValue => setAttributes({ defaultValue });
 
     // Conditional Components
     const Label = () => {
         if ( label.length > 0 ) {
             return (
                 <label
+                    for={ name }
                     style={{ color: labelColor }}
                     className={ labelColorClass }
                 >
@@ -56,16 +54,13 @@ export default withSelect( ( select, props ) => {
         <Fragment>
             <InspectorControls props={ props } />
             <div className={ className }>
-                <CheckboxControl
-                    type="radio"
-                    name={ name }
-                    value={ value }
-                    required={ required }
-                    disabled={ disabled }
-                    checked={ isChecked }
-                    onChange={ () => setIsChecked( ! isChecked ) }
-                />
                 <Label />
+                <RadioControl
+                    selected={ defaultValue }
+                    onChange={ option => setDefaultValue( option ) }
+                    options={ parsedOptions }
+                    disabled={ disabled }
+                />
             </div>
         </Fragment>
     ); 

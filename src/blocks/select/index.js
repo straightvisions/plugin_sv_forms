@@ -53,10 +53,6 @@ registerBlockType( 'straightvisions/sv-gutenform-select', {
 			type: 'boolean',
 			default: false,
 		},
-		readonly: {
-			type: 'boolean',
-			default: false,
-		},
 		disabled: {
 			type: 'boolean',
 			default: false,

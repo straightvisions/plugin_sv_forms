@@ -76,7 +76,7 @@ export default withSelect( ( select, props ) => {
                     placeholder={ placeholder }
                     style={{ color: textareaColor, backgroundColor: textareaBackgroundColor }}
                     className={ [ textareaColorClass, textareaBackgroundColorClass ] }
-                    onChange={ ( value ) => setDefaultValue( value ) }
+                    onChange={ value => setDefaultValue( value ) }
                     hideLabelFromVision={ true }
                 />
             </div>

@@ -1,5 +1,6 @@
 // Required Components
 import InputSettings from './inspector_controls/input_settings';
+import Options from './inspector_controls/options';
 import AdvancedSettings from './inspector_controls/advanced_settings';
 import ColorSettings from './inspector_controls/color_settings';
 
@@ -13,6 +14,7 @@ export default ( { props } ) => {
         <Fragment>
             <InspectorControls>
                 <InputSettings props={ props } />
+                <Options props={ props } />
                 <ColorSettings props={ props } />
             </InspectorControls>
             <InspectorAdvancedControls>

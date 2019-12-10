@@ -1,6 +1,6 @@
 // Required Components
-const { __ } = wp.i18n;
-const { Fragment } = wp.element;
+const { __ }            = wp.i18n;
+const { Fragment }      = wp.element;
 const { ToggleControl } = wp.components;
 
 export default ( { props } ) => {
@@ -9,11 +9,13 @@ export default ( { props } ) => {
     // Block Attributes
     const { 
         setAttributes,
-        attributes: { disabled }
+        attributes: {
+            disabled,
+        }
     } = props;
 
     // Functions
-    const setDisabled = disabled =>  setAttributes({ disabled });
+    const setDisabled   = disabled  =>  setAttributes({ disabled });
 
     return(
         <Fragment>

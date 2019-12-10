@@ -1,82 +1,38 @@
-/* General */
-.wp-block-straightvisions-sv-gutenform-radio {
-	display: flex;
-    align-items: center;
-	margin-bottom: .5em;
+// Options
+.sv-gutenform-radio-options {
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-.wp-block-straightvisions-sv-gutenform-radio label {
-	margin: 0 0 0 .75em;
+.sv-gutenform-radio-options .sv-gutenform-radio-option {
+    background: rgba( 0, 0, 0, .06 );
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
 }
 
-/* Resets Editor Styles */
-.wp-block-straightvisions-sv-gutenform-radio .components-base-control {
-	line-height: 1;
+.sv-gutenform-radio-options .sv-gutenform-radio-option > div:last-of-type,
+.sv-gutenform-radio-options .sv-gutenform-radio-option > div:last-of-type > div,
+.sv-gutenform-radio-options .sv-gutenform-radio-option > .sv-gutenform-radio-option-flex > div {
+    margin-bottom: 0 !important;
 }
 
-.wp-block-straightvisions-sv-gutenform-radio .components-base-control__field,
-.wp-block-straightvisions-sv-gutenform-radio .components-checkbox-control__input-container {
-	margin: 0;
+.sv-gutenform-radio-options .sv-gutenform-radio-option .sv-gutenform-radio-option-flex {
+    display: flex;
+    align-items: flex-start;
 }
 
-.wp-block-straightvisions-sv-gutenform-radio .components-checkbox-control__label,
-.wp-block-straightvisions-sv-gutenform-radio .components-checkbox-control__input-container > svg {
-	display: none;
+.sv-gutenform-radio-options .sv-gutenform-radio-option .sv-gutenform-radio-option-flex > div:first-of-type {
+    margin-right: 5px;
 }
 
-.wp-block-straightvisions-sv-gutenform-radio input[type="radio"],
-.wp-block-straightvisions-sv-gutenform-radio input[type="radio"]::before {
-	outline: none !important;
-	box-shadow: none !important;
+.sv-gutenform-radio-options .sv-gutenform-radio-option .components-icon-button {
+    margin-left: auto;
+    padding: 0;
 }
 
-/* Style: Radio (Default) */
-.wp-block-straightvisions-sv-gutenform-radio input[type="radio"] {
-	position: relative;
-	width: 18px;
-	height: 18px;
-	margin: 0;
-	border: 2px solid rgb( 50, 50, 48 ) !important;
-	border-radius: 18px;
-	background-color: #FFFFFF !important;
-	cursor: pointer;
-	-webkit-appearance: none;
-	transition: .2s ease;
-}
-
-.wp-block-straightvisions-sv-gutenform-radio .components-base-control {
-	width: 18px;
-}
-
-.wp-block-straightvisions-sv-gutenform-radio input[type="radio"]::before {
-	content: '';
-	position: absolute;
-	display: block;
-	top: 2px;
-	left: 2px;
-	right: 0;
-	bottom: 0;
-	width: 10px;
-	height: 10px;
-	margin: 0;
-	background-color: rgb( 50, 50, 48 );
-	border-radius: 10px;
-	transform: scale( 0 );
-	transition: transform .2s ease;
-}
-
-.wp-block-straightvisions-sv-gutenform-radio input[type="radio"]:checked::before {
-	content: '';
-	position: absolute;
-	display: block;
-	top: 2px;
-	left: 2px;
-	right: 0;
-	bottom: 0;
-	width: 10px;
-	height: 10px;
-	margin: 0;
-	background-color: rgb( 50, 50, 48 );
-	transform: scale( 1 );
-	transition: transform .2s ease;
+.sv-gutenform-radio-options .sv-gutenform-radio-option .components-icon-button > svg {
+    width: 18px;
+    height: 18px;
 }
