@@ -26,7 +26,7 @@ export default withSelect( ( select, props ) => {
         } 
     } = props;
 
-    const parsedOptions = JSON.parse( options );
+    const parsedOptions = options ? JSON.parse( options ) : [];
 
     // Functions
     const setDefaultValue = defaultValue => setAttributes({ defaultValue });

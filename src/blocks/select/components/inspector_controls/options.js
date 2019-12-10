@@ -18,7 +18,7 @@ export default ( { props } ) => {
         attributes: { options }
     } = props;
 
-    const parsedOptions = JSON.parse( options );
+    const parsedOptions = options ? JSON.parse( options ) : [];
 
     // Functions
     const updateOptions     = options       => setAttributes({ options });
@@ -62,53 +62,39 @@ export default ( { props } ) => {
         updateOptions( JSON.stringify( newOptions ) );
     }
 
-    // Conditional Components
-    // Returns a single option entry
-    const OptionEntry = ({ index, label, value }) => (
-        <div className='sv-gutenform-select-option'>
-            <div className='sv-gutenform-select-option-flex'>
-                <TextControl
-                    label={ __( 'Label', 'sv_gutenform' ) }
-                    value={ label }
-                    onChange={ value => updateOption( index, 'label', value ) }
-                />
-                <TextControl
-                    label={ __( 'Value', 'sv_gutenform' ) }
-                    value={ getSlug( value ) }
-                    onChange={ value => updateOption( index, 'value', getSlug( value ) ) }
-                />
-            </div>
-            <IconButton
-                icon={ iconDelete }
-                label={ __( 'Delete Option', 'sv_gutenform' ) }
-                onClick={ () => deleteOption( index ) }
-            />
-        </div>
-    );
-
-    // Returns all option entries
-    const Options = () => {
-        let entries         = [];
-    
-        parsedOptions.forEach( ( option, index ) => {
-            entries.push(
-                <OptionEntry 
-                    index={ index }
-                    label={ option.label } 
-                    value={ option.value } 
-                /> 
-            );
-        } );
-
-        return <div className='sv-gutenform-select-options'>{ entries }</div>;
-    }
-
     return(
         <PanelBody
             title={ __( 'Options', 'sv_gutenform' ) }
             initialOpen={ true }
         >
-            <Options />
+            <div className='sv-gutenform-select-options'>
+            {
+                parsedOptions.map( ( option, index ) => {
+                    return(
+                        <div className='sv-gutenform-select-option'>
+                            <div className='sv-gutenform-select-option-flex'>
+                                <TextControl
+                                    label={ __( 'Label', 'sv_gutenform' ) }
+                                    value={ option.label }
+                                    onChange={ value => updateOption( index, 'label', value ) }
+                                />
+                                <TextControl
+                                    label={ __( 'Value', 'sv_gutenform' ) }
+                                    value={ getSlug( option.value ) }
+                                    onChange={ value => updateOption( index, 'value', getSlug( value ) ) }
+                                />
+                            </div>
+                            <IconButton
+                                icon={ iconDelete }
+                                label={ __( 'Delete Option', 'sv_gutenform' ) }
+                                onClick={ () => deleteOption( index ) }
+                            />
+                        </div>
+                    );
+
+                } )
+            }
+            </div>
             <Button
                 isPrimary
                 onClick={ () => addOption() }
