@@ -209,10 +209,10 @@ class sv_gutenform extends modules {
 		return $email_adress;
 	}
 
-	public function send_admin_mail( object $attr, array $data ): sv_gutenform {
-		if ( ! $attr || ! $data || $attr->adminMail === 'disabled' ) return $this;
+	public function send_admin_mail( object $meta, array $data ): sv_gutenform {
+		if ( ! $meta || ! $data || $meta->attributes->adminMail === 'disabled' ) return $this;
 		
-		$to 		= $this->get_admin_mail( $attr );
+		$to 		= $this->get_admin_mail( $meta->attributes );
 		$subject 	= 'SV Gutenform - ' . __( 'New Form Submit', 'sv_posts' );
 		$message	= $this->get_mail_template( 'admin', $data );
 
@@ -241,12 +241,13 @@ class sv_gutenform extends modules {
 		}
 	}
 
-	public function send_user_mail( object $attr, array $data ): sv_gutenform {
-		if ( ! $attr || ! $data ) return $this;
+	public function send_user_mail( object $meta, array $data ): sv_gutenform {
+		if ( ! $meta || ! $data ) return $this;
 
-		$to 		= $this->get_user_mail( $attr, $data );
+		$to 		= $this->get_user_mail( $meta->attributes, $data );
 		$subject 	= 'SV Gutenform - ' . __( 'Thank You!', 'sv_posts' );
-		$message	= $this->get_mail_template( 'user' );
+		//$message	= $this->get_mail_template( 'user' );
+		$message	= array( 'html' => $meta->mails->user );
 
 		$this->send_mail( $to, $subject, $message );
 
@@ -265,9 +266,9 @@ class sv_gutenform extends modules {
 		$form_id	= $this->get_input_value( 'form_id', $form_data );
 
 		if ( $form_id && $post_meta->$form_id ) {
-			$form_attr = $post_meta->$form_id;
-			
-			$this->send_admin_mail( $form_attr, $form_data )->send_user_mail( $form_attr, $form_data );
+			$form_meta = $post_meta->$form_id;
+
+			$this->send_admin_mail( $form_meta, $form_data )->send_user_mail( $form_meta, $form_data );
 		}
 	}
 }

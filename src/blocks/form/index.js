@@ -2,9 +2,9 @@
 import './editor.scss';
 import icon from './icons/block';
 import edit from './edit';
-import save from './save';
 
 const { __ } 				= wp.i18n;
+const { InnerBlocks } 		= wp.blockEditor;
 const { registerBlockType } = wp.blocks
 
 registerBlockType( 'straightvisions/sv-gutenform', {
@@ -37,13 +37,6 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		adminMailCustom: {
 			type: 'string',
 		},
-		confirmationMail: {
-			type: 'boolean',
-			default: false,
-		},
-		confirmationMailContent: {
-			type: 'string',
-		},
 
 		// Advanced
 		className: {
@@ -51,5 +44,7 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		},
 	},
 	edit,
-	save,
+	save: () => {
+		return <InnerBlocks.Content />;
+	},
 } );

@@ -20,6 +20,7 @@ export default class extends Component {
 
         this.props      = props;
         this.state      = {};
+        /*
         this.template   = [
             ['core/heading', { 
                 content: __( 'Contact', 'sv_gutenform' ), 
@@ -48,18 +49,29 @@ export default class extends Component {
             ['straightvisions/sv-gutenform-submit'],
             ['straightvisions/sv-gutenform-thank-you'],
         ];
+        */
+       this.template   = [
+        ['straightvisions/sv-gutenform-email', {
+            label: __( 'E-Mail', 'sv_gutenform' ),
+            name: 'email',
+            required: true,
+        }],
+        ['straightvisions/sv-gutenform-submit'],
+        ['straightvisions/sv-gutenform-thank-you'],
+        ['straightvisions/sv-gutenform-confirmation-mail']
+    ];
     }
 
     componentDidMount() {
         if ( ! this.doesFormExist() ) {
             this.props.attributes.blockId = this.props.clientId;
-            this.updatePostMeta( 'add' );
+            this.updatePostMeta( 'update' );
         }
     }
 
     componentDidUpdate() {
         this.state.authors = getAuthors();
-        this.updatePostMeta( 'add' );
+        this.updatePostMeta( 'update' );
     }
 
     componentWillUnmount() {
@@ -67,7 +79,7 @@ export default class extends Component {
     }
 
     doesFormExist() {
-        const currentMeta = getEditedPostAttribute( 'meta' );
+        const currentMeta   = getEditedPostAttribute( 'meta' );
         const currentForms  = currentMeta._sv_gutenform_forms ? JSON.parse( currentMeta._sv_gutenform_forms ) : false;
 
         if ( ! currentForms || ! currentForms[ this.props.attributes.blockId ] ) return false;
@@ -80,8 +92,19 @@ export default class extends Component {
         let currentForms  = currentMeta._sv_gutenform_forms ? JSON.parse( currentMeta._sv_gutenform_forms ) : {};
 
         switch ( action ) {
-            case 'add':
-                    currentForms[ this.props.attributes.blockId ] = this.props.attributes;
+            case 'update':
+                    if ( ! currentForms[ this.props.attributes.blockId ] ) {
+                        currentForms[ this.props.attributes.blockId ] = {};
+                    }
+
+                    currentForms[ this.props.attributes.blockId ].attributes = this.props.attributes;
+
+                    if ( ! currentForms[ this.props.attributes.blockId ].mails ) {
+                        currentForms[ this.props.attributes.blockId ].mails = {
+                            admin: '',
+                            user: '',
+                        };
+                    }
                 break;
             case 'remove':
                 delete currentForms[ this.props.attributes.blockId ];
@@ -91,6 +114,8 @@ export default class extends Component {
         const newMeta = { ...currentMeta, _sv_gutenform_forms: JSON.stringify( currentForms ) };
 
         editPost( { meta: newMeta } );
+        // DEBUG
+        console.log(currentForms);
     }
 
     render() {

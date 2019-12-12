@@ -8,3 +8,4 @@ import './blocks/radio/index.js';
 import './blocks/select/index.js';
 import './blocks/submit/index.js';
 import './blocks/thank_you/index.js';
+import './blocks/confirmation_mail/index.js';
