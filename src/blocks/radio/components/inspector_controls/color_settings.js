@@ -46,7 +46,7 @@ export default ( { props } ) => {
                 setLabelColorClass( getColorClass( value ) );
             },
             label: __( 'Label', 'sv_gutenform' ),
-        }
+        },
     ];
 
     return(

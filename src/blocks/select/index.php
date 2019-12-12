@@ -46,7 +46,7 @@ class select extends sv_gutenform {
 					),
 					'label' 		=> array(
 						'type'		=> 'string',
-						'default'	=> __( 'Text Label', 'sv_posts' ),
+						'default'	=> __( 'Select Label', 'sv_posts' ),
 					),
 					'name' 			=> array(
 						'type'		=> 'string',
@@ -148,11 +148,6 @@ class select extends sv_gutenform {
 		// Autofocus
 		if ( isset( $this->block_attr['autofocus'] ) && $this->block_attr['autofocus'] ) {
 			$attr[] = 'autofocus';
-		}
-
-		// Read Only
-		if ( isset( $this->block_attr['readonly'] ) && $this->block_attr['readonly'] ) {
-			$attr[] = 'readonly';
 		}
 
 		// Disabled

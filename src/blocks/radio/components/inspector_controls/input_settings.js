@@ -12,17 +12,16 @@ export default ( { props } ) => {
     const { 
         setAttributes,
         attributes: {
+            // Input Settings
             label,
             name,
-            value,
         }
     } = props;
 
     // Functions
-    const setLabel  = label     => setAttributes({ label });
-    const setName   = name      => setAttributes({ name });
-    const setValue  = value     => setAttributes({ value });
-    const getSlug   = string    => {
+    const setLabel          = label         => setAttributes({ label });
+    const setName           = name          => setAttributes({ name });
+    const getSlug           = string => {
         if ( ! string ) return '';
 
         const slug = string.replace( /[^A-Z0-9]+/ig, '-' ).toLowerCase();
@@ -33,25 +32,20 @@ export default ( { props } ) => {
     return(
         <PanelBody
             title={ __( 'Input Settings', 'sv_gutenform' ) }
-            initialOpen={ true }
+            initialOpen={ false }
         >
             <TextControl
                 label={ __( 'Label', 'sv_gutenform' ) }
                 value={ label }
                 onChange={ value => { 
-                    setLabel( value ); 
-                    setValue( getSlug( value ) );
-                }}
+                    setLabel( value );
+                    setName( getSlug( value ) );
+                } }
             />
             <TextControl
                 label={ __( 'Name', 'sv_gutenform' ) }
                 value={ getSlug( name ) }
                 onChange={ value => setName( getSlug( value ) )  }
-            />
-            <TextControl
-                label={ __( 'Value', 'sv_gutenform' ) }
-                value={ getSlug( value ) }
-                onChange={ value => setValue( getSlug( value ) ) }
             />
         </PanelBody>
     );

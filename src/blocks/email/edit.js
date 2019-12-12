@@ -80,7 +80,7 @@ export default withSelect( ( select, props ) => {
                     autocomplete={ autocomplete }
                     style={{ color: inputColor, backgroundColor: inputBackgroundColor }}
                     className={ [ inputColorClass, inputBackgroundColorClass ] }
-                    onChange={ ( value ) => setDefaultValue( value ) }
+                    onChange={ value => setDefaultValue( value ) }
                     hideLabelFromVision={ true }
                 />
             </div>

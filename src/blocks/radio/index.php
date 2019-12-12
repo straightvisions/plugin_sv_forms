@@ -41,17 +41,17 @@ class radio extends sv_gutenform {
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
 					// Input Settings
-					'isChecked' 	=> array(
-						'type'		=> 'bool',
+					'defaultValue' 	=> array(
+						'type'		=> 'string',
 					),
 					'label' 		=> array(
 						'type'		=> 'string',
-						'default'	=> __( 'Radio Label', 'sv_posts' ),
+						'default'	=> __( 'Radio Button Label', 'sv_posts' ),
 					),
 					'name' 			=> array(
 						'type'		=> 'string',
 					),
-					'value' 		=> array(
+					'options' 		=> array(
 						'type'		=> 'string',
 					),
 
@@ -64,10 +64,6 @@ class radio extends sv_gutenform {
 					),
 
 					// Advanced Settings
-					'disabled' 		=> array(
-						'type'		=> 'bool',
-						'default'	=> false,
-					),
 					'className' 	=> array(
 						'type'		=> 'string',
 					),
@@ -96,11 +92,11 @@ class radio extends sv_gutenform {
 	}
 
 	// Returns a string with all attributes for the label
-	public function get_label_attr(): string {
+	public function get_label_attr( string $for ): string {
 		$attr 		= array();
 
 		// For
-		$attr[]		= 'for="' . $this->block_attr['name'] . '"';
+		$attr[]		= 'for="' . $for . '"';
 
 		// Class
 		$class		= array();
@@ -128,31 +124,46 @@ class radio extends sv_gutenform {
 	}
 
 	// Returns a string with all attributes for the input
-	public function get_input_attr(): string {
+	public function get_input_attr( object $option ): string {
 		$attr 		= array();
 
 		// Type
 		$attr[]		= 'type="radio"';
 
 		// ID
-		$attr[]		= 'id="' . $this->block_attr['value'] . '"';
+		$attr[]		= 'id="' . $option->value . '"';
 
 		// Name
 		$attr[]		= 'name="' . $this->block_attr['name'] . '"';
 
 		// Value
-		$attr[]		= 'value="' . $this->block_attr['value'] . '"';
+		$attr[]		= 'value="' . $option->value . '"';
 
 		// Checked
-		if ( isset( $this->block_attr['isChecked'] ) && $this->block_attr['isChecked'] ) {
+		if ( isset( $this->block_attr['defaultValue'] ) && $this->block_attr['defaultValue'] === $option->value ) {
 			$attr[]	= 'checked';
 		}
 
 		// Disabled
-		if ( isset( $this->block_attr['disabled'] ) && $this->block_attr['disabled'] ) {
-			$attr[] = 'disabled';
+		if ( isset( $option->disabled ) && $option->disabled ) {
+			$attr[]	= 'disabled';
 		}
 
 		return implode( ' ', $attr );
+	}
+
+	public function get_options(): string {
+		$options = array();
+
+		foreach( json_decode( $this->block_attr['options'] ) as $option ) {
+			$output = '<div class="wp-block-straightvisions-sv-gutenform-radio-option">';
+			$output .= '<input ' . $this->get_input_attr( $option ) . ' />';
+			$output .= '<label ' . $this->get_label_attr( $option->value ) . '>' . $option->label . '</label>';
+			$output .= '</div>';
+
+			$options[] = $output;
+		}
+
+		return implode( '', $options );
 	}
 }

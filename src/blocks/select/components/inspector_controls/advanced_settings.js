@@ -11,14 +11,12 @@ export default ( { props } ) => {
         setAttributes,
         attributes: {
             autofocus,
-            readonly,
             disabled,
         }
     } = props;
 
     // Functions
     const setAutofocus  = autofocus =>  setAttributes({ autofocus });
-    const setReadonly   = readonly  =>  setAttributes({ readonly });
     const setDisabled   = disabled  =>  setAttributes({ disabled });
 
     return(
@@ -27,11 +25,6 @@ export default ( { props } ) => {
                 label={ __( 'Autofocus', 'sv_gutenform' ) }
                 checked={ autofocus }
                 onChange={ () => setAutofocus( ! autofocus )  }
-            />
-            <ToggleControl
-                label={ __( 'Read Only', 'sv_gutenform' ) }
-                checked={ readonly }
-                onChange={ () => setReadonly( ! readonly )  }
             />
             <ToggleControl
                 label={ __( 'Disabled', 'sv_gutenform' ) }

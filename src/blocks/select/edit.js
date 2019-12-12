@@ -23,10 +23,14 @@ export default withSelect( ( select, props ) => {
             // Color Settings
             labelColor,
             labelColorClass,
+
+            // Advanced Settings
+            autofocus,
+            disabled,
         } 
     } = props;
 
-    const parsedOptions = JSON.parse( options );
+    const parsedOptions = options ? JSON.parse( options ) : [];
 
     // Functions
     const setDefaultValue = defaultValue => setAttributes({ defaultValue });
@@ -58,6 +62,8 @@ export default withSelect( ( select, props ) => {
                     value={ defaultValue }
                     onChange={ value => setDefaultValue( value ) }
                     options={ parsedOptions }
+                    autofocus={ autofocus }
+                    disabled={ disabled }
                     hideLabelFromVision={ true }
                 />
             </div>

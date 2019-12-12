@@ -4,11 +4,11 @@ import icon from './icons/block';
 import edit from './edit';
 
 const { __ } 				= wp.i18n;
-const { registerBlockType }	= wp.blocks;
+const { registerBlockType } = wp.blocks
 
 registerBlockType( 'straightvisions/sv-gutenform-radio', {
 	title: __( 'Radio Button', 'sv_gutenform' ),
-	description: __( 'A radio button, that can be selected.', 'sv_gutenform' ),
+	description: __( 'Create a radio button.', 'sv_gutenform' ),
 	icon,
 	//parent: ['straightvisions/sv-gutenform'],
 	category: 'straightvisions',
@@ -20,10 +20,10 @@ registerBlockType( 'straightvisions/sv-gutenform-radio', {
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
 	},
-	attributes: {
+	attributes: {		
 		// Input Settings
-		isChecked: {
-			type: 'boolean',
+		defaultValue: {
+			type: 'string',
 		},
 		label: {
 			type: 'string',
@@ -32,7 +32,7 @@ registerBlockType( 'straightvisions/sv-gutenform-radio', {
 		name: {
 			type: 'string',
 		},
-		value: {
+		options: {
 			type: 'string',
 		},
 
