@@ -71,7 +71,8 @@ class form extends sv_gutenform {
 						'type' 		=> 'string',
 					),
 
-					// Form Settings
+					// Mail Settings
+					// Admin Mails
 					'adminMail' 		=> array(
 						'type'		=> 'string',
 						'default'	=> 'disabled',
@@ -85,6 +86,8 @@ class form extends sv_gutenform {
 					'adminMailContent'	=> array(
 						'type'		=> 'string',
 					),
+
+					// User Mails
 					'userMailInputName' => array(
 						'type'		=> 'bool',
 					),

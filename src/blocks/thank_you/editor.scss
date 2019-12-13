@@ -1,0 +1,48 @@
+.wp-block-straightvisions-sv-gutenform-thank-you > .header,
+.wp-block-straightvisions-sv-gutenform-thank-you > .body {
+    position: relative;
+    z-index: 1;
+}
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .header {
+    color: white;
+}
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .header > .title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .header > .description {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .header::after,
+.wp-block-straightvisions-sv-gutenform-thank-you > .body::after  {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    border: 1px solid transparent;
+    border-left: none;
+    box-shadow: none;
+    pointer-events: none;
+    outline: 1px solid transparent;
+    right: -14px;
+    left: -14px;
+    top: -14px;
+    bottom: -14px;
+}
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .header::after {
+    background-image: linear-gradient(to right top, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);
+    border: none;
+}
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .body::after {
+    border: 4px solid;
+    border-image-source: linear-gradient(to right bottom, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);
+    border-image-slice: 1;
+}

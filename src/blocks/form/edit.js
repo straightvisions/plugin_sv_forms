@@ -70,17 +70,23 @@ export default class extends Component {
 
     render() {
         return (
-            <Fragment className={ this.props }>
+            <div className={ this.props.className }>
                 <InspectorControls props={ this.props } data={ this.state } />
-                <form method='POST' className={ this.props.className }>
+                <div className='header'>
+                    <div className='title'>{ __( 'SV Gutenform', 'sv_gutenform' ) }</div>
+                    <div className='description'>
+                        { __( 'Everything inside this block will be the content of the form.', 'sv_gutenform' ) }
+                    </div>
+                </div>
+                <div class="body">
                     <FormContext.Provider value={ this.props.clientId }>
                         <InnerBlocks 
                             template={ this.template }
                             templateLock={ false }
                         />
                     </FormContext.Provider>
-                </form>
-            </Fragment>
+                </div>
+            </div>
         );
     }
 

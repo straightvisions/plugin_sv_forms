@@ -45,9 +45,15 @@ export default withSelect( ( select, props ) => {
     return (
         <div className={ props.className }>
             <InspectorControls props={ props } />
-            <h2>{ __( 'Admin Mail', 'sv_gutenform' ) }</h2>
-            <p>{ __( 'Everything inside this block will be the content of the admin mail.', 'sv_gutenform' ) }</p>
-            <InnerBlocks />
+            <div className='header'>
+                <div className='title'>{ __( 'Admin Mail', 'sv_gutenform' ) }</div>
+                <div className='description'>
+                    { __( 'Everything inside this block will be the content of the admin mail.', 'sv_gutenform' ) }
+                </div>
+            </div>
+            <div class="body">
+                <InnerBlocks />
+            </div>
             <FormContext.Consumer>{ value => updateFormAttributes( value ) }</FormContext.Consumer>
         </div>
     );

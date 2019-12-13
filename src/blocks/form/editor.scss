@@ -1,0 +1,48 @@
+.wp-block-straightvisions-sv-gutenform > .header,
+.wp-block-straightvisions-sv-gutenform > .body {
+    position: relative;
+    z-index: 1;
+}
+
+.wp-block-straightvisions-sv-gutenform > .header {
+    color: white;
+}
+
+.wp-block-straightvisions-sv-gutenform > .header > .title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.wp-block-straightvisions-sv-gutenform > .header > .description {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+.wp-block-straightvisions-sv-gutenform > .header::after,
+.wp-block-straightvisions-sv-gutenform > .body::after  {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    border: 1px solid transparent;
+    border-left: none;
+    box-shadow: none;
+    pointer-events: none;
+    outline: 1px solid transparent;
+    right: -13px;
+    left: -13px;
+    top: -14px;
+    bottom: -14px;
+}
+
+.wp-block-straightvisions-sv-gutenform > .header::after {
+    background-image: linear-gradient(to right top, #3499ff, #3e80e0, #4167c1, #3f50a3, #3a3985);
+    border: none;
+}
+
+.wp-block-straightvisions-sv-gutenform > .body::after {
+    border: 3px solid;
+    border-image-source: linear-gradient(to right bottom, #3499ff, #3e80e0, #4167c1, #3f50a3, #3a3985);
+    border-image-slice: 1;
+}

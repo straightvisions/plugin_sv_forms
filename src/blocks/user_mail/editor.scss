@@ -1,0 +1,48 @@
+.wp-block-straightvisions-sv-gutenform-user-mail > .header,
+.wp-block-straightvisions-sv-gutenform-user-mail > .body {
+    position: relative;
+    z-index: 1;
+}
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .header {
+    color: white;
+}
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .header > .title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .header > .description {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .header::after,
+.wp-block-straightvisions-sv-gutenform-user-mail > .body::after  {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    border: 1px solid transparent;
+    border-left: none;
+    box-shadow: none;
+    pointer-events: none;
+    outline: 1px solid transparent;
+    right: -14px;
+    left: -14px;
+    top: -14px;
+    bottom: -14px;
+}
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .header::after {
+    background-image: linear-gradient(to right top, #f00b51, #f1007f, #e11cae, #bb47db, #7366ff);
+    border: none;
+}
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .body::after {
+    border: 3px solid;
+    border-image-source: linear-gradient(to right bottom, #f00b51, #f1007f, #e11cae, #bb47db, #7366ff);
+    border-image-slice: 1;
+}
