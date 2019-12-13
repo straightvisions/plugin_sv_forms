@@ -1,5 +1,10 @@
 // Required Components
-const { __ } = wp.i18n;
+const { __ }            = wp.i18n;
+const { createBlock }   = wp.blocks;
+const { 
+    select, 
+    dispatch 
+} = wp.data;
 const { 
     PanelBody,
     TextControl,
@@ -13,22 +18,38 @@ export default ( { props, data } ) => {
     const { 
         setAttributes,
         attributes: {
+            formId,
             adminMail,
             adminMailUser,
-            adminMailCustom,
+            adminMailAdress,
         }
     } = props;
 
     // Functions
-    const setAdminMail          = ( adminMail )         => { 
-        setAttributes( { adminMail } );
+    const setAdminMail = adminMail => { 
+        setAttributes({ adminMail });
+
+        if ( adminMail !== 'disabled' ) {
+            addAdminMailBlock();
+        }
 
         if ( adminMail === 'author' ) {
             setAdminMailUser( getAuthorOptions()[0].value );
         }
     };
+    const addAdminMailBlock = () => {
+        const isAdminMailBlock  = select('core/block-editor').getBlocks( formId ).some( block => { 
+            return block.name === 'straightvisions/sv-gutenform-admin-mail';
+        });
+        
+        if ( ! isAdminMailBlock ) {
+            const adminMailBlock = createBlock( 'straightvisions/sv-gutenform-admin-mail' );
+
+            dispatch( 'core/block-editor' ).insertBlock( adminMailBlock, 0, formId );
+        }
+    };
     const setAdminMailUser      = adminMailUser     => setAttributes({ adminMailUser });
-    const setAdminMailCustom    = adminMailCustom   => setAttributes({ adminMailCustom });
+    const setAdminMailAdress    = adminMailAdress   => setAttributes({ adminMailAdress });
     const getAuthorOptions      = ()                => {
         let options = [];
 
@@ -66,18 +87,18 @@ export default ( { props, data } ) => {
                 options={ [
                     { label: 'Disabled', value: 'disabled' },
                     { label: 'Send to Author', value: 'author' },
-                    { label: 'Send to Mail', value: 'custom' },
+                    { label: 'Send to Mail', value: 'adress' },
                 ] }
                 onChange={ ( value ) => setAdminMail( value ) }
             />
             <AdminMailAuthor />
             {
-                adminMail === 'custom' 
+                adminMail === 'adress' 
                 ? <TextControl
                     label={ __( 'E-Mail', 'sv_gutenform' ) }
                     type='email'
-                    value={ adminMailCustom }
-                    onChange={ ( value ) => setAdminMailCustom( value ) }
+                    value={ adminMailAdress }
+                    onChange={ ( value ) => setAdminMailAdress( value ) }
                 />
                 : null
             }

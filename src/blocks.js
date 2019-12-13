@@ -12,3 +12,4 @@ import './blocks/select/index.js';
 import './blocks/submit/index.js';
 import './blocks/thank_you/index.js';
 import './blocks/user_mail/index.js';
+import './blocks/admin_mail/index.js';

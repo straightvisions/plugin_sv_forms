@@ -91,6 +91,15 @@ class form extends sv_gutenform {
 					'userMailAdress' 	=> array(
 						'type'		=> 'string',
 					),
+					'userMailSubject' 	=> array(
+						'type'		=> 'string',
+					),
+					'userMailFromTitle' => array(
+						'type'		=> 'string',
+					),
+					'userMailFromMail' 	=> array(
+						'type'		=> 'string',
+					),
 					'userMailContent' 	=> array(
 						'type'		=> 'string',
 					),

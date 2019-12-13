@@ -33,10 +33,10 @@ export default withSelect( ( select, props ) => {
     // Updates the atrributes of the sv-gutenform block
     const updateFormAttributes = formId => {
         const newAttributes     = {
-            userMailSubject: subject,
-            userMailFromTitle: fromTitle,
-            userMailFromMail: fromMail,
-            userMailContent: getMailContent(),
+            adminMailSubject: subject,
+            adminMailFromTitle: fromTitle,
+            adminMailFromMail: fromMail,
+            adminMailContent: getMailContent(),
         };
 
         dispatch( 'core/block-editor' ).updateBlockAttributes( formId, newAttributes);
@@ -45,8 +45,8 @@ export default withSelect( ( select, props ) => {
     return (
         <div className={ props.className }>
             <InspectorControls props={ props } />
-            <h2>{ __( 'User Mail', 'sv_gutenform' ) }</h2>
-            <p>{ __( 'Everything inside this block will be the content of the user mail.', 'sv_gutenform' ) }</p>
+            <h2>{ __( 'Admin Mail', 'sv_gutenform' ) }</h2>
+            <p>{ __( 'Everything inside this block will be the content of the admin mail.', 'sv_gutenform' ) }</p>
             <InnerBlocks />
             <FormContext.Consumer>{ value => updateFormAttributes( value ) }</FormContext.Consumer>
         </div>

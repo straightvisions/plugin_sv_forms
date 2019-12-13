@@ -131,6 +131,7 @@ class sv_gutenform extends modules {
 	}	
 
 	// Ajax - Getter Methods
+	// Returns the input value by it's name
 	public function get_input_value( string $name, array $data, bool $single = true ) {
 		$values = array();
 
@@ -147,52 +148,32 @@ class sv_gutenform extends modules {
 		return $values;
 	}
 
-	// Ajax - Mail Methods
-	public function send_mail( $to, string $subject, array $message ): sv_gutenform {
-		add_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
-		wp_mail( $to, $subject, $message['html'] );
-		remove_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
+	// Replaces all input strings in the mail content, with the matching input values
+	private function get_parsed_mail_content( string $mail_content, array $data ): string {
+		preg_match_all( '/%(.*?)%/s', $mail_content, $input_names );
 
-		return $this;
-	}
+		$input_values = array();
 
-	public function get_form_data( array $data, bool $is_plain = false ): string {
-		$message = $is_plain ? '' : '<ul>';
+		foreach( $input_names[1] as $index => $name ) {
+			$value = $this->get_input_value( $name, $data );
 
-		foreach( $data as $input ) {
-			if ( $input['name'] !== 'form_id' ) {
-				$message .= $is_plain ? '' : '<li>';
-				$message .= $input['name'] . ': ' . $input['value'];
-				$message .= $is_plain ? "\n" : '</li>';
+			if ( $value && ! is_array( $value ) ) {
+				$input_values[ $index ] = $this->get_input_value( $name, $data );
 			}
 		}
 
-		$message .= $is_plain ? '' : '</ul>';
+		$parsed_string = str_replace( $input_names[0], $input_values, $mail_content );
 
-		return $message;
+		return $parsed_string;
 	}
 
-	public function get_mail_template( string $template, array $data = array() ): array {
-		$template_plain	= $this->get_path( 'lib/mails/tpl/' . $template . '_plain.php' );
-		$template_html 	= $this->get_path( 'lib/mails/tpl/' . $template . '_html.php' );
-		$message_plain	= '';
-		$message_html	= '';
+	// Ajax - Mail Methods
+	public function send_mail( $to, string $subject, string $message, array $headers ): sv_gutenform {
+		add_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
+		wp_mail( $to, $subject, $message, $headers );
+		remove_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
 
-		ob_start();
-		if ( file_exists( $template_plain ) ) {
-			require_once( $template_plain );
-		}
-		$message_plain = ob_get_contents();
-		ob_end_clean();
-
-		ob_start();
-		if ( file_exists( $template_html ) ) {
-			require_once( $template_html );
-		}
-		$message_html = ob_get_contents();
-		ob_end_clean();
-
-		return array( 'plain' => $message_plain, 'html' => $message_html );
+		return $this;
 	}
 
 	// Ajax - Admin Mail
@@ -212,11 +193,13 @@ class sv_gutenform extends modules {
 	public function send_admin_mail( object $attr, array $data ): sv_gutenform {
 		if ( ! $attr || ! $data || $attr->adminMail === 'disabled' ) return $this;
 		
+		// Mail Properties
 		$to 		= $this->get_admin_mail( $attr );
-		$subject 	= 'SV Gutenform - ' . __( 'New Form Submit', 'sv_posts' );
-		$message	= $this->get_mail_template( 'admin', $data );
+		$subject 	= $attr->adminMailSubject;
+		$message	= $this->get_parsed_mail_content( $attr->adminMailContent, $data );
+		$headers	= array( 'From: ' . $attr->adminMailFromTitle . ' <' . $attr->adminMailFromMail . '>' );
 
-		$this->send_mail( $to, $subject, $message );
+		$this->send_mail( $to, $subject, $message, $headers );
 
 		return $this;
 	}
@@ -241,32 +224,16 @@ class sv_gutenform extends modules {
 		}
 	}
 
-	private function parse_input_values( string $mail_content, array $data ): string {
-		preg_match_all( '/%(.*?)%/s', $mail_content, $input_names );
-
-		$input_values = array();
-
-		foreach( $input_names[1] as $index => $name ) {
-			$value = $this->get_input_value( $name, $data );
-
-			if ( $value && ! is_array( $value ) ) {
-				$input_values[ $index ] = $this->get_input_value( $name, $data );
-			}
-		}
-
-		$parsed_string = str_replace( $input_names[0], $input_values, $mail_content );
-
-		return $parsed_string;
-	}
-
 	public function send_user_mail( object $attr, array $data ): sv_gutenform {
 		if ( ! $attr || ! $data || ! $attr->userMail ) return $this;
 
+		// Mail Properties
 		$to 		= $this->get_user_mail( $attr, $data );
-		$subject 	= 'SV Gutenform - ' . __( 'Thank You!', 'sv_posts' );
-		$message	= array( 'html' => $this->parse_input_values( $attr->userMailContent, $data ) );
+		$subject 	= $attr->userMailSubject;
+		$message	= $this->get_parsed_mail_content( $attr->userMailContent, $data );
+		$headers	= array( 'From: ' . $attr->userMailFromTitle . ' <' . $attr->userMailFromMail . '>' );
 
-		$this->send_mail( $to, $subject, $message );
+		$this->send_mail( $to, $subject, $message, $headers );
 
 		return $this;
 	}

@@ -6,15 +6,15 @@ import edit from './edit';
 const { __ } 				= wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-user-mail', {
-	title: __( 'User Mail', 'sv_gutenform' ),
-	description: __( 'Create a mail that the user will recieve, when submitting the form.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-gutenform-admin-mail', {
+	title: __( 'Admin Mail', 'sv_gutenform' ),
+	description: __( 'Create a mail that the admin/author will recieve, when the form is submitted.', 'sv_gutenform' ),
 	icon,
 	//parent: ['straightvisions/sv-gutenform'],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform User Mail', 'sv_gutenform' ),
-		__( 'User Mail', 'sv_gutenform' ),
+		__( 'SV Gutenform Admin Mail', 'sv_gutenform' ),
+		__( 'Admin Mail', 'sv_gutenform' ),
 		__( 'User Mail', 'sv_gutenform' ),
 	],
 	supports: {

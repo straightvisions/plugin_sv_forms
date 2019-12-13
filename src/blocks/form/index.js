@@ -26,7 +26,8 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 			type: 'string',
 		},
 
-		// Form Settings
+		// Mail Settings
+		// Admin Mails
 		adminMail: {
 			type: 'string',
 			default: 'disabled',
@@ -37,13 +38,33 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		adminMailAdress: {
 			type: 'string',
 		},
+		adminMailSubject: {
+			type: 'string',
+		},
+		adminMailFromTitle: {
+			type: 'string',
+		},
+		adminMailFromMail: {
+			type: 'string',
+		},
 		adminMailContent: {
 			type: 'string',
 		},
+
+		// User Mails
 		userMail: {
 			type: 'boolean',
 		},
 		userMailInputName: {
+			type: 'string',
+		},
+		userMailSubject: {
+			type: 'string',
+		},
+		userMailFromTitle: {
+			type: 'string',
+		},
+		userMailFromMail: {
 			type: 'string',
 		},
 		userMailContent: {
