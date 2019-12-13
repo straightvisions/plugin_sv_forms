@@ -11,8 +11,8 @@ const {
     ToggleControl,
 } = wp.components;
 
-export default ( { props, formId } ) => {
-    if ( ! props || ! formId ) return '';
+export default ( { props } ) => {
+    if ( ! props ) return '';
 
     // Block Attributes
     const { 
@@ -28,41 +28,9 @@ export default ( { props, formId } ) => {
     // Functions
     const setLabel          = label         => setAttributes({ label });
     const setPlaceholder    = placeholder   => setAttributes({ placeholder });
+    const setName           = name          => setAttributes({ name });
+    const setSendMail       = sendMail      => setAttributes({ sendMail });
 
-    const setName           = name          => { 
-        setAttributes({ name });
-        updateFormAttributes({ sendMail, name });
-    };
-
-    const setSendMail       = sendMail      => { 
-        setAttributes({ sendMail });
-        addUserMailBlock( sendMail );
-        updateFormAttributes({ sendMail, name });
-    };
-
-    const addUserMailBlock  = sendMail      => {
-        if ( sendMail ) {
-            const isUserMailBlock = select('core/block-editor').getBlocks( formId ).some( block => { 
-                return block.name === 'straightvisions/sv-gutenform-user-mail';
-            });
-    
-            if ( ! isUserMailBlock ) {
-                const userMailBlock = createBlock( 'straightvisions/sv-gutenform-user-mail' );
-    
-                dispatch( 'core/block-editor' ).insertBlock( userMailBlock, 0, formId );
-            }
-        }
-    };
-
-    // Updates the userMailContent atrribute of the sv-gutenform block
-    const updateFormAttributes = ({ sendMail, name }) => {
-        const newAttributes = {
-            userMail: sendMail,
-            userMailInputName: name,
-        };
-
-        dispatch( 'core/block-editor' ).updateBlockAttributes( formId, newAttributes );
-    }
     const getSlug           = string => {
         if ( ! string ) return '';
 

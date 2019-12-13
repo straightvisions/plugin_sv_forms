@@ -7,13 +7,13 @@ import ColorSettings from './inspector_controls/color_settings';
 const { Fragment } = wp.element;
 const { InspectorControls, InspectorAdvancedControls } = wp.blockEditor;
 
-export default ( { props, formId } ) => {
-    if ( ! props || ! formId ) return '';
+export default ( { props } ) => {
+    if ( ! props ) return '';
 
     return(
         <Fragment>
             <InspectorControls>
-                <InputSettings props={ props } formId={ formId } />
+                <InputSettings props={ props } />
                 <ValidationSettings props={ props } />
                 <ColorSettings props={ props } />
             </InspectorControls>

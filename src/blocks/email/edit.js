@@ -4,6 +4,11 @@ import { FormContext } from '../../blocks';
 
 const { Fragment }      = wp.element;
 const { TextControl }   = wp.components;
+const { createBlock }   = wp.blocks;
+const { 
+    select, 
+    dispatch 
+} = wp.data;
 
 export default props => {
     // Block Properties
@@ -16,6 +21,7 @@ export default props => {
             label,
             name,
             placeholder,
+            sendMail,
 
             // Validation Settings
             required,
@@ -39,7 +45,30 @@ export default props => {
     } = props;
 
     // Functions
-    const setDefaultValue = defaultValue => setAttributes({ defaultValue });
+    const setDefaultValue       = defaultValue => setAttributes({ defaultValue });
+    const updateFormAttributes  = formId => {
+        addUserMailBlock( formId );
+        
+        const newAttributes     = {
+            userMail: sendMail,
+            userMailInputName: name,
+        };
+
+        dispatch( 'core/block-editor' ).updateBlockAttributes( formId, newAttributes );
+    };
+    const addUserMailBlock      = formId => {
+        if ( sendMail ) {
+            const isUserMailBlock = select('core/block-editor').getBlocks( formId ).some( block => { 
+                return block.name === 'straightvisions/sv-gutenform-user-mail';
+            });
+    
+            if ( ! isUserMailBlock ) {
+                const userMailBlock = createBlock( 'straightvisions/sv-gutenform-user-mail' );
+    
+                dispatch( 'core/block-editor' ).insertBlock( userMailBlock, 0, formId );
+            }
+        }
+    };
 
     // Conditional Components
     const Label = () => {
@@ -60,11 +89,7 @@ export default props => {
 
     return (
         <Fragment>
-            <FormContext.Consumer>
-            { 
-                value => ( <InspectorControls props={ props } formId={ value } /> )
-            }
-            </FormContext.Consumer>
+            <InspectorControls props={ props } />
             <div className={ className }>
                 <Label />
                 <TextControl
@@ -86,6 +111,7 @@ export default props => {
                     hideLabelFromVision={ true }
                 />
             </div>
+            <FormContext.Consumer>{ value => updateFormAttributes( value ) }</FormContext.Consumer>
         </Fragment>
     ); 
 };
