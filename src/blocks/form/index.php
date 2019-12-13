@@ -27,9 +27,7 @@ class form extends sv_gutenform {
 	}
 
 	public function init_block( array $attr, string $content ): string {
-		return $this->update_post_meta( $attr )
-					->load_scripts( $attr['blockId'] )
-					->render_block( $attr, $content );
+		return $this->load_scripts( $attr['formId'] )->render_block( $attr, $content );
 	}
 
 	public function render_block( array $attr, string $content ): string {
@@ -41,21 +39,6 @@ class form extends sv_gutenform {
 		ob_end_clean();
 
 		return $output;
-	}
-
-	public function update_post_meta( array $attr ): form {
-		$mail_content 	= $this->get_parent()->confirmation_mail->get_mail_content();
-		$form_id 		= $attr['blockId'];
-		
-		if ( ! empty( $mail_content ) ) {
-			$mails					= array( 'admin' => '', 'user' => $mail_content );
-			$forms_meta 			= json_decode( get_post_meta( get_the_ID(), '_sv_gutenform_forms', true ) );
-			$forms_meta->$form_id 	= array( 'attributes' => $attr, 'mails' => $mails );
-
-			update_post_meta( get_the_ID(), '_sv_gutenform_forms', wp_json_encode( $forms_meta ) );
-		}
-
-		return $this;
 	}
 
 	public function load_block_assets() {
@@ -84,19 +67,31 @@ class form extends sv_gutenform {
 				'render_callback'	=> array( $this, 'init_block' ),
 				'attributes'		=> array(
 					// Hidden
-					'blockId' => array(
+					'formId' => array(
 						'type' 		=> 'string',
 					),
 
 					// Form Settings
-					'adminMail' => array(
+					'adminMail' 		=> array(
 						'type'		=> 'string',
 						'default'	=> 'disabled',
 					),
-					'adminMailUser' => array(
+					'adminMailUser' 	=> array(
 						'type'		=> 'number',
 					),
-					'adminMailCustom' => array(
+					'adminMailAdress'	=> array(
+						'type'		=> 'string',
+					),
+					'adminMailContent'	=> array(
+						'type'		=> 'string',
+					),
+					'userMailInputName' => array(
+						'type'		=> 'bool',
+					),
+					'userMailAdress' 	=> array(
+						'type'		=> 'string',
+					),
+					'userMailContent' 	=> array(
 						'type'		=> 'string',
 					),
 

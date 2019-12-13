@@ -1,13 +1,11 @@
 // Required Components
 import InspectorControls from './components/inspector_controls';
+import { FormContext } from '../../blocks';
 
-const { withSelect }    = wp.data;
 const { Fragment }      = wp.element;
 const { TextControl }   = wp.components;
 
-export default withSelect( ( select, props ) => {
-    return props;
-} )( ( props ) => {
+export default props => {
     // Block Properties
     const {
         className,
@@ -62,7 +60,11 @@ export default withSelect( ( select, props ) => {
 
     return (
         <Fragment>
-            <InspectorControls props={ props } />
+            <FormContext.Consumer>
+            { 
+                value => ( <InspectorControls props={ props } formId={ value } /> )
+            }
+            </FormContext.Consumer>
             <div className={ className }>
                 <Label />
                 <TextControl
@@ -86,4 +88,4 @@ export default withSelect( ( select, props ) => {
             </div>
         </Fragment>
     ); 
-});
+};

@@ -54,15 +54,13 @@ class email extends sv_gutenform {
 					'placeholder' 	=> array(
 						'type'		=> 'string',
 					),
-					'isRecipient' 	=> array(
+					'sendMail' 		=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 
 					// Validation Settings
 					'required' 		=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 					'minlength' 	=> array(
 						'type'		=> 'number',
@@ -96,15 +94,12 @@ class email extends sv_gutenform {
 					// Advanced Settings
 					'autofocus' 	=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 					'autocomplete' 	=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 					'disabled' 		=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 					'className' 	=> array(
 						'type'		=> 'string',

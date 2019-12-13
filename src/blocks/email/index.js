@@ -35,15 +35,13 @@ registerBlockType( 'straightvisions/sv-gutenform-email', {
 		placeholder: {
 			type: 'string',
 		},
-		isRecipient: {
+		sendMail: {
 			type: 'boolean',
-			default: false,
 		},
 
 		// Validation Settings
 		required: {
 			type: 'boolean',
-			default: false,
 		},
 		minlength: {
 			type: 'number',
@@ -77,19 +75,15 @@ registerBlockType( 'straightvisions/sv-gutenform-email', {
 		// Advanced Settings
 		autofocus: {
 			type: 'boolean',
-			default: false,
 		},
 		autocomplete: {
 			type: 'boolean',
-			default: false,
 		},
 		readonly: {
 			type: 'boolean',
-			default: false,
 		},
 		disabled: {
 			type: 'boolean',
-			default: false,
 		},
 		className: {
 			type: 'string',

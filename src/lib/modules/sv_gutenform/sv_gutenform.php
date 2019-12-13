@@ -209,10 +209,10 @@ class sv_gutenform extends modules {
 		return $email_adress;
 	}
 
-	public function send_admin_mail( object $meta, array $data ): sv_gutenform {
-		if ( ! $meta || ! $data || $meta->attributes->adminMail === 'disabled' ) return $this;
+	public function send_admin_mail( object $attr, array $data ): sv_gutenform {
+		if ( ! $attr || ! $data || $attr->adminMail === 'disabled' ) return $this;
 		
-		$to 		= $this->get_admin_mail( $meta->attributes );
+		$to 		= $this->get_admin_mail( $attr );
 		$subject 	= 'SV Gutenform - ' . __( 'New Form Submit', 'sv_posts' );
 		$message	= $this->get_mail_template( 'admin', $data );
 
@@ -224,8 +224,8 @@ class sv_gutenform extends modules {
 	// Ajax - User Mail
 	public function get_user_mail( object $attr, array $data ) {
 		// Checks if the input "recipient" exists and returns the recipient input names
-		$input_names = $this->get_input_value( 'recipient', $data, false );
-
+		$input_names = $this->get_input_value( $attr->userMailInputName, $data, false );
+		
 		if ( ! $input_names || count( $input_names ) < 1 ) return '';
 
 		if ( count( $input_names ) > 1 ) {
@@ -234,20 +234,19 @@ class sv_gutenform extends modules {
 			foreach( $input_names as $name ) {
 				$email_adresses[] = $this->get_input_value( $name, $data );
 			}
-
+			
 			return $email_adresses;
 		} else {
-			return $this->get_input_value( $input_names[0], $data );
+			return $input_names;
 		}
 	}
 
-	public function send_user_mail( object $meta, array $data ): sv_gutenform {
-		if ( ! $meta || ! $data ) return $this;
+	public function send_user_mail( object $attr, array $data ): sv_gutenform {
+		if ( ! $attr || ! $data || ! $attr->userMail ) return $this;
 
-		$to 		= $this->get_user_mail( $meta->attributes, $data );
+		$to 		= $this->get_user_mail( $attr, $data );
 		$subject 	= 'SV Gutenform - ' . __( 'Thank You!', 'sv_posts' );
-		//$message	= $this->get_mail_template( 'user' );
-		$message	= array( 'html' => $meta->mails->user );
+		$message	= array( 'html' => $attr->userMailContent );
 
 		$this->send_mail( $to, $subject, $message );
 
@@ -266,9 +265,9 @@ class sv_gutenform extends modules {
 		$form_id	= $this->get_input_value( 'form_id', $form_data );
 
 		if ( $form_id && $post_meta->$form_id ) {
-			$form_meta = $post_meta->$form_id;
+			$form_attr = $post_meta->$form_id;
 
-			$this->send_admin_mail( $form_meta, $form_data )->send_user_mail( $form_meta, $form_data );
+			$this->send_user_mail( $form_attr, $form_data )->send_admin_mail( $form_attr, $form_data );
 		}
 	}
 }

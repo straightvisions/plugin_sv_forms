@@ -22,7 +22,7 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 	},
 	attributes: {
 		// Hidden
-		blockId: {
+		formId: {
 			type: 'string',
 		},
 
@@ -34,7 +34,19 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		adminMailUser: {
 			type: 'number',
 		},
-		adminMailCustom: {
+		adminMailAdress: {
+			type: 'string',
+		},
+		adminMailContent: {
+			type: 'string',
+		},
+		userMail: {
+			type: 'boolean',
+		},
+		userMailInputName: {
+			type: 'string',
+		},
+		userMailContent: {
 			type: 'string',
 		},
 

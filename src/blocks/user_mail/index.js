@@ -5,17 +5,16 @@ import edit from './edit';
 
 const { __ } 				= wp.i18n;
 const { registerBlockType } = wp.blocks
-const { InnerBlocks } 		= wp.blockEditor;
 
-registerBlockType( 'straightvisions/sv-gutenform-confirmation-mail', {
-	title: __( 'Confirmation Mail', 'sv_gutenform' ),
-	description: __( 'Creates the content of the confirmation mail.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-gutenform-user-mail', {
+	title: __( 'User Mail', 'sv_gutenform' ),
+	description: __( 'Create a mail that the user will recieve, when submitting the form.', 'sv_gutenform' ),
 	icon,
 	//parent: ['straightvisions/sv-gutenform'],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Confirmation Mail', 'sv_gutenform' ),
-		__( 'Confirmation Mail', 'sv_gutenform' ),
+		__( 'SV Gutenform User Mail', 'sv_gutenform' ),
+		__( 'User Mail', 'sv_gutenform' ),
 		__( 'User Mail', 'sv_gutenform' ),
 	],
 	supports: {
@@ -29,6 +28,6 @@ registerBlockType( 'straightvisions/sv-gutenform-confirmation-mail', {
 	},
 	edit,
 	save: () => {
-		return <InnerBlocks.Content />;
+		return null;
 	},
 } );

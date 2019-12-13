@@ -1,15 +1,16 @@
 import InspectorControls from './components/inspector_controls';
+import { FormContext } from '../../blocks';
 
 const { 
     Component,
     Fragment 
 }                                   = wp.element;
-const { __ }                        = wp.i18n;
-const { InnerBlocks }               = wp.blockEditor;
 const { 
     select, 
     dispatch 
 }                                   = wp.data;
+const { __ }                        = wp.i18n;
+const { InnerBlocks }               = wp.blockEditor;
 const { editPost }                  = dispatch( 'core/editor' );
 const { getEditedPostAttribute }    = select( 'core/editor' );
 const { getAuthors }                = select( 'core' );
@@ -20,7 +21,6 @@ export default class extends Component {
 
         this.props      = props;
         this.state      = {};
-        /*
         this.template   = [
             ['core/heading', { 
                 content: __( 'Contact', 'sv_gutenform' ), 
@@ -49,22 +49,12 @@ export default class extends Component {
             ['straightvisions/sv-gutenform-submit'],
             ['straightvisions/sv-gutenform-thank-you'],
         ];
-        */
-       this.template   = [
-        ['straightvisions/sv-gutenform-email', {
-            label: __( 'E-Mail', 'sv_gutenform' ),
-            name: 'email',
-            required: true,
-        }],
-        ['straightvisions/sv-gutenform-submit'],
-        ['straightvisions/sv-gutenform-thank-you'],
-        ['straightvisions/sv-gutenform-confirmation-mail']
-    ];
     }
 
+    // React Lifecycle Methos
     componentDidMount() {
         if ( ! this.doesFormExist() ) {
-            this.props.attributes.blockId = this.props.clientId;
+            this.props.attributes.formId = this.props.clientId;
             this.updatePostMeta( 'update' );
         }
     }
@@ -78,11 +68,28 @@ export default class extends Component {
         this.updatePostMeta( 'remove' );
     }
 
+    render() {
+        return (
+            <Fragment className={ this.props }>
+                <InspectorControls props={ this.props } data={ this.state } />
+                <form method='POST' className={ this.props.className }>
+                    <FormContext.Provider value={ this.props.clientId }>
+                        <InnerBlocks 
+                            template={ this.template }
+                            templateLock={ false }
+                        />
+                    </FormContext.Provider>
+                </form>
+            </Fragment>
+        );
+    }
+
+    // Custom Methods
     doesFormExist() {
         const currentMeta   = getEditedPostAttribute( 'meta' );
         const currentForms  = currentMeta._sv_gutenform_forms ? JSON.parse( currentMeta._sv_gutenform_forms ) : false;
 
-        if ( ! currentForms || ! currentForms[ this.props.attributes.blockId ] ) return false;
+        if ( ! currentForms || ! currentForms[ this.props.attributes.formId ] ) return false;
 
         return true;
     }
@@ -93,42 +100,15 @@ export default class extends Component {
 
         switch ( action ) {
             case 'update':
-                    if ( ! currentForms[ this.props.attributes.blockId ] ) {
-                        currentForms[ this.props.attributes.blockId ] = {};
-                    }
-
-                    currentForms[ this.props.attributes.blockId ].attributes = this.props.attributes;
-
-                    if ( ! currentForms[ this.props.attributes.blockId ].mails ) {
-                        currentForms[ this.props.attributes.blockId ].mails = {
-                            admin: '',
-                            user: '',
-                        };
-                    }
+                currentForms[ this.props.attributes.formId ] = this.props.attributes;
                 break;
             case 'remove':
-                delete currentForms[ this.props.attributes.blockId ];
+                delete currentForms[ this.props.attributes.formId ];
                 break;
         }
 
         const newMeta = { ...currentMeta, _sv_gutenform_forms: JSON.stringify( currentForms ) };
 
         editPost( { meta: newMeta } );
-        // DEBUG
-        console.log(currentForms);
-    }
-
-    render() {
-        return (
-            <Fragment className={ this.props.className }>
-                <InspectorControls props={ this.props } data={ this.state } />
-                <form method='POST' className={ this.props.className }>
-                    <InnerBlocks 
-                        template={ this.template }
-                        templateLock={ false }
-                    />
-                </form>
-            </Fragment>
-        );
     }
 }

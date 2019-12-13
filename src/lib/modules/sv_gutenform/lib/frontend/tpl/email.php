@@ -5,7 +5,4 @@
         </label>
     <?php } ?>
     <input <?php echo $this->get_input_attr(); ?> />
-    <?php if ( isset( $this->block_attr['isRecipient'] ) && $this->block_attr['isRecipient'] ) { ?>
-        <input type="hidden" name="recipient" value="<?php echo $this->block_attr['name']; ?>">
-    <?php } ?>
 </div>
