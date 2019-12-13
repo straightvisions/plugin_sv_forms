@@ -241,12 +241,30 @@ class sv_gutenform extends modules {
 		}
 	}
 
+	private function parse_input_values( string $mail_content, array $data ): string {
+		preg_match_all( '/%(.*?)%/s', $mail_content, $input_names );
+
+		$input_values = array();
+
+		foreach( $input_names[1] as $index => $name ) {
+			$value = $this->get_input_value( $name, $data );
+
+			if ( $value && ! is_array( $value ) ) {
+				$input_values[ $index ] = $this->get_input_value( $name, $data );
+			}
+		}
+
+		$parsed_string = str_replace( $input_names[0], $input_values, $mail_content );
+
+		return $parsed_string;
+	}
+
 	public function send_user_mail( object $attr, array $data ): sv_gutenform {
 		if ( ! $attr || ! $data || ! $attr->userMail ) return $this;
 
 		$to 		= $this->get_user_mail( $attr, $data );
 		$subject 	= 'SV Gutenform - ' . __( 'Thank You!', 'sv_posts' );
-		$message	= array( 'html' => $attr->userMailContent );
+		$message	= array( 'html' => $this->parse_input_values( $attr->userMailContent, $data ) );
 
 		$this->send_mail( $to, $subject, $message );
 
