@@ -37,8 +37,6 @@ export default ( { props } ) => {
                 help={ __( 'Defines the max. character length.', 'sv_gutenform' ) }
                 value={ maxlength }
                 onChange={ value => setMaxLength( value ) }
-                min={ 0 }
-                max={ 50 }
             />
         </PanelBody>
     );

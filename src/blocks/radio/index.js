@@ -47,7 +47,6 @@ registerBlockType( 'straightvisions/sv-gutenform-radio', {
 		// Advanced Settings
 		disabled: {
 			type: 'boolean',
-			default: false,
 		},
 		className: {
 			type: 'string',

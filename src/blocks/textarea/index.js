@@ -39,11 +39,9 @@ registerBlockType( 'straightvisions/sv-gutenform-textarea', {
 		// Validation Settings
 		required: {
 			type: 'boolean',
-			default: false,
 		},
 		maxlength: {
 			type: 'number',
-			default: 0,
 		},
 
 		// Color Settings
@@ -69,15 +67,12 @@ registerBlockType( 'straightvisions/sv-gutenform-textarea', {
 		// Advanced Settings
 		autofocus: {
 			type: 'boolean',
-			default: false,
 		},
 		readonly: {
 			type: 'boolean',
-			default: false,
 		},
 		disabled: {
 			type: 'boolean',
-			default: false,
 		},
 		className: {
 			type: 'string',

@@ -58,7 +58,6 @@ class checkbox extends sv_gutenform {
 					// Validation Settings
 					'required' 		=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 
 					// Color Settings
@@ -72,7 +71,6 @@ class checkbox extends sv_gutenform {
 					// Advanced Settings
 					'disabled' 		=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 					'className' 	=> array(
 						'type'		=> 'string',

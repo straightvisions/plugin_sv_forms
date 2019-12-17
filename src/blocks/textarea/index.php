@@ -58,11 +58,9 @@ class textarea extends sv_gutenform {
 					// Validation Settings
 					'required' 		=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 					'maxlength' 	=> array(
 						'type'		=> 'number',
-						'default'	=> 0,
 					),
 
 					// Color Settings
@@ -88,11 +86,9 @@ class textarea extends sv_gutenform {
 					// Advanced Settings
 					'autofocus' 	=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 					'disabled' 		=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 					'className' 	=> array(
 						'type'		=> 'string',

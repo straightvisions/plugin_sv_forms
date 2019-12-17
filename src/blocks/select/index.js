@@ -34,7 +34,6 @@ registerBlockType( 'straightvisions/sv-gutenform-select', {
 		},
 		multiple: {
 			type: 'boolean',
-			default: false,
 		},
 		options: {
 			type: 'string',
@@ -51,11 +50,9 @@ registerBlockType( 'straightvisions/sv-gutenform-select', {
 		// Advanced Settings
 		autofocus: {
 			type: 'boolean',
-			default: false,
 		},
 		disabled: {
 			type: 'boolean',
-			default: false,
 		},
 		className: {
 			type: 'string',

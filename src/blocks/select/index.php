@@ -53,7 +53,6 @@ class select extends sv_gutenform {
 					),
 					'multiple' 		=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 					'options' 		=> array(
 						'type'		=> 'string',
@@ -70,11 +69,9 @@ class select extends sv_gutenform {
 					// Advanced Settings
 					'autofocus' 	=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 					'disabled' 		=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 					'className' 	=> array(
 						'type'		=> 'string',

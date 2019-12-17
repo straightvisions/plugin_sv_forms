@@ -58,7 +58,6 @@ class text extends sv_gutenform {
 					// Validation Settings
 					'required' 		=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 					'minlength' 	=> array(
 						'type'		=> 'number',
@@ -92,15 +91,15 @@ class text extends sv_gutenform {
 					// Advanced Settings
 					'autofocus' 	=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 					'autocomplete' 	=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
+					),
+					'readonly' 		=> array(
+						'type'		=> 'bool',
 					),
 					'disabled' 		=> array(
 						'type'		=> 'bool',
-						'default'	=> false,
 					),
 					'className' 	=> array(
 						'type'		=> 'string',

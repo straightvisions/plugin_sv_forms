@@ -39,16 +39,12 @@ export default ( { props } ) => {
                 help={ __( 'Defines the min. character length.', 'sv_gutenform' ) }
                 value={ minlength }
                 onChange={ value => setMinLength( value ) }
-                min={ 0 }
-                max={ 50 }
             />
             <RangeControl
                 label={ __( 'Max. Length', 'sv_gutenform' ) }
                 help={ __( 'Defines the max. character length.', 'sv_gutenform' ) }
                 value={ maxlength }
                 onChange={ value => setMaxLength( value ) }
-                min={ 0 }
-                max={ 50 }
             />
         </PanelBody>
     );

@@ -42,7 +42,6 @@ registerBlockType( 'straightvisions/sv-gutenform-checkbox', {
 		// Validation Settings
 		required: {
 			type: 'boolean',
-			default: false,
 		},
 
 		// Color Settings
@@ -56,7 +55,6 @@ registerBlockType( 'straightvisions/sv-gutenform-checkbox', {
 		// Advanced Settings
 		disabled: {
 			type: 'boolean',
-			default: false,
 		},
 		className: {
 			type: 'string',

@@ -45,11 +45,9 @@ registerBlockType( 'straightvisions/sv-gutenform-email', {
 		},
 		minlength: {
 			type: 'number',
-			default: 0,
 		},
 		maxlength: {
 			type: 'number',
-			default: 0,
 		},
 
 		// Color Settings

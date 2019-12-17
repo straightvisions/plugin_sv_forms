@@ -31,6 +31,21 @@ class sv_gutenform extends modules {
 		$this->get_script( 'email' )
 			 ->set_path( 'lib/frontend/css/email.css' );
 
+		$this->get_script( 'phone' )
+			 ->set_path( 'lib/frontend/css/phone.css' );
+
+		$this->get_script( 'number' )
+			 ->set_path( 'lib/frontend/css/number.css' );
+
+		$this->get_script( 'password' )
+			 ->set_path( 'lib/frontend/css/password.css' );
+
+		$this->get_script( 'date' )
+			 ->set_path( 'lib/frontend/css/date.css' );
+
+		$this->get_script( 'range' )
+			 ->set_path( 'lib/frontend/css/range.css' );
+
 		$this->get_script( 'textarea' )
 			 ->set_path( 'lib/frontend/css/textarea.css' );
 
@@ -192,12 +207,32 @@ class sv_gutenform extends modules {
 
 	public function send_admin_mail( object $attr, array $data ): sv_gutenform {
 		if ( ! $attr || ! $data || $attr->adminMail === 'disabled' ) return $this;
-		
+
 		// Mail Properties
-		$to 		= $this->get_admin_mail( $attr );
-		$subject 	= $attr->adminMailSubject;
-		$message	= $this->get_parsed_mail_content( $attr->adminMailContent, $data );
-		$headers	= array( 'From: ' . $attr->adminMailFromTitle . ' <' . $attr->adminMailFromMail . '>' );
+		$to = $this->get_admin_mail( $attr );
+
+		if ( isset( $attr->adminMailSubject ) && ! empty( $attr->adminMailSubject ) ) {
+			$subject = $attr->adminMailSubject;
+		} else {
+			$subject = __( 'New Form Submit', 'sv_gutenform' );
+		}
+
+		if ( isset( $attr->adminMailContent ) && ! empty( $attr->adminMailContent ) ) {
+			$message = $this->get_parsed_mail_content( $attr->adminMailContent, $data );
+		} else {
+			$message = __( 'A new form was submitted.', 'sv_gutenform' );
+		}
+
+		if ( 
+			isset( $attr->adminMailFromTitle ) 
+			&& ! empty( $attr->adminMailFromTitle ) 
+			&& isset( $attr->adminMailFromMail ) 
+			&& ! empty( $attr->adminMailFromMail ) 
+		) {
+			$headers = array( 'From: ' . $attr->adminMailFromTitle . ' <' . $attr->adminMailFromMail . '>' );
+		} else {
+			$headers = array();
+		}
 
 		$this->send_mail( $to, $subject, $message, $headers );
 
@@ -208,7 +243,7 @@ class sv_gutenform extends modules {
 	public function get_user_mail( object $attr, array $data ) {
 		// Checks if the input "recipient" exists and returns the recipient input names
 		$input_names = $this->get_input_value( $attr->userMailInputName, $data, false );
-		
+
 		if ( ! $input_names || count( $input_names ) < 1 ) return '';
 
 		if ( count( $input_names ) > 1 ) {
@@ -217,7 +252,7 @@ class sv_gutenform extends modules {
 			foreach( $input_names as $name ) {
 				$email_adresses[] = $this->get_input_value( $name, $data );
 			}
-			
+
 			return $email_adresses;
 		} else {
 			return $input_names;
@@ -228,11 +263,33 @@ class sv_gutenform extends modules {
 		if ( ! $attr || ! $data || ! $attr->userMail ) return $this;
 
 		// Mail Properties
-		$to 		= $this->get_user_mail( $attr, $data );
-		$subject 	= $attr->userMailSubject;
-		$message	= $this->get_parsed_mail_content( $attr->userMailContent, $data );
-		$headers	= array( 'From: ' . $attr->userMailFromTitle . ' <' . $attr->userMailFromMail . '>' );
+		$to = $this->get_user_mail( $attr, $data );
 
+		if ( isset( $attr->userMailSubject ) && ! empty( $attr->userMailSubject ) ) {
+			$subject = $attr->userMailSubject;
+		} else {
+			$subject = __( 'Thank You', 'sv_gutenform' );
+		}
+
+		if ( isset( $attr->userMailContent ) && ! empty( $attr->userMailContent ) ) {
+			$message = $this->get_parsed_mail_content( $attr->userMailContent, $data );
+		} else {
+			$message = __( 'Thank you for your submission!', 'sv_gutenform' );
+		}
+
+		if ( 
+			isset( $attr->userMailFromTitle ) 
+			&& ! empty( $attr->userMailFromTitle ) 
+			&& isset( $attr->userMailFromMail ) 
+			&& ! empty( $attr->userMailFromMail ) 
+		) {
+			$headers = array( 'From: ' . $attr->userMailFromTitle . ' <' . $attr->userMailFromMail . '>' );
+		} else {
+			$headers = array();
+		}
+
+		//$this->ajaxStatus( 'success', array( $to, $subject,$message, $headers ) );
+		
 		$this->send_mail( $to, $subject, $message, $headers );
 
 		return $this;
@@ -242,7 +299,7 @@ class sv_gutenform extends modules {
 	public function ajax_sv_gutenform_submit() {
 		if ( ! isset( $_POST) || empty( $_POST ) ) return;
 		if ( ! wp_verify_nonce( $_POST['nonce'], 'sv_gutenform_submit' ) ) return;
-		
+
 		// Variables
 		$post_id	= intval( $_POST['post_id'] );
 		$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_gutenform_forms', true ) );

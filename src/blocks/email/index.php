@@ -64,11 +64,9 @@ class email extends sv_gutenform {
 					),
 					'minlength' 	=> array(
 						'type'		=> 'number',
-						'default'	=> 0,
 					),
 					'maxlength' 	=> array(
 						'type'		=> 'number',
-						'default'	=> 0,
 					),
 
 					// Color Settings
