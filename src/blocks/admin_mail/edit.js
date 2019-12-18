@@ -7,7 +7,8 @@ const { InnerBlocks }       = wp.blockEditor;
 const { getBlockContent }   = wp.blocks;
 const { 
     withSelect, 
-    dispatch 
+    dispatch,
+    select 
 }                           = wp.data;
 
 export default withSelect( ( select, props ) => {
@@ -17,10 +18,12 @@ export default withSelect( ( select, props ) => {
     };
 } )( ({ innerBlocks, props }) => {
     const {
+        setAttributes,
         attributes: {
             subject,
             fromTitle,
             fromMail,
+            inputNames,
         }
     } = props;
 
@@ -32,6 +35,8 @@ export default withSelect( ( select, props ) => {
 
     // Updates the atrributes of the sv-gutenform block
     const updateFormAttributes = formId => {
+        setInputNames( formId );
+
         const newAttributes     = {
             adminMailSubject: subject,
             adminMailFromTitle: fromTitle,
@@ -42,6 +47,20 @@ export default withSelect( ( select, props ) => {
         dispatch( 'core/block-editor' ).updateBlockAttributes( formId, newAttributes);
     }
 
+    const setInputNames = formId => {
+        const formBlocks        = select( 'core/block-editor' ).getBlocks( formId );
+        const filteredBlocks    = formBlocks.filter( block => {
+            return block.attributes.name;
+        } );
+        const names             = filteredBlocks.map( block => {
+            return '%' + block.attributes.name + '%';
+        } );
+
+        if ( inputNames !== names ) {
+            setAttributes({ inputNames: names.join( ', ' ) });
+        }
+    }
+
     return (
         <div className={ props.className }>
             <InspectorControls props={ props } />
@@ -49,6 +68,18 @@ export default withSelect( ( select, props ) => {
                 <div className='title'>{ __( 'Admin Mail', 'sv_gutenform' ) }</div>
                 <div className='description'>
                     { __( 'Everything inside this block will be the content of the admin mail.', 'sv_gutenform' ) }
+                    <div className='input-values-wrapper'>
+                        <div className='input-values-title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
+                        <div className='input-values'>
+                        {
+                            inputNames && inputNames 
+                            ? inputNames.split( ',' ).map( name => {
+                                return <div className='input-value'>{ name }</div>;
+                            } )
+                            : ''
+                        }
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="body">

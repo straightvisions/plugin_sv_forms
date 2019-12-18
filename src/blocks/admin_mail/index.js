@@ -21,6 +21,11 @@ registerBlockType( 'straightvisions/sv-gutenform-admin-mail', {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
 	},
 	attributes: {
+		// Hidden
+		intputNames: {
+			type: 'string'
+		},
+		
 		// E-Mail Settings
 		subject: {
 			type: 'string',
