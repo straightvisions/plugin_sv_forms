@@ -56,8 +56,10 @@ export default withSelect( ( select, props ) => {
             return '%' + block.attributes.name + '%';
         } );
 
-        if ( inputNames !== names ) {
-            setAttributes({ inputNames: names.join( ', ' ) });
+        const uniqueNames = [...new Set(names)];
+
+        if ( inputNames !== uniqueNames ) {
+            setAttributes({ inputNames: uniqueNames.join( ', ' ) });
         }
     }
 
@@ -72,7 +74,7 @@ export default withSelect( ( select, props ) => {
                         <div className='input-values-title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
                         <div className='input-values'>
                         {
-                            inputNames && inputNames 
+                            inputNames
                             ? inputNames.split( ',' ).map( name => {
                                 return <div className='input-value'>{ name }</div>;
                             } )
