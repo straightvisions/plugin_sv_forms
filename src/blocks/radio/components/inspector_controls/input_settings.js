@@ -32,7 +32,7 @@ export default ( { props } ) => {
     return(
         <PanelBody
             title={ __( 'Input Settings', 'sv_gutenform' ) }
-            initialOpen={ false }
+            initialOpen={ true }
         >
             <TextControl
                 label={ __( 'Label', 'sv_gutenform' ) }

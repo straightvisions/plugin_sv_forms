@@ -5,6 +5,7 @@ const { __ } = wp.i18n;
 const {
     PanelBody,
     TextControl,
+    ToggleControl,
     Button,
     IconButton,
 } = wp.components;
@@ -65,14 +66,14 @@ export default ( { props } ) => {
     return(
         <PanelBody
             title={ __( 'Options', 'sv_gutenform' ) }
-            initialOpen={ true }
+            initialOpen={ false }
         >
-            <div className='sv-gutenform-select-options'>
+            <div className='sv-gutenform-radio-options'>
             {
                 parsedOptions.map( ( option, index ) => {
                     return(
-                        <div className='sv-gutenform-select-option'>
-                            <div className='sv-gutenform-select-option-flex'>
+                        <div className='sv-gutenform-radio-option'>
+                            <div className='sv-gutenform-radio-option-flex'>
                                 <TextControl
                                     label={ __( 'Label', 'sv_gutenform' ) }
                                     value={ option.label }
@@ -84,11 +85,18 @@ export default ( { props } ) => {
                                     onChange={ value => updateOption( index, 'value', getSlug( value ) ) }
                                 />
                             </div>
-                            <IconButton
-                                icon={ iconDelete }
-                                label={ __( 'Delete Option', 'sv_gutenform' ) }
-                                onClick={ () => deleteOption( index ) }
-                            />
+                            <div className='sv-gutenform-radio-option-flex'>
+                                <ToggleControl
+                                    label={ __( 'Disabled', 'sv_gutenform' ) }
+                                    checked={ option.disabled }
+                                    onChange={ () => updateOption( index, 'disabled', ! option.disabled )  }
+                                />
+                                <IconButton
+                                    icon={ iconDelete }
+                                    label={ __( 'Delete Option', 'sv_gutenform' ) }
+                                    onClick={ () => deleteOption( index ) }
+                                />
+                            </div>
                         </div>
                     );
 

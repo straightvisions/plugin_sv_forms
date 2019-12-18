@@ -15,8 +15,8 @@ export default ( { props } ) => {
         <Fragment>
             <InspectorControls>
                 <InputSettings props={ props } />
-                <ValidationSettings props={ props } />
                 <DisplaySettings props={ props } />
+                <ValidationSettings props={ props } />
                 <ColorSettings props={ props } />
             </InspectorControls>
             <InspectorAdvancedControls>

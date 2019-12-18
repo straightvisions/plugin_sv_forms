@@ -1,10 +1,5 @@
 // Required Components
 const { __ } = wp.i18n;
-const { createBlock } = wp.blocks;
-const { 
-    dispatch,
-    select, 
-} = wp.data;
 const {
     PanelBody,
     TextControl,

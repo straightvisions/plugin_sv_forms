@@ -18,11 +18,11 @@ export default ( { props, data } ) => {
     const { 
         setAttributes,
         attributes: {
-            formId,
             adminMail,
             adminMailUser,
             adminMailAdress,
-        }
+        },
+        clientId,
     } = props;
 
     // Functions
@@ -38,14 +38,16 @@ export default ( { props, data } ) => {
         }
     };
     const addAdminMailBlock = () => {
-        const isAdminMailBlock  = select('core/block-editor').getBlocks( formId ).some( block => { 
+        const formBlocks        = select('core/block-editor').getBlocks( clientId );
+        const isAdminMailBlock  = formBlocks.some( block => { 
             return block.name === 'straightvisions/sv-gutenform-admin-mail';
         });
+        const position          = formBlocks.length + 1;
         
         if ( ! isAdminMailBlock ) {
             const adminMailBlock = createBlock( 'straightvisions/sv-gutenform-admin-mail' );
 
-            dispatch( 'core/block-editor' ).insertBlock( adminMailBlock, 0, formId );
+            dispatch( 'core/block-editor' ).insertBlock( adminMailBlock, position, clientId, true );
         }
     };
     const setAdminMailUser      = adminMailUser     => setAttributes({ adminMailUser });

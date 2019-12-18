@@ -168,6 +168,10 @@ class select extends sv_gutenform {
 				$el .= ' selected';
 			}
 
+			if ( isset( $option->disabled ) && $option->disabled ) {
+				$el .= ' disabled';
+			}
+
 			$el .= '>' . $option->label . '</option>';
 
 			$options[] = $el;

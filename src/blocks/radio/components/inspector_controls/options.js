@@ -66,7 +66,7 @@ export default ( { props } ) => {
     return(
         <PanelBody
             title={ __( 'Options', 'sv_gutenform' ) }
-            initialOpen={ true }
+            initialOpen={ false }
         >
             <div className='sv-gutenform-radio-options'>
             {

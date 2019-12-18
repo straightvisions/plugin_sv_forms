@@ -58,14 +58,16 @@ export default props => {
     };
     const addUserMailBlock      = formId => {
         if ( sendMail ) {
-            const isUserMailBlock = select('core/block-editor').getBlocks( formId ).some( block => { 
+            const formBlocks        = select('core/block-editor').getBlocks( formId );
+            const isUserMailBlock   = formBlocks.some( block => { 
                 return block.name === 'straightvisions/sv-gutenform-user-mail';
             });
+            const position          = formBlocks.length + 1;
     
             if ( ! isUserMailBlock ) {
                 const userMailBlock = createBlock( 'straightvisions/sv-gutenform-user-mail' );
     
-                dispatch( 'core/block-editor' ).insertBlock( userMailBlock, 0, formId );
+                dispatch( 'core/block-editor' ).insertBlock( userMailBlock, position, formId, true );
             }
         }
     };

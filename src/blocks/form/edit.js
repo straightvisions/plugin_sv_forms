@@ -22,10 +22,6 @@ export default class extends Component {
         this.props      = props;
         this.state      = {};
         this.template   = [
-            ['core/heading', { 
-                content: __( 'Contact', 'sv_gutenform' ), 
-                level: 3,
-            }],
             ['straightvisions/sv-gutenform-text', {
                 label: __( 'Name', 'sv_gutenform' ),
                 name: 'name',
