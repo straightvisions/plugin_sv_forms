@@ -7,7 +7,7 @@
 	margin-bottom: .5em;
 }
 
-.wp-block-straightvisions-sv-gutenform-text input.components-text-control__input {
+.wp-block-straightvisions-sv-gutenform-text input[type="text"].components-text-control__input {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	background: #fff;
@@ -22,11 +22,13 @@
 	padding: .75em 1em;
 	color: rgba( 0, 0, 0, .75 );
 	width: 100%;
+	outline: none;
+	box-shadow: none;
 	transition: color .25s ease, border-color .25s ease;
 }
 
-.wp-block-straightvisions-sv-gutenform-text input.components-text-control__input:hover,
-.wp-block-straightvisions-sv-gutenform-text input.components-text-control__input:focus {
+.wp-block-straightvisions-sv-gutenform-text input[type="text"].components-text-control__input:hover,
+.wp-block-straightvisions-sv-gutenform-text input[type="text"].components-text-control__input:focus {
 	color: rgb( 0, 0, 0 );
 	border-color: rgb( 0, 0, 0 );
 }

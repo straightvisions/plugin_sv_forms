@@ -4,5 +4,14 @@
             <?php echo $attr['label']; ?>
         </label>
     <?php } ?>
-    <input <?php echo $this->get_input_attr(); ?> />
+    <div class="input_wrapper">
+        <div class="range_wrapper">
+        <?php 
+            echo $this->get_min_display(); 
+            echo $this->get_input(); 
+            echo $this->get_max_display();
+        ?>
+        </div>
+        <?php echo $this->get_value_display(); ?>
+    </div>
 </div>

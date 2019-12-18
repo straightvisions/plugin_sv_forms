@@ -67,6 +67,11 @@ class sv_gutenform extends modules {
 			 ->set_deps( array( 'jquery' ) )
 			 ->set_type( 'js' );
 
+		$this->get_script( 'range_js' )
+			 ->set_path( 'lib/frontend/js/range.js' )
+			 ->set_deps( array( 'jquery' ) )
+			 ->set_type( 'js' );
+
 		return $this;
 	}
 

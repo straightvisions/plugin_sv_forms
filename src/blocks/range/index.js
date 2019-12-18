@@ -20,10 +20,14 @@ registerBlockType( 'straightvisions/sv-gutenform-range', {
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
 	},
+	styles: [
+		{ label: __( 'Horizontal', 'sv_gutenform' ), name: 'horizontal', isDefault: true },
+		{ label:__( 'Vertical', 'sv_gutenform' ), name: 'vertical' },
+	],
 	attributes: {
 		// Input Settings
 		defaultValue: {
-			type: 'string',
+			type: 'number',
 		},
 		label: {
 			type: 'string',
@@ -39,12 +43,27 @@ registerBlockType( 'straightvisions/sv-gutenform-range', {
 		},
 		min: {
 			type: 'number',
+			default: 0,
 		},
 		max: {
 			type: 'number',
+			default: 100,
 		},
 		step: {
 			type: 'number',
+			default: 1,
+		},
+
+		// Display Settings
+		showValue: {
+			type: 'boolean',
+			default: true,
+		},
+		showMin: {
+			type: 'boolean',
+		},
+		showMax: {
+			type: 'boolean',
 		},
 
 		// Color Settings

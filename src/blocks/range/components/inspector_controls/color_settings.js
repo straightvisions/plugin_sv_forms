@@ -14,18 +14,12 @@ export default ( { props } ) => {
         setAttributes,
         attributes: {
             labelColor,
-            inputColor,
-            inputBackgroundColor,
         }
     } = props;
 
     // Functions
     const setLabelColor                 = labelColor                => setAttributes({ labelColor });
     const setLabelColorClass            = labelColorClass           => setAttributes({ labelColorClass });
-    const setInputColor                 = inputColor                => setAttributes({ inputColor });
-    const setInputColorClass            = inputColorClass           => setAttributes({ inputColorClass });
-    const setInputBackgroundColor       = inputBackgroundColor      => setAttributes({ inputBackgroundColor });
-    const setInputBackgroundColorClass  = inputBackgroundColorClass => setAttributes({ inputBackgroundColorClass });
     
     // Returns an color object if this color is defined in the editor
     const getColorObject = color => {
@@ -54,22 +48,6 @@ export default ( { props } ) => {
                 setLabelColorClass( getColorClass( value ) );
             },
             label: __( 'Label', 'sv_gutenform' ),
-        },
-        {
-            value: inputColor,
-            onChange: value => { 
-                setInputColor( value );
-                setInputColorClass( getColorClass( value ) );
-            },
-            label: __( 'Input', 'sv_gutenform' ),
-        },
-        {
-            value: inputBackgroundColor,
-            onChange: value => { 
-                setInputBackgroundColor( value );
-                setInputBackgroundColorClass( getColorClass( value, true ) );
-            },
-            label: __( 'Input Background', 'sv_gutenform' ),
         },
     ];
 

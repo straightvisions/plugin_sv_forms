@@ -23,6 +23,8 @@
 	color: rgba( 0, 0, 0, .75 );
 	width: 100%;
 	font-family: inherit;
+	outline: none;
+	box-shadow: none;
 	transition: color .25s ease, border-color .25s ease;
 }
 

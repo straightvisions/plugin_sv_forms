@@ -29,7 +29,7 @@ export default ( { props } ) => {
     return(
         <PanelBody
             title={ __( 'Validation Settings', 'sv_gutenform' ) }
-            initialOpen={ true }
+            initialOpen={ false }
         >
             <ToggleControl
                 label={ __( 'Required', 'sv_gutenform' ) }
@@ -52,6 +52,7 @@ export default ( { props } ) => {
                 label={ __( 'Step', 'sv_gutenform' ) }
                 help={ __( 'Defines the step value.', 'sv_gutenform' ) }
                 value={ step }
+                min='1'
                 onChange={ value => setStep( value ) }
             />
         </PanelBody>
