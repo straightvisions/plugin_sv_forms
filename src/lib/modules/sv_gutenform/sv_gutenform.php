@@ -154,7 +154,7 @@ class sv_gutenform extends modules {
 	// Returns the input value by it's name
 	public function get_input_value( string $name, array $data, bool $single = true ) {
 		$values = array();
-
+		
 		foreach( $data as $input ) {
 			if ( $input['name'] === $name ) {
 				if ( $single ) {
@@ -292,8 +292,6 @@ class sv_gutenform extends modules {
 		} else {
 			$headers = array();
 		}
-
-		//$this->ajaxStatus( 'success', array( $to, $subject,$message, $headers ) );
 		
 		$this->send_mail( $to, $subject, $message, $headers );
 

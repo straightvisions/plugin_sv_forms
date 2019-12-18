@@ -20,6 +20,30 @@
     font-weight: 400;
 }
 
+.wp-block-straightvisions-sv-gutenform-thank-you > .header > .description .input-values-wrapper {
+    margin-top: 10px;
+}
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .header > .description .input-values-title {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .header > .description .input-values {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .header > .description .input-values > .input-value {
+    padding: 4px 6px;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
 .wp-block-straightvisions-sv-gutenform-thank-you > .header::after,
 .wp-block-straightvisions-sv-gutenform-thank-you > .body::after  {
     z-index: -1;
