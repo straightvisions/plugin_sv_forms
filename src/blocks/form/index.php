@@ -2,6 +2,8 @@
 namespace sv_gutenform;
 
 class form extends sv_gutenform {	
+	protected $block_attr 	= array();
+
 	public function init() {
 		$this->register_block();
 	}
@@ -31,6 +33,8 @@ class form extends sv_gutenform {
 	}
 
 	public function render_block( array $attr, string $content ): string {
+		$this->block_attr = $attr;
+		
 		ob_start();
 
 		require( $this->get_path( 'lib/frontend/tpl/form.php' ) );
@@ -114,5 +118,23 @@ class form extends sv_gutenform {
 				),
 			)
 		);
+	}
+
+	// Returns a string with all attributes for the form
+	public function get_form_class(): string {
+		$class 			= array();
+		$class[]		= 'wp-block-straightvisions-sv-gutenform';
+
+		// Alignment
+		if ( isset( $this->block_attr['align'] ) ) { 
+			$class[] 	= 'align' . $this->block_attr['align'];
+		}
+
+		// Additional Classes
+		if ( isset( $this->block_attr['className'] ) ) { 
+			$class[] 	= $this->block_attr['className'];
+		}
+
+		return implode( ' ', $class );
 	}
 }
