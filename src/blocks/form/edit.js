@@ -2,13 +2,10 @@ import InspectorControls from './components/inspector_controls';
 import { FormContext } from '../../blocks';
 
 const { 
-    Component,
-    Fragment 
-}                                   = wp.element;
-const { 
     select, 
     dispatch 
 }                                   = wp.data;
+const { Component }                 = wp.element;
 const { __ }                        = wp.i18n;
 const { InnerBlocks }               = wp.blockEditor;
 const { editPost }                  = dispatch( 'core/editor' );
@@ -49,7 +46,7 @@ export default class extends Component {
 
     // React Lifecycle Methos
     componentDidMount() {
-        if ( ! this.doesFormExist() ) {
+        if ( ! this.doesFormExist() || ( this.doesFormExist() && this.isDuplicate() ) ) {
             this.props.attributes.formId = this.props.clientId;
             this.updatePostMeta( 'update' );
         }
@@ -94,6 +91,26 @@ export default class extends Component {
         if ( ! currentForms || ! currentForms[ this.props.attributes.formId ] ) return false;
 
         return true;
+    }
+
+    isDuplicate() {
+        const currentBlocks = wp.data.select('core/block-editor').getBlocks();
+        let formsWithSameId = 0;
+
+        currentBlocks.forEach( block => {
+            if ( 
+                block.name === 'straightvisions/sv-gutenform' 
+                && block.attributes.formId === this.props.attributes.formId  
+            ) {
+                formsWithSameId++;
+            }
+        } );
+
+        if ( formsWithSameId > 1 ) {
+            return true;
+        }
+
+        return false;
     }
 
     updatePostMeta( action ) {
