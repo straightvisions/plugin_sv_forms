@@ -21,9 +21,15 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		align:[ 'wide', 'full' ],
 	},
 	attributes: {
-		// Hidden
+		postId: {
+			type: 'number',
+		},
 		formId: {
 			type: 'string',
+		},
+		saveSubmits: {
+			type: 'boolean',
+			default: true,
 		},
 
 		// Mail Settings

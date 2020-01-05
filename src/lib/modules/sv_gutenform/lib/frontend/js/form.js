@@ -44,7 +44,7 @@ const getParsedContent = ( content, formData ) => {
 const showThankYou  = ( form, formData ) => {
     const el        = form.find( '.wp-block-straightvisions-sv-gutenform-thank-you' );
 
-    if ( el.length > 0 ) {
+    if ( el.length > 0 && el.html().replace(/\s/g, "") ) {
         const parsedContent = getParsedContent( el.html(), formData );
 
         el.html( parsedContent );
@@ -86,7 +86,6 @@ jQuery( 'form.wp-block-straightvisions-sv-gutenform' ).submit( function( e ) {
     }, function( response ) {
         //response = JSON.parse( response );
         //console.log(response);
-
 
         showThankYou( form, formData );
     });

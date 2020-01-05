@@ -9,6 +9,7 @@ const {
     PanelBody,
     TextControl,
     SelectControl,
+    ToggleControl,
 } = wp.components;
 
 export default ( { props, data } ) => {
@@ -18,6 +19,7 @@ export default ( { props, data } ) => {
     const { 
         setAttributes,
         attributes: {
+            saveSubmits,
             adminMail,
             adminMailUser,
             adminMailAdress,
@@ -26,7 +28,8 @@ export default ( { props, data } ) => {
     } = props;
 
     // Functions
-    const setAdminMail = adminMail => { 
+    const setSaveSubmits    = saveSubmits => setAttributes({ saveSubmits });
+    const setAdminMail      = adminMail => { 
         setAttributes({ adminMail });
 
         if ( adminMail !== 'disabled' ) {
@@ -83,6 +86,11 @@ export default ( { props, data } ) => {
             title={ __( 'Form Settings', 'sv_gutenform' ) }
             initialOpen={ false }
         >
+            <ToggleControl
+                label={ __( 'Save Submits', 'sv_gutenform' ) }
+                checked={ saveSubmits }
+                onChange={ () => setSaveSubmits( ! saveSubmits )  }
+            />
             <SelectControl
                 label={ __( 'Admin Mail', 'sv_gutenform' ) }
                 value={ adminMail }
@@ -91,7 +99,7 @@ export default ( { props, data } ) => {
                     { label: 'Send to Author', value: 'author' },
                     { label: 'Send to Mail', value: 'adress' },
                 ] }
-                onChange={ ( value ) => setAdminMail( value ) }
+                onChange={ value => setAdminMail( value ) }
             />
             <AdminMailAuthor />
             {
@@ -100,7 +108,7 @@ export default ( { props, data } ) => {
                     label={ __( 'E-Mail', 'sv_gutenform' ) }
                     type='email'
                     value={ adminMailAdress }
-                    onChange={ ( value ) => setAdminMailAdress( value ) }
+                    onChange={ value => setAdminMailAdress( value ) }
                 />
                 : null
             }

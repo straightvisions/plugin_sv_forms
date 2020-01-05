@@ -70,9 +70,15 @@ class form extends sv_gutenform {
 				'editor_style'  	=> 'sv-gutenform-block-editor',
 				'render_callback'	=> array( $this, 'init_block' ),
 				'attributes'		=> array(
-					// Hidden
+					'postId' => array(
+						'type' 		=> 'number',
+					),
 					'formId' => array(
 						'type' 		=> 'string',
+					),
+					'saveSubmits' => array(
+						'type'		=> 'bool',
+						'default'	=> true,
 					),
 
 					// Mail Settings

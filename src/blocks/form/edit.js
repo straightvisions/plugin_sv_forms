@@ -47,6 +47,7 @@ export default class extends Component {
     // React Lifecycle Methos
     componentDidMount() {
         if ( ! this.doesFormExist() || ( this.doesFormExist() && this.isDuplicate() ) ) {
+            this.props.attributes.postId = select('core/editor').getCurrentPostId();
             this.props.attributes.formId = this.props.clientId;
             this.updatePostMeta( 'update' );
         }
@@ -66,6 +67,7 @@ export default class extends Component {
             <div className={ this.props.className }>
                 <InspectorControls props={ this.props } data={ this.state } />
                 <div className='header'>
+                    <div className='form-id'>Form ID: { this.props.attributes.formId }</div>
                     <div className='title'>{ __( 'SV Gutenform', 'sv_gutenform' ) }</div>
                     <div className='description'>
                         { __( 'Everything inside this block will be the content of the form.', 'sv_gutenform' ) }
