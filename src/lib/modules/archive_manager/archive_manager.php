@@ -108,7 +108,7 @@ class archive_manager extends modules {
 			
 			if ( $user_mail ) {
 				// @todo Add ajax link to resend mail
-				$resend_user_mail_label	= sprintf( '<a href="%1$s">%2$s</a>', esc_url( 'https://google.com' ), esc_html( __( 'Resend User Mail', 'sv_gutenform' ) ) );
+				$resend_user_mail_label	= sprintf( '<a href="#" id="resend_user_mail">%1$s</a>', esc_html( __( 'Resend User Mail', 'sv_gutenform' ) ) );
 				$actions['resend_user_mail'] = $resend_user_mail_label;
 			}
 
@@ -117,7 +117,7 @@ class archive_manager extends modules {
 			
 			if ( $admin_mail ) {
 				// @todo Add ajax link to resend mail
-				$resend_admin_mail_label = sprintf( '<a href="%1$s">%2$s</a>', esc_url( 'https://google.com' ), esc_html( __( 'Resend Admin Mail', 'sv_gutenform' ) ) );
+				$resend_admin_mail_label = sprintf( '<a href="#" id="resend_admin_mail">%1$s</a>', esc_html( __( 'Resend Admin Mail', 'sv_gutenform' ) ) );
 				$actions['resend_admin_mail'] = $resend_admin_mail_label;
 			}
 		}
