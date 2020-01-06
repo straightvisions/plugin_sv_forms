@@ -93,15 +93,24 @@ class form extends sv_gutenform {
 					'adminMailAdress'	=> array(
 						'type'		=> 'string',
 					),
+					'adminMailSubject'	=> array(
+						'type'		=> 'string',
+					),
+					'adminMailFromTitle'=> array(
+						'type'		=> 'string',
+					),
+					'adminMailFromMail'	=> array(
+						'type'		=> 'string',
+					),
 					'adminMailContent'	=> array(
 						'type'		=> 'string',
 					),
 
 					// User Mails
-					'userMailInputName' => array(
+					'userMail' => array(
 						'type'		=> 'bool',
 					),
-					'userMailAdress' 	=> array(
+					'userMailInputName' => array(
 						'type'		=> 'string',
 					),
 					'userMailSubject' 	=> array(

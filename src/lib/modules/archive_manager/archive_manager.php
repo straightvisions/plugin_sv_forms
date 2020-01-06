@@ -9,6 +9,7 @@ class archive_manager extends modules {
 		add_action( 'init', array( $this, 'register_custom_post_type' ) );
 		add_action( 'manage_sv_gutenform_submit_posts_custom_column' , array( $this, 'custom_sv_gutenform_submit_column' ), 10, 2 );
 		add_filter( 'manage_sv_gutenform_submit_posts_columns', array( $this, 'set_custom_edit_sv_gutenform_submit_columns' ) );
+		add_filter( 'post_row_actions', array( $this, 'modify_post_row_actions' ), 10, 2 );
 	}
 	
 	// Registers a new custom post type
@@ -58,8 +59,9 @@ class archive_manager extends modules {
 
 	// Sets the title of the custom columns
 	public function set_custom_edit_sv_gutenform_submit_columns( array $columns ): array {
-		$columns['post_id'] = __( 'Post ID', 'sv_gutenform' );
-		$columns['form_id'] = __( 'Form ID', 'sv_gutenform' );
+		$columns['user_mail'] 	= __( 'User Mail', 'sv_gutenform' );
+		$columns['admin_mail'] 	= __( 'Admin Mail', 'sv_gutenform' );
+		$columns['form_id'] 	= __( 'Form ID', 'sv_gutenform' );
 
 		return $columns;
 	}
@@ -67,13 +69,60 @@ class archive_manager extends modules {
 	// Sets the value of the custom columns
 	public function custom_sv_gutenform_submit_column( $column, $post_id ) {
 		switch( $column ) {
-			case 'post_id':
-				echo get_post_meta( $post_id, 'post_id', true );
+			case 'user_mail':
+				$user_mail = boolval( get_post_meta( $post_id, 'user_mail', true ) );
+
+				if ( $user_mail ) {
+					echo '<span class="dashicons dashicons-yes-alt"></span>';
+				} else {
+					echo '<span class="dashicons dashicons-dismiss"></span>';
+				}
+				break;
+			case 'admin_mail':
+				$admin_mail = boolval( get_post_meta( $post_id, 'admin_mail', true ) );
+
+				if ( $admin_mail ) {
+					echo '<span class="dashicons dashicons-yes-alt"></span>';
+				} else {
+					echo '<span class="dashicons dashicons-dismiss"></span>';
+				}
 				break;
 			case 'form_id':
 				echo get_post_meta( $post_id, 'form_id', true );
 				break;
 		}
+	}
+
+	// Adds custom post row actions to the sv_gutenform_submit post type
+	public function modify_post_row_actions( array $actions, object $post ): array {
+		if ( $post->post_type === 'sv_gutenform_submit' && current_user_can( 'edit_post', $post->ID ) ) {
+			// Building a link to open the post with the form of the submission
+			$form_post_id 			= get_post_meta( $post->ID, 'post_id', true );
+			$form_post_url 			= admin_url( 'post.php?post=' . $form_post_id );
+			$edit_form_link 		= add_query_arg( array( 'action' => 'edit' ), $form_post_url );
+			$edit_form_label		= sprintf( '<a href="%1$s">%2$s</a>', esc_url( $edit_form_link ), esc_html( __( 'Edit Form', 'sv_gutenform' ) ) );
+			$actions['edit_form'] 	= $edit_form_label;
+
+			// Building a link to resend the user mail
+			$user_mail = boolval( get_post_meta( $post->ID, 'user_mail', true ) );
+			
+			if ( $user_mail ) {
+				// @todo Add ajax link to resend mail
+				$resend_user_mail_label	= sprintf( '<a href="%1$s">%2$s</a>', esc_url( 'https://google.com' ), esc_html( __( 'Resend User Mail', 'sv_gutenform' ) ) );
+				$actions['resend_user_mail'] = $resend_user_mail_label;
+			}
+
+			// Building a link to resend the admin mail
+			$admin_mail = boolval( get_post_meta( $post->ID, 'admin_mail', true ) );
+			
+			if ( $admin_mail ) {
+				// @todo Add ajax link to resend mail
+				$resend_admin_mail_label = sprintf( '<a href="%1$s">%2$s</a>', esc_url( 'https://google.com' ), esc_html( __( 'Resend Admin Mail', 'sv_gutenform' ) ) );
+				$actions['resend_admin_mail'] = $resend_admin_mail_label;
+			}
+		}
+
+		return $actions;
 	}
 
 	// ######### Helper Methods #########
@@ -97,6 +146,8 @@ class archive_manager extends modules {
 	public function add_post( object $attr, array $data ): archive_manager {
 		if ( ! $attr || ! $data || ! $attr->saveSubmits ) return $this;
 
+		$admin_mail = $attr->adminMail === 'disabled' ? false : true;
+
 		$postarr = array(
 			'post_title'	=> __( 'Submission from Post #', 'sv_gutenform' ) . $attr->postId, 
 			'post_content'	=> $this->get_post_content( $data ),
@@ -105,6 +156,8 @@ class archive_manager extends modules {
 			'meta_input'	=> array(
 				'post_id'	=> $attr->postId,
 				'form_id'	=> $attr->formId,
+				'user_mail' => $attr->userMail === false ? 0 : 1,
+				'admin_mail'=> $attr->adminMail === 'disabled' ? 0 : 1,
 			),
 		);
 		
