@@ -70,7 +70,7 @@ class archive_manager extends modules {
 	public function custom_sv_gutenform_submit_column( $column, $post_id ) {
 		switch( $column ) {
 			case 'user_mail':
-				$user_mail = boolval( get_post_meta( $post_id, 'user_mail', true ) );
+				$user_mail = get_post_meta( $post_id, 'send_user_mail', true ) ? boolval( get_post_meta( $post_id, 'send_user_mail', true ) ) : false;
 
 				if ( $user_mail ) {
 					echo '<span class="dashicons dashicons-yes-alt"></span>';
@@ -79,7 +79,7 @@ class archive_manager extends modules {
 				}
 				break;
 			case 'admin_mail':
-				$admin_mail = boolval( get_post_meta( $post_id, 'admin_mail', true ) );
+				$admin_mail = get_post_meta( $post_id, 'admin_mail', true ) && ! empty( get_post_meta( $post_id, 'admin_mail', true ) ) ? true : false;
 
 				if ( $admin_mail ) {
 					echo '<span class="dashicons dashicons-yes-alt"></span>';
@@ -104,7 +104,7 @@ class archive_manager extends modules {
 			$actions['edit_form'] 	= $edit_form_label;
 
 			// Building a link to resend the user mail
-			$user_mail = boolval( get_post_meta( $post->ID, 'user_mail', true ) );
+			$user_mail = get_post_meta( $post->ID, 'send_user_mail', true ) ? boolval( get_post_meta( $post->ID, 'send_user_mail', true ) ) : false;
 			
 			if ( $user_mail ) {
 				// @todo Add ajax link to resend mail
@@ -113,7 +113,7 @@ class archive_manager extends modules {
 			}
 
 			// Building a link to resend the admin mail
-			$admin_mail = boolval( get_post_meta( $post->ID, 'admin_mail', true ) );
+			$admin_mail = get_post_meta( $post->ID, 'admin_mail', true ) && ! empty( get_post_meta( $post->ID, 'admin_mail', true ) ) ? true : false;
 			
 			if ( $admin_mail ) {
 				// @todo Add ajax link to resend mail
@@ -125,16 +125,15 @@ class archive_manager extends modules {
 		return $actions;
 	}
 
-	// ######### Helper Methods #########
+	// ######### Post Creation Methods #########
 
-	// Returns the form data as table
+	// Returns the form data as table for the post content
 	private function get_post_content( array $data ): string {
-		$content = '<!-- wp:table --><figure class="wp-block-table"><table class=""><tbody>';
+		$new_data 	= $this->helper_methods->remove_input_value( 'form_id', $data );
+		$content 	= '<!-- wp:table --><figure class="wp-block-table"><table class=""><tbody>';
 
-		foreach( $data as $input ) {
-			if ( $input['name'] !== 'form_id' ) {
-				$content .= '<tr><td>' . $input['name'] . '</td><td>' . $input['value'] . '</td></tr>';
-			}
+		foreach( $new_data as $input ) {
+			$content .= '<tr><td>' . $input['name'] . '</td><td>' . $input['value'] . '</td></tr>';
 		}
 
 		$content .= '</tbody></table></figure><!-- /wp:table -->';
@@ -142,23 +141,52 @@ class archive_manager extends modules {
 		return $content;
 	}
 
+	// Returns the submission data as post meta array
+	private function get_post_meta( object $attr, array $data ): array {
+		// Meta Array
+		$meta = array(
+			'post_id'	=> $attr->postId,
+			'form_id'	=> $attr->formId,
+			'form_data' => json_encode( $this->helper_methods->remove_input_value( 'form_id', $data ) ),
+			'send_user_mail' => $attr->userMail ? 1 : 0,
+		);
+
+		// User Mail
+		if ( ! empty( $attr->userMailInputName ) ) {
+			if ( $this->helper_methods->get_input_value( $attr->userMailInputName, $data ) ) {
+				$meta['user_mail'] = $this->helper_methods->get_input_value( $attr->userMailInputName, $data );
+			}
+		}
+
+		// Admin Mail
+		if ( $attr->adminMail !== 'disabled' ) {
+			switch ( $attr->adminMail ) {
+				// E-Mail Adress
+				case 'adress':
+					$meta['admin_mail'] = $attr->adminMailAdress;
+					break;
+
+				// Author
+				case 'author':
+					$meta['admin_mail'] = get_the_author_meta( 'user_email', $attr->adminMailUser );
+					break;
+			}
+		}
+
+		return $meta;
+	}
+
 	// Adds the submission as a new post
 	public function add_post( object $attr, array $data ): archive_manager {
 		if ( ! $attr || ! $data || ! $attr->saveSubmits ) return $this;
 
-		$admin_mail = $attr->adminMail === 'disabled' ? false : true;
-
+		// Post Arguments
 		$postarr = array(
 			'post_title'	=> __( 'Submission from Post #', 'sv_gutenform' ) . $attr->postId, 
 			'post_content'	=> $this->get_post_content( $data ),
 			'post_type'		=> 'sv_gutenform_submit',
 			'post_status'	=> 'publish',
-			'meta_input'	=> array(
-				'post_id'	=> $attr->postId,
-				'form_id'	=> $attr->formId,
-				'user_mail' => $attr->userMail === false ? 0 : 1,
-				'admin_mail'=> $attr->adminMail === 'disabled' ? 0 : 1,
-			),
+			'meta_input'	=> $this->get_post_meta( $attr, $data ),
 		);
 		
 		wp_insert_post( $postarr );

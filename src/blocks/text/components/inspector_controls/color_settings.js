@@ -3,7 +3,7 @@ const { __ } = wp.i18n;
 const { 
     PanelColorSettings, 
     getColorObjectByColorValue, 
-    getColorClassName  
+    getColorClassName,
 } = wp.blockEditor;
 
 export default ( { props } ) => {

@@ -4,8 +4,8 @@ Donate link: https://straightvisions.com
 Tags: form-block, form-builder, contact-form
 Requires PHP: 7.0
 Requires at least: 5.0
-Tested up to: 5.3
-Stable tag: 1.4.00
+Tested up to: 5.3.2
+Stable tag: 1.4.10
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -49,6 +49,54 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 3. You are using a caching plugin? Don't forget to flush caches now.
 
 == Changelog ==
+
+= 1.4.10 =
+### Features
+
+* Adding an archive for form submissions, with the form data inside.
+* Automatically add Admin Mail Block when Admin Mail is selected in the
+
+### New Blocks
+
+* Number Block:
+    * A input field for numbers.
+* Date Block:
+    * A input field for dates.
+* Range Block:
+    * A input field for ranges.
+* Phone:
+    * A input field for phone numbers.
+* Password Block:
+    * A input field for passwords and secrects.
+* User Mail Block:
+    * A wrapper block that contains the e-mail content for the user.
+    * Add support for output of input values.
+* Admin Mail Block:
+    * A wrapper block that contains the e-mail content for the admin.
+    * Add support for output of input values.
+
+### Enhancements
+
+* SV Gutenform Block
+    * Add header to wrapper with block name, description and the form id.
+    * Add border and styling to wrapper, to better identify the block.
+    * Add setting to save form submits.
+    * Automatically add Admin Mail Block when Admin Mail is selected.
+    * Updated default form template, when adding a new form.
+* Thank You Message Block:
+    * Add support for output of input values.
+* E-Mail Block:
+    * Renamed "Is recipient?" to "Send Confirmation Mail" for better understanding.
+    * Automatically add User Mail Block when Send Confirmation Mail is selected.
+* Post Meta:
+    * Updated the data structure and management of the form data inside the post meta.
+* Cleaned code for better readability and performance.
+
+### Bug Fixes
+
+* Fix error when Thank You Message block is missing.
+* Fix duplicate form ids when duplicating an existing form.
+* Fix Validation Settings open on default.
 
 = 1.4.00 =
 ### Various

@@ -18,7 +18,7 @@ class submission_manager extends modules {
 		$post_id	= intval( $_POST['post_id'] );
 		$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_gutenform_forms', true ) );
 		$form_data	= $_POST['form_data'];
-		$form_id	= $this->get_input_value( 'form_id', $form_data );
+		$form_id	= $this->helper_methods->get_input_value( 'form_id', $form_data );
 
 		if ( $form_id && $post_meta->$form_id ) {
 			$form_attr = $post_meta->$form_id;
@@ -29,24 +29,5 @@ class submission_manager extends modules {
 					->send_user_mail( $form_attr, $form_data )
 					->send_admin_mail( $form_attr, $form_data );
 		}
-	}
-
-	// ######### Helper Methods #########
-
-	// Returns the value of an input
-	public function get_input_value( string $name, array $data, bool $single = true ) {
-		$values = array();
-		
-		foreach( $data as $input ) {
-			if ( $input['name'] === $name ) {
-				if ( $single ) {
-					return $input['value'];
-				} else {
-					$values[] = $input['value'];
-				}
-			}
-		}
-
-		return $values;
 	}
 }
