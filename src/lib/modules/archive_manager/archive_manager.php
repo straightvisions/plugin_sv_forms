@@ -10,6 +10,8 @@ class archive_manager extends modules {
 		add_action( 'manage_sv_gutenform_submit_posts_custom_column' , array( $this, 'custom_sv_gutenform_submit_column' ), 10, 2 );
 		add_filter( 'manage_sv_gutenform_submit_posts_columns', array( $this, 'set_custom_edit_sv_gutenform_submit_columns' ) );
 		add_filter( 'post_row_actions', array( $this, 'modify_post_row_actions' ), 10, 2 );
+		add_filter( 'wp_privacy_personal_data_exporters', array( $this, 'register_personal_data_exporter' ), 10 );
+		add_filter( 'wp_privacy_personal_data_erasers', array( $this, 'register_personal_data_eraser' ), 10 );
 	}
 	
 	// Registers a new custom post type
@@ -125,7 +127,7 @@ class archive_manager extends modules {
 		return $actions;
 	}
 
-	// ######### Post Creation Methods #########
+	// ###### Post Creation Methods ######
 
 	// Returns the form data as table for the post content
 	private function get_post_content( array $data ): string {
@@ -192,5 +194,104 @@ class archive_manager extends modules {
 		wp_insert_post( $postarr );
 
 		return $this;
+	}
+
+	// ###### Personal Data Methods ######
+
+	// Fetches all submissions linked to the email adress
+	private function get_posts_by_email( string $email ): array {
+		$query_args		= array(
+			'posts_per_page' => -1,
+			'post_type'		=> 'sv_gutenform_submit',
+			'meta_query' 	=> array(
+				array(
+					'key'		=> 'user_mail',
+					'value' 	=> $email,
+					'compare' 	=> '=',
+				),
+			),
+		);
+		
+		return get_posts( $query_args );
+	}
+
+	// Returns all the personal data that is connected with the given email adress
+	public function personal_data_exporter( string $email, int $page = 1 ): array {
+		$number 		= 500;
+		$export_items 	= array();
+		$posts			= $this->get_posts_by_email( $email );
+
+		// Fetches all data for each submission
+		foreach ( $posts as $post ) {
+			$form_data 	= json_decode( get_post_meta( $post->ID, 'form_data', true ) );
+			$item_id 	= 'sv-gutenform-submit-' . $post->ID;
+			$group_id 	= 'sv-gutenform-submissions';
+			$group_label= __( 'SV Gutenform Submissions', 'sv_gutenform' );
+			$data		= array();
+			
+			foreach ( $form_data as $form_input ) {
+				$data[] = get_object_vars( $form_input );
+			}
+
+			$export_items[] = array(
+				'group_id'		=> $group_id,
+				'group_label'	=> $group_label,
+				'item_id'		=> $item_id,
+				'data'			=> $data,
+			);
+		}
+		
+		$done = count( $posts ) < $number;
+
+		return array(
+			'data'	=> $export_items,
+			'done'	=> $done,
+		);
+	}
+
+	// Registers the personal data exporter
+	public function register_personal_data_exporter( array $exporters ): array {
+		$exporters['sv_gutenform'] = array(
+			'exporter_friendly_name' => __( 'SV Gutenform Plugin', 'sv_gutenform' ),
+			'callback' => array( $this, 'personal_data_exporter' ),
+		);
+
+		return $exporters;
+	}
+
+	// Deletes all the personal data that is connected with the given email adress
+	public function personal_data_eraser( string $email, int $page = 1 ): array {
+		$number 		= 500;
+		$export_items 	= array();
+		$posts			= $this->get_posts_by_email( $email );
+		$items_removed	= false;
+
+		// Fetches all data for each submission
+		foreach ( $posts as $post ) {
+			wp_delete_post( $post->ID, true );
+		}
+
+		if ( count( $this->get_posts_by_email( $email ) ) < 1 ) {
+			$items_removed = true;
+		}
+		
+		$done = count( $posts ) < $number;
+
+		return array(
+			'items_removed'	 => $items_removed,
+			'items_retained' => false,
+			'messages' => '',
+			'done' => $done,
+		);
+	}
+
+	// Registers the personal data eraser
+	public function register_personal_data_eraser( array $erasers ): array {
+		$erasers['sv_gutenform'] = array(
+			'eraser_friendly_name' => __( 'SV Gutenform Plugin', 'sv_gutenform' ),
+			'callback' => array( $this, 'personal_data_eraser' ),
+		);
+
+		return $erasers;
 	}
 }

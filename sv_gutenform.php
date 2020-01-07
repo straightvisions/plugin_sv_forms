@@ -1,6 +1,6 @@
 <?php
 /*
-	Version: 1.4.10
+	Version: 1.4.11
 	Plugin Name: SV Gutenform
 	Text Domain: sv_gutenform
 	Description: Build forms in Gutenberg with ease.
