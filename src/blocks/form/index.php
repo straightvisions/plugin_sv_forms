@@ -80,6 +80,10 @@ class form extends sv_gutenform {
 						'type'		=> 'bool',
 						'default'	=> true,
 					),
+					'spamGuardLevel' => array(
+						'type' 		=> 'number',
+						'default'	=> 0,
+					),
 
 					// Mail Settings
 					// Admin Mails

@@ -5,7 +5,7 @@ Tags: form-block, form-builder, contact-form
 Requires PHP: 7.0
 Requires at least: 5.0
 Tested up to: 5.3.2
-Stable tag: 1.4.11
+Stable tag: 1.4.12
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -49,6 +49,12 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 3. You are using a caching plugin? Don't forget to flush caches now.
 
 == Changelog ==
+
+= 1.4.12 =
+
+### Features
+
+* Add Spam Guard, to protect forms from spam.
 
 = 1.4.11 =
 
