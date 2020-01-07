@@ -28,6 +28,13 @@ class submission_manager extends modules {
 				->mail_manager
 					->send_user_mail( $form_attr, $form_data )
 					->send_admin_mail( $form_attr, $form_data );
+
+			$encrypted_timestamp = $this->helper_methods->get_input_value( 'sv_gutenform_sg_timestamp', $form_data );
+
+			// @todo ERROR!
+			$decrypted_timestamp = $this->helper_methods->decrypt_string( $encrypted_timestamp );
+
+			$this->ajaxStatus( 'success', gettype( $encrypted_timestamp ) );
 		}
 	}
 }
