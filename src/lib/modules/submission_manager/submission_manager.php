@@ -21,20 +21,16 @@ class submission_manager extends modules {
 		$form_id	= $this->helper_methods->get_input_value( 'form_id', $form_data );
 
 		if ( $form_id && $post_meta->$form_id ) {
-			$form_attr = $post_meta->$form_id;
+			$form_attr 				= $post_meta->$form_id;
 
-			$this->archive_manager
-					->add_post( $form_attr, $form_data )
-				->mail_manager
-					->send_user_mail( $form_attr, $form_data )
-					->send_admin_mail( $form_attr, $form_data );
-
-			$encrypted_timestamp = $this->helper_methods->get_input_value( 'sv_gutenform_sg_timestamp', $form_data );
-
-			// @todo ERROR!
-			$decrypted_timestamp = $this->helper_methods->decrypt_string( $encrypted_timestamp );
-
-			$this->ajaxStatus( 'success', gettype( $encrypted_timestamp ) );
+			
+			if ( ! $this->spam_guard->check( $form_attr, $form_data ) ) {
+				$this->archive_manager
+						->add_post( $form_attr, $form_data )
+					->mail_manager
+						->send_user_mail( $form_attr, $form_data )
+						->send_admin_mail( $form_attr, $form_data );
+			}
 		}
 	}
 }

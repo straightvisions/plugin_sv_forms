@@ -2,22 +2,15 @@
 namespace sv_gutenform;
 
 class helper_methods extends modules {
-	// Cryption Properties
-	private $ciphering 		= 'BF-CBC';
+	// SSL Cryption Properties
+	private $ciphering 		= 'AES-128-CTR';
 	private $options		= 0;
-	private static $cryption_key;
-	private static $iv_length;
-	private static $cryption_iv;
+	private $cryption_key	= 'sv_gutenform_sg_cryption_key';
+	private $cryption_iv	= '1234567891011121';
 
     // ##### Initialization Methods ##### 
     public function init() {
-		$this->generate_cryption_props();
-	}
 
-	private function generate_cryption_props() {
-		static::$cryption_key	= openssl_digest( php_uname(), 'MD5', TRUE );
-		static::$iv_length 		= openssl_cipher_iv_length( $this->ciphering );
-		static::$cryption_iv 	= random_bytes( static::$iv_length );
 	}
     
     // Returns an input value from an data array, by it's input name
@@ -53,12 +46,12 @@ class helper_methods extends modules {
 	// Returns an encrypted string
 	// Source: https://www.geeksforgeeks.org/how-to-encrypt-and-decrypt-a-php-string/
 	public function encrypt_string( string $string ): string {
-		return openssl_encrypt( $string, $this->ciphering, static::$cryption_key, $this->options, static::$cryption_iv );
+		return openssl_encrypt( $string, $this->ciphering, $this->cryption_key, $this->options, $this->cryption_iv );
 	}
 
 	// Returns a decrypted string
 	// Source: https://www.geeksforgeeks.org/how-to-encrypt-and-decrypt-a-php-string/
 	public function decrypt_string( string $string ): string {
-		return openssl_decrypt( $string, $this->ciphering, static::$cryption_key, $this->options, static::$cryption_iv );
+		return openssl_decrypt( $string, $this->ciphering, $this->cryption_key, $this->options, $this->cryption_iv );
 	}
 }
