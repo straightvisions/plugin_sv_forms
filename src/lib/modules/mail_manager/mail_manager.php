@@ -73,7 +73,7 @@ class mail_manager extends modules {
 
 	// Sends a mail to a auser
 	public function send_user_mail( object $attr, array $data ): mail_manager {
-		if ( ! $attr || ! $data || ! $attr->userMail ) return $this;
+		if ( ! $attr || ! $data || ! isset( $attr->userMail ) || ! $attr->userMail ) return $this;
 
 		// Mail Properties
 		$to = $this->get_user_mail( $attr, $data );

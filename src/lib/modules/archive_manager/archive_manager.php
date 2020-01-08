@@ -7,8 +7,8 @@ class archive_manager extends modules {
 	public function init() {
 		// Actions Hooks & Filter
 		add_action( 'init', array( $this, 'register_custom_post_type' ) );
-		add_action( 'manage_sv_gutenform_submit_posts_custom_column' , array( $this, 'custom_sv_gutenform_submit_column' ), 10, 2 );
-		add_filter( 'manage_sv_gutenform_submit_posts_columns', array( $this, 'set_custom_edit_sv_gutenform_submit_columns' ) );
+		add_action( 'manage_sv_gutenform_submit_posts_custom_column' , array( $this, 'custom_sv_gutenform_submission_column' ), 10, 2 );
+		add_filter( 'manage_sv_gutenform_submit_posts_columns', array( $this, 'set_custom_edit_sv_gutenform_submission_columns' ) );
 		add_filter( 'post_row_actions', array( $this, 'modify_post_row_actions' ), 10, 2 );
 		add_filter( 'wp_privacy_personal_data_exporters', array( $this, 'register_personal_data_exporter' ), 10 );
 		add_filter( 'wp_privacy_personal_data_erasers', array( $this, 'register_personal_data_eraser' ), 10 );
@@ -17,26 +17,26 @@ class archive_manager extends modules {
 	// Registers a new custom post type
 	public function register_custom_post_type() {
 		$labels 	= array(
-			'name'                  => __( 'Submits', 'sv_gutenform' ),
-			'singular_name'         => __( 'Submit', 'sv_gutenform' ),
-			'menu_name'             => __( 'SV Gutenform Submits', 'sv_gutenform' ),
-			'name_admin_bar'        => __( 'SV Gutenform Submits', 'sv_gutenform' ),
+			'name'                  => __( 'Submissions', 'sv_gutenform' ),
+			'singular_name'         => __( 'Submission', 'sv_gutenform' ),
+			'menu_name'             => __( 'SV Gutenform Submission', 'sv_gutenform' ),
+			'name_admin_bar'        => __( 'SV Gutenform Submission', 'sv_gutenform' ),
 			'add_new'               => __( 'Add New', 'sv_gutenform' ),
-			'add_new_item'          => __( 'Add New Submit', 'sv_gutenform' ),
-			'new_item'              => __( 'New Submit', 'sv_gutenform' ),
-			'edit_item'             => __( 'Edit Submit', 'sv_gutenform' ),
-			'view_item'             => __( 'View Submit', 'sv_gutenform' ),
-			'all_items'             => __( 'All Submits', 'sv_gutenform' ),
-			'search_items'          => __( 'Search Submits', 'sv_gutenform' ),
-			'parent_item_colon'     => __( 'Parent Submits:', 'sv_gutenform' ),
-			'not_found'             => __( 'No Submits found.', 'sv_gutenform' ),
-			'not_found_in_trash'    => __( 'No Submits found in Trash.', 'sv_gutenform' ),
-			'archives'              => __( 'Submit archives', 'sv_gutenform' ),
-			'insert_into_item'      => __( 'Insert into Submit', 'sv_gutenform' ),
-			'uploaded_to_this_item' => __( 'Uploaded to this Submit', 'sv_gutenform' ),
-			'filter_items_list'     => __( 'Filter Submits list', 'sv_gutenform' ),
-			'items_list_navigation' => __( 'Submits list navigation', 'sv_gutenform' ),
-			'items_list'            => __( 'Submits list', 'sv_gutenform' ),
+			'add_new_item'          => __( 'Add New Submission', 'sv_gutenform' ),
+			'new_item'              => __( 'New Submission', 'sv_gutenform' ),
+			'edit_item'             => __( 'Edit Submission', 'sv_gutenform' ),
+			'view_item'             => __( 'View Submission', 'sv_gutenform' ),
+			'all_items'             => __( 'All Submissions', 'sv_gutenform' ),
+			'search_items'          => __( 'Search Submissions', 'sv_gutenform' ),
+			'parent_item_colon'     => __( 'Parent Submissions:', 'sv_gutenform' ),
+			'not_found'             => __( 'No Submissions found.', 'sv_gutenform' ),
+			'not_found_in_trash'    => __( 'No Submissions found in Trash.', 'sv_gutenform' ),
+			'archives'              => __( 'Submission archives', 'sv_gutenform' ),
+			'insert_into_item'      => __( 'Insert into Submission', 'sv_gutenform' ),
+			'uploaded_to_this_item' => __( 'Uploaded to this Submission', 'sv_gutenform' ),
+			'filter_items_list'     => __( 'Filter Submissions list', 'sv_gutenform' ),
+			'items_list_navigation' => __( 'Submissions list navigation', 'sv_gutenform' ),
+			'items_list'            => __( 'Submissions list', 'sv_gutenform' ),
 		);
 		$supports	= array( 'editor', 'custom-fields' );
 		$args 		= array(
@@ -54,25 +54,26 @@ class archive_manager extends modules {
 			'supports'				=> $supports,
 		);	
 
-		register_post_type( 'sv_gutenform_submit', $args );
+		register_post_type( $this->get_root()->get_prefix( 'submit' ), $args );
 
 		return $this;
 	}
 
 	// Sets the title of the custom columns
-	public function set_custom_edit_sv_gutenform_submit_columns( array $columns ): array {
-		$columns['user_mail'] 	= __( 'User Mail', 'sv_gutenform' );
-		$columns['admin_mail'] 	= __( 'Admin Mail', 'sv_gutenform' );
-		$columns['form_id'] 	= __( 'Form ID', 'sv_gutenform' );
+	public function set_custom_edit_sv_gutenform_submission_columns( array $columns ): array {
+		$columns[ $this->get_root()->get_prefix( 'user_mail' ) ] 	= __( 'User Mail', 'sv_gutenform' );
+		$columns[ $this->get_root()->get_prefix( 'admin_mail' ) ] 	= __( 'Admin Mail', 'sv_gutenform' );
+		$columns[ $this->get_root()->get_prefix( 'form_id' ) ] 	= __( 'Form ID', 'sv_gutenform' );
 
 		return $columns;
 	}
 
 	// Sets the value of the custom columns
-	public function custom_sv_gutenform_submit_column( $column, $post_id ) {
+	public function custom_sv_gutenform_submission_column( $column, $post_id ) {
 		switch( $column ) {
-			case 'user_mail':
-				$user_mail = get_post_meta( $post_id, 'send_user_mail', true ) ? boolval( get_post_meta( $post_id, 'send_user_mail', true ) ) : false;
+			case $this->get_root()->get_prefix( 'user_mail' ):
+				$meta_key 	= $this->get_root()->get_prefix( 'send_user_mail' );
+				$user_mail 	= get_post_meta( $post_id, $meta_key, true ) ? boolval( get_post_meta( $post_id, $meta_key, true ) ) : false;
 
 				if ( $user_mail ) {
 					echo '<span class="dashicons dashicons-yes-alt"></span>';
@@ -80,8 +81,9 @@ class archive_manager extends modules {
 					echo '<span class="dashicons dashicons-dismiss"></span>';
 				}
 				break;
-			case 'admin_mail':
-				$admin_mail = get_post_meta( $post_id, 'admin_mail', true ) && ! empty( get_post_meta( $post_id, 'admin_mail', true ) ) ? true : false;
+			case $this->get_root()->get_prefix( 'admin_mail' ):
+				$meta_key 	= $this->get_root()->get_prefix( 'admin_mail' );
+				$admin_mail = get_post_meta( $post_id, $meta_key, true ) && ! empty( get_post_meta( $post_id, $meta_key, true ) ) ? true : false;
 
 				if ( $admin_mail ) {
 					echo '<span class="dashicons dashicons-yes-alt"></span>';
@@ -89,38 +91,43 @@ class archive_manager extends modules {
 					echo '<span class="dashicons dashicons-dismiss"></span>';
 				}
 				break;
-			case 'form_id':
-				echo get_post_meta( $post_id, 'form_id', true );
+			case $this->get_root()->get_prefix( 'form_id' ):
+				$meta_key = $this->get_root()->get_prefix( 'form_id' );
+				echo get_post_meta( $post_id, $meta_key, true );
 				break;
 		}
 	}
 
 	// Adds custom post row actions to the sv_gutenform_submit post type
 	public function modify_post_row_actions( array $actions, object $post ): array {
-		if ( $post->post_type === 'sv_gutenform_submit' && current_user_can( 'edit_post', $post->ID ) ) {
+		if ( $post->post_type === $this->get_root()->get_prefix( 'submit' ) && current_user_can( 'edit_post', $post->ID ) ) {
 			// Building a link to open the post with the form of the submission
-			$form_post_id 			= get_post_meta( $post->ID, 'post_id', true );
+			$form_post_id 			= get_post_meta( $post->ID, $this->get_root()->get_prefix( 'post_id' ), true );
 			$form_post_url 			= admin_url( 'post.php?post=' . $form_post_id );
 			$edit_form_link 		= add_query_arg( array( 'action' => 'edit' ), $form_post_url );
 			$edit_form_label		= sprintf( '<a href="%1$s">%2$s</a>', esc_url( $edit_form_link ), esc_html( __( 'Edit Form', 'sv_gutenform' ) ) );
-			$actions['edit_form'] 	= $edit_form_label;
+			$actions[ $this->get_root()->get_prefix( 'edit_form' ) ] = $edit_form_label;
 
 			// Building a link to resend the user mail
-			$user_mail = get_post_meta( $post->ID, 'send_user_mail', true ) ? boolval( get_post_meta( $post->ID, 'send_user_mail', true ) ) : false;
+			$user_mail_meta_key = $this->get_root()->get_prefix( 'send_user_mail' );
+			$user_mail = get_post_meta( $post->ID, $user_mail_meta_key, true ) ? boolval( get_post_meta( $post->ID, $user_mail_meta_key, true ) ) : false;
 			
 			if ( $user_mail ) {
 				// @todo Add ajax link to resend mail
-				$resend_user_mail_label	= sprintf( '<a href="#" id="resend_user_mail">%1$s</a>', esc_html( __( 'Resend User Mail', 'sv_gutenform' ) ) );
-				$actions['resend_user_mail'] = $resend_user_mail_label;
+				$resend_user_mail_id = $this->get_root()->get_prefix( 'resend_user_mail' );
+				$resend_user_mail_label	= sprintf( '<a href="#" id="' . $resend_user_mail_id . '">%1$s</a>', esc_html( __( 'Resend User Mail', 'sv_gutenform' ) ) );
+				$actions[ $this->get_root()->get_prefix( 'resend_user_mail' ) ] = $resend_user_mail_label;
 			}
 
 			// Building a link to resend the admin mail
-			$admin_mail = get_post_meta( $post->ID, 'admin_mail', true ) && ! empty( get_post_meta( $post->ID, 'admin_mail', true ) ) ? true : false;
+			$admin_mail_meta_key = $this->get_root()->get_prefix( 'admin_mail' );
+			$admin_mail = get_post_meta( $post->ID, $admin_mail_meta_key, true ) && ! empty( get_post_meta( $post->ID, $admin_mail_meta_key, true ) ) ? true : false;
 			
 			if ( $admin_mail ) {
 				// @todo Add ajax link to resend mail
-				$resend_admin_mail_label = sprintf( '<a href="#" id="resend_admin_mail">%1$s</a>', esc_html( __( 'Resend Admin Mail', 'sv_gutenform' ) ) );
-				$actions['resend_admin_mail'] = $resend_admin_mail_label;
+				$resend_admin_mail_id = $this->get_root()->get_prefix( 'resend_admin_mail' );
+				$resend_admin_mail_label = sprintf( '<a href="#" id="' . $resend_admin_mail_id . '">%1$s</a>', esc_html( __( 'Resend Admin Mail', 'sv_gutenform' ) ) );
+				$actions[ $this->get_root()->get_prefix( 'resend_admin_mail' ) ] = $resend_admin_mail_label;
 			}
 		}
 
@@ -131,7 +138,8 @@ class archive_manager extends modules {
 
 	// Returns the form data as table for the post content
 	private function get_post_content( array $data ): string {
-		$new_data 	= $this->helper_methods->remove_input_value( 'form_id', $data );
+		$meta_key 	= $this->get_root()->get_prefix( 'form_id' );
+		$new_data 	= $this->helper_methods->remove_input_value( $meta_key, $data );
 		$content 	= '<!-- wp:table --><figure class="wp-block-table"><table class=""><tbody>';
 
 		foreach( $new_data as $input ) {
@@ -145,18 +153,25 @@ class archive_manager extends modules {
 
 	// Returns the submission data as post meta array
 	private function get_post_meta( object $attr, array $data ): array {
+		// Meta Keys
+		$post_id_meta_key 			= $this->get_root()->get_prefix( 'post_id' );
+		$form_id_meta_key 			= $this->get_root()->get_prefix( 'form_id' );
+		$form_data_meta_key 		= $this->get_root()->get_prefix( 'form_data' );
+		$user_mail_meta_key			= $this->get_root()->get_prefix( 'user_mail' );
+		$send_user_mail_meta_key 	= $this->get_root()->get_prefix( 'send_user_mail' );
+
 		// Meta Array
 		$meta = array(
-			'post_id'	=> $attr->postId,
-			'form_id'	=> $attr->formId,
-			'form_data' => json_encode( $this->helper_methods->remove_input_value( 'form_id', $data ) ),
-			'send_user_mail' => $attr->userMail ? 1 : 0,
+			$post_id_meta_key 			=> $attr->postId,
+			$form_id_meta_key			=> $attr->formId,
+			$form_data_meta_key 		=> json_encode( $this->helper_methods->remove_input_value( $form_id_meta_key, $data ) ),
+			$send_user_mail_meta_key 	=> isset( $attr->userMail ) && $attr->userMail ? 1 : 0,
 		);
 
 		// User Mail
 		if ( ! empty( $attr->userMailInputName ) ) {
 			if ( $this->helper_methods->get_input_value( $attr->userMailInputName, $data ) ) {
-				$meta['user_mail'] = $this->helper_methods->get_input_value( $attr->userMailInputName, $data );
+				$meta[ $user_mail_meta_key ] = $this->helper_methods->get_input_value( $attr->userMailInputName, $data );
 			}
 		}
 
@@ -165,12 +180,12 @@ class archive_manager extends modules {
 			switch ( $attr->adminMail ) {
 				// E-Mail Adress
 				case 'adress':
-					$meta['admin_mail'] = $attr->adminMailAdress;
+					$meta[ $admin_mail_meta_key ] = $attr->adminMailAdress;
 					break;
 
 				// Author
 				case 'author':
-					$meta['admin_mail'] = get_the_author_meta( 'user_email', $attr->adminMailUser );
+					$meta[ $admin_mail_meta_key ] = get_the_author_meta( 'user_email', $attr->adminMailUser );
 					break;
 			}
 		}
@@ -186,7 +201,7 @@ class archive_manager extends modules {
 		$postarr = array(
 			'post_title'	=> __( 'Submission from Post #', 'sv_gutenform' ) . $attr->postId, 
 			'post_content'	=> $this->get_post_content( $data ),
-			'post_type'		=> 'sv_gutenform_submit',
+			'post_type'		=> $this->get_root()->get_prefix( 'submit' ),
 			'post_status'	=> 'publish',
 			'meta_input'	=> $this->get_post_meta( $attr, $data ),
 		);
@@ -200,12 +215,14 @@ class archive_manager extends modules {
 
 	// Fetches all submissions linked to the email adress
 	private function get_posts_by_email( string $email ): array {
+		$meta_key = $this->get_root()->get_prefix( 'user_mail' );
+
 		$query_args		= array(
 			'posts_per_page' => -1,
-			'post_type'		=> 'sv_gutenform_submit',
+			'post_type'		=> $this->get_root()->get_prefix( 'submit' ),
 			'meta_query' 	=> array(
 				array(
-					'key'		=> 'user_mail',
+					'key'		=> $meta_key,
 					'value' 	=> $email,
 					'compare' 	=> '=',
 				),
@@ -220,11 +237,12 @@ class archive_manager extends modules {
 		$number 		= 500;
 		$export_items 	= array();
 		$posts			= $this->get_posts_by_email( $email );
+		$meta_key		= $this->get_root()->get_prefix( 'form_data' );
 
 		// Fetches all data for each submission
 		foreach ( $posts as $post ) {
-			$form_data 	= json_decode( get_post_meta( $post->ID, 'form_data', true ) );
-			$item_id 	= 'sv-gutenform-submit-' . $post->ID;
+			$form_data 	= json_decode( get_post_meta( $post->ID, $meta_key, true ) );
+			$item_id 	= 'sv-gutenform-submission-' . $post->ID;
 			$group_id 	= 'sv-gutenform-submissions';
 			$group_label= __( 'SV Gutenform Submissions', 'sv_gutenform' );
 			$data		= array();
@@ -251,7 +269,7 @@ class archive_manager extends modules {
 
 	// Registers the personal data exporter
 	public function register_personal_data_exporter( array $exporters ): array {
-		$exporters['sv_gutenform'] = array(
+		$exporters[ $this->get_root()->get_prefix() ] = array(
 			'exporter_friendly_name' => __( 'SV Gutenform Plugin', 'sv_gutenform' ),
 			'callback' => array( $this, 'personal_data_exporter' ),
 		);
@@ -287,7 +305,7 @@ class archive_manager extends modules {
 
 	// Registers the personal data eraser
 	public function register_personal_data_eraser( array $erasers ): array {
-		$erasers['sv_gutenform'] = array(
+		$erasers[ $this->get_root()->get_prefix() ] = array(
 			'eraser_friendly_name' => __( 'SV Gutenform Plugin', 'sv_gutenform' ),
 			'callback' => array( $this, 'personal_data_eraser' ),
 		);
