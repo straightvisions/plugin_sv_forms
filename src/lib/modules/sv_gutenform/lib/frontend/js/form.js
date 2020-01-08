@@ -78,14 +78,14 @@ jQuery( 'form.wp-block-straightvisions-sv-gutenform' ).submit( function( e ) {
         // @todo Add support for Checkbox and Radio Button
     } );
 
-    jQuery.post( localized.ajaxurl, {
+    jQuery.post( localized.sv_gutenform_ajaxurl, {
         action: 'sv_gutenform_submit',
-        nonce: localized.nonce,
-        post_id: localized.post_id,
-        form_data: formData,
+        sv_gutenform_nonce: localized.sv_gutenform_nonce,
+        sv_gutenform_post_id: localized.sv_gutenform_post_id,
+        sv_gutenform_form_data: formData,
     }, function( response ) {
-        //response = JSON.parse( response );
-        //console.log(response);
+        response = JSON.parse( response );
+        console.log(response);
 
         showThankYou( form, formData );
     });

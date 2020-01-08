@@ -31,10 +31,6 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 			type: 'boolean',
 			default: true,
 		},
-		spamGuardLevel: {
-			type: 'number',
-			default: 0,
-		},
 
 		// Mail Settings
 		// Admin Mails

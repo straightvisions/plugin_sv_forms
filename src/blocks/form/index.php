@@ -19,8 +19,8 @@ class form extends sv_gutenform {
 			array_merge(
 				$this->get_parent()->get_script( 'form_js' )->get_localized(),
 				array(
-					'post_id' => get_the_ID(),
-					'form_id' => $form_id,
+					'sv_gutenform_post_id' => get_the_ID(),
+					'sv_gutenform_form_id' => $form_id,
 				)
 			)
 		);
@@ -55,8 +55,8 @@ class form extends sv_gutenform {
 					array_merge(
 						$this->get_parent()->get_script( 'form_js' )->get_localized(),
 						array(
-							'ajaxurl' 	=> admin_url( 'admin-ajax.php' ),
-							'nonce' 	=> \wp_create_nonce( 'sv_gutenform_submit' ),
+							'sv_gutenform_ajaxurl' 	=> admin_url( 'admin-ajax.php' ),
+							'sv_gutenform_nonce' 	=> \wp_create_nonce( 'sv_gutenform_submit' ),
 						)
 					)
 				);
@@ -79,10 +79,6 @@ class form extends sv_gutenform {
 					'saveSubmits' => array(
 						'type'		=> 'bool',
 						'default'	=> true,
-					),
-					'spamGuardLevel' => array(
-						'type' 		=> 'number',
-						'default'	=> 0,
 					),
 
 					// Mail Settings

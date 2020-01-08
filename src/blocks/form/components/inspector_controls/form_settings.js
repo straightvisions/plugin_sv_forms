@@ -10,7 +10,6 @@ const {
     TextControl,
     SelectControl,
     ToggleControl,
-    RangeControl,
 } = wp.components;
 
 export default ( { props, data } ) => {
@@ -21,7 +20,6 @@ export default ( { props, data } ) => {
         setAttributes,
         attributes: {
             saveSubmits,
-            spamGuardLevel,
             adminMail,
             adminMailUser,
             adminMailAdress,
@@ -31,7 +29,6 @@ export default ( { props, data } ) => {
 
     // Functions
     const setSaveSubmits    = saveSubmits => setAttributes({ saveSubmits });
-    const setSpamGuardLevel = spamGuardLevel => setAttributes({ spamGuardLevel });
     const setAdminMail      = adminMail => { 
         setAttributes({ adminMail });
 
@@ -115,15 +112,6 @@ export default ( { props, data } ) => {
                 />
                 : null
             }
-            <RangeControl
-                label={ __( 'Spam Guard Level', 'sv_gutenform' ) }
-                value={ spamGuardLevel }
-                onChange={ value => setSpamGuardLevel( value ) }
-                min={ 0 }
-                max={ 2 }
-                beforeIcon='shield'
-                afterIcon='shield-alt'
-            />
         </PanelBody>
     );
 }
