@@ -55,6 +55,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 ### Features
 
 * Add Spam Guard, to protect forms from spam.
+* Add action hook on form submit.
 
 = 1.4.11 =
 

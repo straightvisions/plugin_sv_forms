@@ -21,8 +21,10 @@ class submission_manager extends modules {
 		$form_id	= $this->helper_methods->get_input_value( 'form_id', $form_data );
 
 		if ( $form_id && $post_meta->$form_id ) {
-			$form_attr 				= $post_meta->$form_id;
+			$form_attr = $post_meta->$form_id;
 
+			// Creates custom action hook, that passes a form data array and a form attr object
+			do_action( $this->get_root()->get_prefix( 'form_submit' ), $form_data, $form_attr );
 			
 			if ( ! $this->spam_guard->check( $form_attr, $form_data ) ) {
 				$this->archive_manager
