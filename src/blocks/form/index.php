@@ -138,7 +138,7 @@ class form extends sv_gutenform {
 					),
 					'sgTimeTrapWindow' => array(
 						'type' => 'number',
-						'default' => 10,
+						'default' => 5,
 					),
 
 

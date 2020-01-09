@@ -41,7 +41,7 @@ class spam_guard extends sv_gutenform {
 					),
 					'timeTrapTimeWindow' => array(
 						'type' => 'number',
-						'default' => 10,
+						'default' => 5,
 					),
 
 					// Advanced Settings

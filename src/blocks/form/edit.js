@@ -19,6 +19,10 @@ export default class extends Component {
         this.props      = props;
         this.state      = {};
         this.template   = [
+            ['straightvisions/sv-gutenform-spam-guard', {
+                honeypot: true,
+                timeTrap: true,
+            }],
             ['straightvisions/sv-gutenform-text', {
                 label: __( 'Name', 'sv_gutenform' ),
                 name: 'name',

@@ -61,6 +61,11 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 * Spam Guard Block
     * Adds antispam features, to prevent your forms from spam.
 
+### Various
+
+* Updated default form template
+    * Added Spam Guard Block
+
 = 1.4.11 =
 
 ### Features

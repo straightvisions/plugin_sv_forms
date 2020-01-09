@@ -89,7 +89,7 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		},
 		sgTimeTrapWindow: {
 			type: 'number',
-			default: 10,
+			default: 5,
 		},
 
 		// Advanced
