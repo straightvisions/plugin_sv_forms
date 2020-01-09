@@ -40,7 +40,7 @@ export default ( { props } ) => {
                 value={ label }
                 onChange={ value => { 
                     setLabel( value ); 
-                    setValue( getSlug( value ) );
+                    //setValue( getSlug( value ) ); @todo Deactivated, because this feature can result to problems. Need a better concept!
                 }}
             />
             <TextControl

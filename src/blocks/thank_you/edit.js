@@ -7,15 +7,19 @@ const {
     select 
 } = wp.data;
 const { InnerBlocks }   = wp.blockEditor;
+const { Button }        = wp.components;
 
 export default withSelect( ( select, props ) => {
     return props;
 } )( ( props ) => {
     const {
+        clientId,
+        className,
         setAttributes,
         attributes: { inputNames }
     } = props;
 
+    // Functions
     const setInputNames = formId => {
         const formBlocks        = select( 'core/block-editor' ).getBlocks( formId );
         const filteredBlocks    = formBlocks.filter( block => {
@@ -31,20 +35,40 @@ export default withSelect( ( select, props ) => {
             setAttributes({ inputNames: uniqueNames.join( ', ' ) });
         }
     }
+    const toggleBody = () => {
+        const body = jQuery( 'div[data-block="' + clientId + '"] > .' + className + ' > .sv-gutenform-body' );
+        const icon = jQuery( 'div[data-block="' + clientId + '"] > .' + className + ' > .sv-gutenform-header > .sv-gutenform-title-wrapper > button.components-button > span' );
+
+        if ( body.hasClass( 'sv-gutenform-hidden' ) ) {
+            icon.removeClass( 'dashicons-hidden' );
+            icon.addClass( 'dashicons-visibility' );
+            body.removeClass( 'sv-gutenform-hidden' ).slideDown();
+        } else {
+            icon.removeClass( 'dashicons-visibility' );
+            icon.addClass( 'dashicons-hidden' );
+            body.addClass( 'sv-gutenform-hidden' ).slideUp();
+        }
+    }
 
     return (
-        <div className={ props.className }>
-            <div className='header'>
-                <div className='title'>{ __( 'Thank You Message', 'sv_gutenform' ) }</div>
-                <div className='description'>
+        <div className={ className }>
+            <div className='sv-gutenform-header'>
+                <div className='sv-gutenform-title-wrapper'>
+                    <div className='sv-gutenform-title'>{ __( 'Thank You Message', 'sv_gutenform' ) }</div>
+                    <Button 
+                        isTertiary 
+                        onClick={ () => toggleBody() }
+                    ><span class="dashicons"></span></Button>
+                </div>
+                <div className='sv-gutenform-description'>
                     { __( 'Everything inside this block will be the content of the submission confirmation.', 'sv_gutenform' ) }
-                    <div className='input-values-wrapper'>
-                        <div className='input-values-title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
-                        <div className='input-values'>
+                    <div className='sv-gutenform-input-values-wrapper'>
+                        <div className='sv-gutenform-input-values-title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
+                        <div className='sv-gutenform-input-values'>
                         {
                             inputNames 
                             ? inputNames.split( ',' ).map( name => {
-                                return <div className='input-value'>{ name }</div>;
+                                return <div className='sv-gutenform-input-value'>{ name }</div>;
                             } )
                             : ''
                         }
@@ -52,10 +76,12 @@ export default withSelect( ( select, props ) => {
                     </div>
                 </div>
             </div>
-            <div class="body">
+            <div class="sv-gutenform-body">
                 <InnerBlocks />
             </div>
             <FormContext.Consumer>{ value => setInputNames( value ) }</FormContext.Consumer>
         </div>
+
+        
     ); 
 });

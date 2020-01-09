@@ -106,7 +106,7 @@ class sv_gutenform extends modules {
 		wp_register_script(
 			'sv-gutenform-block',
 			$this->get_root()->get_url( '../dist/blocks.build.js' ),
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
+			array( 'jquery', 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
 			filemtime( $this->get_root()->get_path( '../dist/blocks.build.js' ) ),
 			true
 		);
