@@ -71,60 +71,76 @@ class form extends sv_gutenform {
 				'render_callback'	=> array( $this, 'init_block' ),
 				'attributes'		=> array(
 					'postId' => array(
-						'type' 		=> 'number',
+						'type' => 'number',
 					),
 					'formId' => array(
-						'type' 		=> 'string',
+						'type' => 'string',
 					),
 					'saveSubmits' => array(
-						'type'		=> 'bool',
-						'default'	=> true,
+						'type' => 'bool',
+						'default' => true,
 					),
 
 					// Mail Settings
 					// Admin Mails
-					'adminMail' 		=> array(
-						'type'		=> 'string',
-						'default'	=> 'disabled',
+					'adminMail' => array(
+						'type' => 'string',
+						'default' => 'disabled',
 					),
-					'adminMailUser' 	=> array(
-						'type'		=> 'number',
+					'adminMailUser' => array(
+						'type' => 'number',
 					),
-					'adminMailAdress'	=> array(
-						'type'		=> 'string',
+					'adminMailAdress'=> array(
+						'type' => 'string',
 					),
-					'adminMailSubject'	=> array(
-						'type'		=> 'string',
+					'adminMailSubject' => array(
+						'type' => 'string',
 					),
-					'adminMailFromTitle'=> array(
-						'type'		=> 'string',
+					'adminMailFromTitle' => array(
+						'type' => 'string',
 					),
 					'adminMailFromMail'	=> array(
-						'type'		=> 'string',
+						'type' => 'string',
 					),
-					'adminMailContent'	=> array(
-						'type'		=> 'string',
+					'adminMailContent'=> array(
+						'type' => 'string',
 					),
 
 					// User Mails
 					'userMail' => array(
-						'type'		=> 'bool',
+						'type' => 'bool',
 					),
 					'userMailInputName' => array(
-						'type'		=> 'string',
+						'type' => 'string',
 					),
-					'userMailSubject' 	=> array(
-						'type'		=> 'string',
+					'userMailSubject' => array(
+						'type' => 'string',
 					),
 					'userMailFromTitle' => array(
-						'type'		=> 'string',
+						'type' => 'string',
 					),
-					'userMailFromMail' 	=> array(
-						'type'		=> 'string',
+					'userMailFromMail' => array(
+						'type' => 'string',
 					),
-					'userMailContent' 	=> array(
-						'type'		=> 'string',
+					'userMailContent' => array(
+						'type' => 'string',
 					),
+
+					// Spam Guard Settings
+					// Honeypot
+					'sgHoneypot' => array(
+						'type' => 'bool',
+					),
+
+					// Time Trap
+					'sgTimeTrap' => array(
+						'type' => 'bool',
+					),
+					'sgTimeTrapWindow' => array(
+						'type' => 'number',
+						'default' => 10,
+					),
+
 
 					// Advanced
 					'className' => array(

@@ -11,7 +11,6 @@ export default ( { props } ) => {
     return(
         <Fragment>
             <InspectorControls>
-                <HoneypotSettings props={ props } />
                 <TimeTrapSettings props={ props } />
             </InspectorControls>
         </Fragment>

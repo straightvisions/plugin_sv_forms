@@ -72,26 +72,4 @@ class spam_guard extends sv_gutenform {
 		if ( $this->block_attr['honeypot'] ) $this->honeypot();
 		if ( $this->block_attr['timeTrap'] ) $this->time_trap();
 	}
-
-	// #### Spam Guard Check Methods ####
-
-	// Checks if the honeypot was triggered
-	private function check_honeypot( string $value ): bool {
-		return ! empty( $value ) ? true : false;
-	}
-
-	// Checks if the time tramp was triggered
-	private function check_time_trap( string $encrypted_timestamp, int $time_trap_time_window ): bool {
-		$current_timestamp 	= time();
-		$form_timestamp		= $this->helper_methods->decrypt_string( $encrypted_timestamp );
-
-		if ( 
-			! is_numeric( $form_timestamp )
-			|| ( $current_timestamp - $form_timestamp <= $time_trap_time_window )
-		) {
-			return true;
-		}
-
-		return false;
-	}
 }

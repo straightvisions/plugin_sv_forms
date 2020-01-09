@@ -136,13 +136,25 @@ class archive_manager extends modules {
 
 	// ###### Post Creation Methods ######
 
+	// Filters the form data and removes technical relevant data values
+	private function get_filtered_form_data( array $data ): array {
+		$input_values_to_be_removed = array(
+			$this->get_root()->get_prefix( 'form_id' ),
+			$this->get_root()->get_prefix( 'sg_hp' ),
+			$this->get_root()->get_prefix( 'sg_tt' ),
+		);
+
+		$filtered_form_data = $this->helper_methods->remove_input_value( $input_values_to_be_removed, $data );
+
+		return $filtered_form_data;
+	}
+
 	// Returns the form data as table for the post content
 	private function get_post_content( array $data ): string {
-		$meta_key 	= $this->get_root()->get_prefix( 'form_id' );
-		$new_data 	= $this->helper_methods->remove_input_value( $meta_key, $data );
-		$content 	= '<!-- wp:table --><figure class="wp-block-table"><table class=""><tbody>';
+		$filtered_form_data = $this->get_filtered_form_data( $data );
+		$content = '<!-- wp:table --><figure class="wp-block-table"><table class=""><tbody>';
 
-		foreach( $new_data as $input ) {
+		foreach( $filtered_form_data as $input ) {
 			$content .= '<tr><td>' . $input['name'] . '</td><td>' . $input['value'] . '</td></tr>';
 		}
 
@@ -164,7 +176,7 @@ class archive_manager extends modules {
 		$meta = array(
 			$post_id_meta_key 			=> $attr->postId,
 			$form_id_meta_key			=> $attr->formId,
-			$form_data_meta_key 		=> json_encode( $this->helper_methods->remove_input_value( $form_id_meta_key, $data ) ),
+			$form_data_meta_key 		=> json_encode( $this->get_filtered_form_data( $data ) ),
 			$send_user_mail_meta_key 	=> isset( $attr->userMail ) && $attr->userMail ? 1 : 0,
 		);
 

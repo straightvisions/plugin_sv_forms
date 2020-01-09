@@ -27,7 +27,7 @@ registerBlockType( 'straightvisions/sv-gutenform-spam-guard', {
 		timeTrap: {
 			type: 'bool',
 		},
-		timeTrapTimeWindow: {
+		timeTrapWindow: {
 			type: 'number',
 			default: 10,
 		},

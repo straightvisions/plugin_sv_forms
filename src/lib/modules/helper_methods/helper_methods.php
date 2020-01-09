@@ -31,12 +31,20 @@ class helper_methods extends modules {
 	}
 
 	// Removes a certain input value from an data array, by it's input name and returns the updated data array
-	public function remove_input_value( string $name, array $data ) {	
+	public function remove_input_value( $name, array $data ): array {	
 		$new_data = $data;
 		
 		foreach( $data as $index => $input ) {
-			if ( $input['name'] === $name ) {
-				unset( $new_data[ $index ] );
+			if ( is_string( $name ) ) {
+				if ( $input['name'] === $name ) {
+					unset( $new_data[ $index ] );
+				}
+			}
+
+			if ( is_array( $name ) ) {
+				if ( in_array( $input['name'], $name, true ) ) {
+					unset( $new_data[ $index ] );
+				}
 			}
 		}
 

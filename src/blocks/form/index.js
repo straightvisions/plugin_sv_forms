@@ -77,6 +77,21 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 			type: 'string',
 		},
 
+		// Spam Guard Settings
+		// Honeypot
+		sgHoneypot: {
+			type: 'boolean',
+		},
+
+		// Time Trap
+		sgTimeTrap: {
+			type: 'boolean',
+		},
+		sgTimeTrapWindow: {
+			type: 'number',
+			default: 10,
+		},
+
 		// Advanced
 		className: {
 			type: 'string',

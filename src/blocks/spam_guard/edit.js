@@ -2,11 +2,16 @@
 import shieldIcon from './icons/block';
 import honeycombIcon from './icons/honeycomb';
 import timerIcon from './icons/timer';
+
 import InspectorControls from './components/inspector_controls';
+import { FormContext } from '../../blocks';
 
 const { __ }            = wp.i18n;
-const { withSelect }    = wp.data;
 const { Fragment }      = wp.element;
+const { 
+    withSelect, 
+    dispatch,
+} = wp.data;
 const {
     Placeholder,
     Button,
@@ -22,12 +27,22 @@ export default withSelect( ( select, props ) => {
         attributes: {
             honeypot,
             timeTrap,
+            timeTrapWindow,
         } 
     } = props;
 
     // Functions
-    const setHoneypot = honeypot => setAttributes({ honeypot });
-    const setTimeTrap = timeTrap => setAttributes({ timeTrap });
+    const setHoneypot           = honeypot => setAttributes({ honeypot });
+    const setTimeTrap           = timeTrap => setAttributes({ timeTrap });
+    const updateFormAttributes  = formId => {        
+        const newAttributes     = {
+            sgHoneypot: honeypot,
+            sgTimeTrap: timeTrap,
+            sgTimeTrapWindow: timeTrapWindow,
+        };
+
+        dispatch( 'core/block-editor' ).updateBlockAttributes( formId, newAttributes );
+    };
 
     const honeypotState = honeypot ? 'is-active' : '';
     const timeTrapState = timeTrap ? 'is-active' : '';
@@ -59,6 +74,7 @@ export default withSelect( ( select, props ) => {
                     </Button>
                 </Placeholder>
             </div>
+            <FormContext.Consumer>{ value => updateFormAttributes( value ) }</FormContext.Consumer>
         </Fragment>
     ); 
 });
