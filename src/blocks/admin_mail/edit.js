@@ -5,6 +5,7 @@ import { FormContext } from '../../blocks';
 const { __ }                = wp.i18n;
 const { InnerBlocks }       = wp.blockEditor;
 const { getBlockContent }   = wp.blocks;
+const { Button }            = wp.components;
 const { 
     withSelect, 
     dispatch,
@@ -18,6 +19,8 @@ export default withSelect( ( select, props ) => {
     };
 } )( ({ innerBlocks, props }) => {
     const {
+        clientId,
+        className,
         setAttributes,
         attributes: {
             subject,
@@ -63,20 +66,41 @@ export default withSelect( ( select, props ) => {
         }
     }
 
+    const toggleBody = () => {
+        const body = jQuery( 'div[data-block="' + clientId + '"] > .' + className + ' > .sv-gutenform-body' );
+        const icon = jQuery( 'div[data-block="' + clientId + '"] > .' + className + ' > .sv-gutenform-header > .sv-gutenform-title-wrapper > button.components-button > span' );
+
+        if ( body.hasClass( 'sv-gutenform-hidden' ) ) {
+            icon.removeClass( 'dashicons-hidden' );
+            icon.addClass( 'dashicons-visibility' );
+            body.removeClass( 'sv-gutenform-hidden' ).slideDown();
+        } else {
+            icon.removeClass( 'dashicons-visibility' );
+            icon.addClass( 'dashicons-hidden' );
+            body.addClass( 'sv-gutenform-hidden' ).slideUp();
+        }
+    }
+
     return (
-        <div className={ props.className }>
+        <div className={ className }>
             <InspectorControls props={ props } />
-            <div className='header'>
-                <div className='title'>{ __( 'Admin Mail', 'sv_gutenform' ) }</div>
-                <div className='description'>
+            <div className='sv-gutenform-header'>
+                <div className='sv-gutenform-title-wrapper'>
+                    <div className='sv-gutenform-title'>{ __( 'Admin Mail', 'sv_gutenform' ) }</div>
+                    <Button 
+                        isTertiary 
+                        onClick={ () => toggleBody() }
+                    ><span class="dashicons dashicons-visibility"></span></Button>
+                </div>
+                <div className='sv-gutenform-description'>
                     { __( 'Everything inside this block will be the content of the admin mail.', 'sv_gutenform' ) }
-                    <div className='input-values-wrapper'>
-                        <div className='input-values-title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
-                        <div className='input-values'>
+                    <div className='sv-gutenform-input-values-wrapper'>
+                        <div className='sv-gutenform-input-values-title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
+                        <div className='sv-gutenform-input-values'>
                         {
                             inputNames
                             ? inputNames.split( ',' ).map( name => {
-                                return <div className='input-value'>{ name }</div>;
+                                return <div className='sv-gutenform-input-value'>{ name }</div>;
                             } )
                             : ''
                         }
@@ -84,7 +108,7 @@ export default withSelect( ( select, props ) => {
                     </div>
                 </div>
             </div>
-            <div class="body">
+            <div class='sv-gutenform-body'>
                 <InnerBlocks />
             </div>
             <FormContext.Consumer>{ value => updateFormAttributes( value ) }</FormContext.Consumer>

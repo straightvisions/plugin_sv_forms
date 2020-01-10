@@ -8,6 +8,7 @@ const {
 const { Component }                 = wp.element;
 const { __ }                        = wp.i18n;
 const { InnerBlocks }               = wp.blockEditor;
+const { Button }                    = wp.components;
 const { editPost }                  = dispatch( 'core/editor' );
 const { getEditedPostAttribute }    = select( 'core/editor' );
 const { getAuthors }                = select( 'core' );
@@ -70,14 +71,20 @@ export default class extends Component {
         return (
             <div className={ this.props.className }>
                 <InspectorControls props={ this.props } data={ this.state } />
-                <div className='header'>
-                    <div className='form-id'>Form ID: { this.props.attributes.formId }</div>
-                    <div className='title'>{ __( 'SV Gutenform', 'sv_gutenform' ) }</div>
-                    <div className='description'>
+                <div className='sv-gutenform-header'>
+                    <div className='sv-gutenform-form-id'>Form ID: { this.props.attributes.formId }</div>
+                    <div className='sv-gutenform-title-wrapper'>
+                        <div className='sv-gutenform-title'>{ __( 'SV Gutenform', 'sv_gutenform' ) }</div>
+                        <Button 
+                            isTertiary 
+                            onClick={ () => this.toggleBody() }
+                        ><span class="dashicons dashicons-visibility"></span></Button>
+                    </div>
+                    <div className='sv-gutenform-description'>
                         { __( 'Everything inside this block will be the content of the form.', 'sv_gutenform' ) }
                     </div>
                 </div>
-                <div class="body">
+                <div class='sv-gutenform-body'>
                     <FormContext.Provider value={ this.props.clientId }>
                         <InnerBlocks 
                             template={ this.template }
@@ -135,5 +142,20 @@ export default class extends Component {
         const newMeta = { ...currentMeta, _sv_gutenform_forms: JSON.stringify( currentForms ) };
 
         editPost( { meta: newMeta } );
+    }
+
+    toggleBody() {
+        const body = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv-gutenform-body' );
+        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv-gutenform-header > .sv-gutenform-title-wrapper > button.components-button > span' );
+
+        if ( body.hasClass( 'sv-gutenform-hidden' ) ) {
+            icon.removeClass( 'dashicons-hidden' );
+            icon.addClass( 'dashicons-visibility' );
+            body.removeClass( 'sv-gutenform-hidden' ).slideDown();
+        } else {
+            icon.removeClass( 'dashicons-visibility' );
+            icon.addClass( 'dashicons-hidden' );
+            body.addClass( 'sv-gutenform-hidden' ).slideUp();
+        }
     }
 }
