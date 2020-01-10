@@ -35,6 +35,7 @@ export default withSelect( ( select, props ) => {
             setAttributes({ inputNames: uniqueNames.join( ', ' ) });
         }
     }
+    
     const toggleBody = () => {
         const body = jQuery( 'div[data-block="' + clientId + '"] > .' + className + ' > .sv-gutenform-body' );
         const icon = jQuery( 'div[data-block="' + clientId + '"] > .' + className + ' > .sv-gutenform-header > .sv-gutenform-title-wrapper > button.components-button > span' );
@@ -58,7 +59,7 @@ export default withSelect( ( select, props ) => {
                     <Button 
                         isTertiary 
                         onClick={ () => toggleBody() }
-                    ><span class="dashicons"></span></Button>
+                    ><span class="dashicons dashicons-visibility"></span></Button>
                 </div>
                 <div className='sv-gutenform-description'>
                     { __( 'Everything inside this block will be the content of the submission confirmation.', 'sv_gutenform' ) }
@@ -76,7 +77,7 @@ export default withSelect( ( select, props ) => {
                     </div>
                 </div>
             </div>
-            <div class="sv-gutenform-body">
+            <div class='sv-gutenform-body'>
                 <InnerBlocks />
             </div>
             <FormContext.Consumer>{ value => setInputNames( value ) }</FormContext.Consumer>
