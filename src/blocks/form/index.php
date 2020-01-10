@@ -36,7 +36,7 @@ class form extends sv_gutenform {
 		$this->block_attr = $attr;
 		
 		ob_start();
-
+		
 		require( $this->get_path( 'lib/frontend/tpl/form.php' ) );
 
 		$output = ob_get_contents();
@@ -74,6 +74,9 @@ class form extends sv_gutenform {
 						'type' => 'number',
 					),
 					'formId' => array(
+						'type' => 'string',
+					),
+					'formLabel' => array(
 						'type' => 'string',
 					),
 					'saveSubmits' => array(

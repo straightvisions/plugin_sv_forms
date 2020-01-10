@@ -8,5 +8,6 @@ class modules extends init {
 		$this->archive_manager->init();
 		$this->submission_manager->init();
 		$this->mail_manager->init();
+		$this->personal_data_manager->init();
 	}
 }

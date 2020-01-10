@@ -28,7 +28,7 @@ class submission_manager extends modules {
 
 			if ( ! $this->spam_guard_check( $form_attr, $form_data ) ) {
 				$this->archive_manager
-					->add_post( $form_attr, $form_data )
+					->add_submission( $form_attr, $form_data )
 					->mail_manager
 					->send_user_mail( $form_attr, $form_data )
 					->send_admin_mail( $form_attr, $form_data );

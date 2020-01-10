@@ -81,13 +81,13 @@ class sv_gutenform extends modules {
 	private function register_blocks() {
 		$dir = $this->get_root()->get_path( 'blocks' );
 		$dir_array = array_diff( scandir( $dir ), array( '..', '.' ) );
-	
+		
 		foreach( $dir_array as $key => $value ) {
 			if ( 
 				is_dir( $dir . '/' . $value ) 
 				&& file_exists( $dir . '/' . $value . '/index.php' ) 
 			) {
-				$class_name = 'sv_gutenform\\' . $value;
+				$class_name = __NAMESPACE__ . '\\' . $value;
 
 				require_once( $dir . '/' . $value . '/index.php' );
 

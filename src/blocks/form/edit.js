@@ -53,7 +53,11 @@ export default class extends Component {
     componentDidMount() {
         if ( ! this.doesFormExist() || ( this.doesFormExist() && this.isDuplicate() ) ) {
             this.props.attributes.postId = select('core/editor').getCurrentPostId();
-            this.props.attributes.formId = this.props.clientId;
+
+            if ( ! this.props.attributes.formId ) {
+                this.props.attributes.formId = this.props.clientId;
+            }
+            
             this.updatePostMeta( 'update' );
         }
     }
@@ -72,14 +76,15 @@ export default class extends Component {
             <div className={ this.props.className }>
                 <InspectorControls props={ this.props } data={ this.state } />
                 <div className='sv-gutenform-header'>
-                    <div className='sv-gutenform-form-id'>Form ID: { this.props.attributes.formId }</div>
-                    <div className='sv-gutenform-title-wrapper'>
-                        <div className='sv-gutenform-title'>{ __( 'SV Gutenform', 'sv_gutenform' ) }</div>
+                    <div className='sv-gutenform-form-label-wrapper'>
+                        <div className='sv-gutenform-form-label'>{ this.props.attributes.formLabel }</div>
                         <Button 
                             isTertiary 
                             onClick={ () => this.toggleBody() }
                         ><span class="dashicons dashicons-visibility"></span></Button>
                     </div>
+                    <div className='sv-gutenform-form-id'>Form ID: { this.props.attributes.formId }</div>
+                    <div className='sv-gutenform-title'>{ __( 'SV Gutenform', 'sv_gutenform' ) }</div>
                     <div className='sv-gutenform-description'>
                         { __( 'Everything inside this block will be the content of the form.', 'sv_gutenform' ) }
                     </div>
@@ -142,11 +147,12 @@ export default class extends Component {
         const newMeta = { ...currentMeta, _sv_gutenform_forms: JSON.stringify( currentForms ) };
 
         editPost( { meta: newMeta } );
+        console.log(this.props.attributes);
     }
 
     toggleBody() {
         const body = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv-gutenform-body' );
-        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv-gutenform-header > .sv-gutenform-title-wrapper > button.components-button > span' );
+        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv-gutenform-header > .sv-gutenform-form-name-wrapper > button.components-button > span' );
 
         if ( body.hasClass( 'sv-gutenform-hidden' ) ) {
             icon.removeClass( 'dashicons-hidden' );

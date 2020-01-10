@@ -58,10 +58,15 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
     * Thank You Message Block
     * User Mail Block
     * Admin Mail Block
+* Input Blocks will notify the user, if an input name already exists inside the current form.
 
 ### Various
 
 * Deactivated the feature that input names will be automatically generated, when the input label is updated, due to possible workflow problems.
+
+### Bug Fixes
+
+* Prevents form id override when using a form as reuseable block.
 
 = 1.4.12 =
 

@@ -27,6 +27,9 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		formId: {
 			type: 'string',
 		},
+		formLabel: {
+			type: 'string',
+		},
 		saveSubmits: {
 			type: 'boolean',
 			default: true,

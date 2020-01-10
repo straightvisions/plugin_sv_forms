@@ -12,26 +12,13 @@
     color: white;
 }
 
-.wp-block-straightvisions-sv-gutenform > .sv-gutenform-header > .sv-gutenform-form-id {
-    font-size: 12px;
-    line-height: 1.2;
-    font-weight: 400; 
-    margin-bottom: 10px;
-}
-
-.wp-block-straightvisions-sv-gutenform > .sv-gutenform-header > .sv-gutenform-title-wrapper {
+.wp-block-straightvisions-sv-gutenform > .sv-gutenform-header > .sv-gutenform-form-label-wrapper {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
 }
 
-.wp-block-straightvisions-sv-gutenform > .sv-gutenform-header > .sv-gutenform-title-wrapper > .sv-gutenform-title {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-.wp-block-straightvisions-sv-gutenform > .sv-gutenform-header > .sv-gutenform-title-wrapper > button.components-button {
+.wp-block-straightvisions-sv-gutenform > .sv-gutenform-header > .sv-gutenform-form-label-wrapper > button.components-button {
     height: auto;
     color: #FFFFFF;
     border: none;
@@ -40,9 +27,30 @@
     background-color: transparent;
 }
 
-.wp-block-straightvisions-sv-gutenform > .sv-gutenform-header > .sv-gutenform-title-wrapper > button.components-button:hover,
-.wp-block-straightvisions-sv-gutenform > .sv-gutenform-header > .sv-gutenform-title-wrapper > button.components-button:focus {
+.wp-block-straightvisions-sv-gutenform > .sv-gutenform-header > .sv-gutenform-form-label-wrapper > button.components-button:hover,
+.wp-block-straightvisions-sv-gutenform > .sv-gutenform-header > .sv-gutenform-form-label-wrapper > button.components-button:focus {
     color: #EEEEEE;
+}
+
+.wp-block-straightvisions-sv-gutenform > .sv-gutenform-header > .sv-gutenform-form-label-wrapper > .sv-gutenform-form-label {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.wp-block-straightvisions-sv-gutenform > .sv-gutenform-header > .sv-gutenform-form-id {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400; 
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #FFFFFF;
+}
+
+.wp-block-straightvisions-sv-gutenform > .sv-gutenform-header > .sv-gutenform-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .wp-block-straightvisions-sv-gutenform > .sv-gutenform-header > .sv-gutenform-description {

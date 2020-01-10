@@ -18,6 +18,7 @@ export default withSelect( ( select, props ) => {
         setAttributes,
         attributes: { inputNames }
     } = props;
+    const bodyStyle = { display: 'none' };
 
     // Functions
     const setInputNames = formId => {
@@ -59,7 +60,7 @@ export default withSelect( ( select, props ) => {
                     <Button 
                         isTertiary 
                         onClick={ () => toggleBody() }
-                    ><span class="dashicons dashicons-visibility"></span></Button>
+                    ><span class="dashicons dashicons-hidden"></span></Button>
                 </div>
                 <div className='sv-gutenform-description'>
                     { __( 'Everything inside this block will be the content of the submission confirmation.', 'sv_gutenform' ) }
@@ -77,7 +78,7 @@ export default withSelect( ( select, props ) => {
                     </div>
                 </div>
             </div>
-            <div class='sv-gutenform-body'>
+            <div class='sv-gutenform-body sv-gutenform-hidden' style={ bodyStyle }>
                 <InnerBlocks />
             </div>
             <FormContext.Consumer>{ value => setInputNames( value ) }</FormContext.Consumer>

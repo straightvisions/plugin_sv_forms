@@ -19,6 +19,7 @@ export default ( { props, data } ) => {
     const { 
         setAttributes,
         attributes: {
+            formLabel,
             saveSubmits,
             adminMail,
             adminMailUser,
@@ -28,6 +29,7 @@ export default ( { props, data } ) => {
     } = props;
 
     // Functions
+    const setFormLabel      = formLabel => setAttributes({ formLabel });
     const setSaveSubmits    = saveSubmits => setAttributes({ saveSubmits });
     const setAdminMail      = adminMail => { 
         setAttributes({ adminMail });
@@ -84,8 +86,14 @@ export default ( { props, data } ) => {
     return(
         <PanelBody 
             title={ __( 'Form Settings', 'sv_gutenform' ) }
-            initialOpen={ false }
+            initialOpen={ true }
         >
+            <TextControl
+                label={ __( 'Form Label', 'sv_gutenform' ) }
+                type='text'
+                value={ formLabel }
+                onChange={ value => setFormLabel( value ) }
+            />
             <ToggleControl
                 label={ __( 'Save Submits', 'sv_gutenform' ) }
                 checked={ saveSubmits }
