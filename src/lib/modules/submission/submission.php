@@ -1,7 +1,7 @@
 <?php
 namespace sv_gutenform;
 
-class submission_manager extends modules {
+class submission extends modules {
 	// ##### Initialization Methods #####
 
 	public function init() {
@@ -33,12 +33,12 @@ class submission_manager extends modules {
 	}
 
 	// Handles the form submission when it passed the spam guard check
-	private function handle_submission( object $attr, array $data ): submission_manager {
+	private function handle_submission( object $attr, array $data ): submission {
 		// Creates a post witht he submission data in it
-		$this->post_manager->insert_post( $attr, $data );
+		$this->post->insert_post( $attr, $data );
 
 		// Sends a mail to the user and an admin
-		//$this->mail_manager->send_user_mail( $form_attr, $form_data )->send_admin_mail( $form_attr, $form_data );
+		//$this->mail->send_user_mail( $form_attr, $form_data )->send_admin_mail( $form_attr, $form_data );
 
 		return $this;
 	}

@@ -1,14 +1,57 @@
 <?php
 namespace sv_gutenform;
 
-class archive_manager extends modules {
+class archive extends modules {
 	// ##### Initialization Methods #####
 
 	public function init() {
 		// Actions Hooks & Filter
+		add_action( 'restrict_manage_posts', array( $this, 'set_form_label_filter' ) );
 		add_action( 'manage_sv_gutenform_submit_posts_custom_column' , array( $this, 'set_post_column_values' ), 10, 2 );
+		add_filter( 'parse_query', array( $this, 'set_form_label_filter_query' ) );
 		add_filter( 'manage_sv_gutenform_submit_posts_columns', array( $this, 'set_post_column_titles' ) );
 		add_filter( 'post_row_actions', array( $this, 'set_post_row_actions' ), 10, 2 );
+	}
+
+	// Adds a form label filter to the post table
+	public function set_form_label_filter( $post_type ) {
+		if ( $post_type === $this->post->get_post_type() ) {
+			$taxonomy_slug = $this->taxonomy->get_taxonomy();
+			$taxonomy      = get_taxonomy( $taxonomy_slug );
+			$selected      = $taxonomy_slug;
+			$request_attr  = $taxonomy_slug;
+			 
+			wp_dropdown_categories( array(
+				'show_option_all' =>  __( 'Show All', 'sv_gutenform' ) . ' ' . $taxonomy->label,
+				'taxonomy'        =>  $taxonomy_slug,
+				'name'            =>  $request_attr,
+				'orderby'         =>  'name',
+				'selected'        =>  $selected,
+				'hierarchical'    =>  true,
+				'depth'           =>  3,
+				'show_count'      =>  true,
+				'hide_empty'      =>  false,
+			) );
+		}
+	}
+
+	// Filters the query vars, so that the posts will be filtered by the term slug instead of the term id
+	public function set_form_label_filter_query( $query ) {
+		global $pagenow;
+
+		$qv = $query->query_vars;
+		$taxonomy_slug = $this->taxonomy->get_taxonomy();
+
+		if ( 
+			$pagenow === 'edit.php' 
+			&& $qv['post_type'] === $this->post->get_post_type()
+			&& isset( $qv[ $taxonomy_slug ] )
+			&& is_numeric( $qv[ $taxonomy_slug ] )
+		) {
+			$term = get_term_by( 'id', $qv[ $taxonomy_slug ], $taxonomy_slug );
+			$qv[ $taxonomy_slug ] = $term->slug;
+			$query->query_vars = $qv;
+		}
 	}
 
 	// Sets the titles of the post columns

@@ -1,7 +1,7 @@
 <?php
 namespace sv_gutenform;
 
-class personal_data_manager extends modules {
+class personal_data extends modules {
     // ##### Initialization Methods #####
 
     public function init() {

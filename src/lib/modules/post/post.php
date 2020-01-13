@@ -1,7 +1,7 @@
 <?php
 namespace sv_gutenform;
 
-class post_manager extends modules {
+class post extends modules {
 	// ##### Initialization Methods #####
 
 	public function init() {
@@ -12,14 +12,14 @@ class post_manager extends modules {
     }
     
     // Registers an option to save all form ids in
-	private function add_form_index(): post_manager {
+	private function add_form_index(): post {
 		add_option( $this->get_root()->get_prefix( 'index' ) );
 
 		return $this;
 	}
 
     // Registers a new custom post type
-	public function register_post_type(): post_manager {
+	public function register_post_type(): post {
 		$labels 	= array(
 			'name'                  => __( 'Submissions', 'sv_gutenform' ),
 			'singular_name'         => __( 'Submission', 'sv_gutenform' ),
@@ -54,7 +54,7 @@ class post_manager extends modules {
 			'show_in_nav_menus'		=> false,
 			'show_in_rest'			=> false,
             'supports'				=> $supports,
-            'taxonomies'            => array( $this->taxonomy_manager->get_taxonomy() ),
+            'taxonomies'            => array( $this->taxonomy->get_taxonomy() ),
             'has_archive'			=> false,
             'query_var'             => false,
             'delete_with_user'		=> false,
@@ -153,7 +153,7 @@ class post_manager extends modules {
     // ##### Setter Methods #####
 
     // Adds the submission as a new post
-    public function insert_post( object $attr, array $data ): post_manager {
+    public function insert_post( object $attr, array $data ): post {
         if ( ! $attr || ! $data || ! $attr->saveSubmits ) return $this;
 
         // Post Arguments
@@ -169,14 +169,14 @@ class post_manager extends modules {
         
         if ( $post_id ) {
             $this->set_form_index( $attr->formId )
-                ->taxonomy_manager->set_post_term( $post_id, $attr );
+                ->taxonomy->set_post_term( $post_id, $attr );
         }
 
         return $this; 
     }
 
     // Checks if the form id exists in the form index and adds it, if not
-	private function set_form_index( string $form_id ): post_manager {
+	private function set_form_index( string $form_id ): post {
 		$forms_array = $this->get_form_index();
 		$form_exists = in_array( $form_id, $forms_array );
 

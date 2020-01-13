@@ -1,7 +1,7 @@
 <?php
 namespace sv_gutenform;
 
-class taxonomy_manager extends modules {
+class taxonomy extends modules {
 	// ##### Initialization Methods #####
 
 	public function init() {
@@ -10,7 +10,7 @@ class taxonomy_manager extends modules {
 	}
 	
 	// Registers a new custom taxonomy for the custom post type
-	public function register_taxonomy(): taxonomy_manager {
+	public function register_taxonomy(): taxonomy {
 		$args = array(
 			'label'        			=> __( 'Form', 'sv_gutenform' ),
 			'public'       			=> false,
@@ -22,7 +22,7 @@ class taxonomy_manager extends modules {
 			'publicly_queryable'	=> false,
 		);
 
-		register_taxonomy( $this->get_taxonomy(), $this->post_manager->get_post_type(), $args );
+		register_taxonomy( $this->get_taxonomy(), $this->post->get_post_type(), $args );
 
 		return $this;
 	}
@@ -44,7 +44,7 @@ class taxonomy_manager extends modules {
 	// ###### Setter Methods ######
 
 	// Inserts a new term to the form_label taxonomy
-	private function insert_term( string $term, string $form_id ): taxonomy_manager {
+	private function insert_term( string $term, string $form_id ): taxonomy {
 		$args = array( 'slug' => md5( $form_id ) );
 
 		wp_insert_term( $term, $this->get_taxonomy(), $args );
@@ -53,7 +53,7 @@ class taxonomy_manager extends modules {
 	}
 
 	// Updates the term name
-	private function update_term_name( int $term_id, string $term_name ): taxonomy_manager {
+	private function update_term_name( int $term_id, string $term_name ): taxonomy {
 		wp_update_term( $term_id, $this->get_taxonomy(), array( 'name' => $term_name ) );
 
 		return $this;

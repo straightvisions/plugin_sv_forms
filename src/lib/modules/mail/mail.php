@@ -1,7 +1,7 @@
 <?php
 namespace sv_gutenform;
 
-class mail_manager extends modules {  
+class mail extends modules {  
 	// ##### Initialization Methods ##### 
     public function init() {
 
@@ -10,7 +10,7 @@ class mail_manager extends modules {
 	// ######### Helper Methods #########
 
 	// Sends a mail
-	private function send_mail( $to, string $subject, string $message, array $headers ): mail_manager {
+	private function send_mail( $to, string $subject, string $message, array $headers ): mail {
 		add_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
 		wp_mail( $to, $subject, $message, $headers );
 		remove_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
@@ -72,7 +72,7 @@ class mail_manager extends modules {
 	}
 
 	// Sends a mail to a auser
-	public function send_user_mail( object $attr, array $data ): mail_manager {
+	public function send_user_mail( object $attr, array $data ): mail {
 		if ( ! $attr || ! $data || ! isset( $attr->userMail ) || ! $attr->userMail ) return $this;
 
 		// Mail Properties
@@ -107,7 +107,7 @@ class mail_manager extends modules {
 	}
 	
 		// Sends a mail to an admin
-		public function send_admin_mail( object $attr, array $data ): mail_manager {
+		public function send_admin_mail( object $attr, array $data ): mail {
 			if ( ! $attr || ! $data || $attr->adminMail === 'disabled' ) return $this;
 	
 			// Mail Properties
