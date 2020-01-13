@@ -9,6 +9,12 @@ class mail extends modules {
 	
 	// ######### Helper Methods #########
 
+	public function send_mails( object $attr, array $data ): mail {
+		$this->send_user_mail( $attr, $data )->send_admin_mail( $attr, $data );
+
+		return $this;
+	}
+
 	// Sends a mail
 	private function send_mail( $to, string $subject, string $message, array $headers ): mail {
 		add_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
@@ -72,7 +78,7 @@ class mail extends modules {
 	}
 
 	// Sends a mail to a auser
-	public function send_user_mail( object $attr, array $data ): mail {
+	private function send_user_mail( object $attr, array $data ): mail {
 		if ( ! $attr || ! $data || ! isset( $attr->userMail ) || ! $attr->userMail ) return $this;
 
 		// Mail Properties
@@ -106,38 +112,38 @@ class mail extends modules {
 		return $this;
 	}
 	
-		// Sends a mail to an admin
-		public function send_admin_mail( object $attr, array $data ): mail {
-			if ( ! $attr || ! $data || $attr->adminMail === 'disabled' ) return $this;
-	
-			// Mail Properties
-			$to = $this->get_admin_mail( $attr );
-	
-			if ( isset( $attr->adminMailSubject ) && ! empty( $attr->adminMailSubject ) ) {
-				$subject = $attr->adminMailSubject;
-			} else {
-				$subject = __( 'New Form Submit', 'sv_gutenform' );
-			}
-	
-			if ( isset( $attr->adminMailContent ) && ! empty( $attr->adminMailContent ) ) {
-				$message = $this->get_parsed_mail_content( $attr->adminMailContent, $data );
-			} else {
-				$message = __( 'A new form was submitted.', 'sv_gutenform' );
-			}
-	
-			if ( 
-				isset( $attr->adminMailFromTitle ) 
-				&& ! empty( $attr->adminMailFromTitle ) 
-				&& isset( $attr->adminMailFromMail ) 
-				&& ! empty( $attr->adminMailFromMail ) 
-			) {
-				$headers = array( 'From: ' . $attr->adminMailFromTitle . ' <' . $attr->adminMailFromMail . '>' );
-			} else {
-				$headers = array();
-			}
-	
-			$this->send_mail( $to, $subject, $message, $headers );
-	
-			return $this;
+	// Sends a mail to an admin
+	private function send_admin_mail( object $attr, array $data ): mail {
+		if ( ! $attr || ! $data || $attr->adminMail === 'disabled' ) return $this;
+
+		// Mail Properties
+		$to = $this->get_admin_mail( $attr );
+
+		if ( isset( $attr->adminMailSubject ) && ! empty( $attr->adminMailSubject ) ) {
+			$subject = $attr->adminMailSubject;
+		} else {
+			$subject = __( 'New Form Submit', 'sv_gutenform' );
 		}
+
+		if ( isset( $attr->adminMailContent ) && ! empty( $attr->adminMailContent ) ) {
+			$message = $this->get_parsed_mail_content( $attr->adminMailContent, $data );
+		} else {
+			$message = __( 'A new form was submitted.', 'sv_gutenform' );
+		}
+
+		if ( 
+			isset( $attr->adminMailFromTitle ) 
+			&& ! empty( $attr->adminMailFromTitle ) 
+			&& isset( $attr->adminMailFromMail ) 
+			&& ! empty( $attr->adminMailFromMail ) 
+		) {
+			$headers = array( 'From: ' . $attr->adminMailFromTitle . ' <' . $attr->adminMailFromMail . '>' );
+		} else {
+			$headers = array();
+		}
+
+		$this->send_mail( $to, $subject, $message, $headers );
+
+		return $this;
+	}
 }

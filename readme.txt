@@ -74,6 +74,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 ### Bug Fixes
 
 * Prevents form id override when using a form as reuseable block.
+* Fixed debug info when checkbox has no value.
 
 = 1.4.12 =
 

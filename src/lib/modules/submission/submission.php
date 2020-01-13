@@ -36,9 +36,9 @@ class submission extends modules {
 	private function handle_submission( object $attr, array $data ): submission {
 		// Creates a post witht he submission data in it
 		$this->post->insert_post( $attr, $data );
-
+		
 		// Sends a mail to the user and an admin
-		//$this->mail->send_user_mail( $form_attr, $form_data )->send_admin_mail( $form_attr, $form_data );
+		$this->mail->send_mails( $attr, $data );
 
 		return $this;
 	}

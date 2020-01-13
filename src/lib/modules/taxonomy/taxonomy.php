@@ -16,7 +16,7 @@ class taxonomy extends modules {
 			'public'       			=> false,
 			'rewrite'      			=> false,
 			'hierarchical' 			=> true,
-			'show_ui'				=> true,
+			'show_ui'				=> false,
 			'show_admin_column' 	=> true,
 			'exclude_from_search'	=> true,
 			'publicly_queryable'	=> false,

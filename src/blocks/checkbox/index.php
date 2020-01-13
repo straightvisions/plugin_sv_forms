@@ -139,13 +139,18 @@ class checkbox extends sv_gutenform {
 		$attr[]		= 'type="checkbox"';
 
 		// ID
-		$attr[]		= 'id="' . $this->block_attr['value'] . '"';
+		// Value
+		if ( isset( $this->block_attr['value'] ) && ! empty( $this->block_attr['value'] ) ) {
+			$attr[]	= 'id="' . $this->block_attr['value'] . '"';
+		}
 
 		// Name
 		$attr[]		= 'name="' . $this->block_attr['name'] . '"';
 
 		// Value
-		$attr[]		= 'value="' . $this->block_attr['value'] . '"';
+		if ( isset( $this->block_attr['value'] ) && ! empty( $this->block_attr['value'] ) ) {
+			$attr[]	= 'value="' . $this->block_attr['value'] . '"';
+		}
 
 		// Checked
 		if ( isset( $this->block_attr['isChecked'] ) && $this->block_attr['isChecked'] ) {

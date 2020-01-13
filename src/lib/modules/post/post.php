@@ -116,6 +116,7 @@ class post extends modules {
         $form_data_meta_key 		= $this->get_root()->get_prefix( 'form_data' );
         $user_mail_meta_key			= $this->get_root()->get_prefix( 'user_mail' );
         $send_user_mail_meta_key 	= $this->get_root()->get_prefix( 'send_user_mail' );
+        $admin_mail_meta_key		= $this->get_root()->get_prefix( 'admin_mail' );
 
         // Meta Array
         $meta = array(

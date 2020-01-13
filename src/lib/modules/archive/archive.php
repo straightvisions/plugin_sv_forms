@@ -30,7 +30,7 @@ class archive extends modules {
 				'hierarchical'    =>  true,
 				'depth'           =>  3,
 				'show_count'      =>  true,
-				'hide_empty'      =>  false,
+				'hide_empty'      =>  true,
 			) );
 		}
 	}
