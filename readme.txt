@@ -52,6 +52,11 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 = 1.4.13 =
 
+### Features
+
+* Form Labels
+    * Give your form a label to filter and group your submissions by it.
+
 ### Enhancements
 
 * The following blocks are now collapsible, for better content overview.
