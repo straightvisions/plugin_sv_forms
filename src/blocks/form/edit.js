@@ -147,7 +147,6 @@ export default class extends Component {
         const newMeta = { ...currentMeta, _sv_gutenform_forms: JSON.stringify( currentForms ) };
 
         editPost( { meta: newMeta } );
-        console.log(this.props.attributes);
     }
 
     toggleBody() {

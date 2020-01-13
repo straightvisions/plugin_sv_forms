@@ -3,13 +3,17 @@ const { __ } = wp.i18n;
 const {
     PanelBody,
     TextControl,
+    Notice,
 } = wp.components;
+const { select } = wp.data;
 
 export default ( { props } ) => {
     if ( ! props ) return '';
 
     // Block Attributes
     const { 
+        formId,
+        clientId,
         setAttributes,
         attributes: {
             // Input Settings
@@ -27,6 +31,32 @@ export default ( { props } ) => {
         const slug = string.replace( /[^A-Z0-9]+/ig, '-' ).toLowerCase();
 
         return slug;
+    };
+
+    // Conditional Components
+    const NameCheck         = () => {
+        const formBlocks    = select('core/block-editor').getBlocks( formId );
+        let output          = null;
+        
+        formBlocks.map( block => {
+            if ( 
+                block.name.startsWith( 'straightvisions/sv-gutenform' ) 
+                && block.clientId !== clientId
+                && block.attributes.name
+                && block.attributes.name === name
+            ) {
+                output = 
+                <Notice 
+                    status='warning' 
+                    className='sv-gutenform-name-check'
+                    isDismissible={ false }
+                >
+                    { __( 'This input name is already in use!', 'sv_gutenform' ) }
+                </Notice>;
+            }
+        } );
+
+        return output;
     };
 
     return(
@@ -47,6 +77,7 @@ export default ( { props } ) => {
                 value={ getSlug( name ) }
                 onChange={ value => setName( getSlug( value ) )  }
             />
+            <NameCheck />
         </PanelBody>
     );
 }

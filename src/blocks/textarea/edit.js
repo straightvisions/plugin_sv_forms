@@ -1,5 +1,6 @@
 // Required Components
 import InspectorControls from './components/inspector_controls';
+import { FormContext } from '../../blocks';
 
 const { withSelect }        = wp.data;
 const { Fragment }          = wp.element;
@@ -60,7 +61,6 @@ export default withSelect( ( select, props ) => {
 
     return (
         <Fragment>
-            <InspectorControls props={ props } />
             <div className={ className }>
                 <Label />
                 <TextareaControl
@@ -80,6 +80,13 @@ export default withSelect( ( select, props ) => {
                     hideLabelFromVision={ true }
                 />
             </div>
+            <FormContext.Consumer>
+            { value => {
+                props.formId = value;
+
+                return <InspectorControls props={ props } />;
+            }}
+            </FormContext.Consumer>
         </Fragment>
     ); 
 });

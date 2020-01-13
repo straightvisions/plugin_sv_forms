@@ -56,6 +56,8 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 * Form Labels
     * Give your form a label to filter and group your submissions by it.
+* Input name check
+    * When working on your form, you will get a notice when two of your inputs use the same input name.
 
 ### Enhancements
 

@@ -41,12 +41,14 @@ export default props => {
             autocomplete,
             readonly,
             disabled,
-        } 
+        }
     } = props;
 
     // Functions
     const setDefaultValue       = defaultValue => setAttributes({ defaultValue });
     const updateFormAttributes  = formId => {
+        props.formId = formId;
+
         addUserMailBlock( formId );
         
         const newAttributes     = {
@@ -55,6 +57,8 @@ export default props => {
         };
 
         dispatch( 'core/block-editor' ).updateBlockAttributes( formId, newAttributes );
+
+        return <InspectorControls props={ props } />;
     };
     const addUserMailBlock      = formId => {
         if ( sendMail ) {
@@ -91,7 +95,6 @@ export default props => {
 
     return (
         <Fragment>
-            <InspectorControls props={ props } />
             <div className={ className }>
                 <Label />
                 <TextControl
