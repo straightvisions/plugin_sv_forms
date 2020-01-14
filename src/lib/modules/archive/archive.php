@@ -16,22 +16,24 @@ class archive extends modules {
 	// Adds a form label filter to the post table
 	public function set_form_label_filter( $post_type ) {
 		if ( $post_type === $this->post->get_post_type() ) {
-			$taxonomy_slug = $this->taxonomy->get_taxonomy();
-			$taxonomy      = get_taxonomy( $taxonomy_slug );
-			$selected      = $taxonomy_slug;
-			$request_attr  = $taxonomy_slug;
-			 
-			wp_dropdown_categories( array(
-				'show_option_all' =>  __( 'Show All', 'sv_gutenform' ) . ' ' . $taxonomy->label,
-				'taxonomy'        =>  $taxonomy_slug,
-				'name'            =>  $request_attr,
-				'orderby'         =>  'name',
-				'selected'        =>  $selected,
-				'hierarchical'    =>  true,
-				'depth'           =>  3,
-				'show_count'      =>  true,
-				'hide_empty'      =>  true,
-			) );
+			$taxonomy_slug 	= $this->taxonomy->get_taxonomy();
+			$taxonomy      	= get_taxonomy( $taxonomy_slug );
+			$selected      	= $taxonomy_slug;
+			$request_attr  	= $taxonomy_slug;
+
+			if ( $this->get_submissions_count() > 0 ) {
+				wp_dropdown_categories( array(
+					'show_option_all' =>  __( 'Show All', 'sv_gutenform' ) . ' ' . $taxonomy->label,
+					'taxonomy'        =>  $taxonomy_slug,
+					'name'            =>  $request_attr,
+					'orderby'         =>  'name',
+					'selected'        =>  $selected,
+					'hierarchical'    =>  true,
+					'depth'           =>  3,
+					'show_count'      =>  true,
+					'hide_empty'      =>  true,
+				) );
+			} 
 		}
 	}
 
@@ -127,5 +129,26 @@ class archive extends modules {
 		}
 
 		return $actions;
+	}
+
+	// Returns the submissions count
+	public function get_submissions_count( string $term_slug = '' ): int {
+		$args = array(
+			'post_type'	=> $this->post->get_post_type(),
+		);
+
+		if ( ! empty( $term_slug ) ) {
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' 	=> $this->taxonomy->get_taxonomy(),
+					'field'		=> 'slug',
+					'terms'		=> $term_slug,
+				),
+			);
+		}
+
+		$query = new \WP_Query( $args );
+
+		return $query->post_count;
 	}
 }

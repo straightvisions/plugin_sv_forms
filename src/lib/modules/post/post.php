@@ -169,8 +169,7 @@ class post extends modules {
         $post_id = wp_insert_post( $postarr );
         
         if ( $post_id ) {
-            $this->set_form_index( $attr->formId )
-                ->taxonomy->set_post_term( $post_id, $attr );
+            $this->set_form_index( $attr->formId )->taxonomy->set_post_term( $post_id, $attr );
         }
 
         return $this; 
