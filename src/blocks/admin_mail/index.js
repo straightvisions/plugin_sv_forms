@@ -5,6 +5,7 @@ import edit from './edit';
 
 const { __ } 				= wp.i18n;
 const { registerBlockType } = wp.blocks
+const { InnerBlocks } 		= wp.blockEditor;
 
 registerBlockType( 'straightvisions/sv-gutenform-admin-mail', {
 	title: __( 'Admin Mail', 'sv_gutenform' ),
@@ -49,6 +50,6 @@ registerBlockType( 'straightvisions/sv-gutenform-admin-mail', {
 	},
 	edit,
 	save: () => {
-		return null;
+		return <InnerBlocks.Content />;
 	},
 } );

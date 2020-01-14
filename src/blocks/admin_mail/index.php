@@ -11,6 +11,7 @@ class admin_mail extends sv_gutenform {
 			'straightvisions/sv-gutenform-admin-mail', array(
 				'editor_script' 	=> 'sv-gutenform-block',
 				'editor_style'  	=> 'sv-gutenform-block-editor',
+				'render_callback'	=> function() { return ''; },
 			)
 		);
 	}

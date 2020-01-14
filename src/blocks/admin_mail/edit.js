@@ -29,6 +29,7 @@ export default withSelect( ( select, props ) => {
             inputNames,
         }
     } = props;
+    const bodyStyle = { display: 'none' };
 
     // Functions
     // Returns the innerBlocks content as string
@@ -108,7 +109,7 @@ export default withSelect( ( select, props ) => {
                     </div>
                 </div>
             </div>
-            <div class='sv-gutenform-body sv-gutenform-hidden'>
+            <div class='sv-gutenform-body sv-gutenform-hidden' style={ bodyStyle }>
                 <InnerBlocks />
             </div>
             <FormContext.Consumer>{ value => updateFormAttributes( value ) }</FormContext.Consumer>

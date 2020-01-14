@@ -136,7 +136,7 @@ export default class extends Component {
     updatePostMeta( action ) {
         const currentMeta = getEditedPostAttribute( 'meta' );
         let currentForms  = currentMeta._sv_gutenform_forms ? JSON.parse( currentMeta._sv_gutenform_forms ) : {};
-        console.log(currentForms);
+
         switch ( action ) {
             case 'update':
                 currentForms[ this.props.attributes.formId ] = this.props.attributes;
