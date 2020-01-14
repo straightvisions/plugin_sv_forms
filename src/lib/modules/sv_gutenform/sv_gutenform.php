@@ -2,14 +2,12 @@
 namespace sv_gutenform;
 
 class sv_gutenform extends modules {
-	// ##### Initialization Methods #####
-
 	public function init() {
 		$this->register_scripts()->register_blocks();
 
 		// Actions Hooks & Filter
 		add_action( 'init', array( $this, 'register_block_assets' ) );
-		add_filter( 'block_categories', array( $this, 'register_block_category' ), 10, 2 );
+		add_filter( 'block_categories', array( $this, 'block_categories' ), 10, 2 );
 	}
 
 	// Registers all block styles and scripts for the frontend
@@ -17,6 +15,9 @@ class sv_gutenform extends modules {
 		// Stylesheets
 		$this->get_script( 'common' )
 			 ->set_path( 'lib/frontend/css/common.css' );
+
+		$this->get_script( 'wrapper' )
+			 ->set_path( 'lib/frontend/css/wrapper.css' );
 
 		$this->get_script( 'form' )
 			 ->set_path( 'lib/frontend/css/form.css' );
@@ -138,7 +139,7 @@ class sv_gutenform extends modules {
 	}
 	
 	// Registers the straightvisions block category
-	public function register_block_category( $categories ) {
+	public function block_categories( $categories ) {
 		$category_slugs = wp_list_pluck( $categories, 'slug' );
 
 		return 
@@ -153,9 +154,7 @@ class sv_gutenform extends modules {
 				),
 			)
 		);
-	}	
-
-	// ######### Helper Methods #########
+	}
 
 	// Checks if the gutenberg plugin is active and if the version is compatible
 	private function check_gutenberg() {

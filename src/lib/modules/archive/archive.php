@@ -18,8 +18,7 @@ class archive extends modules {
 		if ( $post_type === $this->post->get_post_type() ) {
 			$taxonomy_slug 	= $this->taxonomy->get_taxonomy();
 			$taxonomy      	= get_taxonomy( $taxonomy_slug );
-			$selected      	= $taxonomy_slug;
-			$request_attr  	= $taxonomy_slug;
+			$request_attr  	= $selected = $taxonomy_slug;
 
 			if ( $this->get_submissions_count() > 0 ) {
 				wp_dropdown_categories( array(

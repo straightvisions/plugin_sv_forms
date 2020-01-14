@@ -93,24 +93,21 @@ export default withSelect( ( select, props ) => {
                         onClick={ () => toggleBody() }
                     ><span class="dashicons dashicons-hidden"></span></Button>
                 </div>
-                <div className='sv-gutenform-description'>
-                    { __( 'Everything inside this block will be the content of the user mail.', 'sv_gutenform' ) }
-                    <div className='sv-gutenform-input-values-wrapper'>
-                        <div className='sv-gutenform-input-values-title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
-                        <div className='sv-gutenform-input-values'>
-                        {
-                            inputNames 
-                            ? inputNames.split( ',' ).map( name => {
-                                return <div className='sv-gutenform-input-value'>{ name }</div>;
-                            } )
-                            : ''
-                        }
-                        </div>
+                <div className='sv-gutenform-input-values-wrapper'>
+                    <div className='sv-gutenform-input-values-title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
+                    <div className='sv-gutenform-input-values'>
+                    {
+                        inputNames 
+                        ? inputNames.split( ',' ).map( name => {
+                            return <div className='sv-gutenform-input-value'>{ name }</div>;
+                        } )
+                        : ''
+                    }
                     </div>
                 </div>
             </div>
             <div class='sv-gutenform-body sv-gutenform-hidden' style={ bodyStyle }>
-                <InnerBlocks />
+                <InnerBlocks templateLock={ false } />
             </div>
             <FormContext.Consumer>{ value => updateFormAttributes( value ) }</FormContext.Consumer>
         </div>
