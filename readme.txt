@@ -74,7 +74,9 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 ### Bug Fixes
 
 * Prevents form id override when using a form as reuseable block.
-* Fixed debug info when checkbox has no value.
+* Checkboxes without value will no longer throw PHP notices.
+* Spam Guard will no longer throw an error, when not set.
+* Fixed a bug where block content of the Admin Mail and User Mail Block will disappear.
 
 = 1.4.12 =
 
