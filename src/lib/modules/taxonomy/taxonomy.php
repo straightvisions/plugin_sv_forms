@@ -62,15 +62,16 @@ class taxonomy extends modules {
 	// Sets the post term by the form id
 	public function set_post_term( int $post_id, object $attr ) {
 		$term = $this->get_term( $attr->formId );
+		$form_label = ! isset( $attr->formLabel ) || empty( $attr->formLabel ) ? '' : $attr->formLabel;
 
 		if ( $term && $term->term_taxonomy_id ) {
-			if ( $term->name !== $attr->formLabel ) {
-				$this->update_term_name( $term->term_id, $attr->formLabel );
+			if ( $term->name !== $form_label ) {
+				$this->update_term_name( $term->term_id, $form_label );
 			}
 
 			wp_set_post_terms( $post_id, array( $term->term_taxonomy_id ), $this->get_taxonomy() );
 		} else {
-			$this->insert_term( $attr->formLabel, $attr->formId )
+			$this->insert_term( $form_label, $attr->formId )
 				->set_post_term( $post_id, $attr );
 		}
     }

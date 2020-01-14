@@ -10,7 +10,7 @@ const {
     withSelect, 
     dispatch,
     select 
-}                           = wp.data;
+} = wp.data;
 
 export default withSelect( ( select, props ) => {
     return {
@@ -29,7 +29,6 @@ export default withSelect( ( select, props ) => {
             inputNames,
         }
     } = props;
-    const bodyStyle = { display: 'none' };
 
     // Functions
     // Returns the innerBlocks content as string
@@ -48,7 +47,7 @@ export default withSelect( ( select, props ) => {
             adminMailContent: getMailContent(),
         };
 
-        dispatch( 'core/block-editor' ).updateBlockAttributes( formId, newAttributes);
+        dispatch( 'core/block-editor' ).updateBlockAttributes( formId, newAttributes );
     }
 
     const setInputNames = formId => {
@@ -109,7 +108,7 @@ export default withSelect( ( select, props ) => {
                     </div>
                 </div>
             </div>
-            <div class='sv-gutenform-body sv-gutenform-hidden' style={ bodyStyle }>
+            <div class='sv-gutenform-body sv-gutenform-hidden'>
                 <InnerBlocks />
             </div>
             <FormContext.Consumer>{ value => updateFormAttributes( value ) }</FormContext.Consumer>

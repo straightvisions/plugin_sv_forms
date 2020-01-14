@@ -60,9 +60,11 @@ export default ( { props, data } ) => {
     const getAuthorOptions      = ()                => {
         let options = [];
 
-        data.authors.map( author => {
-            options.push( { label: author.name, value: author.id } );
-        } );
+        if ( data.authors ) {
+            data.authors.map( author => {
+                options.push( { label: author.name, value: author.id } );
+            } );
+        }
 
         return options;
     };

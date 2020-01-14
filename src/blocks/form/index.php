@@ -84,6 +84,11 @@ class form extends sv_gutenform {
 						'default' => true,
 					),
 
+					// Collapse Settings
+					'collapsed' => array(
+						'type' => 'bool',
+					),
+
 					// Mail Settings
 					// Admin Mails
 					'adminMail' => array(

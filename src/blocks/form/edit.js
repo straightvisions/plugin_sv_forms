@@ -60,6 +60,8 @@ export default class extends Component {
             
             this.updatePostMeta( 'update' );
         }
+
+        this.toggleBody( false );
     }
 
     componentDidUpdate() {
@@ -80,7 +82,7 @@ export default class extends Component {
                         <div className='sv-gutenform-form-label'>{ this.props.attributes.formLabel }</div>
                         <Button 
                             isTertiary 
-                            onClick={ () => this.toggleBody() }
+                            onClick={ () => this.toggleBody( true ) }
                         ><span class="dashicons dashicons-visibility"></span></Button>
                     </div>
                     <div className='sv-gutenform-form-id'>Form ID: { this.props.attributes.formId }</div>
@@ -134,7 +136,7 @@ export default class extends Component {
     updatePostMeta( action ) {
         const currentMeta = getEditedPostAttribute( 'meta' );
         let currentForms  = currentMeta._sv_gutenform_forms ? JSON.parse( currentMeta._sv_gutenform_forms ) : {};
-
+        console.log(currentForms);
         switch ( action ) {
             case 'update':
                 currentForms[ this.props.attributes.formId ] = this.props.attributes;
@@ -149,18 +151,32 @@ export default class extends Component {
         editPost( { meta: newMeta } );
     }
 
-    toggleBody() {
+    toggleBody( change ) {
         const body = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv-gutenform-body' );
-        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv-gutenform-header > .sv-gutenform-form-name-wrapper > button.components-button > span' );
+        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv-gutenform-header > .sv-gutenform-form-label-wrapper > button.components-button > span' );
 
-        if ( body.hasClass( 'sv-gutenform-hidden' ) ) {
-            icon.removeClass( 'dashicons-hidden' );
-            icon.addClass( 'dashicons-visibility' );
-            body.removeClass( 'sv-gutenform-hidden' ).slideDown();
+        if ( change ) {
+            if ( this.props.attributes.collapsed ) {
+                icon.removeClass( 'dashicons-hidden' );
+                icon.addClass( 'dashicons-visibility' );
+                body.removeClass( 'sv-gutenform-hidden' ).slideDown();
+            } else {
+                icon.removeClass( 'dashicons-visibility' );
+                icon.addClass( 'dashicons-hidden' );
+                body.addClass( 'sv-gutenform-hidden' ).slideUp();
+            }
+
+            this.props.setAttributes({ collapsed: ! this.props.attributes.collapsed });
         } else {
-            icon.removeClass( 'dashicons-visibility' );
-            icon.addClass( 'dashicons-hidden' );
-            body.addClass( 'sv-gutenform-hidden' ).slideUp();
+            if ( this.props.attributes.collapsed ) {
+                icon.removeClass( 'dashicons-visibility' );
+                icon.addClass( 'dashicons-hidden' );
+                body.addClass( 'sv-gutenform-hidden' ).slideUp();
+            } else {
+                icon.removeClass( 'dashicons-hidden' );
+                icon.addClass( 'dashicons-visibility' );
+                body.removeClass( 'sv-gutenform-hidden' ).slideDown();
+            }
         }
     }
 }

@@ -25,6 +25,11 @@ registerBlockType( 'straightvisions/sv-gutenform-admin-mail', {
 		intputNames: {
 			type: 'string'
 		},
+
+		// Collapse Settings
+		collapsed: {
+			type: 'boolean',
+		},
 		
 		// E-Mail Settings
 		subject: {

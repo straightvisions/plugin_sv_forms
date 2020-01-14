@@ -35,6 +35,11 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 			default: true,
 		},
 
+		// Collapse Settings
+		collapsed: {
+			type: 'boolean',
+		},
+
 		// Mail Settings
 		// Admin Mails
 		adminMail: {
