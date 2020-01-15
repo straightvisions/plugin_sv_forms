@@ -24,6 +24,7 @@ registerBlockType( 'straightvisions/sv-gutenform-form', {
 		// Collapse Settings
 		collapsed: {
 			type: 'boolean',
+			default: false,
 		},
 		
 		// Advanced

@@ -12,6 +12,13 @@ class user_mail extends sv_gutenform {
 				'editor_script' 	=> 'sv-gutenform-block',
 				'editor_style'  	=> 'sv-gutenform-block-editor',
 				'render_callback'	=> function() { return ''; },
+				'aatributes'		=> array(
+					// Collapse Settings
+					'collapsed' => array(
+						'type' => 'bool',
+						'default' => false,
+					),
+				),
 			)
 		);
 	}

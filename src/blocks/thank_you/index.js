@@ -22,6 +22,12 @@ registerBlockType( 'straightvisions/sv-gutenform-thank-you', {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
 	},
 	attributes: {
+		// Collapse Settings
+		collapsed: {
+			type: 'boolean',
+			default: false,
+		},
+		
 		// Advanced Settings
 		className: {
 			type: 'string',

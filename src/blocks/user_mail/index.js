@@ -27,6 +27,12 @@ registerBlockType( 'straightvisions/sv-gutenform-user-mail', {
 			type: 'string',
 		},
 
+		// Collapse Settings
+		collapsed: {
+			type: 'boolean',
+			default: false,
+		},
+
 		// E-Mail Settings
 		subject: {
 			type: 'string',

@@ -43,6 +43,7 @@ class form extends sv_gutenform {
 					// Collapse Settings
 					'collapsed' => array(
 						'type' => 'bool',
+						'default' => false,
 					),
 					
 					// Advanced
