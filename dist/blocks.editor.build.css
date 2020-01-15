@@ -1,19 +1,1012 @@
-.wp-block-straightvisions-sv-gutenform>.sv-gutenform-header,.wp-block-straightvisions-sv-gutenform>.sv-gutenform-body{position:relative;z-index:1}.wp-block-straightvisions-sv-gutenform>.sv-gutenform-header{color:white}.wp-block-straightvisions-sv-gutenform>.sv-gutenform-header>.sv-gutenform-form-label-wrapper{display:-ms-flexbox;display:flex;-ms-flex-align:start;align-items:flex-start;-ms-flex-pack:justify;justify-content:space-between}.wp-block-straightvisions-sv-gutenform>.sv-gutenform-header>.sv-gutenform-form-label-wrapper>button.components-button{height:auto;color:#FFFFFF;border:none;-webkit-box-shadow:none;box-shadow:none;outline:none;background-color:transparent}.wp-block-straightvisions-sv-gutenform>.sv-gutenform-header>.sv-gutenform-form-label-wrapper>button.components-button:hover,.wp-block-straightvisions-sv-gutenform>.sv-gutenform-header>.sv-gutenform-form-label-wrapper>button.components-button:focus{color:#EEEEEE}.wp-block-straightvisions-sv-gutenform>.sv-gutenform-header>.sv-gutenform-form-label-wrapper>.sv-gutenform-form-label{font-size:38px;font-weight:700;line-height:1.2}.wp-block-straightvisions-sv-gutenform>.sv-gutenform-header>.sv-gutenform-form-id{font-size:12px;line-height:1.2;font-weight:400;margin-bottom:10px;padding-bottom:5px;border-bottom:2px solid #FFFFFF}.wp-block-straightvisions-sv-gutenform>.sv-gutenform-header>.sv-gutenform-title{font-size:32px;font-weight:700;line-height:1.2}.wp-block-straightvisions-sv-gutenform>.sv-gutenform-header>.sv-gutenform-description{font-size:14px;line-height:1.2;font-weight:400}.wp-block-straightvisions-sv-gutenform>.sv-gutenform-header::after,.wp-block-straightvisions-sv-gutenform>.sv-gutenform-body::after{z-index:-1;content:"";position:absolute;border:1px solid transparent;border-left:none;-webkit-box-shadow:none;box-shadow:none;pointer-events:none;outline:1px solid transparent;right:-13px;left:-13px;top:-14px;bottom:-14px}.wp-block-straightvisions-sv-gutenform>.sv-gutenform-header::after{background-image:-webkit-gradient(linear, left bottom, right top, from(#3499ff), color-stop(#3e80e0), color-stop(#4167c1), color-stop(#3f50a3), to(#3a3985));background-image:-webkit-linear-gradient(left bottom, #3499ff, #3e80e0, #4167c1, #3f50a3, #3a3985);background-image:-o-linear-gradient(left bottom, #3499ff, #3e80e0, #4167c1, #3f50a3, #3a3985);background-image:linear-gradient(to right top, #3499ff, #3e80e0, #4167c1, #3f50a3, #3a3985);border:none}.wp-block-straightvisions-sv-gutenform>.sv-gutenform-body::after{border:3px solid;border-image-source:linear-gradient(to right bottom, #3499ff, #3e80e0, #4167c1, #3f50a3, #3a3985);border-image-slice:1}
-.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-header,.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-body{position:relative;z-index:1}.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-header{color:white}.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-header>.sv-gutenform-title-wrapper{display:-ms-flexbox;display:flex;-ms-flex-align:start;align-items:flex-start;-ms-flex-pack:justify;justify-content:space-between}.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-header>.sv-gutenform-title-wrapper>.sv-gutenform-title{font-size:32px;font-weight:700;line-height:1.2}.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-header>.sv-gutenform-title-wrapper>button.components-button{height:auto;color:#FFFFFF;border:none;-webkit-box-shadow:none;box-shadow:none;outline:none;background-color:transparent}.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-header>.sv-gutenform-title-wrapper>button.components-button:hover,.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-header>.sv-gutenform-title-wrapper>button.components-button:focus{color:#EEEEEE}.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-header>.sv-gutenform-description{font-size:14px;line-height:1.2;font-weight:400}.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-header>.sv-gutenform-description .sv-gutenform-input-values-wrapper{margin-top:10px}.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-header>.sv-gutenform-description .sv-gutenform-input-values-title{font-weight:700;font-size:16px}.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-header>.sv-gutenform-description .sv-gutenform-input-values{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;font-size:12px;margin-top:3px}.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-header>.sv-gutenform-description .sv-gutenform-input-values>.sv-gutenform-input-value{padding:4px 6px;border-radius:3px;background-color:rgba(0,0,0,0.2);margin-right:5px;margin-bottom:5px}.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-header::after,.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-body::after{z-index:-1;content:"";position:absolute;border:1px solid transparent;border-left:none;-webkit-box-shadow:none;box-shadow:none;pointer-events:none;outline:1px solid transparent;right:-14px;left:-14px;top:-14px;bottom:-14px}.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-header::after{background-image:-webkit-gradient(linear, left bottom, right top, from(#ff9897), color-stop(#ff8794), color-stop(#ff7595), color-stop(#fc6399), to(#f650a0));background-image:-webkit-linear-gradient(left bottom, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);background-image:-o-linear-gradient(left bottom, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);background-image:linear-gradient(to right top, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);border:none}.wp-block-straightvisions-sv-gutenform-form>.sv-gutenform-body::after{border:4px solid;border-image-source:linear-gradient(to right bottom, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);border-image-slice:1}
-.wp-block-straightvisions-sv-gutenform-text{margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-text label{display:block;margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-text input[type="text"].components-text-control__input{-webkit-appearance:none;-moz-appearance:none;background:#fff;border-radius:0;border-style:solid;border-width:2px;border-color:rgba(0,0,0,0.5);-webkit-box-shadow:none;box-shadow:none;display:block;margin:0;max-width:100%;padding:.75em 1em;color:rgba(0,0,0,0.75);width:100%;outline:none;box-shadow:none;-webkit-transition:color .25s ease, border-color .25s ease;-o-transition:color .25s ease, border-color .25s ease;transition:color .25s ease, border-color .25s ease}.wp-block-straightvisions-sv-gutenform-text input[type="text"].components-text-control__input:hover,.wp-block-straightvisions-sv-gutenform-text input[type="text"].components-text-control__input:focus{color:#000;border-color:#000}.components-notice.sv-gutenform-name-check{margin:-15px 0 15px 0}
-.wp-block-straightvisions-sv-gutenform-email{margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-email label{display:block;margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-email input[type="email"].components-text-control__input{-webkit-appearance:none;-moz-appearance:none;background:#fff;border-radius:0;border-style:solid;border-width:2px;border-color:rgba(0,0,0,0.5);-webkit-box-shadow:none;box-shadow:none;display:block;margin:0;max-width:100%;padding:.75em 1em;color:rgba(0,0,0,0.75);width:100%;outline:none;box-shadow:none;-webkit-transition:color .25s ease, border-color .25s ease;-o-transition:color .25s ease, border-color .25s ease;transition:color .25s ease, border-color .25s ease}.wp-block-straightvisions-sv-gutenform-email input[type="email"].components-text-control__input:hover,.wp-block-straightvisions-sv-gutenform-email input[type="email"].components-text-control__input:focus{color:#000;border-color:#000}.components-notice.sv-gutenform-name-check{margin:-15px 0 15px 0}
-.wp-block-straightvisions-sv-gutenform-url{margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-url label{display:block;margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-url input[type="url"].components-text-control__input{-webkit-appearance:none;-moz-appearance:none;background:#fff;border-radius:0;border-style:solid;border-width:2px;border-color:rgba(0,0,0,0.5);-webkit-box-shadow:none;box-shadow:none;display:block;margin:0;max-width:100%;padding:.75em 1em;color:rgba(0,0,0,0.75);width:100%;outline:none;box-shadow:none;-webkit-transition:color .25s ease, border-color .25s ease;-o-transition:color .25s ease, border-color .25s ease;transition:color .25s ease, border-color .25s ease}.wp-block-straightvisions-sv-gutenform-url input[type="url"].components-text-control__input:hover,.wp-block-straightvisions-sv-gutenform-url input[type="url"].components-text-control__input:focus{color:#000;border-color:#000}.components-notice.sv-gutenform-name-check{margin:-15px 0 15px 0}
-.wp-block-straightvisions-sv-gutenform-number{margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-number label{display:block;margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-number input[type="number"].components-text-control__input{-webkit-appearance:none;-moz-appearance:none;background:#fff;border-radius:0;border-style:solid;border-width:2px;border-color:rgba(0,0,0,0.5);-webkit-box-shadow:none;box-shadow:none;display:block;margin:0;max-width:100%;padding:.75em 1em;color:rgba(0,0,0,0.75);width:100%;outline:none;box-shadow:none;-webkit-transition:color .25s ease, border-color .25s ease;-o-transition:color .25s ease, border-color .25s ease;transition:color .25s ease, border-color .25s ease}.wp-block-straightvisions-sv-gutenform-number input[type="number"].components-text-control__input:hover,.wp-block-straightvisions-sv-gutenform-number input[type="number"].components-text-control__input:focus{color:#000;border-color:#000}.components-notice.sv-gutenform-name-check{margin:-15px 0 15px 0}
-.wp-block-straightvisions-sv-gutenform-phone{margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-phone label{display:block;margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-phone input[type="phone"].components-text-control__input{-webkit-appearance:none;-moz-appearance:none;background:#fff;border-radius:0;border-style:solid;border-width:2px;border-color:rgba(0,0,0,0.5);-webkit-box-shadow:none;box-shadow:none;display:block;margin:0;max-width:100%;padding:.75em 1em;color:rgba(0,0,0,0.75);width:100%;outline:none;box-shadow:none;-webkit-transition:color .25s ease, border-color .25s ease;-o-transition:color .25s ease, border-color .25s ease;transition:color .25s ease, border-color .25s ease}.wp-block-straightvisions-sv-gutenform-phone input[type="phone"].components-text-control__input:hover,.wp-block-straightvisions-sv-gutenform-phone input[type="phone"].components-text-control__input:focus{color:#000;border-color:#000}.components-notice.sv-gutenform-name-check{margin:-15px 0 15px 0}
-.wp-block-straightvisions-sv-gutenform-password{margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-password label{display:block;margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-password input[type="password"].components-text-control__input{-webkit-appearance:none;-moz-appearance:none;background:#fff;border-radius:0;border-style:solid;border-width:2px;border-color:rgba(0,0,0,0.5);-webkit-box-shadow:none;box-shadow:none;display:block;margin:0;max-width:100%;padding:.75em 1em;color:rgba(0,0,0,0.75);width:100%;outline:none;box-shadow:none;-webkit-transition:color .25s ease, border-color .25s ease;-o-transition:color .25s ease, border-color .25s ease;transition:color .25s ease, border-color .25s ease}.wp-block-straightvisions-sv-gutenform-password input[type="password"].components-text-control__input:hover,.wp-block-straightvisions-sv-gutenform-password input[type="password"].components-text-control__input:focus{color:#000;border-color:#000}.components-notice.sv-gutenform-name-check{margin:-15px 0 15px 0}
-.wp-block-straightvisions-sv-gutenform-password{margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-password label{display:block;margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-password input.components-text-control__input{-webkit-appearance:none;-moz-appearance:none;background:#fff;border-radius:0;border-style:solid;border-width:2px;border-color:rgba(0,0,0,0.5);-webkit-box-shadow:none;box-shadow:none;display:block;margin:0;max-width:100%;padding:.75em 1em;color:rgba(0,0,0,0.75);width:100%;-webkit-transition:color .25s ease, border-color .25s ease;-o-transition:color .25s ease, border-color .25s ease;transition:color .25s ease, border-color .25s ease}.wp-block-straightvisions-sv-gutenform-password input.components-text-control__input:hover,.wp-block-straightvisions-sv-gutenform-password input.components-text-control__input:focus{color:#000;border-color:#000}.components-notice.sv-gutenform-name-check{margin:-15px 0 15px 0}
-.wp-block-straightvisions-sv-gutenform-range input[type="number"].components-range-control__number{margin-left:10px;color:rgba(0,0,0,0.75);font-size:14px;padding:4px 6px;border-style:solid;border-width:2px;border-color:rgba(0,0,0,0.5);border-radius:0;outline:none;-webkit-box-shadow:none;box-shadow:none;-webkit-transition:color .25s ease, border-color .25s ease;-o-transition:color .25s ease, border-color .25s ease;transition:color .25s ease, border-color .25s ease}.wp-block-straightvisions-sv-gutenform-range input[type="number"].components-range-control__number:hover,.wp-block-straightvisions-sv-gutenform-range input[type="number"].components-range-control__number:focus{color:#000;border-color:#000}.components-notice.sv-gutenform-name-check{margin:-15px 0 15px 0}
-.wp-block-straightvisions-sv-gutenform-textarea{margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-textarea label{display:block;margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-textarea textarea.components-textarea-control__input{-webkit-appearance:none;-moz-appearance:none;background:#fff;border-radius:0;border-style:solid;border-width:2px;border-color:rgba(0,0,0,0.5);-webkit-box-shadow:none;box-shadow:none;display:block;margin:0;max-width:100%;padding:.75em 1em;color:rgba(0,0,0,0.75);width:100%;font-family:inherit;outline:none;box-shadow:none;-webkit-transition:color .25s ease, border-color .25s ease;-o-transition:color .25s ease, border-color .25s ease;transition:color .25s ease, border-color .25s ease}.wp-block-straightvisions-sv-gutenform-textarea textarea.components-textarea-control__input:hover,.wp-block-straightvisions-sv-gutenform-textarea textarea.components-textarea-control__input:focus{color:#000;border-color:#000}.components-notice.sv-gutenform-name-check{margin:-15px 0 15px 0}
-.wp-block-straightvisions-sv-gutenform-checkbox{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-checkbox label{margin:0 0 0 .75em}.wp-block-straightvisions-sv-gutenform-checkbox .components-base-control{line-height:1}.wp-block-straightvisions-sv-gutenform-checkbox .components-base-control__field,.wp-block-straightvisions-sv-gutenform-checkbox .components-checkbox-control__input-container{margin:0}.wp-block-straightvisions-sv-gutenform-checkbox .components-checkbox-control__label,.wp-block-straightvisions-sv-gutenform-checkbox .components-checkbox-control__input-container>svg{display:none}.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"],.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"]::before{outline:none !important;-webkit-box-shadow:none !important;box-shadow:none !important}.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"],.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox input[type="checkbox"]{position:relative;width:18px;height:18px;margin:0;border:2px solid #323230 !important;border-radius:0;background-color:#FFFFFF !important;cursor:pointer;-webkit-appearance:none;-webkit-transition:.2s ease;-o-transition:.2s ease;transition:.2s ease}.wp-block-straightvisions-sv-gutenform-checkbox .components-base-control,.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox .components-base-control{width:18px}.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"]::before,.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox input[type="checkbox"]::before{content:'';position:absolute;display:block;top:2px;left:2px;right:0;bottom:0;width:10px;height:10px;margin:0;background-color:#323230;-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);-webkit-transition:-webkit-transform .2s ease;transition:-webkit-transform .2s ease;-o-transition:transform .2s ease;transition:transform .2s ease;transition:transform .2s ease, -webkit-transform .2s ease}.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"]:checked::before,.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox input[type="checkbox"]:checked::before{content:'';position:absolute;display:block;top:2px;left:2px;right:0;bottom:0;width:10px;height:10px;margin:0;background-color:#323230;-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1);-webkit-transition:-webkit-transform .2s ease;transition:-webkit-transform .2s ease;-o-transition:transform .2s ease;transition:transform .2s ease;transition:transform .2s ease, -webkit-transform .2s ease}.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"]{position:relative;width:36px;height:18px;margin:0;border:1px solid rgba(50,50,48,0.1) !important;border-radius:20px;background-color:#cec9bd !important;cursor:pointer;-webkit-appearance:none;-webkit-transition:background-color .2s ease, border-color .2s ease;-o-transition:background-color .2s ease, border-color .2s ease;transition:background-color .2s ease, border-color .2s ease}.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle .components-base-control{width:36px}.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"]::before{content:'';position:absolute;top:-1px;left:0;width:18px;height:18px;border-radius:100%;background-color:#FFFFFF;-webkit-transform:scale(0.7);-ms-transform:scale(0.7);transform:scale(0.7);-webkit-transition:left .2s ease;-o-transition:left .2s ease;transition:left .2s ease}.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"]:checked{background-color:#323230 !important;border-color:#323230 !important}.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"]:checked::before{left:17px;margin:0}.components-notice.sv-gutenform-name-check{margin:-15px 0 15px 0}
-.sv-gutenform-radio-options{max-height:400px;overflow-x:hidden;overflow-y:auto}.sv-gutenform-radio-options .sv-gutenform-radio-option{background:rgba(0,0,0,0.06);padding:10px;margin-bottom:5px;border-radius:5px}.sv-gutenform-radio-options .sv-gutenform-radio-option>div:last-of-type,.sv-gutenform-radio-options .sv-gutenform-radio-option>div:last-of-type>div,.sv-gutenform-radio-options .sv-gutenform-radio-option>.sv-gutenform-radio-option-flex>div{margin-bottom:0 !important}.sv-gutenform-radio-options .sv-gutenform-radio-option .sv-gutenform-radio-option-flex{display:-ms-flexbox;display:flex;-ms-flex-align:start;align-items:flex-start}.sv-gutenform-radio-options .sv-gutenform-radio-option .sv-gutenform-radio-option-flex>div:first-of-type{margin-right:5px}.sv-gutenform-radio-options .sv-gutenform-radio-option .components-icon-button{margin-left:auto;padding:0}.sv-gutenform-radio-options .sv-gutenform-radio-option .components-icon-button>svg{width:18px;height:18px}.components-notice.sv-gutenform-name-check{margin:-15px 0 15px 0}
-.wp-block-straightvisions-sv-gutenform-select{margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-select label{display:block;margin-bottom:.5em}.wp-block-straightvisions-sv-gutenform-select select.components-select-control__input{-webkit-appearance:none;-moz-appearance:none;background:#fff;border-radius:0;border-style:solid;border-width:2px;border-color:rgba(0,0,0,0.5);-webkit-box-shadow:none;box-shadow:none;display:block;margin:0;min-height:30px;height:auto;max-width:100%;padding:.75em 1em;color:rgba(0,0,0,0.75);width:100%;-webkit-transition:color .25s ease, border-color .25s ease;-o-transition:color .25s ease, border-color .25s ease;transition:color .25s ease, border-color .25s ease}.wp-block-straightvisions-sv-gutenform-select select.components-select-control__input:hover,.wp-block-straightvisions-sv-gutenform-select select.components-select-control__input:focus{color:#000;border-color:#000}.sv-gutenform-select-options{max-height:400px;overflow-x:hidden;overflow-y:auto}.sv-gutenform-select-options .sv-gutenform-select-option{background:rgba(0,0,0,0.06);padding:10px;margin-bottom:5px;border-radius:5px}.sv-gutenform-select-options .sv-gutenform-select-option>div:last-of-type,.sv-gutenform-select-options .sv-gutenform-select-option>div:last-of-type>div,.sv-gutenform-select-options .sv-gutenform-select-option>.sv-gutenform-select-option-flex>div{margin-bottom:0 !important}.sv-gutenform-select-options .sv-gutenform-select-option>.sv-gutenform-select-option-flex{display:-ms-flexbox;display:flex;-ms-flex-align:start;align-items:flex-start}.sv-gutenform-select-options .sv-gutenform-select-option>.sv-gutenform-select-option-flex>div:first-of-type{margin-right:5px}.sv-gutenform-select-options .sv-gutenform-select-option>.components-icon-button{margin-left:auto;padding:0}.sv-gutenform-select-options .sv-gutenform-select-option>.components-icon-button>svg{width:18px;height:18px}.components-notice.sv-gutenform-name-check{margin:-15px 0 15px 0}
-.wp-block-straightvisions-sv-gutenform-submit{display:inline-block;-webkit-appearance:none;-moz-appearance:none;background:#fff;border-radius:0;border-style:solid;border-width:2px;border-color:rgba(0,0,0,0.5);-webkit-box-shadow:none;box-shadow:none;margin:0;max-width:100%;padding:.75em 1em;color:rgba(0,0,0,0.75);text-decoration:none;margin-bottom:.5em;-webkit-transition:color .25s ease, border-color .25s ease;-o-transition:color .25s ease, border-color .25s ease;transition:color .25s ease, border-color .25s ease}.wp-block-straightvisions-sv-gutenform-submit:hover,.wp-block-straightvisions-sv-gutenform-submit:focus{color:#000;border-color:#000}
-.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-header,.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-body{position:relative;z-index:1}.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-header{color:white}.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-header>.sv-gutenform-title-wrapper{display:-ms-flexbox;display:flex;-ms-flex-align:start;align-items:flex-start;-ms-flex-pack:justify;justify-content:space-between}.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-header>.sv-gutenform-title-wrapper>.sv-gutenform-title{font-size:32px;font-weight:700;line-height:1.2}.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-header>.sv-gutenform-title-wrapper>button.components-button{height:auto;color:#FFFFFF;border:none;-webkit-box-shadow:none;box-shadow:none;outline:none;background-color:transparent}.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-header>.sv-gutenform-title-wrapper>button.components-button:hover,.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-header>.sv-gutenform-title-wrapper>button.components-button:focus{color:#EEEEEE}.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-header>.sv-gutenform-input-values-wrapper{margin-top:10px}.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-header>.sv-gutenform-input-values-wrapper>.sv-gutenform-input-values-title{font-weight:700;font-size:16px}.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-header>.sv-gutenform-input-values-wrapper>.sv-gutenform-input-values{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;font-size:12px;margin-top:3px}.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-header>.sv-gutenform-input-values-wrapper>.sv-gutenform-input-values>.sv-gutenform-input-value{padding:4px 6px;border-radius:3px;background-color:rgba(0,0,0,0.2);margin-right:5px;margin-bottom:5px}.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-header::after,.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-body::after{z-index:-1;content:"";position:absolute;border:1px solid transparent;border-left:none;-webkit-box-shadow:none;box-shadow:none;pointer-events:none;outline:1px solid transparent;right:-14px;left:-14px;top:-14px;bottom:-14px}.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-header::after{background-image:-webkit-gradient(linear, left bottom, right top, from(#ff9897), color-stop(#ff8794), color-stop(#ff7595), color-stop(#fc6399), to(#f650a0));background-image:-webkit-linear-gradient(left bottom, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);background-image:-o-linear-gradient(left bottom, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);background-image:linear-gradient(to right top, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);border:none}.wp-block-straightvisions-sv-gutenform-thank-you>.sv-gutenform-body::after{border:4px solid;border-image-source:linear-gradient(to right bottom, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);border-image-slice:1}
-.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-header,.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-body{position:relative;z-index:1}.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-header{color:white}.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-header>.sv-gutenform-title-wrapper{display:-ms-flexbox;display:flex;-ms-flex-align:start;align-items:flex-start;-ms-flex-pack:justify;justify-content:space-between}.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-header>.sv-gutenform-title-wrapper>.sv-gutenform-title{font-size:32px;font-weight:700;line-height:1.2}.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-header>.sv-gutenform-title-wrapper>button.components-button{height:auto;color:#FFFFFF;border:none;-webkit-box-shadow:none;box-shadow:none;outline:none;background-color:transparent}.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-header>.sv-gutenform-title-wrapper>button.components-button:hover,.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-header>.sv-gutenform-title-wrapper>button.components-button:focus{color:#EEEEEE}.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-header>.sv-gutenform-description{font-size:14px;line-height:1.2;font-weight:400}.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-header>.sv-gutenform-description .sv-gutenform-input-values-wrapper{margin-top:10px}.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-header>.sv-gutenform-description .sv-gutenform-input-values-title{font-weight:700;font-size:16px}.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-header>.sv-gutenform-description .sv-gutenform-input-values{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;font-size:12px;margin-top:3px}.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-header>.sv-gutenform-description .sv-gutenform-input-values>.sv-gutenform-input-value{padding:4px 6px;border-radius:3px;background-color:rgba(0,0,0,0.2);margin-right:5px;margin-bottom:5px}.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-header::after,.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-body::after{z-index:-1;content:"";position:absolute;border:1px solid transparent;border-left:none;-webkit-box-shadow:none;box-shadow:none;pointer-events:none;outline:1px solid transparent;right:-14px;left:-14px;top:-14px;bottom:-14px}.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-header::after{background-image:-webkit-gradient(linear, left bottom, right top, from(#f00b51), color-stop(#f1007f), color-stop(#e11cae), color-stop(#bb47db), to(#7366ff));background-image:-webkit-linear-gradient(left bottom, #f00b51, #f1007f, #e11cae, #bb47db, #7366ff);background-image:-o-linear-gradient(left bottom, #f00b51, #f1007f, #e11cae, #bb47db, #7366ff);background-image:linear-gradient(to right top, #f00b51, #f1007f, #e11cae, #bb47db, #7366ff);border:none}.wp-block-straightvisions-sv-gutenform-user-mail>.sv-gutenform-body::after{border:3px solid;border-image-source:linear-gradient(to right bottom, #f00b51, #f1007f, #e11cae, #bb47db, #7366ff);border-image-slice:1}
-.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-header,.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-body{position:relative;z-index:1}.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-header{color:white}.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-header>.sv-gutenform-title-wrapper>.sv-gutenform-title{font-size:32px;font-weight:700;line-height:1.2}.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-header>.sv-gutenform-description{font-size:14px;line-height:1.2;font-weight:400}.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-header>.sv-gutenform-description .input-values-wrapper{margin-top:10px}.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-header>.sv-gutenform-title-wrapper{display:-ms-flexbox;display:flex;-ms-flex-align:start;align-items:flex-start;-ms-flex-pack:justify;justify-content:space-between}.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-header>.sv-gutenform-description .input-values-title{font-weight:700;font-size:16px}.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-header>.sv-gutenform-title-wrapper>button.components-button{height:auto;color:#FFFFFF;border:none;-webkit-box-shadow:none;box-shadow:none;outline:none;background-color:transparent}.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-header>.sv-gutenform-title-wrapper>button.components-button:hover,.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-header>.sv-gutenform-title-wrapper>button.components-button:focus{color:#EEEEEE}.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-header>.sv-gutenform-description .sv-gutenform-input-values{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;font-size:12px;margin-top:3px}.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-header>.sv-gutenform-description .sv-gutenform-input-values>.sv-gutenform-input-value{padding:4px 6px;border-radius:3px;background-color:rgba(0,0,0,0.2);margin-right:5px;margin-bottom:5px}.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-header::after,.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-body::after{z-index:-1;content:"";position:absolute;border:1px solid transparent;border-left:none;-webkit-box-shadow:none;box-shadow:none;pointer-events:none;outline:1px solid transparent;right:-14px;left:-14px;top:-14px;bottom:-14px}.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-header::after{background-image:-webkit-gradient(linear, left bottom, right top, from(#ffa62e), color-stop(#fc9129), color-stop(#f77c27), color-stop(#f16529), to(#ea4d2c));background-image:-webkit-linear-gradient(left bottom, #ffa62e, #fc9129, #f77c27, #f16529, #ea4d2c);background-image:-o-linear-gradient(left bottom, #ffa62e, #fc9129, #f77c27, #f16529, #ea4d2c);background-image:linear-gradient(to right top, #ffa62e, #fc9129, #f77c27, #f16529, #ea4d2c);border:none}.wp-block-straightvisions-sv-gutenform-admin-mail>.sv-gutenform-body::after{border:3px solid;border-image-source:linear-gradient(to right bottom, #ffa62e, #fc9129, #f77c27, #f16529, #ea4d2c);border-image-slice:1}
-.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:auto;font-size:16px;color:rgba(40,40,40,0.8);margin:0 10px;border:none;-webkit-box-shadow:none;box-shadow:none;outline:none;background-color:transparent;-webkit-transition:color .25s ease;-o-transition:color .25s ease;transition:color .25s ease}.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text:hover,.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text:focus{color:#282828}.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text.is-active{color:rgba(24,195,66,0.8)}.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text.is-active:hover,.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text.is-active:focus{color:#18c342}.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text svg{height:48px;width:48px;margin-right:0;margin-bottom:5px}
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header,
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_body {
+  position: relative;
+  z-index: 1; }
+
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header {
+  color: white; }
+
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_form_label_wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+      align-items: flex-start;
+  -ms-flex-pack: justify;
+      justify-content: space-between; }
+
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_form_label_wrapper > button.components-button {
+  height: auto;
+  color: #FFFFFF;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+  background-color: transparent; }
+
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_form_label_wrapper > button.components-button:hover,
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_form_label_wrapper > button.components-button:focus {
+  color: #EEEEEE; }
+
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_form_label_wrapper > .sv_gutenform_form_label {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.2; }
+
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_form_id {
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 400;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #FFFFFF; }
+
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2; }
+
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header::after,
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_body::after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  border: 1px solid transparent;
+  border-left: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  pointer-events: none;
+  outline: 1px solid transparent;
+  right: -13px;
+  left: -13px;
+  top: -14px;
+  bottom: -14px; }
+
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header::after {
+  background-image: -webkit-gradient(linear, left bottom, right top, from(#3499ff), color-stop(#3e80e0), color-stop(#4167c1), color-stop(#3f50a3), to(#3a3985));
+  background-image: -webkit-linear-gradient(left bottom, #3499ff, #3e80e0, #4167c1, #3f50a3, #3a3985);
+  background-image: -o-linear-gradient(left bottom, #3499ff, #3e80e0, #4167c1, #3f50a3, #3a3985);
+  background-image: linear-gradient(to right top, #3499ff, #3e80e0, #4167c1, #3f50a3, #3a3985);
+  border: none; }
+
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_body::after {
+  border: 3px solid;
+  border-image-source: linear-gradient(to right bottom, #3499ff, #3e80e0, #4167c1, #3f50a3, #3a3985);
+  border-image-slice: 1; }
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header,
+.wp-block-straightvisions-sv-gutenform-form > .sv-gutenform-body {
+  position: relative;
+  z-index: 1; }
+
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header {
+  color: white; }
+
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header > .sv_gutenform_title_wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+      align-items: flex-start;
+  -ms-flex-pack: justify;
+      justify-content: space-between; }
+
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header > .sv_gutenform_title_wrapper > .sv_gutenform_title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2; }
+
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button {
+  height: auto;
+  color: #FFFFFF;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+  background-color: transparent; }
+
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button:hover,
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button:focus {
+  color: #EEEEEE; }
+
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header > .sv_gutenform_input_values_wrapper {
+  margin-top: 10px; }
+
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header > .sv_gutenform_input_values_wrapper > .sv_gutenform_input_values_title {
+  font-weight: 700;
+  font-size: 16px; }
+
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header > .sv_gutenform_input_values_wrapper > .sv_gutenform_input_values {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 12px;
+  margin-top: 3px; }
+
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header > .sv_gutenform_input_values_wrapper > .sv_gutenform_input_values > .sv_gutenform_input_value {
+  padding: 4px 6px;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-right: 5px;
+  margin-bottom: 5px; }
+
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header::after,
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_body::after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  border: 1px solid transparent;
+  border-left: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  pointer-events: none;
+  outline: 1px solid transparent;
+  right: -14px;
+  left: -14px;
+  top: -14px;
+  bottom: -14px; }
+
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header::after {
+  background-image: -webkit-gradient(linear, left bottom, right top, from(#00ffed), color-stop(#00ede1), color-stop(#00dbd5), color-stop(#00c9c8), to(#00b8ba));
+  background-image: -webkit-linear-gradient(left bottom, #00ffed, #00ede1, #00dbd5, #00c9c8, #00b8ba);
+  background-image: -o-linear-gradient(left bottom, #00ffed, #00ede1, #00dbd5, #00c9c8, #00b8ba);
+  background-image: linear-gradient(to right top, #00ffed, #00ede1, #00dbd5, #00c9c8, #00b8ba);
+  border: none; }
+
+.wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_body::after {
+  border: 4px solid;
+  border-image-source: linear-gradient(to right bottom, #00ffed, #00ede1, #00dbd5, #00c9c8, #00b8ba);
+  border-image-slice: 1; }
+.wp-block-straightvisions-sv-gutenform-text {
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-text label {
+  display: block;
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-text input[type="text"].components-text-control__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  padding: .75em 1em;
+  color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  outline: none;
+  box-shadow: none;
+  -webkit-transition: color .25s ease, border-color .25s ease;
+  -o-transition: color .25s ease, border-color .25s ease;
+  transition: color .25s ease, border-color .25s ease; }
+
+.wp-block-straightvisions-sv-gutenform-text input[type="text"].components-text-control__input:hover,
+.wp-block-straightvisions-sv-gutenform-text input[type="text"].components-text-control__input:focus {
+  color: black;
+  border-color: black; }
+
+.components-notice.sv-gutenform-name-check {
+  margin: -15px 0 15px 0; }
+.wp-block-straightvisions-sv-gutenform-email {
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-email label {
+  display: block;
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-email input[type="email"].components-text-control__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  padding: .75em 1em;
+  color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  outline: none;
+  box-shadow: none;
+  -webkit-transition: color .25s ease, border-color .25s ease;
+  -o-transition: color .25s ease, border-color .25s ease;
+  transition: color .25s ease, border-color .25s ease; }
+
+.wp-block-straightvisions-sv-gutenform-email input[type="email"].components-text-control__input:hover,
+.wp-block-straightvisions-sv-gutenform-email input[type="email"].components-text-control__input:focus {
+  color: black;
+  border-color: black; }
+
+.components-notice.sv-gutenform-name-check {
+  margin: -15px 0 15px 0; }
+.wp-block-straightvisions-sv-gutenform-url {
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-url label {
+  display: block;
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-url input[type="url"].components-text-control__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  padding: .75em 1em;
+  color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  outline: none;
+  box-shadow: none;
+  -webkit-transition: color .25s ease, border-color .25s ease;
+  -o-transition: color .25s ease, border-color .25s ease;
+  transition: color .25s ease, border-color .25s ease; }
+
+.wp-block-straightvisions-sv-gutenform-url input[type="url"].components-text-control__input:hover,
+.wp-block-straightvisions-sv-gutenform-url input[type="url"].components-text-control__input:focus {
+  color: black;
+  border-color: black; }
+
+.components-notice.sv-gutenform-name-check {
+  margin: -15px 0 15px 0; }
+.wp-block-straightvisions-sv-gutenform-number {
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-number label {
+  display: block;
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-number input[type="number"].components-text-control__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  padding: .75em 1em;
+  color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  outline: none;
+  box-shadow: none;
+  -webkit-transition: color .25s ease, border-color .25s ease;
+  -o-transition: color .25s ease, border-color .25s ease;
+  transition: color .25s ease, border-color .25s ease; }
+
+.wp-block-straightvisions-sv-gutenform-number input[type="number"].components-text-control__input:hover,
+.wp-block-straightvisions-sv-gutenform-number input[type="number"].components-text-control__input:focus {
+  color: black;
+  border-color: black; }
+
+.components-notice.sv-gutenform-name-check {
+  margin: -15px 0 15px 0; }
+.wp-block-straightvisions-sv-gutenform-phone {
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-phone label {
+  display: block;
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-phone input[type="phone"].components-text-control__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  padding: .75em 1em;
+  color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  outline: none;
+  box-shadow: none;
+  -webkit-transition: color .25s ease, border-color .25s ease;
+  -o-transition: color .25s ease, border-color .25s ease;
+  transition: color .25s ease, border-color .25s ease; }
+
+.wp-block-straightvisions-sv-gutenform-phone input[type="phone"].components-text-control__input:hover,
+.wp-block-straightvisions-sv-gutenform-phone input[type="phone"].components-text-control__input:focus {
+  color: black;
+  border-color: black; }
+
+.components-notice.sv-gutenform-name-check {
+  margin: -15px 0 15px 0; }
+.wp-block-straightvisions-sv-gutenform-password {
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-password label {
+  display: block;
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-password input[type="password"].components-text-control__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  padding: .75em 1em;
+  color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  outline: none;
+  box-shadow: none;
+  -webkit-transition: color .25s ease, border-color .25s ease;
+  -o-transition: color .25s ease, border-color .25s ease;
+  transition: color .25s ease, border-color .25s ease; }
+
+.wp-block-straightvisions-sv-gutenform-password input[type="password"].components-text-control__input:hover,
+.wp-block-straightvisions-sv-gutenform-password input[type="password"].components-text-control__input:focus {
+  color: black;
+  border-color: black; }
+
+.components-notice.sv-gutenform-name-check {
+  margin: -15px 0 15px 0; }
+.wp-block-straightvisions-sv-gutenform-password {
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-password label {
+  display: block;
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-password input.components-text-control__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  padding: .75em 1em;
+  color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  -webkit-transition: color .25s ease, border-color .25s ease;
+  -o-transition: color .25s ease, border-color .25s ease;
+  transition: color .25s ease, border-color .25s ease; }
+
+.wp-block-straightvisions-sv-gutenform-password input.components-text-control__input:hover,
+.wp-block-straightvisions-sv-gutenform-password input.components-text-control__input:focus {
+  color: black;
+  border-color: black; }
+
+.components-notice.sv-gutenform-name-check {
+  margin: -15px 0 15px 0; }
+/* General */
+.wp-block-straightvisions-sv-gutenform-range input[type="number"].components-range-control__number {
+  margin-left: 10px;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+  padding: 4px 6px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: color .25s ease, border-color .25s ease;
+  -o-transition: color .25s ease, border-color .25s ease;
+  transition: color .25s ease, border-color .25s ease; }
+
+.wp-block-straightvisions-sv-gutenform-range input[type="number"].components-range-control__number:hover,
+.wp-block-straightvisions-sv-gutenform-range input[type="number"].components-range-control__number:focus {
+  color: black;
+  border-color: black; }
+
+.components-notice.sv-gutenform-name-check {
+  margin: -15px 0 15px 0; }
+.wp-block-straightvisions-sv-gutenform-textarea {
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-textarea label {
+  display: block;
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-textarea textarea.components-textarea-control__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  padding: .75em 1em;
+  color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  font-family: inherit;
+  outline: none;
+  box-shadow: none;
+  -webkit-transition: color .25s ease, border-color .25s ease;
+  -o-transition: color .25s ease, border-color .25s ease;
+  transition: color .25s ease, border-color .25s ease; }
+
+.wp-block-straightvisions-sv-gutenform-textarea textarea.components-textarea-control__input:hover,
+.wp-block-straightvisions-sv-gutenform-textarea textarea.components-textarea-control__input:focus {
+  color: black;
+  border-color: black; }
+
+.components-notice.sv-gutenform-name-check {
+  margin: -15px 0 15px 0; }
+/* General */
+.wp-block-straightvisions-sv-gutenform-checkbox {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-checkbox label {
+  margin: 0 0 0 .75em; }
+
+/* Resets Editor Styles */
+.wp-block-straightvisions-sv-gutenform-checkbox .components-base-control {
+  line-height: 1; }
+
+.wp-block-straightvisions-sv-gutenform-checkbox .components-base-control__field,
+.wp-block-straightvisions-sv-gutenform-checkbox .components-checkbox-control__input-container {
+  margin: 0; }
+
+.wp-block-straightvisions-sv-gutenform-checkbox .components-checkbox-control__label,
+.wp-block-straightvisions-sv-gutenform-checkbox .components-checkbox-control__input-container > svg {
+  display: none; }
+
+.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"],
+.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"]::before {
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important; }
+
+/* Style: Checkbox (Default) */
+.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"],
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox input[type="checkbox"] {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border: 2px solid #323230 !important;
+  border-radius: 0;
+  background-color: #FFFFFF !important;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-transition: .2s ease;
+  -o-transition: .2s ease;
+  transition: .2s ease; }
+
+.wp-block-straightvisions-sv-gutenform-checkbox .components-base-control,
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox .components-base-control {
+  width: 18px; }
+
+.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"]::before,
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 2px;
+  left: 2px;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  background-color: #323230;
+  -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: -webkit-transform .2s ease;
+  transition: -webkit-transform .2s ease;
+  -o-transition: transform .2s ease;
+  transition: transform .2s ease;
+  transition: transform .2s ease, -webkit-transform .2s ease; }
+
+.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"]:checked::before,
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox input[type="checkbox"]:checked::before {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 2px;
+  left: 2px;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  background-color: #323230;
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: -webkit-transform .2s ease;
+  transition: -webkit-transform .2s ease;
+  -o-transition: transform .2s ease;
+  transition: transform .2s ease;
+  transition: transform .2s ease, -webkit-transform .2s ease; }
+
+/* Style: Toggle */
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"] {
+  position: relative;
+  width: 36px;
+  height: 18px;
+  margin: 0;
+  border: 1px solid rgba(50, 50, 48, 0.1) !important;
+  border-radius: 20px;
+  background-color: #cec9bd !important;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-transition: background-color .2s ease, border-color .2s ease;
+  -o-transition: background-color .2s ease, border-color .2s ease;
+  transition: background-color .2s ease, border-color .2s ease; }
+
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle .components-base-control {
+  width: 36px; }
+
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 100%;
+  background-color: #FFFFFF;
+  -webkit-transform: scale(0.7);
+      -ms-transform: scale(0.7);
+          transform: scale(0.7);
+  -webkit-transition: left .2s ease;
+  -o-transition: left .2s ease;
+  transition: left .2s ease; }
+
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"]:checked {
+  background-color: #323230 !important;
+  border-color: #323230 !important; }
+
+.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"]:checked::before {
+  left: 17px;
+  margin: 0; }
+
+.components-notice.sv-gutenform-name-check {
+  margin: -15px 0 15px 0; }
+.sv-gutenform-radio-options {
+  max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto; }
+
+.sv-gutenform-radio-options .sv-gutenform-radio-option {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px; }
+
+.sv-gutenform-radio-options .sv-gutenform-radio-option > div:last-of-type,
+.sv-gutenform-radio-options .sv-gutenform-radio-option > div:last-of-type > div,
+.sv-gutenform-radio-options .sv-gutenform-radio-option > .sv-gutenform-radio-option-flex > div {
+  margin-bottom: 0 !important; }
+
+.sv-gutenform-radio-options .sv-gutenform-radio-option .sv-gutenform-radio-option-flex {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+      align-items: flex-start; }
+
+.sv-gutenform-radio-options .sv-gutenform-radio-option .sv-gutenform-radio-option-flex > div:first-of-type {
+  margin-right: 5px; }
+
+.sv-gutenform-radio-options .sv-gutenform-radio-option .components-icon-button {
+  margin-left: auto;
+  padding: 0; }
+
+.sv-gutenform-radio-options .sv-gutenform-radio-option .components-icon-button > svg {
+  width: 18px;
+  height: 18px; }
+
+.components-notice.sv-gutenform-name-check {
+  margin: -15px 0 15px 0; }
+.wp-block-straightvisions-sv-gutenform-select {
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-select label {
+  display: block;
+  margin-bottom: .5em; }
+
+.wp-block-straightvisions-sv-gutenform-select select.components-select-control__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  display: block;
+  margin: 0;
+  min-height: 30px;
+  height: auto;
+  max-width: 100%;
+  padding: .75em 1em;
+  color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  -webkit-transition: color .25s ease, border-color .25s ease;
+  -o-transition: color .25s ease, border-color .25s ease;
+  transition: color .25s ease, border-color .25s ease; }
+
+.wp-block-straightvisions-sv-gutenform-select select.components-select-control__input:hover,
+.wp-block-straightvisions-sv-gutenform-select select.components-select-control__input:focus {
+  color: black;
+  border-color: black; }
+
+.sv-gutenform-select-options {
+  max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto; }
+
+.sv-gutenform-select-options .sv-gutenform-select-option {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px; }
+
+.sv-gutenform-select-options .sv-gutenform-select-option > div:last-of-type,
+.sv-gutenform-select-options .sv-gutenform-select-option > div:last-of-type > div,
+.sv-gutenform-select-options .sv-gutenform-select-option > .sv-gutenform-select-option-flex > div {
+  margin-bottom: 0 !important; }
+
+.sv-gutenform-select-options .sv-gutenform-select-option > .sv-gutenform-select-option-flex {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+      align-items: flex-start; }
+
+.sv-gutenform-select-options .sv-gutenform-select-option > .sv-gutenform-select-option-flex > div:first-of-type {
+  margin-right: 5px; }
+
+.sv-gutenform-select-options .sv-gutenform-select-option > .components-icon-button {
+  margin-left: auto;
+  padding: 0; }
+
+.sv-gutenform-select-options .sv-gutenform-select-option > .components-icon-button > svg {
+  width: 18px;
+  height: 18px; }
+
+.components-notice.sv-gutenform-name-check {
+  margin: -15px 0 15px 0; }
+.wp-block-straightvisions-sv-gutenform-submit {
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  margin: 0;
+  max-width: 100%;
+  padding: .75em 1em;
+  color: rgba(0, 0, 0, 0.75);
+  text-decoration: none;
+  margin-bottom: .5em;
+  -webkit-transition: color .25s ease, border-color .25s ease;
+  -o-transition: color .25s ease, border-color .25s ease;
+  transition: color .25s ease, border-color .25s ease; }
+
+.wp-block-straightvisions-sv-gutenform-submit:hover,
+.wp-block-straightvisions-sv-gutenform-submit:focus {
+  color: black;
+  border-color: black; }
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header,
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_body {
+  position: relative;
+  z-index: 1; }
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header {
+  color: white; }
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header > .sv_gutenform_title_wrapper > .sv_gutenform_title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2; }
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header > .sv_gutenform_title_wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+      align-items: flex-start;
+  -ms-flex-pack: justify;
+      justify-content: space-between; }
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button {
+  height: auto;
+  color: #FFFFFF;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+  background-color: transparent; }
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button:hover,
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button:focus {
+  color: #EEEEEE; }
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header > .sv_gutenform_input_values_wrapper > .sv_gutenform_input_values_title {
+  font-weight: 700;
+  font-size: 16px; }
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header > .sv_gutenform_input_values_wrapper > .sv_gutenform_input_values {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 12px;
+  margin-top: 3px; }
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header > .sv_gutenform_input_values_wrapper > .sv_gutenform_input_values > .sv_gutenform_input_value {
+  padding: 4px 6px;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-right: 5px;
+  margin-bottom: 5px; }
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header::after,
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_body::after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  border: 1px solid transparent;
+  border-left: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  pointer-events: none;
+  outline: 1px solid transparent;
+  right: -14px;
+  left: -14px;
+  top: -14px;
+  bottom: -14px; }
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header::after {
+  background-image: -webkit-gradient(linear, left bottom, right top, from(#ff9897), color-stop(#ff8794), color-stop(#ff7595), color-stop(#fc6399), to(#f650a0));
+  background-image: -webkit-linear-gradient(left bottom, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);
+  background-image: -o-linear-gradient(left bottom, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);
+  background-image: linear-gradient(to right top, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);
+  border: none; }
+
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv-gutenform-body::after {
+  border: 4px solid;
+  border-image-source: linear-gradient(to right bottom, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);
+  border-image-slice: 1; }
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_header,
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_body {
+  position: relative;
+  z-index: 1; }
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_header {
+  color: white; }
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_header > .sv_gutenform_title_wrapper > .sv_gutenform_title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2; }
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_header > .sv_gutenform_title_wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+      align-items: flex-start;
+  -ms-flex-pack: justify;
+      justify-content: space-between; }
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button {
+  height: auto;
+  color: #FFFFFF;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+  background-color: transparent; }
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button:hover,
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button:focus {
+  color: #EEEEEE; }
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_header > .sv_gutenform_input_values_wrapper > .sv_gutenform_input_values_title {
+  font-weight: 700;
+  font-size: 16px; }
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_header > .sv_gutenform_input_values_wrapper > .sv_gutenform_input_values {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 12px;
+  margin-top: 3px; }
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_header > .sv_gutenform_input_values_wrapper > .sv_gutenform_input_values > .sv_gutenform_input_value {
+  padding: 4px 6px;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-right: 5px;
+  margin-bottom: 5px; }
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_header::after,
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_body::after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  border: 1px solid transparent;
+  border-left: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  pointer-events: none;
+  outline: 1px solid transparent;
+  right: -14px;
+  left: -14px;
+  top: -14px;
+  bottom: -14px; }
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_header::after {
+  background-image: -webkit-gradient(linear, left bottom, right top, from(#f00b51), color-stop(#f1007f), color-stop(#e11cae), color-stop(#bb47db), to(#7366ff));
+  background-image: -webkit-linear-gradient(left bottom, #f00b51, #f1007f, #e11cae, #bb47db, #7366ff);
+  background-image: -o-linear-gradient(left bottom, #f00b51, #f1007f, #e11cae, #bb47db, #7366ff);
+  background-image: linear-gradient(to right top, #f00b51, #f1007f, #e11cae, #bb47db, #7366ff);
+  border: none; }
+
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_body::after {
+  border: 3px solid;
+  border-image-source: linear-gradient(to right bottom, #f00b51, #f1007f, #e11cae, #bb47db, #7366ff);
+  border-image-slice: 1; }
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_header,
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_body {
+  position: relative;
+  z-index: 1; }
+
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_header {
+  color: white; }
+
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_header > .sv_gutenform_title_wrapper > .sv_gutenform_title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2; }
+
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_header > .sv_gutenform_title_wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+      align-items: flex-start;
+  -ms-flex-pack: justify;
+      justify-content: space-between; }
+
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button {
+  height: auto;
+  color: #FFFFFF;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+  background-color: transparent; }
+
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button:hover,
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button:focus {
+  color: #EEEEEE; }
+
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_header > .sv_gutenform_input_values_wrapper > .sv_gutenform_input_values_title {
+  font-weight: 700;
+  font-size: 16px; }
+
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_header > .sv_gutenform_input_values_wrapper > .sv_gutenform_input_values {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 12px;
+  margin-top: 3px; }
+
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_header > .sv_gutenform_input_values_wrapper > .sv_gutenform_input_values > .sv_gutenform_input_value {
+  padding: 4px 6px;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-right: 5px;
+  margin-bottom: 5px; }
+
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_header::after,
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_body::after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  border: 1px solid transparent;
+  border-left: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  pointer-events: none;
+  outline: 1px solid transparent;
+  right: -14px;
+  left: -14px;
+  top: -14px;
+  bottom: -14px; }
+
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_header::after {
+  background-image: -webkit-gradient(linear, left bottom, right top, from(#ffa62e), color-stop(#fc9129), color-stop(#f77c27), color-stop(#f16529), to(#ea4d2c));
+  background-image: -webkit-linear-gradient(left bottom, #ffa62e, #fc9129, #f77c27, #f16529, #ea4d2c);
+  background-image: -o-linear-gradient(left bottom, #ffa62e, #fc9129, #f77c27, #f16529, #ea4d2c);
+  background-image: linear-gradient(to right top, #ffa62e, #fc9129, #f77c27, #f16529, #ea4d2c);
+  border: none; }
+
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_body::after {
+  border: 3px solid;
+  border-image-source: linear-gradient(to right bottom, #ffa62e, #fc9129, #f77c27, #f16529, #ea4d2c);
+  border-image-slice: 1; }
+.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  height: auto;
+  font-size: 16px;
+  color: rgba(40, 40, 40, 0.8);
+  margin: 0 10px;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+  background-color: transparent;
+  -webkit-transition: color .25s ease;
+  -o-transition: color .25s ease;
+  transition: color .25s ease; }
+
+.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text:hover,
+.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text:focus {
+  color: #282828; }
+
+.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text.is-active {
+  color: rgba(24, 195, 66, 0.8); }
+
+.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text.is-active:hover,
+.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text.is-active:focus {
+  color: #18c342; }
+
+.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text svg {
+  height: 48px;
+  width: 48px;
+  margin-right: 0;
+  margin-bottom: 5px; }

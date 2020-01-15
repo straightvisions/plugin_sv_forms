@@ -55,18 +55,18 @@ export default class extends Component {
         return (
             <div className={ this.props.className }>
                 <InspectorControls props={ this.props } data={ this.state } />
-                <div className='sv-gutenform-header'>
-                    <div className='sv-gutenform-form-label-wrapper'>
-                        <div className='sv-gutenform-form-label'>{ this.props.attributes.formLabel }</div>
+                <div className='sv_gutenform_header'>
+                    <div className='sv_gutenform_form_label_wrapper'>
+                        <div className='sv_gutenform_form_label'>{ this.props.attributes.formLabel }</div>
                         <Button 
                             isTertiary 
                             onClick={ () => this.toggleBody( true ) }
                         ><span class="dashicons dashicons-visibility"></span></Button>
                     </div>
-                    <div className='sv-gutenform-form-id'>Form ID: { this.props.attributes.formId }</div>
-                    <div className='sv-gutenform-title'>{ __( 'SV Gutenform', 'sv_gutenform' ) }</div>
+                    <div className='sv_gutenform_form_id'>Form ID: { this.props.attributes.formId }</div>
+                    <div className='sv_gutenform_title'>{ __( 'SV Gutenform', 'sv_gutenform' ) }</div>
                 </div>
-                <div class='sv-gutenform-body'>
+                <div class='sv_gutenform_body'>
                     <FormContext.Provider value={ this.props.clientId }>
                         <InnerBlocks 
                             template={ this.template }
@@ -127,18 +127,18 @@ export default class extends Component {
     }
 
     toggleBody( change ) {
-        const body = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv-gutenform-body' );
-        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv-gutenform-header > .sv-gutenform-form-label-wrapper > button.components-button > span' );
+        const body = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_body' );
+        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_header > .sv_gutenform_form_label_wrapper > button.components-button > span' );
 
         if ( change ) {
             if ( this.props.attributes.collapsed ) {
                 icon.removeClass( 'dashicons-hidden' );
                 icon.addClass( 'dashicons-visibility' );
-                body.removeClass( 'sv-gutenform-hidden' ).slideDown();
+                body.slideDown();
             } else {
                 icon.removeClass( 'dashicons-visibility' );
                 icon.addClass( 'dashicons-hidden' );
-                body.addClass( 'sv-gutenform-hidden' ).slideUp();
+                body.slideUp();
             }
 
             this.props.setAttributes({ collapsed: ! this.props.attributes.collapsed });
@@ -146,11 +146,11 @@ export default class extends Component {
             if ( this.props.attributes.collapsed ) {
                 icon.removeClass( 'dashicons-visibility' );
                 icon.addClass( 'dashicons-hidden' );
-                body.addClass( 'sv-gutenform-hidden' ).slideUp();
+                body.slideUp();
             } else {
                 icon.removeClass( 'dashicons-hidden' );
                 icon.addClass( 'dashicons-visibility' );
-                body.removeClass( 'sv-gutenform-hidden' ).slideDown();
+                body.slideDown();
             }
         }
     }
