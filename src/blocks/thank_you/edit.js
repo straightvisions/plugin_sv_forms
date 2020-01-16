@@ -15,8 +15,11 @@ const {
 } = wp.data;
 
 export default withSelect( ( select, props ) => {
-    return props;
-} )( ( props ) => {
+    return {
+        innerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ),
+        props
+    };
+} )( ({ innerBlocks, props }) => {
     const {
         className,
         setAttributes,
