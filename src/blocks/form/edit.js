@@ -7,12 +7,7 @@ export default withSelect( ( select, props ) => {
     return props;
 } )( ( props ) => {
     const {
-        clientId,
         className,
-        setAttributes,
-        attributes: {
-            collapsed,
-        }
     } = props;
     const template = [
         ['straightvisions/sv-gutenform-spam-guard', {
@@ -41,26 +36,6 @@ export default withSelect( ( select, props ) => {
         }],
         ['straightvisions/sv-gutenform-submit'],
     ];
-    let bodyClasses = '';
-
-    // Functions
-    const setCollapsed  = collapsed => setAttributes({ collapsed });
-    const toggleBody    = ()        => {
-        const body = jQuery( 'div[data-block="' + clientId + '"] > .' + className + ' > .sv_gutenform_body' );
-        const icon = jQuery( 'div[data-block="' + clientId + '"] > .' + className + ' > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button > span' );
-
-        if ( collapsed ) {
-            icon.removeClass( 'dashicons-hidden' );
-            icon.addClass( 'dashicons-visibility' );
-            body.slideDown();
-        } else {
-            icon.removeClass( 'dashicons-visibility' );
-            icon.addClass( 'dashicons-hidden' );
-            body.slideUp();
-        }
-
-        setCollapsed( ! collapsed );
-    }
 
     return (
         <div className={ className }>
@@ -73,7 +48,7 @@ export default withSelect( ( select, props ) => {
                     ><span class="dashicons dashicons-visibility"></span></Button>
                 </div>
             </div>
-            <div className={ 'sv_gutenform_body', 'sv_gutenform_huan' }>
+            <div className='sv_gutenform_body'>
                 <InnerBlocks 
                     template={ template }
                     templateLock={ false }

@@ -19,7 +19,6 @@ export default withSelect( ( select, props ) => {
     };
 } )( ({ innerBlocks, props }) => {
     const {
-        clientId,
         className,
         setAttributes,
         attributes: {
@@ -66,21 +65,6 @@ export default withSelect( ( select, props ) => {
         }
     }
 
-    const toggleBody = () => {
-        const body = jQuery( 'div[data-block="' + clientId + '"] > .' + className + ' > .sv_gutenform_body' );
-        const icon = jQuery( 'div[data-block="' + clientId + '"] > .' + className + ' > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button > span' );
-
-        if ( body.hasClass( 'sv_gutenform_hidden' ) ) {
-            icon.removeClass( 'dashicons-hidden' );
-            icon.addClass( 'dashicons-visibility' );
-            body.removeClass( 'sv_gutenform_hidden' ).slideDown();
-        } else {
-            icon.removeClass( 'dashicons-visibility' );
-            icon.addClass( 'dashicons-hidden' );
-            body.addClass( 'sv_gutenform_hidden' ).slideUp();
-        }
-    }
-
     return (
         <div className={ className }>
             <InspectorControls props={ props } />
@@ -90,7 +74,7 @@ export default withSelect( ( select, props ) => {
                     <Button 
                         isTertiary 
                         onClick={ () => toggleBody() }
-                    ><span class='dashicons dashicons-hidden'></span></Button>
+                    ><span class='dashicons dashicons-visibility'></span></Button>
                 </div>
                 <div className='sv_gutenform_input_values_wrapper'>
                     <div className='sv_gutenform_input_values_title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
@@ -105,7 +89,7 @@ export default withSelect( ( select, props ) => {
                     </div>
                 </div>
             </div>
-            <div class='sv_gutenform_body sv_gutenform_hidden'>
+            <div class='sv_gutenform_body'>
                 <InnerBlocks templateLock={ false } />
             </div>
             <FormContext.Consumer>{ value => updateFormAttributes( value ) }</FormContext.Consumer>
