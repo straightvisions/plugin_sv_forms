@@ -3,9 +3,14 @@ import InspectorControls from './components/inspector_controls';
 import { FormContext } from '../../blocks';
 
 const { __ }                = wp.i18n;
+const { withState }         = wp.compose;
 const { InnerBlocks }       = wp.blockEditor;
 const { getBlockContent }   = wp.blocks;
-const { Button }            = wp.components;
+const { 
+    Button,
+    ClipboardButton,
+    Tooltip,
+} = wp.components;
 const { 
     withSelect, 
     dispatch,
@@ -29,7 +34,6 @@ export default withSelect( ( select, props ) => {
         }
     } = props;
 
-    // Functions
     // Returns the innerBlocks content as string
     const getMailContent = () => {
         return innerBlocks.map( block => { return  getBlockContent( block ) } ).join( '' );
@@ -49,8 +53,17 @@ export default withSelect( ( select, props ) => {
         dispatch( 'core/block-editor' ).updateBlockAttributes( formId, newAttributes );
     }
 
+    // Fetches all input names of the blocks inside the form block
     const setInputNames = formId => {
-        const formBlocks = select( 'core/block-editor' ).getBlocks( formId );
+        const wrapperBlocks = select( 'core/block-editor' ).getBlocks( formId );
+        const formBlock = wrapperBlocks.find( block => block.name === 'straightvisions/sv-gutenform-form' );
+        
+        if ( ! formBlock ) return null;
+
+        const formBlocks = select( 'core/block-editor' ).getBlocks( formBlock.clientId );
+
+        if ( formBlocks.length < 1 ) return null;
+
         const filteredBlocks = formBlocks.filter( block => {
             return block.attributes.name;
         } );
@@ -63,6 +76,40 @@ export default withSelect( ( select, props ) => {
         if ( inputNames !== uniqueNames ) {
             setAttributes({ inputNames: uniqueNames.join( ', ' ) });
         }
+    }
+
+    // Creates a clippboard button with the input name as value
+    const InputValueButton = withState( {
+        hasCopied: false,
+    } )( ( { hasCopied, setState, text } ) => {
+        const toolTipText = hasCopied ? __( 'Copied to clippboard.', 'sv_gutenform' ) : __( 'Copy to clippboard.', 'sv_gutenform' );
+
+        return (
+            <Tooltip text={ toolTipText }>
+                <ClipboardButton
+                    isTertiary
+                    className='sv_gutenform_input_value'
+                    text={ text }
+                    onCopy={ () => setState( { hasCopied: true } ) }
+                    onFinishCopy={ () => setState( { hasCopied: false } ) }
+                >
+                    { text }
+                </ClipboardButton>
+            </Tooltip>
+        ); 
+    });
+
+    // Returns the available input values
+    const InputValues = () => {
+        if ( ! inputNames || inputNames.length < 1 ) return null;
+
+        let output = [];
+
+        inputNames.split( ',' ).map( name => {
+            output.push( <InputValueButton text={ name } /> );
+        } );
+
+        return <div className='sv_gutenform_input_values'>{ output }</div>;
     }
 
     return (
@@ -78,15 +125,7 @@ export default withSelect( ( select, props ) => {
                 </div>
                 <div className='sv_gutenform_input_values_wrapper'>
                     <div className='sv_gutenform_input_values_title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
-                    <div className='sv_gutenform_input_values'>
-                    {
-                        inputNames
-                        ? inputNames.split( ',' ).map( name => {
-                            return <div className='sv_gutenform_input_value'>{ name }</div>;
-                        } )
-                        : ''
-                    }
-                    </div>
+                    <InputValues />
                 </div>
             </div>
             <div class='sv_gutenform_body'>
