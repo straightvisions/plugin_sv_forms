@@ -67,6 +67,11 @@ registerBlockType( 'straightvisions/sv-gutenform-url', {
 			type: 'string',
 		},
 
+		// Border Settings
+		borderRadius: {
+			type: 'number'	
+		},
+
 		// Advanced Settings
 		autofocus: {
 			type: 'boolean',

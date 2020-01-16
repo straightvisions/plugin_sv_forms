@@ -18,12 +18,14 @@ export default withSelect( ( select, props ) => {
             defaultValue,
             label,
             name,
-            multiple,
             options,
 
             // Color Settings
             labelColor,
             labelColorClass,
+
+            // Border Settings
+            borderRadius,
 
             // Advanced Settings
             autofocus,
@@ -65,6 +67,7 @@ export default withSelect( ( select, props ) => {
                     autofocus={ autofocus }
                     disabled={ disabled }
                     hideLabelFromVision={ true }
+                    style={{ borderRadius: borderRadius }}
                 />
             </div>
             <FormContext.Consumer>

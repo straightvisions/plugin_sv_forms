@@ -83,6 +83,11 @@ class textarea extends sv_gutenform {
 						'type'		=> 'string',
 					),
 
+					// Border Settings
+					'borderRadius' 	=> array(
+						'type'		=> 'number',
+					),
+
 					// Advanced Settings
 					'autofocus' 	=> array(
 						'type'		=> 'bool',
@@ -177,6 +182,7 @@ class textarea extends sv_gutenform {
 		// Class
 		$class		= array();
 
+		// Input Color
 		if ( 
 			isset( $this->block_attr['textareaColor'] ) 
 			&& $this->block_attr['textareaColorClass'] 
@@ -184,6 +190,7 @@ class textarea extends sv_gutenform {
             $class[] = $this->block_attr['textareaColorClass'];
 		}
 
+		// Background Color
 		if ( 
 			isset( $this->block_attr['textareaBackgroundColor'] ) 
 			&& $this->block_attr['textareaBackgroundColorClass'] 
@@ -198,6 +205,7 @@ class textarea extends sv_gutenform {
 		// Style
 		$style = array();
 
+		// Input Color
 		if ( 
 			isset( $this->block_attr['textareaColor'] ) 
 			&& ! $this->block_attr['textareaColorClass'] 
@@ -205,11 +213,17 @@ class textarea extends sv_gutenform {
 			$style[] = 'color:' . $this->block_attr['textareaColor'];
 		}
 
+		// Background Color
 		if ( 
 			isset( $this->block_attr['textareaBackgroundColor'] ) 
 			&& ! $this->block_attr['textareaBackgroundColorClass'] 
 		) {
 			$style[] = 'background-color:' . $this->block_attr['textareaBackgroundColor'];
+		}
+
+		// Border Radius
+		if ( isset( $this->block_attr['borderRadius'] ) ) {
+			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
 		}
 
 		if ( ! empty( $style ) ) {

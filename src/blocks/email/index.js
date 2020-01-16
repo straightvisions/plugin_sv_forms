@@ -70,6 +70,11 @@ registerBlockType( 'straightvisions/sv-gutenform-email', {
 			type: 'string',
 		},
 
+		// Border Settings
+		borderRadius: {
+			type: 'number',
+		},
+
 		// Advanced Settings
 		autofocus: {
 			type: 'boolean',

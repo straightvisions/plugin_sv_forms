@@ -76,7 +76,7 @@ export default ( { props } ) => {
     return(
         <PanelColorSettings
             title={ __( 'Color Settings', 'sv_gutenform' ) }
-            initialOpen={ false }
+            initialOpen={ true }
             colorSettings={ colorSettings }
         >
         </PanelColorSettings>

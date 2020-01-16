@@ -32,6 +32,9 @@ export default withSelect( ( select, props ) => {
             textareaBackgroundColor,
             textareaBackgroundColorClass,
 
+            // Border Settings
+            borderRadius,
+
             // Advanced Settings
             autofocus,
             readonly,
@@ -74,7 +77,7 @@ export default withSelect( ( select, props ) => {
                     maxlength={ maxlength > 0 ? maxlength : -1 }
                     autofocus={ autofocus }
                     placeholder={ placeholder }
-                    style={{ color: textareaColor, backgroundColor: textareaBackgroundColor }}
+                    style={{ color: textareaColor, backgroundColor: textareaBackgroundColor, borderRadius: borderRadius }}
                     className={ [ textareaColorClass, textareaBackgroundColorClass ] }
                     onChange={ value => setDefaultValue( value ) }
                     hideLabelFromVision={ true }

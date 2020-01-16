@@ -66,6 +66,11 @@ class select extends sv_gutenform {
 						'type'		=> 'string',
 					),
 
+					// Border Radius
+					'borderRadius' => array(
+						'type'		=> 'number',
+					),
+
 					// Advanced Settings
 					'autofocus' 	=> array(
 						'type'		=> 'bool',
@@ -141,6 +146,18 @@ class select extends sv_gutenform {
 
 		// Name
 		$attr[]		= 'name="' . $this->block_attr['name'] . '"';
+
+		// Style
+		$style = array();
+
+		// Border Radius
+		if ( isset( $this->block_attr['borderRadius'] ) ) {
+			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
+		}
+
+		if ( ! empty( $style ) ) {
+			$attr[] = 'style="' . implode( ';', $style ) . '"';
+		}
 
 		// Autofocus
 		if ( isset( $this->block_attr['autofocus'] ) && $this->block_attr['autofocus'] ) {

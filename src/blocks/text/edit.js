@@ -33,6 +33,9 @@ export default withSelect( ( select, props ) => {
             inputBackgroundColor,
             inputBackgroundColorClass,
 
+            // Border Settings
+            borderRadius,
+
             // Advanced Settings
             autofocus,
             autocomplete,
@@ -78,7 +81,7 @@ export default withSelect( ( select, props ) => {
                     autofocus={ autofocus }
                     placeholder={ placeholder }
                     autocomplete={ autocomplete }
-                    style={{ color: inputColor, backgroundColor: inputBackgroundColor }}
+                    style={{ color: inputColor, backgroundColor: inputBackgroundColor, borderRadius: borderRadius }}
                     className={ [ inputColorClass, inputBackgroundColorClass ] }
                     onChange={ value => setDefaultValue( value ) }
                     hideLabelFromVision={ true }
