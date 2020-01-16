@@ -33,6 +33,16 @@ registerBlockType( 'straightvisions/sv-gutenform-admin-mail', {
 		},
 		
 		// E-Mail Settings
+		adminMail: {
+			type: 'string',
+			default: 'disabled',
+		},
+		adminMailUser: {
+			type: 'number',
+		},
+		adminMailAdress: {
+			type: 'string',
+		},
 		subject: {
 			type: 'string',
 		},
