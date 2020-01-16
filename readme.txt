@@ -58,18 +58,37 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
     * Give your form a label to filter and group your submissions by it.
 * Input name check
     * When working on your form, you will get a notice when two of your inputs use the same input name.
+* Border Radius Settings
+    * Input Block now have a border radius setting.
+
+### New Blocks
+
+* Form Block
+    * This block will contain the blocks for the form and is a child of the SV Gutenform block.
 
 ### Enhancements
 
 * The following blocks are now collapsible, for better content overview.
+    * Wrapper Block
+    * Form Block
     * Thank You Message Block
     * User Mail Block
     * Admin Mail Block
 * Input Blocks will notify the user, if an input name already exists inside the current form.
+* You can now click on the available input values to copy them in your clippboard.
 
 ### Various
 
 * Deactivated the feature that input names will be automatically generated, when the input label is updated, due to possible workflow problems.
+* The SV Gutenform block will no longer directly contain the blocks for the form, but the blocks for all form features.
+    * SV Gutenform will now act as a wrapper for the following blocks:
+        * Form (Will now directly contain the blocks for the form)
+        * Thank You Message
+        * User Mail
+        * Admin Mail
+* The "Admin Mail" settings was moved to the Admin Mail Block.
+* The "Send Confirmation Mail" setting was moved to the User Mail Block and the function was changed.
+    * You can choose in a select field, the E-Mail Block to recieve the user mail.
 
 ### Bug Fixes
 
@@ -77,6 +96,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 * Checkboxes without value will no longer throw PHP notices.
 * Spam Guard will no longer throw an error, when not set.
 * Fixed a bug where block content of the Admin Mail and User Mail Block will disappear.
+* The available input values inside the Thank You Message block will now update live.
 
 = 1.4.12 =
 
