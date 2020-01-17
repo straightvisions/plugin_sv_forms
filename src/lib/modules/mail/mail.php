@@ -31,10 +31,10 @@ class mail extends modules {
 		$input_values = array();
 
 		foreach( $input_names[1] as $index => $name ) {
-			$value = $this->helper_methods->get_input_value( $name, $data );
+			$value = $this->get_input_value( $name, $data );
 
 			if ( $value && ! is_array( $value ) ) {
-				$input_values[ $index ] = $this->helper_methods->get_input_value( $name, $data );
+				$input_values[ $index ] = $this->get_input_value( $name, $data );
 			}
 		}
 
@@ -46,7 +46,7 @@ class mail extends modules {
 	// Returns the user mail adress
 	private function get_user_mail( object $attr, array $data ) {
 		// Checks if the input "recipient" exists and returns the recipient input names
-		$input_names = $this->helper_methods->get_input_value( $attr->userMailInputName, $data, false );
+		$input_names = $this->get_input_value( $attr->userMailInputName, $data, false );
 
 		if ( ! $input_names || count( $input_names ) < 1 ) return '';
 
@@ -54,7 +54,7 @@ class mail extends modules {
 			$email_adresses = array();
 
 			foreach( $input_names as $name ) {
-				$email_adresses[] = $this->helper_methods->get_input_value( $name, $data );
+				$email_adresses[] = $this->get_input_value( $name, $data );
 			}
 
 			return $email_adresses;

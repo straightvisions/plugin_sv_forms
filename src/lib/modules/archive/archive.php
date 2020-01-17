@@ -59,7 +59,6 @@ class archive extends modules {
 	public function manage_sv_gutenform_submit_posts_columns( array $columns ): array {
 		$columns[ $this->get_root()->get_prefix( 'user_mail' ) ] 	= __( 'User Mail', 'sv_gutenform' );
 		$columns[ $this->get_root()->get_prefix( 'admin_mail' ) ] 	= __( 'Admin Mail', 'sv_gutenform' );
-		$columns[ $this->get_root()->get_prefix( 'form_id' ) ] 		= __( 'Form ID', 'sv_gutenform' );
 
 		return $columns;
 	}
@@ -86,10 +85,6 @@ class archive extends modules {
 				} else {
 					echo '<span class="dashicons dashicons-dismiss"></span>';
 				}
-				break;
-			case $this->get_root()->get_prefix( 'form_id' ):
-				$meta_key = $this->get_root()->get_prefix( 'form_id' );
-				echo get_post_meta( $post_id, $meta_key, true );
 				break;
 		}
 	}

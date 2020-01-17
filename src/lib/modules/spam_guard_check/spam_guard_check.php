@@ -14,7 +14,7 @@ class spam_guard_check extends modules {
 		// Checks Honeypot
 		if ( $attr->sgHoneypot ) {
 			$input_name = $this->get_root()->get_prefix( 'sg_hp' );
-			$input_value = $this->helper_methods->get_input_value( $input_name, $data );
+			$input_value = $this->get_input_value( $input_name, $data );
 
 			if ( $input_value && $this->check_honeypot( $input_value ) ) return true;
 		}
@@ -22,7 +22,7 @@ class spam_guard_check extends modules {
 		// Checks Time Trap
 		if ( $attr->sgTimeTrap ) {
 			$input_name = $this->get_root()->get_prefix( 'sg_tt' );
-			$input_value = $this->helper_methods->get_input_value( $input_name, $data );
+			$input_value = $this->get_input_value( $input_name, $data );
 
 			if ( $input_value && $this->check_time_trap( $input_value, $attr->sgTimeTrapWindow ) ) return true;
         }
@@ -38,7 +38,7 @@ class spam_guard_check extends modules {
 	// Checks if the time tramp was triggered
 	private function check_time_trap( string $encrypted_timestamp, int $time_trap_window ): bool {
 		$current_timestamp = time();
-		$form_timestamp = $this->helper_methods->decrypt_string( $encrypted_timestamp );
+		$form_timestamp = $this->decrypt_string( $encrypted_timestamp );
 
 		if ( 
 			! is_numeric( $form_timestamp )

@@ -62,7 +62,7 @@ class spam_guard extends sv_gutenform {
 
 	// Creates a hidden input field with an encrypted timestamp
 	private function time_trap() {
-		$encrypted_timestamp = $this->helper_methods->encrypt_string( time() );
+		$encrypted_timestamp = $this->encrypt_string( time() );
 
 		echo '<input type="hidden" name="' . $this->get_root()->get_prefix( 'sg_tt' ) . '" value="' . $encrypted_timestamp . '" tabindex="-1" autocomplete="off" />';
 	}

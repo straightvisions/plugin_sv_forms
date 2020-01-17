@@ -89,7 +89,7 @@ class post extends modules {
             $this->get_root()->get_prefix( 'sg_tt' ),
         );
 
-        $filtered_form_data = $this->helper_methods->remove_input_value( $input_values_to_be_removed, $data );
+        $filtered_form_data = $this->remove_input_value( $input_values_to_be_removed, $data );
 
         return $filtered_form_data;
     }
@@ -128,8 +128,8 @@ class post extends modules {
 
         // User Mail
         if ( ! empty( $attr->userMailInputName ) ) {
-            if ( $this->helper_methods->get_input_value( $attr->userMailInputName, $data ) ) {
-                $meta[ $user_mail_meta_key ] = $this->helper_methods->get_input_value( $attr->userMailInputName, $data );
+            if ( $this->get_input_value( $attr->userMailInputName, $data ) ) {
+                $meta[ $user_mail_meta_key ] = $this->get_input_value( $attr->userMailInputName, $data );
             }
         }
 
