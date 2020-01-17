@@ -157,9 +157,11 @@ class post extends modules {
     public function insert_post( object $attr, array $data ): post {
         if ( ! $attr || ! $data || ! $attr->saveSubmits ) return $this;
 
+        $form_post = get_post( $attr->postId );
+
         // Post Arguments
         $postarr = array(
-            'post_title'	=> __( 'Submission from Post #', 'sv_gutenform' ) . $attr->postId, 
+            'post_title'	=> $form_post->post_title . ' (' . $form_post->ID . ')',
             'post_content'	=> $this->get_post_content( $data ),
             'post_type'		=> $this->get_post_type(),
             'post_status'	=> 'publish',
