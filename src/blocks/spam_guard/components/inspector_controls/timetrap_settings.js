@@ -16,13 +16,13 @@ export default ( { props } ) => {
         }
     } = props;
 
-    // Functions
+    // Functions to set the block attributes
     const setTimeTrapWindow = timeTrapWindow => setAttributes({ timeTrapWindow });
 
     return(
         <PanelBody
             title={ __( 'Time Trap Settings', 'sv_gutenform' ) }
-            initialOpen={ false }
+            initialOpen={ true }
         >
             <RangeControl
                 label={ __( 'Time Window', 'sv_gutenform' ) }

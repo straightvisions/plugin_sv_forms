@@ -17,7 +17,7 @@ export default ( { props } ) => {
         }
     } = props;
 
-    // Functions
+    // Functions to set the block attributes
     const setAutofocus      = autofocus     =>  setAttributes({ autofocus });
     const setAutocomplete   = autocomplete  =>  setAttributes({ autocomplete });
     const setReadonly       = readonly      =>  setAttributes({ readonly });

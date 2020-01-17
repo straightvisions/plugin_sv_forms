@@ -35,7 +35,7 @@ export default withSelect( ( select, props ) => {
         } 
     } = props;
 
-    // Functions
+    // Functions to set the block attributes
     const setDefaultValue = defaultValue => setAttributes({ defaultValue });
 
     // Conditional Components

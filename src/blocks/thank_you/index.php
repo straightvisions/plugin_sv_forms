@@ -2,7 +2,7 @@
 namespace sv_gutenform;
 
 class thank_you extends sv_gutenform {
-	protected $block_attr 	= array();
+	protected $block_attr = array();
 
 	public function init() {
 		$this->register_block();
@@ -47,8 +47,8 @@ class thank_you extends sv_gutenform {
 					),
 					
 					// Advanced Settings
-					'className' 	=> array(
-						'type'		=> 'string',
+					'className' => array(
+						'type' => 'string',
 					),
 				),
 			)

@@ -18,7 +18,7 @@ export default ( { props } ) => {
         }
     } = props;
 
-    // Functions
+    // Returns a notice when the input name is already in use
     const setSubject    = subject   => setAttributes({ subject });
     const setFromTitle  = fromTitle => setAttributes({ fromTitle });
     const setFromMail   = fromMail  => setAttributes({ fromMail });

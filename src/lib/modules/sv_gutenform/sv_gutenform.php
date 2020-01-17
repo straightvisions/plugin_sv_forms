@@ -163,4 +163,187 @@ class sv_gutenform extends modules {
 
 		return true;
 	}
+
+	// Returns the wrapper class for the default template input
+	protected function get_default_wrapper_class( array $block_attr, string $block_name ): string {
+		$class 		= array();
+		$class[]	= 'wp-block-straightvisions-sv-gutenform-' . $block_name;
+
+		// Alignment
+		if ( isset( $block_attr['align'] ) ) { 
+			$class[] = 'align' . $block_attr['align'];
+		}
+
+		// Additional Classes
+		if ( isset( $block_attr['className'] ) ) { 
+			$class[] = $block_attr['className'];
+		}
+
+		return implode( ' ', $class );
+	}
+
+	// Returns the label attr for the default template input
+	protected function get_default_label_attr( array $block_attr ): string {
+		$attr = array();
+
+		// For
+		if ( isset( $block_attr['name'] ) ) {
+			$attr[]	= 'for="' . $block_attr['name'] . '"';
+		}
+
+		// Class
+		$class = array();
+
+		if ( 
+			isset( $block_attr['labelColor'] ) 
+			&& $block_attr['labelColorClass'] 
+		) {
+            $class[] = $block_attr['labelColorClass'];
+		}
+		
+		if ( ! empty( $class ) ) {
+			$attr[]	= 'class="' . implode( ' ', $class ) . '"';
+		}
+
+		// Style
+		if ( 
+			isset( $block_attr['labelColor'] ) 
+			&& ! $block_attr['labelColorClass'] 
+		) {
+			$attr[] = 'style="color:' . $block_attr['labelColor'] . '"';
+		}
+
+		return implode( ' ', $attr );
+	}
+
+	// Returns the input attr for the default template input
+	protected function get_default_input_attr( array $block_attr, string $type = '' ): string {
+		$attr = array();
+
+		// Type
+		if ( ! empty( $type ) ) {
+			$attr[] = 'type="' . $type .  '"';
+		}
+
+		if ( isset( $block_attr['name'] ) ) {
+			// ID
+			$attr[] = 'id="' . $block_attr['name'] . '"';
+
+			// Name
+			$attr[] = 'name="' . $block_attr['name'] . '"';
+		}
+
+		// Value
+		if ( isset( $block_attr['defaultValue'] ) ) {
+			$attr[]	= 'value="' . $block_attr['defaultValue'] . '"';
+		}
+
+		// Placeholder
+		if ( isset( $block_attr['placeholder'] ) ) {
+			$attr[] = 'placeholder="' . $block_attr['placeholder'] . '"';
+		}
+
+		// Required
+		if ( isset( $block_attr['required'] ) && $block_attr['required'] ) {
+			$attr[] = 'required';
+		}
+
+		// Min-Length
+		if ( isset( $block_attr['minlength'] ) && $block_attr['minlength'] > 0 ) {
+			$attr[]	= 'minlength="' . $block_attr['minlength'] . '"';
+		}
+
+		// Max-Length
+		if ( isset( $block_attr['maxlength'] ) && $block_attr['maxlength'] > 0 ) {
+			$attr[]	= 'maxlength="' . $block_attr['maxlength'] . '"';
+		}
+
+		// Min
+		if ( isset( $block_attr['min'] ) && $block_attr['min'] > 0 ) {
+			$attr[]	= 'min="' . $block_attr['min'] . '"';
+		}
+
+		// Max
+		if ( isset( $block_attr['max'] ) && $block_attr['max'] > 0 ) {
+			$attr[]	= 'max="' . $block_attr['max'] . '"';
+		}
+
+		// Step
+		if ( isset( $block_attr['step'] ) && $block_attr['step'] > 0 ) {
+			$attr[]	= 'step="' . $block_attr['step'] . '"';
+		}
+
+		// Class
+		$class = array();
+
+		// Input Color
+		if ( 
+			isset( $block_attr['inputColor'] ) 
+			&& $block_attr['inputColorClass'] 
+		) {
+            $class[] = $block_attr['inputColorClass'];
+		}
+
+		// Input Background Color
+		if ( 
+			isset( $block_attr['inputBackgroundColor'] ) 
+			&& $block_attr['inputBackgroundColorClass'] 
+		) {
+            $class[] = $block_attr['inputBackgroundColorClass'];
+		}
+		
+		if ( ! empty( $class ) ) {
+			$attr[]	= 'class="' . implode( ' ', $class ) . '"';
+		}
+
+		// Style
+		$style = array();
+
+		// Input Color
+		if ( 
+			isset( $block_attr['inputColor'] ) 
+			&& ! $block_attr['inputColorClass'] 
+		) {
+			$style[] = 'color:' . $block_attr['inputColor'];
+		}
+
+		// Input Background Color
+		if ( 
+			isset( $block_attr['inputBackgroundColor'] ) 
+			&& ! $block_attr['inputBackgroundColorClass'] 
+		) {
+			$style[] = 'background-color:' . $block_attr['inputBackgroundColor'];
+		}
+
+		// Border Radius
+		if ( isset( $block_attr['borderRadius'] ) ) {
+			$style[] = 'border-radius:' . $block_attr['borderRadius'] . 'px';
+		}
+
+		if ( ! empty( $style ) ) {
+			$attr[] = 'style="' . implode( ';', $style ) . '"';
+		}
+
+		// Autofocus
+		if ( isset( $block_attr['autofocus'] ) && $block_attr['autofocus'] ) {
+			$attr[] = 'autofocus';
+		}
+
+		// Autocomplete
+		if ( isset( $block_attr['autocomplete'] ) && $block_attr['autocomplete'] ) {
+			$attr[] = 'autocomplete="on"';
+		}
+
+		// Read Only
+		if ( isset( $block_attr['readonly'] ) && $block_attr['readonly'] ) {
+			$attr[] = 'readonly';
+		}
+
+		// Disabled
+		if ( isset( $block_attr['disabled'] ) && $block_attr['disabled'] ) {
+			$attr[] = 'disabled';
+		}
+
+		return implode( ' ', $attr );
+	}
 }

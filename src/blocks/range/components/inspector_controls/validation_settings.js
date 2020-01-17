@@ -20,7 +20,7 @@ export default ( { props } ) => {
         }
     } = props;
 
-    // Functions
+    // Functions to set the block attributes
     const setRequired   = required  => setAttributes({ required });
     const setMin        = min       => setAttributes({ min });
     const setMax        = max       => setAttributes({ max });

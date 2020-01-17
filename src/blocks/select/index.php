@@ -2,7 +2,7 @@
 namespace sv_gutenform;
 
 class select extends sv_gutenform {
-	protected $block_attr 	= array();
+	protected $block_attr = array();
 
 	public function init() {
 		$this->register_block();
@@ -41,139 +41,68 @@ class select extends sv_gutenform {
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
 					// Input Settings
-					'defaultValue' 	=> array(
-						'type'		=> 'string',
+					'defaultValue' => array(
+						'type' => 'string',
 					),
-					'label' 		=> array(
-						'type'		=> 'string',
-						'default'	=> __( 'Select Label', 'sv_posts' ),
+					'label' => array(
+						'type' => 'string',
+						'default' => __( 'Select Label', 'sv_posts' ),
 					),
-					'name' 			=> array(
-						'type'		=> 'string',
+					'name' => array(
+						'type' => 'string',
 					),
-					'multiple' 		=> array(
-						'type'		=> 'bool',
+					'multiple' => array(
+						'type' => 'bool',
 					),
-					'options' 		=> array(
-						'type'		=> 'string',
+					'options' => array(
+						'type' => 'string',
 					),
 
 					// Color Settings
-					'labelColor' 	=> array(
-						'type'		=> 'string',
+					'labelColor' => array(
+						'type' => 'string',
 					),
 					'labelColorClass' => array(
-						'type'		=> 'string',
+						'type' => 'string',
 					),
 
 					// Border Radius
 					'borderRadius' => array(
-						'type'		=> 'number',
+						'type' => 'number',
 					),
 
 					// Advanced Settings
-					'autofocus' 	=> array(
-						'type'		=> 'bool',
+					'autofocus' => array(
+						'type' => 'bool',
 					),
-					'disabled' 		=> array(
-						'type'		=> 'bool',
+					'disabled' => array(
+						'type' => 'bool',
 					),
-					'className' 	=> array(
-						'type'		=> 'string',
+					'className' => array(
+						'type' => 'string',
 					),
 				),
 			)
 		);
 	}
 
-	// Helper Methods
-	// Returns a string with all classes for the select wrapper
-	public function get_wrapper_class(): string {
-		$class 			= array();
-		$class[]		= 'wp-block-straightvisions-sv-gutenform-select';
-
-		// Alignment
-		if ( isset( $this->block_attr['align'] ) ) { 
-			$class[] 	= 'align' . $this->block_attr['align'];
-		}
-
-		// Additional Classes
-		if ( isset( $this->block_attr['className'] ) ) { 
-			$class[] 	= $this->block_attr['className'];
-		}
-
-		return implode( ' ', $class );
+	// Returns a string with all classes for the input wrapper
+	protected function get_wrapper_class(): string {
+		return $this->get_root()->sv_gutenform->get_default_wrapper_class( $this->block_attr, $this->get_module_name() );
 	}
 
 	// Returns a string with all attributes for the label
-	public function get_label_attr(): string {
-		$attr 		= array();
-
-		// For
-		$attr[]		= 'for="' . $this->block_attr['name'] . '"';
-
-		// Class
-		$class		= array();
-
-		if ( 
-			isset( $this->block_attr['labelColor'] ) 
-			&& $this->block_attr['labelColorClass'] 
-		) {
-            $class[] = $this->block_attr['labelColorClass'];
-		}
-		
-		if ( ! empty( $class ) ) {
-			$attr[]	= 'class="' . implode( ' ', $class ) . '"';
-		}
-
-		// Style
-		if ( 
-			isset( $this->block_attr['labelColor'] ) 
-			&& ! $this->block_attr['labelColorClass'] 
-		) {
-			$attr[] = 'style="color:' . $this->block_attr['labelColor'] . '"';
-		}
-
-		return implode( ' ', $attr );
+	protected function get_label_attr(): string {
+		return $this->get_root()->sv_gutenform->get_default_label_attr( $this->block_attr );
 	}
 
 	// Returns a string with all attributes for the select
-	public function get_select_attr(): string {
-		$attr 		= array();
-
-		// ID
-		$attr[]		= 'id="' . $this->block_attr['name'] . '"';
-
-		// Name
-		$attr[]		= 'name="' . $this->block_attr['name'] . '"';
-
-		// Style
-		$style = array();
-
-		// Border Radius
-		if ( isset( $this->block_attr['borderRadius'] ) ) {
-			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
-		}
-
-		if ( ! empty( $style ) ) {
-			$attr[] = 'style="' . implode( ';', $style ) . '"';
-		}
-
-		// Autofocus
-		if ( isset( $this->block_attr['autofocus'] ) && $this->block_attr['autofocus'] ) {
-			$attr[] = 'autofocus';
-		}
-
-		// Disabled
-		if ( isset( $this->block_attr['disabled'] ) && $this->block_attr['disabled'] ) {
-			$attr[] = 'disabled';
-		}
-
-		return implode( ' ', $attr );
+	protected function get_select_attr(): string {
+		return $this->get_root()->sv_gutenform->get_default_input_attr( $this->block_attr );
 	}
 
-	public function get_options(): string {
-		$options		= array();
+	protected function get_options(): string {
+		$options = array();
 
 		foreach( json_decode( $this->block_attr['options'] ) as $option ) {
 			$el	= '<option value="' . $option->value .'"';

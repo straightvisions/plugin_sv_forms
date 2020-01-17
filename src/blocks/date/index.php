@@ -2,7 +2,7 @@
 namespace sv_gutenform;
 
 class date extends sv_gutenform {
-	protected $block_attr 	= array();
+	protected $block_attr = array();
 
 	public function init() {
 		$this->register_block();
@@ -41,129 +41,57 @@ class date extends sv_gutenform {
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
 					// Input Settings
-					'defaultValue' 	=> array(
-						'type'		=> 'string',
+					'defaultValue' => array(
+						'type' => 'string',
 					),
-					'label' 		=> array(
-						'type'		=> 'string',
-						'default'	=> __( 'Date Label', 'sv_posts' ),
+					'label' => array(
+						'type' => 'string',
+						'default' => __( 'Date Label', 'sv_posts' ),
 					),
-					'name' 			=> array(
-						'type'		=> 'string',
+					'name' => array(
+						'type' => 'string',
 					),
 
 					// Validation Settings
-					'required' 		=> array(
-						'type'		=> 'bool',
+					'required' => array(
+						'type' => 'bool',
 					),
 
 					// Color Settings
-					'labelColor' 	=> array(
-						'type'		=> 'string',
+					'labelColor' => array(
+						'type' => 'string',
 					),
 					'labelColorClass' => array(
-						'type'		=> 'string',
+						'type' => 'string',
 					),
 
 					// Advanced Settings
-					'autofocus' 	=> array(
-						'type'		=> 'bool',
+					'autofocus' => array(
+						'type' => 'bool',
 					),
-					'disabled' 		=> array(
-						'type'		=> 'bool',
+					'disabled' => array(
+						'type' => 'bool',
 					),
-					'className' 	=> array(
-						'type'		=> 'string',
+					'className' => array(
+						'type' => 'string',
 					),
 				),
 			)
 		);
 	}
 
-	// Helper Methods
 	// Returns a string with all classes for the input wrapper
-	public function get_wrapper_class(): string {
-		$class 			= array();
-		$class[]		= 'wp-block-straightvisions-sv-gutenform-date';
-
-		// Alignment
-		if ( isset( $this->block_attr['align'] ) ) { 
-			$class[] 	= 'align' . $this->block_attr['align'];
-		}
-
-		// Additional Classes
-		if ( isset( $this->block_attr['className'] ) ) { 
-			$class[] 	= $this->block_attr['className'];
-		}
-
-		return implode( ' ', $class );
+	protected function get_wrapper_class(): string {
+		return $this->get_root()->sv_gutenform->get_default_wrapper_class( $this->block_attr, $this->get_module_name() );
 	}
 
 	// Returns a string with all attributes for the label
-	public function get_label_attr(): string {
-		$attr 		= array();
-
-		// For
-		$attr[]		= 'for="' . $this->block_attr['name'] . '"';
-
-		// Class
-		$class		= array();
-
-		if ( 
-			isset( $this->block_attr['labelColor'] ) 
-			&& $this->block_attr['labelColorClass'] 
-		) {
-            $class[] = $this->block_attr['labelColorClass'];
-		}
-		
-		if ( ! empty( $class ) ) {
-			$attr[]	= 'class="' . implode( ' ', $class ) . '"';
-		}
-
-		// Style
-		if ( 
-			isset( $this->block_attr['labelColor'] ) 
-			&& ! $this->block_attr['labelColorClass'] 
-		) {
-			$attr[] = 'style="color:' . $this->block_attr['labelColor'] . '"';
-		}
-
-		return implode( ' ', $attr );
+	protected function get_label_attr(): string {
+		return $this->get_root()->sv_gutenform->get_default_label_attr( $this->block_attr );
 	}
 
 	// Returns a string with all attributes for the input
-	public function get_input_attr(): string {
-		$attr 		= array();
-
-		// Type
-		$attr[]		= 'type="date"';
-
-		// ID
-		$attr[]		= 'id="' . $this->block_attr['name'] . '"';
-
-		// Name
-		$attr[]		= 'name="' . $this->block_attr['name'] . '"';
-
-		// Value
-		if ( isset( $this->block_attr['defaultValue'] ) ) {
-			$attr[]	= 'value="' . date( 'Y-m-d', strtotime( $this->block_attr['defaultValue'] ) ) . '"';
-		}
-
-		// Required
-		if ( isset( $this->block_attr['required'] ) && $this->block_attr['required'] ) {
-			$attr[] = 'required';
-		}
-
-		// Autofocus
-		if ( isset( $this->block_attr['autofocus'] ) && $this->block_attr['autofocus'] ) {
-			$attr[] = 'autofocus';
-		}
-
-		// Disabled
-		if ( isset( $this->block_attr['disabled'] ) && $this->block_attr['disabled'] ) {
-			$attr[] = 'disabled';
-		}
-
-		return implode( ' ', $attr );
+	protected function get_input_attr(): string {
+		return $this->get_root()->sv_gutenform->get_default_input_attr( $this->block_attr, 'date' );
 	}
 }

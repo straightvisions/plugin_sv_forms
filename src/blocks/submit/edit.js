@@ -20,10 +20,13 @@ export default withSelect( ( select, props ) => {
             textColorClass,
             backgroundColor,
             backgroundColorClass,
+
+            // Border Settings
+            borderRadius,
         } 
     } = props;
 
-    // Functions
+    // Returns a string in a slug compatible format
     const setContent = content => setAttributes({ content });
 
     return (
@@ -31,7 +34,7 @@ export default withSelect( ( select, props ) => {
             <InspectorControls props={ props } />
             <RichText
                 className={ [ textColorClass, backgroundColorClass, className ] }
-                style={{ color: textColor, backgroundColor: backgroundColor }}
+                style={{ color: textColor, backgroundColor: backgroundColor, borderRadius: borderRadius }}
                 value={ content }
                 onChange={ value => setContent( value ) } 
             />

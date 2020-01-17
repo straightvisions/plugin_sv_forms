@@ -1,10 +1,5 @@
 // Required Components
-const { __ }            = wp.i18n;
-const { createBlock }   = wp.blocks;
-const { 
-    select, 
-    dispatch 
-} = wp.data;
+const { __ } = wp.i18n;
 const { 
     PanelBody,
     TextControl,
@@ -28,36 +23,21 @@ export default ( { props, data } ) => {
         clientId,
     } = props;
 
-    // Functions
-    const setFormLabel      = formLabel => setAttributes({ formLabel });
-    const setSaveSubmits    = saveSubmits => setAttributes({ saveSubmits });
-    const setAdminMail      = adminMail => { 
+    // Functions to set the block attributes
+    const setFormLabel          = formLabel         => setAttributes({ formLabel });
+    const setSaveSubmits        = saveSubmits       => setAttributes({ saveSubmits });
+    const setAdminMailUser      = adminMailUser     => setAttributes({ adminMailUser });
+    const setAdminMailAdress    = adminMailAdress   => setAttributes({ adminMailAdress });
+    const setAdminMail          = adminMail         => { 
         setAttributes({ adminMail });
-
-        if ( adminMail !== 'disabled' ) {
-            addAdminMailBlock();
-        }
 
         if ( adminMail === 'author' ) {
             setAdminMailUser( getAuthorOptions()[0].value );
         }
     };
-    const addAdminMailBlock = () => {
-        const formBlocks        = select('core/block-editor').getBlocks( clientId );
-        const isAdminMailBlock  = formBlocks.some( block => { 
-            return block.name === 'straightvisions/sv-gutenform-admin-mail';
-        });
-        const position          = formBlocks.length + 1;
-        
-        if ( ! isAdminMailBlock ) {
-            const adminMailBlock = createBlock( 'straightvisions/sv-gutenform-admin-mail' );
 
-            dispatch( 'core/block-editor' ).insertBlock( adminMailBlock, position, clientId, true );
-        }
-    };
-    const setAdminMailUser      = adminMailUser     => setAttributes({ adminMailUser });
-    const setAdminMailAdress    = adminMailAdress   => setAttributes({ adminMailAdress });
-    const getAuthorOptions      = ()                => {
+    // Returns the authors as options for the select
+    const getAuthorOptions = () => {
         let options = [];
 
         if ( data.authors ) {

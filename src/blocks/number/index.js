@@ -46,6 +46,9 @@ registerBlockType( 'straightvisions/sv-gutenform-number', {
 		max: {
 			type: 'number',
 		},
+		step: {
+			type: 'number',
+		},
 
 		// Color Settings
 		labelColor: {

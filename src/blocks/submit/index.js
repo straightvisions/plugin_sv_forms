@@ -41,6 +41,11 @@ registerBlockType( 'straightvisions/sv-gutenform-submit', {
 			type: 'string',
 		},
 
+		// Border Settings
+		borderRadius: {
+			type: 'number',
+		},
+		
 		// Advanced Settings
 		className: {
 			type: 'string',

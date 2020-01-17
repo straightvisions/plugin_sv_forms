@@ -1,5 +1,4 @@
 // Required Components
-import HoneypotSettings from './inspector_controls/honeypot_settings';
 import TimeTrapSettings from './inspector_controls/timetrap_settings';
 
 const { Fragment } = wp.element;

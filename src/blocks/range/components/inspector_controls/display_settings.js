@@ -18,10 +18,10 @@ export default ( { props } ) => {
         },
     } = props;
 
-    // Functions
-    const setShowValue  = showValue     => setAttributes({ showValue });
-    const setShowMin    = showMin       => setAttributes({ showMin });
-    const setShowMax    = showMax       => setAttributes({ showMax });
+    // Functions to set the block attributes
+    const setShowValue  = showValue => setAttributes({ showValue });
+    const setShowMin    = showMin   => setAttributes({ showMin });
+    const setShowMax    = showMax   => setAttributes({ showMax });
 
     return(
         <PanelBody

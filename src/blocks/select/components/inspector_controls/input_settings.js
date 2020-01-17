@@ -22,10 +22,12 @@ export default ( { props } ) => {
         }
     } = props;
 
-    // Functions
-    const setLabel          = label         => setAttributes({ label });
-    const setName           = name          => setAttributes({ name });
-    const getSlug           = string => {
+    // Functions to set the block attributes
+    const setLabel  = label => setAttributes({ label });
+    const setName   = name  => setAttributes({ name });
+
+    // Returns a string in a slug compatible format
+    const getSlug = string => {
         if ( ! string ) return '';
 
         const slug = string.replace( /[^A-Z0-9]+/ig, '-' ).toLowerCase();
@@ -33,10 +35,10 @@ export default ( { props } ) => {
         return slug;
     };
 
-    // Conditional Components
-    const NameCheck         = () => {
-        const formBlocks    = select('core/block-editor').getBlocks( formId );
-        let output          = null;
+    // Returns a notice when the input name is already in use
+    const NameCheck = () => {
+        const formBlocks = select('core/block-editor').getBlocks( formId );
+        let output = null;
         
         formBlocks.map( block => {
             if ( 

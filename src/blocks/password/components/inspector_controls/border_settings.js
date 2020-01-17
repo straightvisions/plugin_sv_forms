@@ -14,8 +14,8 @@ export default ( { props } ) => {
         attributes: { borderRadius }
     } = props;
 
-    // Functions
-    const setBorderRadius  = borderRadius  => setAttributes({ borderRadius });
+    // Functions to set the block attributes
+    const setBorderRadius = borderRadius => setAttributes({ borderRadius });
 
     return(
         <PanelBody

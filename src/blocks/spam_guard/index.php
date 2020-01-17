@@ -4,8 +4,6 @@ namespace sv_gutenform;
 class spam_guard extends sv_gutenform {
 	protected $block_attr = array();
 
-	// ##### Initialization Methods #####
-
 	public function init() {
 		$this->register_block();
 	}
@@ -68,7 +66,7 @@ class spam_guard extends sv_gutenform {
 	}
 
 	// Starts the spam guard traps, base on the spam guard level
-	public function start_spam_guard() {
+	protected function start_spam_guard() {
 		if ( $this->block_attr['honeypot'] ) $this->honeypot();
 		if ( $this->block_attr['timeTrap'] ) $this->time_trap();
 	}

@@ -2,7 +2,7 @@
 namespace sv_gutenform;
 
 class radio extends sv_gutenform {
-	protected $block_attr 	= array();
+	protected $block_attr = array();
 
 	public function init() {
 		$this->register_block();
@@ -41,103 +41,64 @@ class radio extends sv_gutenform {
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
 					// Input Settings
-					'defaultValue' 	=> array(
-						'type'		=> 'string',
+					'defaultValue' => array(
+						'type' => 'string',
 					),
-					'label' 		=> array(
-						'type'		=> 'string',
-						'default'	=> __( 'Radio Button Label', 'sv_posts' ),
+					'label' => array(
+						'type' => 'string',
+						'default' => __( 'Radio Button Label', 'sv_posts' ),
 					),
-					'name' 			=> array(
-						'type'		=> 'string',
+					'name' => array(
+						'type' => 'string',
 					),
-					'options' 		=> array(
-						'type'		=> 'string',
+					'options' => array(
+						'type' => 'string',
 					),
 
 					// Color Settings
-					'labelColor' 	=> array(
-						'type'		=> 'string',
+					'labelColor' => array(
+						'type' => 'string',
 					),
 					'labelColorClass' => array(
-						'type'		=> 'string',
+						'type' => 'string',
 					),
 
 					// Advanced Settings
-					'className' 	=> array(
-						'type'		=> 'string',
+					'className' => array(
+						'type' => 'string',
 					),
 				),
 			)
 		);
 	}
 
-	// Helper Methods
 	// Returns a string with all classes for the input wrapper
-	public function get_wrapper_class(): string {
-		$class 			= array();
-		$class[]		= 'wp-block-straightvisions-sv-gutenform-radio';
-
-		// Alignment
-		if ( isset( $this->block_attr['align'] ) ) { 
-			$class[] 	= 'align' . $this->block_attr['align'];
-		}
-
-		// Additional Classes
-		if ( isset( $this->block_attr['className'] ) ) { 
-			$class[] 	= $this->block_attr['className'];
-		}
-
-		return implode( ' ', $class );
+	protected function get_wrapper_class(): string {
+		return $this->get_root()->sv_gutenform->get_default_wrapper_class( $this->block_attr, $this->get_module_name() );
 	}
 
 	// Returns a string with all attributes for the label
-	public function get_label_attr( string $for ): string {
-		$attr 		= array();
-
-		// For
-		$attr[]		= 'for="' . $for . '"';
-
-		// Class
-		$class		= array();
-
-		if ( 
-			isset( $this->block_attr['labelColor'] ) 
-			&& $this->block_attr['labelColorClass'] 
-		) {
-            $class[] = $this->block_attr['labelColorClass'];
-		}
-		
-		if ( ! empty( $class ) ) {
-			$attr[]	= 'class="' . implode( ' ', $class ) . '"';
-		}
-
-		// Style
-		if ( 
-			isset( $this->block_attr['labelColor'] ) 
-			&& ! $this->block_attr['labelColorClass'] 
-		) {
-			$attr[] = 'style="color:' . $this->block_attr['labelColor'] . '"';
-		}
-
-		return implode( ' ', $attr );
+	protected function get_label_attr(): string {
+		return $this->get_root()->sv_gutenform->get_default_label_attr( $this->block_attr );
 	}
 
 	// Returns a string with all attributes for the input
-	public function get_input_attr( object $option ): string {
-		$attr 		= array();
+	protected function get_input_attr( object $option ): string {
+		$attr = array();
 
 		// Type
-		$attr[]		= 'type="radio"';
+		$attr[] = 'type="radio"';
 
 		// ID
-		$attr[]		= 'id="' . $option->value . '"';
+		$attr[]	= 'id="' . $option->value . '"';
 
 		// Name
-		$attr[]		= 'name="' . $this->block_attr['name'] . '"';
+		if ( isset( $this->block_attr['name'] ) ) {
+			$attr[]	= 'name="' . $this->block_attr['name'] . '"';
+		}
 
 		// Value
-		$attr[]		= 'value="' . $option->value . '"';
+		$attr[]	= 'value="' . $option->value . '"';
 
 		// Checked
 		if ( isset( $this->block_attr['defaultValue'] ) && $this->block_attr['defaultValue'] === $option->value ) {
@@ -152,7 +113,8 @@ class radio extends sv_gutenform {
 		return implode( ' ', $attr );
 	}
 
-	public function get_options(): string {
+	// Returns the radio options as html string
+	protected function get_options(): string {
 		$options = array();
 
 		foreach( json_decode( $this->block_attr['options'] ) as $option ) {

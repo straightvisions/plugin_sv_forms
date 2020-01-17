@@ -2,7 +2,7 @@
 namespace sv_gutenform;
 
 class textarea extends sv_gutenform {
-	protected $block_attr 	= array();
+	protected $block_attr = array();
 
 	public function init() {
 		$this->register_block();
@@ -41,210 +41,80 @@ class textarea extends sv_gutenform {
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
 					// Textarea Settings
-					'defaultValue' 	=> array(
-						'type'		=> 'string',
+					'defaultValue' => array(
+						'type' => 'string',
 					),
-					'label' 		=> array(
-						'type'		=> 'string',
-						'default'	=> __( 'Textarea Label', 'sv_posts' ),
+					'label' => array(
+						'type' => 'string',
+						'default' => __( 'Textarea Label', 'sv_posts' ),
 					),
-					'name' 			=> array(
-						'type'		=> 'string',
+					'name' => array(
+						'type' => 'string',
 					),
-					'placeholder' 	=> array(
-						'type'		=> 'string',
+					'placeholder' => array(
+						'type' => 'string',
 					),
 
 					// Validation Settings
-					'required' 		=> array(
-						'type'		=> 'bool',
+					'required' => array(
+						'type' => 'bool',
 					),
-					'maxlength' 	=> array(
-						'type'		=> 'number',
+					'maxlength' => array(
+						'type' => 'number',
 					),
 
 					// Color Settings
-					'labelColor' 	=> array(
-						'type'		=> 'string',
+					'labelColor' => array(
+						'type' => 'string',
 					),
 					'labelColorClass' => array(
-						'type'		=> 'string',
+						'type' => 'string',
 					),
 					'textareaColor' => array(
-						'type'		=> 'string',
+						'type' => 'string',
 					),
 					'textareaColorClass' => array(
-						'type'		=> 'string',
+						'type' => 'string',
 					),
 					'textareaBackgroundColor' => array(
-						'type'		=> 'string',
+						'type' => 'string',
 					),
 					'textareaBackgroundColorClass' => array(
-						'type'		=> 'string',
+						'type' => 'string',
 					),
 
 					// Border Settings
-					'borderRadius' 	=> array(
-						'type'		=> 'number',
+					'borderRadius' => array(
+						'type' => 'number',
 					),
 
 					// Advanced Settings
-					'autofocus' 	=> array(
-						'type'		=> 'bool',
+					'autofocus' => array(
+						'type' => 'bool',
 					),
-					'disabled' 		=> array(
-						'type'		=> 'bool',
+					'disabled' => array(
+						'type' => 'bool',
 					),
-					'className' 	=> array(
-						'type'		=> 'string',
+					'className' => array(
+						'type' => 'string',
 					),
 				),
 			)
 		);
 	}
 
-	// Helper Methods
 	// Returns a string with all classes for the input wrapper
-	public function get_wrapper_class(): string {
-		$class 			= array();
-		$class[]		= 'wp-block-straightvisions-sv-gutenform-textarea';
-
-		// Alignment
-		if ( isset( $this->block_attr['align'] ) ) { 
-			$class[] 	= 'align' . $this->block_attr['align'];
-		}
-
-		// Additional Classes
-		if ( isset( $this->block_attr['className'] ) ) { 
-			$class[] 	= $this->block_attr['className'];
-		}
-
-		return implode( ' ', $class );
+	protected function get_wrapper_class(): string {
+		return $this->get_root()->sv_gutenform->get_default_wrapper_class( $this->block_attr, $this->get_module_name() );
 	}
 
 	// Returns a string with all attributes for the label
-	public function get_label_attr(): string {
-		$attr 		= array();
-
-		// For
-		$attr[]		= 'for="' . $this->block_attr['name'] . '"';
-
-		// Class
-		$class		= array();
-
-		if ( 
-			isset( $this->block_attr['labelColor'] ) 
-			&& $this->block_attr['labelColorClass'] 
-		) {
-            $class[] = $this->block_attr['labelColorClass'];
-		}
-		
-		if ( ! empty( $class ) ) {
-			$attr[]	= 'class="' . implode( ' ', $class ) . '"';
-		}
-
-		// Style
-		if ( 
-			isset( $this->block_attr['labelColor'] ) 
-			&& ! $this->block_attr['labelColorClass'] 
-		) {
-			$attr[] = 'style="color:' . $this->block_attr['labelColor'] . '"';
-		}
-
-		return implode( ' ', $attr );
+	protected function get_label_attr(): string {
+		return $this->get_root()->sv_gutenform->get_default_label_attr( $this->block_attr );
 	}
 
 	// Returns a string with all attributes for the input
-	public function get_input_attr(): string {
-		$attr 		= array();
-
-		// ID
-		$attr[]		= 'id="' . $this->block_attr['name'] . '"';
-
-		// Name
-		$attr[]		= 'name="' . $this->block_attr['name'] . '"';
-
-		// Placeholder
-		if ( isset( $this->block_attr['placeholder'] ) ) {
-			$attr[]		= 'placeholder="' . $this->block_attr['placeholder'] . '"';
-		}
-
-		// Required
-		if ( isset( $this->block_attr['required'] ) && $this->block_attr['required'] ) {
-			$attr[] = 'required';
-		}
-
-		// Max-Length
-		if ( isset( $this->block_attr['maxlength'] ) && $this->block_attr['maxlength'] > 0 ) {
-			$attr[]	= 'maxlength="' . $this->block_attr['maxlength'] . '"';
-		}
-
-		// Class
-		$class		= array();
-
-		// Input Color
-		if ( 
-			isset( $this->block_attr['textareaColor'] ) 
-			&& $this->block_attr['textareaColorClass'] 
-		) {
-            $class[] = $this->block_attr['textareaColorClass'];
-		}
-
-		// Background Color
-		if ( 
-			isset( $this->block_attr['textareaBackgroundColor'] ) 
-			&& $this->block_attr['textareaBackgroundColorClass'] 
-		) {
-            $class[] = $this->block_attr['textareaBackgroundColorClass'];
-		}
-		
-		if ( ! empty( $class ) ) {
-			$attr[]	= 'class="' . implode( ' ', $class ) . '"';
-		}
-
-		// Style
-		$style = array();
-
-		// Input Color
-		if ( 
-			isset( $this->block_attr['textareaColor'] ) 
-			&& ! $this->block_attr['textareaColorClass'] 
-		) {
-			$style[] = 'color:' . $this->block_attr['textareaColor'];
-		}
-
-		// Background Color
-		if ( 
-			isset( $this->block_attr['textareaBackgroundColor'] ) 
-			&& ! $this->block_attr['textareaBackgroundColorClass'] 
-		) {
-			$style[] = 'background-color:' . $this->block_attr['textareaBackgroundColor'];
-		}
-
-		// Border Radius
-		if ( isset( $this->block_attr['borderRadius'] ) ) {
-			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
-		}
-
-		if ( ! empty( $style ) ) {
-			$attr[] = 'style="' . implode( ';', $style ) . '"';
-		}
-
-		// Autofocus
-		if ( isset( $this->block_attr['autofocus'] ) && $this->block_attr['autofocus'] ) {
-			$attr[] = 'autofocus';
-		}
-
-		// Read Only
-		if ( isset( $this->block_attr['readonly'] ) && $this->block_attr['readonly'] ) {
-			$attr[] = 'readonly';
-		}
-
-		// Disabled
-		if ( isset( $this->block_attr['disabled'] ) && $this->block_attr['disabled'] ) {
-			$attr[] = 'disabled';
-		}
-
-		return implode( ' ', $attr );
+	protected function get_input_attr(): string {
+		return $this->get_root()->sv_gutenform->get_default_input_attr( $this->block_attr );
 	}
 }

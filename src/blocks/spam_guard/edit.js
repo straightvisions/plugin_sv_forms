@@ -31,10 +31,10 @@ export default withSelect( ( select, props ) => {
         } 
     } = props;
 
-    // Functions
-    const setHoneypot           = honeypot => setAttributes({ honeypot });
-    const setTimeTrap           = timeTrap => setAttributes({ timeTrap });
-    const updateFormAttributes  = formId => {        
+    // Functions to set the block attributes
+    const setHoneypot           = honeypot  => setAttributes({ honeypot });
+    const setTimeTrap           = timeTrap  => setAttributes({ timeTrap });
+    const updateFormAttributes  = formId    => {        
         const newAttributes     = {
             sgHoneypot: honeypot,
             sgTimeTrap: timeTrap,
@@ -44,6 +44,7 @@ export default withSelect( ( select, props ) => {
         dispatch( 'core/block-editor' ).updateBlockAttributes( formId, newAttributes );
     };
 
+    // State vars
     const honeypotState = honeypot ? 'is-active' : '';
     const timeTrapState = timeTrap ? 'is-active' : '';
 

@@ -17,9 +17,9 @@ export default ( { props } ) => {
         }
     } = props;
 
-    // Functions
-    const setLabelColor                 = labelColor                => setAttributes({ labelColor });
-    const setLabelColorClass            = labelColorClass           => setAttributes({ labelColorClass });
+    // Functions to set the block attributes
+    const setLabelColor         = labelColor        => setAttributes({ labelColor });
+    const setLabelColorClass    = labelColorClass   => setAttributes({ labelColorClass });
     
     // Returns an color object if this color is defined in the editor
     const getColorObject = color => {

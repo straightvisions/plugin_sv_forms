@@ -14,13 +14,13 @@ export default ( { props } ) => {
         attributes: { required }
     } = props;
 
-    // Functions
-    const setRequired   = required  => setAttributes({ required });
+    // Functions to set the block attributes
+    const setRequired = required => setAttributes({ required });
 
     return(
         <PanelBody
             title={ __( 'Validation Settings', 'sv_gutenform' ) }
-            initialOpen={ false }
+            initialOpen={ true }
         >
             <ToggleControl
                 label={ __( 'Required', 'sv_gutenform' ) }

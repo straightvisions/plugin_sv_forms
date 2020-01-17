@@ -15,9 +15,9 @@ export default ( { props } ) => {
         attributes: { labelColor }
     } = props;
 
-    // Functions
-    const setLabelColor                 = labelColor                => setAttributes({ labelColor });
-    const setLabelColorClass            = labelColorClass           => setAttributes({ labelColorClass });
+    // Functions to set the block attributes
+    const setLabelColor         = labelColor        => setAttributes({ labelColor });
+    const setLabelColorClass    = labelColorClass   => setAttributes({ labelColorClass });
     
     // Returns an color object if this color is defined in the editor
     const getColorObject = color => {
@@ -52,7 +52,7 @@ export default ( { props } ) => {
     return(
         <PanelColorSettings
             title={ __( 'Color Settings', 'sv_gutenform' ) }
-            initialOpen={ false }
+            initialOpen={ true }
             colorSettings={ colorSettings }
         >
         </PanelColorSettings>

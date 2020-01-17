@@ -61,19 +61,6 @@ class form extends sv_gutenform {
 
 	// Returns a string with all attributes for the form
 	public function get_form_class(): string {
-		$class 			= array();
-		$class[]		= 'wp-block-straightvisions-sv-gutenform-form';
-
-		// Alignment
-		if ( isset( $this->block_attr['align'] ) ) { 
-			$class[] 	= 'align' . $this->block_attr['align'];
-		}
-
-		// Additional Classes
-		if ( isset( $this->block_attr['className'] ) ) { 
-			$class[] 	= $this->block_attr['className'];
-		}
-
-		return implode( ' ', $class );
+		return $this->get_root()->sv_gutenform->get_default_wrapper_class( $this->block_attr, $this->get_module_name() );
 	}
 }

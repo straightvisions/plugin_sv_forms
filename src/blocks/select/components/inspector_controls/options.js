@@ -19,11 +19,14 @@ export default ( { props } ) => {
         attributes: { options }
     } = props;
 
+    // Stores the parsed options as array
     const parsedOptions = options ? JSON.parse( options ) : [];
 
-    // Functions
-    const updateOptions     = options       => setAttributes({ options });
-    const getSlug           = string => {
+    // Functions to set the block attributes
+    const updateOptions = options  => setAttributes({ options });
+
+    // Returns a string in a slug compatible format
+    const getSlug = string => {
         if ( ! string ) return '';
 
         const slug = string.replace( /[^A-Z0-9]+/ig, '-' ).toLowerCase();
@@ -32,8 +35,8 @@ export default ( { props } ) => {
     };
 
     // Updates the property of a single option
-    const updateOption      = ( index, prop, value ) => {
-        let newOptions      = parsedOptions;
+    const updateOption = ( index, prop, value ) => {
+        let newOptions = parsedOptions;
 
         newOptions[ index ][ prop ] = value;
 
@@ -45,8 +48,8 @@ export default ( { props } ) => {
     }
 
     // Deletes an option
-    const deleteOption      = index => {
-        let newOptions      = parsedOptions;
+    const deleteOption = index => {
+        let newOptions = parsedOptions;
 
         newOptions.splice( index, 1 );
 
@@ -54,9 +57,9 @@ export default ( { props } ) => {
     }
 
     // Adds an option
-    const addOption         = () => {
-        let newOptions      = parsedOptions;
-        const newOption     = { label: '', value: '' };
+    const addOption = () => {
+        let newOptions = parsedOptions;
+        const newOption = { label: '', value: '' };
 
         newOptions.push( newOption );
 
@@ -66,7 +69,7 @@ export default ( { props } ) => {
     return(
         <PanelBody
             title={ __( 'Options', 'sv_gutenform' ) }
-            initialOpen={ false }
+            initialOpen={ true }
         >
             <div className='sv-gutenform-radio-options'>
             {

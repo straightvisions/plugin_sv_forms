@@ -15,9 +15,9 @@ export default ( { props } ) => {
         }
     } = props;
 
-    // Functions
-    const setAutofocus  = autofocus =>  setAttributes({ autofocus });
-    const setDisabled   = disabled  =>  setAttributes({ disabled });
+    // Functions to set the block attributes
+    const setAutofocus  = autofocus => setAttributes({ autofocus });
+    const setDisabled   = disabled  => setAttributes({ disabled });
 
     return(
         <Fragment>

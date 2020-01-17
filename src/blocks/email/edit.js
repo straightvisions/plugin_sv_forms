@@ -4,9 +4,7 @@ import { FormContext } from '../../blocks';
 
 const { Fragment }      = wp.element;
 const { TextControl }   = wp.components;
-const { createBlock }   = wp.blocks;
 const { 
-    select, 
     dispatch 
 } = wp.data;
 
@@ -47,12 +45,10 @@ export default props => {
         }
     } = props;
 
-    // Functions
+    // Functions to set the block attributes
     const setDefaultValue       = defaultValue => setAttributes({ defaultValue });
     const updateFormAttributes  = formId => {
         props.formId = formId;
-
-        addUserMailBlock( formId );
         
         const newAttributes     = {
             userMail: sendMail,
@@ -62,21 +58,6 @@ export default props => {
         dispatch( 'core/block-editor' ).updateBlockAttributes( formId, newAttributes );
 
         return <InspectorControls props={ props } />;
-    };
-    const addUserMailBlock      = formId => {
-        if ( sendMail ) {
-            const formBlocks        = select('core/block-editor').getBlocks( formId );
-            const isUserMailBlock   = formBlocks.some( block => { 
-                return block.name === 'straightvisions/sv-gutenform-user-mail';
-            });
-            const position          = formBlocks.length + 1;
-    
-            if ( ! isUserMailBlock ) {
-                const userMailBlock = createBlock( 'straightvisions/sv-gutenform-user-mail' );
-    
-                dispatch( 'core/block-editor' ).insertBlock( userMailBlock, position, formId, true );
-            }
-        }
     };
 
     // Conditional Components

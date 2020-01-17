@@ -46,6 +46,7 @@ export default withSelect( ( select, props ) => {
         ['straightvisions/sv-gutenform-submit'],
     ];
 
+    // Functions to set the block attributes
     const setFormId = clientId => { 
         if ( ! formId ) {
             const wrapperBlock = select('core/block-editor').getBlock( clientId );

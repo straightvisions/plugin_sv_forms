@@ -18,7 +18,7 @@ export default ( { props } ) => {
         }
     } = props;
 
-    // Functions
+    // Functions to set the block attributes
     const setSubject    = subject   => setAttributes({ subject });
     const setFromTitle  = fromTitle => setAttributes({ fromTitle });
     const setFromMail   = fromMail  => setAttributes({ fromMail });

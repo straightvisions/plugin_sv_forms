@@ -33,9 +33,10 @@ export default withSelect( ( select, props ) => {
         } 
     } = props;
 
+    // Stores the parsed options as array
     const parsedOptions = options ? JSON.parse( options ) : [];
 
-    // Functions
+    // Functions to set the block attributes
     const setDefaultValue = defaultValue => setAttributes({ defaultValue });
 
     // Conditional Components

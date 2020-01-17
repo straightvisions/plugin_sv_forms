@@ -16,8 +16,8 @@ export default ( { props } ) => {
         }
     } = props;
 
-    // Functions
-    const setRequired   = required  => setAttributes({ required });
+    // Functions to set the block attributes
+    const setRequired = required => setAttributes({ required });
 
     return(
         <PanelBody

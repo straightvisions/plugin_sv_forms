@@ -19,7 +19,7 @@ export default ( { props } ) => {
         }
     } = props;
 
-    // Functions
+    // Functions to set the block attributes
     const setLabelColor                 = labelColor                => setAttributes({ labelColor });
     const setLabelColorClass            = labelColorClass           => setAttributes({ labelColorClass });
     const setInputColor                 = inputColor                => setAttributes({ inputColor });

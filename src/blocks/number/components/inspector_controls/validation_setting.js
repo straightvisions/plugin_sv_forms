@@ -14,15 +14,17 @@ export default ( { props } ) => {
         setAttributes,
         attributes: {
             required,
-            minlength,
-            maxlength,
+            min,
+            max,
+            step,
         }
     } = props;
 
-    // Functions
+    // Functions to set the block attributes
     const setRequired   = required  => setAttributes({ required });
-    const setMinLength  = minlength => setAttributes({ minlength });
-    const setMaxLength  = maxlength => setAttributes({ maxlength });
+    const setMin        = min       => setAttributes({ min });
+    const setMax        = max       => setAttributes({ max });
+    const setStep       = step      => setAttributes({ step });
 
     return(
         <PanelBody
@@ -35,16 +37,23 @@ export default ( { props } ) => {
                 onChange={ () => setRequired( ! required )  }
             />
             <RangeControl
-                label={ __( 'Min. Length', 'sv_gutenform' ) }
-                help={ __( 'Defines the min. character length.', 'sv_gutenform' ) }
-                value={ minlength }
-                onChange={ value => setMinLength( value ) }
+                label={ __( 'Min Value', 'sv_gutenform' ) }
+                help={ __( 'Defines the min value.', 'sv_gutenform' ) }
+                value={ min }
+                onChange={ value => setMin( value ) }
             />
             <RangeControl
-                label={ __( 'Max. Length', 'sv_gutenform' ) }
-                help={ __( 'Defines the max. character length.', 'sv_gutenform' ) }
-                value={ maxlength }
-                onChange={ value => setMaxLength( value ) }
+                label={ __( 'Max Value', 'sv_gutenform' ) }
+                help={ __( 'Defines the max value.', 'sv_gutenform' ) }
+                value={ max }
+                onChange={ value => setMax( value ) }
+            />
+            <RangeControl
+                label={ __( 'Step', 'sv_gutenform' ) }
+                help={ __( 'Defines the values steps.', 'sv_gutenform' ) }
+                value={ step }
+                onChange={ value => setStep( value ) }
+                initialPosition={ 1 }
             />
         </PanelBody>
     );

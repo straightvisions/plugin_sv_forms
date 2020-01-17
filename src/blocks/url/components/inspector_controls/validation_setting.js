@@ -19,7 +19,7 @@ export default ( { props } ) => {
         }
     } = props;
 
-    // Functions
+    // Returns a notice when the input name is already in use
     const setRequired   = required  => setAttributes({ required });
     const setMinLength  = minlength => setAttributes({ minlength });
     const setMaxLength  = maxlength => setAttributes({ maxlength });

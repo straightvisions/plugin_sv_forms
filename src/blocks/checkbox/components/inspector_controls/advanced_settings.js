@@ -12,8 +12,8 @@ export default ( { props } ) => {
         attributes: { disabled }
     } = props;
 
-    // Functions
-    const setDisabled = disabled =>  setAttributes({ disabled });
+    // Functions to set the block attributes
+    const setDisabled = disabled => setAttributes({ disabled });
 
     return(
         <Fragment>

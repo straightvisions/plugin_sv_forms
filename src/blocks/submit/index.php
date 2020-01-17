@@ -2,7 +2,7 @@
 namespace sv_gutenform;
 
 class submit extends sv_gutenform {
-	protected $block_attr 	= array();
+	protected $block_attr = array();
 
 	public function init() {
 		$this->register_block();
@@ -41,96 +41,93 @@ class submit extends sv_gutenform {
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
 					// Content
-					'content' 		=> array(
-						'type'		=> 'string',
-						'default'	=> __( 'Submit', 'sv_gutenform' ),
+					'content' => array(
+						'type' => 'string',
+						'default' => __( 'Submit', 'sv_gutenform' ),
 					),
 
 					// Color Settings
-					'textColor' 	=> array(
-						'type'		=> 'string',
+					'textColor' => array(
+						'type' => 'string',
 					),
 					'textColorClass'=> array(
-						'type'		=> 'string',
+						'type' => 'string',
 					),
 					'backgroundColor' => array(
-						'type'		=> 'string',
+						'type' => 'string',
 					),
 					'backgroundColorClass' => array(
-						'type'		=> 'string',
+						'type' => 'string',
+					),
+
+					// Border Settings
+					'borderRadius' => array(
+						'type' => 'number',
 					),
 
 					// Advanced Settings
-					'className' 	=> array(
-						'type'		=> 'string',
+					'className' => array(
+						'type' => 'string',
 					),
 				),
 			)
 		);
 	}
 
-	// Helper Methods
-	// Returns a string with all classes for the button wrapper
-	public function get_wrapper_class(): string {
-		$class 			= array();
-		$class[]		= 'wp-block-straightvisions-sv-gutenform-submit';
-
-		// Alignment
-		if ( isset( $this->block_attr['align'] ) ) { 
-			$class[] 	= 'align' . $this->block_attr['align'];
-		}
-
-		// Additional Classes
-		if ( isset( $this->block_attr['className'] ) ) { 
-			$class[] 	= $this->block_attr['className'];
-		}
-
-		return implode( ' ', $class );
+	// Returns a string with all classes for the input wrapper
+	protected function get_wrapper_class(): string {
+		return $this->get_root()->sv_gutenform->get_default_wrapper_class( $this->block_attr, $this->get_module_name() );
 	}
 
 	// Returns a string with all attributes for the button
-	public function get_button_attr(): string {
-		$attr 		= array();
-
-		// Type
-		$attr[]		= 'type="submit"';
+	protected function get_button_attr(): string {
+		$attr = array();
 
 		// Class
 		$class = array();
 
+		// Text Color
 		if ( 
-			isset( $this->block_attr['textColor'] ) 
-			&& $this->block_attr['textColorClass'] 
+			isset( $block_attr['textColor'] ) 
+			&& $block_attr['textColorClass'] 
 		) {
-            $class[] = $this->block_attr['textColorClass'];
+            $class[] = $block_attr['textColorClass'];
 		}
 
+		// Background Color
 		if ( 
-			isset( $this->block_attr['backgroundColor'] ) 
-			&& $this->block_attr['backgroundColorClass'] 
+			isset( $block_attr['backgroundColor'] ) 
+			&& $block_attr['backgroundColorClass'] 
 		) {
-            $class[] = $this->block_attr['backgroundColorClass'];
+            $class[] = $block_attr['backgroundColorClass'];
 		}
 		
 		if ( ! empty( $class ) ) {
-			$attr[] = 'class="' . implode( ' ', $class ) . '"';
+			$attr[]	= 'class="' . implode( ' ', $class ) . '"';
 		}
 
 		// Style
 		$style = array();
 
+		// Text Color
 		if ( 
-			isset( $this->block_attr['textColor'] ) 
-			&& ! $this->block_attr['textColorClass'] 
+			isset( $block_attr['textColor'] ) 
+			&& ! $block_attr['textColorClass'] 
 		) {
-			$style[] = 'color:' . $this->block_attr['textColor'];
+			$style[] = 'color:' . $block_attr['textColor'];
 		}
 
+		// Background Color
 		if ( 
-			isset( $this->block_attr['backgroundColor'] ) 
-			&& ! $this->block_attr['backgroundColorClass'] 
+			isset( $block_attr['backgroundColor'] ) 
+			&& ! $block_attr['backgroundColorClass'] 
 		) {
-			$style[] = 'background-color:' . $this->block_attr['backgroundColor'];
+			$style[] = 'background-color:' . $block_attr['backgroundColor'];
+		}
+
+		// Border Radius
+		if ( isset( $block_attr['borderRadius'] ) ) {
+			$style[] = 'border-radius:' . $block_attr['borderRadius'] . 'px';
 		}
 
 		if ( ! empty( $style ) ) {
