@@ -9,12 +9,15 @@ class modules extends init {
 	private $cryption_iv	= '1234567891011121';
 	
 	public function init() {
-		$this->post->init();
-		$this->taxonomy->init();
-		$this->archive->init();
+		// Do not change to following module init order!
+		$this->post->init();			// Always init first!
+		$this->taxonomy->init(); 		// Dependency: post module - Only init after post init
+		$this->archive->init();			// Dependency: taxonomy module - Only init after taxonomy init
+
+		// The following module init order can be changed
 		$this->submission->init();
-		$this->mail->init();
 		$this->personal_data->init();
+		$this->mail->init();
 		$this->sv_gutenform->init();
 	}
 
