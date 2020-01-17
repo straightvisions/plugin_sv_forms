@@ -1,5 +1,5 @@
 // Variables
-const localized     = js_sv_gutenform_modules_sv_gutenform_scripts_form_js;
+const localized = js_sv_gutenform_modules_sv_gutenform_scripts_form_js;
 
 // Extends the JS String Object with a function that is similar to str_replace() function from PHP
 // Code from: https://stackoverflow.com/questions/5069464/replace-multiple-strings-at-once
@@ -11,7 +11,7 @@ String.prototype.replaceArray = function(find, replace) {
       replaceString = replaceString.replace(regex, replace[i]);
     }
     return replaceString;
-  };
+};
 
 // Functions
 // Returns the parsed thank you message content
@@ -42,7 +42,7 @@ const getParsedContent = ( content, formData ) => {
 }
 
 const showThankYou  = ( form, formData ) => {
-    const el        = form.find( '.wp-block-straightvisions-sv-gutenform-thank-you' );
+    const el = form.parent().find( '.wp-block-straightvisions-sv-gutenform-thank-you' );
 
     if ( el.length > 0 && el.html().replace(/\s/g, "") ) {
         const parsedContent = getParsedContent( el.html(), formData );
@@ -56,7 +56,7 @@ const showThankYou  = ( form, formData ) => {
     }
 }
 
-jQuery( 'form.wp-block-straightvisions-sv-gutenform' ).submit( function( e ) {
+jQuery( 'form.wp-block-straightvisions-sv-gutenform-form' ).submit( function( e ) {
     e.preventDefault();
     
     const form      = jQuery( this );

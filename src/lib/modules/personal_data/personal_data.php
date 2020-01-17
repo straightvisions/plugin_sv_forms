@@ -6,12 +6,12 @@ class personal_data extends modules {
 
     public function init() {
         // Actions Hooks & Filter
-        add_filter( 'wp_privacy_personal_data_exporters', array( $this, 'register_personal_data_exporter' ), 10 );
-		add_filter( 'wp_privacy_personal_data_erasers', array( $this, 'register_personal_data_eraser' ), 10 );
+        add_filter( 'wp_privacy_personal_data_exporters', array( $this, 'wp_privacy_personal_data_exporters' ), 10 );
+		add_filter( 'wp_privacy_personal_data_erasers', array( $this, 'wp_privacy_personal_data_erasers' ), 10 );
     }
 
     // Registers the personal data exporter
-	public function register_personal_data_exporter( array $exporters ): array {
+	public function wp_privacy_personal_data_exporters( array $exporters ): array {
 		$exporters[ $this->get_root()->get_prefix() ] = array(
 			'exporter_friendly_name' => __( 'SV Gutenform Plugin', 'sv_gutenform' ),
 			'callback' => array( $this, 'personal_data_exporter' ),
@@ -21,7 +21,7 @@ class personal_data extends modules {
 	}
 
     // Registers the personal data eraser
-	public function register_personal_data_eraser( array $erasers ): array {
+	public function wp_privacy_personal_data_erasers( array $erasers ): array {
 		$erasers[ $this->get_root()->get_prefix() ] = array(
 			'eraser_friendly_name' => __( 'SV Gutenform Plugin', 'sv_gutenform' ),
 			'callback' => array( $this, 'personal_data_eraser' ),

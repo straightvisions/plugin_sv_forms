@@ -21,6 +21,10 @@ registerBlockType( 'straightvisions/sv-gutenform-form', {
 		align:[ 'wide', 'full' ],
 	},
 	attributes: {
+		formId: {
+			type: 'string',
+		},
+
 		// Collapse Settings
 		collapsed: {
 			type: 'boolean',

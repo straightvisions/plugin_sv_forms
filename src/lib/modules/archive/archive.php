@@ -6,15 +6,15 @@ class archive extends modules {
 
 	public function init() {
 		// Actions Hooks & Filter
-		add_action( 'restrict_manage_posts', array( $this, 'set_form_label_filter' ) );
-		add_action( 'manage_sv_gutenform_submit_posts_custom_column' , array( $this, 'set_post_column_values' ), 10, 2 );
-		add_filter( 'parse_query', array( $this, 'set_form_label_filter_query' ) );
-		add_filter( 'manage_sv_gutenform_submit_posts_columns', array( $this, 'set_post_column_titles' ) );
-		add_filter( 'post_row_actions', array( $this, 'set_post_row_actions' ), 10, 2 );
+		add_action( 'restrict_manage_posts', array( $this, 'restrict_manage_posts' ) );
+		add_action( 'manage_sv_gutenform_submit_posts_custom_column' , array( $this, 'manage_sv_gutenform_submit_posts_custom_column' ), 10, 2 );
+		add_filter( 'parse_query', array( $this, 'parse_query' ) );
+		add_filter( 'manage_sv_gutenform_submit_posts_columns', array( $this, 'manage_sv_gutenform_submit_posts_columns' ) );
+		add_filter( 'post_row_actions', array( $this, 'post_row_actions' ), 10, 2 );
 	}
 
 	// Adds a form label filter to the post table
-	public function set_form_label_filter( $post_type ) {
+	public function restrict_manage_posts( $post_type ) {
 		if ( $post_type === $this->post->get_post_type() ) {
 			$taxonomy_slug 	= $this->taxonomy->get_taxonomy();
 			$taxonomy      	= get_taxonomy( $taxonomy_slug );
@@ -37,7 +37,7 @@ class archive extends modules {
 	}
 
 	// Filters the query vars, so that the posts will be filtered by the term slug instead of the term id
-	public function set_form_label_filter_query( $query ) {
+	public function parse_query( $query ) {
 		global $pagenow;
 
 		$qv = $query->query_vars;
@@ -56,7 +56,7 @@ class archive extends modules {
 	}
 
 	// Sets the titles of the post columns
-	public function set_post_column_titles( array $columns ): array {
+	public function manage_sv_gutenform_submit_posts_columns( array $columns ): array {
 		$columns[ $this->get_root()->get_prefix( 'user_mail' ) ] 	= __( 'User Mail', 'sv_gutenform' );
 		$columns[ $this->get_root()->get_prefix( 'admin_mail' ) ] 	= __( 'Admin Mail', 'sv_gutenform' );
 		$columns[ $this->get_root()->get_prefix( 'form_id' ) ] 		= __( 'Form ID', 'sv_gutenform' );
@@ -65,7 +65,7 @@ class archive extends modules {
 	}
 
 	// Sets the value of the custom columns
-	public function set_post_column_values( $column, $post_id ) {
+	public function manage_sv_gutenform_submit_posts_custom_column( $column, $post_id ) {
 		switch( $column ) {
 			case $this->get_root()->get_prefix( 'user_mail' ):
 				$meta_key 	= $this->get_root()->get_prefix( 'send_user_mail' );
@@ -95,7 +95,7 @@ class archive extends modules {
 	}
 
 	// Adds custom post row actions to the sv_gutenform_submit post type
-	public function set_post_row_actions( array $actions, object $post ): array {
+	public function post_row_actions( array $actions, object $post ): array {
 		if ( $post->post_type === $this->get_root()->get_prefix( 'submit' ) && current_user_can( 'edit_post', $post->ID ) ) {
 			// Building a link to open the post with the form of the submission
 			$form_post_id 			= get_post_meta( $post->ID, $this->get_root()->get_prefix( 'post_id' ), true );

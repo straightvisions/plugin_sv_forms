@@ -40,6 +40,10 @@ class form extends sv_gutenform {
 				'editor_style'  	=> 'sv-gutenform-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
+					'formId' => array(
+						'type' => 'string',
+					),
+
 					// Collapse Settings
 					'collapsed' => array(
 						'type' => 'bool',

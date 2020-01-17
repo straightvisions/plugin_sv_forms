@@ -1,13 +1,22 @@
+import { FormContext } from '../../blocks';
+
 const { __ }            = wp.i18n;
 const { InnerBlocks }   = wp.blockEditor;
 const { Button }        = wp.components;
-const { withSelect }    = wp.data;
+const { 
+    withSelect,
+    select,
+} = wp.data;
 
 export default withSelect( ( select, props ) => {
     return props;
 } )( ( props ) => {
     const {
         className,
+        setAttributes,
+        attributes: {
+            formId
+        },
     } = props;
     const template = [
         ['straightvisions/sv-gutenform-spam-guard', {
@@ -37,6 +46,16 @@ export default withSelect( ( select, props ) => {
         ['straightvisions/sv-gutenform-submit'],
     ];
 
+    const setFormId = clientId => { 
+        if ( ! formId ) {
+            const wrapperBlock = select('core/block-editor').getBlock( clientId );
+
+            if ( wrapperBlock ) {
+                setAttributes({ formId: wrapperBlock.attributes.formId }); 
+            }
+        }
+    };
+
     return (
         <div className={ className }>
             <div className='sv_gutenform_header'>
@@ -54,6 +73,7 @@ export default withSelect( ( select, props ) => {
                     templateLock={ false }
                 />
             </div>
+            <FormContext.Consumer>{ clientId => setFormId( clientId ) }</FormContext.Consumer>
         </div>
     );
 });
