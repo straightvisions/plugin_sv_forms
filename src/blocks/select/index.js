@@ -32,8 +32,9 @@ registerBlockType( 'straightvisions/sv-gutenform-select', {
 		name: {
 			type: 'string',
 		},
-		multiple: {
-			type: 'boolean',
+		type: {
+			type: 'string',
+			default: 'select',
 		},
 		options: {
 			type: 'string',

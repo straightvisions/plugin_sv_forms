@@ -32,6 +32,10 @@ registerBlockType( 'straightvisions/sv-gutenform-url', {
 		name: {
 			type: 'string',
 		},
+		type: {
+			type: 'string',
+			default: 'url',
+		},
 		placeholder: {
 			type: 'string',
 		},

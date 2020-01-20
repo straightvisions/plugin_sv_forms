@@ -32,6 +32,10 @@ registerBlockType( 'straightvisions/sv-gutenform-radio', {
 		name: {
 			type: 'string',
 		},
+		type: {
+			type: 'string',
+			default: 'radio',
+		},
 		options: {
 			type: 'string',
 		},

@@ -88,8 +88,8 @@ export default withSelect( ( select, props ) => {
                 />
             </div>
             <FormContext.Consumer>
-            { value => {
-                props.formId = value;
+            { clientId => {
+                props.formId = clientId;
 
                 return <InspectorControls props={ props } />;
             }}

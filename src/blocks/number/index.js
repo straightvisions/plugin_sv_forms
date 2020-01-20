@@ -32,6 +32,10 @@ registerBlockType( 'straightvisions/sv-gutenform-number', {
 		name: {
 			type: 'string',
 		},
+		type: {
+			type: 'string',
+			default: 'number',
+		},
 		placeholder: {
 			type: 'string',
 		},

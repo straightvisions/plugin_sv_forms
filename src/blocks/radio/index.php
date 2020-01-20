@@ -51,6 +51,10 @@ class radio extends sv_gutenform {
 					'name' => array(
 						'type' => 'string',
 					),
+					'type' => array(
+						'type' => 'string',
+						'default' => 'radio',
+					),
 					'options' => array(
 						'type' => 'string',
 					),
@@ -87,7 +91,7 @@ class radio extends sv_gutenform {
 		$attr = array();
 
 		// Type
-		$attr[] = 'type="radio"';
+		$attr[] = 'type="' . $this->block_attr['type'] . '"';
 
 		// ID
 		$attr[]	= 'id="' . $option->value . '"';

@@ -5,7 +5,10 @@ const {
     TextControl,
     Notice,
 } = wp.components;
-const { select } = wp.data;
+const { 
+    select, 
+    dispatch 
+} = wp.data;
 
 export default ( { props } ) => {
     if ( ! props ) return '';
@@ -18,6 +21,7 @@ export default ( { props } ) => {
         attributes: {
             label,
             name,
+            type,
             placeholder,
         }
     } = props;
@@ -62,6 +66,31 @@ export default ( { props } ) => {
         return output;
     };
 
+    const updateFormInputs = newName => {
+        if ( formId ) {
+            const formInputs = select('core/block-editor').getBlockAttributes( formId ).formInputs;
+            const newFormInput = { name: newName, type: type };
+
+            if ( formInputs ) {
+                let newFormInputs = JSON.parse( formInputs );
+
+                const existingInput = newFormInputs.find( input => {
+                    return input.name === name;
+                } );
+
+                if ( existingInput ) {
+                    const inputIndex = newFormInputs.indexOf( existingInput );
+
+                    newFormInputs[ inputIndex ] = newFormInput;
+                } else {
+                    newFormInputs.push( newFormInput );
+                }
+
+                dispatch('core/block-editor').updateBlockAttributes( formId, { formInputs: JSON.stringify( newFormInputs ) } );
+            }
+        }
+    }
+
     return(
         <PanelBody
             title={ __( 'Input Settings', 'sv_gutenform' ) }
@@ -78,7 +107,10 @@ export default ( { props } ) => {
             <TextControl
                 label={ __( 'Name', 'sv_gutenform' ) }
                 value={ getSlug( name ) }
-                onChange={ value => setName( getSlug( value ) ) }
+                onChange={ value => { 
+                    updateFormInputs( getSlug( value ) );
+                    setName( getSlug( value ) );
+                }}
             />
             <NameCheck />
             <TextControl

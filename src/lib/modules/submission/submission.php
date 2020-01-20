@@ -28,6 +28,7 @@ class submission extends modules {
 
 			if ( ! $this->spam_guard_check->run_check( $form_attr, $form_data ) ) {
 				$this->handle_submission( $form_attr, $form_data );
+				$this->ajaxStatus('success', $form_attr, $form_data);
 			}
 		}
 	}

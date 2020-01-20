@@ -32,6 +32,10 @@ registerBlockType( 'straightvisions/sv-gutenform-textarea', {
 		name: {
 			type: 'string',
 		},
+		type: {
+			type: 'string',
+			default: 'textarea',
+		},
 		placeholder: {
 			type: 'string',
 		},

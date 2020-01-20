@@ -51,6 +51,10 @@ class textarea extends sv_gutenform {
 					'name' => array(
 						'type' => 'string',
 					),
+					'type' => array(
+						'type' => 'string',
+						'default' => 'textarea',
+					),
 					'placeholder' => array(
 						'type' => 'string',
 					),

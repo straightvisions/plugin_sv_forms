@@ -217,12 +217,12 @@ class sv_gutenform extends modules {
 	}
 
 	// Returns the input attr for the default template input
-	protected function get_default_input_attr( array $block_attr, string $type = '' ): string {
+	protected function get_default_input_attr( array $block_attr ): string {
 		$attr = array();
 
 		// Type
-		if ( ! empty( $type ) ) {
-			$attr[] = 'type="' . $type .  '"';
+		if ( isset( $block_attr['type'] ) ) {
+			$attr[] = 'type="' . $block_attr['type'] .  '"';
 		}
 
 		if ( isset( $block_attr['name'] ) ) {

@@ -76,6 +76,9 @@ class wrapper extends sv_gutenform {
 					'formId' => array(
 						'type' => 'string',
 					),
+					'formInputs' => array(
+						'type' => 'string',
+					),
 					'formLabel' => array(
 						'type' => 'string',
 					),

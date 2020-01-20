@@ -51,6 +51,10 @@ class date extends sv_gutenform {
 					'name' => array(
 						'type' => 'string',
 					),
+					'type' => array(
+						'type' => 'string',
+						'default' => 'date',
+					),
 
 					// Validation Settings
 					'required' => array(
@@ -92,6 +96,6 @@ class date extends sv_gutenform {
 
 	// Returns a string with all attributes for the input
 	protected function get_input_attr(): string {
-		return $this->get_root()->sv_gutenform->get_default_input_attr( $this->block_attr, 'date' );
+		return $this->get_root()->sv_gutenform->get_default_input_attr( $this->block_attr );
 	}
 }

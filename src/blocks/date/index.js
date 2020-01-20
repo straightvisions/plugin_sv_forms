@@ -32,6 +32,10 @@ registerBlockType( 'straightvisions/sv-gutenform-date', {
 		name: {
 			type: 'string',
 		},
+		type: {
+			type: 'string',
+			default: 'date',
+		},
 
 		// Validation Settings
 		required: {

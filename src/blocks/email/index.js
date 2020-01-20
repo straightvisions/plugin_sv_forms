@@ -32,6 +32,10 @@ registerBlockType( 'straightvisions/sv-gutenform-email', {
 		name: {
 			type: 'string',
 		},
+		type: {
+			type: 'string',
+			default: 'email',
+		},
 		placeholder: {
 			type: 'string',
 		},

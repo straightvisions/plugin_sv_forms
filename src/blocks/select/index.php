@@ -51,8 +51,9 @@ class select extends sv_gutenform {
 					'name' => array(
 						'type' => 'string',
 					),
-					'multiple' => array(
-						'type' => 'bool',
+					'type' => array(
+						'type' => 'string',
+						'default' => 'select',
 					),
 					'options' => array(
 						'type' => 'string',

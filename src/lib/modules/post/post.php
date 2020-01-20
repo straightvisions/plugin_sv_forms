@@ -20,7 +20,7 @@ class post extends modules {
 
     // Registers a new custom post type
 	public function register_post_type(): post {
-		$labels 	= array(
+		$labels = array(
 			'name'                  => __( 'Submissions', 'sv_gutenform' ),
 			'singular_name'         => __( 'Submission', 'sv_gutenform' ),
 			'menu_name'             => __( 'SV Gutenform Submissions', 'sv_gutenform' ),
@@ -42,8 +42,8 @@ class post extends modules {
 			'items_list_navigation' => __( 'Submissions list navigation', 'sv_gutenform' ),
 			'items_list'            => __( 'Submissions list', 'sv_gutenform' ),
 		);
-        $supports	= array( 'editor', 'custom-fields' );
-		$args 		= array(
+        $supports = array( 'editor', 'custom-fields' );
+		$args = array(
 			'labels'				=> $labels,
             'public'				=> false,
             'hierarchical'			=> false,
@@ -94,9 +94,17 @@ class post extends modules {
         return $filtered_form_data;
     }
 
+
+    // Returns an array containing only sanitized form inputs
+    private function get_sanitized_form_data( object $attr, array $data ): array {
+        $filtered_data  = $this->get_filtered_form_data( $data );
+        
+        return $filtered_data;
+    }
+
     // Returns the form data as table for the post content
-    private function get_post_content( array $data ): string {
-        $filtered_form_data = $this->get_filtered_form_data( $data );
+    private function get_post_content( object $attr, array $data ): string {
+        $filtered_form_data = $this->get_sanitized_form_data( $attr, $data );
         $content = '<!-- wp:table --><figure class="wp-block-table"><table class=""><tbody>';
 
         foreach( $filtered_form_data as $input ) {
@@ -122,7 +130,7 @@ class post extends modules {
         $meta = array(
             $post_id_meta_key 			=> $attr->postId,
             $form_id_meta_key			=> $attr->formId,
-            $form_data_meta_key 		=> json_encode( $this->get_filtered_form_data( $data ) ),
+            $form_data_meta_key 		=> json_encode( $this->get_sanitized_form_data( $attr, $data ) ),
             $send_user_mail_meta_key 	=> isset( $attr->userMail ) && $attr->userMail ? 1 : 0,
         );
 
@@ -162,12 +170,12 @@ class post extends modules {
         // Post Arguments
         $postarr = array(
             'post_title'	=> $form_post->post_title . ' (' . $form_post->ID . ')',
-            'post_content'	=> $this->get_post_content( $data ),
+            'post_content'	=> $this->get_post_content( $attr, $data ),
             'post_type'		=> $this->get_post_type(),
             'post_status'	=> 'publish',
             'meta_input'	=> $this->get_post_meta( $attr, $data ),
         );
-        
+
         $post_id = wp_insert_post( $postarr );
         
         if ( $post_id ) {

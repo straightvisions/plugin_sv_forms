@@ -35,6 +35,10 @@ registerBlockType( 'straightvisions/sv-gutenform-checkbox', {
 		name: {
 			type: 'string',
 		},
+		type: {
+			type: 'string',
+			default: 'checkbox',
+		},
 		value: {
 			type: 'string',
 		},

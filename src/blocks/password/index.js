@@ -32,6 +32,10 @@ registerBlockType( 'straightvisions/sv-gutenform-password', {
 		name: {
 			type: 'string',
 		},
+		type: {
+			type: 'string',
+			default: 'password',
+		},
 		placeholder: {
 			type: 'string',
 		},

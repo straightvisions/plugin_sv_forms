@@ -32,6 +32,10 @@ registerBlockType( 'straightvisions/sv-gutenform-phone', {
 		name: {
 			type: 'string',
 		},
+		type: {
+			type: 'string',
+			default: 'tel',
+		},
 		placeholder: {
 			type: 'string',
 		},

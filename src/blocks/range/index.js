@@ -36,6 +36,10 @@ registerBlockType( 'straightvisions/sv-gutenform-range', {
 		name: {
 			type: 'string',
 		},
+		type: {
+			type: 'string',
+			default: 'range',
+		},
 
 		// Validation Settings
 		required: {

@@ -51,6 +51,10 @@ class checkbox extends sv_gutenform {
 					'name' => array(
 						'type' => 'string',
 					),
+					'type' => array(
+						'type' => 'string',
+						'default' => 'checkbox',
+					),
 					'value' => array(
 						'type' => 'string',
 					),
@@ -95,7 +99,7 @@ class checkbox extends sv_gutenform {
 		$attr = array();
 
 		// Type
-		$attr[]	= 'type="checkbox"';
+		$attr[]	= 'type="' . $this->block_attr['type'] . '"';
 
 		// ID
 		if ( isset( $this->block_attr['value'] ) && ! empty( $this->block_attr['value'] ) ) {

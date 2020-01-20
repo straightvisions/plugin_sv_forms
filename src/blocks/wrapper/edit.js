@@ -3,8 +3,8 @@ import { FormContext } from '../../blocks';
 
 const { 
     select, 
-    dispatch 
-}                                   = wp.data;
+    dispatch,
+} = wp.data;
 const { Component }                 = wp.element;
 const { __ }                        = wp.i18n;
 const { InnerBlocks }               = wp.blockEditor;
@@ -18,7 +18,7 @@ export default class extends Component {
         super(...arguments);
 
         this.props      = props;
-        this.state      = {};
+        this.state      = { savings: 0 };
         this.template   = [
             ['straightvisions/sv-gutenform-form'],
             ['straightvisions/sv-gutenform-thank-you'],
@@ -28,7 +28,7 @@ export default class extends Component {
     }
 
     // React Lifecycle Methos
-    componentDidMount() {
+    componentDidMount = () => {
         if ( ! this.doesFormExist() || ( this.doesFormExist() && this.isDuplicate() ) ) {
             this.props.attributes.postId = select('core/editor').getCurrentPostId();
 
@@ -42,16 +42,17 @@ export default class extends Component {
         this.toggleBody( false );
     }
 
-    componentDidUpdate() {
+    componentDidUpdate = () => {
         this.state.authors = getAuthors();
         this.updatePostMeta( 'update' );
+        console.log(this.props.attributes.formInputs);
     }
 
-    componentWillUnmount() {
+    componentWillUnmount = () => {
         this.updatePostMeta( 'remove' );
     }
 
-    render() {
+    render = () => {
         return (
             <div className={ this.props.className }>
                 <InspectorControls props={ this.props } data={ this.state } />
@@ -79,7 +80,7 @@ export default class extends Component {
     }
 
     // Custom Methods
-    doesFormExist() {
+    doesFormExist = () => {
         const currentMeta   = getEditedPostAttribute( 'meta' );
         const currentForms  = currentMeta._sv_gutenform_forms ? JSON.parse( currentMeta._sv_gutenform_forms ) : false;
 
@@ -88,7 +89,7 @@ export default class extends Component {
         return true;
     }
 
-    isDuplicate() {
+    isDuplicate = () => {
         const currentBlocks = wp.data.select('core/block-editor').getBlocks();
         let formsWithSameId = 0;
 
@@ -108,7 +109,7 @@ export default class extends Component {
         return false;
     }
 
-    updatePostMeta( action ) {
+    updatePostMeta = action => {
         const currentMeta = getEditedPostAttribute( 'meta' );
         let currentForms  = currentMeta._sv_gutenform_forms ? JSON.parse( currentMeta._sv_gutenform_forms ) : {};
 
@@ -126,7 +127,7 @@ export default class extends Component {
         editPost( { meta: newMeta } );
     }
 
-    toggleBody( change ) {
+    toggleBody = change => {
         const body = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_body' );
         const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_header > .sv_gutenform_form_label_wrapper > button.components-button > span' );
 

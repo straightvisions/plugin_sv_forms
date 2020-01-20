@@ -27,6 +27,9 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		formId: {
 			type: 'string',
 		},
+		formInputs: {
+			type: 'string',
+		},
 		formLabel: {
 			type: 'string',
 		},
