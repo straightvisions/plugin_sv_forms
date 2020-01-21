@@ -68,11 +68,12 @@ export default ( { props } ) => {
 
     const updateFormInputs = newName => {
         if ( formId ) {
-            const formInputs = select('core/block-editor').getBlockAttributes( formId ).formInputs;
-            const newFormInput = { name: newName, type: type };
+            const formInputs    = select('core/block-editor').getBlockAttributes( formId ).formInputs;
+            const newFormInput  = { name: newName, type: type };
+            let newFormInputs   = [ newFormInput ];
 
             if ( formInputs ) {
-                let newFormInputs = JSON.parse( formInputs );
+                newFormInputs = JSON.parse( formInputs );
 
                 const existingInput = newFormInputs.find( input => {
                     return input.name === name;
@@ -85,9 +86,9 @@ export default ( { props } ) => {
                 } else {
                     newFormInputs.push( newFormInput );
                 }
-
-                dispatch('core/block-editor').updateBlockAttributes( formId, { formInputs: JSON.stringify( newFormInputs ) } );
             }
+
+            dispatch('core/block-editor').updateBlockAttributes( formId, { formInputs: JSON.stringify( newFormInputs ) } );
         }
     }
 

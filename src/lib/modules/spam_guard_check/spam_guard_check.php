@@ -2,15 +2,11 @@
 namespace sv_gutenform;
 
 class spam_guard_check extends modules {
-	// ##### Initialization Methods #####
-
-	public function init() {
-    }
+	public function init() {}
 
     // Checks all active spam guard features, if one of them was triggered
 	// Returns true when a trap was triggered and false if not
 	public function run_check( object $attr, array $data ): bool {
-
 		// Checks Honeypot
 		if ( $attr->sgHoneypot ) {
 			$input_name = $this->get_root()->get_prefix( 'sg_hp' );

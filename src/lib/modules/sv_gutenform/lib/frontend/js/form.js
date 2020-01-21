@@ -26,7 +26,6 @@ const getParsedContent = ( content, formData ) => {
     } );
 
     names.forEach( name => {
-
         const formInput = formData.find( input => { return name === input.name; } );
 
         if ( formInput ) {
@@ -59,24 +58,31 @@ const showThankYou  = ( form, formData ) => {
 jQuery( 'form.wp-block-straightvisions-sv-gutenform-form' ).submit( function( e ) {
     e.preventDefault();
     
-    const form      = jQuery( this );
-    let formData    = form.serializeArray();
-    
+    const form          = jQuery( this );
+    const formElements  = form.find(':input[name]');
+    let formData        = [];
 
-    // Replaces the value of select-fields, radio-buttons and checkboxes with their label
-    formData.forEach( ( input, index ) => {
-        const inputEl   = form.find( '[name="' + input.name + '"]' );
-        
-        // Is select
-        if ( inputEl.is( 'select' ) ) {
-            const label = jQuery(inputEl[0]).find('option[value="' + input.value + '"]').text();
+    // Fetches all inputs with a name and a value and stores them inside the formData array
+    formElements.each( function() {
+        const inputEl = jQuery( this );
+        if ( inputEl.attr('name') && ( inputEl.val() || inputEl.attr('name') === 'sv_gutenform_sg_hp' ) ) {
+            let input = {
+                name: inputEl.attr('name'),
+                type: inputEl.attr('type'),
+                value: inputEl.val(),
+            };
 
-            if ( label ) {
-                formData[ index ].value = label;
+            // The following code checks specific input types and fetches their labels value as input value
+
+            // Select Field
+            if ( input.type === 'select' ) {
+                const labelText = inputEl.find('option[value="' + input.value + '"]').text();
+
+                input.value = labelText ? labelText : input.value;
             }
-        }
 
-        // @todo Add support for Checkbox and Radio Button
+            formData.push( input );
+        }
     } );
 
     jQuery.post( localized.sv_gutenform_ajaxurl, {

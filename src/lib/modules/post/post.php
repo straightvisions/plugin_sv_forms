@@ -2,8 +2,6 @@
 namespace sv_gutenform;
 
 class post extends modules {
-	// ##### Initialization Methods #####
-
 	public function init() {
         $this->add_form_index();
 
@@ -67,8 +65,7 @@ class post extends modules {
 		return $this;
     }
     
-    // ##### Getter Methods #####
-
+    // Returns the name of the custom post type
     public function get_post_type(): string {
         return $this->get_root()->get_prefix( 'submit' );
     }
@@ -93,7 +90,6 @@ class post extends modules {
 
         return $filtered_form_data;
     }
-
 
     // Returns an array containing only sanitized form inputs
     private function get_sanitized_form_data( object $attr, array $data ): array {
@@ -158,8 +154,6 @@ class post extends modules {
 
         return $meta;
     }
-
-    // ##### Setter Methods #####
 
     // Adds the submission as a new post
     public function insert_post( object $attr, array $data ): post {

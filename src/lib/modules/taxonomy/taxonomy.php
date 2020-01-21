@@ -2,8 +2,6 @@
 namespace sv_gutenform;
 
 class taxonomy extends modules {
-	// ##### Initialization Methods #####
-
 	public function init() {
 		// Actions Hooks & Filter
 		add_action( $this->get_root()->get_prefix( 'register_post_type' ), array( $this, 'register_taxonomy' ) );
@@ -26,8 +24,6 @@ class taxonomy extends modules {
 
 		return $this;
 	}
-
-	// ###### Getter Methods ######
 	
 	// Returns the taxonomy name
 	public function get_taxonomy(): string {
@@ -40,8 +36,6 @@ class taxonomy extends modules {
 
 		return $term ? $term : false;
 	}
-
-	// ###### Setter Methods ######
 
 	// Inserts a new term to the form_label taxonomy
 	private function insert_term( string $term, string $form_id ): taxonomy {

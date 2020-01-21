@@ -2,8 +2,6 @@
 namespace sv_gutenform;
 
 class personal_data extends modules {
-    // ##### Initialization Methods #####
-
     public function init() {
         // Actions Hooks & Filter
         add_filter( 'wp_privacy_personal_data_exporters', array( $this, 'wp_privacy_personal_data_exporters' ), 10 );
@@ -29,8 +27,6 @@ class personal_data extends modules {
 
 		return $erasers;
 	}
-
-    // ###### Personal Data Methods ######
 
 	// Fetches all submissions linked to the email adress
 	private function get_submissions_by_user_mail( string $email ): array {

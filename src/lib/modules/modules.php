@@ -17,8 +17,26 @@ class modules extends init {
 		// The following module init order can be changed
 		$this->submission->init();
 		$this->personal_data->init();
-		$this->mail->init();
 		$this->sv_gutenform->init();
+	}
+
+	// Allows to use an array of needles for strpos
+	protected function strpos_array( $haystack, $needles ) {
+		if ( is_array( $needles ) ) {
+			foreach ( $needles as $str ) {
+				if ( is_array( $str ) ) {
+					$pos = strpos_array( $haystack, $str );
+				} else {
+					$pos = strpos( $haystack, $str );
+				}
+
+				if ( $pos !== FALSE ) {
+					return $pos;
+				}
+			}
+		} else {
+			return strpos( $haystack, $needles );
+		}
 	}
 
 	// Returns an input value from an data array, by it's input name

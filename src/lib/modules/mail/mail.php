@@ -2,13 +2,9 @@
 namespace sv_gutenform;
 
 class mail extends modules {  
-	// ##### Initialization Methods ##### 
-    public function init() {
+    public function init() {}
 
-	}
-	
-	// ######### Helper Methods #########
-
+	// Sends a mail to the user and the admin
 	public function send_mails( object $attr, array $data ): mail {
 		$this->send_user_mail( $attr, $data )->send_admin_mail( $attr, $data );
 

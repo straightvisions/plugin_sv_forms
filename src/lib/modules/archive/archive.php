@@ -2,8 +2,6 @@
 namespace sv_gutenform;
 
 class archive extends modules {
-	// ##### Initialization Methods #####
-
 	public function init() {
 		// Actions Hooks & Filter
 		add_action( 'restrict_manage_posts', array( $this, 'restrict_manage_posts' ) );
@@ -126,7 +124,7 @@ class archive extends modules {
 	}
 
 	// Returns the submissions count
-	public function get_submissions_count( string $term_slug = '' ): int {
+	protected function get_submissions_count( string $term_slug = '' ): int {
 		$args = array(
 			'post_type'	=> $this->post->get_post_type(),
 		);
