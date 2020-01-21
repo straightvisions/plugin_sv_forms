@@ -93,7 +93,7 @@ class post extends modules {
 
     // Returns an array containing only sanitized form inputs
     private function get_sanitized_form_data( object $attr, array $data ): array {
-        $filtered_data  = $this->get_filtered_form_data( $data );
+        $filtered_data = $this->get_filtered_form_data( $data );
         
         return $filtered_data;
     }

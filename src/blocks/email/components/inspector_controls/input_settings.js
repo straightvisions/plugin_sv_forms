@@ -13,12 +13,13 @@ export default ( { props } ) => {
 
     // Block Attributes
     const { 
-        formId,
+        formClientId,
         clientId,
         setAttributes,
         attributes: {
             label,
             name,
+            type,
             placeholder,
             sendMail,
         },
@@ -41,7 +42,7 @@ export default ( { props } ) => {
 
     // Returns a notice when the input name is already in use
     const NameCheck = () => {
-        const formBlocks = select('core/block-editor').getBlocks( formId );
+        const formBlocks = select('core/block-editor').getBlocks( formClientId );
         let output = null;
         
         formBlocks.map( block => {
@@ -65,6 +66,33 @@ export default ( { props } ) => {
         return output;
     };
 
+    // Updates the formInput attribute in the wrapper block
+    const updateFormInputs = newName => {
+        if ( formClientId ) {
+            const formInputs    = select('core/block-editor').getBlockAttributes( formClientId ).formInputs;
+            const newFormInput  = { ID: inputId, name: newName, type: type };
+            let newFormInputs   = [ newFormInput ];
+
+            if ( formInputs ) {
+                newFormInputs = JSON.parse( formInputs );
+
+                const existingInput = newFormInputs.find( input => {
+                    return input.ID === inputId;
+                } );
+
+                if ( existingInput ) {
+                    const inputIndex = newFormInputs.indexOf( existingInput );
+
+                    newFormInputs[ inputIndex ] = newFormInput;
+                } else {
+                    newFormInputs.push( newFormInput );
+                }
+            }
+
+            dispatch('core/block-editor').updateBlockAttributes( formClientId, { formInputs: JSON.stringify( newFormInputs ) } );
+        }
+    };
+
     return(
         <PanelBody
             title={ __( 'Input Settings', 'sv_gutenform' ) }
@@ -81,7 +109,10 @@ export default ( { props } ) => {
             <TextControl
                 label={ __( 'Name', 'sv_gutenform' ) }
                 value={ getSlug( name ) }
-                onChange={ value => setName( getSlug( value ) ) }
+                onChange={ value => { 
+                    updateFormInputs( getSlug( value ) );
+                    setName( getSlug( value ) );
+                }}
             />
             <NameCheck />
             <TextControl

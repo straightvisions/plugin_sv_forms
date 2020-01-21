@@ -20,7 +20,11 @@ registerBlockType( 'straightvisions/sv-gutenform-select', {
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
 	},
-	attributes: {		
+	attributes: {	
+		inputId: {
+			type: 'string',
+		},
+			
 		// Input Settings
 		defaultValue: {
 			type: 'string',

@@ -7,7 +7,7 @@
 	margin-bottom: .5em;
 }
 
-.wp-block-straightvisions-sv-gutenform-phone input[type="phone"].components-text-control__input {
+.wp-block-straightvisions-sv-gutenform-phone input[type="tel"].components-text-control__input {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	background: #fff;
@@ -27,8 +27,8 @@
 	transition: color .25s ease, border-color .25s ease;
 }
 
-.wp-block-straightvisions-sv-gutenform-phone input[type="phone"].components-text-control__input:hover,
-.wp-block-straightvisions-sv-gutenform-phone input[type="phone"].components-text-control__input:focus {
+.wp-block-straightvisions-sv-gutenform-phone input[type="tel"].components-text-control__input:hover,
+.wp-block-straightvisions-sv-gutenform-phone input[type="tel"].components-text-control__input:focus {
 	color: rgb( 0, 0, 0 );
 	border-color: rgb( 0, 0, 0 );
 }

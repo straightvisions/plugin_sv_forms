@@ -15,10 +15,11 @@ export default ( { props } ) => {
 
     // Block Attributes
     const { 
-        formId,
+        formClientId,
         clientId,
         setAttributes,
         attributes: {
+            inputId,
             label,
             name,
             type,
@@ -42,7 +43,7 @@ export default ( { props } ) => {
 
     // Returns a notice when the input name is already in use
     const NameCheck = () => {
-        const formBlocks = select('core/block-editor').getBlocks( formId );
+        const formBlocks = select('core/block-editor').getBlocks( formClientId );
         let output = null;
         
         formBlocks.map( block => {
@@ -66,24 +67,19 @@ export default ( { props } ) => {
         return output;
     };
 
+    // Updates the formInput attribute in the wrapper block
     const updateFormInputs = newName => {
-        if ( formId ) {
-            const formInputs    = select('core/block-editor').getBlockAttributes( formId ).formInputs;
-            const newFormInput  = { name: newName, type: type };
+        if ( formClientId ) {
+            const formInputs    = select('core/block-editor').getBlockAttributes( formClientId ).formInputs;
+            const newFormInput  = { ID: inputId, name: newName, type: type };
             let newFormInputs   = [ newFormInput ];
 
             if ( formInputs ) {
                 newFormInputs = JSON.parse( formInputs );
 
                 const existingInput = newFormInputs.find( input => {
-                    return input.name === name;
+                    return input.ID === inputId;
                 } );
-
-                const existingInput2 = newFormInputs.filter( input => {
-                    return input.name === name;
-                } );
-
-                console.log(existingInput2);
 
                 if ( existingInput ) {
                     const inputIndex = newFormInputs.indexOf( existingInput );
@@ -94,9 +90,9 @@ export default ( { props } ) => {
                 }
             }
 
-            dispatch('core/block-editor').updateBlockAttributes( formId, { formInputs: JSON.stringify( newFormInputs ) } );
+            dispatch('core/block-editor').updateBlockAttributes( formClientId, { formInputs: JSON.stringify( newFormInputs ) } );
         }
-    }
+    };
 
     return(
         <PanelBody

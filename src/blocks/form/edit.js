@@ -78,4 +78,30 @@ export default class extends Component {
             }
         }
     };
+
+    updateFormInputs = () => {
+        if ( ! this.props.attributes.formInputs ) {
+            const formBlock = this.props.innerBlocks.find( block => { return block.name === 'straightvisions/sv-gutenform-form'; } );
+            let formInputs = [];
+
+            formBlock.innerBlocks.map( block => {
+                if ( 
+                    block.name.startsWith('straightvisions/sv-gutenform-')
+                    && block.attributes.inputId
+                    && block.attributes.name
+                    && block.attributes.type
+                ) {
+                    const newInput = {
+                        ID: block.attributes.inputId,
+                        name: block.attributes.name,
+                        type: block.attributes.type,
+                    };
+
+                    formInputs.push( newInput )
+                }
+            } );
+
+            this.props.attributes.formInputs = JSON.stringify( formInputs );
+        }
+    }
 }

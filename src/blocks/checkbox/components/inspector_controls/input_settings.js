@@ -5,27 +5,32 @@ const {
     TextControl,
     Notice,
 } = wp.components;
-const { select } = wp.data;
+const { 
+    select, 
+    dispatch 
+} = wp.data;
 
 export default ( { props } ) => {
     if ( ! props ) return '';
 
     // Block Attributes
     const { 
-        formId,
+        formClientId,
         clientId,
         setAttributes,
         attributes: {
+            inputId,
             label,
             name,
+            type,
             value,
         }
     } = props;
 
     // Functions to set the block attributes
-    const setLabel  = label     => setAttributes({ label });
-    const setName   = name      => setAttributes({ name });
-    const setValue  = value     => setAttributes({ value });
+    const setLabel  = label => setAttributes({ label });
+    const setName   = name  => setAttributes({ name });
+    const setValue  = value => setAttributes({ value });
 
     // Returns a string in a slug compatible format
     const getSlug = string => {
@@ -34,11 +39,11 @@ export default ( { props } ) => {
         const slug = string.replace( /[^A-Z0-9]+/ig, '-' ).toLowerCase();
 
         return slug;
-    };
+    }
 
     // Returns a notice when the input name is already in use
     const NameCheck = () => {
-        const formBlocks = select('core/block-editor').getBlocks( formId );
+        const formBlocks = select('core/block-editor').getBlocks( formClientId );
         let output = null;
         
         formBlocks.map( block => {
@@ -60,7 +65,34 @@ export default ( { props } ) => {
         } );
 
         return output;
-    };
+    }
+
+    // Updates the formInput attribute in the wrapper block
+    const updateFormInputs = newName => {
+        if ( formClientId ) {
+            const formInputs    = select('core/block-editor').getBlockAttributes( formClientId ).formInputs;
+            const newFormInput  = { ID: inputId, name: newName, type: type };
+            let newFormInputs   = [ newFormInput ];
+
+            if ( formInputs ) {
+                newFormInputs = JSON.parse( formInputs );
+
+                const existingInput = newFormInputs.find( input => {
+                    return input.ID === inputId;
+                } );
+
+                if ( existingInput ) {
+                    const inputIndex = newFormInputs.indexOf( existingInput );
+
+                    newFormInputs[ inputIndex ] = newFormInput;
+                } else {
+                    newFormInputs.push( newFormInput );
+                }
+            }
+
+            dispatch('core/block-editor').updateBlockAttributes( formClientId, { formInputs: JSON.stringify( newFormInputs ) } );
+        }
+    }
 
     return(
         <PanelBody
@@ -78,7 +110,10 @@ export default ( { props } ) => {
             <TextControl
                 label={ __( 'Name', 'sv_gutenform' ) }
                 value={ getSlug( name ) }
-                onChange={ value => setName( getSlug( value ) )  }
+                onChange={ value => { 
+                    updateFormInputs( getSlug( value ) );
+                    setName( getSlug( value ) );
+                }}
             />
             <NameCheck />
             <TextControl

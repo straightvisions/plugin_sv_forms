@@ -25,6 +25,10 @@ registerBlockType( 'straightvisions/sv-gutenform-range', {
 		{ label:__( 'Vertical', 'sv_gutenform' ), name: 'vertical' },
 	],
 	attributes: {
+		inputId: {
+			type: 'string',
+		},
+
 		// Input Settings
 		defaultValue: {
 			type: 'number',

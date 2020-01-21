@@ -91,8 +91,8 @@ jQuery( 'form.wp-block-straightvisions-sv-gutenform-form' ).submit( function( e 
         sv_gutenform_post_id: localized.sv_gutenform_post_id,
         sv_gutenform_form_data: formData,
     }, function( response ) {
-        //response = JSON.parse( response );
-        //console.log(response);
+        response = JSON.parse( response );
+        console.log(response);
 
         showThankYou( form, formData );
     });

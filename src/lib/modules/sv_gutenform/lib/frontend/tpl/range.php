@@ -6,11 +6,9 @@
     <?php } ?>
     <div class="input_wrapper">
         <div class="range_wrapper">
-        <?php 
-            echo $this->get_min_display(); 
-            echo $this->get_input(); 
-            echo $this->get_max_display();
-        ?>
+        <?php echo $this->get_min_display(); ?>
+        <input <?php echo $this->get_input_attr(); ?> />
+        <?php echo $this->get_max_display(); ?>
         </div>
         <?php echo $this->get_value_display(); ?>
     </div>

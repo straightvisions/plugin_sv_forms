@@ -21,6 +21,10 @@ registerBlockType( 'straightvisions/sv-gutenform-email', {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
 	},
 	attributes: {
+		inputId: {
+			type: 'string',
+		},
+		
 		// Input Settings
 		defaultValue: {
 			type: 'string',

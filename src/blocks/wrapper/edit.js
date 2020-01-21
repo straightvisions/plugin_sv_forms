@@ -18,7 +18,7 @@ export default class extends Component {
         super(...arguments);
 
         this.props      = props;
-        this.state      = { savings: 0 };
+        this.state      = {};
         this.template   = [
             ['straightvisions/sv-gutenform-form'],
             ['straightvisions/sv-gutenform-thank-you'],

@@ -3,7 +3,7 @@ import './editor.scss';
 import icon from './icons/block';
 import edit from './edit';
 
-const { __ } 	= wp.i18n;
+const { __ } = wp.i18n;
 const { 
 	registerBlockType, 
 	registerBlockStyle 
@@ -24,6 +24,10 @@ registerBlockType( 'straightvisions/sv-gutenform-checkbox', {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
 	},
 	attributes: {
+		inputId: {
+			type: 'string',
+		},
+
 		// Input Settings
 		isChecked: {
 			type: 'boolean',
