@@ -79,6 +79,12 @@ export default ( { props } ) => {
                     return input.name === name;
                 } );
 
+                const existingInput2 = newFormInputs.filter( input => {
+                    return input.name === name;
+                } );
+
+                console.log(existingInput2);
+
                 if ( existingInput ) {
                     const inputIndex = newFormInputs.indexOf( existingInput );
 

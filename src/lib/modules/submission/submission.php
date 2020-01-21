@@ -27,14 +27,16 @@ class submission extends modules {
 	private function handle_submission( object $attr, array $data ): submission {
 		$sanitized_data = $this->get_sanitized_data( $attr, $data );
 
-		// Creates custom action hook, that passes a form data array and a form attr object
-		do_action( $this->get_root()->get_prefix( 'form_submit' ), $form_data, $form_attr );
+		if ( ! $this->spam_guard_check->run_check( $attr, $sanitized_data ) ) {
+			// Creates custom action hook, that passes a form data array and a form attr object
+			do_action( $this->get_root()->get_prefix( 'form_submit' ), $sanitized_data, $attr );
 
-		// Creates a post witht he submission data in it
-		$this->post->insert_post( $attr, $data );
-		
-		// Sends a mail to the user and an admin
-		$this->mail->send_mails( $attr, $data );
+			// Creates a post witht he submission data in it
+			$this->post->insert_post( $attr, $sanitized_data );
+			
+			// Sends a mail to the user and an admin
+			$this->mail->send_mails( $attr, $sanitized_data );
+		}
 
 		return $this;
 	}
@@ -46,13 +48,43 @@ class submission extends modules {
 		if ( ! isset( $attr->formInputs ) ) return $sanitized_data;
 
 		$validated_data = $this->get_valid_data( json_decode( $attr->formInputs ), $data );
-		
-		// @todo continuie here sanitization
-		foreach( $validated_data as $data ) {
-			switch( $data['type'] ) {
+
+		foreach( $validated_data as $data_item ) {
+			$new_data = array(
+				'name'	=> $data_item['name'],
+				'type'	=> $data_item['type'],
+			);
+
+			switch( $data_item['type'] ) {
 				case 'text':
 				case 'hidden':
+				case 'password':
+				case 'checkbox':
+				case 'radio':
+				case 'select':
+				case 'tel': 
+					$new_data['value'] = sanitize_text_field( $data_item['value'] );
 					break;
+				case 'textarea':
+					$new_data['value'] = sanitize_textarea_field( $data_item['value'] );
+					break;
+				case 'email':
+					$new_data['value'] = sanitize_email( $data_item['value'] );
+					break;
+				case 'url':
+					$new_data['value'] = esc_url_raw( $data_item['value'] );
+					break;
+				case 'number':
+				case 'range':
+					$new_data['value'] = intval( $data_item['value'] );
+					break;
+				case 'date':
+					$new_data['value'] = preg_replace( '([^0-9-])', '', $data_item['value'] );
+					break;
+			}
+
+			if ( isset( $new_data['value'] ) && ! empty( $new_data['value'] ) ) {
+				$sanitized_data[] = $new_data;
 			}
 		}
 

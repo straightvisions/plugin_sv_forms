@@ -45,6 +45,7 @@ export default class extends Component {
     componentDidUpdate = () => {
         this.state.authors = getAuthors();
         this.updatePostMeta( 'update' );
+        console.log(this.props.attributes.formInputs);
     }
 
     componentWillUnmount = () => {

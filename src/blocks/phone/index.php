@@ -53,7 +53,7 @@ class phone extends sv_gutenform {
 					),
 					'type' => array(
 						'type' => 'string',
-						'default' => 'phone',
+						'default' => 'tel',
 					),
 					'placeholder' => array(
 						'type' => 'string',
