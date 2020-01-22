@@ -50,7 +50,7 @@ class post extends modules {
 			'show_ui'				=> true,
 			'show_in_menu'			=> true,
 			'show_in_nav_menus'		=> false,
-			'show_in_rest'			=> false,
+			'show_in_rest'			=> true,
             'supports'				=> $supports,
             'taxonomies'            => array( $this->taxonomy->get_taxonomy() ),
             'has_archive'			=> false,
