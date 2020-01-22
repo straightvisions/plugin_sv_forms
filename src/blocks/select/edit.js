@@ -3,7 +3,10 @@ import InspectorControls from './components/inspector_controls';
 import { FormContext } from '../../blocks';
 
 const { Component }     = wp.element;
-const { select }        = wp.data;
+const { 
+    select, 
+    dispatch 
+} = wp.data;
 const { Fragment }      = wp.element;
 const { SelectControl } = wp.components;
 
@@ -11,10 +14,7 @@ export default class extends Component {
     constructor(props) {
         super(...arguments);
 
-        this.props  = props;
-        this.parsedOptions = this.props.attributes.options 
-            ? JSON.parse( this.props.attributes.options ) 
-            : [];
+        this.props = props;
     }
 
     // React Lifecycle Methos
@@ -31,6 +31,10 @@ export default class extends Component {
     componentWillUnmount = () => {}
 
     render = () => {
+        const parsedOptions = this.props.attributes.options 
+            ? JSON.parse( this.props.attributes.options ) 
+            : [];
+
         return (
             <Fragment>
                 <div className={ this.props.className }>
@@ -39,7 +43,7 @@ export default class extends Component {
                         label={ this.props.attributes.label }
                         value={ this.props.attributes.defaultValue }
                         onChange={ value => this.setDefaultValue( value ) }
-                        options={ this.parsedOptions }
+                        options={ parsedOptions }
                         autofocus={ this.props.attributes.autofocus }
                         disabled={ this.props.attributes.disabled }
                         hideLabelFromVision={ true }

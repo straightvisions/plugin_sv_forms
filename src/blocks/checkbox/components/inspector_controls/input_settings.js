@@ -118,8 +118,8 @@ export default ( { props } ) => {
             <NameCheck />
             <TextControl
                 label={ __( 'Value', 'sv_gutenform' ) }
-                value={ getSlug( value ) }
-                onChange={ value => setValue( getSlug( value ) ) }
+                value={ value }
+                onChange={ value => setValue( value ) }
             />
         </PanelBody>
     );

@@ -59,41 +59,56 @@ jQuery( 'form.wp-block-straightvisions-sv-gutenform-form' ).submit( function( e 
     e.preventDefault();
     
     const form          = jQuery( this );
-    const formElements  = form.find(':input[name]');
-    let formData        = [];
+    const formData      = form.serializeArray();
+    let newFormData     = [];
 
-    // Fetches all inputs with a name and a value and stores them inside the formData array
-    formElements.each( function() {
-        const inputEl = jQuery( this );
-        if ( inputEl.attr('name') && ( inputEl.val() || inputEl.attr('name') === 'sv_gutenform_sg_hp' ) ) {
-            let input = {
-                name: inputEl.attr('name'),
-                type: inputEl.attr('type'),
-                value: inputEl.val(),
-            };
+    formData.map( field => {
+        const el = form.find(':input[name="' + field.name + '"]');
 
-            // The following code checks specific input types and fetches their labels value as input value
+        if ( el.length > 0 && el.attr('type') && el.attr('type') !== "" ) {
+            if ( el.val() !== "" || el.attr('name') === 'sv_gutenform_sg_hp' ) {
+                let newField = {
+                    name: field.name,
+                    type: el.attr('type'),
+                    value: field.value,
+                };
 
-            // Select Field
-            if ( input.type === 'select' ) {
-                const labelText = inputEl.find('option[value="' + input.value + '"]').text();
+                // The following code checks for specific input types
+                // and stores their label instead of the value
+                let labelText = false;
 
-                input.value = labelText ? labelText : input.value;
+                switch ( newField.type ) {
+                    case 'select':
+                        labelText = el.find('option[value="' + newField.value + '"]').text();
+                        break;
+                    case 'radio':
+                        const radio = form.find(':input[type="radio"][name="' + newField.name + '"][value="' + newField.value + '"]');
+                        
+                        if ( radio.length > 0 && radio.val() && radio.val() !== '' ) {
+                            labelText = radio.parent().find('label[for="' + newField.name + '"]').text()
+                        }
+                        
+                        break;
+                }
+
+                if ( labelText && labelText !== '' ) {
+                    newField.value = labelText;
+                }
+
+                newFormData.push( newField );
             }
-
-            formData.push( input );
         }
-    } );
+    });
 
     jQuery.post( localized.sv_gutenform_ajaxurl, {
         action: 'sv_gutenform_submit',
         sv_gutenform_nonce: localized.sv_gutenform_nonce,
         sv_gutenform_post_id: localized.sv_gutenform_post_id,
-        sv_gutenform_form_data: formData,
+        sv_gutenform_form_data: newFormData,
     }, function( response ) {
-        response = JSON.parse( response );
-        console.log(response);
+        //response = JSON.parse( response );
+        //console.log(response);
 
-        showThankYou( form, formData );
+        showThankYou( form, newFormData );
     });
 } );
