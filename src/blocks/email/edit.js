@@ -64,7 +64,8 @@ export default class extends Component {
                 <FormContext.Consumer>
                 { formClientId => {
                     this.props.formClientId = formClientId;
-    
+                    this.updateFormAttributes( formClientId );
+
                     return <InspectorControls props={ this.props } />;
                 }}
                 </FormContext.Consumer>
