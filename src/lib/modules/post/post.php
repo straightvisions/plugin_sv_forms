@@ -14,7 +14,7 @@ class post extends modules {
 		add_option( $this->get_root()->get_prefix( 'index' ) );
 
 		return $this;
-	}
+    }
 
     // Registers a new custom post type
 	public function register_post_type(): post {
@@ -41,6 +41,9 @@ class post extends modules {
 			'items_list'            => __( 'Submissions list', 'sv_gutenform' ),
 		);
         $supports = array( 'editor', 'custom-fields' );
+        $capabilities = array(
+            'create_posts' => false,
+        );
 		$args = array(
 			'labels'				=> $labels,
             'public'				=> false,
@@ -50,7 +53,10 @@ class post extends modules {
 			'show_ui'				=> true,
 			'show_in_menu'			=> true,
 			'show_in_nav_menus'		=> false,
-			'show_in_rest'			=> true,
+            'show_in_rest'			=> true,
+            'capability_type'       => $this->get_post_type(),
+            'capabilities'          => $capabilities,
+            'map_meta_cap'          => true,
             'supports'				=> $supports,
             'taxonomies'            => array( $this->taxonomy->get_taxonomy() ),
             'has_archive'			=> false,
@@ -59,7 +65,7 @@ class post extends modules {
         );
 
         register_post_type( $this->get_post_type(), $args );
-        
+
         do_action( $this->get_root()->get_prefix( 'register_post_type' ) );
 
 		return $this;
@@ -115,12 +121,12 @@ class post extends modules {
     // Returns the submission data as post meta array
     private function get_post_meta( object $attr, array $data ): array {
         // Meta Keys
-        $post_id_meta_key 			= $this->get_root()->get_prefix( 'post_id' );
-        $form_id_meta_key 			= $this->get_root()->get_prefix( 'form_id' );
-        $form_data_meta_key 		= $this->get_root()->get_prefix( 'form_data' );
-        $user_mail_meta_key			= $this->get_root()->get_prefix( 'user_mail' );
-        $send_user_mail_meta_key 	= $this->get_root()->get_prefix( 'send_user_mail' );
-        $admin_mail_meta_key		= $this->get_root()->get_prefix( 'admin_mail' );
+        $post_id_meta_key 			= '_' . $this->get_root()->get_prefix( 'post_id' );
+        $form_id_meta_key 			= '_' . $this->get_root()->get_prefix( 'form_id' );
+        $form_data_meta_key 		= '_' . $this->get_root()->get_prefix( 'form_data' );
+        $user_mail_meta_key			= '_' . $this->get_root()->get_prefix( 'user_mail' );
+        $send_user_mail_meta_key 	= '_' . $this->get_root()->get_prefix( 'send_user_mail' );
+        $admin_mail_meta_key		= '_' . $this->get_root()->get_prefix( 'admin_mail' );
 
         // Meta Array
         $meta = array(
