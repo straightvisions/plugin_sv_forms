@@ -106,8 +106,6 @@ export default withSelect( ( select, props ) => {
                 <InnerBlocks templateLock={ false } />
             </div>
             <FormContext.Consumer>{ value => setInputNames( value ) }</FormContext.Consumer>
-        </div>
-
-        
+        </div> 
     ); 
 });

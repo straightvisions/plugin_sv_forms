@@ -41,7 +41,9 @@ export default class extends Component {
     }
 
     // React Lifecycle Methos
-    componentDidMount = () => {}
+    componentDidMount = () => {
+        this.toggleBody( false );
+    }
 
     componentDidUpdate = () => {}
 
@@ -53,6 +55,10 @@ export default class extends Component {
                 <div className='sv_gutenform_header'>
                     <div className='sv_gutenform_title_wrapper'>
                         <div className='sv_gutenform_title'>{ __( 'Form', 'sv_gutenform' ) }</div>
+                        <Button 
+                            isTertiary 
+                            onClick={ () => this.toggleBody( true ) }
+                        ><span class='dashicons dashicons-visibility'></span></Button>
                     </div>
                 </div>
                 <div className='sv_gutenform_body'>
@@ -102,6 +108,35 @@ export default class extends Component {
             } );
 
             this.props.attributes.formInputs = JSON.stringify( formInputs );
+        }
+    }
+
+    toggleBody = change => {
+        const body = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_body' );
+        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_header > .sv_gutenform_form_title_wrapper > button.components-button > span' );
+
+        if ( change ) {
+            if ( this.props.attributes.collapsed ) {
+                icon.removeClass( 'dashicons-hidden' );
+                icon.addClass( 'dashicons-visibility' );
+                body.slideDown();
+            } else {
+                icon.removeClass( 'dashicons-visibility' );
+                icon.addClass( 'dashicons-hidden' );
+                body.slideUp();
+            }
+
+            this.props.setAttributes({ collapsed: ! this.props.attributes.collapsed });
+        } else {
+            if ( this.props.attributes.collapsed ) {
+                icon.removeClass( 'dashicons-visibility' );
+                icon.addClass( 'dashicons-hidden' );
+                body.slideUp();
+            } else {
+                icon.removeClass( 'dashicons-hidden' );
+                icon.addClass( 'dashicons-visibility' );
+                body.slideDown();
+            }
         }
     }
 }
