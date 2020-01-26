@@ -34,6 +34,22 @@
 	border-color: rgb( 0, 0, 0 );
 }
 
+// Add Option Button
+button.components-button.sv-gutenform-add-option-button {
+    color: #FFFFFF;
+    border: 1px solid #32373c;
+    background-color: #32373c;
+    transition: background-color .1s ease, border-color .1s;
+}
+
+button.components-button.sv-gutenform-add-option-button:hover,
+button.components-button.sv-gutenform-add-option-button:focus {
+    color: #FFFFFF !important;
+    border-color: #1d2023 !important;
+    background-color: #1d2023 !important;
+    box-shadow: none !important;
+}
+
 // Options
 .sv-gutenform-select-options {
     max-height: 400px;
@@ -57,22 +73,31 @@
 .sv-gutenform-select-options .sv-gutenform-select-option > .sv-gutenform-select-option-flex {
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
 }
 
 .sv-gutenform-select-options .sv-gutenform-select-option > .sv-gutenform-select-option-flex > div:first-of-type {
     margin-right: 5px;
 }
 
-.sv-gutenform-select-options .sv-gutenform-select-option > .components-icon-button {
-    margin-left: auto;
-    padding: 0;
+.sv-gutenform-select-options .sv-gutenform-select-option > .sv-gutenform-select-option-flex > .components-base-control.components-toggle-control > .components-base-control__field {
+    margin-bottom: 0;
 }
 
-.sv-gutenform-select-options .sv-gutenform-select-option > .components-icon-button > svg {
-    width: 18px;
-    height: 18px;
+.sv-gutenform-select-options .sv-gutenform-select-option > .sv-gutenform-select-option-flex > .components-button.has-icon {
+    height: auto;
+    transition: color .1s ease;
 }
 
+.sv-gutenform-select-options .sv-gutenform-select-option > .sv-gutenform-select-option-flex > .components-button.has-icon:hover,
+.sv-gutenform-select-options .sv-gutenform-select-option > .sv-gutenform-select-option-flex > .components-button.has-icon:focus {
+    color: #fd5858 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+// Namecheck
 .components-notice.sv-gutenform-name-check {
 	margin: -15px 0 15px 0;
 }
