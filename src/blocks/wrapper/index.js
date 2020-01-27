@@ -3,8 +3,8 @@ import './editor.scss';
 import icon from './icons/block';
 import edit from './edit';
 
-const { __ } 				= wp.i18n;
-const { InnerBlocks } 		= wp.blockEditor;
+const { __ } = wp.i18n;
+const { InnerBlocks } = wp.blockEditor;
 const { registerBlockType } = wp.blocks
 
 registerBlockType( 'straightvisions/sv-gutenform', {
@@ -27,33 +27,28 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		formId: {
 			type: 'string',
 		},
-		formInputs: {
-			type: 'string',
-		},
 		formLabel: {
 			type: 'string',
 		},
-		saveSubmits: {
+		saveSubmissions: {
 			type: 'boolean',
 			default: true,
 		},
-
-		// Collapse Settings
+		formInputs: {
+			type: 'string',
+		},
 		collapsed: {
 			type: 'boolean',
 		},
 
-		// Mail Settings
-		// Admin Mails
-		adminMail: {
+		// Thank You Message, Admin Mail & User Mail Block
+		inputNames: {
 			type: 'string',
-			default: 'disabled',
 		},
-		adminMailUser: {
-			type: 'number',
-		},
-		adminMailAdress: {
-			type: 'string',
+
+		// Admin Mail Block
+		adminMailSend: {
+			type: 'boolean',
 		},
 		adminMailSubject: {
 			type: 'string',
@@ -64,16 +59,19 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		adminMailFromMail: {
 			type: 'string',
 		},
+		adminMailToUsers: {
+			type: 'string',
+		},
+		adminMailToMails: {
+			type: 'string',
+		},
 		adminMailContent: {
 			type: 'string',
 		},
 
-		// User Mails
-		userMail: {
+		// User Mail Block
+		userMailSend: {
 			type: 'boolean',
-		},
-		userMailInputName: {
-			type: 'string',
 		},
 		userMailSubject: {
 			type: 'string',
@@ -82,6 +80,9 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 			type: 'string',
 		},
 		userMailFromMail: {
+			type: 'string',
+		},
+		userMailToMails: {
 			type: 'string',
 		},
 		userMailContent: {

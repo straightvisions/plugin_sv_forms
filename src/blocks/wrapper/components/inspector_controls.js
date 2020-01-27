@@ -3,12 +3,12 @@ import FormSettings from './inspector_controls/form_settings';
 
 const { InspectorControls } = wp.blockEditor;
 
-export default ( { props, data } ) => {
-    if ( ! props || ! data ) return '';
+export default ( { props } ) => {
+    if ( ! props ) return '';
 
     return(
         <InspectorControls>
-            <FormSettings props={ props } data={ data } />
+            <FormSettings props={ props } />
         </InspectorControls>
     );
 }

@@ -2,84 +2,96 @@
 import InspectorControls from './components/inspector_controls';
 import { FormContext } from '../../blocks';
 
-const { __ }                = wp.i18n;
-const { withState }         = wp.compose;
-const { InnerBlocks }       = wp.blockEditor;
-const { getBlockContent }   = wp.blocks;
-const { 
-    Button,
-    ClipboardButton,
-    Tooltip,
-} = wp.components;
-const { 
-    withSelect, 
-    dispatch,
-    select
-} = wp.data;
+const { __ } = wp.i18n;
+const { select } = wp.data;
+const { Component } = wp.element;
+const { Button } = wp.components;
+const { withState } = wp.compose;
+const { getBlockContent } = wp.blocks;
+const { InnerBlocks } = wp.blockEditor;
 
-export default withSelect( ( select, props ) => {
-    return {
-        innerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ),
-        props
-    };
-} )( ({ innerBlocks, props }) => {
-    const {
-        className,
-        setAttributes,
-        attributes: {
-            subject,
-            fromTitle,
-            fromMail,
-            inputNames,
-        }
-    } = props;
+export default class extends Component {
+    constructor(props) {
+        super(...arguments);
+
+        this.props = props;
+        this.wrapper = {};
+    }
+
+     // React Lifecycle Methos
+    componentDidMount = () => {
+        this.toggleBody( false );
+    }
+
+    componentDidUpdate = () => {}
+
+    componentWillUnmount = () => {}
 
     // Returns the innerBlocks content as string
-    const getMailContent = () => {
+    getMailContent = () => {
+        const innerBlocks = select( 'core/block-editor' ).getBlocks( this.props.clientId );
+
         return innerBlocks.map( block => { return  getBlockContent( block ) } ).join( '' );
     }
 
-    // Updates the atrributes of the sv-gutenform block
-    const updateFormAttributes = formId => {
-        setInputNames( formId );
+    // Updates the wrapper attributes
+    setWrapperAttributes = wrapper => {
+        this.wrapper = wrapper;
 
-        const newAttributes     = {
-            userMailSubject: subject,
-            userMailFromTitle: fromTitle,
-            userMailFromMail: fromMail,
-            userMailContent: getMailContent(),
+        // Admin Mail Attributes
+        const {
+            mailSend, 
+            mailSubject,
+            mailFromTitle,
+            mailFromMail,
+            mailToMails,
+        } = this.props.attributes;
+
+        // Updated Wrapper Attributes
+        const newAttributes = {
+            userMailSend: mailSend,
+            userMailSubject: mailSubject,
+            userMailFromTitle: mailFromTitle,
+            userMailFromMail: mailFromMail,
+            userMailToMails: mailToMails,
+            userMailContent: this.getMailContent(),
         };
 
-        dispatch( 'core/block-editor' ).updateBlockAttributes( formId, newAttributes);
+        wrapper.setAttributes( newAttributes );
     }
 
-    // Fetches all input names of the blocks inside the form block
-    const setInputNames = formId => {
-        const wrapperBlocks = select( 'core/block-editor' ).getBlocks( formId );
-        const formBlock = wrapperBlocks.find( block => block.name === 'straightvisions/sv-gutenform-form' );
-        
-        if ( ! formBlock ) return null;
+    // Togles the collapsed state of the body
+    toggleBody = change => {
+        const body = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_body' );
+        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button > span' );
 
-        const formBlocks = select( 'core/block-editor' ).getBlocks( formBlock.clientId );
+        if ( change ) {
+            if ( this.props.attributes.collapsed ) {
+                icon.removeClass( 'dashicons-hidden' );
+                icon.addClass( 'dashicons-visibility' );
+                body.slideDown();
+            } else {
+                icon.removeClass( 'dashicons-visibility' );
+                icon.addClass( 'dashicons-hidden' );
+                body.slideUp();
+            }
 
-        if ( formBlocks.length < 1 ) return null;
-
-        const filteredBlocks = formBlocks.filter( block => {
-            return block.attributes.name;
-        } );
-        const names = filteredBlocks.map( block => {
-            return '%' + block.attributes.name + '%';
-        } );
-
-        const uniqueNames = [...new Set(names)];
-
-        if ( inputNames !== uniqueNames ) {
-            setAttributes({ inputNames: uniqueNames.join( ', ' ) });
+            this.props.setAttributes({ collapsed: ! this.props.attributes.collapsed });
+        } else {
+            if ( this.props.attributes.collapsed ) {
+                icon.removeClass( 'dashicons-visibility' );
+                icon.addClass( 'dashicons-hidden' );
+                body.slideUp();
+            } else {
+                icon.removeClass( 'dashicons-hidden' );
+                icon.addClass( 'dashicons-visibility' );
+                body.slideDown();
+            }
         }
     }
 
     // Creates a clippboard button with the input name as value
-    const InputValueButton = withState( {
+    InputValueButton = withState( {
         hasCopied: false,
     } )( ( { hasCopied, setState, text } ) => {
         const toolTipText = hasCopied ? __( 'Copied to clippboard.', 'sv_gutenform' ) : __( 'Copy to clippboard.', 'sv_gutenform' );
@@ -100,7 +112,11 @@ export default withSelect( ( select, props ) => {
     });
 
     // Returns the available input values
-    const InputValues = () => {
+    InputValues = () => {
+        if ( ! this.wrapper || ! this.wrapper.attributes ) return null;
+
+        const inputNames = this.wrapper.attributes.inputNames;
+
         if ( ! inputNames || inputNames.length < 1 ) return null;
 
         let output = [];
@@ -112,26 +128,27 @@ export default withSelect( ( select, props ) => {
         return <div className='sv_gutenform_input_values'>{ output }</div>;
     }
 
-    return (
-        <div className={ className }>
-            <InspectorControls props={ props } />
-            <div className='sv_gutenform_header'>
-                <div className='sv_gutenform_title_wrapper'>
-                    <div className='sv_gutenform_title'>{ __( 'User Mail', 'sv_gutenform' ) }</div>
-                    <Button 
-                        isTertiary 
-                        onClick={ () => toggleBody() }
-                    ><span class='dashicons dashicons-visibility'></span></Button>
+    render = () => {
+        return (
+            <div className={ this.props.className }>
+                <div className='sv_gutenform_header'>
+                    <div className='sv_gutenform_title_wrapper'>
+                        <div className='sv_gutenform_title'>{ __( 'User Mail', 'sv_gutenform' ) }</div>
+                        <Button onClick={ () => this.toggleBody( true ) }>
+                            <span class='dashicons dashicons-visibility'></span>
+                        </Button>
+                    </div>
+                    <div className='sv_gutenform_input_values_wrapper'>
+                        <div className='sv_gutenform_input_values_title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
+                        { this.InputValues() }
+                    </div>
                 </div>
-                <div className='sv_gutenform_input_values_wrapper'>
-                    <div className='sv_gutenform_input_values_title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
-                    <InputValues />
-                </div>
+                <div class='sv_gutenform_body'>
+                    <InnerBlocks templateLock={ false } />
+                </div> 
+                <FormContext.Consumer>{ wrapper => { this.setWrapperAttributes( wrapper ) } }</FormContext.Consumer>
+                <InspectorControls props={ this.props } />
             </div>
-            <div className='sv_gutenform_body'>
-                <InnerBlocks templateLock={ false } />
-            </div>
-            <FormContext.Consumer>{ value => updateFormAttributes( value ) }</FormContext.Consumer>
-        </div>
-    );
-});
+        );
+    }
+}

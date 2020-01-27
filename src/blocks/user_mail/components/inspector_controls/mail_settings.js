@@ -2,46 +2,54 @@
 const { __ } = wp.i18n;
 const {
     PanelBody,
+    ToggleControl,
     TextControl,
 } = wp.components;
 
 export default ( { props } ) => {
     if ( ! props ) return '';
 
-    // Block Attributes
-    const { 
+    // Wrapper Properties
+    const {
         setAttributes,
         attributes: {
-            subject,
-            fromTitle,
-            fromMail,
+            mailSend,
+            mailSubject,
+            mailFromTitle,
+            mailFromMail,
         }
     } = props;
 
-    // Returns a notice when the input name is already in use
-    const setSubject    = subject   => setAttributes({ subject });
-    const setFromTitle  = fromTitle => setAttributes({ fromTitle });
-    const setFromMail   = fromMail  => setAttributes({ fromMail });
+    // Functions to the block attributes
+    const setMailSend      = mailSend         => setAttributes({ mailSend });
+    const setMailSubject   = mailSubject      => setAttributes({ mailSubject });
+    const setMailFromTitle = mailFromTitle    => setAttributes({ mailFromTitle });
+    const setMailFromMail  = mailFromMail     => setAttributes({ mailFromMail });
 
     return(
         <PanelBody
             title={ __( 'Mail Settings', 'sv_gutenform' ) }
             initialOpen={ true }
         >
-            <TextControl
-                label={ __( 'Subject', 'sv_gutenform' ) }
-                value={ subject }
-                onChange={ value => setSubject( value )  }
+            <ToggleControl
+                label={ __( 'Send Mail', 'sv_gutenform' ) }
+                checked={ mailSend }
+                onChange={ () => setMailSend( ! mailSend ) }
             />
             <TextControl
-                label={ __( 'From - Title', 'sv_gutenform' ) }
-                value={ fromTitle }
-                onChange={ value => setFromTitle( value )  }
+                label={ __( 'Mail Subject', 'sv_gutenform' ) }
+                value={ mailSubject }
+                onChange={ value => setMailSubject( value ) }
             />
             <TextControl
-                label={ __( 'From - Mail', 'sv_gutenform' ) }
-                value={ fromMail }
-                onChange={ value => setFromMail( value )  }
+                label={ __( 'Mail From - Title', 'sv_gutenform' ) }
+                value={ mailFromTitle }
+                onChange={ value => setMailFromTitle( value ) }
+            />
+            <TextControl
+                label={ __( 'Mail From - E-Mail', 'sv_gutenform' ) }
+                value={ mailFromMail }
+                onChange={ value => setMailFromMail( value ) }
             />
         </PanelBody>
     );

@@ -43,8 +43,6 @@ class form extends sv_gutenform {
 					'formId' => array(
 						'type' => 'string',
 					),
-
-					// Collapse Settings
 					'collapsed' => array(
 						'type' => 'bool',
 						'default' => false,

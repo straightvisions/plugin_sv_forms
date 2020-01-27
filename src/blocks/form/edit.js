@@ -1,9 +1,12 @@
 import { FormContext } from '../../blocks';
 
-const { __ }            = wp.i18n;
-const { Component }     = wp.element;
-const { InnerBlocks }   = wp.blockEditor;
-const { Button }        = wp.components;
+const { 
+    Component, 
+    Fragment 
+} = wp.element;
+const { __ } = wp.i18n;
+const { InnerBlocks } = wp.blockEditor;
+const { Button } = wp.components;
 
 export default class extends Component {
     constructor(props) {
@@ -49,71 +52,17 @@ export default class extends Component {
 
     componentWillUnmount = () => {}
 
-    render = () => {
-        return (
-            <div className={ this.props.className }>
-                <div className='sv_gutenform_header'>
-                    <div className='sv_gutenform_title_wrapper'>
-                        <div className='sv_gutenform_title'>{ __( 'Form', 'sv_gutenform' ) }</div>
-                        <Button 
-                            isTertiary 
-                            onClick={ () => this.toggleBody( true ) }
-                        ><span class='dashicons dashicons-visibility'></span></Button>
-                    </div>
-                </div>
-                <div className='sv_gutenform_body'>
-                    <InnerBlocks 
-                        template={ this.template }
-                        templateLock={ false }
-                    />
-                </div>
-                <FormContext.Consumer>{ clientId => this.setFormId( clientId ) }</FormContext.Consumer>
-            </div>
-        );
-    }
-
-    // Custom Methods
-    setFormId = clientId => { 
-        this.state.formId = clientId;
-
+    // Sets the formId attribute for this block
+    setFormId = wrapper => {
         if ( ! this.props.attributes.formId ) {
-            const wrapperBlock = wp.data.select('core/block-editor').getBlock( clientId );
-
-            if ( wrapperBlock ) {
-                this.props.setAttributes({ formId: wrapperBlock.attributes.formId }); 
-            }
-        }
-    };
-
-    updateFormInputs = () => {
-        if ( ! this.props.attributes.formInputs ) {
-            const formBlock = this.props.innerBlocks.find( block => { return block.name === 'straightvisions/sv-gutenform-form'; } );
-            let formInputs = [];
-
-            formBlock.innerBlocks.map( block => {
-                if ( 
-                    block.name.startsWith('straightvisions/sv-gutenform-')
-                    && block.attributes.inputId
-                    && block.attributes.name
-                    && block.attributes.type
-                ) {
-                    const newInput = {
-                        ID: block.attributes.inputId,
-                        name: block.attributes.name,
-                        type: block.attributes.type,
-                    };
-
-                    formInputs.push( newInput )
-                }
-            } );
-
-            this.props.attributes.formInputs = JSON.stringify( formInputs );
+            this.props.setAttributes({ formId: wrapper.attributes.formId });
         }
     }
 
+    // Togles the collapsed state of the body
     toggleBody = change => {
         const body = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_body' );
-        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_header > .sv_gutenform_form_title_wrapper > button.components-button > span' );
+        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button > span' );
 
         if ( change ) {
             if ( this.props.attributes.collapsed ) {
@@ -138,5 +87,29 @@ export default class extends Component {
                 body.slideDown();
             }
         }
+    }
+
+    render = () => {
+        return (
+            <Fragment>
+                <div className={ this.props.className }>
+                    <div className='sv_gutenform_header'>
+                        <div className='sv_gutenform_title_wrapper'>
+                            <div className='sv_gutenform_title'>{ __( 'Form', 'sv_gutenform' ) }</div>
+                            <Button onClick={ () => this.toggleBody( true ) }>
+                                <span class='dashicons dashicons-visibility'></span>
+                            </Button>
+                        </div>
+                    </div>
+                    <div className='sv_gutenform_body'>
+                        <InnerBlocks 
+                            //template={ this.template }
+                            templateLock={ false }
+                        />
+                    </div>
+                </div>
+                <FormContext.Consumer>{ wrapper => { this.setFormId( wrapper ) } }</FormContext.Consumer>
+            </Fragment>
+        );
     }
 }

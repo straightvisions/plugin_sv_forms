@@ -22,26 +22,32 @@ registerBlockType( 'straightvisions/sv-gutenform-user-mail', {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
 	},
 	attributes: {
-		// Hidden
-		inputNames: {
-			type: 'string',
+		collapsed: {
+			type: 'boolean',
 		},
 
-		// Collapse Settings
-		collapsed: {
+		// Mail Settings
+		mailSend: {
 			type: 'boolean',
 			default: false,
 		},
+		mailSubject: {
+			type: 'string',
+			default: '',
+		},
+		mailFromTitle: {
+			type: 'string',
+			default: '',
+		},
+		mailFromMail: {
+			type: 'string',
+			default: '',
+		},
 
-		// E-Mail Settings
-		subject: {
+		// Send to Mails
+		mailToMails: {
 			type: 'string',
-		},
-		fromTitle: {
-			type: 'string',
-		},
-		fromMail: {
-			type: 'string',
+			default: '',
 		},
 
 		// Advanced Settings

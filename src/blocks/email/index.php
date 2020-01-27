@@ -39,11 +39,7 @@ class email extends sv_gutenform {
 				'editor_script' 	=> 'sv-gutenform-block',
 				'editor_style'  	=> 'sv-gutenform-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
-				'attributes'		=> array(
-					'inputId' => array(
-						'type' => 'string',
-					),
-					
+				'attributes'		=> array(					
 					// Input Settings
 					'defaultValue' => array(
 						'type' => 'string',
@@ -61,9 +57,6 @@ class email extends sv_gutenform {
 					),
 					'placeholder' => array(
 						'type' => 'string',
-					),
-					'sendMail' => array(
-						'type' => 'bool',
 					),
 
 					// Validation Settings

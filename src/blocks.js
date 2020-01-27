@@ -2,6 +2,12 @@
 export const FormContext = wp.element.createContext();
 
 import './blocks/wrapper/index.js';
+import './blocks/admin_mail/index.js';
+import './blocks/form/index.js';
+import './blocks/thank_you/index.js';
+import './blocks/user_mail/index.js';
+import './blocks/email/index.js';
+/*
 import './blocks/form/index.js';
 import './blocks/text/index.js';
 import './blocks/email/index.js';
@@ -20,6 +26,8 @@ import './blocks/thank_you/index.js';
 import './blocks/user_mail/index.js';
 import './blocks/admin_mail/index.js';
 import './blocks/spam_guard/index.js';
+
+*/
 
 // Sets the blocks hidden in the Block Manager on default
 wp.data.dispatch( 'core/edit-post' ).hideBlockTypes([

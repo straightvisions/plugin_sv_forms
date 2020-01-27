@@ -3,8 +3,8 @@ import './editor.scss';
 import icon from './icons/block';
 import edit from './edit';
 
-const { __ } 				= wp.i18n;
-const { InnerBlocks } 		= wp.blockEditor;
+const { __ } = wp.i18n;
+const { InnerBlocks } = wp.blockEditor;
 const { registerBlockType } = wp.blocks
 
 registerBlockType( 'straightvisions/sv-gutenform-form', {
@@ -24,8 +24,6 @@ registerBlockType( 'straightvisions/sv-gutenform-form', {
 		formId: {
 			type: 'string',
 		},
-
-		// Collapse Settings
 		collapsed: {
 			type: 'boolean',
 			default: false,

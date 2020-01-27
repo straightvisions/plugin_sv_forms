@@ -1,60 +1,61 @@
 // Required Components
 import { FormContext } from '../../blocks';
 
-const { __ }            = wp.i18n;
-const { withState }     = wp.compose;
-const { InnerBlocks }   = wp.blockEditor;
-const { 
-    Button,
-    ClipboardButton,
-    Tooltip,
-} = wp.components;
-const { 
-    withSelect,
-    select 
-} = wp.data;
+const { __ } = wp.i18n;
+const { Component } = wp.element;
+const { Button } = wp.components;
+const { withState } = wp.compose;
+const { InnerBlocks } = wp.blockEditor;
 
-export default withSelect( ( select, props ) => {
-    return {
-        innerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ),
-        props
-    };
-} )( ({ innerBlocks, props }) => {
-    const {
-        className,
-        setAttributes,
-        attributes: { 
-            inputNames, 
-        }
-    } = props;
+export default class extends Component {
+    constructor(props) {
+        super(...arguments);
 
-    // Fetches all input names of the blocks inside the form block
-    const setInputNames = formId => {
-        const wrapperBlocks = select( 'core/block-editor' ).getBlocks( formId );
-        const formBlock = wrapperBlocks.find( block => block.name === 'straightvisions/sv-gutenform-form' );
-        
-        if ( ! formBlock ) return null;
+        this.props = props;
+        this.wrapper = {};
+    }
 
-        const formBlocks = select( 'core/block-editor' ).getBlocks( formBlock.clientId );
+     // React Lifecycle Methos
+    componentDidMount = () => {
+        this.toggleBody( false );
+    }
 
-        if ( formBlocks.length < 1 ) return null;
+    componentDidUpdate = () => {}
 
-        const filteredBlocks = formBlocks.filter( block => {
-            return block.attributes.name;
-        } );
-        const names = filteredBlocks.map( block => {
-            return '%' + block.attributes.name + '%';
-        } );
+    componentWillUnmount = () => {}
 
-        const uniqueNames = [...new Set(names)];
+    // Togles the collapsed state of the body
+    toggleBody = change => {
+        const body = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_body' );
+        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button > span' );
 
-        if ( inputNames !== uniqueNames ) {
-            setAttributes({ inputNames: uniqueNames.join( ', ' ) });
+        if ( change ) {
+            if ( this.props.attributes.collapsed ) {
+                icon.removeClass( 'dashicons-hidden' );
+                icon.addClass( 'dashicons-visibility' );
+                body.slideDown();
+            } else {
+                icon.removeClass( 'dashicons-visibility' );
+                icon.addClass( 'dashicons-hidden' );
+                body.slideUp();
+            }
+
+            this.props.setAttributes({ collapsed: ! this.props.attributes.collapsed });
+        } else {
+            if ( this.props.attributes.collapsed ) {
+                icon.removeClass( 'dashicons-visibility' );
+                icon.addClass( 'dashicons-hidden' );
+                body.slideUp();
+            } else {
+                icon.removeClass( 'dashicons-hidden' );
+                icon.addClass( 'dashicons-visibility' );
+                body.slideDown();
+            }
         }
     }
 
     // Creates a clippboard button with the input name as value
-    const InputValueButton = withState( {
+    InputValueButton = withState( {
         hasCopied: false,
     } )( ( { hasCopied, setState, text } ) => {
         const toolTipText = hasCopied ? __( 'Copied to clippboard.', 'sv_gutenform' ) : __( 'Copy to clippboard.', 'sv_gutenform' );
@@ -75,7 +76,11 @@ export default withSelect( ( select, props ) => {
     });
 
     // Returns the available input values
-    const InputValues = () => {
+    InputValues = () => {
+        if ( ! this.wrapper || ! this.wrapper.attributes ) return null;
+
+        const inputNames = this.wrapper.attributes.inputNames;
+
         if ( ! inputNames || inputNames.length < 1 ) return null;
 
         let output = [];
@@ -87,25 +92,26 @@ export default withSelect( ( select, props ) => {
         return <div className='sv_gutenform_input_values'>{ output }</div>;
     }
 
-    return (
-        <div className={ className }>
-            <div className='sv_gutenform_header'>
-                <div className='sv_gutenform_title_wrapper'>
-                    <div className='sv_gutenform_title'>{ __( 'Thank You Message', 'sv_gutenform' ) }</div>
-                    <Button 
-                        isTertiary 
-                        onClick={ () => toggleBody() }
-                    ><span class='dashicons dashicons-visibility'></span></Button>
+    render = () => {
+        return (
+            <div className={ this.props.className }>
+                <div className='sv_gutenform_header'>
+                    <div className='sv_gutenform_title_wrapper'>
+                        <div className='sv_gutenform_title'>{ __( 'Thank You Message', 'sv_gutenform' ) }</div>
+                        <Button onClick={ () => this.toggleBody( true ) }>
+                            <span class='dashicons dashicons-visibility'></span>
+                        </Button>
+                    </div>
+                    <div className='sv_gutenform_input_values_wrapper'>
+                        <div className='sv_gutenform_input_values_title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
+                        { this.InputValues() }
+                    </div>
                 </div>
-                <div className='sv_gutenform_input_values_wrapper'>
-                    <div className='sv_gutenform_input_values_title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
-                    <InputValues />
-                </div>
+                <div class='sv_gutenform_body'>
+                    <InnerBlocks templateLock={ false } />
+                </div> 
+                <FormContext.Consumer>{ wrapper => { this.wrapper = wrapper; } }</FormContext.Consumer>
             </div>
-            <div className='sv_gutenform_body'>
-                <InnerBlocks templateLock={ false } />
-            </div>
-            <FormContext.Consumer>{ value => setInputNames( value ) }</FormContext.Consumer>
-        </div> 
-    ); 
-});
+        );
+    }
+}

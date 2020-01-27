@@ -12,27 +12,27 @@
     color: white;
 }
 
-.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_form_label_wrapper {
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_label_wrapper {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
 }
 
-.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_form_label_wrapper > button.components-button {
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_label_wrapper > button.components-button {
     height: auto;
     color: #FFFFFF;
     border: none;
-    box-shadow: none;
+    box-shadow: none !important;
     outline: none;
-    background-color: transparent;
+    background-color: transparent !important;
 }
 
-.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_form_label_wrapper > button.components-button:hover,
-.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_form_label_wrapper > button.components-button:focus {
-    color: #EEEEEE;
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_label_wrapper > button.components-button:hover,
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_label_wrapper > button.components-button:focus {
+    color: #EEEEEE !important;
 }
 
-.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_form_label_wrapper > .sv_gutenform_form_label {
+.wp-block-straightvisions-sv-gutenform > .sv_gutenform_header > .sv_gutenform_label_wrapper > .sv_gutenform_form_label {
     font-size: 38px;
     font-weight: 700;
     line-height: 1.2;

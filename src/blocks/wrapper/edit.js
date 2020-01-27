@@ -1,24 +1,26 @@
 import InspectorControls from './components/inspector_controls';
 import { FormContext } from '../../blocks';
 
+
 const { 
     select, 
     dispatch,
 } = wp.data;
-const { Component }                 = wp.element;
-const { __ }                        = wp.i18n;
-const { InnerBlocks }               = wp.blockEditor;
-const { Button }                    = wp.components;
-const { editPost }                  = dispatch( 'core/editor' );
-const { getEditedPostAttribute }    = select( 'core/editor' );
-const { getAuthors }                = select( 'core' );
+const { 
+    Component, 
+    Fragment 
+} = wp.element;
+const { __ } = wp.i18n;
+const { Button } = wp.components;
+const { InnerBlocks } = wp.blockEditor;
+const { editPost } = dispatch( 'core/editor' );
+const { getEditedPostAttribute } = select( 'core/editor' );
 
 export default class extends Component {
     constructor(props) {
         super(...arguments);
 
         this.props      = props;
-        this.state      = {};
         this.template   = [
             ['straightvisions/sv-gutenform-form'],
             ['straightvisions/sv-gutenform-thank-you'],
@@ -43,42 +45,15 @@ export default class extends Component {
     }
 
     componentDidUpdate = () => {
-        this.state.authors = getAuthors();
         this.updatePostMeta( 'update' );
+        console.log(this.props.attributes);
     }
 
     componentWillUnmount = () => {
         this.updatePostMeta( 'remove' );
     }
 
-    render = () => {
-        return (
-            <div className={ this.props.className }>
-                <InspectorControls props={ this.props } data={ this.state } />
-                <div className='sv_gutenform_header'>
-                    <div className='sv_gutenform_form_label_wrapper'>
-                        <div className='sv_gutenform_form_label'>{ this.props.attributes.formLabel }</div>
-                        <Button 
-                            isTertiary 
-                            onClick={ () => this.toggleBody( true ) }
-                        ><span class="dashicons dashicons-visibility"></span></Button>
-                    </div>
-                    <div className='sv_gutenform_form_id'>Form ID: { this.props.attributes.formId }</div>
-                    <div className='sv_gutenform_title'>{ __( 'SV Gutenform', 'sv_gutenform' ) }</div>
-                </div>
-                <div class='sv_gutenform_body'>
-                    <FormContext.Provider value={ this.props.clientId }>
-                        <InnerBlocks 
-                            template={ this.template }
-                            templateLock={ true }
-                        />
-                    </FormContext.Provider>
-                </div>
-            </div>
-        );
-    }
-
-    // Custom Methods
+    // Checks if the block already exists inside the current post
     doesFormExist = () => {
         const currentMeta   = getEditedPostAttribute( 'meta' );
         const currentForms  = currentMeta._sv_gutenform_forms ? JSON.parse( currentMeta._sv_gutenform_forms ) : false;
@@ -88,6 +63,7 @@ export default class extends Component {
         return true;
     }
 
+    // Checks if this block is a duplicate of an existing one in the current post
     isDuplicate = () => {
         const currentBlocks = wp.data.select('core/block-editor').getBlocks();
         let formsWithSameId = 0;
@@ -108,6 +84,7 @@ export default class extends Component {
         return false;
     }
 
+    // Updates the current post meta with the block attributes
     updatePostMeta = action => {
         const currentMeta = getEditedPostAttribute( 'meta' );
         let currentForms  = currentMeta._sv_gutenform_forms ? JSON.parse( currentMeta._sv_gutenform_forms ) : {};
@@ -126,9 +103,10 @@ export default class extends Component {
         editPost( { meta: newMeta } );
     }
 
+    // Togles the collapsed state of the body
     toggleBody = change => {
         const body = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_body' );
-        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_header > .sv_gutenform_form_label_wrapper > button.components-button > span' );
+        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] > .' + this.props.className + ' > .sv_gutenform_header > .sv_gutenform_label_wrapper > button.components-button > span' );
 
         if ( change ) {
             if ( this.props.attributes.collapsed ) {
@@ -153,5 +131,33 @@ export default class extends Component {
                 body.slideDown();
             }
         }
+    }
+
+    render = () => {
+        return (
+            <Fragment>
+                <div className={ this.props.className }>
+                    <div className='sv_gutenform_header'>
+                        <div className='sv_gutenform_label_wrapper'>
+                            <div className='sv_gutenform_form_label'>{ this.props.attributes.formLabel }</div>
+                            <Button onClick={ () => this.toggleBody( true ) }>
+                                <span class='dashicons dashicons-visibility'></span>
+                            </Button>
+                        </div>
+                        <div className='sv_gutenform_form_id'>Form ID: { this.props.attributes.formId }</div>
+                        <div className='sv_gutenform_title'>{ __( 'SV Gutenform', 'sv_gutenform' ) }</div>
+                    </div>
+                    <div class='sv_gutenform_body'>
+                        <FormContext.Provider value={ this.props }>
+                            <InnerBlocks 
+                                template={ this.template }
+                                templateLock={ true }
+                            />
+                        </FormContext.Provider>
+                    </div>
+                </div>
+                <InspectorControls props={ this.props } />
+            </Fragment>
+        );
     }
 }

@@ -3,9 +3,9 @@ import './editor.scss';
 import icon from './icons/block';
 import edit from './edit';
 
-const { __ } 				= wp.i18n;
+const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
-const { InnerBlocks } 		= wp.blockEditor;
+const { InnerBlocks } = wp.blockEditor;
 
 registerBlockType( 'straightvisions/sv-gutenform-thank-you', {
 	title: __( 'Thank You Message', 'sv_gutenform' ),
@@ -22,7 +22,6 @@ registerBlockType( 'straightvisions/sv-gutenform-thank-you', {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
 	},
 	attributes: {
-		// Collapse Settings
 		collapsed: {
 			type: 'boolean',
 		},

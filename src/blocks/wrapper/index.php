@@ -76,20 +76,40 @@ class wrapper extends sv_gutenform {
 					'formId' => array(
 						'type' => 'string',
 					),
-					'formInputs' => array(
-						'type' => 'string',
-					),
 					'formLabel' => array(
 						'type' => 'string',
 					),
-					'saveSubmits' => array(
+					'saveSubmissions' => array(
 						'type' => 'bool',
 						'default' => true,
 					),
+					'formInputs' => array(
+						'type' => 'string',
+					),
 
-					// Collapse Settings
-					'collapsed' => array(
+					// Thank You Message, Admin Mail & User Mail Block
+					'inputNames' => array(
+						'type' => 'string',
+					),
+
+					// Admin Mail Block
+					'adminMailSend' => array(
 						'type' => 'bool',
+					),
+					'adminMailToUsers' => array(
+						'type' => 'string',
+					),
+					'adminMailToMails' => array(
+						'type' => 'string',
+					),
+					'adminMailSubject' => array(
+						'type' => 'string',
+					),
+					'adminMailFromTitle' => array(
+						'type' => 'string',
+					),
+					'adminMailFromMail' => array(
+						'type' => 'string',
 					),
 
 					// Mail Settings

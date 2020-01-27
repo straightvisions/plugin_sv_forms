@@ -3,9 +3,9 @@ import './editor.scss';
 import icon from './icons/block';
 import edit from './edit';
 
-const { __ } 				= wp.i18n;
+const { __ } = wp.i18n;
+const { InnerBlocks } = wp.blockEditor;
 const { registerBlockType } = wp.blocks
-const { InnerBlocks } 		= wp.blockEditor;
 
 registerBlockType( 'straightvisions/sv-gutenform-admin-mail', {
 	title: __( 'Admin Mail', 'sv_gutenform' ),
@@ -22,35 +22,38 @@ registerBlockType( 'straightvisions/sv-gutenform-admin-mail', {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
 	},
 	attributes: {
-		// Hidden
-		intputNames: {
-			type: 'string'
-		},
-
-		// Collapse Settings
 		collapsed: {
 			type: 'boolean',
 		},
 		
-		// E-Mail Settings
-		adminMail: {
-			type: 'string',
-			default: 'disabled',
+		// Mail Settings
+		mailSend: {
+			type: 'boolean',
+			default: false,
 		},
-		adminMailUser: {
-			type: 'number',
-		},
-		adminMailAdress: {
+		mailSubject: {
 			type: 'string',
+			default: '',
 		},
-		subject: {
+		mailFromTitle: {
 			type: 'string',
+			default: '',
 		},
-		fromTitle: {
+		mailFromMail: {
 			type: 'string',
+			default: '',
 		},
-		fromMail: {
+
+		// Send to Authors
+		mailToUsers: {
 			type: 'string',
+			default: '',
+		},
+
+		// Send to Mails
+		mailToMails: {
+			type: 'string',
+			default: '',
 		},
 
 		// Advanced Settings
