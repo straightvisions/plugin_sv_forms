@@ -46,7 +46,7 @@ export default ( { props, authors } ) => {
     }
 
     // Resets the users list
-    const resetUsers = () => {
+    const resetSelection = () => {
         setAttributes({ mailToUsers: JSON.stringify( [] ) });
     }
 
@@ -66,9 +66,9 @@ export default ( { props, authors } ) => {
                 />
                 <Button 
                     className='sv-gutenform-users-reset'
-                    onClick={ () => resetUsers() }
+                    onClick={ () => resetSelection() }
                 >
-                    { __( 'Reset Authors', 'sv_gutenform' ) }
+                    { __( 'Reset Selection', 'sv_gutenform' ) }
                 </Button>
             </div>
         </PanelBody>

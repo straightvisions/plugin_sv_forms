@@ -26,7 +26,7 @@ export default class extends Component {
         this.toggleBody( false );
     }
 
-    componentDidUpdate = () => {}
+    componentDidUpdate = () => {console.log(this.props.attributes);}
 
     componentWillUnmount = () => {}
 
@@ -147,7 +147,7 @@ export default class extends Component {
                     <InnerBlocks templateLock={ false } />
                 </div> 
                 <FormContext.Consumer>{ wrapper => { this.setWrapperAttributes( wrapper ) } }</FormContext.Consumer>
-                <InspectorControls props={ this.props } />
+                <InspectorControls props={ this.props } wrapper={ this.wrapper }  />
             </div>
         );
     }

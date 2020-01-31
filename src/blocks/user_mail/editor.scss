@@ -102,50 +102,23 @@
 }
 
 // Send To Mails
-.sv-gutenform-mail-list button.components-button.sv-gutenform-mail-add {
+.components-base-control.sv-gutenform-mails-list {
+    margin-bottom: 0;
+}
+
+button.components-button.sv-gutenform-mails-reset {
+    display: flex;
+    margin-left: auto;
     color: #FFFFFF;
     border: 1px solid #32373c;
     background-color: #32373c;
-    margin-bottom: 18px;
     transition: background-color .1s ease, border-color .1s;
 }
 
-.sv-gutenform-mail-list button.components-button.sv-gutenform-mail-add:hover,
-.sv-gutenform-mail-list button.components-button.sv-gutenform-mail-add:focus {
+button.components-button.sv-gutenform-mails-reset:hover,
+button.components-button.sv-gutenform-mails-reset:focus {
     color: #FFFFFF !important;
     border-color: #1d2023 !important;
     background-color: #1d2023 !important;
     box-shadow: none !important;
-}
-
-.sv-gutenform-mail-entry {
-    display: flex;
-    background: rgba( 0, 0, 0, .06 );
-    padding: 10px;
-    margin-bottom: 5px;
-    border-radius: 5px;
-}
-
-.sv-gutenform-mail-entry > .components-base-control.sv-gutenform-mail-input,
-.sv-gutenform-mail-entry > .components-base-control.sv-gutenform-mail-input > .components-base-control__field {
-    margin-bottom: 0;
-}
-
-.sv-gutenform-mail-entry > .components-base-control.sv-gutenform-mail-input {
-    flex: 1;
-}
-
-.sv-gutenform-mail-entry .components-button.has-icon.sv-gutenform-mail-remove {
-    padding: 0;
-    margin-left: 8px;
-    height: auto;
-    transition: color .1s ease;
-}
-
-.sv-gutenform-mail-entry .components-button.has-icon.sv-gutenform-mail-remove:hover,
-.sv-gutenform-mail-entry .components-button.has-icon.sv-gutenform-mail-remove:focus {
-    color: #fd5858 !important;
-    border: none !important;
-    box-shadow: none !important;
-    background-color: transparent !important;
 }
