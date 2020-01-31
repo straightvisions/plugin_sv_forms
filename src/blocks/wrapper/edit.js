@@ -45,8 +45,8 @@ export default class extends Component {
     }
 
     componentDidUpdate = () => {
+        this.updateChildBlocks();
         this.updatePostMeta( 'update' );
-        console.log(this.props.attributes);
     }
 
     componentWillUnmount = () => {
@@ -84,6 +84,23 @@ export default class extends Component {
         return false;
     }
 
+    // Updates the formInputs attribute of the blocks: thank-you, admin-mail & user-mail
+    updateChildBlocks = () => {
+        const childBlocks = [
+            'straightvisions/sv-gutenform-thank-you',
+            'straightvisions/sv-gutenform-user-mail',
+            'straightvisions/sv-gutenform-admin-mail',
+        ];
+
+        const innerBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+
+        innerBlocks.map( block => {
+            if ( childBlocks.includes( block.name ) && block.attributes.formInputs !== this.props.attributes.formInputs ) {
+                dispatch('core/block-editor').updateBlockAttributes( block.clientId, { formInputs: this.props.attributes.formInputs } );
+            }
+        } );
+    }
+
     // Updates the current post meta with the block attributes
     updatePostMeta = action => {
         const currentMeta = getEditedPostAttribute( 'meta' );
@@ -97,6 +114,10 @@ export default class extends Component {
                 delete currentForms[ this.props.attributes.formId ];
                 break;
         }
+        // DEBUG
+        
+        //console.log( 'Wrapper: ', this.props.attributes );
+        //console.log( 'Post Meta: ', currentForms );
 
         const newMeta = { ...currentMeta, _sv_gutenform_forms: JSON.stringify( currentForms ) };
 

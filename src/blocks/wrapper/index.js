@@ -41,11 +41,6 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 			type: 'boolean',
 		},
 
-		// Thank You Message, Admin Mail & User Mail Block
-		inputNames: {
-			type: 'string',
-		},
-
 		// Admin Mail Block
 		adminMailSend: {
 			type: 'boolean',

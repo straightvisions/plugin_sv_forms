@@ -39,7 +39,7 @@ export default ( { props, wrapper } ) => {
     const NameCheck = () => {
         const wrapperBlocks = select('core/block-editor').getBlocks( wrapper.clientId );
         let output = null;
-        
+
         wrapperBlocks.map( block => {
             if ( 
                 block.name.startsWith( 'straightvisions/sv-gutenform' ) 

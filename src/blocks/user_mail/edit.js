@@ -2,11 +2,14 @@
 import InspectorControls from './components/inspector_controls';
 import { FormContext } from '../../blocks';
 
+const { 
+    Button,
+    Tooltip,
+    ClipboardButton
+} = wp.components;
 const { __ } = wp.i18n;
 const { select } = wp.data;
 const { Component } = wp.element;
-const { Button } = wp.components;
-const { withState } = wp.compose;
 const { getBlockContent } = wp.blocks;
 const { InnerBlocks } = wp.blockEditor;
 
@@ -91,38 +94,35 @@ export default class extends Component {
     }
 
     // Creates a clippboard button with the input name as value
-    InputValueButton = withState( {
-        hasCopied: false,
-    } )( ( { hasCopied, setState, text } ) => {
-        const toolTipText = hasCopied ? __( 'Copied to clippboard.', 'sv_gutenform' ) : __( 'Copy to clippboard.', 'sv_gutenform' );
+    InputValueButton = name => {
+        const toolTipText   = __( 'Copy to clippboard.', 'sv_gutenform' );
+        const buttonText    = '%' + name + '%';
 
         return (
             <Tooltip text={ toolTipText }>
                 <ClipboardButton
                     isTertiary
                     className='sv_gutenform_input_value'
-                    text={ text }
-                    onCopy={ () => setState( { hasCopied: true } ) }
-                    onFinishCopy={ () => setState( { hasCopied: false } ) }
+                    text={ buttonText }
                 >
-                    { text }
+                    { buttonText }
                 </ClipboardButton>
             </Tooltip>
-        ); 
-    });
+        );
+    }
 
     // Returns the available input values
     InputValues = () => {
-        if ( ! this.wrapper || ! this.wrapper.attributes ) return null;
+        if ( ! this.props.attributes.formInputs ) return null;
 
-        const inputNames = this.wrapper.attributes.inputNames;
+        const formInputs = JSON.parse( this.props.attributes.formInputs );
 
-        if ( ! inputNames || inputNames.length < 1 ) return null;
+        if ( ! formInputs || formInputs.length < 1 ) return null;
 
         let output = [];
 
-        inputNames.split( ',' ).map( name => {
-            output.push( <InputValueButton text={ name } /> );
+        formInputs.map( input => {
+            output.push( this.InputValueButton( input.name ) );
         } );
 
         return <div className='sv_gutenform_input_values'>{ output }</div>;
