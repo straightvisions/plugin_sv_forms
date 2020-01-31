@@ -103,7 +103,7 @@ export default class extends Component {
                     </div>
                     <div className='sv_gutenform_body'>
                         <InnerBlocks 
-                            //template={ this.template }
+                            template={ this.template }
                             templateLock={ false }
                         />
                     </div>

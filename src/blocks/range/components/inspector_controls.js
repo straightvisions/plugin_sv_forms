@@ -8,13 +8,13 @@ import AdvancedSettings from './inspector_controls/advanced_settings';
 const { Fragment } = wp.element;
 const { InspectorControls, InspectorAdvancedControls } = wp.blockEditor;
 
-export default ( { props } ) => {
-    if ( ! props ) return '';
+export default ( { props, wrapper } ) => {
+    if ( ! props || ! wrapper ) return '';
 
     return(
         <Fragment>
             <InspectorControls>
-                <InputSettings props={ props } />
+                <InputSettings props={ props } wrapper={ wrapper } />
                 <DisplaySettings props={ props } />
                 <ValidationSettings props={ props } />
                 <ColorSettings props={ props } />

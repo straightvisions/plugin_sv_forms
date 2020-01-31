@@ -8,15 +8,15 @@
     color: rgba( 40, 40, 40, .8 );
     margin: 0 10px;
     border: none;
-    box-shadow: none;
+    box-shadow: none !important;
     outline: none;
-    background-color: transparent;
+    background-color: transparent !important;
     transition: color .25s ease;
 }
 
 .wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text:hover,
 .wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text:focus {
-    color: rgb( 40, 40, 40 );
+    color: rgb( 40, 40, 40 ) !important;
 }
 
 .wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text.is-active {
@@ -25,7 +25,7 @@
 
 .wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text.is-active:hover,
 .wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text.is-active:focus {
-    color: rgb( 24, 195, 66 );
+    color: rgb( 24, 195, 66 ) !important;
 }
 
 .wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text svg {

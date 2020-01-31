@@ -7,7 +7,7 @@ const { __ } = wp.i18n;
 const { 
 	registerBlockType, 
 	registerBlockStyle 
-} 				= wp.blocks;
+} = wp.blocks;
 
 registerBlockType( 'straightvisions/sv-gutenform-checkbox', {
 	title: __( 'Checkbox', 'sv_gutenform' ),

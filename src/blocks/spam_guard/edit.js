@@ -6,76 +6,91 @@ import timerIcon from './icons/timer';
 import InspectorControls from './components/inspector_controls';
 import { FormContext } from '../../blocks';
 
-const { __ }            = wp.i18n;
-const { Fragment }      = wp.element;
 const { 
-    withSelect, 
-    dispatch,
-} = wp.data;
-const {
-    Placeholder,
-    Button,
-} = wp.components;
+    Component, 
+    Fragment 
+} = wp.element;
+const { __ } = wp.i18n;
+const { Placeholder, Button } = wp.components;
 
-export default withSelect( ( select, props ) => {
-    return props;
-} )( ( props ) => {
-    // Block Properties
-    const {
-        className,
-        setAttributes,
-        attributes: {
+export default class extends Component {
+    constructor(props) {
+        super(...arguments);
+
+        this.props = props;
+        this.wrapper = {};
+    }
+
+    // React Lifecycle Methos
+    componentDidMount = () => {}
+
+    componentDidUpdate = () => {}
+
+    componentWillUnmount = () => {}
+
+    // The following methods update the attributes of this block
+    setHoneypot = honeypot => this.props.setAttributes({ honeypot });
+    setTimeTrap = timeTrap => this.props.setAttributes({ timeTrap });
+
+    // Updates the spam guard attributes in the wrapper block
+    setFormAttributes = wrapper => {
+        this.wrapper = wrapper;
+
+        const {
             honeypot,
             timeTrap,
             timeTrapWindow,
-        } 
-    } = props;
+        } = this.props.attributes;
 
-    // Functions to set the block attributes
-    const setHoneypot           = honeypot  => setAttributes({ honeypot });
-    const setTimeTrap           = timeTrap  => setAttributes({ timeTrap });
-    const updateFormAttributes  = formId    => {        
-        const newAttributes     = {
-            sgHoneypot: honeypot,
-            sgTimeTrap: timeTrap,
-            sgTimeTrapWindow: timeTrapWindow,
+        const newSpamGuardAttributes = { 
+            sgHoneypot: honeypot, 
+            sgTimeTrap: timeTrap, 
+            sgTimeTrapWindow: timeTrapWindow, 
         };
 
-        dispatch( 'core/block-editor' ).updateBlockAttributes( formId, newAttributes );
-    };
+        wrapper.setAttributes( newSpamGuardAttributes );
+    }
 
-    // State vars
-    const honeypotState = honeypot ? 'is-active' : '';
-    const timeTrapState = timeTrap ? 'is-active' : '';
+    render = () => {
+        const {
+            className,
+            attributes: {
+                honeypot,
+                timeTrap,
+            },
+        } = this.props;
 
-    return (
-        <Fragment>
-            <InspectorControls props={ props } />
-            <div className={ className }>
-                <Placeholder
-                    icon={ shieldIcon }
-                    label={ __( 'Spam Guard', 'sv_gutenform' ) }
-                    instructions={ __( 'Select your anti spam features.', 'sv_gutenform' ) }
-                >
-                    <Button 
-                        isTertiary 
-                        icon={ honeycombIcon } 
-                        className={ honeypotState }
-                        onClick={ () => setHoneypot( ! honeypot ) }
+        // State vars
+        const honeypotState = honeypot ? 'is-active' : '';
+        const timeTrapState = timeTrap ? 'is-active' : '';
+
+        return (
+            <Fragment>
+                <div className={ className }>
+                    <Placeholder
+                        icon={ shieldIcon }
+                        label={ __( 'Spam Guard', 'sv_gutenform' ) }
+                        instructions={ __( 'Select your anti spam features.', 'sv_gutenform' ) }
                     >
-                        Honeypot
-                    </Button>
-                    <Button 
-                        isTertiary 
-                        icon={ timerIcon } 
-                        className={ timeTrapState }
-                        onClick={ () => setTimeTrap( ! timeTrap ) }
-                    >
-                        Time Trap
-                    </Button>
-                </Placeholder>
-            </div>
-            <FormContext.Consumer>{ value => updateFormAttributes( value ) }</FormContext.Consumer>
-        </Fragment>
-    ); 
-});
+                        <Button 
+                            icon={ honeycombIcon } 
+                            className={ honeypotState }
+                            onClick={ () => this.setHoneypot( ! honeypot ) }
+                        >
+                            { __( 'Honeypot', 'sv_gutenform' ) }
+                        </Button>
+                        <Button 
+                            icon={ timerIcon } 
+                            className={ timeTrapState }
+                            onClick={ () => this.setTimeTrap( ! timeTrap ) }
+                        >
+                            { __( 'Time Trap', 'sv_gutenform' ) }
+                        </Button>
+                    </Placeholder>
+                </div>
+                <InspectorControls props={ this.props } wrapper={ this.wrapper } />
+                <FormContext.Consumer>{ wrapper => this.setFormAttributes( wrapper ) }</FormContext.Consumer>
+            </Fragment>
+        );
+    }
+}

@@ -75,6 +75,7 @@ export default ( { props } ) => {
                                     onChange={ value => updateMail( mail, value ) }
                                 />
                                 <Button 
+                                    label={ __( 'Delete E-Mail', 'sv_gutenform' ) }
                                     className='sv-gutenform-mail-remove'
                                     icon='no-alt'
                                     onClick={ () => removeMail( mail ) }

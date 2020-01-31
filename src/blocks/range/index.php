@@ -41,10 +41,6 @@ class range extends sv_gutenform {
 				'editor_style'  	=> 'sv-gutenform-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
-					'inputId' => array(
-						'type' => 'string',
-					),
-					
 					// Input Settings
 					'defaultValue' => array(
 						'type' => 'number',

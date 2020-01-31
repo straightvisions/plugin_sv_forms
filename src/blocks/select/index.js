@@ -3,7 +3,7 @@ import './editor.scss';
 import icon from './icons/block';
 import edit from './edit';
 
-const { __ } 				= wp.i18n;
+const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 
 registerBlockType( 'straightvisions/sv-gutenform-select', {

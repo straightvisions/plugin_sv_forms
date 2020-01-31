@@ -26,7 +26,7 @@ export default class extends Component {
         this.toggleBody( false );
     }
 
-    componentDidUpdate = () => {console.log(this.props.attributes);}
+    componentDidUpdate = () => {}
 
     componentWillUnmount = () => {}
 

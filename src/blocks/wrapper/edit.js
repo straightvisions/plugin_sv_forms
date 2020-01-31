@@ -38,6 +38,7 @@ export default class extends Component {
                 this.props.attributes.formId = this.props.clientId;
             }
             
+            this.updateChildBlocks();
             this.updatePostMeta( 'update' );
         }
 
@@ -47,6 +48,7 @@ export default class extends Component {
     componentDidUpdate = () => {
         this.updateChildBlocks();
         this.updatePostMeta( 'update' );
+        console.log(this.props.attributes);
     }
 
     componentWillUnmount = () => {
@@ -95,7 +97,7 @@ export default class extends Component {
         const innerBlocks = select('core/block-editor').getBlocks( this.props.clientId );
 
         innerBlocks.map( block => {
-            if ( childBlocks.includes( block.name ) && block.attributes.formInputs !== this.props.attributes.formInputs ) {
+            if ( childBlocks.includes( block.name ) ) {
                 dispatch('core/block-editor').updateBlockAttributes( block.clientId, { formInputs: this.props.attributes.formInputs } );
             }
         } );
@@ -114,10 +116,6 @@ export default class extends Component {
                 delete currentForms[ this.props.attributes.formId ];
                 break;
         }
-        // DEBUG
-        
-        //console.log( 'Wrapper: ', this.props.attributes );
-        //console.log( 'Post Meta: ', currentForms );
 
         const newMeta = { ...currentMeta, _sv_gutenform_forms: JSON.stringify( currentForms ) };
 

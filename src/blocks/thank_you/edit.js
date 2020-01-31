@@ -6,8 +6,11 @@ const {
     Tooltip,
     ClipboardButton 
 } = wp.components;
+const { 
+    Component, 
+    Fragment 
+} = wp.element;
 const { __ } = wp.i18n;
-const { Component } = wp.element;
 const { InnerBlocks } = wp.blockEditor;
 
 export default class extends Component {
@@ -94,24 +97,26 @@ export default class extends Component {
 
     render = () => {
         return (
-            <div className={ this.props.className }>
-                <div className='sv_gutenform_header'>
-                    <div className='sv_gutenform_title_wrapper'>
-                        <div className='sv_gutenform_title'>{ __( 'Thank You Message', 'sv_gutenform' ) }</div>
-                        <Button onClick={ () => this.toggleBody( true ) }>
-                            <span class='dashicons dashicons-visibility'></span>
-                        </Button>
+            <Fragment>
+                <div className={ this.props.className }>
+                    <div className='sv_gutenform_header'>
+                        <div className='sv_gutenform_title_wrapper'>
+                            <div className='sv_gutenform_title'>{ __( 'Thank You Message', 'sv_gutenform' ) }</div>
+                            <Button onClick={ () => this.toggleBody( true ) }>
+                                <span class='dashicons dashicons-visibility'></span>
+                            </Button>
+                        </div>
+                        <div className='sv_gutenform_input_values_wrapper'>
+                            <div className='sv_gutenform_input_values_title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
+                            { this.InputValues() }
+                        </div>
                     </div>
-                    <div className='sv_gutenform_input_values_wrapper'>
-                        <div className='sv_gutenform_input_values_title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
-                        { this.InputValues() }
-                    </div>
+                    <div class='sv_gutenform_body'>
+                        <InnerBlocks templateLock={ false } />
+                    </div> 
                 </div>
-                <div class='sv_gutenform_body'>
-                    <InnerBlocks templateLock={ false } />
-                </div> 
                 <FormContext.Consumer>{ wrapper => { this.wrapper = wrapper } }</FormContext.Consumer>
-            </div>
+            </Fragment>
         );
     }
 }

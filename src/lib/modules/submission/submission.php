@@ -27,6 +27,8 @@ class submission extends modules {
 	private function handle_submission( object $attr, array $data ): submission {
 		$sanitized_data = $this->get_sanitized_data( $attr, $data );
 
+		//$this->ajaxStatus('Form Data', $attr, $sanitized_data );
+
 		if ( ! $this->spam_guard_check->run_check( $attr, $sanitized_data ) ) {
 			// Creates custom action hook, that passes a form data array and a form attr object
 			do_action( $this->get_root()->get_prefix( 'form_submit' ), $sanitized_data, $attr );

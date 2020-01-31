@@ -2,12 +2,11 @@
 import InspectorControls from './components/inspector_controls';
 import { FormContext } from '../../blocks';
 
-const { Component }     = wp.element;
 const { 
-    select, 
-    dispatch 
-} = wp.data;
-const { Fragment }      = wp.element;
+    Component, 
+    Fragment 
+} = wp.element;
+const { select } = wp.data;
 const { SelectControl } = wp.components;
 
 export default class extends Component {
@@ -15,6 +14,7 @@ export default class extends Component {
         super(...arguments);
 
         this.props = props;
+        this.wrapper = {};
     }
 
     // React Lifecycle Methos
@@ -22,7 +22,7 @@ export default class extends Component {
         if ( ! this.props.attributes.inputId || this.isDuplicate() ) {
             this.props.attributes.inputId = this.props.clientId;
 
-            this.updateFormInputs();
+            this.setFormInputs();
         }
     }
 
@@ -30,44 +30,38 @@ export default class extends Component {
 
     componentWillUnmount = () => {}
 
-    render = () => {
-        const parsedOptions = this.props.attributes.options 
-            ? JSON.parse( this.props.attributes.options ) 
-            : [];
+    // Updates the formInput attribute in the wrapper block
+    setFormInputs = () => {
+        if ( ! this.wrapper || ! this.wrapper.clientId || ! this.props.attributes.name ) return false;
 
-        return (
-            <Fragment>
-                <div className={ this.props.className }>
-                    { this.Label() }
-                    <SelectControl
-                        label={ this.props.attributes.label }
-                        value={ this.props.attributes.defaultValue }
-                        onChange={ value => this.setDefaultValue( value ) }
-                        options={ parsedOptions }
-                        autofocus={ this.props.attributes.autofocus }
-                        disabled={ this.props.attributes.disabled }
-                        hideLabelFromVision={ true }
-                        style={{ borderRadius: this.props.attributes.borderRadius }}
-                    />
-                </div>
-                <FormContext.Consumer>
-                { formClientId => {
-                    this.props.formClientId = formClientId;
-    
-                    return <InspectorControls props={ this.props } />;
-                }}
-                </FormContext.Consumer>
-            </Fragment>
-        );
+        const { formInputs } = select('core/block-editor').getBlockAttributes( this.wrapper.clientId );
+        const {
+            inputId,
+            name,
+            type,
+        } = this.props.attributes;
+        const newFormInput = { 
+            ID: inputId, 
+            name: name, 
+            type: type 
+        };
+        let newFormInputs = [ newFormInput ];
+
+        if ( formInputs ) {
+            newFormInputs = JSON.parse( formInputs );
+            newFormInputs.push( newFormInput );
+        }
+
+        this.wrapper.setAttributes({ formInputs: JSON.stringify( newFormInputs ) });
     }
 
     // Checks if the input block is a duplicate
     isDuplicate = () => {
-        if ( ! this.props.formClientId ) return false;
+        if ( ! this.wrapper || ! this.wrapper.clientId ) return false;
 
-        let isDuplicate     = false;
-        const wrapperBlock  = select('core/block-editor').getBlock( this.props.formClientId );
-        const formBlock     = wrapperBlock.innerBlocks.find( block => { return block.name === 'straightvisions/sv-gutenform-form'; } );
+        let isDuplicate = false;
+        const wrapperBlock  = select('core/block-editor').getBlock( this.wrapper.clientId );
+        const formBlock = wrapperBlock.innerBlocks.find( block => { return block.name === 'straightvisions/sv-gutenform-form'; } );
         
         formBlock.innerBlocks.map( block => {
             if ( 
@@ -83,30 +77,10 @@ export default class extends Component {
         return isDuplicate;
     }
 
-    // Updates the formInput attribute in the wrapper block
-    updateFormInputs = () => {
-        if ( this.props.formClientId && this.props.attributes.name ) {
-            const formInputs    = select('core/block-editor').getBlockAttributes( this.props.formClientId ).formInputs;
-            const newFormInput  = { 
-                ID: this.props.attributes.inputId, 
-                name: this.props.attributes.name, 
-                type: this.props.attributes.type 
-            };
-            let newFormInputs   = [ newFormInput ];
-
-            if ( formInputs ) {
-                newFormInputs = JSON.parse( formInputs );
-                newFormInputs.push( newFormInput );
-            }
-
-            dispatch('core/block-editor').updateBlockAttributes( this.props.formClientId, { formInputs: JSON.stringify( newFormInputs ) } );
-        }
-    }
-
-    // Functions to set the block attributes
+    // Updates the defaultValue attribute of this block
     setDefaultValue = defaultValue => this.props.setAttributes({ defaultValue });
 
-    // Conditional Components
+    // Returns a Label components
     Label = () => {
         if ( this.props.attributes.label.length > 0 ) {
             return (
@@ -122,4 +96,38 @@ export default class extends Component {
 
         return null;
     };
+
+    render = () => {
+        const {
+            className,
+            attributes: {
+                defaultValue,
+                label,
+                disabled,
+                borderRadius,
+            }
+        } = this.props;
+        const parsedOptions = this.props.attributes.options 
+            ? JSON.parse( this.props.attributes.options ) 
+            : [];
+
+        return (
+            <Fragment>
+                <div className={ className }>
+                    { this.Label() }
+                    <SelectControl
+                        label={ label }
+                        value={ defaultValue }
+                        onChange={ value => this.setDefaultValue( value ) }
+                        options={ parsedOptions }
+                        disabled={ disabled }
+                        hideLabelFromVision={ true }
+                        style={{ borderRadius: borderRadius }}
+                    />
+                </div>
+                <FormContext.Consumer>{ wrapper => { this.wrapper = wrapper } }</FormContext.Consumer>
+                <InspectorControls props={ this.props } wrapper={ this.wrapper } />
+            </Fragment>
+        );
+    }
 }

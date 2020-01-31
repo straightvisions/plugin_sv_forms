@@ -40,10 +40,6 @@ class checkbox extends sv_gutenform {
 				'editor_style'  	=> 'sv-gutenform-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
-					'inputId' => array(
-						'type' => 'string',
-					),
-
 					// Input Settings
 					'isChecked' => array(
 						'type' => 'bool',

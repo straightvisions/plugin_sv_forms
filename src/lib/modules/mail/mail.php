@@ -6,7 +6,7 @@ class mail extends modules {
 
 	// Sends a mail to the user and the admin
 	public function send_mails( object $attr, array $data ): mail {
-		$this->send_user_mail( $attr, $data )->send_admin_mail( $attr, $data );
+		$this->send_user_mails( $attr, $data )->send_admin_mails( $attr, $data );
 
 		return $this;
 	}
@@ -40,45 +40,52 @@ class mail extends modules {
 	}	
 
 	// Returns the user mail adress
-	private function get_user_mail( object $attr, array $data ) {
-		// Checks if the input "recipient" exists and returns the recipient input names
-		$input_names = $this->get_input_value( $attr->userMailInputName, $data, false );
+	private function get_user_mails( object $attr, array $data ): array {	
+		if ( ! $attr->userMailToMails ) return array();
 
-		if ( ! $input_names || count( $input_names ) < 1 ) return '';
+		$email_adresses = array();
+		$input_names 	= json_decode( $attr->userMailToMails );
 
-		if ( count( $input_names ) > 1 ) {
-			$email_adresses = array();
-
-			foreach( $input_names as $name ) {
-				$email_adresses[] = $this->get_input_value( $name, $data );
-			}
-
-			return $email_adresses;
-		} else {
-			return $input_names;
+		foreach( $input_names as $name ) {
+			$email_adresses[] = $this->get_input_value( $name, $data );
 		}
+
+		return $email_adresses;
 	}
 
 	// Returns the admin e-mail adress
-	private function get_admin_mail( object $attr ): string {
-		switch( $attr->adminMail ) {
-			case 'author':
-				$email_adress = get_the_author_meta( 'user_email', intval( $attr->adminMailUser ) );
-				break;
-			case 'adress':
-				$email_adress = $attr->adminMailAdress;
-				break;
+	private function get_admin_mails( object $attr ): array {
+		if ( ! $attr->adminMailToUsers && ! $attr->adminMailToMails ) return array();
+
+		$email_adresses = array();
+		$to_users 		= json_decode( $attr->adminMailToUsers );
+		$to_mails 		= json_decode( $attr->adminMailToMails );
+
+		if ( count( $to_users ) > 0 ) {
+			foreach( $to_users as $user_id ) {
+				$user_mail = get_the_author_meta( 'user_email', intval( $user_id ) );
+
+				if ( $user_mail ) {
+					$email_adresses[] = $user_mail;
+				}
+			}
 		}
 
-		return $email_adress;
+		if ( count( $to_mails ) > 0 ) {
+			foreach( $to_mails as $mail ) {
+				$email_adresses[] = $mail;
+			}
+		}
+
+		return $email_adresses;
 	}
 
 	// Sends a mail to a auser
-	private function send_user_mail( object $attr, array $data ): mail {
-		if ( ! $attr || ! $data || ! isset( $attr->userMail ) || ! $attr->userMail ) return $this;
+	private function send_user_mails( object $attr, array $data ): mail {
+		if ( ! $attr || ! $data || ! isset( $attr->userMailSend ) || ! $attr->userMailSend ) return $this;
 
 		// Mail Properties
-		$to = $this->get_user_mail( $attr, $data );
+		$to = $this->get_user_mails( $attr, $data );
 
 		if ( isset( $attr->userMailSubject ) && ! empty( $attr->userMailSubject ) ) {
 			$subject = $attr->userMailSubject;
@@ -109,11 +116,11 @@ class mail extends modules {
 	}
 	
 	// Sends a mail to an admin
-	private function send_admin_mail( object $attr, array $data ): mail {
-		if ( ! $attr || ! $data || $attr->adminMail === 'disabled' ) return $this;
+	private function send_admin_mails( object $attr, array $data ): mail {
+		if ( ! $attr || ! $data || ! isset( $attr->adminMailSend ) || ! $attr->adminMailSend ) return $this;
 
 		// Mail Properties
-		$to = $this->get_admin_mail( $attr );
+		$to = $this->get_admin_mails( $attr );
 
 		if ( isset( $attr->adminMailSubject ) && ! empty( $attr->adminMailSubject ) ) {
 			$subject = $attr->adminMailSubject;

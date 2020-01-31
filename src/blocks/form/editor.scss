@@ -24,14 +24,14 @@
     height: auto;
     color: #FFFFFF;
     border: none;
-    box-shadow: none;
+    box-shadow: none !important;
     outline: none;
-    background-color: transparent;
+    background-color: transparent !important;
 }
 
 .wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button:hover,
 .wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button:focus {
-    color: #EEEEEE;
+    color: #EEEEEE !important;
 }
 
 .wp-block-straightvisions-sv-gutenform-form > .sv_gutenform_header > .sv_gutenform_input_values_wrapper {

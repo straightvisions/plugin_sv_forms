@@ -3,13 +3,10 @@ import InspectorControls from './components/inspector_controls';
 import { FormContext } from '../../blocks';
 
 const { 
-    select,
-    dispatch, 
-} = wp.data;
-const { 
     Component, 
     Fragment 
 } = wp.element;
+const { select } = wp.data;
 const { TextControl } = wp.components;
 
 export default class extends Component {
@@ -37,7 +34,7 @@ export default class extends Component {
     setFormInputs = () => {
         if ( ! this.wrapper || ! this.wrapper.clientId || ! this.props.attributes.name ) return false;
 
-        const { formInputs } = this.wrapper.attributes;
+        const { formInputs } = select('core/block-editor').getBlockAttributes( this.wrapper.clientId );
         const {
             inputId,
             name,
@@ -56,11 +53,6 @@ export default class extends Component {
         }
 
         this.wrapper.setAttributes({ formInputs: JSON.stringify( newFormInputs ) });
-    }
-
-    // Updates the wrapper attributes
-    setWrapperAttributes = wrapper => {
-        this.wrapper = wrapper;
     }
 
     // Checks if the input block is a duplicate
@@ -155,7 +147,7 @@ export default class extends Component {
                         hideLabelFromVision={ true }
                     />
                 </div>
-                <FormContext.Consumer>{ wrapper => { this.setWrapperAttributes( wrapper ) } }</FormContext.Consumer>
+                <FormContext.Consumer>{ wrapper => { this.wrapper = wrapper } }</FormContext.Consumer>
                 <InspectorControls props={ this.props } wrapper={ this.wrapper } />
             </Fragment>
         );

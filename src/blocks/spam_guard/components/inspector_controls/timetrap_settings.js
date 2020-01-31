@@ -5,8 +5,8 @@ const {
     RangeControl,
 } = wp.components;
 
-export default ( { props } ) => {
-    if ( ! props ) return '';
+export default ( { props, wrapper } ) => {
+    if ( ! props || ! wrapper ) return '';
 
     // Block Attributes
     const { 
@@ -17,7 +17,10 @@ export default ( { props } ) => {
     } = props;
 
     // Functions to set the block attributes
-    const setTimeTrapWindow = timeTrapWindow => setAttributes({ timeTrapWindow });
+    const setTimeTrapWindow = timeTrapWindow => { 
+        setAttributes({ timeTrapWindow } );
+        wrapper.setAttributes({ sgTimeTrapWindow: timeTrapWindow }); 
+    };
 
     return(
         <PanelBody

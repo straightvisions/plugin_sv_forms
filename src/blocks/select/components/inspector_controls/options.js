@@ -1,6 +1,4 @@
 // Required Components
-import iconDelete from '../../icons/delete';
-
 const { __ } = wp.i18n;
 const {
     PanelBody,
@@ -23,6 +21,13 @@ export default ( { props } ) => {
 
     // Functions to set the block attributes
     const updateOptions = options  => setAttributes({ options });
+
+    // Returns the input name in a valid format
+    const getFormatedName = name => {
+        if ( ! name ) return '';
+
+        return name.replace( /[^A-Z0-9]+/ig, '-' );
+    };
 
     // Updates the property of a single option
     const updateOption = ( index, prop, value ) => {
@@ -58,47 +63,48 @@ export default ( { props } ) => {
             initialOpen={ true }
         >
             <div className='sv-gutenform-select-options'>
-            {
-                parsedOptions.map( ( option, index ) => {
-                    return(
-                        <div className='sv-gutenform-select-option'>
-                            <div className='sv-gutenform-select-option-flex'>
-                                <TextControl
-                                    label={ __( 'Label', 'sv_gutenform' ) }
-                                    value={ option.label }
-                                    onChange={ value => updateOption( index, 'label', value ) }
-                                    autofocus
-                                />
-                                <TextControl
-                                    label={ __( 'Value', 'sv_gutenform' ) }
-                                    value={ option.value }
-                                    onChange={ value => updateOption( index, 'value', value ) }
-                                />
+                <Button
+                    className='sv-gutenform-add-option'
+                    onClick={ () => addOption() }
+                >
+                    { __( 'Add Option', 'sv_gutenform' ) }
+                </Button>
+                {
+                    parsedOptions.map( ( option, index ) => {
+                        return(
+                            <div className='sv-gutenform-select-option'>
+                                <div className='sv-gutenform-select-option-flex'>
+                                    <TextControl
+                                        label={ __( 'Label', 'sv_gutenform' ) }
+                                        value={ option.label }
+                                        onChange={ value => updateOption( index, 'label', value ) }
+                                        autofocus
+                                    />
+                                    <TextControl
+                                        label={ __( 'Value', 'sv_gutenform' ) }
+                                        value={ option.value }
+                                        onChange={ value => updateOption( index, 'value', getFormatedName( value ) ) }
+                                    />
+                                </div>
+                                <div className='sv-gutenform-select-option-flex'>
+                                    <ToggleControl
+                                        label={ __( 'Disabled', 'sv_gutenform' ) }
+                                        checked={ option.disabled }
+                                        onChange={ () => updateOption( index, 'disabled', ! option.disabled )  }
+                                    />
+                                    <Button
+                                        label={ __( 'Delete Option', 'sv_gutenform' ) }
+                                        className='sv-gutenform-option-remove'
+                                        icon='no-alt'
+                                        onClick={ () => deleteOption( index ) }
+                                    />
+                                </div>
                             </div>
-                            <div className='sv-gutenform-select-option-flex'>
-                                <ToggleControl
-                                    label={ __( 'Disabled', 'sv_gutenform' ) }
-                                    checked={ option.disabled }
-                                    onChange={ () => updateOption( index, 'disabled', ! option.disabled )  }
-                                />
-                                <Button
-                                    icon='trash'
-                                    label={ __( 'Delete Option', 'sv_gutenform' ) }
-                                    onClick={ () => deleteOption( index ) }
-                                />
-                            </div>
-                        </div>
-                    );
+                        );
 
-                } )
-            }
+                    } )
+                }
             </div>
-            <Button
-                className="sv-gutenform-add-option-button"
-                onClick={ () => addOption() }
-            >
-                { __( 'Add Option', 'sv_gutenform' ) }
-            </Button>
         </PanelBody>
     );
 }

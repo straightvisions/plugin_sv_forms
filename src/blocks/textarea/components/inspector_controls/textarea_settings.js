@@ -5,20 +5,17 @@ const {
     TextControl,
     Notice,
 } = wp.components;
-const { 
-    select,
-    dispatch, 
-} = wp.data;
+const { select } = wp.data;
 
-export default ( { props } ) => {
-    if ( ! props ) return '';
+export default ( { props, wrapper } ) => {
+    if ( ! props || ! wrapper ) return '';
 
     // Block Attributes
     const { 
-        formClientId,
         clientId,
         setAttributes,
         attributes: {
+            inputId,
             label,
             name,
             type,
@@ -31,21 +28,19 @@ export default ( { props } ) => {
     const setName           = name          => setAttributes({ name });
     const setPlaceholder    = placeholder   => setAttributes({ placeholder });
 
-    // Returns a string in a slug compatible format
-    const getSlug = string => {
-        if ( ! string ) return '';
+    // Returns the input name in a valid format
+    const getFormatedName = name => {
+        if ( ! name ) return '';
 
-        const slug = string.replace( /[^A-Z0-9]+/ig, '-' ).toLowerCase();
-
-        return slug;
+        return name.replace( /[^A-Z0-9]+/ig, '-' );
     };
 
     // Returns a notice when the input name is already in use
     const NameCheck = () => {
-        const formBlocks = select('core/block-editor').getBlocks( formClientId );
+        const wrapperBlocks = select('core/block-editor').getBlocks( wrapper.clientId );
         let output = null;
-        
-        formBlocks.map( block => {
+
+        wrapperBlocks.map( block => {
             if ( 
                 block.name.startsWith( 'straightvisions/sv-gutenform' ) 
                 && block.clientId !== clientId
@@ -67,14 +62,13 @@ export default ( { props } ) => {
     };
 
     // Updates the formInput attribute in the wrapper block
-    const updateFormInputs = newName => {
-        if ( formClientId ) {
-            const formInputs    = select('core/block-editor').getBlockAttributes( formClientId ).formInputs;
-            const newFormInput  = { ID: inputId, name: newName, type: type };
-            let newFormInputs   = [ newFormInput ];
+    const setFormInputs = newName => {
+        if ( wrapper.attributes ) {
+            const newFormInput      = { ID: inputId, name: newName, type: type };
+            let newFormInputs       = [ newFormInput ];
 
-            if ( formInputs ) {
-                newFormInputs = JSON.parse( formInputs );
+            if ( wrapper.attributes.formInputs ) {
+                newFormInputs = JSON.parse( wrapper.attributes.formInputs );
 
                 const existingInput = newFormInputs.find( input => {
                     return input.ID === inputId;
@@ -89,7 +83,7 @@ export default ( { props } ) => {
                 }
             }
 
-            dispatch('core/block-editor').updateBlockAttributes( formClientId, { formInputs: JSON.stringify( newFormInputs ) } );
+            wrapper.setAttributes({ formInputs: JSON.stringify( newFormInputs ) });
         }
     };
 
@@ -108,10 +102,10 @@ export default ( { props } ) => {
             />
             <TextControl
                 label={ __( 'Name', 'sv_gutenform' ) }
-                value={ getSlug( name ) }
+                value={ getFormatedName( name ) }
                 onChange={ value => { 
-                    updateFormInputs( getSlug( value ) );
-                    setName( getSlug( value ) );
+                    setFormInputs( getFormatedName( value ) );
+                    setName( getFormatedName( value ) );
                 }}
             />
             <NameCheck />
