@@ -28,7 +28,9 @@ export default class extends Component {
 
     componentDidUpdate = () => {}
 
-    componentWillUnmount = () => {}
+    componentWillUnmount = () => {
+        this.removeFormInput();
+    }
 
     // Updates the formInput attribute in the wrapper block
     setFormInputs = () => {
@@ -53,6 +55,22 @@ export default class extends Component {
         }
 
         this.wrapper.setAttributes({ formInputs: JSON.stringify( newFormInputs ) });
+    }
+
+    // Removes this block from the formInputs array
+    removeFormInput = () => {
+        if ( ! this.wrapper || ! this.wrapper.clientId || ! this.props.attributes.inputId ) return false;
+
+        const { formInputs } = select('core/block-editor').getBlockAttributes( this.wrapper.clientId );
+        const { inputId } = this.props.attributes;
+        let newFormInputs = JSON.parse( formInputs );
+        const index = newFormInputs.findIndex( input => { return input.ID === inputId } );
+        
+        if ( index ) {
+            newFormInputs.splice( index, 1 );
+
+            this.wrapper.setAttributes({ formInputs: JSON.stringify( newFormInputs ) });
+        }
     }
 
     // Checks if the input block is a duplicate
