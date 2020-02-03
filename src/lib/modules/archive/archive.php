@@ -111,8 +111,8 @@ class archive extends modules {
 
 	// Sets the titles of the post columns
 	public function manage_sv_gutenform_submit_posts_columns( array $columns ): array {
-		$columns[ $this->get_root()->get_prefix( 'user_mail' ) ] 	= __( 'User Mail', 'sv_gutenform' );
-		$columns[ $this->get_root()->get_prefix( 'admin_mail' ) ] 	= __( 'Admin Mail', 'sv_gutenform' );
+		$columns[ $this->get_root()->get_prefix( 'user_mail_sent' ) ] 	= __( 'User Mail Sent', 'sv_gutenform' );
+		$columns[ $this->get_root()->get_prefix( 'admin_mail_sent' ) ] 	= __( 'Admin Mail Sent', 'sv_gutenform' );
 
 		return $columns;
 	}
@@ -120,8 +120,8 @@ class archive extends modules {
 	// Sets the value of the custom columns
 	public function manage_sv_gutenform_submit_posts_custom_column( $column, $post_id ) {
 		switch( $column ) {
-			case $this->get_root()->get_prefix( 'user_mail' ):
-				$meta_key 	= '_' . $this->get_root()->get_prefix( 'send_user_mail' );
+			case $this->get_root()->get_prefix( 'user_mail_sent' ):
+				$meta_key 	= '_' . $this->get_root()->get_prefix( 'user_mail_sent' );
 				$user_mail 	= get_post_meta( $post_id, $meta_key, true ) ? boolval( get_post_meta( $post_id, $meta_key, true ) ) : false;
 
 				if ( $user_mail ) {
@@ -130,8 +130,8 @@ class archive extends modules {
 					echo '<span class="dashicons dashicons-dismiss"></span>';
 				}
 				break;
-			case $this->get_root()->get_prefix( 'admin_mail' ):
-				$meta_key 	= '_' . $this->get_root()->get_prefix( 'admin_mail' );
+			case $this->get_root()->get_prefix( 'admin_mail_sent' ):
+				$meta_key 	= '_' . $this->get_root()->get_prefix( 'admin_mail_sent' );
 				$admin_mail = get_post_meta( $post_id, $meta_key, true ) && ! empty( get_post_meta( $post_id, $meta_key, true ) ) ? true : false;
 
 				if ( $admin_mail ) {

@@ -61,7 +61,7 @@ class mail extends modules {
 		$to_users 		= json_decode( $attr->adminMailToUsers );
 		$to_mails 		= json_decode( $attr->adminMailToMails );
 
-		if ( count( $to_users ) > 0 ) {
+		if ( $to_users && count( $to_users ) > 0 ) {
 			foreach( $to_users as $user_id ) {
 				$user_mail = get_the_author_meta( 'user_email', intval( $user_id ) );
 
@@ -71,7 +71,7 @@ class mail extends modules {
 			}
 		}
 
-		if ( count( $to_mails ) > 0 ) {
+		if ( $to_mails && count( $to_mails ) > 0 ) {
 			foreach( $to_mails as $mail ) {
 				$email_adresses[] = $mail;
 			}

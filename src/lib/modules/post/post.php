@@ -84,32 +84,13 @@ class post extends modules {
 		return empty( $option_value ) ? array() : json_decode( $option_value );
 	}
 
-    // Filters the form data and removes technical relevant data values
-    private function get_filtered_form_data( array $data ): array {
-        $input_values_to_be_removed = array(
-            $this->get_root()->get_prefix( 'form_id' ),
-            $this->get_root()->get_prefix( 'sg_hp' ),
-            $this->get_root()->get_prefix( 'sg_tt' ),
-        );
-
-        $filtered_form_data = $this->remove_input_value( $input_values_to_be_removed, $data );
-
-        return $filtered_form_data;
-    }
-
-    // Returns an array containing only sanitized form inputs
-    private function get_sanitized_form_data( object $attr, array $data ): array {
-        $filtered_data = $this->get_filtered_form_data( $data );
-        
-        return $filtered_data;
-    }
-
     // Returns the form data as table for the post content
-    private function get_post_content( object $attr, array $data ): string {
-        $filtered_form_data = $this->get_sanitized_form_data( $attr, $data );
+    private function get_post_content( array $data ): string {
+        $filtered_data = $this->remove_input_value( 'sv_gutenform_form_id', $data );
+
         $content = '<!-- wp:table --><figure class="wp-block-table"><table class=""><tbody>';
 
-        foreach( $filtered_form_data as $input ) {
+        foreach( $filtered_data as $input ) {
             $content .= '<tr><td>' . $input['name'] . '</td><td>' . $input['value'] . '</td></tr>';
         }
 
@@ -121,56 +102,40 @@ class post extends modules {
     // Returns the submission data as post meta array
     private function get_post_meta( object $attr, array $data ): array {
         // Meta Keys
-        $post_id_meta_key 			= '_' . $this->get_root()->get_prefix( 'post_id' );
-        $form_id_meta_key 			= '_' . $this->get_root()->get_prefix( 'form_id' );
-        $form_data_meta_key 		= '_' . $this->get_root()->get_prefix( 'form_data' );
-        $user_mail_meta_key			= '_' . $this->get_root()->get_prefix( 'user_mail' );
-        $send_user_mail_meta_key 	= '_' . $this->get_root()->get_prefix( 'send_user_mail' );
-        $admin_mail_meta_key		= '_' . $this->get_root()->get_prefix( 'admin_mail' );
+        $post_id_key 			= '_' . $this->get_root()->get_prefix( 'post_id' );
+        $form_id_key 			= '_' . $this->get_root()->get_prefix( 'form_id' );
+        $form_data_key 		    = '_' . $this->get_root()->get_prefix( 'form_data' );
+        $user_mail_sent_key		= '_' . $this->get_root()->get_prefix( 'user_mail_sent' );
+        $user_mail_mails_key    = '_' . $this->get_root()->get_prefix( 'user_mail_mails' );
+        $admin_mail_sent_key    = '_' . $this->get_root()->get_prefix( 'admin_mail_sent' );
+        $admin_mail_users_key   = '_' . $this->get_root()->get_prefix( 'admin_mail_mails' );
+        $admin_mail_mails_key	= '_' . $this->get_root()->get_prefix( 'admin_mail_mails' );
 
         // Meta Array
         $meta = array(
-            $post_id_meta_key 			=> $attr->postId,
-            $form_id_meta_key			=> $attr->formId,
-            $form_data_meta_key 		=> json_encode( $this->get_sanitized_form_data( $attr, $data ) ),
-            $send_user_mail_meta_key 	=> isset( $attr->userMail ) && $attr->userMail ? 1 : 0,
+            $post_id_key 			=> $attr->postId,
+            $form_id_key			=> $attr->formId,
+            $form_data_key 		    => json_encode( $data ),
+            $user_mail_sent_key     => $attr->userMailSend ? 1 : 0,
+            $user_mail_mails_key    => $attr->userMailToMails,
+            $admin_mail_sent_key    => $attr->adminMailSend ? 1 : 0,
+            $admin_mail_users_key   => $attr->adminMailToUsers,
+            $admin_mail_mails_key   => $attr->adminMailToMails,
         );
-
-        // User Mail
-        if ( ! empty( $attr->userMailInputName ) ) {
-            if ( $this->get_input_value( $attr->userMailInputName, $data ) ) {
-                $meta[ $user_mail_meta_key ] = $this->get_input_value( $attr->userMailInputName, $data );
-            }
-        }
-
-        // Admin Mail
-        if ( $attr->adminMail !== 'disabled' ) {
-            switch ( $attr->adminMail ) {
-                // E-Mail Adress
-                case 'adress':
-                    $meta[ $admin_mail_meta_key ] = $attr->adminMailAdress;
-                    break;
-
-                // Author
-                case 'author':
-                    $meta[ $admin_mail_meta_key ] = get_the_author_meta( 'user_email', $attr->adminMailUser );
-                    break;
-            }
-        }
 
         return $meta;
     }
 
     // Adds the submission as a new post
     public function insert_post( object $attr, array $data ): post {
-        if ( ! $attr || ! $data || ! $attr->saveSubmits ) return $this;
+        if ( ! $attr || ! $data || ! $attr->saveSubmissions ) return $this;
 
         $form_post = get_post( $attr->postId );
 
         // Post Arguments
         $postarr = array(
             'post_title'	=> $form_post->post_title . ' (' . $form_post->ID . ')',
-            'post_content'	=> $this->get_post_content( $attr, $data ),
+            'post_content'	=> $this->get_post_content( $data ),
             'post_type'		=> $this->get_post_type(),
             'post_status'	=> 'publish',
             'meta_input'	=> $this->get_post_meta( $attr, $data ),

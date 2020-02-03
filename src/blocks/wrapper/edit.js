@@ -20,8 +20,8 @@ export default class extends Component {
     constructor(props) {
         super(...arguments);
 
-        this.props      = props;
-        this.template   = [
+        this.props = props;
+        this.template = [
             ['straightvisions/sv-gutenform-form'],
             ['straightvisions/sv-gutenform-thank-you'],
             ['straightvisions/sv-gutenform-user-mail'],
@@ -48,7 +48,6 @@ export default class extends Component {
     componentDidUpdate = () => {
         this.updateChildBlocks();
         this.updatePostMeta( 'update' );
-        console.log(this.props.attributes);
     }
 
     componentWillUnmount = () => {
