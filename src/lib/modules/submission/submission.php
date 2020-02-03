@@ -17,7 +17,7 @@ class submission extends modules {
 		$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_gutenform_forms', true ) );
 		$form_data	= $_POST[ $this->get_root()->get_prefix( 'form_data' ) ];
 		$form_id	= $this->get_input_value( $this->get_root()->get_prefix( 'form_id' ), $form_data );
-
+		
 		if ( $post_meta && $form_id && $post_meta->$form_id ) {
 			$this->handle_submission( $post_meta->$form_id, $form_data );
 		}

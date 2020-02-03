@@ -22,6 +22,7 @@ export default class extends Component {
 
         this.props = props;
         this.wrapper = {};
+        this.styles = [];
     }
 
      // React Lifecycle Methos
@@ -29,15 +30,105 @@ export default class extends Component {
         this.toggleBody( false );
     }
 
-    componentDidUpdate = () => {}
+    componentDidUpdate = () => {
+        const innerBlocks = select( 'core/block-editor' ).getBlocks( this.props.clientId );
+
+        this.addStyles( innerBlocks );
+    }
 
     componentWillUnmount = () => {}
 
     // Returns the innerBlocks content as string
     getMailContent = () => {
         const innerBlocks = select( 'core/block-editor' ).getBlocks( this.props.clientId );
+        const content = innerBlocks.map( block => { return  getBlockContent( block ) } ).join( '' );
+        const styles = this.getStyles();
 
-        return innerBlocks.map( block => { return  getBlockContent( block ) } ).join( '' );
+        return content + styles;
+    }
+
+    getStyles = () => {
+        let output = '<style>';
+
+        this.styles.map( style => {
+            output += style.name + '{' + style.styles + ';}';
+        } );
+
+        output += '</style>';
+
+        return output;
+    } 
+
+    styleExists = className => {
+        return this.styles.find( style => { return style.name === className; } ) ? true : false;
+    }
+
+    // Fetches style attributes of blocks, retrieves their style rules 
+    // and saves the classname to rules relation in the styles array
+    addStyles = innerBlocks => {
+        innerBlocks.map( block => {
+            if ( block.attributes ) {
+                console.log(block);
+                const {
+                    align,
+                    textColor,
+                    backgroundColor,
+                    fontSize,
+                } = block.attributes;
+
+                // Text Align
+                if ( align ) {
+                    const className = '.has-text-align-' + align;
+
+                    if ( ! this.styleExists( className ) ) {
+                        const value = jQuery( className ).css('text-align');
+
+                        if ( value ) {
+                            this.styles.push( { name: className, styles: 'text-align:' + value } );
+                        }
+                    }
+                }
+
+                // Text Color
+                if ( textColor ) {
+                    const className = '.has-' + textColor + '-color';
+
+                    if ( ! this.styleExists( className ) ) {
+                        const value = jQuery( className ).css('color');
+
+                        if ( value ) {
+                            this.styles.push( { name: className, styles: 'color:' + value } );
+                        }
+                    }
+                }
+
+                // Background Color
+                if ( backgroundColor ) {
+                    const className = '.has-' + backgroundColor + '-background-color';
+
+                    if ( ! this.styleExists( className ) ) {
+                        const value = jQuery( className ).css('background-color');
+
+                        if ( value ) {
+                            this.styles.push( { name: className, styles: 'background-color:' + value } );
+                        }
+                    }
+                }
+
+                // Font Size
+                if ( fontSize ) {
+                    const className = '.has-' + fontSize + '-font-size';
+
+                    if ( ! this.styleExists( className ) ) {
+                        const value = jQuery( className ).css('font-size');
+
+                        if ( value ) {
+                            this.styles.push( { name: className, styles: 'font-size:' + value } );
+                        }
+                    }
+                }
+            }
+        } );
     }
 
     // Updates the wrapper attributes

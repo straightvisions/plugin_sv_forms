@@ -21,11 +21,14 @@
         let names   = [];
         let find    = [];
         let replace = [];
-        
-        content.match( /%(.*?)%/g ).forEach( name => {
-            find.push( name );
-            names.push( name.split('%').join('') );
-        } );
+        const matches = content.match( /%(.*?)%/g );
+
+        if ( matches ) {
+            matches.forEach( name => {
+                find.push( name );
+                names.push( name.split('%').join('') );
+            } );
+        }
 
         names.forEach( name => {
             const formInput = formData.find( input => { return name === input.name; } );
