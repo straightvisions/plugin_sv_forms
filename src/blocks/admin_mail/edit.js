@@ -23,6 +23,17 @@ export default class extends Component {
         this.props = props;
         this.wrapper = {};
         this.styles = [];
+        this.allowedBlocks = [
+            'core/button',
+            'core/columns',
+            'core/group',
+            'core/heading',
+            'core/image',
+            'core/list',
+            'core/paragraph',
+            'core/seperator',
+            'core/table',
+        ];
     }
 
      // React Lifecycle Methos
@@ -49,7 +60,7 @@ export default class extends Component {
 
     getStyles = () => {
         let output = '<style>';
-
+        
         this.styles.map( style => {
             output += style.name + '{' + style.styles + ';}';
         } );
@@ -68,7 +79,6 @@ export default class extends Component {
     addStyles = innerBlocks => {
         innerBlocks.map( block => {
             if ( block.attributes ) {
-                console.log(block);
                 const {
                     align,
                     textColor,
@@ -241,7 +251,10 @@ export default class extends Component {
                         </div>
                     </div>
                     <div class='sv_gutenform_body'>
-                        <InnerBlocks templateLock={ false } />
+                        <InnerBlocks 
+                            templateLock={ false } 
+                            allowedBlocks={ this.allowedBlocks }
+                        />
                     </div> 
                 </div>
                 <FormContext.Consumer>{ wrapper => { this.setWrapperAttributes( wrapper ) } }</FormContext.Consumer>

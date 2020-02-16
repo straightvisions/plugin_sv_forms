@@ -19,6 +19,17 @@ export default class extends Component {
 
         this.props = props;
         this.wrapper = {};
+        this.allowedBlocks = [
+            'core/button',
+            'core/columns',
+            'core/group',
+            'core/heading',
+            'core/image',
+            'core/list',
+            'core/paragraph',
+            'core/seperator',
+            'core/table',
+        ];
     }
 
      // React Lifecycle Methos
@@ -144,7 +155,10 @@ export default class extends Component {
                     </div>
                 </div>
                 <div class='sv_gutenform_body'>
-                    <InnerBlocks templateLock={ false } />
+                    <InnerBlocks 
+                        templateLock={ false } 
+                        allowedBlocks={ this.allowedBlocks }
+                    />
                 </div> 
                 <FormContext.Consumer>{ wrapper => { this.setWrapperAttributes( wrapper ) } }</FormContext.Consumer>
                 <InspectorControls props={ this.props } wrapper={ this.wrapper }  />

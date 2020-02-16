@@ -14,10 +14,37 @@ class mail extends modules {
 	// Sends a mail
 	private function send_mail( $to, string $subject, string $message, array $headers ): mail {
 		add_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
-		wp_mail( $to, $subject, $message, $headers );
+
+		$content = $this->get_default_styles() . $message;
+
+		wp_mail( $to, $subject, $content, $headers );
+
 		remove_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
 
 		return $this;
+	}
+
+	// Returns the default styles for mails as a string
+	private function get_default_styles(): string {
+		$styles = '<style>';
+		$path = $this->get_root()->get_path( 'lib/modules/mail/css/' );
+
+		ob_start();
+
+		// CSS Files
+		require_once( $path . 'default.css' );
+		require_once( $path . 'heading.css' );
+		require_once( $path . 'paragraph.css' );
+		require_once( $path . 'list.css' );
+		require_once( $path . 'group.css' );
+		require_once( $path . 'columns.css' );
+
+		$styles .= ob_get_contents();
+		ob_end_clean();
+
+		$styles .= '</style>';
+
+		return $styles;
 	}
 
 	// Replaces all input strings in the mail content, with the matching input values
