@@ -1,0 +1,74 @@
+.wp-block-table {
+    overflow-x: auto;
+    display: block;
+    margin: 0;
+}
+
+.wp-block-table .has-fixed-layout {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.wp-block-table.is-style-stripes {
+    border-spacing: 0;
+    border-collapse: inherit;
+    background-color: transparent;
+}
+
+.wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+    background-color: #32373c;
+    color: #fff;
+}
+
+table {
+    border: 0.1rem solid #32373c;
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    font-size: 1.6rem;
+    margin: 4rem 0;
+    max-width: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+table, table * {
+    border-color: #32373c;
+}
+
+thead {
+    vertical-align: bottom;
+    white-space: nowrap;
+}
+
+tr, th, td {
+    border: none;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    text-align: inherit;
+}
+
+th, td {
+    border: 0.1rem solid #32373c;
+    line-height: 1.4;
+    margin: 0;
+    overflow: visible;
+    padding: 0.5em;
+}
+
+th {
+    font-weight: 700;
+}
+
+.wp-block-table.is-style-stripes td, 
+.wp-block-table.is-style-stripes th {
+    border-color: transparent;
+}
+
+@media (min-width: 700px) {
+    table {
+        font-size: 1.8rem;
+    }
+}

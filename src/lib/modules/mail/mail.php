@@ -26,18 +26,25 @@ class mail extends modules {
 
 	// Returns the default styles for mails as a string
 	private function get_default_styles(): string {
-		$styles = '<style>';
-		$path = $this->get_root()->get_path( 'lib/modules/mail/css/' );
+		$dir 		= $this->get_root()->get_path( 'lib/modules/mail/css/blocks' );
+		$dir_array 	= array_diff( scandir( $dir ), array( '..', '.' ) );
+		$styles 	= '<style>';
 
 		ob_start();
 
-		// CSS Files
-		require_once( $path . 'default.css' );
-		require_once( $path . 'heading.css' );
-		require_once( $path . 'paragraph.css' );
-		require_once( $path . 'list.css' );
-		require_once( $path . 'group.css' );
-		require_once( $path . 'columns.css' );
+		// Always loaded first before the block styles
+		if ( file_exists( $dir . '/../default.css' )  ) {
+			require_once( $dir . '/../default.css' );
+		}
+
+		foreach( $dir_array as $file ) {
+			if ( 
+				is_file( $dir . '/' . $file ) 
+				&& file_exists( $dir . '/' . $file ) 
+			) {
+				require_once( $dir . '/' . $file );
+			}
+		}
 
 		$styles .= ob_get_contents();
 		ob_end_clean();

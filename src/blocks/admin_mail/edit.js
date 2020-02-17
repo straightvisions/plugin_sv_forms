@@ -31,8 +31,9 @@ export default class extends Component {
             'core/image',
             'core/list',
             'core/paragraph',
-            'core/seperator',
             'core/table',
+            'core/separator',
+            'core/spacer',
         ];
     }
 

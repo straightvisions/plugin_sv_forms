@@ -89,6 +89,10 @@
     bottom: -14px;
 }
 
+.wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_body .block-editor-block-list__layout > *:first-child > * {
+    margin-top: 0 !important;
+}
+
 .wp-block-straightvisions-sv-gutenform-user-mail > .sv_gutenform_header::after {
     background-image: linear-gradient(to right top, #f00b51, #f1007f, #e11cae, #bb47db, #7366ff);
     border: none;

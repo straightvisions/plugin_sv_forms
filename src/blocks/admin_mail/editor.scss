@@ -101,6 +101,10 @@
     border-image-slice: 1;
 }
 
+.wp-block-straightvisions-sv-gutenform-admin-mail > .sv_gutenform_body .block-editor-block-list__layout > *:first-child > * {
+    margin-top: 0 !important;
+}
+
 // Send To Authors
 .components-base-control.sv-gutenform-users-select {
     margin-bottom: 0;
