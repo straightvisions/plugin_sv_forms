@@ -136,6 +136,9 @@ class wrapper extends sv_gutenform {
 					'adminMailContent'=> array(
 						'type' => 'string',
 					),
+					'adminMailBlockStyles'=> array(
+						'type' => 'string',
+					),
 
 					// User Mails
 					'userMail' => array(
@@ -154,6 +157,9 @@ class wrapper extends sv_gutenform {
 						'type' => 'string',
 					),
 					'userMailContent' => array(
+						'type' => 'string',
+					),
+					'userMailBlockStyles'=> array(
 						'type' => 'string',
 					),
 

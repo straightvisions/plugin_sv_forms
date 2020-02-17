@@ -14,11 +14,7 @@ class mail extends modules {
 	// Sends a mail
 	private function send_mail( $to, string $subject, string $message, array $headers ): mail {
 		add_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
-
-		$content = $this->get_default_styles() . $message;
-
-		wp_mail( $to, $subject, $content, $headers );
-
+		wp_mail( $to, $subject, $message, $headers );
 		remove_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
 
 		return $this;
@@ -121,18 +117,23 @@ class mail extends modules {
 		// Mail Properties
 		$to = $this->get_user_mails( $attr, $data );
 
+		// Subject
 		if ( isset( $attr->userMailSubject ) && ! empty( $attr->userMailSubject ) ) {
 			$subject = $attr->userMailSubject;
 		} else {
 			$subject = __( 'Thank You', 'sv_gutenform' );
 		}
 
+		// Message
 		if ( isset( $attr->userMailContent ) && ! empty( $attr->userMailContent ) ) {
-			$message = $this->get_parsed_mail_content( $attr->userMailContent, $data );
+			$message = $this->get_parsed_mail_content( $attr->userMailContent, $data ) 
+				. $this->get_default_styles() 
+				. $attr->userMailBlockStyles;
 		} else {
 			$message = __( 'Thank you for your submission!', 'sv_gutenform' );
 		}
 
+		// Headers
 		if ( 
 			isset( $attr->userMailFromTitle ) 
 			&& ! empty( $attr->userMailFromTitle ) 
@@ -156,18 +157,23 @@ class mail extends modules {
 		// Mail Properties
 		$to = $this->get_admin_mails( $attr );
 
+		// Subject
 		if ( isset( $attr->adminMailSubject ) && ! empty( $attr->adminMailSubject ) ) {
 			$subject = $attr->adminMailSubject;
 		} else {
 			$subject = __( 'New Form Submit', 'sv_gutenform' );
 		}
 
+		// Message
 		if ( isset( $attr->adminMailContent ) && ! empty( $attr->adminMailContent ) ) {
-			$message = $this->get_parsed_mail_content( $attr->adminMailContent, $data );
+			$message = $this->get_parsed_mail_content( $attr->adminMailContent, $data )
+				. $this->get_default_styles() 
+				. $attr->adminMailBlockStyles;
 		} else {
 			$message = __( 'A new form was submitted.', 'sv_gutenform' );
 		}
 
+		// Headers
 		if ( 
 			isset( $attr->adminMailFromTitle ) 
 			&& ! empty( $attr->adminMailFromTitle ) 

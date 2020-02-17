@@ -54,9 +54,8 @@ export default class extends Component {
     getMailContent = () => {
         const innerBlocks = select( 'core/block-editor' ).getBlocks( this.props.clientId );
         const content = innerBlocks.map( block => { return  getBlockContent( block ) } ).join( '' );
-        const styles = this.getStyles();
 
-        return content + styles;
+        return content;
     }
 
     getStyles = () => {
@@ -81,24 +80,11 @@ export default class extends Component {
         innerBlocks.map( block => {
             if ( block.attributes ) {
                 const {
-                    align,
                     textColor,
                     backgroundColor,
+                    gradient,
                     fontSize,
                 } = block.attributes;
-
-                // Text Align
-                if ( align ) {
-                    const className = '.has-text-align-' + align;
-
-                    if ( ! this.styleExists( className ) ) {
-                        const value = jQuery( className ).css('text-align');
-
-                        if ( value ) {
-                            this.styles.push( { name: className, styles: 'text-align:' + value } );
-                        }
-                    }
-                }
 
                 // Text Color
                 if ( textColor ) {
@@ -122,6 +108,19 @@ export default class extends Component {
 
                         if ( value ) {
                             this.styles.push( { name: className, styles: 'background-color:' + value } );
+                        }
+                    }
+                }
+
+                // Gradient
+                if ( gradient ) {
+                    const className = '.has-' + gradient + '-gradient-background';
+
+                    if ( ! this.styleExists( className ) ) {
+                        const value = jQuery( className ).css('background-image');
+
+                        if ( value ) {
+                            this.styles.push( { name: className, styles: 'background:' + value } );
                         }
                     }
                 }
@@ -165,6 +164,7 @@ export default class extends Component {
             adminMailToUsers: mailToUsers,
             adminMailToMails: mailToMails,
             adminMailContent: this.getMailContent(),
+            adminMailBlockStyles: this.getStyles(),
         };
 
         wrapper.setAttributes( newAttributes );

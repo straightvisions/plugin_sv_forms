@@ -63,6 +63,9 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		adminMailContent: {
 			type: 'string',
 		},
+		adminMailBlockStyles: {
+			type: 'string',
+		},
 
 		// User Mail Block
 		userMailSend: {
@@ -81,6 +84,9 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 			type: 'string',
 		},
 		userMailContent: {
+			type: 'string',
+		},
+		userMailBlockStyles: {
 			type: 'string',
 		},
 
