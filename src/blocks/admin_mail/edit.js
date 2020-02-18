@@ -59,13 +59,11 @@ export default class extends Component {
     }
 
     getStyles = () => {
-        let output = '<style>';
+        let output = '';
         
         this.styles.map( style => {
             output += style.name + '{' + style.styles + ';}';
         } );
-
-        output += '</style>';
 
         return output;
     } 

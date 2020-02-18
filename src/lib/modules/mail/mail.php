@@ -12,62 +12,93 @@ class mail extends modules {
 	}
 
 	// Sends a mail
-	private function send_mail( $to, string $subject, string $message, array $headers ): mail {
+	private function send_mail( $to, string $subject, string $content, array $headers ): mail {
 		add_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
-		wp_mail( $to, $subject, $message, $headers );
+		wp_mail( $to, $subject, $content, $headers );
 		remove_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
 
 		return $this;
 	}
 
-	// Returns the default styles for mails as a string
-	private function get_default_styles(): string {
-		$dir 		= $this->get_root()->get_path( 'lib/modules/mail/css/blocks' );
-		$dir_array 	= array_diff( scandir( $dir ), array( '..', '.' ) );
-		$styles 	= '<style>';
+	// Sends a mail to a auser
+	private function send_user_mails( object $attr, array $data ): mail {
+		if ( ! $attr || ! $data || ! isset( $attr->userMailSend ) || ! $attr->userMailSend ) return $this;
+		if ( ! isset( $attr->userMailContent ) || empty( $attr->userMailContent ) ) return $this;
 
-		ob_start();
+		// Mail Properties
+		$to = $this->get_user_mails( $attr, $data );
 
-		// Always loaded first before the block styles
-		if ( file_exists( $dir . '/../default.css' )  ) {
-			require_once( $dir . '/../default.css' );
+		// Subject
+		if ( isset( $attr->userMailSubject ) && ! empty( $attr->userMailSubject ) ) {
+			$subject = $attr->userMailSubject;
+		} else {
+			$subject = __( 'Thank You', 'sv_gutenform' );
 		}
 
-		foreach( $dir_array as $file ) {
-			if ( 
-				is_file( $dir . '/' . $file ) 
-				&& file_exists( $dir . '/' . $file ) 
-			) {
-				require_once( $dir . '/' . $file );
-			}
+		// Mail Content
+		$block_styles = isset( $attr->userMailBlockStyles ) ? $attr->userMailBlockStyles : '';
+		$content = $this->get_mail( 
+			$attr->userMailContent,
+			$block_styles, 
+			$data
+		);
+
+		// Headers
+		if ( 
+			isset( $attr->userMailFromTitle ) 
+			&& ! empty( $attr->userMailFromTitle ) 
+			&& isset( $attr->userMailFromMail ) 
+			&& ! empty( $attr->userMailFromMail ) 
+		) {
+			$headers = array( 'From: ' . $attr->userMailFromTitle . ' <' . $attr->userMailFromMail . '>' );
+		} else {
+			$headers = array();
 		}
+		
+		$this->send_mail( $to, $subject, $content, $headers );
 
-		$styles .= ob_get_contents();
-		ob_end_clean();
-
-		$styles .= '</style>';
-
-		return $styles;
+		return $this;
 	}
+	
+	// Sends a mail to an admin
+	private function send_admin_mails( object $attr, array $data ): mail {
+		if ( ! $attr || ! $data || ! isset( $attr->adminMailSend ) || ! $attr->adminMailSend ) return $this;
+		if ( ! isset( $attr->adminMailContent ) || empty( $attr->adminMailContent ) ) return $this;
 
-	// Replaces all input strings in the mail content, with the matching input values
-	private function get_parsed_mail_content( string $mail_content, array $data ): string {
-		preg_match_all( '/%(.*?)%/s', $mail_content, $input_names );
+		// Mail Properties
+		$to = $this->get_admin_mails( $attr );
 
-		$input_values = array();
-
-		foreach( $input_names[1] as $index => $name ) {
-			$value = $this->get_input_value( $name, $data );
-
-			if ( $value && ! is_array( $value ) ) {
-				$input_values[ $index ] = $this->get_input_value( $name, $data );
-			}
+		// Subject
+		if ( isset( $attr->adminMailSubject ) && ! empty( $attr->adminMailSubject ) ) {
+			$subject = $attr->adminMailSubject;
+		} else {
+			$subject = __( 'New Form Submission', 'sv_gutenform' );
 		}
 
-		$parsed_string = str_replace( $input_names[0], $input_values, $mail_content );
+		// Mail Content
+		$block_styles = isset( $attr->adminMailBlockStyles ) ? $attr->adminMailBlockStyles : '';
+		$content = $this->get_mail( 
+			$attr->adminMailContent,
+			$block_styles, 
+			$data
+		);
 
-		return $parsed_string;
-	}	
+		// Headers
+		if ( 
+			isset( $attr->adminMailFromTitle ) 
+			&& ! empty( $attr->adminMailFromTitle ) 
+			&& isset( $attr->adminMailFromMail ) 
+			&& ! empty( $attr->adminMailFromMail ) 
+		) {
+			$headers = array( 'From: ' . $attr->adminMailFromTitle . ' <' . $attr->adminMailFromMail . '>' );
+		} else {
+			$headers = array();
+		}
+
+		$this->send_mail( $to, $subject, $content, $headers );
+
+		return $this;
+	}
 
 	// Returns the user mail adress
 	private function get_user_mails( object $attr, array $data ): array {	
@@ -110,83 +141,86 @@ class mail extends modules {
 		return $email_adresses;
 	}
 
-	// Sends a mail to a auser
-	private function send_user_mails( object $attr, array $data ): mail {
-		if ( ! $attr || ! $data || ! isset( $attr->userMailSend ) || ! $attr->userMailSend ) return $this;
+	// Returns the HTML mail
+	private function get_mail( string $content, string $block_styles, array $data ): string {
+		// Default header
+		$mail = '<!DOCTYPE html>
+			<html>
+			<head>
+				<meta charset="UTF-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<meta http-equiv="Content-Type" content="text/html charset=UTF-8" />';
 
-		// Mail Properties
-		$to = $this->get_user_mails( $attr, $data );
+		// Adding the mail styles to the <head>
+		$mail .= $this->get_styles( $block_styles );
+		$mail .= '</head><body>';
 
-		// Subject
-		if ( isset( $attr->userMailSubject ) && ! empty( $attr->userMailSubject ) ) {
-			$subject = $attr->userMailSubject;
-		} else {
-			$subject = __( 'Thank You', 'sv_gutenform' );
+		// Adding the mail <body> (content)
+		$mail .= $this->cleanup_mail_content( $this->replace_input_values( $content, $data ) );
+		$mail .= '</body></html>';
+
+		return $mail;
+	}
+
+	// Replaces all input value place holders, with their respectively input values
+	private function replace_input_values( string $content, array $data ): string {
+		// Finds all string that starts and ends with %
+		preg_match_all( '/%(.*?)%/s', $content, $input_names );
+
+		$input_values = array();
+
+		foreach( $input_names[1] as $index => $name ) {
+			$value = $this->get_input_value( $name, $data );
+
+			if ( $value && ! is_array( $value ) ) {
+				$input_values[ $index ] = $this->get_input_value( $name, $data );
+			}
 		}
 
-		// Message
-		if ( isset( $attr->userMailContent ) && ! empty( $attr->userMailContent ) ) {
-			$message = $this->get_parsed_mail_content( $attr->userMailContent, $data ) 
-				. $this->get_default_styles() 
-				. $attr->userMailBlockStyles;
-		} else {
-			$message = __( 'Thank you for your submission!', 'sv_gutenform' );
+		$parsed_content = str_replace( $input_names[0], $input_values, $content );
+
+		return $parsed_content;
+	}
+
+	// Returns the CSS styles for the mail content
+	private function get_styles( string $block_styles ): string {
+		// Default Block Styles
+		$dir 		= $this->get_root()->get_path( 'lib/modules/mail/css/blocks/min' );
+		$dir_array 	= array_diff( scandir( $dir ), array( '..', '.' ) );
+		$styles 	= '<style>';
+
+		ob_start();
+
+		// Always loaded first before the block styles
+		if ( file_exists( $dir . '/../../default.min.css' )  ) {
+			require( $dir . '/../../default.min.css' );
 		}
 
-		// Headers
-		if ( 
-			isset( $attr->userMailFromTitle ) 
-			&& ! empty( $attr->userMailFromTitle ) 
-			&& isset( $attr->userMailFromMail ) 
-			&& ! empty( $attr->userMailFromMail ) 
-		) {
-			$headers = array( 'From: ' . $attr->userMailFromTitle . ' <' . $attr->userMailFromMail . '>' );
-		} else {
-			$headers = array();
+		foreach( $dir_array as $file ) {
+			if ( 
+				is_file( $dir . '/' . $file ) 
+				&& file_exists( $dir . '/' . $file ) 
+			) {
+				require( $dir . '/' . $file );
+			}
 		}
-		
-		$this->send_mail( $to, $subject, $message, $headers );
 
-		return $this;
+		$styles .= ob_get_contents();
+		ob_end_clean();
+
+		// Dynamic Block Styles
+		$styles .= $block_styles;
+		$styles .= '</style>';
+
+		return $styles;
 	}
 	
-	// Sends a mail to an admin
-	private function send_admin_mails( object $attr, array $data ): mail {
-		if ( ! $attr || ! $data || ! isset( $attr->adminMailSend ) || ! $attr->adminMailSend ) return $this;
+	// Cleans the mail content from html comments, php comments and empty lines
+	private function cleanup_mail_content( string $content ): string {
+		$no_html_comments 	= preg_replace('/<!--(.|\s)*?-->/', '', $content);
+		$no_php_comments 	= preg_replace('!/\*.*?\*/!s', '', $no_html_comments);
+		$no_empty_lines		= preg_replace('/\n\s*\n/', "\n", $no_php_comments);
 
-		// Mail Properties
-		$to = $this->get_admin_mails( $attr );
-
-		// Subject
-		if ( isset( $attr->adminMailSubject ) && ! empty( $attr->adminMailSubject ) ) {
-			$subject = $attr->adminMailSubject;
-		} else {
-			$subject = __( 'New Form Submit', 'sv_gutenform' );
-		}
-
-		// Message
-		if ( isset( $attr->adminMailContent ) && ! empty( $attr->adminMailContent ) ) {
-			$message = $this->get_parsed_mail_content( $attr->adminMailContent, $data )
-				. $this->get_default_styles() 
-				. $attr->adminMailBlockStyles;
-		} else {
-			$message = __( 'A new form was submitted.', 'sv_gutenform' );
-		}
-
-		// Headers
-		if ( 
-			isset( $attr->adminMailFromTitle ) 
-			&& ! empty( $attr->adminMailFromTitle ) 
-			&& isset( $attr->adminMailFromMail ) 
-			&& ! empty( $attr->adminMailFromMail ) 
-		) {
-			$headers = array( 'From: ' . $attr->adminMailFromTitle . ' <' . $attr->adminMailFromMail . '>' );
-		} else {
-			$headers = array();
-		}
-
-		$this->send_mail( $to, $subject, $message, $headers );
-
-		return $this;
+		return $no_empty_lines;
 	}
 }
