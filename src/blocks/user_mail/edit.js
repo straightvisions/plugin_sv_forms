@@ -8,7 +8,10 @@ const {
     ClipboardButton
 } = wp.components;
 const { __ } = wp.i18n;
-const { select } = wp.data;
+const { 
+    select, 
+    dispatch 
+} = wp.data;
 const { Component } = wp.element;
 const { getBlockContent } = wp.blocks;
 const { InnerBlocks } = wp.blockEditor;
