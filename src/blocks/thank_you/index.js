@@ -19,7 +19,7 @@ registerBlockType( 'straightvisions/sv-gutenform-thank-you', {
 		__( 'Thank You Page', 'sv_gutenform' ),
 	],
 	supports: {
-		align:[ 'left', 'right', 'center', 'wide', 'full' ],
+		align:[ 'wide', 'full' ],
 	},
 	attributes: {
 		formInputs: {

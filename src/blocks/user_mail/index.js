@@ -19,7 +19,7 @@ registerBlockType( 'straightvisions/sv-gutenform-user-mail', {
 		__( 'User Mail', 'sv_gutenform' ),
 	],
 	supports: {
-		align:[ 'left', 'right', 'center', 'wide', 'full' ],
+		align:[ 'wide', 'full' ],
 	},
 	attributes: {
 		formInputs: {
