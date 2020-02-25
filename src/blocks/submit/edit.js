@@ -11,6 +11,7 @@ export default withSelect( ( select, props ) => {
     // Block Properties
     const {
         className,
+        setAttributes,
         attributes: {
             // Content
             content,
