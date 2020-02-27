@@ -218,15 +218,19 @@ export default class extends Component {
 
     // Returns the available input values
     InputValues = () => {
-        if ( ! this.props.attributes.formInputs ) return null;
+        if ( ! this.wrapper || ! this.wrapper.clientId ) return false;
 
-        const formInputs = JSON.parse( this.props.attributes.formInputs );
+        const { formInputs } = wp.data.select('core/block-editor').getBlockAttributes( this.wrapper.clientId );
 
-        if ( ! formInputs || formInputs.length < 1 ) return null;
+        if ( ! formInputs ) return null;
+
+        const inputs = JSON.parse( formInputs );
+
+        if ( formInputs.length < 1 ) return null;
 
         let output = [];
 
-        formInputs.map( input => {
+        inputs.map( input => {
             output.push( this.InputValueButton( input.name ) );
         } );
 

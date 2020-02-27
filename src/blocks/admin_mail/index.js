@@ -22,9 +22,6 @@ registerBlockType( 'straightvisions/sv-gutenform-admin-mail', {
 		align:[ 'wide', 'full' ],
 	},
 	attributes: {
-		formInputs: {
-			type: 'string',
-		},
 		collapsed: {
 			type: 'boolean',
 		},

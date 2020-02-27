@@ -70,7 +70,7 @@ export default class extends Component {
         let newFormInputs = JSON.parse( formInputs );
         const index = newFormInputs.findIndex( input => { return input.ID === inputId } );
         
-        if ( index ) {
+        if ( index >= 0 ) {
             newFormInputs.splice( index, 1 );
 
             this.wrapper.setAttributes({ formInputs: JSON.stringify( newFormInputs ) });

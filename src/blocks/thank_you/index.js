@@ -22,9 +22,6 @@ registerBlockType( 'straightvisions/sv-gutenform-thank-you', {
 		align:[ 'wide', 'full' ],
 	},
 	attributes: {
-		formInputs: {
-			type: 'string',
-		},
 		collapsed: {
 			type: 'boolean',
 		},

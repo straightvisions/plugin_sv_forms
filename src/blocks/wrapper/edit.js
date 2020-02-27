@@ -97,7 +97,7 @@ export default class extends Component {
 
         innerBlocks.map( block => {
             if ( childBlocks.includes( block.name ) ) {
-                dispatch('core/block-editor').updateBlockAttributes( block.clientId, { formInputs: this.props.attributes.formInputs } );
+                dispatch('core/block-editor').updateBlock( block.clientId, { attributes: block.attributes } );
             }
         } );
     }
