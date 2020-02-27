@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-gutenform-phone', {
 	title: __( 'Phone', 'sv_gutenform' ),
 	description: __( 'A field for phone numbers.', 'sv_gutenform' ),
 	icon,
-	parent: ['straightvisions/sv-gutenform-form'],
+	parent: [ 
+		'straightvisions/sv-gutenform-form', 
+		'core/group', 
+		'core/cover',
+		'core/column',
+		'core/media-text',
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Phone', 'sv_gutenform' ),

@@ -20,6 +20,13 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 	supports: {
 		align:[ 'wide', 'full' ],
 	},
+	example: {
+		attributes: {
+			formId: 'a0bc1def-2345-6789-0g1h-2345i67890j1',
+			formLabel: __( 'Contact Form', 'sv_gutenform' ),
+			collapsed: true,
+		}
+	},
 	attributes: {
 		postId: {
 			type: 'number',

@@ -3,7 +3,14 @@ namespace sv_gutenform;
 
 class sv_gutenform extends modules {
 	public function init() {
-		$this->register_scripts()->register_blocks();
+		$this->register_scripts()
+			 ->register_blocks()
+			 ->set_section_title( __( 'Dashboard', 'sv_gutenform' ) )
+			 ->set_section_desc( __( 'Overview & Stats', 'sv_gutenform' ) )
+			 ->set_section_type( 'tools' )
+			 ->set_section_template_path( $this->get_path( 'lib/backend/tpl/dashboard.php' ) )
+			 ->get_root()
+			 ->add_section( $this );
 
 		// Actions Hooks & Filter
 		add_action( 'init', array( $this, 'register_block_assets' ) );
@@ -98,6 +105,8 @@ class sv_gutenform extends modules {
 				$this->$value->init();
 			}
 		}
+
+		return $this;
 	}
 
 	// Registers all block styles and scripts for the editor

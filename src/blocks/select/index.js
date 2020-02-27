@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-gutenform-select', {
 	title: __( 'Select', 'sv_gutenform' ),
 	description: __( 'Create a select field.', 'sv_gutenform' ),
 	icon,
-	parent: ['straightvisions/sv-gutenform-form'],
+	parent: [ 
+		'straightvisions/sv-gutenform-form', 
+		'core/group', 
+		'core/cover',
+		'core/column',
+		'core/media-text',
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Select', 'sv_gutenform' ),

@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-gutenform-number', {
 	title: __( 'Number', 'sv_gutenform' ),
 	description: __( 'A field for numbers.', 'sv_gutenform' ),
 	icon,
-	parent: ['straightvisions/sv-gutenform-form'],
+	parent: [ 
+		'straightvisions/sv-gutenform-form', 
+		'core/group', 
+		'core/cover',
+		'core/column',
+		'core/media-text',
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Number', 'sv_gutenform' ),

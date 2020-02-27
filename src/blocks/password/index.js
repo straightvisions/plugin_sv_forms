@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-gutenform-password', {
 	title: __( 'Password', 'sv_gutenform' ),
 	description: __( 'A field for passwords.', 'sv_gutenform' ),
 	icon,
-	parent: ['straightvisions/sv-gutenform-form'],
+	parent: [ 
+		'straightvisions/sv-gutenform-form', 
+		'core/group', 
+		'core/cover',
+		'core/column',
+		'core/media-text',
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Password', 'sv_gutenform' ),

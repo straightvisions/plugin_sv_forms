@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-gutenform-radio', {
 	title: __( 'Radio Button', 'sv_gutenform' ),
 	description: __( 'Create a radio button.', 'sv_gutenform' ),
 	icon,
-	parent: ['straightvisions/sv-gutenform-form'],
+	parent: [ 
+		'straightvisions/sv-gutenform-form', 
+		'core/group', 
+		'core/cover',
+		'core/column',
+		'core/media-text',
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Radio Button', 'sv_gutenform' ),
