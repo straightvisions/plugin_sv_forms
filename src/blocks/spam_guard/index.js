@@ -10,7 +10,7 @@ registerBlockType( 'straightvisions/sv-gutenform-spam-guard', {
 	title: __( 'Spam Guard', 'sv_gutenform' ),
 	description: __( 'Provides features to prevent spam in your form.', 'sv_gutenform' ),
 	icon,
-	//parent: ['straightvisions/sv-gutenform'],
+	parent: ['straightvisions/sv-gutenform-form'],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Spam Guard', 'sv_gutenform' ),

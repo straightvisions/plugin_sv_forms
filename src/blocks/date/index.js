@@ -10,7 +10,7 @@ registerBlockType( 'straightvisions/sv-gutenform-date', {
 	title: __( 'Date', 'sv_gutenform' ),
 	description: __( 'A field for for dates.', 'sv_gutenform' ),
 	icon,
-	//parent: ['straightvisions/sv-gutenform'],
+	parent: ['straightvisions/sv-gutenform-form'],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Date', 'sv_gutenform' ),

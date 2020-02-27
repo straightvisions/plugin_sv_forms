@@ -10,7 +10,7 @@ registerBlockType( 'straightvisions/sv-gutenform-text', {
 	title: __( 'Text', 'sv_gutenform' ),
 	description: __( 'A field for short texts.', 'sv_gutenform' ),
 	icon,
-	//parent: ['straightvisions/sv-gutenform'],
+	parent: ['straightvisions/sv-gutenform-form'],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Text', 'sv_gutenform' ),

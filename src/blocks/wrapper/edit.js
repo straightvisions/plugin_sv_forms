@@ -168,6 +168,7 @@ export default class extends Component {
                     <div class='sv_gutenform_body'>
                         <FormContext.Provider value={ this.props }>
                             <InnerBlocks 
+                                allowedBlocks={ this.template }
                                 template={ this.template }
                                 templateLock={ true }
                             />

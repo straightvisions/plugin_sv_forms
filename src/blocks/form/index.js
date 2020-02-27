@@ -11,6 +11,7 @@ registerBlockType( 'straightvisions/sv-gutenform-form', {
 	title: __( 'Form', 'sv_gutenform' ),
 	description: __( 'This block holds the form itself.', 'sv_gutenform' ),
 	icon,
+	parent: ['straightvisions/sv-gutenform'],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Form', 'sv_gutenform' ),

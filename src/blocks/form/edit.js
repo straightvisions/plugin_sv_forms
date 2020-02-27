@@ -46,6 +46,7 @@ export default class extends Component {
     // React Lifecycle Methos
     componentDidMount = () => {
         this.toggleBody( false );
+        this.getAllowedBlocks();
     }
 
     componentDidUpdate = () => {}
@@ -57,6 +58,27 @@ export default class extends Component {
         if ( ! this.props.attributes.formId ) {
             this.props.setAttributes({ formId: wrapper.attributes.formId });
         }
+    }
+
+    // Returns all allowed blocks
+    getAllowedBlocks = () => {
+        const disallowedBlocks = [ 
+            'straightvisions/sv-gutenform', 
+            'straightvisions/sv-gutenform-form',
+            'straightvisions/sv-gutenform-thank-you',
+            'straightvisions/sv-gutenform-user-mail',
+            'straightvisions/sv-gutenform-admin-mail'  
+        ];
+        const availableBlocks = wp.data.select('core/blocks').getBlockTypes();
+        let allowedBlocks = [];
+
+        availableBlocks.map( block => {
+            if ( ! disallowedBlocks.includes( block.name ) ) {
+                allowedBlocks.push( block.name );
+            }
+        } );
+        
+        return allowedBlocks;
     }
 
     // Togles the collapsed state of the body
@@ -103,6 +125,7 @@ export default class extends Component {
                     </div>
                     <div className='sv_gutenform_body'>
                         <InnerBlocks 
+                            allowedBlocks={ this.getAllowedBlocks() }
                             template={ this.template }
                             templateLock={ false }
                         />

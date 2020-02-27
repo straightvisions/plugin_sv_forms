@@ -10,7 +10,7 @@ registerBlockType( 'straightvisions/sv-gutenform-url', {
 	title: __( 'URL', 'sv_gutenform' ),
 	description: __( 'A field for an URL.', 'sv_gutenform' ),
 	icon,
-	//parent: ['straightvisions/sv-gutenform'],
+	parent: ['straightvisions/sv-gutenform-form'],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform URL', 'sv_gutenform' ),

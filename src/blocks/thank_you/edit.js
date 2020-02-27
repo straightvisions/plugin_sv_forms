@@ -30,6 +30,20 @@ export default class extends Component {
 
     componentWillUnmount = () => {}
 
+    // Returns all allowed blocks
+    getAllowedBlocks = () => {
+        const availableBlocks = wp.data.select('core/blocks').getBlockTypes();
+        let allowedBlocks = [];
+
+        availableBlocks.map( block => {
+            if ( ! block.name.startsWith( 'straightvisions/sv-gutenform' ) ) {
+                allowedBlocks.push( block.name );
+            }
+        } );
+        
+        return allowedBlocks;
+    }
+
     // Togles the collapsed state of the body
     toggleBody = change => {
         const body = jQuery( 'div[data-block="' + this.props.clientId + '"] .' + this.props.className + ' > .sv_gutenform_body' );
@@ -116,7 +130,10 @@ export default class extends Component {
                         </div>
                     </div>
                     <div class='sv_gutenform_body'>
-                        <InnerBlocks templateLock={ false } />
+                        <InnerBlocks 
+                            allowedBlocks={ this.getAllowedBlocks() }
+                            templateLock={ false } 
+                        />
                     </div> 
                 </div>
                 <FormContext.Consumer>{ wrapper => { this.wrapper = wrapper } }</FormContext.Consumer>

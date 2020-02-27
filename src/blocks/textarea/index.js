@@ -10,7 +10,7 @@ registerBlockType( 'straightvisions/sv-gutenform-textarea', {
 	title: __( 'Textarea', 'sv_gutenform' ),
 	description: __( 'A field for long messages.', 'sv_gutenform' ),
 	icon,
-	//parent: ['straightvisions/sv-gutenform'],
+	parent: ['straightvisions/sv-gutenform-form'],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Textarea', 'sv_gutenform' ),

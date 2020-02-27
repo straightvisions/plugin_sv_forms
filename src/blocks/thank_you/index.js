@@ -11,7 +11,7 @@ registerBlockType( 'straightvisions/sv-gutenform-thank-you', {
 	title: __( 'Thank You Message', 'sv_gutenform' ),
 	description: __( 'This message will be shown to users, who submitted this form.', 'sv_gutenform' ),
 	icon,
-	//parent: ['straightvisions/sv-gutenform'],
+	parent: ['straightvisions/sv-gutenform'],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Thank You', 'sv_gutenform' ),

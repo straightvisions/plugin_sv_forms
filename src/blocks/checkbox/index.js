@@ -13,7 +13,7 @@ registerBlockType( 'straightvisions/sv-gutenform-checkbox', {
 	title: __( 'Checkbox', 'sv_gutenform' ),
 	description: __( 'A checkbox that can be checked.', 'sv_gutenform' ),
 	icon,
-	//parent: ['straightvisions/sv-gutenform'],
+	parent: ['straightvisions/sv-gutenform-form'],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Checkbox', 'sv_gutenform' ),

@@ -10,7 +10,7 @@ registerBlockType( 'straightvisions/sv-gutenform-email', {
 	title: __( 'E-Mail', 'sv_gutenform' ),
 	description: __( 'A field for an e-mail adress.', 'sv_gutenform' ),
 	icon,
-	//parent: ['straightvisions/sv-gutenform'],
+	parent: ['straightvisions/sv-gutenform-form'],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform E-Mail', 'sv_gutenform' ),

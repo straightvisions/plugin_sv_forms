@@ -10,7 +10,7 @@ registerBlockType( 'straightvisions/sv-gutenform-range', {
 	title: __( 'Range', 'sv_gutenform' ),
 	description: __( 'A field for range.', 'sv_gutenform' ),
 	icon,
-	//parent: ['straightvisions/sv-gutenform'],
+	parent: ['straightvisions/sv-gutenform-form'],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Gutenform Range', 'sv_gutenform' ),

@@ -23,11 +23,3 @@ import './blocks/checkbox/index.js';
 import './blocks/radio/index.js';
 import './blocks/select/index.js';
 import './blocks/submit/index.js';
-
-// Sets the blocks hidden in the Block Manager on default
-wp.data.dispatch( 'core/edit-post' ).hideBlockTypes([
-    'straightvisions/sv-gutenform-form',
-    'straightvisions/sv-gutenform-thank-you',
-    'straightvisions/sv-gutenform-admin-mail',
-    'straightvisions/sv-gutenform-user-mail',
-]);
