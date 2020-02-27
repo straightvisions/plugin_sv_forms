@@ -1,11 +1,12 @@
 .wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header,
 .wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_body {
-    position: relative;
-    z-index: 1;
+    padding: 20px;
 }
 
+// Header
 .wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header {
     color: white;
+    background: linear-gradient(to right top, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);
 }
 
 .wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header > .sv_gutenform_title_wrapper > .sv_gutenform_title {
@@ -70,33 +71,13 @@
     background-color: rgba( 0, 0, 0, .4 );
 }
 
-.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header::after,
-.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_body::after  {
-    z-index: -1;
-    content: "";
-    position: absolute;
-    border: 1px solid transparent;
-    border-left: none;
-    box-shadow: none;
-    pointer-events: none;
-    outline: 1px solid transparent;
-    right: -14px;
-    left: -14px;
-    top: -14px;
-    bottom: -14px;
+// Body
+.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_body {
+    border: 4px solid;
+    border-image-source: linear-gradient(to right bottom, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);
+    border-image-slice: 1;
 }
 
 .wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_body .block-editor-block-list__layout > *:first-child > * {
     margin-top: 0 !important;
-}
-
-.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_header::after {
-    background-image: linear-gradient(to right top, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);
-    border: none;
-}
-
-.wp-block-straightvisions-sv-gutenform-thank-you > .sv_gutenform_body::after {
-    border: 4px solid;
-    border-image-source: linear-gradient(to right bottom, #ff9897, #ff8794, #ff7595, #fc6399, #f650a0);
-    border-image-slice: 1;
 }
