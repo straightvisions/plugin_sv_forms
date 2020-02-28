@@ -3,16 +3,16 @@ import InspectorControls from './components/inspector_controls';
 import { FormContext } from '../../blocks';
 
 const { 
+    Component,
+    Fragment 
+} = wp.element;
+const { 
     Button,
     Tooltip,
     ClipboardButton
 } = wp.components;
 const { __ } = wp.i18n;
-const { 
-    select, 
-    dispatch 
-} = wp.data;
-const { Component } = wp.element;
+const { select } = wp.data;
 const { getBlockContent } = wp.blocks;
 const { InnerBlocks } = wp.blockEditor;
 
@@ -22,6 +22,7 @@ export default class extends Component {
 
         this.props = props;
         this.wrapper = {};
+        this.styles = [];
         this.allowedBlocks = [
             'core/button',
             'core/columns',
@@ -41,27 +42,114 @@ export default class extends Component {
         this.toggleBody( false );
     }
 
-    componentDidUpdate = () => {}
+    componentDidUpdate = () => {
+        const innerBlocks = select( 'core/block-editor' ).getBlocks( this.props.clientId );
+
+        this.addStyles( innerBlocks );
+    }
 
     componentWillUnmount = () => {}
 
     // Returns the innerBlocks content as string
     getMailContent = () => {
         const innerBlocks = select( 'core/block-editor' ).getBlocks( this.props.clientId );
+        const content = innerBlocks.map( block => { return  getBlockContent( block ) } ).join( '' );
 
-        return innerBlocks.map( block => { return  getBlockContent( block ) } ).join( '' );
+        return content;
+    }
+
+    getStyles = () => {
+        let output = '';
+        
+        this.styles.map( style => {
+            output += style.name + '{' + style.styles + ';}';
+        } );
+
+        return output;
+    } 
+
+    styleExists = className => {
+        return this.styles.find( style => { return style.name === className; } ) ? true : false;
+    }
+
+    // Fetches style attributes of blocks, retrieves their style rules 
+    // and saves the classname to rules relation in the styles array
+    addStyles = innerBlocks => {
+        innerBlocks.map( block => {
+            if ( block.attributes ) {
+                const {
+                    textColor,
+                    backgroundColor,
+                    gradient,
+                    fontSize,
+                } = block.attributes;
+
+                // Text Color
+                if ( textColor ) {
+                    const className = '.has-' + textColor + '-color';
+
+                    if ( ! this.styleExists( className ) ) {
+                        const value = jQuery( className ).css('color');
+
+                        if ( value ) {
+                            this.styles.push( { name: className, styles: 'color:' + value } );
+                        }
+                    }
+                }
+
+                // Background Color
+                if ( backgroundColor ) {
+                    const className = '.has-' + backgroundColor + '-background-color';
+
+                    if ( ! this.styleExists( className ) ) {
+                        const value = jQuery( className ).css('background-color');
+
+                        if ( value ) {
+                            this.styles.push( { name: className, styles: 'background-color:' + value } );
+                        }
+                    }
+                }
+
+                // Gradient
+                if ( gradient ) {
+                    const className = '.has-' + gradient + '-gradient-background';
+
+                    if ( ! this.styleExists( className ) ) {
+                        const value = jQuery( className ).css('background-image');
+
+                        if ( value ) {
+                            this.styles.push( { name: className, styles: 'background:' + value } );
+                        }
+                    }
+                }
+
+                // Font Size
+                if ( fontSize ) {
+                    const className = '.has-' + fontSize + '-font-size';
+
+                    if ( ! this.styleExists( className ) ) {
+                        const value = jQuery( className ).css('font-size');
+
+                        if ( value ) {
+                            this.styles.push( { name: className, styles: 'font-size:' + value } );
+                        }
+                    }
+                }
+            }
+        } );
     }
 
     // Updates the wrapper attributes
     setWrapperAttributes = wrapper => {
         this.wrapper = wrapper;
 
-        // Admin Mail Attributes
+        // User Mail Attributes
         const {
             mailSend, 
             mailSubject,
             mailFromTitle,
             mailFromMail,
+            mailToUsers,
             mailToMails,
         } = this.props.attributes;
 
@@ -71,8 +159,10 @@ export default class extends Component {
             userMailSubject: mailSubject,
             userMailFromTitle: mailFromTitle,
             userMailFromMail: mailFromMail,
+            userMailToUsers: mailToUsers,
             userMailToMails: mailToMails,
             userMailContent: this.getMailContent(),
+            userMailBlockStyles: this.getStyles(),
         };
 
         wrapper.setAttributes( newAttributes );
@@ -149,28 +239,30 @@ export default class extends Component {
 
     render = () => {
         return (
-            <div className={ this.props.className }>
-                <div className='sv_gutenform_header'>
-                    <div className='sv_gutenform_title_wrapper'>
-                        <div className='sv_gutenform_title'>{ __( 'User Mail', 'sv_gutenform' ) }</div>
-                        <Button onClick={ () => this.toggleBody( true ) }>
-                            <span class='dashicons dashicons-visibility'></span>
-                        </Button>
+            <Fragment>
+                <div className={ this.props.className }>
+                    <div className='sv_gutenform_header'>
+                        <div className='sv_gutenform_title_wrapper'>
+                            <div className='sv_gutenform_title'>{ __( 'User Mail', 'sv_gutenform' ) }</div>
+                            <Button onClick={ () => this.toggleBody( true ) }>
+                                <span class='dashicons dashicons-visibility'></span>
+                            </Button>
+                        </div>
+                        <div className='sv_gutenform_input_values_wrapper'>
+                            <div className='sv_gutenform_input_values_title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
+                            { this.InputValues() }
+                        </div>
                     </div>
-                    <div className='sv_gutenform_input_values_wrapper'>
-                        <div className='sv_gutenform_input_values_title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
-                        { this.InputValues() }
-                    </div>
+                    <div class='sv_gutenform_body'>
+                        <InnerBlocks 
+                            templateLock={ false } 
+                            allowedBlocks={ this.allowedBlocks }
+                        />
+                    </div> 
                 </div>
-                <div class='sv_gutenform_body'>
-                    <InnerBlocks 
-                        templateLock={ false } 
-                        allowedBlocks={ this.allowedBlocks }
-                    />
-                </div> 
                 <FormContext.Consumer>{ wrapper => { this.setWrapperAttributes( wrapper ) } }</FormContext.Consumer>
-                <InspectorControls props={ this.props } wrapper={ this.wrapper }  />
-            </div>
+                <InspectorControls props={ this.props } wrapper={ this.wrapper } />
+            </Fragment>
         );
     }
 }

@@ -12,10 +12,12 @@
 	</thead>
 	<tbody>
 	<?php 
-		foreach( $form_index as $id ) {
-			echo '<tr>';
-			echo '<td>' . $id . '</td>';
-			echo '</tr>';
+		if ( ! empty( $form_index ) ) {
+			foreach( $form_index as $id ) {
+				echo '<tr>';
+				echo '<td>' . $id . '</td>';
+				echo '</tr>';
+			}
 		}
 	?>
 	</tbody>
@@ -31,11 +33,13 @@
 	</thead>
 	<tbody>
 	<?php 
-		foreach( $form_labels as $label ) {
-			echo '<tr>';
-			echo '<td>' . $label->slug . '</td>';
-			echo '<td>' . $label->name . '</td>';
-			echo '</tr>';
+		if ( ! empty( $form_labels ) ) {
+			foreach( $form_labels as $label ) {
+				echo '<tr>';
+				echo '<td>' . $label->slug . '</td>';
+				echo '<td>' . $label->name . '</td>';
+				echo '</tr>';
+			}
 		}
 	?>
 	</tbody>
