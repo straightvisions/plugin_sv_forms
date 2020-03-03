@@ -22,16 +22,7 @@ export default class extends Component {
 
         this.props = props;
         this.wrapper = {};
-        this.styles = [];
         this.allowedBlocks = [
-            'core/button',
-            'core/heading',
-            'core/image',
-            'core/list',
-            'core/paragraph',
-            'core/table',
-            'core/separator',
-            'core/spacer',
             'core/html',
             'core/freeform',
         ];
@@ -42,11 +33,7 @@ export default class extends Component {
         this.toggleBody( false );
     }
 
-    componentDidUpdate = () => {
-        const innerBlocks = select( 'core/block-editor' ).getBlocks( this.props.clientId );
-
-        this.addStyles( innerBlocks );
-    }
+    componentDidUpdate = () => {}
 
     componentWillUnmount = () => {}
 
@@ -56,87 +43,6 @@ export default class extends Component {
         const content = innerBlocks.map( block => { return  getBlockContent( block ) } ).join( '' );
 
         return content;
-    }
-
-    getStyles = () => {
-        let output = '';
-        
-        this.styles.map( style => {
-            output += style.name + '{' + style.styles + ';}';
-        } );
-
-        return output;
-    } 
-
-    styleExists = className => {
-        return this.styles.find( style => { return style.name === className; } ) ? true : false;
-    }
-
-    // Fetches style attributes of blocks, retrieves their style rules 
-    // and saves the classname to rules relation in the styles array
-    addStyles = innerBlocks => {
-        innerBlocks.map( block => {
-            if ( block.attributes ) {
-                const {
-                    textColor,
-                    backgroundColor,
-                    gradient,
-                    fontSize,
-                } = block.attributes;
-
-                // Text Color
-                if ( textColor ) {
-                    const className = '.has-' + textColor + '-color';
-
-                    if ( ! this.styleExists( className ) ) {
-                        const value = jQuery( className ).css('color');
-
-                        if ( value ) {
-                            this.styles.push( { name: className, styles: 'color:' + value } );
-                        }
-                    }
-                }
-
-                // Background Color
-                if ( backgroundColor ) {
-                    const className = '.has-' + backgroundColor + '-background-color';
-
-                    if ( ! this.styleExists( className ) ) {
-                        const value = jQuery( className ).css('background-color');
-
-                        if ( value ) {
-                            this.styles.push( { name: className, styles: 'background-color:' + value } );
-                        }
-                    }
-                }
-
-                // Gradient
-                if ( gradient ) {
-                    const className = '.has-' + gradient + '-gradient-background';
-
-                    if ( ! this.styleExists( className ) ) {
-                        const value = jQuery( className ).css('background-image');
-
-                        if ( value ) {
-                            this.styles.push( { name: className, styles: 'background:' + value } );
-                        }
-                    }
-                }
-
-                // Font Size
-                if ( fontSize ) {
-                    const className = '.has-' + fontSize + '-font-size';
-
-                    if ( ! this.styleExists( className ) ) {
-                        const value = jQuery( className ).css('font-size');
-
-                        if ( value ) {
-                            this.styles.push( { name: className, styles: 'font-size:' + value } );
-                        }
-                    }
-                }
-            }
-        } );
     }
 
     // Updates the wrapper attributes
@@ -162,7 +68,6 @@ export default class extends Component {
             adminMailToUsers: mailToUsers,
             adminMailToMails: mailToMails,
             adminMailContent: this.getMailContent(),
-            adminMailBlockStyles: this.getStyles(),
         };
 
         wrapper.setAttributes( newAttributes );

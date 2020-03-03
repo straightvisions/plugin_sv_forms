@@ -39,7 +39,6 @@ class mail extends modules {
 		$content_attr = array(
 			'title'         => $attr->userMailSubject,
 			'content'       => $attr->userMailContent,
-			'block_styles'  => isset( $attr->userMailBlockStyles ) ? $attr->userMailBlockStyles : '',
 		);
 		$content = $this->get_mail( $content_attr, $data );
 
@@ -82,7 +81,6 @@ class mail extends modules {
 		$content_attr = array(
 			'title'         => $attr->adminMailSubject,
 			'content'       => $attr->adminMailContent,
-			'block_styles'  => isset( $attr->adminMailBlockStyles ) ? $attr->adminMailBlockStyles : '',
 		);
 		$content = $this->get_mail( $content_attr, $data );
 
@@ -148,9 +146,7 @@ class mail extends modules {
 	private function get_mail( array $attr, array $data ): string {
 		ob_start();
 
-		require( $this->get_path( 'tpl/mail_header.php' ) );
-		echo $this->cleanup_mail_content( $this->replace_input_values( $attr['content'], $data ) );
-		require( $this->get_path( 'tpl/mail_footer.php' ) );
+		require( $this->get_path( 'tpl/mail.php' ) );
 
 		$mail_content = ob_get_contents();
 		ob_end_clean();
@@ -177,9 +173,18 @@ class mail extends modules {
 
 		return $parsed_content;
 	}
+	
+	// Cleans the mail content from html comments, php comments and empty lines
+	private function cleanup_mail_content( string $content ): string {
+		$no_html_comments 	= preg_replace('/<!--(.|\s)*?-->/', '', $content);
+		$no_php_comments 	= preg_replace('!/\*.*?\*/!s', '', $no_html_comments);
+		$no_empty_lines		= preg_replace('/\n\s*\n/', "\n", $no_php_comments);
+
+		return $no_empty_lines;
+	}
 
 	// Returns the CSS styles for the mail content
-	private function get_styles( string $block_styles ): string {
+	private function get_styles(): string {
 		// Default Block Styles
 		$dir 		= $this->get_root()->get_path( 'lib/modules/mail/css/blocks/min' );
 		$dir_array 	= array_diff( scandir( $dir ), array( '..', '.' ) );
@@ -204,19 +209,8 @@ class mail extends modules {
 		$styles .= ob_get_contents();
 		ob_end_clean();
 
-		// Dynamic Block Styles
-		$styles .= $block_styles;
 		$styles .= '</style>';
 
 		return $styles;
-	}
-	
-	// Cleans the mail content from html comments, php comments and empty lines
-	private function cleanup_mail_content( string $content ): string {
-		$no_html_comments 	= preg_replace('/<!--(.|\s)*?-->/', '', $content);
-		$no_php_comments 	= preg_replace('!/\*.*?\*/!s', '', $no_html_comments);
-		$no_empty_lines		= preg_replace('/\n\s*\n/', "\n", $no_php_comments);
-
-		return $no_empty_lines;
 	}
 }

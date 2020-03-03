@@ -61,15 +61,18 @@ body {
     text-align: left;
 }
 
-/* Helper Classes */
-.has-text-align-center {
-	text-align: left;
+/* Image Helper */
+img.alignleft {
+	margin-left: 0;
+	margin-right: auto;
 }
 
-.has-text-align-center {
-	text-align: center;
+img.aligncenter {
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.has-text-align-right {
-	text-align: right;
+img.alignright {
+	margin-left: auto;
+	margin-right: 0;
 }
