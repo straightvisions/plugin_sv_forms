@@ -36,12 +36,12 @@ class mail extends modules {
 		}
 
 		// Mail Content
-		$block_styles = isset( $attr->userMailBlockStyles ) ? $attr->userMailBlockStyles : '';
-		$content = $this->get_mail( 
-			$attr->userMailContent,
-			$block_styles, 
-			$data
+		$content_attr = array(
+			'title'         => $attr->userMailSubject,
+			'content'       => $attr->userMailContent,
+			'block_styles'  => isset( $attr->userMailBlockStyles ) ? $attr->userMailBlockStyles : '',
 		);
+		$content = $this->get_mail( $content_attr, $data );
 
 		// Headers
 		if ( 
@@ -50,7 +50,10 @@ class mail extends modules {
 			&& isset( $attr->userMailFromMail ) 
 			&& ! empty( $attr->userMailFromMail ) 
 		) {
-			$headers = array( 'From: ' . $attr->userMailFromTitle . ' <' . $attr->userMailFromMail . '>' );
+			$headers = array(
+				'From: ' . $attr->userMailFromTitle . ' <' . $attr->userMailFromMail . '>',
+				'Sender: ' . $attr->userMailFromMail,
+			);
 		} else {
 			$headers = array();
 		}
@@ -76,12 +79,12 @@ class mail extends modules {
 		}
 
 		// Mail Content
-		$block_styles = isset( $attr->adminMailBlockStyles ) ? $attr->adminMailBlockStyles : '';
-		$content = $this->get_mail( 
-			$attr->adminMailContent,
-			$block_styles, 
-			$data
+		$content_attr = array(
+			'title'         => $attr->adminMailSubject,
+			'content'       => $attr->adminMailContent,
+			'block_styles'  => isset( $attr->adminMailBlockStyles ) ? $attr->adminMailBlockStyles : '',
 		);
+		$content = $this->get_mail( $content_attr, $data );
 
 		// Headers
 		if ( 
@@ -142,24 +145,18 @@ class mail extends modules {
 	}
 
 	// Returns the HTML mail
-	private function get_mail( string $content, string $block_styles, array $data ): string {
-		// Default header
-		$mail = '<!DOCTYPE html>
-			<html>
-			<head>
-				<meta charset="UTF-8">
-				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<meta http-equiv="Content-Type" content="text/html charset=UTF-8" />';
+	private function get_mail( array $attr, array $data ): string {
+		ob_start();
 
-		// Adding the mail styles to the <head>
-		$mail .= $this->get_styles( $block_styles );
-		$mail .= '</head><body>';
+		require( $this->get_path( 'tpl/mail_header.php' ) );
+		echo $this->cleanup_mail_content( $this->replace_input_values( $attr['content'], $data ) );
+		echo $this->get_styles( $attr['block_styles'] );
+		require( $this->get_path( 'tpl/mail_footer.php' ) );
 
-		// Adding the mail <body> (content)
-		$mail .= $this->cleanup_mail_content( $this->replace_input_values( $content, $data ) );
-		$mail .= '</body></html>';
+		$mail_content = ob_get_contents();
+		ob_end_clean();
 
-		return $mail;
+		return $mail_content;
 	}
 
 	// Replaces all input value place holders, with their respectively input values
@@ -187,7 +184,7 @@ class mail extends modules {
 		// Default Block Styles
 		$dir 		= $this->get_root()->get_path( 'lib/modules/mail/css/blocks/min' );
 		$dir_array 	= array_diff( scandir( $dir ), array( '..', '.' ) );
-		$styles 	= '<style>';
+		$styles 	= '<style type="text/css">';
 
 		ob_start();
 
