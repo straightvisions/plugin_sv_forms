@@ -60,3 +60,16 @@ body {
     letter-spacing: -0.015em;
     text-align: left;
 }
+
+/* Helper Classes */
+.has-text-align-center {
+	text-align: left;
+}
+
+.has-text-align-center {
+	text-align: center;
+}
+
+.has-text-align-right {
+	text-align: right;
+}

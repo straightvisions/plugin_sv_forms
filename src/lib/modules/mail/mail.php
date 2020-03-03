@@ -150,7 +150,6 @@ class mail extends modules {
 
 		require( $this->get_path( 'tpl/mail_header.php' ) );
 		echo $this->cleanup_mail_content( $this->replace_input_values( $attr['content'], $data ) );
-		echo $this->get_styles( $attr['block_styles'] );
 		require( $this->get_path( 'tpl/mail_footer.php' ) );
 
 		$mail_content = ob_get_contents();

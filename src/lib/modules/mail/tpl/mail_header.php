@@ -3,5 +3,6 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php bloginfo( 'charset' ); ?>" />
 	<title><?php echo $attr['title']; ?></title>
+	<?php echo $this->get_styles( $attr['block_styles'] ); ?>
 </head>
-<body <?php echo is_rtl() ? 'rightmargin' : 'leftmargin'; ?>="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" class="<?php echo $this->get_prefix( 'body' ); ?>">
+<body class='<?php echo $this->get_prefix( 'body' ); ?>'>

@@ -33,6 +33,7 @@ export default class extends Component {
             'core/separator',
             'core/spacer',
             'core/html',
+            'core/freeform',
         ];
     }
 
