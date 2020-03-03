@@ -25,8 +25,6 @@ export default class extends Component {
         this.styles = [];
         this.allowedBlocks = [
             'core/button',
-            'core/columns',
-            'core/group',
             'core/heading',
             'core/image',
             'core/list',
@@ -34,6 +32,7 @@ export default class extends Component {
             'core/table',
             'core/separator',
             'core/spacer',
+            'core/html',
         ];
     }
 
