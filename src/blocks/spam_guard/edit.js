@@ -4,13 +4,10 @@ import honeycombIcon from './icons/honeycomb';
 import timerIcon from './icons/timer';
 
 import InspectorControls from './components/inspector_controls';
-import { FormContext } from '../../blocks';
+import { WrapperConsumer } from '../../blocks';
 
-const { 
-    Component, 
-    Fragment 
-} = wp.element;
 const { __ } = wp.i18n;
+const { Component, Fragment } = wp.element;
 const { Placeholder, Button } = wp.components;
 
 export default class extends Component {
@@ -20,13 +17,6 @@ export default class extends Component {
         this.props = props;
         this.wrapper = {};
     }
-
-    // React Lifecycle Methos
-    componentDidMount = () => {}
-
-    componentDidUpdate = () => {}
-
-    componentWillUnmount = () => {}
 
     // The following methods update the attributes of this block
     setHoneypot = honeypot => this.props.setAttributes({ honeypot });
@@ -89,7 +79,7 @@ export default class extends Component {
                     </Placeholder>
                 </div>
                 <InspectorControls props={ this.props } wrapper={ this.wrapper } />
-                <FormContext.Consumer>{ wrapper => this.setFormAttributes( wrapper ) }</FormContext.Consumer>
+                <WrapperConsumer>{ wrapper => this.setFormAttributes( wrapper ) }</WrapperConsumer>
             </Fragment>
         );
     }

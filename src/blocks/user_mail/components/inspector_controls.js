@@ -4,13 +4,13 @@ import SendToMails from './inspector_controls/send_to_mails';
 
 const { InspectorControls } = wp.blockEditor;
 
-export default ( { props, wrapper } ) => {
-    if ( ! props || ! wrapper ) return '';
+export default ( { props, wrapper, inputs } ) => {
+    if ( ! props || ! wrapper || ! inputs ) return '';
 
     return(
         <InspectorControls>
             <MailSettings props={ props } />
-            <SendToMails props={ props } wrapper={ wrapper } />
+            <SendToMails props={ props } wrapper={ wrapper } inputs={ inputs } />
         </InspectorControls>
     );
 }

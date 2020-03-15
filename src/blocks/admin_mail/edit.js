@@ -1,20 +1,13 @@
 // Required Components
 import InspectorControls from './components/inspector_controls';
-import { FormContext } from '../../blocks';
+import { WrapperConsumer, InputsConsumer } from '../../blocks';
 
-const { 
-    Component,
-    Fragment 
-} = wp.element;
-const { 
-    Button,
-    Tooltip,
-    ClipboardButton
-} = wp.components;
 const { __ } = wp.i18n;
 const { select } = wp.data;
 const { getBlockContent } = wp.blocks;
 const { InnerBlocks } = wp.blockEditor;
+const { Component, Fragment } = wp.element;
+const { Button, Tooltip, ClipboardButton } = wp.components;
 
 export default class extends Component {
     constructor(props) {
@@ -32,10 +25,6 @@ export default class extends Component {
     componentDidMount = () => {
         this.toggleBody( false );
     }
-
-    componentDidUpdate = () => {}
-
-    componentWillUnmount = () => {}
 
     // Returns the innerBlocks content as string
     getMailContent = () => {
@@ -122,21 +111,13 @@ export default class extends Component {
     }
 
     // Returns the available input values
-    InputValues = () => {
-        if ( ! this.wrapper || ! this.wrapper.clientId ) return false;
-
-        const { formInputs } = wp.data.select('core/block-editor').getBlockAttributes( this.wrapper.clientId );
-
-        if ( ! formInputs ) return null;
-
-        const inputs = JSON.parse( formInputs );
-
-        if ( formInputs.length < 1 ) return null;
-
+    getInputValues = inputs => {
         let output = [];
 
         inputs.map( input => {
-            output.push( this.InputValueButton( input.name ) );
+            if ( input.name ) {
+                output.push( this.InputValueButton( input.name ) );
+            }
         } );
 
         return <div className='sv_gutenform_input_values'>{ output }</div>;
@@ -155,7 +136,7 @@ export default class extends Component {
                         </div>
                         <div className='sv_gutenform_input_values_wrapper'>
                             <div className='sv_gutenform_input_values_title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
-                            { this.InputValues() }
+                            <InputsConsumer>{ inputs => this.getInputValues( inputs ) }</InputsConsumer>
                         </div>
                     </div>
                     <div class='sv_gutenform_body'>
@@ -165,7 +146,7 @@ export default class extends Component {
                         />
                     </div> 
                 </div>
-                <FormContext.Consumer>{ wrapper => { this.setWrapperAttributes( wrapper ) } }</FormContext.Consumer>
+                <WrapperConsumer>{ wrapper => { this.setWrapperAttributes( wrapper ) } }</WrapperConsumer>
                 <InspectorControls props={ this.props } authors={ select( 'core' ).getAuthors() } />
             </Fragment>
         );

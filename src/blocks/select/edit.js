@@ -1,13 +1,10 @@
 // Required Components
 import InspectorControls from './components/inspector_controls';
-import { FormContext } from '../../blocks';
+import { WrapperConsumer, InputsProvider, InputsConsumer } from '../../blocks';
 
-const { 
-    Component, 
-    Fragment 
-} = wp.element;
 const { select } = wp.data;
 const { SelectControl } = wp.components;
+const { Component, Fragment } = wp.element;
 
 export default class extends Component {
     constructor(props) {
@@ -15,62 +12,66 @@ export default class extends Component {
 
         this.props = props;
         this.wrapper = {};
+        this.inputs = [];
     }
 
     // React Lifecycle Methos
     componentDidMount = () => {
         if ( ! this.props.attributes.inputId || this.isDuplicate() ) {
             this.props.attributes.inputId = this.props.clientId;
-
-            this.setFormInputs();
         }
-    }
 
-    componentDidUpdate = () => {}
+        this.setFormInputs();
+        this.updateChilds();
+    }
 
     componentWillUnmount = () => {
         this.removeFormInput();
+        this.updateChilds();
     }
 
     // Updates the formInput attribute in the wrapper block
     setFormInputs = () => {
-        if ( ! this.wrapper || ! this.wrapper.clientId || ! this.props.attributes.name ) return false;
+        let newInputs = this.inputs;
+        const { inputId, name, type } = this.props.attributes;
 
-        const { formInputs } = select('core/block-editor').getBlockAttributes( this.wrapper.clientId );
-        const {
-            inputId,
-            name,
-            type,
-        } = this.props.attributes;
-        const newFormInput = { 
-            ID: inputId, 
-            name: name, 
-            type: type 
-        };
-        let newFormInputs = [ newFormInput ];
+        if ( name ) {
+            const newInput = { ID: inputId, name: name, type: type };
 
-        if ( formInputs ) {
-            newFormInputs = JSON.parse( formInputs );
-            newFormInputs.push( newFormInput );
+            newInputs.push( newInput );
+
+            <InputsProvider value={ newInputs } />
         }
-
-        this.wrapper.setAttributes({ formInputs: JSON.stringify( newFormInputs ) });
     }
 
     // Removes this block from the formInputs array
     removeFormInput = () => {
-        if ( ! this.wrapper || ! this.wrapper.clientId || ! this.props.attributes.inputId ) return false;
-
-        const { formInputs } = select('core/block-editor').getBlockAttributes( this.wrapper.clientId );
+        let newInputs = this.inputs;
         const { inputId } = this.props.attributes;
-        let newFormInputs = JSON.parse( formInputs );
-        const index = newFormInputs.findIndex( input => { return input.ID === inputId } );
+        const index = newInputs.findIndex( input => { return input.ID === inputId } );
         
         if ( index >= 0 ) {
-            newFormInputs.splice( index, 1 );
+            newInputs.splice( index, 1 );
 
-            this.wrapper.setAttributes({ formInputs: JSON.stringify( newFormInputs ) });
+            <InputsProvider value={ newInputs } />
         }
+    }
+
+    // Updates the child blocks to force a rerender of them
+    updateChilds = () => {
+        const childBlocks = [
+            'straightvisions/sv-gutenform-thank-you',
+            'straightvisions/sv-gutenform-user-mail',
+            'straightvisions/sv-gutenform-admin-mail',
+        ];
+
+        const innerBlocks = wp.data.select('core/block-editor').getBlocks( this.wrapper.clientId );
+
+        innerBlocks.map( block => {
+            if ( childBlocks.includes( block.name ) ) {
+                wp.data.dispatch('core/block-editor').updateBlock( block.clientId, { attributes: block.attributes } );
+            }
+        } );
     }
 
     // Checks if the input block is a duplicate
@@ -125,14 +126,12 @@ export default class extends Component {
                 borderRadius,
             }
         } = this.props;
-        const parsedOptions = this.props.attributes.options 
-            ? JSON.parse( this.props.attributes.options ) 
-            : [];
+        const parsedOptions = this.props.attributes.options ? JSON.parse( this.props.attributes.options ) : [];
 
         return (
             <Fragment>
                 <div className={ className }>
-                    { this.Label() }
+                    <this.Label />
                     <SelectControl
                         label={ label }
                         value={ defaultValue }
@@ -143,8 +142,11 @@ export default class extends Component {
                         style={{ borderRadius: borderRadius }}
                     />
                 </div>
-                <FormContext.Consumer>{ wrapper => { this.wrapper = wrapper } }</FormContext.Consumer>
-                <InspectorControls props={ this.props } wrapper={ this.wrapper } />
+                <WrapperConsumer>{ wrapper => { this.wrapper = wrapper } }</WrapperConsumer>
+                <InputsConsumer>{ inputs => { 
+                    this.inputs = inputs;
+                    return <InspectorControls props={ this.props } wrapper={ this.wrapper } inputs={ inputs } />;
+                } }</InputsConsumer>
             </Fragment>
         );
     }

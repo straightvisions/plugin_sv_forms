@@ -1,19 +1,16 @@
-import { FormContext } from '../../blocks';
+// Required Components
+import { WrapperConsumer, InputsProvider } from '../../blocks';
 
-const { 
-    Component, 
-    Fragment 
-} = wp.element;
 const { __ } = wp.i18n;
-const { InnerBlocks } = wp.blockEditor;
 const { Button } = wp.components;
+const { InnerBlocks } = wp.blockEditor;
+const { Component, Fragment } = wp.element;
 
 export default class extends Component {
     constructor(props) {
         super(...arguments);
 
         this.props      = props;
-        this.state      = {};
         this.template   = [
             ['straightvisions/sv-gutenform-spam-guard', {
                 honeypot: true,
@@ -49,12 +46,9 @@ export default class extends Component {
         this.getAllowedBlocks();
     }
 
-    componentDidUpdate = () => {}
-
-    componentWillUnmount = () => {}
-
     // Sets the formId attribute for this block
     setFormId = wrapper => {
+        // First mount
         if ( ! this.props.attributes.formId ) {
             this.props.setAttributes({ formId: wrapper.attributes.formId });
         }
@@ -131,7 +125,7 @@ export default class extends Component {
                         />
                     </div>
                 </div>
-                <FormContext.Consumer>{ wrapper => { this.setFormId( wrapper ) } }</FormContext.Consumer>
+                <WrapperConsumer>{ wrapper => { this.setFormId( wrapper ) } }</WrapperConsumer>
             </Fragment>
         );
     }

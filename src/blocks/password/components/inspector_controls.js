@@ -8,13 +8,13 @@ import BorderSettings from './inspector_controls/border_settings';
 const { Fragment } = wp.element;
 const { InspectorControls, InspectorAdvancedControls } = wp.blockEditor;
 
-export default ( { props, wrapper } ) => {
-    if ( ! props || ! wrapper ) return '';
+export default ( { props, wrapper, inputs } ) => {
+    if ( ! props || ! wrapper || ! inputs ) return '';
 
     return(
         <Fragment>
             <InspectorControls>
-                <InputSettings props={ props } wrapper={ wrapper } />
+                <InputSettings props={ props } wrapper={ wrapper } inputs={ inputs } />
                 <ValidationSettings props={ props } />
                 <ColorSettings props={ props } />
                 <BorderSettings props={ props } />

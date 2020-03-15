@@ -47,9 +47,10 @@ class mail extends modules {
 			isset( $attr->userMailFromTitle ) 
 			&& ! empty( $attr->userMailFromTitle ) 
 			&& isset( $attr->userMailFromMail ) 
-			&& ! empty( $attr->userMailFromMail ) 
+			&& ! empty( $attr->userMailFromMail )
 		) {
 			$headers = array(
+				'Return-Path: ' . $attr->userMailFromMail,
 				'From: ' . $attr->userMailFromTitle . ' <' . $attr->userMailFromMail . '>',
 				'Sender: ' . $attr->userMailFromMail,
 			);
@@ -91,7 +92,11 @@ class mail extends modules {
 			&& isset( $attr->adminMailFromMail ) 
 			&& ! empty( $attr->adminMailFromMail ) 
 		) {
-			$headers = array( 'From: ' . $attr->adminMailFromTitle . ' <' . $attr->adminMailFromMail . '>' );
+			$headers = array( 
+				'Return-Path: ' . $attr->adminMailFromMail,
+				'From: ' . $attr->adminMailFromTitle . ' <' . $attr->adminMailFromMail . '>',
+				'Sender: ' . $attr->adminMailFromMail, 
+			);
 		} else {
 			$headers = array();
 		}

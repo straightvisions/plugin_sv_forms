@@ -1,18 +1,14 @@
 // Required Components
-const { __ } = wp.i18n;
-const {
-    PanelBody,
-    TextControl,
-    Notice,
-} = wp.components;
-const { select } = wp.data;
+import { InputsProvider } from '../../../../blocks';
 
-export default ( { props, wrapper } ) => {
-    if ( ! props || ! wrapper ) return '';
+const { __ } = wp.i18n;
+const { PanelBody, TextControl, Notice } = wp.components;
+
+export default ( { props, wrapper, inputs } ) => {
+    if ( ! props || ! wrapper || ! inputs ) return '';
 
     // Block Attributes
     const { 
-        clientId,
         setAttributes,
         attributes: {
             inputId,
@@ -37,55 +33,62 @@ export default ( { props, wrapper } ) => {
 
     // Returns a notice when the input name is already in use
     const NameCheck = () => {
-        const wrapperBlocks = select('core/block-editor').getBlocks( wrapper.clientId );
         let output = null;
 
-        wrapperBlocks.map( block => {
-            if ( 
-                block.name.startsWith( 'straightvisions/sv-gutenform' ) 
-                && block.clientId !== clientId
-                && block.attributes.name
-                && block.attributes.name === name
-            ) {
+        inputs.map( input => {
+            if ( input.name === name && input.ID !== inputId ) {
                 output = 
-                <Notice 
-                    status='warning' 
-                    className='sv-gutenform-name-check'
-                    isDismissible={ false }
-                >
-                    { __( 'This input name is already in use!', 'sv_gutenform' ) }
-                </Notice>;
+                    <Notice 
+                        status='warning' 
+                        className='sv-gutenform-name-check'
+                        isDismissible={ false }
+                    >
+                        { __( 'This input name is already in use!', 'sv_gutenform' ) }
+                    </Notice>;
             }
         } );
 
         return output;
     };
 
-    // Updates the formInput attribute in the wrapper block
-    const setFormInputs = newName => {
-        if ( wrapper.attributes ) {
-            const newFormInput      = { ID: inputId, name: newName, type: type };
-            let newFormInputs       = [ newFormInput ];
+    const updateFormInputs = newName => {
+        let newInputs   = inputs;
+        const newInput  = { ID: inputId, name: newName, type: type };
 
-            if ( wrapper.attributes.formInputs ) {
-                newFormInputs = JSON.parse( wrapper.attributes.formInputs );
-
-                const existingInput = newFormInputs.find( input => {
-                    return input.ID === inputId;
-                } );
-
-                if ( existingInput ) {
-                    const inputIndex = newFormInputs.indexOf( existingInput );
-
-                    newFormInputs[ inputIndex ] = newFormInput;
-                } else {
-                    newFormInputs.push( newFormInput );
-                }
+        if ( inputId ) {
+            const existingInput = newInputs.find( input => {
+                return input.ID === inputId;
+            } );
+    
+            if ( existingInput ) {
+                const inputIndex = newInputs.indexOf( existingInput );
+    
+                newInputs[ inputIndex ] = newInput;
+            } else {
+                newInputs.push( newInput );
             }
-
-            wrapper.setAttributes({ formInputs: JSON.stringify( newFormInputs ) });
+    
+            <InputsProvider value={ newInputs } />
         }
-    };
+
+        updateChilds();
+    }
+
+    const updateChilds = () => {
+        const childBlocks = [
+            'straightvisions/sv-gutenform-thank-you',
+            'straightvisions/sv-gutenform-user-mail',
+            'straightvisions/sv-gutenform-admin-mail',
+        ];
+
+        const innerBlocks = wp.data.select('core/block-editor').getBlocks( wrapper.clientId );
+
+        innerBlocks.map( block => {
+            if ( childBlocks.includes( block.name ) ) {
+                wp.data.dispatch('core/block-editor').updateBlock( block.clientId, { attributes: block.attributes } );
+            }
+        } );
+    }
 
     return(
         <PanelBody
@@ -95,16 +98,13 @@ export default ( { props, wrapper } ) => {
             <TextControl
                 label={ __( 'Label', 'sv_gutenform' ) }
                 value={ label }
-                onChange={ value => { 
-                    setLabel( value );
-                    //setName( getSlug( value ) ); @todo Deactivated, because this feature can result to problems. Need a better concept!
-                } }
+                onChange={ value => setLabel( value ) }
             />
             <TextControl
                 label={ __( 'Name', 'sv_gutenform' ) }
                 value={ getFormatedName( name ) }
                 onChange={ value => { 
-                    setFormInputs( getFormatedName( value ) );
+                    updateFormInputs( getFormatedName( value ) );
                     setName( getFormatedName( value ) );
                 }}
             />

@@ -7,8 +7,8 @@ const {
 } = wp.components;
 const { getBlocks } = wp.data.select('core/block-editor');
 
-export default ( { props, wrapper } ) => {
-    if ( ! props || ! wrapper ) return '';
+export default ( { props, wrapper, inputs } ) => {
+    if ( ! props || ! wrapper || ! inputs ) return '';
 
     // Wrapper Properties
     const {
@@ -37,9 +37,6 @@ export default ( { props, wrapper } ) => {
 
     // Returns an array with email block options for the SelectControl
     const getMailOptions = () => {
-        const { formInputs } = wp.data.select('core/block-editor').getBlockAttributes( wrapper.clientId );
-        const inputs = formInputs ? JSON.parse( formInputs ) : [];
-
         let options = [];
 
         inputs.map( input => {

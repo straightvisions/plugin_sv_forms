@@ -1,5 +1,11 @@
 // Constant available for all blocks
-export const FormContext = wp.element.createContext();
+const WrapperContext = wp.element.createContext({});
+export const WrapperConsumer = WrapperContext.Consumer;
+export const WrapperProvider = WrapperContext.Provider;
+
+const InputsContext = wp.element.createContext([]);
+export const InputsConsumer = InputsContext.Consumer;
+export const InputsProvider = InputsContext.Provider;
 
 // Wrapper Blocks
 import './blocks/wrapper/index.js';

@@ -1,9 +1,6 @@
 // Required Components
 const { __ } = wp.i18n;
-const {
-    PanelBody,
-    RangeControl,
-} = wp.components;
+const { PanelBody, RangeControl } = wp.components;
 
 export default ( { props, wrapper } ) => {
     if ( ! props || ! wrapper ) return '';

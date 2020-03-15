@@ -1,18 +1,11 @@
 import InspectorControls from './components/inspector_controls';
-import { FormContext } from '../../blocks';
+import { WrapperProvider, InputsConsumer } from '../../blocks';
 
-
-const { 
-    select, 
-    dispatch,
-} = wp.data;
-const { 
-    Component, 
-    Fragment 
-} = wp.element;
 const { __ } = wp.i18n;
 const { Button } = wp.components;
+const { select, dispatch } = wp.data;
 const { InnerBlocks } = wp.blockEditor;
+const { Component, Fragment } = wp.element;
 const { editPost } = dispatch( 'core/editor' );
 const { getEditedPostAttribute } = select( 'core/editor' );
 
@@ -38,7 +31,6 @@ export default class extends Component {
                 this.props.attributes.formId = this.props.clientId;
             }
             
-            this.updateChildBlocks();
             this.updatePostMeta( 'update' );
         }
 
@@ -46,7 +38,6 @@ export default class extends Component {
     }
 
     componentDidUpdate = () => {
-        this.updateChildBlocks();
         this.updatePostMeta( 'update' );
     }
 
@@ -83,23 +74,6 @@ export default class extends Component {
         }
 
         return false;
-    }
-
-    // Updates the formInputs attribute of the blocks: thank-you, admin-mail & user-mail
-    updateChildBlocks = () => {
-        const childBlocks = [
-            'straightvisions/sv-gutenform-thank-you',
-            'straightvisions/sv-gutenform-user-mail',
-            'straightvisions/sv-gutenform-admin-mail',
-        ];
-
-        const innerBlocks = select('core/block-editor').getBlocks( this.props.clientId );
-
-        innerBlocks.map( block => {
-            if ( childBlocks.includes( block.name ) ) {
-                dispatch('core/block-editor').updateBlock( block.clientId, { attributes: block.attributes } );
-            }
-        } );
     }
 
     // Updates the current post meta with the block attributes
@@ -151,6 +125,12 @@ export default class extends Component {
         }
     }
 
+    updateFormInputs = inputs => {
+        if ( inputs.length > 0 ) {
+            this.props.setAttributes({ formInputs: JSON.stringify( inputs ) });
+        }
+    }
+
     render = () => {
         return (
             <Fragment>
@@ -166,16 +146,17 @@ export default class extends Component {
                         <div className='sv_gutenform_title'>{ __( 'SV Gutenform', 'sv_gutenform' ) }</div>
                     </div>
                     <div class='sv_gutenform_body'>
-                        <FormContext.Provider value={ this.props }>
+                        <WrapperProvider value={ this.props }>
                             <InnerBlocks 
                                 allowedBlocks={ this.template }
                                 template={ this.template }
                                 templateLock={ true }
                             />
-                        </FormContext.Provider>
+                        </WrapperProvider>
                     </div>
                 </div>
                 <InspectorControls props={ this.props } />
+                <InputsConsumer>{ inputs => this.updateFormInputs( inputs ) }</InputsConsumer>
             </Fragment>
         );
     }

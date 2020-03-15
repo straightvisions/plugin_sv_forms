@@ -29,7 +29,11 @@ class wrapper extends sv_gutenform {
 	}
 
 	public function init_block( array $attr, string $content ): string {
-		return $this->load_scripts( $attr['formId'] )->render_block( $attr, $content );
+		if ( isset( $attr['formId'] ) ) {
+			$this->load_scripts( $attr['formId'] );
+		}
+
+		return $this->render_block( $attr, $content );
 	}
 
 	public function render_block( array $attr, string $content ): string {
