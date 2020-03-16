@@ -2,3 +2,18 @@
 	width: auto;
 	cursor: pointer;
 }
+
+.wp-block-straightvisions-sv-gutenform-submit button,
+.wp-block-straightvisions-sv-gutenform-submit.alignleft button,
+.wp-block-straightvisions-sv-gutenform-submit.aligncenter button {
+	margin-right: auto;
+}
+
+.wp-block-straightvisions-sv-gutenform-submit.aligncenter button,
+.wp-block-straightvisions-sv-gutenform-submit.alignright button {
+	margin-left: auto;
+}
+
+.wp-block-straightvisions-sv-gutenform-submit.alignfull button {
+	width: 100%;
+}

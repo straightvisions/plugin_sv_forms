@@ -24,7 +24,7 @@ registerBlockType( 'straightvisions/sv-gutenform-submit', {
 		__( 'Button', 'sv_gutenform' ),
 	],
 	supports: {
-		align:[ 'left', 'right', 'center', 'wide', 'full' ],
+		align:[ 'left', 'right', 'center', 'full' ],
 	},
 	attributes: {
 		// Text
