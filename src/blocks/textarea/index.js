@@ -65,16 +65,16 @@ registerBlockType( 'straightvisions/sv-gutenform-textarea', {
 		labelColorClass: {
 			type: 'string',
 		},
-		textareaColor: {
+		inputColor: {
 			type: 'string',
 		},
-		textareaColorClass: {
+		inputColorClass: {
 			type: 'string',
 		},
-		textareaBackgroundColor: {
+		inputBackgroundColor: {
 			type: 'string',
 		},
-		textareaBackgroundColorClass: {
+		inputBackgroundColorClass: {
 			type: 'string',
 		},
 

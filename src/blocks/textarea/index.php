@@ -74,16 +74,16 @@ class textarea extends sv_gutenform {
 					'labelColorClass' => array(
 						'type' => 'string',
 					),
-					'textareaColor' => array(
+					'inputColor' => array(
 						'type' => 'string',
 					),
-					'textareaColorClass' => array(
+					'inputColorClass' => array(
 						'type' => 'string',
 					),
-					'textareaBackgroundColor' => array(
+					'inputBackgroundColor' => array(
 						'type' => 'string',
 					),
-					'textareaBackgroundColorClass' => array(
+					'inputBackgroundColorClass' => array(
 						'type' => 'string',
 					),
 

@@ -34,6 +34,8 @@
     width: 100%;
     background: transparent;
     flex: 1 1 auto;
+    border: none;
+    padding: 0;
 }
 
 .wp-block-straightvisions-sv-gutenform-range input[type="range"]:focus {
@@ -69,20 +71,14 @@
 /* Number */
 .wp-block-straightvisions-sv-gutenform-range input[type="number"] {
     flex: 1;
-    margin-left: 10px;
-    color: rgba( 0, 0, 0, .75 );
-    font-size: 14px;
-    padding: 4px 6px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: rgba( 0, 0, 0, .5 );
-    transition: color .25s ease, border-color .25s ease;
+    font-size: 14px !important;
+	margin-left: 10px !important;
+	padding: 4px 6px !important;
 }
 
-.wp-block-straightvisions-sv-gutenform-range input[type="number"]:hover,
 .wp-block-straightvisions-sv-gutenform-range input[type="number"]:focus {
-    color: rgb( 0, 0, 0 );
-	border-color: rgb( 0, 0, 0 );
+    color: #000 !important;
+	border-color: #000 !important;
 }
 
 /* Range - Alignment - Vertical */

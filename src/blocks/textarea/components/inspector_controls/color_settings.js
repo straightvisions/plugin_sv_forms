@@ -14,18 +14,18 @@ export default ( { props } ) => {
         setAttributes,
         attributes: {
             labelColor,
-            textareaColor,
-            textareaBackgroundColor,
+            inputColor,
+            inputBackgroundColor,
         }
     } = props;
 
     // Functions to set the block attributes
-    const setLabelColor                     = labelColor                    => setAttributes({ labelColor });
-    const setLabelColorClass                = labelColorClass               => setAttributes({ labelColorClass });
-    const setTextareaColor                  = textareaColor                 => setAttributes({ textareaColor });
-    const setTextareaColorClass             = textareaColorClass            => setAttributes({ textareaColorClass });
-    const setTextareaBackgroundColor        = textareaBackgroundColor       => setAttributes({ textareaBackgroundColor });
-    const setTextareaBackgroundColorClass   = textareaBackgroundColorClass  => setAttributes({ textareaBackgroundColorClass });
+    const setLabelColor                  = labelColor                 => setAttributes({ labelColor });
+    const setLabelColorClass             = labelColorClass            => setAttributes({ labelColorClass });
+    const setInputColor                  = inputColor                 => setAttributes({ inputColor });
+    const setInputColorClass             = inputColorClass            => setAttributes({ inputColorClass });
+    const setInputBackgroundColor        = inputBackgroundColor       => setAttributes({ inputBackgroundColor });
+    const setInputBackgroundColorClass   = inputBackgroundColorClass  => setAttributes({ inputBackgroundColorClass });
     
     // Returns an color object if this color is defined in the editor
     const getColorObject = color => {
@@ -56,18 +56,18 @@ export default ( { props } ) => {
             label: __( 'Label', 'sv_gutenform' ),
         },
         {
-            value: textareaColor,
+            value: inputColor,
             onChange: value => { 
-                setTextareaColor( value );
-                setTextareaColorClass( getColorClass( value ) );
+                setInputColor( value );
+                setInputColorClass( getColorClass( value ) );
             },
             label: __( 'Textarea', 'sv_gutenform' ),
         },
         {
-            value: textareaBackgroundColor,
+            value: inputBackgroundColor,
             onChange: value => { 
-                setTextareaBackgroundColor( value );
-                setTextareaBackgroundColorClass( getColorClass( value, true ) );
+                setInputBackgroundColor( value );
+                setInputBackgroundColorClass( getColorClass( value, true ) );
             },
             label: __( 'Textarea Background', 'sv_gutenform' ),
         },

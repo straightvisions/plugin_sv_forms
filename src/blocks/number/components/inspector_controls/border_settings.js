@@ -27,7 +27,6 @@ export default ( { props } ) => {
                 value={ borderRadius }
                 onChange={ value => { value = ! value ? '' : value; setBorderRadius( value ); }}
                 allowReset
-                initialPosition={ 5 }
                 min={ 0 }
                 max={ 50 }
             />

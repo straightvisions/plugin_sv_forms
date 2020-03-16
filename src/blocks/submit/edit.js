@@ -33,12 +33,14 @@ export default withSelect( ( select, props ) => {
     return (
         <Fragment>
             <InspectorControls props={ props } />
-            <RichText
-                className={ [ textColorClass, backgroundColorClass, className ] }
-                style={{ color: textColor, backgroundColor: backgroundColor, borderRadius: borderRadius }}
-                value={ content }
-                onChange={ value => setContent( value ) } 
-            />
+            <div className={ className }>
+                <RichText
+                    className={ [ textColorClass, backgroundColorClass ] }
+                    style={{ color: textColor, backgroundColor: backgroundColor, borderRadius: borderRadius }}
+                    value={ content }
+                    onChange={ value => setContent( value ) } 
+                />
+            </div>
         </Fragment>
     ); 
 });

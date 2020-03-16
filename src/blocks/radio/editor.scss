@@ -1,3 +1,9 @@
+// Radio
+.wp-block-straightvisions-sv-gutenform-radio .components-radio-control__option label {
+    display: inline !important;
+    margin: 0 !important;
+}
+
 // Add Option Button
 .sv-gutenform-radio-options > .components-button.sv-gutenform-add-option {
     display: flex;
@@ -63,8 +69,4 @@
     border: none !important;
     box-shadow: none !important;
     background-color: transparent !important;
-}
-
-.components-notice.sv-gutenform-name-check {
-	margin: -15px 0 15px 0;
 }

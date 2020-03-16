@@ -88,18 +88,18 @@ class submit extends sv_gutenform {
 
 		// Text Color
 		if ( 
-			isset( $block_attr['textColor'] ) 
-			&& $block_attr['textColorClass'] 
+			isset( $this->block_attr['textColor'] ) 
+			&& $this->block_attr['textColorClass'] 
 		) {
-            $class[] = $block_attr['textColorClass'];
+            $class[] = $this->block_attr['textColorClass'];
 		}
 
 		// Background Color
 		if ( 
-			isset( $block_attr['backgroundColor'] ) 
-			&& $block_attr['backgroundColorClass'] 
+			isset( $this->block_attr['backgroundColor'] ) 
+			&& $this->block_attr['backgroundColorClass'] 
 		) {
-            $class[] = $block_attr['backgroundColorClass'];
+            $class[] = $this->block_attr['backgroundColorClass'];
 		}
 		
 		if ( ! empty( $class ) ) {
@@ -111,23 +111,23 @@ class submit extends sv_gutenform {
 
 		// Text Color
 		if ( 
-			isset( $block_attr['textColor'] ) 
-			&& ! $block_attr['textColorClass'] 
+			isset( $this->block_attr['textColor'] ) 
+			&& ! $this->block_attr['textColorClass'] 
 		) {
-			$style[] = 'color:' . $block_attr['textColor'];
+			$style[] = 'color:' . $this->block_attr['textColor'];
 		}
 
 		// Background Color
 		if ( 
-			isset( $block_attr['backgroundColor'] ) 
-			&& ! $block_attr['backgroundColorClass'] 
+			isset( $this->block_attr['backgroundColor'] ) 
+			&& ! $this->block_attr['backgroundColorClass'] 
 		) {
-			$style[] = 'background-color:' . $block_attr['backgroundColor'];
+			$style[] = 'background-color:' . $this->block_attr['backgroundColor'];
 		}
 
 		// Border Radius
-		if ( isset( $block_attr['borderRadius'] ) ) {
-			$style[] = 'border-radius:' . $block_attr['borderRadius'] . 'px';
+		if ( isset( $this->block_attr['borderRadius'] ) ) {
+			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
 		}
 
 		if ( ! empty( $style ) ) {
