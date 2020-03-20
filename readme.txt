@@ -3,7 +3,7 @@ Contributors: matthias-reuter, matthiasbathke, dennisheiden, adrianchudzynski
 Donate link: https://straightvisions.com
 Tags: form-block, form-builder, contact-form
 Requires PHP: 7.0
-Requires at least: 5.0
+Requires at least: 5.3.2
 Tested up to: 5.3.2
 Stable tag: 1.4.13
 License: GPL-3.0-or-later
@@ -97,6 +97,13 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 * Spam Guard will no longer throw an error, when not set.
 * Fixed a bug where block content of the Admin Mail and User Mail Block will disappear.
 * The available input values inside the Thank You Message block will now update live.
+
+= 1.4.13 =
+
+### Various
+
+* FIX Margin
+* Update Core
 
 = 1.4.12 =
 
