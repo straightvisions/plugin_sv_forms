@@ -7,22 +7,22 @@ if ( ! class_exists( '\sv_core\core_plugin' ) ) {
 
 class init extends \sv_core\core_plugin {
 	const version 				= 1413;
-	const version_core_match 	= 4024;
-	
-	public function load() {
-		if ( ! $this->setup( __NAMESPACE__, __FILE__ ) ) {
-			return false;
-		}
-		
-		$section_privacy_text =
-			'';
-		
-		$this->set_section_title( __( 'SV Gutenform', 'sv_gutenform' ) )
-			 ->set_section_desc( __( '', 'sv_gutenform' ) )
-			 ->set_section_privacy( $section_privacy_text );
-		
-		return $this;
-	}	
+	const version_core_match 	= 4025;
+
+    public function load() {
+        if ( ! $this->setup( __NAMESPACE__, __FILE__ ) ) {
+            return false;
+        }
+
+        $info = get_file_data($this->get_path('../'.$this->get_name().'.php'), array(
+            'name'	=> 'Plugin Name',
+            'desc'	=> 'Description'
+        ));
+
+        $this->set_section_title( $info['name'] );
+        $this->set_section_desc( $info['desc'] );
+        $this->set_section_privacy( '<p>' . $this->get_section_title() . __(' is a forms builder. Admin has total control about data handling.',  'sv_posts').'</p>' );
+    }
 }
 
 $GLOBALS[ __NAMESPACE__ ] = new init();

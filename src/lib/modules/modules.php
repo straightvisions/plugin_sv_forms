@@ -18,6 +18,8 @@ class modules extends init {
 		$this->submission->init();
 		$this->personal_data->init();
 		$this->sv_gutenform->init();
+
+        $this->freemius->init();
 	}
 
 	// Allows to use an array of needles for strpos
