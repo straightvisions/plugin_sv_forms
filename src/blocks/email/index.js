@@ -37,7 +37,6 @@ registerBlockType( 'straightvisions/sv-gutenform-email', {
 		},
 		label: {
 			type: 'string',
-			default: __( 'E-Mail Label', 'sv_gutenform' ),
 		},
 		name: {
 			type: 'string',
@@ -48,6 +47,7 @@ registerBlockType( 'straightvisions/sv-gutenform-email', {
 		},
 		placeholder: {
 			type: 'string',
+			default: __( 'E-Mail', 'sv_gutenform' )
 		},
 
 		// Validation Settings

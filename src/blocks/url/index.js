@@ -37,17 +37,17 @@ registerBlockType( 'straightvisions/sv-gutenform-url', {
 		},
 		label: {
 			type: 'string',
-			default: __( 'URL Label', 'sv_gutenform' ),
 		},
 		name: {
 			type: 'string',
 		},
 		type: {
 			type: 'string',
-			default: 'url',
+			default: 'url'
 		},
 		placeholder: {
 			type: 'string',
+			default: __( 'URL', 'sv_gutenform' )
 		},
 
 		// Validation Settings

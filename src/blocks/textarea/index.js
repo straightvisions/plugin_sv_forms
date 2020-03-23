@@ -37,7 +37,6 @@ registerBlockType( 'straightvisions/sv-gutenform-textarea', {
 		},
 		label: {
 			type: 'string',
-			default: __( 'Text Label', 'sv_gutenform' ),
 		},
 		name: {
 			type: 'string',
@@ -48,6 +47,7 @@ registerBlockType( 'straightvisions/sv-gutenform-textarea', {
 		},
 		placeholder: {
 			type: 'string',
+			default: __( 'Message', 'sv_gutenform' ),
 		},
 
 		// Validation Settings

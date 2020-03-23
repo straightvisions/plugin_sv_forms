@@ -36,6 +36,7 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		},
 		formLabel: {
 			type: 'string',
+			default: __( 'Contact Form', 'sv_gutenform' )
 		},
 		saveSubmissions: {
 			type: 'boolean',

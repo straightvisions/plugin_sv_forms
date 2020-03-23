@@ -37,7 +37,7 @@ registerBlockType( 'straightvisions/sv-gutenform-select', {
 		},
 		label: {
 			type: 'string',
-			default: __( 'Select Label', 'sv_gutenform' ),
+			default: __( 'Select', 'sv_gutenform' ),
 		},
 		name: {
 			type: 'string',

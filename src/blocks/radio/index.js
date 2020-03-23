@@ -37,7 +37,7 @@ registerBlockType( 'straightvisions/sv-gutenform-radio', {
 		},
 		label: {
 			type: 'string',
-			default: __( 'Radio Button Label', 'sv_gutenform' ),
+			default: __( 'Radio', 'sv_gutenform' ),
 		},
 		name: {
 			type: 'string',

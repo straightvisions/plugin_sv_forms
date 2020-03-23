@@ -41,7 +41,6 @@ registerBlockType( 'straightvisions/sv-gutenform-range', {
 		},
 		label: {
 			type: 'string',
-			default: __( 'Range Label', 'sv_gutenform' ),
 		},
 		name: {
 			type: 'string',

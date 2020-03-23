@@ -101,7 +101,7 @@ export default class extends Component {
 
     // Returns a Label components
     Label = () => {
-        if ( this.props.attributes.label.length > 0 ) {
+        if ( this.props.attributes.label && this.props.attributes.label.length > 0 ) {
             return (
                 <label
                     for={ this.props.attributes.name }

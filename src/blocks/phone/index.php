@@ -46,7 +46,6 @@ class phone extends sv_gutenform {
 					),
 					'label' => array(
 						'type' => 'string',
-						'default' => __( 'Phone Label', 'sv_posts' ),
 					),
 					'name' => array(
 						'type' > 'string',
@@ -57,6 +56,7 @@ class phone extends sv_gutenform {
 					),
 					'placeholder' => array(
 						'type' => 'string',
+						'default' => '000 0000 0000',
 					),
 
 					// Validation Settings

@@ -43,7 +43,7 @@ class submit extends sv_gutenform {
 					// Content
 					'content' => array(
 						'type' => 'string',
-						'default' => __( 'Submit', 'sv_gutenform' ),
+						'default' => __( 'Send', 'sv_gutenform' ),
 					),
 
 					// Color Settings

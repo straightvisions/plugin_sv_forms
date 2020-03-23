@@ -37,7 +37,6 @@ registerBlockType( 'straightvisions/sv-gutenform-date', {
 		},
 		label: {
 			type: 'string',
-			default: __( 'Date Label', 'sv_gutenform' ),
 		},
 		name: {
 			type: 'string',

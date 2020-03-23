@@ -46,7 +46,6 @@ class url extends sv_gutenform {
 					),
 					'label' => array(
 						'type' => 'string',
-						'default' => __( 'URL Label', 'sv_posts' ),
 					),
 					'name' => array(
 						'type' => 'string',
@@ -57,6 +56,7 @@ class url extends sv_gutenform {
 					),
 					'placeholder' => array(
 						'type' => 'string',
+						'default' => __( 'URL', 'sv_gutenform' ),
 					),
 
 					// Validation Settings

@@ -46,7 +46,7 @@ class radio extends sv_gutenform {
 					),
 					'label' => array(
 						'type' => 'string',
-						'default' => __( 'Radio Button Label', 'sv_posts' ),
+						'default' => __( 'Radio', 'sv_gutenform' ),
 					),
 					'name' => array(
 						'type' => 'string',

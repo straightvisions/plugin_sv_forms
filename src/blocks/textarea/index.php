@@ -46,7 +46,6 @@ class textarea extends sv_gutenform {
 					),
 					'label' => array(
 						'type' => 'string',
-						'default' => __( 'Textarea Label', 'sv_posts' ),
 					),
 					'name' => array(
 						'type' => 'string',
@@ -57,6 +56,7 @@ class textarea extends sv_gutenform {
 					),
 					'placeholder' => array(
 						'type' => 'string',
+						'default' => __( 'Message', 'sv_gutenform' ),
 					),
 
 					// Validation Settings

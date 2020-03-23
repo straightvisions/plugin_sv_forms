@@ -46,7 +46,7 @@ class select extends sv_gutenform {
 					),
 					'label' => array(
 						'type' => 'string',
-						'default' => __( 'Select Label', 'sv_posts' ),
+						'default' => __( 'Select', 'sv_gutenform' ),
 					),
 					'name' => array(
 						'type' => 'string',

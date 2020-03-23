@@ -1,5 +1,5 @@
 // Required Components
-import { WrapperConsumer, InputsProvider } from '../../blocks';
+import { WrapperConsumer } from '../../blocks';
 
 const { __ } = wp.i18n;
 const { Button } = wp.components;
@@ -17,26 +17,28 @@ export default class extends Component {
                 timeTrap: true,
             }],
             ['straightvisions/sv-gutenform-text', {
-                label: __( 'Name', 'sv_gutenform' ),
+                placeholder: __( 'Name', 'sv_gutenform' ),
                 name: 'name',
                 required: true,
                 autofocus: true,
+                borderRadius: 4,
             }],
             ['straightvisions/sv-gutenform-email', {
-                label: __( 'E-Mail', 'sv_gutenform' ),
+                placeholder: __( 'E-Mail', 'sv_gutenform' ),
                 name: 'email',
-                required: true,
-            }],
-            ['straightvisions/sv-gutenform-url', {
-                label: __( 'Website', 'sv_gutenform' ),
-                name: 'website',
+                borderRadius: 4,
             }],
             ['straightvisions/sv-gutenform-textarea', {
-                label: __( 'Message', 'sv_gutenform' ),
+                placeholder: __( 'Message', 'sv_gutenform' ),
                 name: 'message',
+                borderRadius: 4,
                 required: true,
             }],
-            ['straightvisions/sv-gutenform-submit'],
+            ['straightvisions/sv-gutenform-submit', {
+                align: 'full',
+                content: __( 'SEND', 'sv_gutenform' ),
+                borderRadius: 4,
+            }],
         ];
     }
 
@@ -56,12 +58,12 @@ export default class extends Component {
 
     // Returns all allowed blocks
     getAllowedBlocks = () => {
-        const disallowedBlocks = [ 
+        const disallowedBlocks = [
             'straightvisions/sv-gutenform', 
             'straightvisions/sv-gutenform-form',
             'straightvisions/sv-gutenform-thank-you',
             'straightvisions/sv-gutenform-user-mail',
-            'straightvisions/sv-gutenform-admin-mail'  
+            'straightvisions/sv-gutenform-admin-mail'
         ];
         const availableBlocks = wp.data.select('core/blocks').getBlockTypes();
         let allowedBlocks = [];

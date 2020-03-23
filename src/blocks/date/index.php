@@ -46,7 +46,6 @@ class date extends sv_gutenform {
 					),
 					'label' => array(
 						'type' => 'string',
-						'default' => __( 'Date Label', 'sv_posts' ),
 					),
 					'name' => array(
 						'type' => 'string',

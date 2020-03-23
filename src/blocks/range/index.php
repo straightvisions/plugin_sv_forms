@@ -47,7 +47,6 @@ class range extends sv_gutenform {
 					),
 					'label' => array(
 						'type' => 'string',
-						'default' => __( 'Range Label', 'sv_posts' ),
 					),
 					'name' => array(
 						'type' => 'string',

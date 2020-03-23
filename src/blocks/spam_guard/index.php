@@ -31,11 +31,13 @@ class spam_guard extends sv_gutenform {
 					// Honeypot Settings
 					'honeypot' => array(
 						'type' => 'bool',
+						'default' => true,
 					),
 
 					// Time Trap Settings
 					'timeTrap' => array(
 						'type' => 'bool',
+						'default' => true,
 					),
 					'timeTrapTimeWindow' => array(
 						'type' => 'number',

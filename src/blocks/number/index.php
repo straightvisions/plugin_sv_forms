@@ -46,7 +46,6 @@ class number extends sv_gutenform {
 					),
 					'label' => array(
 						'type' => 'string',
-						'default' => __( 'Number Label', 'sv_posts' ),
 					),
 					'name' => array(
 						'type' => 'string',
@@ -57,6 +56,7 @@ class number extends sv_gutenform {
 					),
 					'placeholder' => array(
 						'type' => 'string',
+						'default' => '0'
 					),
 
 					// Validation Settings

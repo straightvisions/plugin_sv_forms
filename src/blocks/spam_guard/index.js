@@ -21,11 +21,13 @@ registerBlockType( 'straightvisions/sv-gutenform-spam-guard', {
 		// Honeypot Settings
 		honeypot: {
 			type: 'bool',
+			default: true,
 		},
 
 		// Time Trap Settings
 		timeTrap: {
 			type: 'bool',
+			default: true,
 		},
 		timeTrapWindow: {
 			type: 'number',

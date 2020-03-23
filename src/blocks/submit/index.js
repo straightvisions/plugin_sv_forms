@@ -30,7 +30,7 @@ registerBlockType( 'straightvisions/sv-gutenform-submit', {
 		// Text
 		content: {
 			type: 'string',
-			default: __( 'Submit', 'sv_gutenform' ),
+			default: __( 'Send', 'sv_gutenform' ),
 		},
 
 		// Color Settings

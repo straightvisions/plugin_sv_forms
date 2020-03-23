@@ -10,7 +10,16 @@ export default class extends Component {
     constructor(props) {
         super(...arguments);
 
-        this.props = props;
+        this.props      = props;
+        this.template   = [
+            ['core/heading', {
+                level: 2,
+                content: __( 'Thank you <strong>%name%</strong>!', 'sv_gutenform' )
+            }],
+            ['core/paragraph', {
+                content: __( 'Your message has been successfully sent. We will contact you very soon!', 'sv_gutenform' )
+            }],
+        ];
     }
 
      // React Lifecycle Methos
@@ -113,6 +122,7 @@ export default class extends Component {
                         <InnerBlocks 
                             allowedBlocks={ this.getAllowedBlocks() }
                             templateLock={ false } 
+                            template={ this.template }
                         />
                     </div> 
                 </div>

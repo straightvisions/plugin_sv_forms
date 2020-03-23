@@ -46,7 +46,7 @@ class checkbox extends sv_gutenform {
 					),
 					'label' => array(
 						'type' => 'string',
-						'default' => __( 'Checkbox Label', 'sv_posts' ),
+						'default' => __( 'Checkbox', 'sv_gutenform' ),
 					),
 					'name' => array(
 						'type' => 'string',

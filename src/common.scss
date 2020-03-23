@@ -11,7 +11,24 @@
 .wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-radio,
 .wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-range,
 .wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-submit {
-	margin-bottom: .5em;
+    margin-bottom: .5em;
+    margin-top: 0;
+}
+
+.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-text .components-base-control,
+.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-email .components-base-control,
+.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-url .components-base-control,
+.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-number .components-base-control,
+.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-phone .components-base-control,
+.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-password .components-base-control,
+.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-textarea .components-base-control,
+.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-select .components-base-control,
+.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-date .components-base-control,
+.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-checkbox .components-base-control,
+.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-radio .components-base-control,
+.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-range .components-base-control,
+.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-submit .components-base-control {
+    background-color: transparent !important;
 }
 
 .wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body label {
