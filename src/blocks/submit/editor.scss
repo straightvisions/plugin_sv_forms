@@ -1,4 +1,4 @@
-.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-submit .block-editor-rich-text__editable {
+.wp-block-straightvisions-sv-forms-form .sv_forms_body .wp-block-straightvisions-sv-forms-submit .block-editor-rich-text__editable {
 	font-size: 16px;
     line-height: 1;
     font-weight: 400;
@@ -23,12 +23,12 @@
     transition: color .25s ease, background-color .25s, border-color .25s ease;
 }
 
-.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-submit .block-editor-rich-text__editable:hover,
-.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body .wp-block-straightvisions-sv-gutenform-submit .block-editor-rich-text__editable:focus {
+.wp-block-straightvisions-sv-forms-form .sv_forms_body .wp-block-straightvisions-sv-forms-submit .block-editor-rich-text__editable:hover,
+.wp-block-straightvisions-sv-forms-form .sv_forms_body .wp-block-straightvisions-sv-forms-submit .block-editor-rich-text__editable:focus {
 	border-color: #000 !important;
 }
 
-.wp-block-straightvisions-sv-gutenform-form .sv_gutenform_body div[data-type="straightvisions/sv-gutenform-submit"][data-align="full"] .wp-block-straightvisions-sv-gutenform-submit .block-editor-rich-text__editable {
+.wp-block-straightvisions-sv-forms-form .sv_forms_body div[data-type="straightvisions/sv-forms-submit"][data-align="full"] .wp-block-straightvisions-sv-forms-submit .block-editor-rich-text__editable {
 	display: block;
     width: 100%;
     margin-left: auto !important;

@@ -59,42 +59,42 @@ export default ( { props } ) => {
 
     return(
         <PanelBody
-            title={ __( 'Options', 'sv_gutenform' ) }
+            title={ __( 'Options', 'sv_forms' ) }
             initialOpen={ true }
         >
-            <div className='sv-gutenform-select-options'>
+            <div className='sv-forms-select-options'>
                 <Button
-                    className='sv-gutenform-add-option'
+                    className='sv-forms-add-option'
                     onClick={ () => addOption() }
                 >
-                    { __( 'Add Option', 'sv_gutenform' ) }
+                    { __( 'Add Option', 'sv_forms' ) }
                 </Button>
                 {
                     parsedOptions.map( ( option, index ) => {
                         return(
-                            <div className='sv-gutenform-select-option'>
-                                <div className='sv-gutenform-select-option-flex'>
+                            <div className='sv-forms-select-option'>
+                                <div className='sv-forms-select-option-flex'>
                                     <TextControl
-                                        label={ __( 'Label', 'sv_gutenform' ) }
+                                        label={ __( 'Label', 'sv_forms' ) }
                                         value={ option.label }
                                         onChange={ value => updateOption( index, 'label', value ) }
                                         autofocus
                                     />
                                     <TextControl
-                                        label={ __( 'Value', 'sv_gutenform' ) }
+                                        label={ __( 'Value', 'sv_forms' ) }
                                         value={ option.value }
                                         onChange={ value => updateOption( index, 'value', getFormatedName( value ) ) }
                                     />
                                 </div>
-                                <div className='sv-gutenform-select-option-flex'>
+                                <div className='sv-forms-select-option-flex'>
                                     <ToggleControl
-                                        label={ __( 'Disabled', 'sv_gutenform' ) }
+                                        label={ __( 'Disabled', 'sv_forms' ) }
                                         checked={ option.disabled }
                                         onChange={ () => updateOption( index, 'disabled', ! option.disabled )  }
                                     />
                                     <Button
-                                        label={ __( 'Delete Option', 'sv_gutenform' ) }
-                                        className='sv-gutenform-option-remove'
+                                        label={ __( 'Delete Option', 'sv_forms' ) }
+                                        className='sv-forms-option-remove'
                                         icon='no-alt'
                                         onClick={ () => deleteOption( index ) }
                                     />

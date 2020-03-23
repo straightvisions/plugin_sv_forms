@@ -6,12 +6,12 @@ import edit from './edit';
 const { __ } 				= wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-number', {
-	title: __( 'Number', 'sv_gutenform' ),
-	description: __( 'A field for numbers.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-number', {
+	title: __( 'Number', 'sv_forms' ),
+	description: __( 'A field for numbers.', 'sv_forms' ),
 	icon,
 	parent: [ 
-		'straightvisions/sv-gutenform-form', 
+		'straightvisions/sv-forms-form', 
 		'core/group', 
 		'core/cover',
 		'core/column',
@@ -19,9 +19,9 @@ registerBlockType( 'straightvisions/sv-gutenform-number', {
 	],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Number', 'sv_gutenform' ),
-		__( 'Number Input', 'sv_gutenform' ),
-		__( 'Number', 'sv_gutenform' ),
+		__( 'SV Forms Number', 'sv_forms' ),
+		__( 'Number Input', 'sv_forms' ),
+		__( 'Number', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],

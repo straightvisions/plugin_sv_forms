@@ -28,26 +28,26 @@ export default ( { props } ) => {
 
     return(
         <PanelBody
-            title={ __( 'Mail Settings', 'sv_gutenform' ) }
+            title={ __( 'Mail Settings', 'sv_forms' ) }
             initialOpen={ true }
         >
             <ToggleControl
-                label={ __( 'Send Mail', 'sv_gutenform' ) }
+                label={ __( 'Send Mail', 'sv_forms' ) }
                 checked={ mailSend }
                 onChange={ () => setMailSend( ! mailSend ) }
             />
             <TextControl
-                label={ __( 'Mail Subject', 'sv_gutenform' ) }
+                label={ __( 'Mail Subject', 'sv_forms' ) }
                 value={ mailSubject }
                 onChange={ value => setMailSubject( value ) }
             />
             <TextControl
-                label={ __( 'Mail From - Title', 'sv_gutenform' ) }
+                label={ __( 'Mail From - Title', 'sv_forms' ) }
                 value={ mailFromTitle }
                 onChange={ value => setMailFromTitle( value ) }
             />
             <TextControl
-                label={ __( 'Mail From - E-Mail', 'sv_gutenform' ) }
+                label={ __( 'Mail From - E-Mail', 'sv_forms' ) }
                 value={ mailFromMail }
                 onChange={ value => setMailFromMail( value ) }
             />

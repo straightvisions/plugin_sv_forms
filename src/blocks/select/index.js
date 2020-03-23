@@ -6,12 +6,12 @@ import edit from './edit';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-select', {
-	title: __( 'Select', 'sv_gutenform' ),
-	description: __( 'Create a select field.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-select', {
+	title: __( 'Select', 'sv_forms' ),
+	description: __( 'Create a select field.', 'sv_forms' ),
 	icon,
 	parent: [ 
-		'straightvisions/sv-gutenform-form', 
+		'straightvisions/sv-forms-form', 
 		'core/group', 
 		'core/cover',
 		'core/column',
@@ -19,9 +19,9 @@ registerBlockType( 'straightvisions/sv-gutenform-select', {
 	],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Select', 'sv_gutenform' ),
-		__( 'Select Field', 'sv_gutenform' ),
-		__( 'Select', 'sv_gutenform' ),
+		__( 'SV Forms Select', 'sv_forms' ),
+		__( 'Select Field', 'sv_forms' ),
+		__( 'Select', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
@@ -37,7 +37,7 @@ registerBlockType( 'straightvisions/sv-gutenform-select', {
 		},
 		label: {
 			type: 'string',
-			default: __( 'Select', 'sv_gutenform' ),
+			default: __( 'Select', 'sv_forms' ),
 		},
 		name: {
 			type: 'string',

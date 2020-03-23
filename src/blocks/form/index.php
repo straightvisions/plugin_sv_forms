@@ -1,7 +1,7 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
-class form extends sv_gutenform {	
+class form extends sv_forms {	
 	protected $block_attr = array();
 
 	public function init() {
@@ -35,9 +35,9 @@ class form extends sv_gutenform {
 
 	private function register_block() {
 		register_block_type(
-			'straightvisions/sv-gutenform-form', array(
-				'editor_script' 	=> 'sv-gutenform-block',
-				'editor_style'  	=> 'sv-gutenform-block-editor',
+			'straightvisions/sv-forms-form', array(
+				'editor_script' 	=> 'sv-forms-block',
+				'editor_style'  	=> 'sv-forms-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
 					'formId' => array(
@@ -59,6 +59,6 @@ class form extends sv_gutenform {
 
 	// Returns a string with all attributes for the form
 	public function get_form_class(): string {
-		return $this->get_root()->sv_gutenform->get_default_wrapper_class( $this->block_attr, $this->get_module_name() );
+		return $this->get_root()->sv_forms->get_default_wrapper_class( $this->block_attr, $this->get_module_name() );
 	}
 }

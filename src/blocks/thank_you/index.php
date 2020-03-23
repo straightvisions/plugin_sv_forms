@@ -1,7 +1,7 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
-class thank_you extends sv_gutenform {
+class thank_you extends sv_forms {
 	protected $block_attr = array();
 
 	public function init() {
@@ -35,9 +35,9 @@ class thank_you extends sv_gutenform {
 
 	private function register_block() {
 		register_block_type(
-			'straightvisions/sv-gutenform-thank-you', array(
-				'editor_script' 	=> 'sv-gutenform-block',
-				'editor_style'  	=> 'sv-gutenform-block-editor',
+			'straightvisions/sv-forms-thank-you', array(
+				'editor_script' 	=> 'sv-forms-block',
+				'editor_style'  	=> 'sv-forms-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(					
 					// Advanced Settings

@@ -1,12 +1,12 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
-class sv_gutenform extends modules {
+class sv_forms extends modules {
 	public function init() {
 		$this->register_scripts()
 			 ->register_blocks()
-			 ->set_section_title( __( 'Dashboard', 'sv_gutenform' ) )
-			 ->set_section_desc( __( 'Overview & Stats', 'sv_gutenform' ) )
+			 ->set_section_title( __( 'Dashboard', 'sv_forms' ) )
+			 ->set_section_desc( __( 'Overview & Stats', 'sv_forms' ) )
 			 ->set_section_type( 'tools' )
 			 ->set_section_template_path( $this->get_path( 'lib/backend/tpl/dashboard.php' ) )
 			 ->get_root()
@@ -18,7 +18,7 @@ class sv_gutenform extends modules {
 	}
 
 	// Registers all block styles and scripts for the frontend
-	private function register_scripts(): sv_gutenform {
+	private function register_scripts(): sv_forms {
 		// Stylesheets
 		$this->get_script( 'common' )
 			 ->set_path( 'lib/frontend/css/common.css' );
@@ -110,11 +110,11 @@ class sv_gutenform extends modules {
 	}
 
 	// Registers all block styles and scripts for the editor
-	public function register_block_assets(): sv_gutenform {	
+	public function register_block_assets(): sv_forms {	
 		$this->register_post_meta();
 
 		wp_register_script(
-			'sv-gutenform-block',
+			'sv-forms-block',
 			$this->get_root()->get_url( '../dist/blocks.build.js' ),
 			array( 'jquery', 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
 			filemtime( $this->get_root()->get_path( '../dist/blocks.build.js' ) ),
@@ -122,11 +122,11 @@ class sv_gutenform extends modules {
 		);
 
 		if ( $this->check_gutenberg() ) {
-			wp_localize_script( 'sv-gutenform-block', 'gutenbergPlugin', array( 'version' => GUTENBERG_VERSION ) );
+			wp_localize_script( 'sv-forms-block', 'gutenbergPlugin', array( 'version' => GUTENBERG_VERSION ) );
 		}
 	
 		wp_register_style(
-			'sv-gutenform-block-editor',
+			'sv-forms-block-editor',
 			$this->get_root()->get_url( '../dist/blocks.editor.build.css' ),
 			array( 'wp-edit-blocks' ),
 			filemtime( $this->get_root()->get_path( '../dist/blocks.editor.build.css' ) )
@@ -137,7 +137,7 @@ class sv_gutenform extends modules {
 
 	// Registers a custom post meta field, for the block attributes
 	private function register_post_meta() {
-		register_meta( 'post', '_sv_gutenform_forms', array (
+		register_meta( 'post', '_sv_forms_forms', array (
 			'show_in_rest' 	=> true,
 			'type' 			=> 'string',
 			'single' 		=> true,
@@ -176,7 +176,7 @@ class sv_gutenform extends modules {
 	// Returns the wrapper class for the default template input
 	protected function get_default_wrapper_class( array $block_attr, string $block_name ): string {
 		$class 		= array();
-		$class[]	= 'wp-block-straightvisions-sv-gutenform-' . $block_name;
+		$class[]	= 'wp-block-straightvisions-sv-forms-' . $block_name;
 
 		// Alignment
 		if ( isset( $block_attr['align'] ) ) { 

@@ -18,7 +18,7 @@ export default ( { props } ) => {
     return(
         <Fragment>
             <ToggleControl
-                label={ __( 'Disabled', 'sv_gutenform' ) }
+                label={ __( 'Disabled', 'sv_forms' ) }
                 checked={ disabled }
                 onChange={ () => setDisabled( ! disabled )  }
             />

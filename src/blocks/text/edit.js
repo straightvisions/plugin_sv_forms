@@ -60,9 +60,9 @@ export default class extends Component {
     // Updates the child blocks to force a rerender of them
     updateChilds = () => {
         const childBlocks = [
-            'straightvisions/sv-gutenform-thank-you',
-            'straightvisions/sv-gutenform-user-mail',
-            'straightvisions/sv-gutenform-admin-mail',
+            'straightvisions/sv-forms-thank-you',
+            'straightvisions/sv-forms-user-mail',
+            'straightvisions/sv-forms-admin-mail',
         ];
 
         const innerBlocks = wp.data.select('core/block-editor').getBlocks( this.wrapper.clientId );
@@ -80,7 +80,7 @@ export default class extends Component {
 
         let isDuplicate = false;
         const wrapperBlock = select('core/block-editor').getBlock( this.wrapper.clientId );
-        const formBlock = wrapperBlock.innerBlocks.find( block => { return block.name === 'straightvisions/sv-gutenform-form'; } );
+        const formBlock = wrapperBlock.innerBlocks.find( block => { return block.name === 'straightvisions/sv-forms-form'; } );
         
         formBlock.innerBlocks.map( block => {
             if ( 

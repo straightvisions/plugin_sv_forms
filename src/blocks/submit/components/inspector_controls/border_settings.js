@@ -19,11 +19,11 @@ export default ( { props } ) => {
 
     return(
         <PanelBody
-            title={ __( 'Border Settings', 'sv_gutenform' ) }
+            title={ __( 'Border Settings', 'sv_forms' ) }
             initialOpen={ true }
         >
             <RangeControl
-                label={ __( 'Border Radius', 'sv_gutenform' ) }
+                label={ __( 'Border Radius', 'sv_forms' ) }
                 value={ borderRadius }
                 onChange={ value => { value = ! value ? '' : value; setBorderRadius( value ); }}
                 allowReset

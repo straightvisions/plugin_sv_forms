@@ -6,12 +6,12 @@ import edit from './edit';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-password', {
-	title: __( 'Password', 'sv_gutenform' ),
-	description: __( 'A field for passwords.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-password', {
+	title: __( 'Password', 'sv_forms' ),
+	description: __( 'A field for passwords.', 'sv_forms' ),
 	icon,
 	parent: [ 
-		'straightvisions/sv-gutenform-form', 
+		'straightvisions/sv-forms-form', 
 		'core/group', 
 		'core/cover',
 		'core/column',
@@ -19,9 +19,9 @@ registerBlockType( 'straightvisions/sv-gutenform-password', {
 	],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Password', 'sv_gutenform' ),
-		__( 'Password Input', 'sv_gutenform' ),
-		__( 'Password', 'sv_gutenform' ),
+		__( 'SV Forms Password', 'sv_forms' ),
+		__( 'Password Input', 'sv_forms' ),
+		__( 'Password', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
@@ -47,7 +47,7 @@ registerBlockType( 'straightvisions/sv-gutenform-password', {
 		},
 		placeholder: {
 			type: 'string',
-			default: __( 'Password', 'sv_gutenform' ),
+			default: __( 'Password', 'sv_forms' ),
 		},
 
 		// Validation Settings

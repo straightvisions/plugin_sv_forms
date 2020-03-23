@@ -1,5 +1,5 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
 if ( ! class_exists( '\sv_core\core_plugin' ) ) {
 	require_once( dirname( __FILE__ ) . '/core_plugin/core_plugin.php' );

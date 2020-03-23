@@ -22,12 +22,12 @@ export default ( { props } ) => {
     return(
         <Fragment>
             <ToggleControl
-                label={ __( 'Autofocus', 'sv_gutenform' ) }
+                label={ __( 'Autofocus', 'sv_forms' ) }
                 checked={ autofocus }
                 onChange={ () => setAutofocus( ! autofocus )  }
             />
             <ToggleControl
-                label={ __( 'Disabled', 'sv_gutenform' ) }
+                label={ __( 'Disabled', 'sv_forms' ) }
                 checked={ disabled }
                 onChange={ () => setDisabled( ! disabled )  }
             />

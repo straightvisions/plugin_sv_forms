@@ -6,12 +6,12 @@ import edit from './edit';
 const { __ } 				= wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-range', {
-	title: __( 'Range', 'sv_gutenform' ),
-	description: __( 'A field for range.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-range', {
+	title: __( 'Range', 'sv_forms' ),
+	description: __( 'A field for range.', 'sv_forms' ),
 	icon,
 	parent: [ 
-		'straightvisions/sv-gutenform-form', 
+		'straightvisions/sv-forms-form', 
 		'core/group', 
 		'core/cover',
 		'core/column',
@@ -19,16 +19,16 @@ registerBlockType( 'straightvisions/sv-gutenform-range', {
 	],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Range', 'sv_gutenform' ),
-		__( 'Range Input', 'sv_gutenform' ),
-		__( 'Range', 'sv_gutenform' ),
+		__( 'SV Forms Range', 'sv_forms' ),
+		__( 'Range Input', 'sv_forms' ),
+		__( 'Range', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
 	},
 	styles: [
-		{ label: __( 'Horizontal', 'sv_gutenform' ), name: 'horizontal', isDefault: true },
-		{ label:__( 'Vertical', 'sv_gutenform' ), name: 'vertical' },
+		{ label: __( 'Horizontal', 'sv_forms' ), name: 'horizontal', isDefault: true },
+		{ label:__( 'Vertical', 'sv_forms' ), name: 'vertical' },
 	],
 	attributes: {
 		inputId: {

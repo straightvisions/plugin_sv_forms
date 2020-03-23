@@ -1,5 +1,5 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
 class taxonomy extends modules {
 	public function init() {
@@ -10,7 +10,7 @@ class taxonomy extends modules {
 	// Registers a new custom taxonomy for the custom post type
 	public function register_taxonomy(): taxonomy {
 		$args = array(
-			'label'        			=> __( 'Form', 'sv_gutenform' ),
+			'label'        			=> __( 'Form', 'sv_forms' ),
 			'public'       			=> false,
 			'rewrite'      			=> false,
 			'hierarchical' 			=> true,

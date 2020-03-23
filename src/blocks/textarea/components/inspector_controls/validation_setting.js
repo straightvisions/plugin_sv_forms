@@ -24,17 +24,17 @@ export default ( { props } ) => {
 
     return(
         <PanelBody
-            title={ __( 'Validation Settings', 'sv_gutenform' ) }
+            title={ __( 'Validation Settings', 'sv_forms' ) }
             initialOpen={ false }
         >
             <ToggleControl
-                label={ __( 'Required', 'sv_gutenform' ) }
+                label={ __( 'Required', 'sv_forms' ) }
                 checked={ required }
                 onChange={ () => setRequired( ! required )  }
             />
             <RangeControl
-                label={ __( 'Max. Length', 'sv_gutenform' ) }
-                help={ __( 'Defines the max. character length.', 'sv_gutenform' ) }
+                label={ __( 'Max. Length', 'sv_forms' ) }
+                help={ __( 'Defines the max. character length.', 'sv_forms' ) }
                 value={ maxlength }
                 onChange={ value => setMaxLength( value ) }
             />

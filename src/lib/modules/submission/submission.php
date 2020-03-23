@@ -1,20 +1,20 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
 class submission extends modules {
 	public function init() {
 		// Actions Hooks & Filter
-		add_action( 'wp_ajax_sv_gutenform_submit', array( $this, 'ajax_sv_gutenform_submit' ) );
+		add_action( 'wp_ajax_sv_forms_submit', array( $this, 'ajax_sv_forms_submit' ) );
 	}
 
 	// This function will be called on form submit via Ajax
-	public function ajax_sv_gutenform_submit() {
+	public function ajax_sv_forms_submit() {
 		if ( ! isset( $_POST) || empty( $_POST ) ) return;
-		if ( ! wp_verify_nonce( $_POST[ $this->get_root()->get_prefix( 'nonce' ) ], 'sv_gutenform_submit' ) ) return;
+		if ( ! wp_verify_nonce( $_POST[ $this->get_root()->get_prefix( 'nonce' ) ], 'sv_forms_submit' ) ) return;
 
 		// Variables
 		$post_id	= intval( $_POST[ $this->get_root()->get_prefix( 'post_id' ) ] );
-		$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_gutenform_forms', true ) );
+		$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_forms_forms', true ) );
 		$form_data	= $_POST[ $this->get_root()->get_prefix( 'form_data' ) ];
 		$form_id	= $this->get_input_value( $this->get_root()->get_prefix( 'form_id' ), $form_data );
 		
@@ -94,7 +94,7 @@ class submission extends modules {
 	// Returns a data array containing only valid input data
 	private function get_valid_data( array $attr_data, array $form_data ): array {
 		$validated_data = array();
-		$include = array( 'sv_gutenform_form_id', 'sv_gutenform_sg_hp', 'sv_gutenform_sg_tt' );
+		$include = array( 'sv_forms_form_id', 'sv_forms_sg_hp', 'sv_forms_sg_tt' );
 
 		// Inserts needed technical input fields into the validated_data array
 		foreach( $form_data as $form_item ) {

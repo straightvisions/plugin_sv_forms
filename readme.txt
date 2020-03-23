@@ -1,4 +1,4 @@
-=== SV Gutenform ===
+=== SV Forms ===
 Contributors: matthias-reuter, matthiasbathke, dennisheiden, adrianchudzynski
 Donate link: https://straightvisions.com
 Tags: form-block, form-builder, contact-form
@@ -9,15 +9,15 @@ Stable tag: 1.4.13
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
-SV Gutenform is a block that allows you to create forms in Gutenberg, with ease.
+SV Forms is a block that allows you to create forms in the WordPress Gutenberg Block-Editor, with ease.
 
 == Description ==
 
-Do you want to create quick and easy forms in the Gutenberg Editor?
+Do you want to create quick and easy forms in the WordPress Gutenberg Block-Editor?
 
-Then our new Gutenberg-Block SV Gutenform is just right for you!
+Then our new Gutenberg-Block SV Forms is just right for you!
 
-Our SV Gutenform Block for the Gutenberg Editor offers you full control and creative freedom in the creation of custom forms.
+Our SV Forms Block for the WordPress Gutenberg Block-Editor offers you full control and creative freedom in the creation of custom forms.
 
 ✔ A form block that wraps everything together and lets you put in whatever you want.
 ✔ 6 Input-Blocks for different kinds of data (more to come!).
@@ -34,7 +34,7 @@ Our SV Gutenform Block for the Gutenberg Editor offers you full control and crea
 
 = Plugin Description =
 
-SV Gutenform is a block that allows you to create forms in Gutenberg, with ease.
+SV Forms is a block that allows you to create forms in Gutenberg, with ease.
 
 = Team =
 
@@ -64,7 +64,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 ### New Blocks
 
 * Form Block
-    * This block will contain the blocks for the form and is a child of the SV Gutenform block.
+    * This block will contain the blocks for the form and is a child of the SV Forms block.
 
 ### Enhancements
 
@@ -80,8 +80,8 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 ### Various
 
 * Deactivated the feature that input names will be automatically generated, when the input label is updated, due to possible workflow problems.
-* The SV Gutenform block will no longer directly contain the blocks for the form, but the blocks for all form features.
-    * SV Gutenform will now act as a wrapper for the following blocks:
+* The SV Forms block will no longer directly contain the blocks for the form, but the blocks for all form features.
+    * SV Forms will now act as a wrapper for the following blocks:
         * Form (Will now directly contain the blocks for the form)
         * Thank You Message
         * User Mail
@@ -155,7 +155,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 ### Enhancements
 
-* SV Gutenform Block
+* SV Forms Block
     * Add header to wrapper with block name, description and the form id.
     * Add border and styling to wrapper, to better identify the block.
     * Add setting to save form submits.

@@ -1,14 +1,14 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
 class archive extends modules {
 	public function init() {
 		// Actions Hooks & Filter
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'restrict_manage_posts', array( $this, 'restrict_manage_posts' ) );
-		add_action( 'manage_sv_gutenform_submit_posts_custom_column' , array( $this, 'manage_sv_gutenform_submit_posts_custom_column' ), 10, 2 );
+		add_action( 'manage_sv_forms_submit_posts_custom_column' , array( $this, 'manage_sv_forms_submit_posts_custom_column' ), 10, 2 );
 		add_filter( 'parse_query', array( $this, 'parse_query' ) );
-		add_filter( 'manage_sv_gutenform_submit_posts_columns', array( $this, 'manage_sv_gutenform_submit_posts_columns' ) );
+		add_filter( 'manage_sv_forms_submit_posts_columns', array( $this, 'manage_sv_forms_submit_posts_columns' ) );
 		add_filter( 'post_row_actions', array( $this, 'post_row_actions' ), 10, 2 );
 	}
 
@@ -17,12 +17,12 @@ class archive extends modules {
 		$this->add_roles()->add_role_caps();
 	}
 
-	// Adds two new user roles for the CPT sv_gutenform_submit
+	// Adds two new user roles for the CPT sv_forms_submit
 	private function add_roles(): archive {
 		$cap = $this->post->get_post_type() . 's';
 		$editor_role = array(
 			'role' => $this->get_root()->get_prefix( 'submissions_editor' ),
-			'name' => __( 'SV Gutenform Submissions Editor', 'sv_gutenform' ),
+			'name' => __( 'SV Forms Submissions Editor', 'sv_forms' ),
 			'caps' => array(
 				'edit_' . $cap			=> true,
 				'edit_others' . $cap	=> true,
@@ -31,7 +31,7 @@ class archive extends modules {
 		);
 		$admin_role = array(
 			'role' => $this->get_root()->get_prefix( 'submissions_admin' ),
-			'name' => __( 'SV Gutenform Submissions Admin', 'sv_gutenform' ),
+			'name' => __( 'SV Forms Submissions Admin', 'sv_forms' ),
 			'caps' => array_merge( 
 				$editor_role['caps'], array(
 					'delete_' . $cap			=> true,
@@ -52,7 +52,7 @@ class archive extends modules {
 		return $this;
 	}
 
-	// Adds capabilities to default WP roles, to manage the CPT sv_gutenform_submit
+	// Adds capabilities to default WP roles, to manage the CPT sv_forms_submit
 	private function add_role_caps(): archive {
 		$cap 	= $this->post->get_post_type() . 's';
 		$admin 	= get_role('administrator');
@@ -76,7 +76,7 @@ class archive extends modules {
 
 			if ( $this->get_submissions_count() > 0 ) {
 				wp_dropdown_categories( array(
-					'show_option_all' =>  __( 'Show All', 'sv_gutenform' ) . ' ' . $taxonomy->label,
+					'show_option_all' =>  __( 'Show All', 'sv_forms' ) . ' ' . $taxonomy->label,
 					'taxonomy'        =>  $taxonomy_slug,
 					'name'            =>  $request_attr,
 					'orderby'         =>  'name',
@@ -110,15 +110,15 @@ class archive extends modules {
 	}
 
 	// Sets the titles of the post columns
-	public function manage_sv_gutenform_submit_posts_columns( array $columns ): array {
-		$columns[ $this->get_root()->get_prefix( 'user_mail_sent' ) ] 	= __( 'User Mail Sent', 'sv_gutenform' );
-		$columns[ $this->get_root()->get_prefix( 'admin_mail_sent' ) ] 	= __( 'Admin Mail Sent', 'sv_gutenform' );
+	public function manage_sv_forms_submit_posts_columns( array $columns ): array {
+		$columns[ $this->get_root()->get_prefix( 'user_mail_sent' ) ] 	= __( 'User Mail Sent', 'sv_forms' );
+		$columns[ $this->get_root()->get_prefix( 'admin_mail_sent' ) ] 	= __( 'Admin Mail Sent', 'sv_forms' );
 
 		return $columns;
 	}
 
 	// Sets the value of the custom columns
-	public function manage_sv_gutenform_submit_posts_custom_column( $column, $post_id ) {
+	public function manage_sv_forms_submit_posts_custom_column( $column, $post_id ) {
 		switch( $column ) {
 			case $this->get_root()->get_prefix( 'user_mail_sent' ):
 				$meta_key 	= '_' . $this->get_root()->get_prefix( 'user_mail_sent' );
@@ -143,14 +143,14 @@ class archive extends modules {
 		}
 	}
 
-	// Adds custom post row actions to the sv_gutenform_submit post type
+	// Adds custom post row actions to the sv_forms_submit post type
 	public function post_row_actions( array $actions, object $post ): array {
 		if ( $post->post_type === $this->get_root()->get_prefix( 'submit' ) && current_user_can( 'edit_post', $post->ID ) ) {
 			// Building a link to open the post with the form of the submission
 			$form_post_id 			= get_post_meta( $post->ID, $this->get_root()->get_prefix( 'post_id' ), true );
 			$form_post_url 			= admin_url( 'post.php?post=' . $form_post_id );
 			$edit_form_link 		= add_query_arg( array( 'action' => 'edit' ), $form_post_url );
-			$edit_form_label		= sprintf( '<a href="%1$s">%2$s</a>', esc_url( $edit_form_link ), esc_html( __( 'Edit Form', 'sv_gutenform' ) ) );
+			$edit_form_label		= sprintf( '<a href="%1$s">%2$s</a>', esc_url( $edit_form_link ), esc_html( __( 'Edit Form', 'sv_forms' ) ) );
 			$actions[ $this->get_root()->get_prefix( 'edit_form' ) ] = $edit_form_label;
 
 			// Building a link to resend the user mail
@@ -160,7 +160,7 @@ class archive extends modules {
 			if ( $user_mail ) {
 				// @todo Add ajax link to resend mail
 				$resend_user_mail_id = $this->get_root()->get_prefix( 'resend_user_mail' );
-				$resend_user_mail_label	= sprintf( '<a href="#" id="' . $resend_user_mail_id . '">%1$s</a>', esc_html( __( 'Resend User Mail', 'sv_gutenform' ) ) );
+				$resend_user_mail_label	= sprintf( '<a href="#" id="' . $resend_user_mail_id . '">%1$s</a>', esc_html( __( 'Resend User Mail', 'sv_forms' ) ) );
 				$actions[ $this->get_root()->get_prefix( 'resend_user_mail' ) ] = $resend_user_mail_label;
 			}
 
@@ -171,7 +171,7 @@ class archive extends modules {
 			if ( $admin_mail ) {
 				// @todo Add ajax link to resend mail
 				$resend_admin_mail_id = $this->get_root()->get_prefix( 'resend_admin_mail' );
-				$resend_admin_mail_label = sprintf( '<a href="#" id="' . $resend_admin_mail_id . '">%1$s</a>', esc_html( __( 'Resend Admin Mail', 'sv_gutenform' ) ) );
+				$resend_admin_mail_label = sprintf( '<a href="#" id="' . $resend_admin_mail_id . '">%1$s</a>', esc_html( __( 'Resend Admin Mail', 'sv_forms' ) ) );
 				$actions[ $this->get_root()->get_prefix( 'resend_admin_mail' ) ] = $resend_admin_mail_label;
 			}
 		}

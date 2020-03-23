@@ -12,31 +12,31 @@ export default class extends Component {
 
         this.props      = props;
         this.template   = [
-            ['straightvisions/sv-gutenform-spam-guard', {
+            ['straightvisions/sv-forms-spam-guard', {
                 honeypot: true,
                 timeTrap: true,
             }],
-            ['straightvisions/sv-gutenform-text', {
-                placeholder: __( 'Name', 'sv_gutenform' ),
+            ['straightvisions/sv-forms-text', {
+                placeholder: __( 'Name', 'sv_forms' ),
                 name: 'name',
                 required: true,
                 autofocus: true,
                 borderRadius: 4,
             }],
-            ['straightvisions/sv-gutenform-email', {
-                placeholder: __( 'E-Mail', 'sv_gutenform' ),
+            ['straightvisions/sv-forms-email', {
+                placeholder: __( 'E-Mail', 'sv_forms' ),
                 name: 'email',
                 borderRadius: 4,
             }],
-            ['straightvisions/sv-gutenform-textarea', {
-                placeholder: __( 'Message', 'sv_gutenform' ),
+            ['straightvisions/sv-forms-textarea', {
+                placeholder: __( 'Message', 'sv_forms' ),
                 name: 'message',
                 borderRadius: 4,
                 required: true,
             }],
-            ['straightvisions/sv-gutenform-submit', {
+            ['straightvisions/sv-forms-submit', {
                 align: 'full',
-                content: __( 'SEND', 'sv_gutenform' ),
+                content: __( 'SEND', 'sv_forms' ),
                 borderRadius: 4,
             }],
         ];
@@ -59,11 +59,11 @@ export default class extends Component {
     // Returns all allowed blocks
     getAllowedBlocks = () => {
         const disallowedBlocks = [
-            'straightvisions/sv-gutenform', 
-            'straightvisions/sv-gutenform-form',
-            'straightvisions/sv-gutenform-thank-you',
-            'straightvisions/sv-gutenform-user-mail',
-            'straightvisions/sv-gutenform-admin-mail'
+            'straightvisions/sv-forms', 
+            'straightvisions/sv-forms-form',
+            'straightvisions/sv-forms-thank-you',
+            'straightvisions/sv-forms-user-mail',
+            'straightvisions/sv-forms-admin-mail'
         ];
         const availableBlocks = wp.data.select('core/blocks').getBlockTypes();
         let allowedBlocks = [];
@@ -79,8 +79,8 @@ export default class extends Component {
 
     // Togles the collapsed state of the body
     toggleBody = change => {
-        const body = jQuery( 'div[data-block="' + this.props.clientId + '"] .' + this.props.className + ' > .sv_gutenform_body' );
-        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] .' + this.props.className + ' > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button > span' );
+        const body = jQuery( 'div[data-block="' + this.props.clientId + '"] .' + this.props.className + ' > .sv_forms_body' );
+        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] .' + this.props.className + ' > .sv_forms_header > .sv_forms_title_wrapper > button.components-button > span' );
 
         if ( change ) {
             if ( this.props.attributes.collapsed ) {
@@ -111,15 +111,15 @@ export default class extends Component {
         return (
             <Fragment>
                 <div className={ this.props.className }>
-                    <div className='sv_gutenform_header'>
-                        <div className='sv_gutenform_title_wrapper'>
-                            <div className='sv_gutenform_title'>{ __( 'Form', 'sv_gutenform' ) }</div>
+                    <div className='sv_forms_header'>
+                        <div className='sv_forms_title_wrapper'>
+                            <div className='sv_forms_title'>{ __( 'Form', 'sv_forms' ) }</div>
                             <Button onClick={ () => this.toggleBody( true ) }>
                                 <span class='dashicons dashicons-visibility'></span>
                             </Button>
                         </div>
                     </div>
-                    <div className='sv_gutenform_body'>
+                    <div className='sv_forms_body'>
                         <InnerBlocks 
                             allowedBlocks={ this.getAllowedBlocks() }
                             template={ this.template }

@@ -1,5 +1,5 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
 class spam_guard_check extends modules {
 	public function init() {}

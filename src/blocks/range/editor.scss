@@ -1,5 +1,5 @@
 /* General */
-.wp-block-straightvisions-sv-gutenform-range input[type="number"].components-range-control__number {
+.wp-block-straightvisions-sv-forms-range input[type="number"].components-range-control__number {
 	font-size: 14px;
 	line-height: 1;
 	font-weight: 400;
@@ -19,7 +19,7 @@
 	transition: color .25s ease, background-color .25s, border-color .25s ease;
 }
 
-.wp-block-straightvisions-sv-gutenform-range input[type="number"].components-range-control__number:focus {
+.wp-block-straightvisions-sv-forms-range input[type="number"].components-range-control__number:focus {
 	color: #000;
 	border-color: #000;
 }

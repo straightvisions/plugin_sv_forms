@@ -59,22 +59,22 @@ export default class extends Component {
                 <div className={ className }>
                     <Placeholder
                         icon={ shieldIcon }
-                        label={ __( 'Spam Guard', 'sv_gutenform' ) }
-                        instructions={ __( 'Select your anti spam features.', 'sv_gutenform' ) }
+                        label={ __( 'Spam Guard', 'sv_forms' ) }
+                        instructions={ __( 'Select your anti spam features.', 'sv_forms' ) }
                     >
                         <Button 
                             icon={ honeycombIcon } 
                             className={ honeypotState }
                             onClick={ () => this.setHoneypot( ! honeypot ) }
                         >
-                            { __( 'Honeypot', 'sv_gutenform' ) }
+                            { __( 'Honeypot', 'sv_forms' ) }
                         </Button>
                         <Button 
                             icon={ timerIcon } 
                             className={ timeTrapState }
                             onClick={ () => this.setTimeTrap( ! timeTrap ) }
                         >
-                            { __( 'Time Trap', 'sv_gutenform' ) }
+                            { __( 'Time Trap', 'sv_forms' ) }
                         </Button>
                     </Placeholder>
                 </div>

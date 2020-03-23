@@ -6,16 +6,16 @@ import edit from './edit';
 const { __ } 				= wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-spam-guard', {
-	title: __( 'Spam Guard', 'sv_gutenform' ),
-	description: __( 'Provides features to prevent spam in your form.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-spam-guard', {
+	title: __( 'Spam Guard', 'sv_forms' ),
+	description: __( 'Provides features to prevent spam in your form.', 'sv_forms' ),
 	icon,
-	parent: ['straightvisions/sv-gutenform-form'],
+	parent: ['straightvisions/sv-forms-form'],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Spam Guard', 'sv_gutenform' ),
-		__( 'Spam Guard', 'sv_gutenform' ),
-		__( 'Anti Spam', 'sv_gutenform' ),
+		__( 'SV Forms Spam Guard', 'sv_forms' ),
+		__( 'Spam Guard', 'sv_forms' ),
+		__( 'Anti Spam', 'sv_forms' ),
 	],
 	attributes: {
 		// Honeypot Settings

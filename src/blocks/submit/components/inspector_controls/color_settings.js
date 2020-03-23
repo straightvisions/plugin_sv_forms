@@ -50,7 +50,7 @@ export default ( { props } ) => {
                 setTextColor( value );
                 setTextColorClass( getColorClass( value ) );
             },
-            label: __( 'Text', 'sv_gutenform' ),
+            label: __( 'Text', 'sv_forms' ),
         },
         {
             value: backgroundColor,
@@ -58,13 +58,13 @@ export default ( { props } ) => {
                 setBackgroundColor( value );
                 setBackgroundColorClass( getColorClass( value, true ) );
             },
-            label: __( 'Background', 'sv_gutenform' ),
+            label: __( 'Background', 'sv_forms' ),
         },
     ];
 
     return(
         <PanelColorSettings
-            title={ __( 'Color Settings', 'sv_gutenform' ) }
+            title={ __( 'Color Settings', 'sv_forms' ) }
             initialOpen={ true }
             colorSettings={ colorSettings }
         >

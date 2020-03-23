@@ -7,16 +7,16 @@ const { __ } = wp.i18n;
 const { InnerBlocks } = wp.blockEditor;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-form', {
-	title: __( 'Form', 'sv_gutenform' ),
-	description: __( 'This block holds the form itself.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-form', {
+	title: __( 'Form', 'sv_forms' ),
+	description: __( 'This block holds the form itself.', 'sv_forms' ),
 	icon,
-	parent: ['straightvisions/sv-gutenform'],
+	parent: ['straightvisions/sv-forms'],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Form', 'sv_gutenform' ),
-		__( 'Form Block', 'sv_gutenform' ),
-		__( 'Contact Form', 'sv_gutenform' ),
+		__( 'SV Forms Form', 'sv_forms' ),
+		__( 'Form Block', 'sv_forms' ),
+		__( 'Contact Form', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'wide', 'full' ],

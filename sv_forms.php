@@ -1,9 +1,9 @@
 <?php
 /*
 	Version: 1.4.13
-	Plugin Name: SV Gutenform
-	Text Domain: sv_gutenform
-	Description: Build forms in Gutenberg with ease.
+	Plugin Name: SV Forms
+	Text Domain: sv_forms
+	Description: Build forms in the WordPress Gutenberg Block-Editor with ease.
 	Plugin URI: https://straightvisions.com/
 	Author: straightvisions GmbH
 	Author URI: https://straightvisions.com
@@ -16,7 +16,7 @@ if ( ! class_exists( '\sv_dependencies\init' ) ) {
 	require_once( 'src/core_plugin/dependencies/sv_dependencies.php' );
 }
 
-if ( $GLOBALS['sv_dependencies']->set_instance_name( 'SV Gutenform' )->check_php_version() ) {
+if ( $GLOBALS['sv_dependencies']->set_instance_name( 'SV Forms' )->check_php_version() ) {
 	require_once( dirname( __FILE__ ) . '/src/init.php' );
 } else {
 	$GLOBALS['sv_dependencies']->php_update_notification()->prevent_plugin_activation();

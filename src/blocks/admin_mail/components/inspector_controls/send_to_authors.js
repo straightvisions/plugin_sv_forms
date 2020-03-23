@@ -52,23 +52,23 @@ export default ( { props, authors } ) => {
 
     return(
         <PanelBody
-            title={ __( 'Send to Authors', 'sv_gutenform' ) }
+            title={ __( 'Send to Authors', 'sv_forms' ) }
             initialOpen={ true }
         >
-            <div className='sv-gutenform-users-list'>
+            <div className='sv-forms-users-list'>
                 <SelectControl
-                    className='sv-gutenform-users-select'
+                    className='sv-forms-users-select'
                     multiple
-                    label={ __( 'Select Authors:',  'sv_gutenform' ) }
+                    label={ __( 'Select Authors:',  'sv_forms' ) }
                     value={ users }
                     onChange={ users => updateUsers( users ) }
                     options={ getAuthorOptions() }
                 />
                 <Button 
-                    className='sv-gutenform-users-reset'
+                    className='sv-forms-users-reset'
                     onClick={ () => resetSelection() }
                 >
-                    { __( 'Reset Selection', 'sv_gutenform' ) }
+                    { __( 'Reset Selection', 'sv_forms' ) }
                 </Button>
             </div>
         </PanelBody>

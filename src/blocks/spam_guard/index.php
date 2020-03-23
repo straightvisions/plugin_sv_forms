@@ -1,7 +1,7 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
-class spam_guard extends sv_gutenform {
+class spam_guard extends sv_forms {
 	protected $block_attr = array();
 
 	public function init() {
@@ -23,9 +23,9 @@ class spam_guard extends sv_gutenform {
 
 	private function register_block() {
 		register_block_type(
-			'straightvisions/sv-gutenform-spam-guard', array(
-				'editor_script' 	=> 'sv-gutenform-block',
-				'editor_style'  	=> 'sv-gutenform-block-editor',
+			'straightvisions/sv-forms-spam-guard', array(
+				'editor_script' 	=> 'sv-forms-block',
+				'editor_style'  	=> 'sv-forms-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
 					// Honeypot Settings

@@ -6,12 +6,12 @@ import edit from './edit';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-email', {
-	title: __( 'E-Mail', 'sv_gutenform' ),
-	description: __( 'A field for an e-mail adress.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-email', {
+	title: __( 'E-Mail', 'sv_forms' ),
+	description: __( 'A field for an e-mail adress.', 'sv_forms' ),
 	icon,
 	parent: [ 
-		'straightvisions/sv-gutenform-form', 
+		'straightvisions/sv-forms-form', 
 		'core/group', 
 		'core/cover',
 		'core/column',
@@ -19,9 +19,9 @@ registerBlockType( 'straightvisions/sv-gutenform-email', {
 	],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform E-Mail', 'sv_gutenform' ),
-		__( 'E-Mail Input', 'sv_gutenform' ),
-		__( 'E-Mail', 'sv_gutenform' ),
+		__( 'SV Forms E-Mail', 'sv_forms' ),
+		__( 'E-Mail Input', 'sv_forms' ),
+		__( 'E-Mail', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
@@ -47,7 +47,7 @@ registerBlockType( 'straightvisions/sv-gutenform-email', {
 		},
 		placeholder: {
 			type: 'string',
-			default: __( 'E-Mail', 'sv_gutenform' )
+			default: __( 'E-Mail', 'sv_forms' )
 		},
 
 		// Validation Settings

@@ -21,12 +21,12 @@ export default ( { props, wrapper } ) => {
 
     return(
         <PanelBody
-            title={ __( 'Time Trap Settings', 'sv_gutenform' ) }
+            title={ __( 'Time Trap Settings', 'sv_forms' ) }
             initialOpen={ true }
         >
             <RangeControl
-                label={ __( 'Time Window', 'sv_gutenform' ) }
-                help={ __( 'The amount of seconds that has to passs after page load, before the form will accept submissions.', 'sv_gutenform' ) }
+                label={ __( 'Time Window', 'sv_forms' ) }
+                help={ __( 'The amount of seconds that has to passs after page load, before the form will accept submissions.', 'sv_forms' ) }
                 value={ timeTrapWindow }
                 onChange={ value => setTimeTrapWindow( value ) }
                 min="1"

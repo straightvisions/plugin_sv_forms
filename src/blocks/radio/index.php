@@ -1,7 +1,7 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
-class radio extends sv_gutenform {
+class radio extends sv_forms {
 	protected $block_attr = array();
 
 	public function init() {
@@ -35,9 +35,9 @@ class radio extends sv_gutenform {
 
 	private function register_block() {
 		register_block_type(
-			'straightvisions/sv-gutenform-radio', array(
-				'editor_script' 	=> 'sv-gutenform-block',
-				'editor_style'  	=> 'sv-gutenform-block-editor',
+			'straightvisions/sv-forms-radio', array(
+				'editor_script' 	=> 'sv-forms-block',
+				'editor_style'  	=> 'sv-forms-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(					
 					// Input Settings
@@ -46,7 +46,7 @@ class radio extends sv_gutenform {
 					),
 					'label' => array(
 						'type' => 'string',
-						'default' => __( 'Radio', 'sv_gutenform' ),
+						'default' => __( 'Radio', 'sv_forms' ),
 					),
 					'name' => array(
 						'type' => 'string',
@@ -78,12 +78,12 @@ class radio extends sv_gutenform {
 
 	// Returns a string with all classes for the input wrapper
 	protected function get_wrapper_class(): string {
-		return $this->get_root()->sv_gutenform->get_default_wrapper_class( $this->block_attr, $this->get_module_name() );
+		return $this->get_root()->sv_forms->get_default_wrapper_class( $this->block_attr, $this->get_module_name() );
 	}
 
 	// Returns a string with all attributes for the label
 	protected function get_label_attr(): string {
-		return $this->get_root()->sv_gutenform->get_default_label_attr( $this->block_attr );
+		return $this->get_root()->sv_forms->get_default_label_attr( $this->block_attr );
 	}
 
 	// Returns a string with all attributes for the input
@@ -122,7 +122,7 @@ class radio extends sv_gutenform {
 		$options = array();
 
 		foreach( json_decode( $this->block_attr['options'] ) as $option ) {
-			$output = '<div class="wp-block-straightvisions-sv-gutenform-radio-option">';
+			$output = '<div class="wp-block-straightvisions-sv-forms-radio-option">';
 			$output .= '<input ' . $this->get_input_attr( $option ) . ' />';
 			$output .= '<label ' . $this->get_label_attr( $option->value ) . '>' . $option->label . '</label>';
 			$output .= '</div>';

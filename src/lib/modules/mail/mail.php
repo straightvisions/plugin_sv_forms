@@ -1,5 +1,5 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
 class mail extends modules {  
     public function init() {}
@@ -32,7 +32,7 @@ class mail extends modules {
 		if ( isset( $attr->userMailSubject ) && ! empty( $attr->userMailSubject ) ) {
 			$subject = $attr->userMailSubject;
 		} else {
-			$subject = __( 'Thank You', 'sv_gutenform' );
+			$subject = __( 'Thank You', 'sv_forms' );
 		}
 
 		// Mail Content
@@ -75,7 +75,7 @@ class mail extends modules {
 		if ( isset( $attr->adminMailSubject ) && ! empty( $attr->adminMailSubject ) ) {
 			$subject = $attr->adminMailSubject;
 		} else {
-			$subject = __( 'New Form Submission', 'sv_gutenform' );
+			$subject = __( 'New Form Submission', 'sv_forms' );
 		}
 
 		// Mail Content

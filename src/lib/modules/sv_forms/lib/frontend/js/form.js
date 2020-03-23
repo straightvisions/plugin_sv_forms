@@ -1,7 +1,7 @@
 // Self executing anonymous function, to make the vars and functions private
 (function( jQuery ) {
     // Variables
-    const localized = js_sv_gutenform_modules_sv_gutenform_scripts_form_js;
+    const localized = js_sv_forms_modules_sv_forms_scripts_form_js;
 
     // Extends the JS String Object with a function that is similar to str_replace() function from PHP
     // Code from: https://stackoverflow.com/questions/5069464/replace-multiple-strings-at-once
@@ -46,7 +46,7 @@
     }
 
     const showThankYou  = ( form, formData ) => {
-        const el = form.parent().find( '.wp-block-straightvisions-sv-gutenform-thank-you' );
+        const el = form.parent().find( '.wp-block-straightvisions-sv-forms-thank-you' );
 
         if ( el.length > 0 && el.html().replace(/\s/g, "") ) {
             const parsedContent = getParsedContent( el.html(), formData );
@@ -60,7 +60,7 @@
         }
     }
 
-    jQuery( 'form.wp-block-straightvisions-sv-gutenform-form' ).submit( function( e ) {
+    jQuery( 'form.wp-block-straightvisions-sv-forms-form' ).submit( function( e ) {
         e.preventDefault();
         
         const form          = jQuery( this );
@@ -71,7 +71,7 @@
             const el = form.find(':input[name="' + field.name + '"]');
 
             if ( el.length > 0 && el.attr('type') && el.attr('type') !== "" ) {
-                if ( el.val() !== "" || el.attr('name') === 'sv_gutenform_sg_hp' ) {
+                if ( el.val() !== "" || el.attr('name') === 'sv_forms_sg_hp' ) {
                     let newField = {
                         name: field.name,
                         type: el.attr('type'),
@@ -105,11 +105,11 @@
             }
         });
 
-        jQuery.post( localized.sv_gutenform_ajaxurl, {
-            action: 'sv_gutenform_submit',
-            sv_gutenform_nonce: localized.sv_gutenform_nonce,
-            sv_gutenform_post_id: localized.sv_gutenform_post_id,
-            sv_gutenform_form_data: newFormData,
+        jQuery.post( localized.sv_forms_ajaxurl, {
+            action: 'sv_forms_submit',
+            sv_forms_nonce: localized.sv_forms_nonce,
+            sv_forms_post_id: localized.sv_forms_post_id,
+            sv_forms_form_data: newFormData,
         }, function( response ) {
             //response = JSON.parse( response );
             //console.log(response);

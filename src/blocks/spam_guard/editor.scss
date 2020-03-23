@@ -1,4 +1,4 @@
-.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text {
+.wp-block-straightvisions-sv-forms-spam-guard button.components-button.has-icon.has-text {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,21 +14,21 @@
     transition: color .25s ease;
 }
 
-.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text:hover,
-.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text:focus {
+.wp-block-straightvisions-sv-forms-spam-guard button.components-button.has-icon.has-text:hover,
+.wp-block-straightvisions-sv-forms-spam-guard button.components-button.has-icon.has-text:focus {
     color: rgb( 40, 40, 40 ) !important;
 }
 
-.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text.is-active {
+.wp-block-straightvisions-sv-forms-spam-guard button.components-button.has-icon.has-text.is-active {
     color: rgba( 24, 195, 66, .8 );
 }
 
-.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text.is-active:hover,
-.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text.is-active:focus {
+.wp-block-straightvisions-sv-forms-spam-guard button.components-button.has-icon.has-text.is-active:hover,
+.wp-block-straightvisions-sv-forms-spam-guard button.components-button.has-icon.has-text.is-active:focus {
     color: rgb( 24, 195, 66 ) !important;
 }
 
-.wp-block-straightvisions-sv-gutenform-spam-guard button.components-button.has-icon.has-text svg {
+.wp-block-straightvisions-sv-forms-spam-guard button.components-button.has-icon.has-text svg {
     height: 48px;
     width: 48px;
     margin-right: 0;

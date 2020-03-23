@@ -53,30 +53,30 @@ export default ( { props } ) => {
 
     return(
         <PanelBody
-            title={ __( 'Send to Mails', 'sv_gutenform' ) }
+            title={ __( 'Send to Mails', 'sv_forms' ) }
             initialOpen={ true }
         >
-            <div className='sv-gutenform-mail-list'>
+            <div className='sv-forms-mail-list'>
                 <Button 
-                    className='sv-gutenform-mail-add'
+                    className='sv-forms-mail-add'
                     onClick={ () => addMail() }
                 >
-                    { __( 'Add E-Mail', 'sv_gutenform' ) }
+                    { __( 'Add E-Mail', 'sv_forms' ) }
                 </Button>
                 {
                     mails.map( mail => {
                         return(
-                            <div className='sv-gutenform-mail-entry'>
+                            <div className='sv-forms-mail-entry'>
                                 <TextControl
-                                    className='sv-gutenform-mail-input'
+                                    className='sv-forms-mail-input'
                                     type='email'
-                                    placeholder={ __( 'E-Mail', 'sv_gutenform' ) }
+                                    placeholder={ __( 'E-Mail', 'sv_forms' ) }
                                     value={ mail === 'new' ? '' : mail }
                                     onChange={ value => updateMail( mail, value ) }
                                 />
                                 <Button 
-                                    label={ __( 'Delete E-Mail', 'sv_gutenform' ) }
-                                    className='sv-gutenform-mail-remove'
+                                    label={ __( 'Delete E-Mail', 'sv_forms' ) }
+                                    className='sv-forms-mail-remove'
                                     icon='no-alt'
                                     onClick={ () => removeMail( mail ) }
                                 ></Button>

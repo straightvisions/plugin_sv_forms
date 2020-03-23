@@ -1,5 +1,5 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
 class post extends modules {
 	public function init() {
@@ -19,26 +19,26 @@ class post extends modules {
     // Registers a new custom post type
 	public function register_post_type(): post {
 		$labels = array(
-			'name'                  => __( 'Submissions', 'sv_gutenform' ),
-			'singular_name'         => __( 'Submission', 'sv_gutenform' ),
-			'menu_name'             => __( 'SV Gutenform Submissions', 'sv_gutenform' ),
-			'name_admin_bar'        => __( 'SV Gutenform Submissions', 'sv_gutenform' ),
-			'add_new'               => __( 'Add New', 'sv_gutenform' ),
-			'add_new_item'          => __( 'Add New Submission', 'sv_gutenform' ),
-			'new_item'              => __( 'New Submission', 'sv_gutenform' ),
-			'edit_item'             => __( 'Edit Submission', 'sv_gutenform' ),
-			'view_item'             => __( 'View Submission', 'sv_gutenform' ),
-			'all_items'             => __( 'All Submissions', 'sv_gutenform' ),
-			'search_items'          => __( 'Search Submissions', 'sv_gutenform' ),
-			'parent_item_colon'     => __( 'Parent Submissions:', 'sv_gutenform' ),
-			'not_found'             => __( 'No Submissions found.', 'sv_gutenform' ),
-			'not_found_in_trash'    => __( 'No Submissions found in Trash.', 'sv_gutenform' ),
-			'archives'              => __( 'Submission archives', 'sv_gutenform' ),
-			'insert_into_item'      => __( 'Insert into Submission', 'sv_gutenform' ),
-			'uploaded_to_this_item' => __( 'Uploaded to this Submission', 'sv_gutenform' ),
-			'filter_items_list'     => __( 'Filter Submissions list', 'sv_gutenform' ),
-			'items_list_navigation' => __( 'Submissions list navigation', 'sv_gutenform' ),
-			'items_list'            => __( 'Submissions list', 'sv_gutenform' ),
+			'name'                  => __( 'Submissions', 'sv_forms' ),
+			'singular_name'         => __( 'Submission', 'sv_forms' ),
+			'menu_name'             => __( 'SV Forms Submissions', 'sv_forms' ),
+			'name_admin_bar'        => __( 'SV Forms Submissions', 'sv_forms' ),
+			'add_new'               => __( 'Add New', 'sv_forms' ),
+			'add_new_item'          => __( 'Add New Submission', 'sv_forms' ),
+			'new_item'              => __( 'New Submission', 'sv_forms' ),
+			'edit_item'             => __( 'Edit Submission', 'sv_forms' ),
+			'view_item'             => __( 'View Submission', 'sv_forms' ),
+			'all_items'             => __( 'All Submissions', 'sv_forms' ),
+			'search_items'          => __( 'Search Submissions', 'sv_forms' ),
+			'parent_item_colon'     => __( 'Parent Submissions:', 'sv_forms' ),
+			'not_found'             => __( 'No Submissions found.', 'sv_forms' ),
+			'not_found_in_trash'    => __( 'No Submissions found in Trash.', 'sv_forms' ),
+			'archives'              => __( 'Submission archives', 'sv_forms' ),
+			'insert_into_item'      => __( 'Insert into Submission', 'sv_forms' ),
+			'uploaded_to_this_item' => __( 'Uploaded to this Submission', 'sv_forms' ),
+			'filter_items_list'     => __( 'Filter Submissions list', 'sv_forms' ),
+			'items_list_navigation' => __( 'Submissions list navigation', 'sv_forms' ),
+			'items_list'            => __( 'Submissions list', 'sv_forms' ),
 		);
         $supports = array( 'editor', 'custom-fields' );
         $capabilities = array(
@@ -86,7 +86,7 @@ class post extends modules {
 
     // Returns the form data as table for the post content
     private function get_post_content( array $data ): string {
-        $filtered_data = $this->remove_input_value( 'sv_gutenform_form_id', $data );
+        $filtered_data = $this->remove_input_value( 'sv_forms_form_id', $data );
 
         $content = '<!-- wp:table --><figure class="wp-block-table"><table class=""><tbody>';
 

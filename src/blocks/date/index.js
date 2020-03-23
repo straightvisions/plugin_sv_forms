@@ -6,12 +6,12 @@ import edit from './edit';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-date', {
-	title: __( 'Date', 'sv_gutenform' ),
-	description: __( 'A field for for dates.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-date', {
+	title: __( 'Date', 'sv_forms' ),
+	description: __( 'A field for for dates.', 'sv_forms' ),
 	icon,
 	parent: [ 
-		'straightvisions/sv-gutenform-form', 
+		'straightvisions/sv-forms-form', 
 		'core/group', 
 		'core/cover',
 		'core/column',
@@ -19,9 +19,9 @@ registerBlockType( 'straightvisions/sv-gutenform-date', {
 	],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Date', 'sv_gutenform' ),
-		__( 'Date Input', 'sv_gutenform' ),
-		__( 'Date', 'sv_gutenform' ),
+		__( 'SV Forms Date', 'sv_forms' ),
+		__( 'Date Input', 'sv_forms' ),
+		__( 'Date', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],

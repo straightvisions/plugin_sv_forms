@@ -1,11 +1,11 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
 class modules extends init {
 	// SSL Cryption Properties
 	private $ciphering 		= 'AES-128-CTR';
 	private $options		= 0;
-	private $cryption_key	= 'sv_gutenform_sg_cryption_key';
+	private $cryption_key	= 'sv_forms_sg_cryption_key';
 	private $cryption_iv	= '1234567891011121';
 	
 	public function init() {
@@ -17,7 +17,7 @@ class modules extends init {
 		// The following module init order can be changed
 		$this->submission->init();
 		$this->personal_data->init();
-		$this->sv_gutenform->init();
+		$this->sv_forms->init();
 
         $this->freemius->init();
 	}

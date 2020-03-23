@@ -1,38 +1,38 @@
 /* General */
-.wp-block-straightvisions-sv-gutenform-checkbox {
+.wp-block-straightvisions-sv-forms-checkbox {
 	display: flex;
     align-items: center;
 	margin-bottom: .5em;
 }
 
-.wp-block-straightvisions-sv-gutenform-checkbox label {
+.wp-block-straightvisions-sv-forms-checkbox label {
 	margin: 0 0 0 .75em;
 }
 
 /* Resets Editor Styles */
-.wp-block-straightvisions-sv-gutenform-checkbox .components-base-control {
+.wp-block-straightvisions-sv-forms-checkbox .components-base-control {
 	line-height: 1;
 }
 
-.wp-block-straightvisions-sv-gutenform-checkbox .components-base-control__field,
-.wp-block-straightvisions-sv-gutenform-checkbox .components-checkbox-control__input-container {
+.wp-block-straightvisions-sv-forms-checkbox .components-base-control__field,
+.wp-block-straightvisions-sv-forms-checkbox .components-checkbox-control__input-container {
 	margin: 0;
 }
 
-.wp-block-straightvisions-sv-gutenform-checkbox .components-checkbox-control__label,
-.wp-block-straightvisions-sv-gutenform-checkbox .components-checkbox-control__input-container > svg {
+.wp-block-straightvisions-sv-forms-checkbox .components-checkbox-control__label,
+.wp-block-straightvisions-sv-forms-checkbox .components-checkbox-control__input-container > svg {
 	display: none;
 }
 
-.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"],
-.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"]::before {
+.wp-block-straightvisions-sv-forms-checkbox input[type="checkbox"],
+.wp-block-straightvisions-sv-forms-checkbox input[type="checkbox"]::before {
 	outline: none !important;
 	box-shadow: none !important;
 }
 
 /* Style: Checkbox (Default) */
-.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"],
-.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox input[type="checkbox"] {
+.wp-block-straightvisions-sv-forms-checkbox input[type="checkbox"],
+.wp-block-straightvisions-sv-forms-checkbox.is-style-checkbox input[type="checkbox"] {
 	position: relative;
 	width: 18px;
 	height: 18px;
@@ -45,13 +45,13 @@
 	transition: .25s ease;
 }
 
-.wp-block-straightvisions-sv-gutenform-checkbox .components-base-control,
-.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox .components-base-control {
+.wp-block-straightvisions-sv-forms-checkbox .components-base-control,
+.wp-block-straightvisions-sv-forms-checkbox.is-style-checkbox .components-base-control {
 	width: 18px;
 }
 
-.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"]::before,
-.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox input[type="checkbox"]::before {
+.wp-block-straightvisions-sv-forms-checkbox input[type="checkbox"]::before,
+.wp-block-straightvisions-sv-forms-checkbox.is-style-checkbox input[type="checkbox"]::before {
 	content: '';
 	position: absolute;
 	display: block;
@@ -67,8 +67,8 @@
 	transition: transform .2s ease;
 }
 
-.wp-block-straightvisions-sv-gutenform-checkbox input[type="checkbox"]:checked::before,
-.wp-block-straightvisions-sv-gutenform-checkbox.is-style-checkbox input[type="checkbox"]:checked::before {
+.wp-block-straightvisions-sv-forms-checkbox input[type="checkbox"]:checked::before,
+.wp-block-straightvisions-sv-forms-checkbox.is-style-checkbox input[type="checkbox"]:checked::before {
 	content: '';
 	position: absolute;
 	display: block;
@@ -86,7 +86,7 @@
 
 
 /* Style: Toggle */
-.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"] {
+.wp-block-straightvisions-sv-forms-checkbox.is-style-toggle input[type="checkbox"] {
 	position: relative;
 	width: 36px;
 	height: 18px;
@@ -99,11 +99,11 @@
 	transition: background-color .2s ease, border-color .2s ease;
 }
 
-.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle .components-base-control {
+.wp-block-straightvisions-sv-forms-checkbox.is-style-toggle .components-base-control {
 	width: 36px;
 }
 
-.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"]::before {
+.wp-block-straightvisions-sv-forms-checkbox.is-style-toggle input[type="checkbox"]::before {
 	content: '';
 	position: absolute;
 	top: -1px;
@@ -116,12 +116,12 @@
 	transition: left .2s ease;
 }
 
-.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"]:checked {
+.wp-block-straightvisions-sv-forms-checkbox.is-style-toggle input[type="checkbox"]:checked {
 	background-color: #000 !important;
 	border-color: #000 !important;
 }
 
-.wp-block-straightvisions-sv-gutenform-checkbox.is-style-toggle input[type="checkbox"]:checked::before {
+.wp-block-straightvisions-sv-forms-checkbox.is-style-toggle input[type="checkbox"]:checked::before {
 	left: 17px;
 	margin: 0;
 }

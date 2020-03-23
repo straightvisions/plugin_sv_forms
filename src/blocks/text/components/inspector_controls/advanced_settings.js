@@ -26,22 +26,22 @@ export default ( { props } ) => {
     return(
         <Fragment>
             <ToggleControl
-                label={ __( 'Autofocus', 'sv_gutenform' ) }
+                label={ __( 'Autofocus', 'sv_forms' ) }
                 checked={ autofocus }
                 onChange={ () => setAutofocus( ! autofocus )  }
             />
             <ToggleControl
-                label={ __( 'Autocomplete', 'sv_gutenform' ) }
+                label={ __( 'Autocomplete', 'sv_forms' ) }
                 checked={ autocomplete }
                 onChange={ () => setAutocomplete( ! autocomplete )  }
             />
             <ToggleControl
-                label={ __( 'Read Only', 'sv_gutenform' ) }
+                label={ __( 'Read Only', 'sv_forms' ) }
                 checked={ readonly }
                 onChange={ () => setReadonly( ! readonly )  }
             />
             <ToggleControl
-                label={ __( 'Disabled', 'sv_gutenform' ) }
+                label={ __( 'Disabled', 'sv_forms' ) }
                 checked={ disabled }
                 onChange={ () => setDisabled( ! disabled )  }
             />

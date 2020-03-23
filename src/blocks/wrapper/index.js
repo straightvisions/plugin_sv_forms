@@ -7,15 +7,15 @@ const { __ } = wp.i18n;
 const { InnerBlocks } = wp.blockEditor;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform', {
-	title: __( 'SV Gutenform', 'sv_gutenform' ),
-	description: __( 'Create a form.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms', {
+	title: __( 'SV Forms', 'sv_forms' ),
+	description: __( 'Create a form.', 'sv_forms' ),
 	icon,
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform', 'sv_gutenform' ),
-		__( 'Form', 'sv_gutenform' ),
-		__( 'Contact Form', 'sv_gutenform' ),
+		__( 'SV Forms', 'sv_forms' ),
+		__( 'Form', 'sv_forms' ),
+		__( 'Contact Form', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'wide', 'full' ],
@@ -23,7 +23,7 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 	example: {
 		attributes: {
 			formId: 'a0bc1def-2345-6789-0g1h-2345i67890j1',
-			formLabel: __( 'Contact Form', 'sv_gutenform' ),
+			formLabel: __( 'Contact Form', 'sv_forms' ),
 			collapsed: true,
 		}
 	},
@@ -36,7 +36,7 @@ registerBlockType( 'straightvisions/sv-gutenform', {
 		},
 		formLabel: {
 			type: 'string',
-			default: __( 'Contact Form', 'sv_gutenform' )
+			default: __( 'Contact Form', 'sv_forms' )
 		},
 		saveSubmissions: {
 			type: 'boolean',

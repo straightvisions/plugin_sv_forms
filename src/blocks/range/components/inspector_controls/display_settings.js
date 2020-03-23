@@ -25,21 +25,21 @@ export default ( { props } ) => {
 
     return(
         <PanelBody
-            title={ __( 'Display Settings', 'sv_gutenform' ) }
+            title={ __( 'Display Settings', 'sv_forms' ) }
             initialOpen={ false }
         >
             <ToggleControl
-                label={ __( 'Show Value', 'sv_gutenform' ) }
+                label={ __( 'Show Value', 'sv_forms' ) }
                 checked={ showValue }
                 onChange={ () => setShowValue( ! showValue )  }
             />
             <ToggleControl
-                label={ __( 'Show Min', 'sv_gutenform' ) }
+                label={ __( 'Show Min', 'sv_forms' ) }
                 checked={ showMin }
                 onChange={ () => setShowMin( ! showMin )  }
             />
             <ToggleControl
-                label={ __( 'Show Max', 'sv_gutenform' ) }
+                label={ __( 'Show Max', 'sv_forms' ) }
                 checked={ showMax }
                 onChange={ () => setShowMax( ! showMax )  }
             />

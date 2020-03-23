@@ -1,5 +1,5 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
 class personal_data extends modules {
     public function init() {
@@ -11,7 +11,7 @@ class personal_data extends modules {
     // Registers the personal data exporter
 	public function wp_privacy_personal_data_exporters( array $exporters ): array {
 		$exporters[ $this->get_root()->get_prefix() ] = array(
-			'exporter_friendly_name' => __( 'SV Gutenform Plugin', 'sv_gutenform' ),
+			'exporter_friendly_name' => __( 'SV Forms Plugin', 'sv_forms' ),
 			'callback' => array( $this, 'personal_data_exporter' ),
 		);
 
@@ -21,7 +21,7 @@ class personal_data extends modules {
     // Registers the personal data eraser
 	public function wp_privacy_personal_data_erasers( array $erasers ): array {
 		$erasers[ $this->get_root()->get_prefix() ] = array(
-			'eraser_friendly_name' => __( 'SV Gutenform Plugin', 'sv_gutenform' ),
+			'eraser_friendly_name' => __( 'SV Forms Plugin', 'sv_forms' ),
 			'callback' => array( $this, 'personal_data_eraser' ),
 		);
 
@@ -57,9 +57,9 @@ class personal_data extends modules {
 		// Fetches all data for each submission
 		foreach ( $posts as $post ) {
 			$form_data 	= json_decode( get_post_meta( $post->ID, $meta_key, true ) );
-			$item_id 	= 'sv-gutenform-submission-' . $post->ID;
-			$group_id 	= 'sv-gutenform-submissions';
-			$group_label= __( 'SV Gutenform Submissions', 'sv_gutenform' );
+			$item_id 	= 'sv-forms-submission-' . $post->ID;
+			$group_id 	= 'sv-forms-submissions';
+			$group_label= __( 'SV Forms Submissions', 'sv_forms' );
 			$data		= array();
 			
 			foreach ( $form_data as $form_input ) {

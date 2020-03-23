@@ -6,12 +6,12 @@ import edit from './edit';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-url', {
-	title: __( 'URL', 'sv_gutenform' ),
-	description: __( 'A field for an URL.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-url', {
+	title: __( 'URL', 'sv_forms' ),
+	description: __( 'A field for an URL.', 'sv_forms' ),
 	icon,
 	parent: [ 
-		'straightvisions/sv-gutenform-form', 
+		'straightvisions/sv-forms-form', 
 		'core/group', 
 		'core/cover',
 		'core/column',
@@ -19,9 +19,9 @@ registerBlockType( 'straightvisions/sv-gutenform-url', {
 	],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform URL', 'sv_gutenform' ),
-		__( 'URL Input', 'sv_gutenform' ),
-		__( 'URL', 'sv_gutenform' ),
+		__( 'SV Forms URL', 'sv_forms' ),
+		__( 'URL Input', 'sv_forms' ),
+		__( 'URL', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
@@ -47,7 +47,7 @@ registerBlockType( 'straightvisions/sv-gutenform-url', {
 		},
 		placeholder: {
 			type: 'string',
-			default: __( 'URL', 'sv_gutenform' )
+			default: __( 'URL', 'sv_forms' )
 		},
 
 		// Validation Settings

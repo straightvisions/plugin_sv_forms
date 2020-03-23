@@ -6,12 +6,12 @@ import edit from './edit';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-radio', {
-	title: __( 'Radio Button', 'sv_gutenform' ),
-	description: __( 'Create a radio button.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-radio', {
+	title: __( 'Radio Button', 'sv_forms' ),
+	description: __( 'Create a radio button.', 'sv_forms' ),
 	icon,
 	parent: [ 
-		'straightvisions/sv-gutenform-form', 
+		'straightvisions/sv-forms-form', 
 		'core/group', 
 		'core/cover',
 		'core/column',
@@ -19,9 +19,9 @@ registerBlockType( 'straightvisions/sv-gutenform-radio', {
 	],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Radio Button', 'sv_gutenform' ),
-		__( 'Radio Button', 'sv_gutenform' ),
-		__( 'Radio', 'sv_gutenform' ),
+		__( 'SV Forms Radio Button', 'sv_forms' ),
+		__( 'Radio Button', 'sv_forms' ),
+		__( 'Radio', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
@@ -37,7 +37,7 @@ registerBlockType( 'straightvisions/sv-gutenform-radio', {
 		},
 		label: {
 			type: 'string',
-			default: __( 'Radio', 'sv_gutenform' ),
+			default: __( 'Radio', 'sv_forms' ),
 		},
 		name: {
 			type: 'string',

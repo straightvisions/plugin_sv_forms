@@ -1,7 +1,7 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
-class submit extends sv_gutenform {
+class submit extends sv_forms {
 	protected $block_attr = array();
 
 	public function init() {
@@ -35,15 +35,15 @@ class submit extends sv_gutenform {
 
 	private function register_block() {
 		register_block_type(
-			'straightvisions/sv-gutenform-submit', array(
-				'editor_script' 	=> 'sv-gutenform-block',
-				'editor_style'  	=> 'sv-gutenform-block-editor',
+			'straightvisions/sv-forms-submit', array(
+				'editor_script' 	=> 'sv-forms-block',
+				'editor_style'  	=> 'sv-forms-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
 					// Content
 					'content' => array(
 						'type' => 'string',
-						'default' => __( 'Send', 'sv_gutenform' ),
+						'default' => __( 'Send', 'sv_forms' ),
 					),
 
 					// Color Settings
@@ -76,7 +76,7 @@ class submit extends sv_gutenform {
 
 	// Returns a string with all classes for the input wrapper
 	protected function get_wrapper_class(): string {
-		return $this->get_root()->sv_gutenform->get_default_wrapper_class( $this->block_attr, $this->get_module_name() );
+		return $this->get_root()->sv_forms->get_default_wrapper_class( $this->block_attr, $this->get_module_name() );
 	}
 
 	// Returns a string with all attributes for the button

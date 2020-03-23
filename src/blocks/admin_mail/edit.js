@@ -64,8 +64,8 @@ export default class extends Component {
 
     // Togles the collapsed state of the body
     toggleBody = change => {
-        const body = jQuery( 'div[data-block="' + this.props.clientId + '"] .' + this.props.className + ' > .sv_gutenform_body' );
-        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] .' + this.props.className + ' > .sv_gutenform_header > .sv_gutenform_title_wrapper > button.components-button > span' );
+        const body = jQuery( 'div[data-block="' + this.props.clientId + '"] .' + this.props.className + ' > .sv_forms_body' );
+        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] .' + this.props.className + ' > .sv_forms_header > .sv_forms_title_wrapper > button.components-button > span' );
 
         if ( change ) {
             if ( this.props.attributes.collapsed ) {
@@ -94,14 +94,14 @@ export default class extends Component {
 
     // Creates a clippboard button with the input name as value
     InputValueButton = name => {
-        const toolTipText   = __( 'Copy to clippboard.', 'sv_gutenform' );
+        const toolTipText   = __( 'Copy to clippboard.', 'sv_forms' );
         const buttonText    = '%' + name + '%';
 
         return (
             <Tooltip text={ toolTipText }>
                 <ClipboardButton
                     isTertiary
-                    className='sv_gutenform_input_value'
+                    className='sv_forms_input_value'
                     text={ buttonText }
                 >
                     { buttonText }
@@ -120,26 +120,26 @@ export default class extends Component {
             }
         } );
 
-        return <div className='sv_gutenform_input_values'>{ output }</div>;
+        return <div className='sv_forms_input_values'>{ output }</div>;
     }
 
     render = () => {
         return (
             <Fragment>
                 <div className={ this.props.className }>
-                    <div className='sv_gutenform_header'>
-                        <div className='sv_gutenform_title_wrapper'>
-                            <div className='sv_gutenform_title'>{ __( 'Admin Mail', 'sv_gutenform' ) }</div>
+                    <div className='sv_forms_header'>
+                        <div className='sv_forms_title_wrapper'>
+                            <div className='sv_forms_title'>{ __( 'Admin Mail', 'sv_forms' ) }</div>
                             <Button onClick={ () => this.toggleBody( true ) }>
                                 <span class='dashicons dashicons-visibility'></span>
                             </Button>
                         </div>
-                        <div className='sv_gutenform_input_values_wrapper'>
-                            <div className='sv_gutenform_input_values_title'>{ __( 'Available input values: ', 'sv_gutenform' ) }</div>
+                        <div className='sv_forms_input_values_wrapper'>
+                            <div className='sv_forms_input_values_title'>{ __( 'Available input values: ', 'sv_forms' ) }</div>
                             <InputsConsumer>{ inputs => this.getInputValues( inputs ) }</InputsConsumer>
                         </div>
                     </div>
-                    <div class='sv_gutenform_body'>
+                    <div class='sv_forms_body'>
                         <InnerBlocks 
                             templateLock={ false } 
                             allowedBlocks={ this.allowedBlocks }

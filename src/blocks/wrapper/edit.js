@@ -15,10 +15,10 @@ export default class extends Component {
 
         this.props = props;
         this.template = [
-            ['straightvisions/sv-gutenform-form'],
-            ['straightvisions/sv-gutenform-thank-you'],
-            ['straightvisions/sv-gutenform-user-mail'],
-            ['straightvisions/sv-gutenform-admin-mail'],
+            ['straightvisions/sv-forms-form'],
+            ['straightvisions/sv-forms-thank-you'],
+            ['straightvisions/sv-forms-user-mail'],
+            ['straightvisions/sv-forms-admin-mail'],
         ];
     }
 
@@ -48,7 +48,7 @@ export default class extends Component {
     // Checks if the block already exists inside the current post
     doesFormExist = () => {
         const currentMeta   = getEditedPostAttribute( 'meta' );
-        const currentForms  = currentMeta._sv_gutenform_forms ? JSON.parse( currentMeta._sv_gutenform_forms ) : false;
+        const currentForms  = currentMeta._sv_forms_forms ? JSON.parse( currentMeta._sv_forms_forms ) : false;
 
         if ( ! currentForms || ! currentForms[ this.props.attributes.formId ] ) return false;
 
@@ -62,7 +62,7 @@ export default class extends Component {
 
         currentBlocks.forEach( block => {
             if ( 
-                block.name === 'straightvisions/sv-gutenform' 
+                block.name === 'straightvisions/sv-forms' 
                 && block.attributes.formId === this.props.attributes.formId  
             ) {
                 formsWithSameId++;
@@ -79,7 +79,7 @@ export default class extends Component {
     // Updates the current post meta with the block attributes
     updatePostMeta = action => {
         const currentMeta = getEditedPostAttribute( 'meta' );
-        let currentForms  = currentMeta._sv_gutenform_forms ? JSON.parse( currentMeta._sv_gutenform_forms ) : {};
+        let currentForms  = currentMeta._sv_forms_forms ? JSON.parse( currentMeta._sv_forms_forms ) : {};
 
         switch ( action ) {
             case 'update':
@@ -90,15 +90,15 @@ export default class extends Component {
                 break;
         }
 
-        const newMeta = { ...currentMeta, _sv_gutenform_forms: JSON.stringify( currentForms ) };
+        const newMeta = { ...currentMeta, _sv_forms_forms: JSON.stringify( currentForms ) };
 
         editPost( { meta: newMeta } );
     }
 
     // Togles the collapsed state of the body
     toggleBody = change => {
-        const body = jQuery( 'div[data-block="' + this.props.clientId + '"] .' + this.props.className + ' > .sv_gutenform_body' );
-        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] .' + this.props.className + ' > .sv_gutenform_header > .sv_gutenform_label_wrapper > button.components-button > span' );
+        const body = jQuery( 'div[data-block="' + this.props.clientId + '"] .' + this.props.className + ' > .sv_forms_body' );
+        const icon = jQuery( 'div[data-block="' + this.props.clientId + '"] .' + this.props.className + ' > .sv_forms_header > .sv_forms_label_wrapper > button.components-button > span' );
 
         if ( change ) {
             if ( this.props.attributes.collapsed ) {
@@ -135,17 +135,17 @@ export default class extends Component {
         return (
             <Fragment>
                 <div className={ this.props.className }>
-                    <div className='sv_gutenform_header'>
-                        <div className='sv_gutenform_label_wrapper'>
-                            <div className='sv_gutenform_form_label'>{ this.props.attributes.formLabel }</div>
+                    <div className='sv_forms_header'>
+                        <div className='sv_forms_label_wrapper'>
+                            <div className='sv_forms_form_label'>{ this.props.attributes.formLabel }</div>
                             <Button onClick={ () => this.toggleBody( true ) }>
                                 <span class='dashicons dashicons-visibility'></span>
                             </Button>
                         </div>
-                        <div className='sv_gutenform_form_id'>Form ID: { this.props.attributes.formId }</div>
-                        <div className='sv_gutenform_title'>{ __( 'SV Gutenform', 'sv_gutenform' ) }</div>
+                        <div className='sv_forms_form_id'>Form ID: { this.props.attributes.formId }</div>
+                        <div className='sv_forms_title'>{ __( 'SV Forms', 'sv_forms' ) }</div>
                     </div>
-                    <div class='sv_gutenform_body'>
+                    <div class='sv_forms_body'>
                         <WrapperProvider value={ this.props }>
                             <InnerBlocks 
                                 allowedBlocks={ this.template }

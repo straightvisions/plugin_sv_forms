@@ -1,16 +1,16 @@
 /* General */
-.wp-block-straightvisions-sv-gutenform-radio .wp-block-straightvisions-sv-gutenform-radio-option {
+.wp-block-straightvisions-sv-forms-radio .wp-block-straightvisions-sv-forms-radio-option {
 	display: flex;
     align-items: center;
 	margin-bottom: .5em;
 }
 
-.wp-block-straightvisions-sv-gutenform-radio .wp-block-straightvisions-sv-gutenform-radio-option input[type="radio"] + label {
+.wp-block-straightvisions-sv-forms-radio .wp-block-straightvisions-sv-forms-radio-option input[type="radio"] + label {
 	margin: 0 0 0 .75em;
 }
 
 /* Style: radio (Default) */
-.wp-block-straightvisions-sv-gutenform-radio .wp-block-straightvisions-sv-gutenform-radio-option input[type="radio"] {
+.wp-block-straightvisions-sv-forms-radio .wp-block-straightvisions-sv-forms-radio-option input[type="radio"] {
 	position: relative;
 	width: 18px;
 	height: 18px;
@@ -25,7 +25,7 @@
 	transition: .2s ease;
 }
 
-.wp-block-straightvisions-sv-gutenform-radio .wp-block-straightvisions-sv-gutenform-radio-option input[type="radio"]::before {
+.wp-block-straightvisions-sv-forms-radio .wp-block-straightvisions-sv-forms-radio-option input[type="radio"]::before {
 	content: '';
 	position: absolute;
 	top: 3px;
@@ -41,6 +41,6 @@
 	transition: transform .2s ease;
 }
 
-.wp-block-straightvisions-sv-gutenform-radio .wp-block-straightvisions-sv-gutenform-radio-option input[type="radio"]:checked::before {
+.wp-block-straightvisions-sv-forms-radio .wp-block-straightvisions-sv-forms-radio-option input[type="radio"]:checked::before {
 	transform: scale( 1 );
 }

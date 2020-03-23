@@ -6,12 +6,12 @@ import edit from './edit';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-text', {
-	title: __( 'Text', 'sv_gutenform' ),
-	description: __( 'A field for short texts.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-text', {
+	title: __( 'Text', 'sv_forms' ),
+	description: __( 'A field for short texts.', 'sv_forms' ),
 	icon,
 	parent: [ 
-		'straightvisions/sv-gutenform-form', 
+		'straightvisions/sv-forms-form', 
 		'core/group', 
 		'core/cover',
 		'core/column',
@@ -19,9 +19,9 @@ registerBlockType( 'straightvisions/sv-gutenform-text', {
 	],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Text', 'sv_gutenform' ),
-		__( 'Text Input', 'sv_gutenform' ),
-		__( 'Text', 'sv_gutenform' ),
+		__( 'SV Forms Text', 'sv_forms' ),
+		__( 'Text Input', 'sv_forms' ),
+		__( 'Text', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
@@ -47,7 +47,7 @@ registerBlockType( 'straightvisions/sv-gutenform-text', {
 		},
 		placeholder: {
 			type: 'string',
-			default: __( 'Text', 'sv_gutenform' ),
+			default: __( 'Text', 'sv_forms' ),
 		},
 
 		// Validation Settings

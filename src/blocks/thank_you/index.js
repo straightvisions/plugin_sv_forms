@@ -7,16 +7,16 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 const { InnerBlocks } = wp.blockEditor;
 
-registerBlockType( 'straightvisions/sv-gutenform-thank-you', {
-	title: __( 'Thank You Message', 'sv_gutenform' ),
-	description: __( 'This message will be shown to users, who submitted this form.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-thank-you', {
+	title: __( 'Thank You Message', 'sv_forms' ),
+	description: __( 'This message will be shown to users, who submitted this form.', 'sv_forms' ),
 	icon,
-	parent: ['straightvisions/sv-gutenform'],
+	parent: ['straightvisions/sv-forms'],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Thank You', 'sv_gutenform' ),
-		__( 'Thank You Message', 'sv_gutenform' ),
-		__( 'Thank You Page', 'sv_gutenform' ),
+		__( 'SV Forms Thank You', 'sv_forms' ),
+		__( 'Thank You Message', 'sv_forms' ),
+		__( 'Thank You Page', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'wide', 'full' ],

@@ -7,16 +7,16 @@ const { __ } = wp.i18n;
 const { InnerBlocks } = wp.blockEditor;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-admin-mail', {
-	title: __( 'Admin Mail', 'sv_gutenform' ),
-	description: __( 'Create a mail that the admin/author will recieve, when the form is submitted.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-admin-mail', {
+	title: __( 'Admin Mail', 'sv_forms' ),
+	description: __( 'Create a mail that the admin/author will recieve, when the form is submitted.', 'sv_forms' ),
 	icon,
-	parent: ['straightvisions/sv-gutenform'],
+	parent: ['straightvisions/sv-forms'],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Admin Mail', 'sv_gutenform' ),
-		__( 'Admin Mail', 'sv_gutenform' ),
-		__( 'User Mail', 'sv_gutenform' ),
+		__( 'SV Forms Admin Mail', 'sv_forms' ),
+		__( 'Admin Mail', 'sv_forms' ),
+		__( 'User Mail', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'wide', 'full' ],

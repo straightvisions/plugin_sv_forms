@@ -24,17 +24,17 @@ export default ( { props } ) => {
 
     return(
         <PanelBody 
-            title={ __( 'Form Settings', 'sv_gutenform' ) }
+            title={ __( 'Form Settings', 'sv_forms' ) }
             initialOpen={ true }
         >
             <TextControl
-                label={ __( 'Form Label', 'sv_gutenform' ) }
+                label={ __( 'Form Label', 'sv_forms' ) }
                 type='text'
                 value={ formLabel }
                 onChange={ value => setFormLabel( value ) }
             />
             <ToggleControl
-                label={ __( 'Save Submissions', 'sv_gutenform' ) }
+                label={ __( 'Save Submissions', 'sv_forms' ) }
                 checked={ saveSubmissions }
                 onChange={ () => setSaveSubmissions( ! saveSubmissions )  }
             />

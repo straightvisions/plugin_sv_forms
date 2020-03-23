@@ -38,10 +38,10 @@ export default ( { props, wrapper, inputs } ) => {
                 output = 
                     <Notice 
                         status='warning' 
-                        className='sv-gutenform-name-check'
+                        className='sv-forms-name-check'
                         isDismissible={ false }
                     >
-                        { __( 'This input name is already in use!', 'sv_gutenform' ) }
+                        { __( 'This input name is already in use!', 'sv_forms' ) }
                     </Notice>;
             }
         } );
@@ -74,9 +74,9 @@ export default ( { props, wrapper, inputs } ) => {
 
     const updateChilds = () => {
         const childBlocks = [
-            'straightvisions/sv-gutenform-thank-you',
-            'straightvisions/sv-gutenform-user-mail',
-            'straightvisions/sv-gutenform-admin-mail',
+            'straightvisions/sv-forms-thank-you',
+            'straightvisions/sv-forms-user-mail',
+            'straightvisions/sv-forms-admin-mail',
         ];
 
         const innerBlocks = wp.data.select('core/block-editor').getBlocks( wrapper.clientId );
@@ -90,16 +90,16 @@ export default ( { props, wrapper, inputs } ) => {
 
     return(
         <PanelBody
-            title={ __( 'Input Settings', 'sv_gutenform' ) }
+            title={ __( 'Input Settings', 'sv_forms' ) }
             initialOpen={ true }
         >
             <TextControl
-                label={ __( 'Label', 'sv_gutenform' ) }
+                label={ __( 'Label', 'sv_forms' ) }
                 value={ label }
                 onChange={ value => setLabel( value ) }
             />
             <TextControl
-                label={ __( 'Name', 'sv_gutenform' ) }
+                label={ __( 'Name', 'sv_forms' ) }
                 value={ getFormatedName( name ) }
                 onChange={ value => { 
                     updateFormInputs( getFormatedName( value ) );

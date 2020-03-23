@@ -1,6 +1,6 @@
-	SV Gutenform
-		SV Gutenform is a block that allows you to create forms in Gutenberg, with ease.
-	Code (c) 2019 straightvisions GmbH
+	SV Forms
+		SV Forms is a block that allows you to create forms in the WordPress Gutenberg Block-Editor, with ease.
+	Code (c) 2019-2020 straightvisions GmbH
 	Project Leader: Adrian Chudzynski
 	Project Website: https://straightvisions.com
 

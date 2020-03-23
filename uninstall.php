@@ -3,5 +3,5 @@
 		exit();
     }
     
-    delete_option( 'sv_gutenform_index' );
-    delete_transient( 'sv_gutenform' );
+    delete_option( 'sv_forms_index' );
+    delete_transient( 'sv_forms' );

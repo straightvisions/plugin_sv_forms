@@ -1,7 +1,7 @@
 <?php
-namespace sv_gutenform;
+namespace sv_forms;
 
-class wrapper extends sv_gutenform {	
+class wrapper extends sv_forms {	
 	protected $block_attr = array();
 
 	public function init() {
@@ -19,8 +19,8 @@ class wrapper extends sv_gutenform {
 			array_merge(
 				$this->get_parent()->get_script( 'form_js' )->get_localized(),
 				array(
-					'sv_gutenform_post_id' => get_the_ID(),
-					'sv_gutenform_form_id' => $form_id,
+					'sv_forms_post_id' => get_the_ID(),
+					'sv_forms_form_id' => $form_id,
 				)
 			)
 		);
@@ -59,8 +59,8 @@ class wrapper extends sv_gutenform {
 					array_merge(
 						$this->get_parent()->get_script( 'form_js' )->get_localized(),
 						array(
-							'sv_gutenform_ajaxurl' 	=> admin_url( 'admin-ajax.php' ),
-							'sv_gutenform_nonce' 	=> \wp_create_nonce( 'sv_gutenform_submit' ),
+							'sv_forms_ajaxurl' 	=> admin_url( 'admin-ajax.php' ),
+							'sv_forms_nonce' 	=> \wp_create_nonce( 'sv_forms_submit' ),
 						)
 					)
 				);
@@ -69,9 +69,9 @@ class wrapper extends sv_gutenform {
 
 	private function register_block() {
 		register_block_type(
-			'straightvisions/sv-gutenform', array(
-				'editor_script' 	=> 'sv-gutenform-block',
-				'editor_style'  	=> 'sv-gutenform-block-editor',
+			'straightvisions/sv-forms', array(
+				'editor_script' 	=> 'sv-forms-block',
+				'editor_style'  	=> 'sv-forms-block-editor',
 				'render_callback'	=> array( $this, 'init_block' ),
 				'attributes'		=> array(
 					'postId' => array(
@@ -193,6 +193,6 @@ class wrapper extends sv_gutenform {
 
 	// Returns a string with all classes for the input wrapper
 	protected function get_wrapper_class(): string {
-		return $this->get_root()->sv_gutenform->get_default_wrapper_class( $this->block_attr, $this->get_module_name() );
+		return $this->get_root()->sv_forms->get_default_wrapper_class( $this->block_attr, $this->get_module_name() );
 	}
 }

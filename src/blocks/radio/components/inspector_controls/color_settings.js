@@ -45,13 +45,13 @@ export default ( { props } ) => {
                 setLabelColor( value );
                 setLabelColorClass( getColorClass( value ) );
             },
-            label: __( 'Label', 'sv_gutenform' ),
+            label: __( 'Label', 'sv_forms' ),
         },
     ];
 
     return(
         <PanelColorSettings
-            title={ __( 'Color Settings', 'sv_gutenform' ) }
+            title={ __( 'Color Settings', 'sv_forms' ) }
             initialOpen={ true }
             colorSettings={ colorSettings }
         >

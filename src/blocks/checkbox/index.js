@@ -9,12 +9,12 @@ const {
 	registerBlockStyle 
 } = wp.blocks;
 
-registerBlockType( 'straightvisions/sv-gutenform-checkbox', {
-	title: __( 'Checkbox', 'sv_gutenform' ),
-	description: __( 'A checkbox that can be checked.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-checkbox', {
+	title: __( 'Checkbox', 'sv_forms' ),
+	description: __( 'A checkbox that can be checked.', 'sv_forms' ),
 	icon,
 	parent: [ 
-		'straightvisions/sv-gutenform-form', 
+		'straightvisions/sv-forms-form', 
 		'core/group', 
 		'core/cover',
 		'core/column',
@@ -22,9 +22,9 @@ registerBlockType( 'straightvisions/sv-gutenform-checkbox', {
 	],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Checkbox', 'sv_gutenform' ),
-		__( 'Checkbox Input', 'sv_gutenform' ),
-		__( 'Checkbox', 'sv_gutenform' ),
+		__( 'SV Forms Checkbox', 'sv_forms' ),
+		__( 'Checkbox Input', 'sv_forms' ),
+		__( 'Checkbox', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
@@ -40,7 +40,7 @@ registerBlockType( 'straightvisions/sv-gutenform-checkbox', {
 		},
 		label: {
 			type: 'string',
-			default: __( 'Checkbox', 'sv_gutenform' )
+			default: __( 'Checkbox', 'sv_forms' )
 		},
 		name: {
 			type: 'string',
@@ -80,7 +80,7 @@ registerBlockType( 'straightvisions/sv-gutenform-checkbox', {
 	}
 } );
 
-registerBlockStyle( 'straightvisions/sv-gutenform-checkbox', [ 
+registerBlockStyle( 'straightvisions/sv-forms-checkbox', [ 
 	{
 		name: 'checkbox',
 		label: 'Checkbox',

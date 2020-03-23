@@ -22,7 +22,7 @@ export default ( { props, wrapper, inputs } ) => {
     // Returns the E-Mail Block Label if available
     const getMailLabel = ID => {
         const wrapperBlocks = getBlocks( wrapper.clientId );
-        const formBlock = wrapperBlocks.find( block => { return block.name === 'straightvisions/sv-gutenform-form'; } );
+        const formBlock = wrapperBlocks.find( block => { return block.name === 'straightvisions/sv-forms-form'; } );
         const formBlocks = getBlocks( formBlock.clientId );
         let label = '';
 
@@ -71,23 +71,23 @@ export default ( { props, wrapper, inputs } ) => {
 
     return(
         <PanelBody
-            title={ __( 'Send to Mails', 'sv_gutenform' ) }
+            title={ __( 'Send to Mails', 'sv_forms' ) }
             initialOpen={ true }
         >
-            <div className='sv-gutenform-mails-list'>
+            <div className='sv-forms-mails-list'>
                 <SelectControl
-                    className='sv-gutenform-mails-select'
+                    className='sv-forms-mails-select'
                     multiple
-                    label={ __( 'Select E-Mail Blocks:',  'sv_gutenform' ) }
+                    label={ __( 'Select E-Mail Blocks:',  'sv_forms' ) }
                     value={ mails }
                     onChange={ mails => updateMails( mails ) }
                     options={ getMailOptions() }
                 />
                 <Button 
-                    className='sv-gutenform-mails-reset'
+                    className='sv-forms-mails-reset'
                     onClick={ () => resetSelection() }
                 >
-                    { __( 'Reset Selection', 'sv_gutenform' ) }
+                    { __( 'Reset Selection', 'sv_forms' ) }
                 </Button>
             </div>
         </PanelBody>

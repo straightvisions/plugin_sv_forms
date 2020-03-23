@@ -6,12 +6,12 @@ import edit from './edit';
 const { __ } 				= wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-gutenform-submit', {
-	title: __( 'Submit Button', 'sv_gutenform' ),
-	description: __( 'The submit button for the form.', 'sv_gutenform' ),
+registerBlockType( 'straightvisions/sv-forms-submit', {
+	title: __( 'Submit Button', 'sv_forms' ),
+	description: __( 'The submit button for the form.', 'sv_forms' ),
 	icon,
 	parent: [ 
-		'straightvisions/sv-gutenform-form', 
+		'straightvisions/sv-forms-form', 
 		'core/group', 
 		'core/cover',
 		'core/column',
@@ -19,9 +19,9 @@ registerBlockType( 'straightvisions/sv-gutenform-submit', {
 	],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Gutenform Submit', 'sv_gutenform' ),
-		__( 'Submit', 'sv_gutenform' ),
-		__( 'Button', 'sv_gutenform' ),
+		__( 'SV Forms Submit', 'sv_forms' ),
+		__( 'Submit', 'sv_forms' ),
+		__( 'Button', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'full' ],
@@ -30,7 +30,7 @@ registerBlockType( 'straightvisions/sv-gutenform-submit', {
 		// Text
 		content: {
 			type: 'string',
-			default: __( 'Send', 'sv_gutenform' ),
+			default: __( 'Send', 'sv_forms' ),
 		},
 
 		// Color Settings
