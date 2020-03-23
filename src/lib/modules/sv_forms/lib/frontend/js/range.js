@@ -9,7 +9,7 @@
         
         jQuery( '.wp-block-straightvisions-sv-forms-range input[type="number"]' ).on( 'input',  function() {
             const number   = jQuery( this );
-            const range    = jQuery( '.wp-block-straightvisions-sv-forms-range input[type="range"]' );;
+            const range    = jQuery( '.wp-block-straightvisions-sv-forms-range input[type="range"]' );
         
             range.attr( 'value', number.attr( 'value' ) );
         } );
