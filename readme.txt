@@ -26,7 +26,7 @@ Our SV Forms Block for the WordPress Gutenberg Block-Editor offers you full cont
 ✔ "Thank You Message"-Block that let's you create a "Thank You"-Message that will be shown, when a user submitted your form.
 ✔ Bunch of settings and customization.
 
-<a href="https://straightvisions.com/en/sv-gutenform/">More information and preview</a>
+<a href="https://straightvisions.com/en/projects/sv-forms/">More information and preview</a>
 
 = Requires: =
 * PHP 7.0 or higher
