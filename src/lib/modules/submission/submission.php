@@ -5,6 +5,7 @@ class submission extends modules {
 	public function init() {
 		// Actions Hooks & Filter
 		add_action( 'wp_ajax_sv_forms_submit', array( $this, 'ajax_sv_forms_submit' ) );
+		add_action( 'wp_ajax_nopriv_sv_forms_submit', array( $this, 'ajax_sv_forms_submit' ) );
 	}
 
 	// This function will be called on form submit via Ajax
