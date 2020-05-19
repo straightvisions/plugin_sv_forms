@@ -4,8 +4,8 @@ Donate link: https://straightvisions.com
 Tags: form-block, form-builder, contact-form
 Requires PHP: 7.0
 Requires at least: 5.3.2
-Tested up to: 5.3.2
-Stable tag: 1.4.14
+Tested up to: 5.4.1
+Stable tag: 1.4.15
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
