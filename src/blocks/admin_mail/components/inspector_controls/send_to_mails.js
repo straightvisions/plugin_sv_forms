@@ -69,7 +69,7 @@ export default ( { props } ) => {
                             <div className='sv-forms-mail-entry'>
                                 <TextControl
                                     className='sv-forms-mail-input'
-                                    type='email'
+                                    type='text'
                                     placeholder={ __( 'E-Mail', 'sv_forms' ) }
                                     value={ mail === 'new' ? '' : mail }
                                     onChange={ value => updateMail( mail, value ) }

@@ -59,7 +59,7 @@ export default ( { props, authors } ) => {
                 <SelectControl
                     className='sv-forms-users-select'
                     multiple
-                    label={ __( 'Select Authors:',  'sv_forms' ) }
+                    label={ __( 'Select User:',  'sv_forms' ) }
                     value={ users }
                     onChange={ users => updateUsers( users ) }
                     options={ getAuthorOptions() }

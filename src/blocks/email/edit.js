@@ -143,7 +143,7 @@ export default class extends Component {
                 <div className={ className }>
                     <this.Label />
                     <TextControl
-                        type={ type }
+                        type='text'
                         name={ name }
                         label={ label }
                         required={ required }
