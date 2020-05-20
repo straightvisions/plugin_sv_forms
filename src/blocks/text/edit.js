@@ -80,6 +80,9 @@ export default class extends Component {
 
         let isDuplicate = false;
         const wrapperBlock = select('core/block-editor').getBlock( this.wrapper.clientId );
+
+        if ( ! wrapperBlock ) return false;
+
         const formBlock = wrapperBlock.innerBlocks.find( block => { return block.name === 'straightvisions/sv-forms-form'; } );
         
         formBlock.innerBlocks.map( block => {

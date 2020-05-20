@@ -7,7 +7,11 @@ const { select, dispatch } = wp.data;
 const { InnerBlocks } = wp.blockEditor;
 const { Component, Fragment } = wp.element;
 const { editPost } = dispatch( 'core/editor' );
-const { getEditedPostAttribute } = select( 'core/editor' );
+const { 
+    getBlock,
+    getEditedPostAttribute, 
+    __experimentalGetReusableBlocks
+} = select( 'core/editor' );
 
 export default class extends Component {
     constructor(props) {
@@ -20,16 +24,41 @@ export default class extends Component {
             ['straightvisions/sv-forms-user-mail'],
             ['straightvisions/sv-forms-admin-mail'],
         ];
+
+        /**
+         * Eventlistener that listens on changes in the reuseable blocks count.
+         * 
+         * If the current block is a Forms block, the amount of reuseable blocks
+         * increases and the current block is missing in the editor, it means 
+         * that the current Forms block was transformed into a reuseable block.
+         */
+        const currentReuseableBlocks = __experimentalGetReusableBlocks();
+        const currentReuseableBlocksCount = Object.values( currentReuseableBlocks ).length;
+
+        wp.data.subscribe( () => {
+            if ( this.props.name !== 'straightvisions/sv-forms' ) return false;
+
+            const newReuseableBlocks = __experimentalGetReusableBlocks();
+            const newReuseableBlocksCount = Object.values( newReuseableBlocks ).length;
+
+            // Checks if the reuseable blocks count has changed
+            const reuseableBlockAdded = currentReuseableBlocksCount < newReuseableBlocksCount ? true : false;
+
+            // Checks if the current block exists
+            const currentBlockExists = getBlock( this.props.clientId ) ? true : false;
+
+            // The current block was converted into a reuseable block
+            if ( reuseableBlockAdded && ! currentBlockExists ) { 
+                console.log( this.props.attributes.formLabel + ' is now a reuseable block.' );
+            }
+        } );
     }
 
     // React Lifecycle Methos
     componentDidMount = () => {
         if ( ! this.doesFormExist() || ( this.doesFormExist() && this.isDuplicate() ) ) {
-            this.props.attributes.postId = select('core/editor').getCurrentPostId();
-
-            if ( ! this.props.attributes.formId ) {
-                this.props.attributes.formId = this.props.clientId;
-            }
+            this.props.setAttributes({ postId: select('core/editor').getCurrentPostId() });
+            this.props.setAttributes({ formId: this.props.clientId });
             
             this.updatePostMeta( 'update' );
         }
@@ -78,18 +107,33 @@ export default class extends Component {
 
     // Updates the current post meta with the block attributes
     updatePostMeta = action => {
+        if ( ! this.props.attributes.formId ) return false;
+
         const currentMeta = getEditedPostAttribute( 'meta' );
         let currentForms  = currentMeta._sv_forms_forms ? JSON.parse( currentMeta._sv_forms_forms ) : {};
 
         switch ( action ) {
             case 'update':
+                //console.log( '=== UPDATE ===' );
+                //console.log( 'Form ID: ', this.props.attributes.formId )
+                //console.log( 'Before: ', currentForms );
+
                 currentForms[ this.props.attributes.formId ] = this.props.attributes;
+
+                //console.log( 'After: ', currentForms );
                 break;
             case 'remove':
-                delete currentForms[ this.props.attributes.formId ];
-                break;
-        }
+                //console.log( '=== REMOVE ===' );
+                //console.log( 'Form ID: ', this.props.attributes.formId )
+                //console.log( 'Before: ', currentForms );
 
+                delete currentForms[ this.props.attributes.formId ];
+
+                //console.log( 'After: ', currentForms );
+                break;
+
+        }
+        
         const newMeta = { ...currentMeta, _sv_forms_forms: JSON.stringify( currentForms ) };
 
         editPost( { meta: newMeta } );
