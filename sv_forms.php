@@ -12,6 +12,8 @@
 	License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 */
 
+namespace sv_forms;
+
 if ( ! class_exists( '\sv_dependencies\init' ) ) {
 	require_once( 'src/core_plugin/dependencies/sv_dependencies.php' );
 }
