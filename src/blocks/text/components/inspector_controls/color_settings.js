@@ -16,6 +16,7 @@ export default ( { props } ) => {
             labelColor,
             inputColor,
             inputBackgroundColor,
+            inputBorderColor,
         }
     } = props;
 
@@ -26,6 +27,7 @@ export default ( { props } ) => {
     const setInputColorClass            = inputColorClass           => setAttributes({ inputColorClass });
     const setInputBackgroundColor       = inputBackgroundColor      => setAttributes({ inputBackgroundColor });
     const setInputBackgroundColorClass  = inputBackgroundColorClass => setAttributes({ inputBackgroundColorClass });
+    const setInputBorderColor           = inputBorderColor          => setAttributes({ inputBorderColor });
     
     // Returns an color object if this color is defined in the editor
     const getColorObject = color => {
@@ -70,6 +72,11 @@ export default ( { props } ) => {
                 setInputBackgroundColorClass( getColorClass( value, true ) );
             },
             label: __( 'Input Background', 'sv_forms' ),
+        },
+        {
+            value: inputBorderColor,
+            onChange: value => setInputBorderColor( value ),
+            label: __( 'Input Border', 'sv_forms' ),
         },
     ];
 

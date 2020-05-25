@@ -46,6 +46,10 @@ registerBlockType( 'straightvisions/sv-forms-submit', {
 		backgroundColorClass: {
 			type: 'string',
 		},
+		borderColor: {
+			type: 'string',
+			default: '#ddd',
+		},
 
 		// Border Settings
 		borderRadius: {

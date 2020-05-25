@@ -324,6 +324,11 @@ class sv_forms extends modules {
 			$style[] = 'background-color:' . $block_attr['inputBackgroundColor'];
 		}
 
+		// Input Border Color
+		if ( isset( $block_attr['inputBorderColor'] ) ) {
+			$style[] = 'border-color:' . $block_attr['inputBorderColor'];
+		}
+
 		// Border Radius
 		if ( isset( $block_attr['borderRadius'] ) ) {
 			$style[] = 'border-radius:' . $block_attr['borderRadius'] . 'px';

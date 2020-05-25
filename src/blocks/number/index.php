@@ -92,6 +92,10 @@ class number extends sv_forms {
 					'inputBackgroundColorClass' => array(
 						'type' => 'string',
 					),
+					'inputBorderColor' => array(
+						'type' => 'string',
+						'default' => '#ddd',
+					),
 
 					// Border Settings
 					'borderRadius' => array(

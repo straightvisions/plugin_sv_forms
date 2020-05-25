@@ -59,6 +59,10 @@ class submit extends sv_forms {
 					'backgroundColorClass' => array(
 						'type' => 'string',
 					),
+					'borderColor' => array(
+						'type' => 'string',
+						'default' => '#ddd',
+					),
 
 					// Border Settings
 					'borderRadius' => array(
@@ -123,6 +127,11 @@ class submit extends sv_forms {
 			&& ! $this->block_attr['backgroundColorClass'] 
 		) {
 			$style[] = 'background-color:' . $this->block_attr['backgroundColor'];
+		}
+
+		// Border Color
+		if ( isset( $this->block_attr['borderColor'] ) ) {
+			$style[] = 'border-color:' . $this->block_attr['borderColor'];
 		}
 
 		// Border Radius

@@ -80,10 +80,14 @@ registerBlockType( 'straightvisions/sv-forms-text', {
 		inputBackgroundColorClass: {
 			type: 'string',
 		},
+		inputBorderColor: {
+			type: 'string',
+			default: '#ddd',
+		},
 
 		// Border Settings
 		borderRadius: {
-			type: 'number'	
+			type: 'number',	
 		},
 
 		// Advanced Settings

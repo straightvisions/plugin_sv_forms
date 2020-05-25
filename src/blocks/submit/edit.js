@@ -21,6 +21,7 @@ export default withSelect( ( select, props ) => {
             textColorClass,
             backgroundColor,
             backgroundColorClass,
+            borderColor,
 
             // Border Settings
             borderRadius,
@@ -36,7 +37,12 @@ export default withSelect( ( select, props ) => {
             <div className={ className }>
                 <RichText
                     className={ [ textColorClass, backgroundColorClass ] }
-                    style={{ color: textColor, backgroundColor: backgroundColor, borderRadius: borderRadius }}
+                    style={{ 
+                        color: textColor, 
+                        backgroundColor: backgroundColor, 
+                        borderColor: borderColor,
+                        borderRadius: borderRadius 
+                    }}
                     value={ content }
                     onChange={ value => setContent( value ) } 
                 />

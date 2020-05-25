@@ -15,6 +15,7 @@ export default ( { props } ) => {
         attributes: {
             textColor,
             backgroundColor,
+            borderColor,
         }
     } = props;
 
@@ -23,6 +24,7 @@ export default ( { props } ) => {
     const setTextColorClass         = textColorClass        => setAttributes({ textColorClass });
     const setBackgroundColor        = backgroundColor       => setAttributes({ backgroundColor });
     const setBackgroundColorClass   = backgroundColorClass  => setAttributes({ backgroundColorClass });
+    const setBorderColor            = borderColor           => setAttributes({ borderColor });
     
     // Returns an color object if this color is defined in the editor
     const getColorObject = color => {
@@ -59,6 +61,11 @@ export default ( { props } ) => {
                 setBackgroundColorClass( getColorClass( value, true ) );
             },
             label: __( 'Background', 'sv_forms' ),
+        },
+        {
+            value: borderColor,
+            onChange: value => setBorderColor( value ),
+            label: __( 'Border', 'sv_forms' ),
         },
     ];
 

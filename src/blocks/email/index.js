@@ -80,6 +80,10 @@ registerBlockType( 'straightvisions/sv-forms-email', {
 		inputBackgroundColorClass: {
 			type: 'string',
 		},
+		inputBorderColor: {
+			type: 'string',
+			default: '#ddd',
+		},
 
 		// Border Settings
 		borderRadius: {

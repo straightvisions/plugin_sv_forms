@@ -57,6 +57,10 @@ registerBlockType( 'straightvisions/sv-forms-select', {
 		labelColorClass: {
 			type: 'string',
 		},
+		inputBorderColor: {
+			type: 'string',
+			default: '#ddd',
+		},
 
 		// Border Settings
 		borderRadius: {

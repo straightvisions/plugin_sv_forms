@@ -38,7 +38,6 @@
     border-radius: 0;
     border-style: solid;
     border-width: 1px;
-    border-color: #ddd;
     box-shadow: none;
     display: block;
     margin: 0;
@@ -50,18 +49,4 @@
     box-shadow: none;
     text-decoration: none;
     transition: color .25s ease, background-color .25s, border-color .25s ease;
-}
-
-.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-text input:focus,
-.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-email input:focus,
-.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-url input:focus,
-.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-number input:focus,
-.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-phone input:focus,
-.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-password input:focus,
-.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-textarea textarea:focus,
-.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-select select:focus,
-.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-date input:focus,
-.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-submit button:focus,
-.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-submit button:hover {
-	border-color: #000 !important;
 }

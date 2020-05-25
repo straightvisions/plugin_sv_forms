@@ -66,6 +66,10 @@ class select extends sv_forms {
 					'labelColorClass' => array(
 						'type' => 'string',
 					),
+					'inputBorderColor' => array(
+						'type' => 'string',
+						'default' => '#ddd',
+					),
 
 					// Border Radius
 					'borderRadius' => array(

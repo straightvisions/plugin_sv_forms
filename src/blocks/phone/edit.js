@@ -134,6 +134,7 @@ export default class extends Component {
                 inputColorClass,
                 inputBackgroundColor,
                 inputBackgroundColorClass,
+                inputBorderColor,
                 borderRadius,
             }
         } = this.props;
@@ -156,6 +157,7 @@ export default class extends Component {
                         style={{ 
                             color: inputColor, 
                             backgroundColor: inputBackgroundColor, 
+                            borderColor: inputBorderColor,
                             borderRadius: borderRadius 
                         }}
                         className={ [ 
