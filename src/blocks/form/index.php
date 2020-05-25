@@ -47,6 +47,10 @@ class form extends sv_forms {
 						'type' => 'bool',
 						'default' => false,
 					),
+					'placeholderColor' => array(
+						'type' => 'text',
+						'default' => '#808080',
+					),
 					
 					// Advanced
 					'className' => array(

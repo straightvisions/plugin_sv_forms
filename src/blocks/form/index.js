@@ -29,6 +29,10 @@ registerBlockType( 'straightvisions/sv-forms-form', {
 			type: 'boolean',
 			default: false,
 		},
+		placeholderColor: {
+			type: 'text',
+			default: '#808080',
+		},
 		
 		// Advanced
 		className: {

@@ -1,4 +1,5 @@
 // Required Components
+import InspectorControls from './components/inspector_controls';
 import { WrapperConsumer } from '../../blocks';
 
 const { __ } = wp.i18n;
@@ -128,6 +129,7 @@ export default class extends Component {
                     </div>
                 </div>
                 <WrapperConsumer>{ wrapper => { this.setFormId( wrapper ) } }</WrapperConsumer>
+                <InspectorControls props={ this.props } />
             </Fragment>
         );
     }
