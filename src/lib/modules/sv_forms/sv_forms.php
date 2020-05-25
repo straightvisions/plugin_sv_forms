@@ -236,7 +236,7 @@ class sv_forms extends modules {
 
 		if ( isset( $block_attr['name'] ) ) {
 			// ID
-			$attr[] = 'id="' . $block_attr['name'] . '"';
+			//$attr[] = 'id="' . $block_attr['name'] . '"';
 
 			// Name
 			$attr[] = 'name="' . $block_attr['name'] . '"';
