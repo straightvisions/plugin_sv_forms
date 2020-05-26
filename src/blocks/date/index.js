@@ -10,13 +10,7 @@ registerBlockType( 'straightvisions/sv-forms-date', {
 	title: __( 'Date', 'sv_forms' ),
 	description: __( 'A field for for dates.', 'sv_forms' ),
 	icon,
-	parent: [ 
-		'straightvisions/sv-forms-form', 
-		'core/group', 
-		'core/cover',
-		'core/column',
-		'core/media-text',
-	],
+	parent: [ 'straightvisions/sv-forms-form' ],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Forms Date', 'sv_forms' ),

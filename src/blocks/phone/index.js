@@ -10,13 +10,7 @@ registerBlockType( 'straightvisions/sv-forms-phone', {
 	title: __( 'Phone', 'sv_forms' ),
 	description: __( 'A field for phone numbers.', 'sv_forms' ),
 	icon,
-	parent: [ 
-		'straightvisions/sv-forms-form', 
-		'core/group', 
-		'core/cover',
-		'core/column',
-		'core/media-text',
-	],
+	parent: [ 'straightvisions/sv-forms-form' ],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Forms Phone', 'sv_forms' ),
