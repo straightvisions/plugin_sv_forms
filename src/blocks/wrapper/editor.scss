@@ -1,3 +1,7 @@
+.block-editor div.wp-block.is-selected[data-type="straightvisions/sv-forms"] {
+    min-width: 500px;
+}
+
 .wp-block-straightvisions-sv-forms > .sv_forms_header,
 .wp-block-straightvisions-sv-forms > .sv_forms_body {
     padding: 20px;
