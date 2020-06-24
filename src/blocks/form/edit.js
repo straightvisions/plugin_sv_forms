@@ -51,8 +51,8 @@ export default class extends Component {
 
     // Sets the formId attribute for this block
     setFormId = wrapper => {
-        // First mount
-        if ( ! this.props.attributes.formId ) {
+        // First mount or formID is different
+        if ( ! this.props.attributes.formId || this.props.attributes.formId !== wrapper.attributes.formId ) {
             this.props.setAttributes({ formId: wrapper.attributes.formId });
         }
     }
