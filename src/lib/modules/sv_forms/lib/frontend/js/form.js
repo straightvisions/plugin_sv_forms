@@ -110,8 +110,10 @@
             sv_forms_nonce: localized.sv_forms_nonce,
             sv_forms_post_id: localized.sv_forms_post_id,
             sv_forms_form_data: newFormData,
-        }, function() {
+        }, function( response ) {
             showThankYou( form, newFormData );
+            // Only for Debug
+            //console.log( response );
         });
     } );
 }( jQuery ));

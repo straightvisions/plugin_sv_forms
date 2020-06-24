@@ -14,7 +14,7 @@ class mail extends modules {
 	// Sends a mail
 	private function send_mail( $to, string $subject, string $content, array $headers ): mail {
 		add_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
-		wp_mail( $to, $subject, $content, $headers );
+		$mail_status = wp_mail( $to, $subject, $content, $headers );
 		remove_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
 
 		return $this;
@@ -138,11 +138,7 @@ class mail extends modules {
 			}
 		}
 
-		if ( $to_mails && count( $to_mails ) > 0 ) {
-			foreach( $to_mails as $mail ) {
-				$email_adresses[] = $mail;
-			}
-		}
+		$email_adresses = array_merge( $email_adresses, $to_mails );
 
 		return $email_adresses;
 	}
