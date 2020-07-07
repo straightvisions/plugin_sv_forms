@@ -30,6 +30,7 @@ class submission extends modules {
 
 		if ( ! $this->spam_guard_check->run_check( $attr, $sanitized_data ) ) {
 			// Creates custom action hook, that passes a form data array and a form attr object
+			// action name: sv_forms_form_submit
 			do_action( $this->get_root()->get_prefix( 'form_submit' ), $sanitized_data, $attr );
 
 			// Creates a post witht he submission data in it
