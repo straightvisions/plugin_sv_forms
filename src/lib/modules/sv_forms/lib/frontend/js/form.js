@@ -2,6 +2,7 @@
 (function( jQuery ) {
     // Variables
     const localized = js_sv_forms_modules_sv_forms_scripts_form_js;
+    let formsID = false;
 
     // Extends the JS String Object with a function that is similar to str_replace() function from PHP
     // Code from: https://stackoverflow.com/questions/5069464/replace-multiple-strings-at-once
@@ -78,6 +79,10 @@
                         value: field.value,
                     };
 
+                    if ( field.name === 'sv_forms_form_id' ) {
+                        formsID = field.value;
+                    }
+
                     // The following code checks for specific input types
                     // and stores their label instead of the value
                     let labelText = false;
@@ -105,10 +110,12 @@
             }
         });
 
+        const postID = (formsID && localized[formsID]) ? localized[formsID] : false;
+
         jQuery.post( localized.sv_forms_ajaxurl, {
             action: 'sv_forms_submit',
             sv_forms_nonce: localized.sv_forms_nonce,
-            sv_forms_post_id: localized.sv_forms_post_id,
+            sv_forms_post_id: postID,
             sv_forms_form_data: newFormData,
         }, function( response ) {
             showThankYou( form, newFormData );

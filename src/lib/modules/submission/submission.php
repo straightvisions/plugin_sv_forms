@@ -14,7 +14,11 @@ class submission extends modules {
 		if ( ! wp_verify_nonce( $_POST[ $this->get_root()->get_prefix( 'nonce' ) ], 'sv_forms_submit' ) ) return;
 
 		// Variables
-		$post_id	= intval( $_POST[ $this->get_root()->get_prefix( 'post_id' ) ] );
+		$post_id_raw = $_POST[ $this->get_root()->get_prefix( 'post_id' ) ];
+
+		if ( $post_id_raw === false ) return;
+		
+		$post_id 	= intval( $post_id_raw );
 		$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_forms_forms', true ) );
 		$form_data	= $_POST[ $this->get_root()->get_prefix( 'form_data' ) ];
 		$form_id	= $this->get_input_value( $this->get_root()->get_prefix( 'form_id' ), $form_data );

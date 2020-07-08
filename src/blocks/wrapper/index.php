@@ -18,10 +18,7 @@ class wrapper extends sv_forms {
 		$this->get_parent()->get_script( 'form_js' )->set_localized( 
 			array_merge(
 				$this->get_parent()->get_script( 'form_js' )->get_localized(),
-				array(
-					'sv_forms_post_id' => get_the_ID(),
-					'sv_forms_form_id' => $form_id,
-				)
+				array( $form_id => get_the_ID() )
 			)
 		);
 
