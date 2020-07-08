@@ -18,7 +18,7 @@ class wrapper extends sv_forms {
 		$this->get_parent()->get_script( 'form_js' )->set_localized( 
 			array_merge(
 				$this->get_parent()->get_script( 'form_js' )->get_localized(),
-				array( $form_id => get_the_ID() )
+				apply_filters($this->get_prefix('form_mapping'), array( $form_id => get_the_ID() )) // @filter_name: sv_forms_modules_sv_forms_wrapper_form_id
 			)
 		);
 
