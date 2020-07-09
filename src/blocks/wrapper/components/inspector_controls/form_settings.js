@@ -4,7 +4,11 @@ const {
     PanelBody,
     TextControl,
     ToggleControl,
+    Button,
 } = wp.components;
+const { select, dispatch } = wp.data;
+const { editPost } = dispatch( 'core/editor' );
+const { getEditedPostAttribute } = select( 'core/editor' );
 
 export default ( { props } ) => {
     if ( ! props ) return '';
@@ -21,6 +25,13 @@ export default ( { props } ) => {
     // Functions to set the block attributes
     const setFormLabel          = formLabel         => setAttributes({ formLabel });
     const setSaveSubmissions    = saveSubmissions   => setAttributes({ saveSubmissions });
+    const clearMeta             = ()                => {
+        const currentMeta       = getEditedPostAttribute( 'meta' );
+        const newMeta           = { ...currentMeta, _sv_forms_forms: "{}" };
+
+        editPost( { meta: newMeta } );
+        console.log('Meta Field _sv_forms_forms was cleard.');
+    }
 
     return(
         <PanelBody 
@@ -38,6 +49,12 @@ export default ( { props } ) => {
                 checked={ saveSubmissions }
                 onChange={ () => setSaveSubmissions( ! saveSubmissions )  }
             />
+            <Button 
+                isSecondary
+                onClick={ () => clearMeta() }
+            >
+                Clear SV Forms Meta Field
+            </Button>
         </PanelBody>
     );
 }

@@ -24,7 +24,7 @@ export default ( { props, wrapper, inputs } ) => {
         const wrapperBlocks = getBlocks( wrapper.clientId );
         const formBlock = wrapperBlocks.find( block => { return block.name === 'straightvisions/sv-forms-form'; } );
         const formBlocks = getBlocks( formBlock.clientId );
-        let label = '';
+        let label = 'Default Mail Label';
 
         formBlocks.map( block => {
             if ( block.attributes.inputId && block.attributes.inputId === ID ) {

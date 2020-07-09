@@ -111,7 +111,7 @@ class mail extends modules {
 		if ( ! $attr->userMailToMails ) return array();
 
 		$email_adresses = array();
-		$input_names 	= json_decode( $attr->userMailToMails );
+		$input_names 	= json_decode( $attr->userMailToMails ) ? json_decode( $attr->userMailToMails ) : array();
 
 		foreach( $input_names as $name ) {
 			$email_adresses[] = $this->get_input_value( $name, $data );
@@ -125,8 +125,8 @@ class mail extends modules {
 		if ( ! $attr->adminMailToUsers && ! $attr->adminMailToMails ) return array();
 
 		$email_adresses = array();
-		$to_users 		= json_decode( $attr->adminMailToUsers );
-		$to_mails 		= json_decode( $attr->adminMailToMails );
+		$to_users 		= json_decode( $attr->adminMailToUsers ) ? json_decode( $attr->adminMailToUsers ) : array();
+		$to_mails 		= json_decode( $attr->adminMailToMails ) ? json_decode( $attr->adminMailToMails ) : array();
 
 		if ( $to_users && count( $to_users ) > 0 ) {
 			foreach( $to_users as $user_id ) {
