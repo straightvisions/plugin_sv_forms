@@ -52,9 +52,19 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 = 1.4.15 =
 
+### Features
+
+* Added a "Clear SV Forms Meta Field" button to the wrapper Block
+
+### Enhancements
+
+* Added default label to the User Mail Block
+
 ### Bug Fixes
 
 * Fixed that the Form ID in the Forms Block wouldn't update
+* Fixed that the get_admin_mails & get_user_mails function can return NULL
+
 
 = 1.4.14 =
 
