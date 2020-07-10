@@ -17,6 +17,7 @@ import './blocks/admin_mail/index.js';
 // Form Blocks
 import './blocks/spam_guard/index.js';
 import './blocks/text/index.js';
+import './blocks/hidden/index.js';
 import './blocks/email/index.js';
 import './blocks/url/index.js';
 import './blocks/number/index.js';

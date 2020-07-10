@@ -54,6 +54,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 ### Features
 
+* Added new Hidden Block, to implement hidden input fields in your form
 * Added a "Clear SV Forms Meta Field" button to the wrapper Block
 * The copy to clippboard buttons will show a notice, when the content is copied to the clippboard
 
