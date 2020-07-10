@@ -21,12 +21,12 @@ export default class extends Component {
                 placeholder: __( 'Name', 'sv_forms' ),
                 name: 'name',
                 required: true,
-                autofocus: true,
                 borderRadius: 4,
             }],
             ['straightvisions/sv-forms-email', {
                 placeholder: __( 'E-Mail', 'sv_forms' ),
                 name: 'email',
+                required: true,
                 borderRadius: 4,
             }],
             ['straightvisions/sv-forms-textarea', {
