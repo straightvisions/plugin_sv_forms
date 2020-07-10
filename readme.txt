@@ -55,6 +55,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 ### Features
 
 * Added a "Clear SV Forms Meta Field" button to the wrapper Block
+* The copy to clippboard buttons will show a notice, when the content is copied to the clippboard
 
 ### Enhancements
 
@@ -64,6 +65,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 * Fixed that the Form ID in the Forms Block wouldn't update
 * Fixed that the get_admin_mails & get_user_mails function can return NULL
+* Fixed that the copy to clippboard feature will break the block
 
 
 = 1.4.14 =
