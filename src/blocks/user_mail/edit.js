@@ -4,6 +4,7 @@ import { WrapperConsumer, InputsConsumer } from '../../blocks';
 
 const { __ } = wp.i18n;
 const { select } = wp.data;
+const { withState } = wp.compose;
 const { getBlockContent } = wp.blocks;
 const { InnerBlocks } = wp.blockEditor;
 const { Component, Fragment } = wp.element;
@@ -92,22 +93,43 @@ export default class extends Component {
         }
     }
 
+    // Shows a snackbar notice to the user, that the content got copied to the clippboard
+    showNotice = buttonText => {
+        wp.data.dispatch('core/notices').createNotice( 
+            'success', 
+            buttonText + __( ' copied to clippboard.', 'sv_forms' ), 
+            { 
+                isDismissible: true, 
+                type: 'snackbar' 
+            }
+        ) 
+    }
+
     // Creates a clippboard button with the input name as value
     InputValueButton = name => {
-        const toolTipText   = __( 'Copy to clippboard.', 'sv_forms' );
-        const buttonText    = '%' + name + '%';
+        const toolTipText     = __( 'Copy to clippboard.', 'sv_forms' );
+        const buttonText      = '%' + name + '%';
 
-        return (
+        const InputCopyButton = withState( {
+            hasCopied: false,
+        } )( ( { hasCopied, setState } ) => ( 
             <Tooltip text={ toolTipText }>
                 <ClipboardButton
                     isTertiary
-                    className='sv_forms_input_value'
                     text={ buttonText }
+                    onCopy={ () => { 
+                        setState( { hasCopied: true } ); 
+                        this.showNotice( buttonText );
+                    }}
+                    onFinishCopy={ () => setState( { hasCopied: false } ) }
+                    className='sv_forms_input_value'
                 >
                     { buttonText }
                 </ClipboardButton>
             </Tooltip>
-        );
+        ) );
+
+        return <InputCopyButton />;
     }
 
     // Returns the available input values
