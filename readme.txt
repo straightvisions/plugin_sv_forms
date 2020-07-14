@@ -67,6 +67,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 * Fixed that the Form ID in the Forms Block wouldn't update
 * Fixed that the get_admin_mails & get_user_mails function can return NULL
 * Fixed that the copy to clippboard feature will break the block
+* Fixed missing label on radio buttons
 
 
 = 1.4.14 =
