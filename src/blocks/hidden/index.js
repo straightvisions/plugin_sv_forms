@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-forms-hidden', {
 	title: __( 'Hidden', 'sv_forms' ),
 	description: __( 'A field that is hidden.', 'sv_forms' ),
 	icon,
-	parent: [ 'straightvisions/sv-forms-form' ],
+	parent: [ 
+		'straightvisions/sv-forms-form',
+		'core/group',
+		'core/column',
+		'core/media-text',
+		'core/cover' 
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Forms Hidden', 'sv_forms' ),

@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-forms-text', {
 	title: __( 'Text', 'sv_forms' ),
 	description: __( 'A field for short texts.', 'sv_forms' ),
 	icon,
-	parent: [ 'straightvisions/sv-forms-form' ],
+	parent: [ 
+		'straightvisions/sv-forms-form',
+		'core/group',
+		'core/column',
+		'core/media-text',
+		'core/cover'
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Forms Text', 'sv_forms' ),

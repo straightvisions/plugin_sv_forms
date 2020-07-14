@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-forms-select', {
 	title: __( 'Select', 'sv_forms' ),
 	description: __( 'Create a select field.', 'sv_forms' ),
 	icon,
-	parent: [ 'straightvisions/sv-forms-form' ],
+	parent: [ 
+		'straightvisions/sv-forms-form',
+		'core/group',
+		'core/column',
+		'core/media-text',
+		'core/cover' 
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Forms Select', 'sv_forms' ),

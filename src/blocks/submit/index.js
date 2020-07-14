@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-forms-submit', {
 	title: __( 'Submit Button', 'sv_forms' ),
 	description: __( 'The submit button for the form.', 'sv_forms' ),
 	icon,
-	parent: [ 'straightvisions/sv-forms-form' ],
+	parent: [ 
+		'straightvisions/sv-forms-form',
+		'core/group',
+		'core/column',
+		'core/media-text',
+		'core/cover' 
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Forms Submit', 'sv_forms' ),

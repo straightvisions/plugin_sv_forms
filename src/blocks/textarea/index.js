@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-forms-textarea', {
 	title: __( 'Textarea', 'sv_forms' ),
 	description: __( 'A field for long messages.', 'sv_forms' ),
 	icon,
-	parent: [ 'straightvisions/sv-forms-form' ],
+	parent: [ 
+		'straightvisions/sv-forms-form',
+		'core/group',
+		'core/column',
+		'core/media-text',
+		'core/cover' 
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Forms Textarea', 'sv_forms' ),

@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-forms-email', {
 	title: __( 'E-Mail', 'sv_forms' ),
 	description: __( 'A field for an e-mail adress.', 'sv_forms' ),
 	icon,
-	parent: [ 'straightvisions/sv-forms-form' ],
+	parent: [ 
+		'straightvisions/sv-forms-form',
+		'core/group',
+		'core/column',
+		'core/media-text',
+		'core/cover' 
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Forms E-Mail', 'sv_forms' ),

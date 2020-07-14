@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-forms-range', {
 	title: __( 'Range', 'sv_forms' ),
 	description: __( 'A field for range.', 'sv_forms' ),
 	icon,
-	parent: [ 'straightvisions/sv-forms-form' ],
+	parent: [ 
+		'straightvisions/sv-forms-form',
+		'core/group',
+		'core/column',
+		'core/media-text',
+		'core/cover' 
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Forms Range', 'sv_forms' ),

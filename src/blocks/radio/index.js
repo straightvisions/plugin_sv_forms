@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-forms-radio', {
 	title: __( 'Radio Button', 'sv_forms' ),
 	description: __( 'Create a radio button.', 'sv_forms' ),
 	icon,
-	parent: [ 'straightvisions/sv-forms-form' ],
+	parent: [ 
+		'straightvisions/sv-forms-form',
+		'core/group',
+		'core/column',
+		'core/media-text',
+		'core/cover' 
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Forms Radio Button', 'sv_forms' ),

@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-forms-password', {
 	title: __( 'Password', 'sv_forms' ),
 	description: __( 'A field for passwords.', 'sv_forms' ),
 	icon,
-	parent: [ 'straightvisions/sv-forms-form' ],
+	parent: [ 
+		'straightvisions/sv-forms-form',
+		'core/group',
+		'core/column',
+		'core/media-text',
+		'core/cover' 
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Forms Password', 'sv_forms' ),

@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-forms-number', {
 	title: __( 'Number', 'sv_forms' ),
 	description: __( 'A field for numbers.', 'sv_forms' ),
 	icon,
-	parent: [ 'straightvisions/sv-forms-form' ],
+	parent: [ 
+		'straightvisions/sv-forms-form',
+		'core/group',
+		'core/column',
+		'core/media-text',
+		'core/cover' 
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Forms Number', 'sv_forms' ),

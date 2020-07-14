@@ -10,7 +10,13 @@ registerBlockType( 'straightvisions/sv-forms-url', {
 	title: __( 'URL', 'sv_forms' ),
 	description: __( 'A field for an URL.', 'sv_forms' ),
 	icon,
-	parent: [ 'straightvisions/sv-forms-form' ],
+	parent: [ 
+		'straightvisions/sv-forms-form',
+		'core/group',
+		'core/column',
+		'core/media-text',
+		'core/cover' 
+	],
 	category: 'straightvisions',
 	keywords: [
 		__( 'SV Forms URL', 'sv_forms' ),
