@@ -123,6 +123,10 @@ export default class extends Component {
                 defaultValue,
                 label,
                 disabled,
+                inputColor,
+                inputColorClass,
+                inputBackgroundColor,
+                inputBackgroundColorClass,
                 inputBorderColor,
                 borderRadius,
             }
@@ -140,7 +144,16 @@ export default class extends Component {
                         options={ parsedOptions }
                         disabled={ disabled }
                         hideLabelFromVision={ true }
-                        style={{ borderRadius: borderRadius, borderColor: inputBorderColor }}
+                        style={{ 
+                            color: inputColor, 
+                            backgroundColor: inputBackgroundColor, 
+                            borderColor: inputBorderColor,
+                            borderRadius: borderRadius,
+                        }}
+                        className={ [ 
+                            inputColorClass, 
+                            inputBackgroundColorClass 
+                        ] }
                     />
                 </div>
                 <WrapperConsumer>{ wrapper => { this.wrapper = wrapper } }</WrapperConsumer>

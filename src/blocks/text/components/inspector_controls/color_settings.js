@@ -16,7 +16,7 @@ export default ( { props } ) => {
             labelColor,
             inputColor,
             inputBackgroundColor,
-            inputBorderColor,
+            inputBorderColor
         }
     } = props;
 

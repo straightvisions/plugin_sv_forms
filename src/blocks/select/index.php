@@ -66,6 +66,18 @@ class select extends sv_forms {
 					'labelColorClass' => array(
 						'type' => 'string',
 					),
+					'inputColor' => array(
+						'type' => 'string',
+					),
+					'inputColorClass' => array(
+						'type' => 'string',
+					),
+					'inputBackgroundColor' => array(
+						'type' => 'string',
+					),
+					'inputBackgroundColorClass' => array(
+						'type' => 'string',
+					),
 					'inputBorderColor' => array(
 						'type' => 'string',
 						'default' => '#ddd',
