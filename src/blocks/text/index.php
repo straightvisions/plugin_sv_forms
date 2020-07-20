@@ -108,19 +108,19 @@ class text extends sv_forms {
 						'default' => 0,
 					),
 					'borderWidthTop' => array(
-						'type' => 'string',
+						'type' => 'number',
 						'default' => 0,
 					),
 					'borderWidthRight' => array(
-						'type' => 'string',
+						'type' => 'number',
 						'default' => 0,
 					),
 					'borderWidthBottom' => array(
-						'type' => 'string',
+						'type' => 'number',
 						'default' => 0,
 					),
 					'borderWidthLeft' => array(
-						'type' => 'string',
+						'type' => 'number',
 						'default' => 0,
 					),
 
