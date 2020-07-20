@@ -12,9 +12,9 @@ class mail extends modules {
 	}
 
 	// Sends a mail
-	private function send_mail( $to, string $subject, string $content, array $headers ): mail {
+	private function send_mail( $to, string $subject, string $content, array $headers, array $attachments ): mail {
 		add_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
-		$mail_status = wp_mail( $to, $subject, $content, $headers );
+		$mail_status = wp_mail( $to, $subject, $content, $headers, $attachments );
 		remove_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
 
 		return $this;
@@ -40,6 +40,7 @@ class mail extends modules {
 			'title'         => $attr->userMailSubject,
 			'content'       => $attr->userMailContent,
 		);
+
 		$content = $this->get_mail( $content_attr, $data );
 
 		// Headers
@@ -101,7 +102,10 @@ class mail extends modules {
 			$headers = array();
 		}
 
-		$this->send_mail( $to, $subject, $content, $headers );
+		// Attachments
+		$attachments = $this->get_attachments( $attr, $data );
+
+		$this->send_mail( $to, $subject, $content, $headers, $attachments );
 
 		return $this;
 	}
@@ -153,6 +157,19 @@ class mail extends modules {
 		ob_end_clean();
 
 		return $mail_content;
+	}
+
+	// Returns the mail attachments
+	private function get_attachments( object $attr, array $data ): array {
+		$attachments = array();
+
+		foreach( $data as $d ) {
+			if ( $d['type'] === 'file' ) {
+				$attachments[] = $d['value'];
+			}
+		}
+
+		return $attachments;
 	}
 
 	// Replaces all input value place holders, with their respectively input values

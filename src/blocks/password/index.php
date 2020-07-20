@@ -99,6 +99,7 @@ class password extends sv_forms {
 					// Border Settings
 					'borderRadius' => array(
 						'type' => 'number',
+						'default' => 0,
 					),
 
 					// Advanced Settings

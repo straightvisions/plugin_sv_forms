@@ -91,7 +91,9 @@ class post extends modules {
         $content = '<!-- wp:table --><figure class="wp-block-table"><table class=""><tbody>';
 
         foreach( $filtered_data as $input ) {
-            $content .= '<tr><td>' . $input['name'] . '</td><td>' . $input['value'] . '</td></tr>';
+            if ( $input['type'] !== 'file' ) {
+                $content .= '<tr><td>' . $input['name'] . '</td><td>' . $input['value'] . '</td></tr>';
+            }
         }
 
         $content .= '</tbody></table></figure><!-- /wp:table -->';

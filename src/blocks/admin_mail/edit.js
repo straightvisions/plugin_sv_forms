@@ -169,7 +169,9 @@ export default class extends Component {
                     </div> 
                 </div>
                 <WrapperConsumer>{ wrapper => { this.setWrapperAttributes( wrapper ) } }</WrapperConsumer>
-                <InspectorControls props={ this.props } authors={ select( 'core' ).getAuthors() } />
+                <InputsConsumer>{ inputs => { 
+                    return <InspectorControls props={ this.props } authors={ select( 'core' ).getAuthors() } wrapper={ this.wrapper } inputs={ inputs } />;
+                } }</InputsConsumer>
             </Fragment>
         );
     }

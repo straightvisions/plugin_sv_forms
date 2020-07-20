@@ -84,7 +84,8 @@ registerBlockType( 'straightvisions/sv-forms-textarea', {
 
 		// Border Settings
 		borderRadius: {
-			type: 'number'	
+			type: 'number',
+			default: 0,
 		},
 
 		// Advanced Settings

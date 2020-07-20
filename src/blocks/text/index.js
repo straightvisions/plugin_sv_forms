@@ -4,7 +4,7 @@ import icon from './icons/block';
 import edit from './edit';
 
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks
+const { registerBlockType } = wp.blocks;
 
 registerBlockType( 'straightvisions/sv-forms-text', {
 	title: __( 'Text', 'sv_forms' ),
@@ -30,14 +30,11 @@ registerBlockType( 'straightvisions/sv-forms-text', {
 		inputId: {
 			type: 'string',
 		},
-
-		// Input Settings
 		defaultValue: {
 			type: 'string',
 		},
-		label: {
-			type: 'string',
-		},
+
+		// Input Settings
 		name: {
 			type: 'string',
 		},
@@ -48,25 +45,6 @@ registerBlockType( 'straightvisions/sv-forms-text', {
 		placeholder: {
 			type: 'string',
 			default: __( 'Text', 'sv_forms' ),
-		},
-
-		// Validation Settings
-		required: {
-			type: 'boolean',
-		},
-		minlength: {
-			type: 'number',
-		},
-		maxlength: {
-			type: 'number',
-		},
-
-		// Color Settings
-		labelColor: {
-			type: 'string',
-		},
-		labelColorClass: {
-			type: 'string',
 		},
 		inputColor: {
 			type: 'string',
@@ -80,14 +58,58 @@ registerBlockType( 'straightvisions/sv-forms-text', {
 		inputBackgroundColorClass: {
 			type: 'string',
 		},
-		inputBorderColor: {
+		inputFontSize: {
+			type: 'number',
+		},
+
+		// Label Settings
+		label: {
 			type: 'string',
-			default: '#ddd',
+		},
+		labelColor: {
+			type: 'string',
+		},
+		labelColorClass: {
+			type: 'string',
+		},
+		labelFontSize: {
+			type: 'number',
+		},
+
+		// Validation Settings
+		required: {
+			type: 'boolean',
+		},
+		minlength: {
+			type: 'number',
+		},
+		maxlength: {
+			type: 'number',
 		},
 
 		// Border Settings
+		inputBorderColor: {
+			type: 'string',
+		},
 		borderRadius: {
 			type: 'number',	
+			default: 0,
+		},
+		borderWidthTop: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthRight: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthBottom: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthLeft: {
+			type: 'number',
+			default: 0,
 		},
 
 		// Advanced Settings

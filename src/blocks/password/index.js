@@ -88,6 +88,7 @@ registerBlockType( 'straightvisions/sv-forms-password', {
 		// Border Settings
 		borderRadius: {
 			type: 'number',
+			default: 0,
 		},
 
 		// Advanced Settings

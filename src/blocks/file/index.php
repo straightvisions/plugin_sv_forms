@@ -1,7 +1,7 @@
 <?php
 namespace sv_forms;
 
-class select extends sv_forms {
+class file extends sv_forms {
 	protected $block_attr = array();
 
 	public function init() {
@@ -19,7 +19,7 @@ class select extends sv_forms {
 
 		ob_start();
 		
-		require( $this->get_path( 'lib/frontend/tpl/select.php' ) );
+		require( $this->get_path( 'lib/frontend/tpl/file.php' ) );
 
 		$output = ob_get_contents();
 		ob_end_clean();
@@ -29,34 +29,32 @@ class select extends sv_forms {
 
 	public function load_block_assets() {
 		if ( ! is_admin() ) {
-			$this->get_parent()->get_script( 'select' )->set_is_enqueued();
+			$this->get_parent()->get_script( 'file' )->set_is_enqueued();
 		}
 	}
 
 	private function register_block() {
 		register_block_type(
-			'straightvisions/sv-forms-select', array(
+			'straightvisions/sv-forms-file', array(
 				'editor_script' 	=> 'sv-forms-block',
 				'editor_style'  	=> 'sv-forms-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
-				'attributes'		=> array(					
+				'attributes'		=> array(
 					// Input Settings
-					'defaultValue' => array(
-						'type' => 'string',
-					),
 					'label' => array(
 						'type' => 'string',
-						'default' => __( 'Select', 'sv_forms' ),
 					),
 					'name' => array(
 						'type' => 'string',
 					),
 					'type' => array(
 						'type' => 'string',
-						'default' => 'select',
+						'default' => 'file',
 					),
-					'options' => array(
-						'type' => 'string',
+
+					// Validation Settings
+					'required' => array(
+						'type' => 'bool',
 					),
 
 					// Color Settings
@@ -83,7 +81,7 @@ class select extends sv_forms {
 						'default' => '#ddd',
 					),
 
-					// Border Radius
+					// Border Settings
 					'borderRadius' => array(
 						'type' => 'number',
 						'default' => 0,
@@ -114,33 +112,8 @@ class select extends sv_forms {
 		return $this->get_root()->sv_forms->get_default_label_attr( $this->block_attr );
 	}
 
-	// Returns a string with all attributes for the select
-	protected function get_select_attr(): string {
+	// Returns a string with all attributes for the input
+	protected function get_input_attr(): string {
 		return $this->get_root()->sv_forms->get_default_input_attr( $this->block_attr );
-	}
-
-	protected function get_options(): string {
-		$options = array();
-
-		foreach( json_decode( $this->block_attr['options'] ) as $option ) {
-			$el	= '<option value="' . $option->value .'"';
-
-			if ( 
-				isset( $this->block_attr['defaultValue'] ) 
-				&& $this->block_attr['defaultValue'] === $option->value 
-			) {
-				$el .= ' selected';
-			}
-
-			if ( isset( $option->disabled ) && $option->disabled ) {
-				$el .= ' disabled';
-			}
-
-			$el .= '>' . $option->label . '</option>';
-
-			$options[] = $el;
-		}
-
-		return implode( ' ', $options );
 	}
 }

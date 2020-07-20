@@ -20,25 +20,18 @@ export default class extends Component {
             ['straightvisions/sv-forms-text', {
                 placeholder: __( 'Name', 'sv_forms' ),
                 name: 'name',
-                required: true,
-                borderRadius: 4,
             }],
             ['straightvisions/sv-forms-email', {
                 placeholder: __( 'E-Mail', 'sv_forms' ),
                 name: 'email',
-                required: true,
-                borderRadius: 4,
             }],
             ['straightvisions/sv-forms-textarea', {
                 placeholder: __( 'Message', 'sv_forms' ),
                 name: 'message',
-                borderRadius: 4,
-                required: true,
             }],
             ['straightvisions/sv-forms-submit', {
                 align: 'full',
-                content: __( 'SEND', 'sv_forms' ),
-                borderRadius: 4,
+                content: __( 'Send', 'sv_forms' ),
             }],
         ];
     }

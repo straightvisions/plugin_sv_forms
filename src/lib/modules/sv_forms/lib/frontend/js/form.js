@@ -46,7 +46,7 @@
         return content;
     }
 
-    const showThankYou  = ( form, formData ) => {
+    const showThankYou = ( form, formData ) => {
         const el = form.parent().find( '.wp-block-straightvisions-sv-forms-thank-you' );
 
         if ( el.length > 0 && el.html().replace(/\s/g, "") ) {
@@ -63,10 +63,11 @@
 
     jQuery( 'form.wp-block-straightvisions-sv-forms-form' ).submit( function( e ) {
         e.preventDefault();
-        
+
         const form          = jQuery( this );
         const formData      = form.serializeArray();
-        let newFormData     = [];
+        const formFiles     = form.find('input[type="file"]');
+        const newFormData   = [];
 
         formData.map( field => {
             const el = form.find(':input[name="' + field.name + '"]');
@@ -111,16 +112,40 @@
         });
 
         const postID = (formsID && localized[formsID]) ? localized[formsID] : false;
+        const ajaxData = new FormData();
 
-        jQuery.post( localized.sv_forms_ajaxurl, {
-            action: 'sv_forms_submit',
-            sv_forms_nonce: localized.sv_forms_nonce,
-            sv_forms_post_id: postID,
-            sv_forms_form_data: newFormData,
-        }, function( response ) {
-            showThankYou( form, newFormData );
-            // Only for Debug
-            //console.log( response );
+        ajaxData.append( 'action', 'sv_forms_submit' );
+        ajaxData.append( 'sv_forms_nonce', localized.sv_forms_nonce );
+        ajaxData.append( 'sv_forms_post_id', postID );
+
+        formFiles.map( key => {
+            const el = jQuery( formFiles[key] );
+            
+            if ( el.attr('name') !== "" && el.val() !== "" ) {
+                let newField = {
+                    name: el.attr('name'),
+                    type: el.attr('type'),
+                    value: el.val(),
+                };
+
+                newFormData.push( newField );
+                ajaxData.append( newField.name, el.prop('files')[0] );
+            }
+        } );
+
+        ajaxData.append( 'sv_forms_form_data', JSON.stringify( newFormData ) );
+
+        jQuery.ajax({
+            url: localized.sv_forms_ajaxurl,
+            type: 'POST',
+            contentType: false,
+            processData: false,
+            data: ajaxData,
+            success: function( response ) {
+                showThankYou( form, newFormData );
+                // Only for Debug
+                //console.log( response );
+            }
         });
-    } );
+    });
 }( jQuery ));

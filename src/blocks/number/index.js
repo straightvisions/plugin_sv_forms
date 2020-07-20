@@ -91,6 +91,7 @@ registerBlockType( 'straightvisions/sv-forms-number', {
 		// Border Settings
 		borderRadius: {
 			type: 'number',
+			default: 0,
 		},
 
 		// Advanced Settings

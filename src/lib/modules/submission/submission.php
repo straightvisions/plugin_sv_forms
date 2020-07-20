@@ -11,16 +11,23 @@ class submission extends modules {
 	// This function will be called on form submit via Ajax
 	public function ajax_sv_forms_submit() {
 		if ( ! isset( $_POST) || empty( $_POST ) ) return;
-		if ( ! wp_verify_nonce( $_POST[ $this->get_root()->get_prefix( 'nonce' ) ], 'sv_forms_submit' ) ) return;
+
+		$nonce = isset( $_POST[ $this->get_root()->get_prefix( 'nonce' ) ] ) 
+			? $_POST[ $this->get_root()->get_prefix( 'nonce' ) ] 
+			: false;
+
+		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'sv_forms_submit' ) ) return;
+
+		$post_id = isset( $_POST[ $this->get_root()->get_prefix( 'post_id' ) ] ) 
+			? $_POST[ $this->get_root()->get_prefix( 'post_id' ) ] 
+			: false;
+
+		if ( $post_id === false ) return;
 
 		// Variables
-		$post_id_raw = $_POST[ $this->get_root()->get_prefix( 'post_id' ) ];
-
-		if ( $post_id_raw === false ) return;
-		
-		$post_id 	= intval( $post_id_raw );
+		$post_id 	= intval( $post_id );
 		$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_forms_forms', true ) );
-		$form_data	= $_POST[ $this->get_root()->get_prefix( 'form_data' ) ];
+		$form_data	= json_decode( stripslashes( $_POST[ $this->get_root()->get_prefix( 'form_data' ) ] ), true );
 		$form_id	= $this->get_input_value( $this->get_root()->get_prefix( 'form_id' ), $form_data );
 		
 		if ( $post_meta && $form_id && $post_meta->$form_id ) {
@@ -31,7 +38,7 @@ class submission extends modules {
 	// Handles the form submission when it passed the spam guard check
 	private function handle_submission( object $attr, array $data ): submission {
 		$sanitized_data = $this->get_sanitized_data( $attr, $data );
-
+		
 		if ( ! $this->spam_guard_check->run_check( $attr, $sanitized_data ) ) {
 			// Creates custom action hook, that passes a form data array and a form attr object
 			// action name: sv_forms_form_submit
@@ -87,6 +94,11 @@ class submission extends modules {
 				case 'date':
 					$new_data['value'] = preg_replace( '([^0-9-])', '', $data_item['value'] );
 					break;
+				case 'file':
+					if ( count( $_FILES ) > 0 ) {
+						$new_data['value'] = $this->get_file_path( $_FILES[ $new_data['name'] ] );
+					}
+					break;
 			}
 
 			if ( isset( $new_data['value'] ) && ! empty( $new_data['value'] ) ) {
@@ -95,6 +107,13 @@ class submission extends modules {
 		}
 
 		return $sanitized_data;
+	}
+
+	private function get_file_path( $file ): string {
+		$file_extension = pathinfo( $file['name'] )['extension'];
+		$tmp_path = str_replace( '.tmp', '.' . $file_extension, $file['tmp_name'] );
+
+		return $tmp_path;
 	}
 
 	// Returns a data array containing only valid input data

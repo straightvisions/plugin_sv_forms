@@ -25,7 +25,10 @@ export default ( { props } ) => {
             <RangeControl
                 label={ __( 'Border Radius', 'sv_forms' ) }
                 value={ borderRadius }
-                onChange={ value => { value = ! value ? '' : value; setBorderRadius( value ); }}
+                onChange={ value => { 
+                    value = ! value ? 0 : value; 
+                    setBorderRadius( value ); 
+                }}
                 allowReset
                 min={ 0 }
                 max={ 50 }

@@ -6,22 +6,22 @@ import edit from './edit';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'straightvisions/sv-forms-url', {
-	title: __( 'URL', 'sv_forms' ),
-	description: __( 'A field for an URL.', 'sv_forms' ),
+registerBlockType( 'straightvisions/sv-forms-file', {
+	title: __( 'File', 'sv_forms' ),
+	description: __( 'A field for file uploads.', 'sv_forms' ),
 	icon,
 	parent: [ 
 		'straightvisions/sv-forms-form',
 		'core/group',
 		'core/column',
 		'core/media-text',
-		'core/cover' 
+		'core/cover'
 	],
 	category: 'straightvisions',
 	keywords: [
-		__( 'SV Forms URL', 'sv_forms' ),
-		__( 'URL Input', 'sv_forms' ),
-		__( 'URL', 'sv_forms' ),
+		__( 'SV Forms File', 'sv_forms' ),
+		__( 'File Input', 'sv_forms' ),
+		__( 'Upload', 'sv_forms' ),
 	],
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
@@ -32,9 +32,6 @@ registerBlockType( 'straightvisions/sv-forms-url', {
 		},
 
 		// Input Settings
-		defaultValue: {
-			type: 'string',
-		},
 		label: {
 			type: 'string',
 		},
@@ -43,22 +40,12 @@ registerBlockType( 'straightvisions/sv-forms-url', {
 		},
 		type: {
 			type: 'string',
-			default: 'url'
-		},
-		placeholder: {
-			type: 'string',
-			default: __( 'URL', 'sv_forms' )
+			default: 'file',
 		},
 
 		// Validation Settings
 		required: {
 			type: 'boolean',
-		},
-		minlength: {
-			type: 'number',
-		},
-		maxlength: {
-			type: 'number',
 		},
 
 		// Color Settings
@@ -87,18 +74,12 @@ registerBlockType( 'straightvisions/sv-forms-url', {
 
 		// Border Settings
 		borderRadius: {
-			type: 'number',
+			type: 'number',	
 			default: 0,
 		},
 
 		// Advanced Settings
 		autofocus: {
-			type: 'boolean',
-		},
-		autocomplete: {
-			type: 'boolean',
-		},
-		readonly: {
 			type: 'boolean',
 		},
 		disabled: {

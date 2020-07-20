@@ -40,13 +40,11 @@ class text extends sv_forms {
 				'editor_style'  	=> 'sv-forms-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
-					// Input Settings
 					'defaultValue' => array(
 						'type' => 'string',
 					),
-					'label' => array(
-						'type' => 'string',
-					),
+
+					// Input Settings
 					'name' => array(
 						'type' => 'string',
 					),
@@ -57,6 +55,35 @@ class text extends sv_forms {
 					'placeholder' => array(
 						'type' => 'string',
 						'default' => __( 'Text', 'sv_forms' ),
+					),
+					'inputColor' => array(
+						'type' => 'string',
+					),
+					'inputColorClass' => array(
+						'type' => 'string',
+					),
+					'inputBackgroundColor' => array(
+						'type' => 'string',
+					),
+					'inputBackgroundColorClass' => array(
+						'type' => 'string',
+					),
+					'inputFontSize' => array(
+						'type' => 'number',
+					),
+
+					// Label Settings
+					'label' => array(
+						'type' => 'string',
+					),
+					'labelColor' => array(
+						'type' => 'string',
+					),
+					'labelColorClass' => array(
+						'type' => 'string',
+					),
+					'labelFontSize' => array(
+						'type' => 'number',
 					),
 
 					// Validation Settings
@@ -72,33 +99,29 @@ class text extends sv_forms {
 						'default' => 0,
 					),
 
-					// Color Settings
-					'labelColor' => array(
-						'type' => 'string',
-					),
-					'labelColorClass' => array(
-						'type' => 'string',
-					),
-					'inputColor' => array(
-						'type' => 'string',
-					),
-					'inputColorClass' => array(
-						'type' => 'string',
-					),
-					'inputBackgroundColor' => array(
-						'type' => 'string',
-					),
-					'inputBackgroundColorClass' => array(
-						'type' => 'string',
-					),
+					// Border Settings
 					'inputBorderColor' => array(
 						'type' => 'string',
-						'default' => '#ddd',
 					),
-
-					// Border Settings
 					'borderRadius' => array(
 						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthTop' => array(
+						'type' => 'string',
+						'default' => 0,
+					),
+					'borderWidthRight' => array(
+						'type' => 'string',
+						'default' => 0,
+					),
+					'borderWidthBottom' => array(
+						'type' => 'string',
+						'default' => 0,
+					),
+					'borderWidthLeft' => array(
+						'type' => 'string',
+						'default' => 0,
 					),
 
 					// Advanced Settings

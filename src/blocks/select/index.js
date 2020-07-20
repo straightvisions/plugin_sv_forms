@@ -77,6 +77,7 @@ registerBlockType( 'straightvisions/sv-forms-select', {
 		// Border Settings
 		borderRadius: {
 			type: 'number',
+			default: 0,
 		},
 
 		// Advanced Settings

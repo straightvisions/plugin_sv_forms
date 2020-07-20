@@ -99,19 +99,13 @@ export default class extends Component {
         return isDuplicate;
     }
 
-    // Updates the defaultValue attribute of this block
-    setDefaultValue = defaultValue => this.props.setAttributes({ defaultValue });
-
     // Returns a Label components
     Label = () => {
         if ( this.props.attributes.label && this.props.attributes.label.length > 0 ) {
             return (
                 <label
                     for={ this.props.attributes.name }
-                    style={{ 
-                        color: this.props.attributes.labelColor,
-                        fontSize: this.props.attributes.labelFontSize
-                    }}
+                    style={{ color: this.props.attributes.labelColor }}
                     className={ this.props.attributes.labelColorClass }
                 >
                     { this.props.attributes.label }
@@ -126,51 +120,19 @@ export default class extends Component {
         const {
             className,
             attributes: {
-                defaultValue,
-
-                // Input Settings
-                name,
                 type,
-                placeholder,
+                name,
+                label,
+                required,
+                disabled,
                 inputColor,
                 inputColorClass,
                 inputBackgroundColor,
                 inputBackgroundColorClass,
-                inputFontSize,
-
-                // Label Settings
-                label,
-
-                // Validation Settings
-                required,
-                minlength,
-                maxlength,
-
-                // Border Settings
                 inputBorderColor,
                 borderRadius,
-                borderWidthTop,
-                borderWidthRight,
-                borderWidthBottom,
-                borderWidthLeft,
-
-                // Advanced Settings
-                disabled,
-                readonly,
             }
         } = this.props;
-
-        const style = {
-            color:              inputColor, 
-            backgroundColor:    inputBackgroundColor, 
-            fontSize:           inputFontSize,
-            borderColor:        inputBorderColor,
-            borderRadius:       borderRadius,
-            borderTopWidth:     borderWidthTop,
-            borderRightWidth:   borderWidthRight,
-            borderBottomWidth:  borderWidthBottom,
-            borderLeftWidth:    borderWidthLeft,
-        };
 
         return (
             <Fragment>
@@ -182,22 +144,21 @@ export default class extends Component {
                         label={ label }
                         required={ required }
                         disabled={ disabled }
-                        readonly={ readonly }
-                        value={ defaultValue }
-                        minlength={ minlength > 0 ? minlength : -1 }
-                        maxlength={ maxlength > 0 ? maxlength : -1 }
-                        placeholder={ placeholder }
-                        style={ style }
+                        style={{ 
+                            color: inputColor, 
+                            backgroundColor: inputBackgroundColor, 
+                            borderColor: inputBorderColor,
+                            borderRadius: borderRadius,
+                        }}
                         className={ [ 
                             inputColorClass,
                             inputBackgroundColorClass
-                        ] }
-                        onChange={ value => this.setDefaultValue( value ) }
+                         ] }
                         hideLabelFromVision={ true }
                     />
                 </div>
                 <WrapperConsumer>{ wrapper => { this.wrapper = wrapper } }</WrapperConsumer>
-                <InputsConsumer>{ inputs => {
+                <InputsConsumer>{ inputs => { 
                     this.inputs = inputs;
                     return <InspectorControls props={ this.props } wrapper={ this.wrapper } inputs={ inputs } />;
                 } }</InputsConsumer>

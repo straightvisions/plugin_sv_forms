@@ -222,6 +222,26 @@ class sv_forms extends modules {
 			$attr[] = 'style="color:' . $block_attr['labelColor'] . '"';
 		}
 
+		// Style
+		$style = array();
+
+		// Color
+		if ( 
+			isset( $block_attr['labelColor'] ) 
+			&& ! $block_attr['labelColorClass'] 
+		) {
+			$style[] = 'color:' . $block_attr['labelColor'];
+		}
+
+		// Font Size
+		if ( isset( $block_attr['labelFontSize'] ) ) {
+			$style[] = 'font-size:' . $block_attr['labelFontSize'] . 'px';
+		}
+
+		if ( ! empty( $style ) ) {
+			$attr[] = 'style="' . implode( ';', $style ) . '"';
+		}
+
 		return implode( ' ', $attr );
 	}
 
@@ -324,6 +344,11 @@ class sv_forms extends modules {
 			$style[] = 'background-color:' . $block_attr['inputBackgroundColor'];
 		}
 
+		// Font Size
+		if ( isset( $block_attr['inputFontSize'] ) ) {
+			$style[] = 'font-size:' . $block_attr['inputFontSize'] . 'px';
+		}
+
 		// Input Border Color
 		if ( isset( $block_attr['inputBorderColor'] ) ) {
 			$style[] = 'border-color:' . $block_attr['inputBorderColor'];
@@ -332,6 +357,26 @@ class sv_forms extends modules {
 		// Border Radius
 		if ( isset( $block_attr['borderRadius'] ) ) {
 			$style[] = 'border-radius:' . $block_attr['borderRadius'] . 'px';
+		}
+
+		// Border Width Top
+		if ( isset( $block_attr['borderWidthTop'] ) ) {
+			$style[] = 'border-top-width:' . $block_attr['borderWidthTop'] . 'px';
+		}
+
+		// Border Width Right
+		if ( isset( $block_attr['borderWidthRight'] ) ) {
+			$style[] = 'border-right-width:' . $block_attr['borderWidthRight'] . 'px';
+		}
+
+		// Border Width Bottom
+		if ( isset( $block_attr['borderWidthBottom'] ) ) {
+			$style[] = 'border-bottom-width:' . $block_attr['borderWidthBottom'] . 'px';
+		}
+
+		// Border Width Left
+		if ( isset( $block_attr['borderWidthLeft'] ) ) {
+			$style[] = 'border-left-width:' . $block_attr['borderWidthLeft'] . 'px';
 		}
 
 		if ( ! empty( $style ) ) {
