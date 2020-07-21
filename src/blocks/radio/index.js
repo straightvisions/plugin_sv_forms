@@ -37,7 +37,6 @@ registerBlockType( 'straightvisions/sv-forms-radio', {
 		},
 		label: {
 			type: 'string',
-			default: __( 'Radio', 'sv_forms' ),
 		},
 		name: {
 			type: 'string',
@@ -48,6 +47,7 @@ registerBlockType( 'straightvisions/sv-forms-radio', {
 		},
 		options: {
 			type: 'string',
+			default: '[{"label":"' + __( 'Option', 'sv_forms' ) +  '","value":""}]',
 		},
 
 		// Color Settings

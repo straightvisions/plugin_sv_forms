@@ -139,11 +139,6 @@ export default class extends Component {
                 inputBackgroundColorClass,
                 inputBorderColor,
 
-                // Validation Settings
-                required,
-                minlength,
-                maxlength,
-
                 // Border Settings
                 borderRadius,
                 borderWidthTop,

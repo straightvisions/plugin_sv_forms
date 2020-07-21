@@ -42,10 +42,6 @@ registerBlockType( 'straightvisions/sv-forms-select', {
 			type: 'string',
 			default: 'text',
 		},
-		placeholder: {
-			type: 'string',
-			default: __( 'Text', 'sv_forms' ),
-		},
 		inputFontSize: {
 			type: 'number',
 		},
@@ -61,6 +57,7 @@ registerBlockType( 'straightvisions/sv-forms-select', {
 		// Options
 		options: {
 			type: 'string',
+			default: '[{"label":"' + __( 'Please select...', 'sv_forms' ) +  '","value":""}]',
 		},
 
 		// Color Settings

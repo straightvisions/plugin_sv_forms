@@ -46,7 +46,6 @@ class radio extends sv_forms {
 					),
 					'label' => array(
 						'type' => 'string',
-						'default' => __( 'Radio', 'sv_forms' ),
 					),
 					'name' => array(
 						'type' => 'string',
@@ -57,6 +56,7 @@ class radio extends sv_forms {
 					),
 					'options' => array(
 						'type' => 'string',
+						'default' => '[{"label":"' . __( 'Option', 'sv_forms' ) .  '","value":""}]',
 					),
 
 					// Color Settings

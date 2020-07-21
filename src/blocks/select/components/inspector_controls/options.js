@@ -56,6 +56,8 @@ export default ( { props } ) => {
 
         updateOptions( JSON.stringify( newOptions ) );
     }
+    
+    console.log(options);
 
     return(
         <PanelBody

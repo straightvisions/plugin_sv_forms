@@ -67,6 +67,7 @@ class select extends sv_forms {
 					// Options
 					'options' => array(
 						'type' => 'string',
+						'default' => '[{"label":"' . __( 'Please select...', 'sv_forms' ) .  '","value":""}]',
 					),
 
 					// Color Settings
