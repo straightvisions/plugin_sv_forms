@@ -112,9 +112,6 @@ class wrapper extends sv_forms {
 					'adminMailFromMail' => array(
 						'type' => 'string',
 					),
-					'adminMailFiles' => array(
-						'type' => 'string',
-					),
 
 					// Mail Settings
 					// Admin Mails

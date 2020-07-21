@@ -43,10 +43,6 @@ registerBlockType( 'straightvisions/sv-forms-admin-mail', {
 			type: 'string',
 			default: '',
 		},
-		mailFiles: {
-			type: 'string',
-			default: '',
-		},
 
 		// Send to Authors
 		mailToUsers: {
