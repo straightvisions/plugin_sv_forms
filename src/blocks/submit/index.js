@@ -48,11 +48,26 @@ registerBlockType( 'straightvisions/sv-forms-submit', {
 		},
 		borderColor: {
 			type: 'string',
-			default: '#ddd',
 		},
 
 		// Border Settings
 		borderRadius: {
+			type: 'number',	
+			default: 0,
+		},
+		borderWidthTop: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthRight: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthBottom: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthLeft: {
 			type: 'number',
 			default: 0,
 		},

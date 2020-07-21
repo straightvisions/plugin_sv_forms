@@ -25,8 +25,23 @@ export default withSelect( ( select, props ) => {
 
             // Border Settings
             borderRadius,
+            borderWidthTop,
+            borderWidthRight,
+            borderWidthBottom,
+            borderWidthLeft,
         } 
     } = props;
+
+    const style = {
+        color:              textColor,
+        backgroundColor:    backgroundColor,
+        borderColor:        borderColor,
+        borderRadius:       borderRadius,
+        borderTopWidth:     borderWidthTop,
+        borderRightWidth:   borderWidthRight,
+        borderBottomWidth:  borderWidthBottom,
+        borderLeftWidth:    borderWidthLeft,
+    };
 
     // Returns a string in a slug compatible format
     const setContent = content => setAttributes({ content });
@@ -37,12 +52,7 @@ export default withSelect( ( select, props ) => {
             <div className={ className }>
                 <RichText
                     className={ [ textColorClass, backgroundColorClass ] }
-                    style={{ 
-                        color: textColor, 
-                        backgroundColor: backgroundColor, 
-                        borderColor: borderColor,
-                        borderRadius: borderRadius 
-                    }}
+                    style={ style }
                     value={ content }
                     onChange={ value => setContent( value ) } 
                 />

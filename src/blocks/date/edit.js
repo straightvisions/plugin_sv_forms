@@ -105,7 +105,10 @@ export default class extends Component {
             return (
                 <label
                     for={ this.props.attributes.name }
-                    style={{ color: this.props.attributes.labelColor }}
+                    style={{ 
+                        color: this.props.attributes.labelColor,
+                        fontSize: this.props.attributes.labelFontSize
+                    }}
                     className={ this.props.attributes.labelColorClass }
                 >
                     { this.props.attributes.label }
@@ -120,12 +123,49 @@ export default class extends Component {
         const {
             className,
             attributes: {
-                name,
-                required,
-                disabled,
                 defaultValue,
+
+                // Input Settings
+                name,
+                inputFontSize,
+
+                // Label Settings
+                label,
+
+                // Color Settings
+                inputColor,
+                inputColorClass,
+                inputBackgroundColor,
+                inputBackgroundColorClass,
+                inputBorderColor,
+
+                // Border Settings
+                borderRadius,
+                borderWidthTop,
+                borderWidthRight,
+                borderWidthBottom,
+                borderWidthLeft,
+
+                // Validation Settings
+                required,
+
+                // Advanced Settings
+                disabled,
+                readonly
             }
         } = this.props;
+
+        const style = {
+            color:              inputColor, 
+            backgroundColor:    inputBackgroundColor, 
+            fontSize:           inputFontSize,
+            borderColor:        inputBorderColor,
+            borderRadius:       borderRadius,
+            borderTopWidth:     borderWidthTop,
+            borderRightWidth:   borderWidthRight,
+            borderBottomWidth:  borderWidthBottom,
+            borderLeftWidth:    borderWidthLeft,
+        };
 
         return (
             <Fragment>
@@ -134,9 +174,16 @@ export default class extends Component {
                         <this.Label />
                         <DatePicker
                             name={ name }
+                            label={ label }
                             required={ required }
                             disabled={ disabled }
+                            readonly={ readonly }
                             currentDate={ defaultValue }
+                            style={ style }
+                            className={ [ 
+                                inputColorClass,
+                                inputBackgroundColorClass
+                            ] }
                             onChange={ value => this.setDefaultValue( value ) }
                             hideLabelFromVision={ true }
                         />

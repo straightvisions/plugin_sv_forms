@@ -15,6 +15,7 @@ class modules extends init {
 		$this->archive->init();			// Dependency: taxonomy module - Only init after taxonomy init
 
 		// The following module init order can be changed
+		$this->files->init();
 		$this->submission->init();
 		$this->personal_data->init();
 		$this->sv_forms->init();

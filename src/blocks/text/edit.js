@@ -132,14 +132,17 @@ export default class extends Component {
                 name,
                 type,
                 placeholder,
-                inputColor,
-                inputColorClass,
-                inputBackgroundColor,
-                inputBackgroundColorClass,
                 inputFontSize,
 
                 // Label Settings
                 label,
+
+                // Color Settings
+                inputColor,
+                inputColorClass,
+                inputBackgroundColor,
+                inputBackgroundColorClass,
+                inputBorderColor,
 
                 // Validation Settings
                 required,
@@ -147,7 +150,6 @@ export default class extends Component {
                 maxlength,
 
                 // Border Settings
-                inputBorderColor,
                 borderRadius,
                 borderWidthTop,
                 borderWidthRight,

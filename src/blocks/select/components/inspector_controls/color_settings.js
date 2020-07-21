@@ -1,9 +1,9 @@
 // Required Components
 const { __ } = wp.i18n;
-const { 
-    PanelColorSettings, 
-    getColorObjectByColorValue, 
-    getColorClassName  
+const {
+    PanelColorSettings,
+    getColorObjectByColorValue,
+    getColorClassName
 } = wp.blockEditor;
 
 export default ( { props } ) => {
@@ -12,11 +12,11 @@ export default ( { props } ) => {
     // Block Attributes
     const { 
         setAttributes,
-        attributes: { 
+        attributes: {
             labelColor,
             inputColor,
             inputBackgroundColor,
-            inputBorderColor
+            inputBorderColor,
         }
     } = props;
 
@@ -83,7 +83,7 @@ export default ( { props } ) => {
     return(
         <PanelColorSettings
             title={ __( 'Color Settings', 'sv_forms' ) }
-            initialOpen={ true }
+            initialOpen={ false }
             colorSettings={ colorSettings }
         >
         </PanelColorSettings>

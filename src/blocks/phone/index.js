@@ -30,44 +30,35 @@ registerBlockType( 'straightvisions/sv-forms-phone', {
 		inputId: {
 			type: 'string',
 		},
-		
-		// Input Settings
 		defaultValue: {
 			type: 'string',
 		},
-		label: {
-			type: 'string',
-		},
+
+		// Input Settings
 		name: {
 			type: 'string',
 		},
 		type: {
 			type: 'string',
-			default: 'tel',
+			default: 'phone',
 		},
 		placeholder: {
 			type: 'string',
-			default: '000 0000 0000',
+			default: __( 'Phone', 'sv_forms' ),
 		},
-
-		// Validation Settings
-		required: {
-			type: 'boolean',
-		},
-		minlength: {
+		inputFontSize: {
 			type: 'number',
 		},
-		maxlength: {
+
+		// Label Settings
+		label: {
+			type: 'string',
+		},
+		labelFontSize: {
 			type: 'number',
 		},
 
 		// Color Settings
-		labelColor: {
-			type: 'string',
-		},
-		labelColorClass: {
-			type: 'string',
-		},
 		inputColor: {
 			type: 'string',
 		},
@@ -80,13 +71,47 @@ registerBlockType( 'straightvisions/sv-forms-phone', {
 		inputBackgroundColorClass: {
 			type: 'string',
 		},
+		labelColor: {
+			type: 'string',
+		},
+		labelColorClass: {
+			type: 'string',
+		},
 		inputBorderColor: {
 			type: 'string',
-			default: '#ddd',
 		},
 
 		// Border Settings
 		borderRadius: {
+			type: 'number',	
+			default: 0,
+		},
+		borderWidthTop: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthRight: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthBottom: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthLeft: {
+			type: 'number',
+			default: 0,
+		},
+
+		// Validation Settings
+		required: {
+			type: 'boolean',
+		},
+		minlength: {
+			type: 'number',
+			default: 0,
+		},
+		maxlength: {
 			type: 'number',
 			default: 0,
 		},

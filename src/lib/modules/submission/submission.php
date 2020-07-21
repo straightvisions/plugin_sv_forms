@@ -95,7 +95,7 @@ class submission extends modules {
 					$new_data['value'] = preg_replace( '([^0-9-])', '', $data_item['value'] );
 					break;
 				case 'file':
-					if ( count( $_FILES ) > 0 ) {
+					if ( count( $_FILES ) > 0 && $this->check_attachment( $attr, $data_item['name'] ) ) {
 						$new_data['value'] = $this->get_file_path( $_FILES[ $new_data['name'] ] );
 					}
 					break;
@@ -109,11 +109,26 @@ class submission extends modules {
 		return $sanitized_data;
 	}
 
-	private function get_file_path( $file ): string {
-		$file_extension = pathinfo( $file['name'] )['extension'];
-		$tmp_path = str_replace( '.tmp', '.' . $file_extension, $file['tmp_name'] );
+	// Checks if this attachment is allowed to be in the mail
+	private function check_attachment( object $attr, string $name ) {
+		$mail_files = isset( $attr->adminMailFiles ) ? json_decode( $attr->adminMailFiles ) : array();
 
-		return $tmp_path;
+		if ( ! empty( $mail_files ) && count( $mail_files ) > 0 ) {
+			foreach( $mail_files as $input_name ) {
+				var_dump($input_name);
+				var_dump($name);
+				if ( $input_name === $name ) return true;
+			}
+		}
+
+		return false;
+	}
+
+	// Uploads the file to the temp dir and return the file path
+	private function get_file_path( array $file ): string {
+		$file_path = $this->files->upload_file( $file );
+
+		return $file_path ? $file_path : '';
 	}
 
 	// Returns a data array containing only valid input data
@@ -138,7 +153,7 @@ class submission extends modules {
 				}
 			}
 		}
-
+		
 		return $validated_data;
 	}
 }

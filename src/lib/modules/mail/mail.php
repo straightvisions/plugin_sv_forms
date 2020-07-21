@@ -8,6 +8,9 @@ class mail extends modules {
 	public function send_mails( object $attr, array $data ): mail {
 		$this->send_user_mails( $attr, $data )->send_admin_mails( $attr, $data );
 
+		// Deletes all uploaded files from the server, after sended via mail
+		$this->files->delete_files();
+
 		return $this;
 	}
 

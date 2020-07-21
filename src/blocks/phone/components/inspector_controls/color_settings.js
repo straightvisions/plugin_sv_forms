@@ -83,7 +83,7 @@ export default ( { props } ) => {
     return(
         <PanelColorSettings
             title={ __( 'Color Settings', 'sv_forms' ) }
-            initialOpen={ true }
+            initialOpen={ false }
             colorSettings={ colorSettings }
         >
         </PanelColorSettings>

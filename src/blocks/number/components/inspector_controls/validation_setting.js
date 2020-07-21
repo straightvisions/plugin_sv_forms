@@ -2,8 +2,10 @@
 const { __ } = wp.i18n;
 const {
     PanelBody,
+    PanelRow,
     RangeControl,
     ToggleControl,
+    TextControl
 } = wp.components;
 
 export default ( { props } ) => {
@@ -36,24 +38,29 @@ export default ( { props } ) => {
                 checked={ required }
                 onChange={ () => setRequired( ! required )  }
             />
-            <RangeControl
-                label={ __( 'Min Value', 'sv_forms' ) }
-                help={ __( 'Defines the min value.', 'sv_forms' ) }
-                value={ min }
-                onChange={ value => setMin( value ) }
-            />
-            <RangeControl
-                label={ __( 'Max Value', 'sv_forms' ) }
-                help={ __( 'Defines the max value.', 'sv_forms' ) }
-                value={ max }
-                onChange={ value => setMax( value ) }
-            />
+            <PanelRow className="sv-validation-min-max">
+                <TextControl
+                    type="number"
+                    label={ __( 'Min Value', 'sv_forms' ) }
+                    help={ __( 'Defines the min value.', 'sv_forms' ) }
+                    value={ min }
+                    onChange={ value => setMin( value ) }
+                />
+                <TextControl
+                    type="number"
+                    label={ __( 'Max Value', 'sv_forms' ) }
+                    help={ __( 'Defines the max value.', 'sv_forms' ) }
+                    value={ max }
+                    onChange={ value => setMax( value ) }
+                />
+            </PanelRow>
             <RangeControl
                 label={ __( 'Step', 'sv_forms' ) }
                 help={ __( 'Defines the values steps.', 'sv_forms' ) }
                 value={ step }
                 onChange={ value => setStep( value ) }
-                initialPosition={ 1 }
+                min={ 1 }
+                allowReset
             />
         </PanelBody>
     );

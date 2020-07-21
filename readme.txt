@@ -5,7 +5,7 @@ Tags: form-block, form-builder, contact-form
 Requires PHP: 7.0
 Requires at least: 5.3.2
 Tested up to: 5.4.2
-Stable tag: 1.4.15
+Stable tag: 1.4.16
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -49,6 +49,20 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 3. You are using a caching plugin? Don't forget to flush caches now.
 
 == Changelog ==
+
+= 1.4.16 =
+
+### New Blocks
+
+* Files Block - Allows you to upload files in your forms
+
+### Features
+
+* Added new border settings to the form blocks (except checkbox, radio, range and hidden)
+
+### Enhancements
+
+* Reorganized the block settings of the form blocks (except checkbox, radio, range and hidden)
 
 = 1.4.15 =
 

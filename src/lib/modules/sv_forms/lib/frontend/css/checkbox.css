@@ -13,15 +13,16 @@
 .wp-block-straightvisions-sv-forms-checkbox input[type="checkbox"],
 .wp-block-straightvisions-sv-forms-checkbox.is-style-checkbox input[type="checkbox"] {
 	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 18px;
 	height: 18px;
 	margin: 0;
 	outline: none !important;
 	border-radius: 0;
 	border-style: solid;
-	border-width: 1px;
-	border-color: #000;
-	background-color: #FFFFFF;
+	border-width: 0;
 	box-shadow: none;
 	cursor: pointer;
 	-webkit-appearance: none;
@@ -31,13 +32,11 @@
 .wp-block-straightvisions-sv-forms-checkbox input[type="checkbox"]::before,
 .wp-block-straightvisions-sv-forms-checkbox.is-style-checkbox input[type="checkbox"]::before {
 	content: '';
-	position: absolute;
-	top: 5px;
-	left: 6px;
-	right: 0;
-	bottom: 0;
-	width: 10px;
-	height: 10px;
+	height: 85%;
+    width: 85%;
+    margin: 0;
+    padding: 0;
+	border-radius: inherit;
 	outline: none !important;
 	background-color: #000;
 	transform: scale( 0 );

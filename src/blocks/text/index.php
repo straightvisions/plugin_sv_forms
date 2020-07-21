@@ -56,6 +56,19 @@ class text extends sv_forms {
 						'type' => 'string',
 						'default' => __( 'Text', 'sv_forms' ),
 					),
+					'inputFontSize' => array(
+						'type' => 'number',
+					),
+
+					// Label Settings
+					'label' => array(
+						'type' => 'string',
+					),
+					'labelFontSize' => array(
+						'type' => 'number',
+					),
+
+					// Color Settings
 					'inputColor' => array(
 						'type' => 'string',
 					),
@@ -68,41 +81,17 @@ class text extends sv_forms {
 					'inputBackgroundColorClass' => array(
 						'type' => 'string',
 					),
-					'inputFontSize' => array(
-						'type' => 'number',
-					),
-
-					// Label Settings
-					'label' => array(
-						'type' => 'string',
-					),
 					'labelColor' => array(
 						'type' => 'string',
 					),
 					'labelColorClass' => array(
 						'type' => 'string',
 					),
-					'labelFontSize' => array(
-						'type' => 'number',
-					),
-
-					// Validation Settings
-					'required' => array(
-						'type' => 'bool',
-					),
-					'minlength' => array(
-						'type' => 'number',
-						'default' => 0,
-					),
-					'maxlength' => array(
-						'type' => 'number',
-						'default' => 0,
-					),
-
-					// Border Settings
 					'inputBorderColor' => array(
 						'type' => 'string',
 					),
+
+					// Border Settings
 					'borderRadius' => array(
 						'type' => 'number',
 						'default' => 0,
@@ -120,6 +109,19 @@ class text extends sv_forms {
 						'default' => 0,
 					),
 					'borderWidthLeft' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+
+					// Validation Settings
+					'required' => array(
+						'type' => 'bool',
+					),
+					'minlength' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'maxlength' => array(
 						'type' => 'number',
 						'default' => 0,
 					),

@@ -47,6 +47,7 @@ export default class extends Component {
             mailFromMail,
             mailToUsers,
             mailToMails,
+            mailFiles,
         } = this.props.attributes;
 
         // Updated Wrapper Attributes
@@ -58,6 +59,7 @@ export default class extends Component {
             adminMailToUsers: mailToUsers,
             adminMailToMails: mailToMails,
             adminMailContent: this.getMailContent(),
+            adminMailFiles: mailFiles,
         };
 
         wrapper.setAttributes( newAttributes );

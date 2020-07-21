@@ -2,7 +2,13 @@
 import { InputsProvider } from '../../../../blocks';
 
 const { __ } = wp.i18n;
-const { PanelBody, TextControl, Notice } = wp.components;
+const { 
+    PanelBody,
+    TextControl, 
+    Notice, 
+    FontSizePicker 
+} = wp.components;
+const { fontSizes } = wp.data.select('core/block-editor').getSettings();
 
 export default ( { props, wrapper, inputs } ) => {
     if ( ! props || ! wrapper || ! inputs ) return '';
@@ -12,17 +18,15 @@ export default ( { props, wrapper, inputs } ) => {
         setAttributes,
         attributes: {
             inputId,
-            
-            // Input Settings
-            label,
             name,
             type,
+            inputFontSize
         }
     } = props;
 
     // Functions to set the block attributes
-    const setLabel  = label => setAttributes({ label });
-    const setName   = name  => setAttributes({ name });
+    const setName           = name          => setAttributes({ name });
+    const setInputFontSize  = inputFontSize => setAttributes({ inputFontSize });
 
     // Returns the input name in a valid format
     const getFormatedName = name => {
@@ -96,11 +100,6 @@ export default ( { props, wrapper, inputs } ) => {
             initialOpen={ true }
         >
             <TextControl
-                label={ __( 'Label', 'sv_forms' ) }
-                value={ label }
-                onChange={ value => setLabel( value ) }
-            />
-            <TextControl
                 label={ __( 'Name', 'sv_forms' ) }
                 value={ getFormatedName( name ) }
                 onChange={ value => { 
@@ -109,6 +108,11 @@ export default ( { props, wrapper, inputs } ) => {
                 }}
             />
             <NameCheck />
+            <FontSizePicker
+                fontSizes={ fontSizes }
+                value={ inputFontSize }
+                onChange={ newFontSize => setInputFontSize( newFontSize ) }
+            />
         </PanelBody>
     );
 }

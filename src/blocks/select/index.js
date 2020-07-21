@@ -26,37 +26,44 @@ registerBlockType( 'straightvisions/sv-forms-select', {
 	supports: {
 		align:[ 'left', 'right', 'center', 'wide', 'full' ],
 	},
-	attributes: {	
+	attributes: {
 		inputId: {
 			type: 'string',
 		},
-			
-		// Input Settings
 		defaultValue: {
 			type: 'string',
 		},
-		label: {
-			type: 'string',
-			default: __( 'Select', 'sv_forms' ),
-		},
+
+		// Input Settings
 		name: {
 			type: 'string',
 		},
 		type: {
 			type: 'string',
-			default: 'select',
+			default: 'text',
 		},
+		placeholder: {
+			type: 'string',
+			default: __( 'Text', 'sv_forms' ),
+		},
+		inputFontSize: {
+			type: 'number',
+		},
+
+		// Label Settings
+		label: {
+			type: 'string',
+		},
+		labelFontSize: {
+			type: 'number',
+		},
+
+		// Options
 		options: {
 			type: 'string',
 		},
 
 		// Color Settings
-		labelColor: {
-			type: 'string',
-		},
-		labelColorClass: {
-			type: 'string',
-		},
 		inputColor: {
 			type: 'string',
 		},
@@ -69,13 +76,34 @@ registerBlockType( 'straightvisions/sv-forms-select', {
 		inputBackgroundColorClass: {
 			type: 'string',
 		},
+		labelColor: {
+			type: 'string',
+		},
+		labelColorClass: {
+			type: 'string',
+		},
 		inputBorderColor: {
 			type: 'string',
-			default: '#ddd',
 		},
 
 		// Border Settings
 		borderRadius: {
+			type: 'number',	
+			default: 0,
+		},
+		borderWidthTop: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthRight: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthBottom: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthLeft: {
 			type: 'number',
 			default: 0,
 		},
@@ -84,12 +112,15 @@ registerBlockType( 'straightvisions/sv-forms-select', {
 		autofocus: {
 			type: 'boolean',
 		},
+		readonly: {
+			type: 'boolean',
+		},
 		disabled: {
 			type: 'boolean',
 		},
 		className: {
 			type: 'string',
-		},
+		}
 	},
 	edit,
 	save: () => {

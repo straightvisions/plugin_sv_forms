@@ -46,6 +46,19 @@ registerBlockType( 'straightvisions/sv-forms-text', {
 			type: 'string',
 			default: __( 'Text', 'sv_forms' ),
 		},
+		inputFontSize: {
+			type: 'number',
+		},
+
+		// Label Settings
+		label: {
+			type: 'string',
+		},
+		labelFontSize: {
+			type: 'number',
+		},
+
+		// Color Settings
 		inputColor: {
 			type: 'string',
 		},
@@ -58,39 +71,17 @@ registerBlockType( 'straightvisions/sv-forms-text', {
 		inputBackgroundColorClass: {
 			type: 'string',
 		},
-		inputFontSize: {
-			type: 'number',
-		},
-
-		// Label Settings
-		label: {
-			type: 'string',
-		},
 		labelColor: {
 			type: 'string',
 		},
 		labelColorClass: {
 			type: 'string',
 		},
-		labelFontSize: {
-			type: 'number',
-		},
-
-		// Validation Settings
-		required: {
-			type: 'boolean',
-		},
-		minlength: {
-			type: 'number',
-		},
-		maxlength: {
-			type: 'number',
-		},
-
-		// Border Settings
 		inputBorderColor: {
 			type: 'string',
 		},
+
+		// Border Settings
 		borderRadius: {
 			type: 'number',	
 			default: 0,
@@ -108,6 +99,19 @@ registerBlockType( 'straightvisions/sv-forms-text', {
 			default: 0,
 		},
 		borderWidthLeft: {
+			type: 'number',
+			default: 0,
+		},
+
+		// Validation Settings
+		required: {
+			type: 'boolean',
+		},
+		minlength: {
+			type: 'number',
+			default: 0,
+		},
+		maxlength: {
 			type: 'number',
 			default: 0,
 		},

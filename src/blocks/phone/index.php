@@ -40,23 +40,77 @@ class phone extends sv_forms {
 				'editor_style'  	=> 'sv-forms-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(					
-					// Input Settings
 					'defaultValue' => array(
 						'type' => 'string',
 					),
-					'label' => array(
-						'type' => 'string',
-					),
+
+					// Input Settings
 					'name' => array(
-						'type' > 'string',
+						'type' => 'string',
 					),
 					'type' => array(
 						'type' => 'string',
-						'default' => 'tel',
+						'default' => 'phone',
 					),
 					'placeholder' => array(
 						'type' => 'string',
-						'default' => '000 0000 0000',
+						'default' => __( 'Phone', 'sv_forms' ),
+					),
+					'inputFontSize' => array(
+						'type' => 'number',
+					),
+
+					// Label Settings
+					'label' => array(
+						'type' => 'string',
+					),
+					'labelFontSize' => array(
+						'type' => 'number',
+					),
+
+					// Color Settings
+					'inputColor' => array(
+						'type' => 'string',
+					),
+					'inputColorClass' => array(
+						'type' => 'string',
+					),
+					'inputBackgroundColor' => array(
+						'type' => 'string',
+					),
+					'inputBackgroundColorClass' => array(
+						'type' => 'string',
+					),
+					'labelColor' => array(
+						'type' => 'string',
+					),
+					'labelColorClass' => array(
+						'type' => 'string',
+					),
+					'inputBorderColor' => array(
+						'type' => 'string',
+					),
+
+					// Border Settings
+					'borderRadius' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthTop' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthRight' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthBottom' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthLeft' => array(
+						'type' => 'number',
+						'default' => 0,
 					),
 
 					// Validation Settings
@@ -72,41 +126,14 @@ class phone extends sv_forms {
 						'default' => 0,
 					),
 
-					// Color Settings
-					'labelColor' => array(
-						'type' => 'string',
-					),
-					'labelColorClass' => array(
-						'type' => 'string',
-					),
-					'inputColor' => array(
-						'type' => 'string',
-					),
-					'inputColorClass' => array(
-						'type' => 'string',
-					),
-					'inputBackgroundColor' => array(
-						'type' => 'string',
-					),
-					'inputBackgroundColorClass' => array(
-						'type' => 'string',
-					),
-					'inputBorderColor' => array(
-						'type' => 'string',
-						'default' => '#ddd',
-					),
-
-					// Border Settings
-					'borderRadius' => array(
-						'type' => 'number',
-						'default' => 0,
-					),
-
 					// Advanced Settings
 					'autofocus' => array(
 						'type' => 'bool',
 					),
 					'autocomplete' => array(
+						'type' => 'bool',
+					),
+					'readonly' => array(
 						'type' => 'bool',
 					),
 					'disabled' => array(

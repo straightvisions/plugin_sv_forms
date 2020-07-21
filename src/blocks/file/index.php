@@ -41,9 +41,6 @@ class file extends sv_forms {
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
 					// Input Settings
-					'label' => array(
-						'type' => 'string',
-					),
 					'name' => array(
 						'type' => 'string',
 					),
@@ -51,19 +48,19 @@ class file extends sv_forms {
 						'type' => 'string',
 						'default' => 'file',
 					),
+					'inputFontSize' => array(
+						'type' => 'number',
+					),
 
-					// Validation Settings
-					'required' => array(
-						'type' => 'bool',
+					// Label Settings
+					'label' => array(
+						'type' => 'string',
+					),
+					'labelFontSize' => array(
+						'type' => 'number',
 					),
 
 					// Color Settings
-					'labelColor' => array(
-						'type' => 'string',
-					),
-					'labelColorClass' => array(
-						'type' => 'string',
-					),
 					'inputColor' => array(
 						'type' => 'string',
 					),
@@ -76,15 +73,41 @@ class file extends sv_forms {
 					'inputBackgroundColorClass' => array(
 						'type' => 'string',
 					),
+					'labelColor' => array(
+						'type' => 'string',
+					),
+					'labelColorClass' => array(
+						'type' => 'string',
+					),
 					'inputBorderColor' => array(
 						'type' => 'string',
-						'default' => '#ddd',
 					),
 
 					// Border Settings
 					'borderRadius' => array(
 						'type' => 'number',
 						'default' => 0,
+					),
+					'borderWidthTop' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthRight' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthBottom' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthLeft' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+
+					// Validation Settings
+					'required' => array(
+						'type' => 'bool',
 					),
 
 					// Advanced Settings

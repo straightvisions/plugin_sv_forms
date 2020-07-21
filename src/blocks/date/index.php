@@ -40,13 +40,11 @@ class date extends sv_forms {
 				'editor_style'  	=> 'sv-forms-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(					
-					// Input Settings
 					'defaultValue' => array(
 						'type' => 'string',
 					),
-					'label' => array(
-						'type' => 'string',
-					),
+
+					// Input Settings
 					'name' => array(
 						'type' => 'string',
 					),
@@ -54,22 +52,76 @@ class date extends sv_forms {
 						'type' => 'string',
 						'default' => 'date',
 					),
+					'inputFontSize' => array(
+						'type' => 'number',
+					),
 
-					// Validation Settings
-					'required' => array(
-						'type' => 'bool',
+					// Label Settings
+					'label' => array(
+						'type' => 'string',
+					),
+					'labelFontSize' => array(
+						'type' => 'number',
 					),
 
 					// Color Settings
+					'inputColor' => array(
+						'type' => 'string',
+					),
+					'inputColorClass' => array(
+						'type' => 'string',
+					),
+					'inputBackgroundColor' => array(
+						'type' => 'string',
+					),
+					'inputBackgroundColorClass' => array(
+						'type' => 'string',
+					),
 					'labelColor' => array(
 						'type' => 'string',
 					),
 					'labelColorClass' => array(
 						'type' => 'string',
 					),
+					'inputBorderColor' => array(
+						'type' => 'string',
+					),
+
+					// Border Settings
+					'borderRadius' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthTop' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthRight' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthBottom' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthLeft' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+
+					// Validation Settings
+					'required' => array(
+						'type' => 'bool',
+					),
 
 					// Advanced Settings
 					'autofocus' => array(
+						'type' => 'bool',
+					),
+					'autocomplete' => array(
+						'type' => 'bool',
+					),
+					'readonly' => array(
 						'type' => 'bool',
 					),
 					'disabled' => array(

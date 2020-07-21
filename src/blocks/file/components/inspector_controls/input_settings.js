@@ -2,7 +2,13 @@
 import { InputsProvider } from '../../../../blocks';
 
 const { __ } = wp.i18n;
-const { PanelBody, TextControl, Notice } = wp.components;
+const { 
+    PanelBody,
+    TextControl, 
+    Notice,
+    FontSizePicker 
+} = wp.components;
+const { fontSizes } = wp.data.select('core/block-editor').getSettings();
 
 export default ( { props, wrapper, inputs } ) => {
     if ( ! props || ! wrapper || ! inputs ) return '';
@@ -12,14 +18,15 @@ export default ( { props, wrapper, inputs } ) => {
         setAttributes,
         attributes: {
             inputId,
-            label,
             name,
+            type,
+            inputFontSize
         }
     } = props;
 
     // Functions to set the block attributes
-    const setLabel          = label         => setAttributes({ label });
     const setName           = name          => setAttributes({ name });
+    const setInputFontSize  = inputFontSize => setAttributes({ inputFontSize });
 
     // Returns the input name in a valid format
     const getFormatedName = name => {
@@ -48,22 +55,64 @@ export default ( { props, wrapper, inputs } ) => {
         return output;
     };
 
+    const updateFormInputs = newName => {
+        let newInputs   = inputs;
+        const newInput  = { ID: inputId, name: newName, type: type };
+
+        if ( inputId ) {
+            const existingInput = newInputs.find( input => {
+                return input.ID === inputId;
+            } );
+    
+            if ( existingInput ) {
+                const inputIndex = newInputs.indexOf( existingInput );
+    
+                newInputs[ inputIndex ] = newInput;
+            } else {
+                newInputs.push( newInput );
+            }
+    
+            <InputsProvider value={ newInputs } />
+        }
+
+        updateChilds();
+    }
+
+    const updateChilds = () => {
+        const childBlocks = [
+            'straightvisions/sv-forms-thank-you',
+            'straightvisions/sv-forms-user-mail',
+            'straightvisions/sv-forms-admin-mail',
+        ];
+
+        const innerBlocks = wp.data.select('core/block-editor').getBlocks( wrapper.clientId );
+
+        innerBlocks.map( block => {
+            if ( childBlocks.includes( block.name ) ) {
+                wp.data.dispatch('core/block-editor').updateBlock( block.clientId, { attributes: block.attributes } );
+            }
+        } );
+    }
+
     return(
         <PanelBody
             title={ __( 'Input Settings', 'sv_forms' ) }
             initialOpen={ true }
         >
             <TextControl
-                label={ __( 'Label', 'sv_forms' ) }
-                value={ label }
-                onChange={ value => setLabel( value ) }
-            />
-            <TextControl
                 label={ __( 'Name', 'sv_forms' ) }
                 value={ getFormatedName( name ) }
-                onChange={ value => setName( getFormatedName( value ) ) }
+                onChange={ value => { 
+                    updateFormInputs( getFormatedName( value ) );
+                    setName( getFormatedName( value ) );
+                }}
             />
             <NameCheck />
+            <FontSizePicker
+                fontSizes={ fontSizes }
+                value={ inputFontSize }
+                onChange={ newFontSize => setInputFontSize( newFontSize ) }
+            />
         </PanelBody>
     );
 }

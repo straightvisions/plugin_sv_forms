@@ -105,7 +105,10 @@ export default class extends Component {
             return (
                 <label
                     for={ this.props.attributes.name }
-                    style={{ color: this.props.attributes.labelColor }}
+                    style={{ 
+                        color: this.props.attributes.labelColor,
+                        fontSize: this.props.attributes.labelFontSize
+                    }}
                     className={ this.props.attributes.labelColorClass }
                 >
                     { this.props.attributes.label }
@@ -121,35 +124,66 @@ export default class extends Component {
             className,
             attributes: {
                 defaultValue,
+
+                // Input Settings
+                name,
+                inputFontSize,
+
+                // Label Settings
                 label,
-                disabled,
+
+                // Color Settings
                 inputColor,
                 inputColorClass,
                 inputBackgroundColor,
                 inputBackgroundColorClass,
                 inputBorderColor,
+
+                // Validation Settings
+                required,
+                minlength,
+                maxlength,
+
+                // Border Settings
                 borderRadius,
+                borderWidthTop,
+                borderWidthRight,
+                borderWidthBottom,
+                borderWidthLeft,
+
+                // Advanced Settings
+                disabled,
+                readonly,
             }
         } = this.props;
+
         const parsedOptions = this.props.attributes.options ? JSON.parse( this.props.attributes.options ) : [];
+        const style = {
+            color:              inputColor, 
+            backgroundColor:    inputBackgroundColor, 
+            fontSize:           inputFontSize,
+            borderColor:        inputBorderColor,
+            borderRadius:       borderRadius,
+            borderTopWidth:     borderWidthTop,
+            borderRightWidth:   borderWidthRight,
+            borderBottomWidth:  borderWidthBottom,
+            borderLeftWidth:    borderWidthLeft,
+        };
 
         return (
             <Fragment>
                 <div className={ className }>
                     <this.Label />
                     <SelectControl
+                        name={ name }
                         label={ label }
                         value={ defaultValue }
                         onChange={ value => this.setDefaultValue( value ) }
                         options={ parsedOptions }
                         disabled={ disabled }
+                        readonly={ readonly }
                         hideLabelFromVision={ true }
-                        style={{ 
-                            color: inputColor, 
-                            backgroundColor: inputBackgroundColor, 
-                            borderColor: inputBorderColor,
-                            borderRadius: borderRadius,
-                        }}
+                        style={ style }
                         className={ [ 
                             inputColorClass, 
                             inputBackgroundColorClass 

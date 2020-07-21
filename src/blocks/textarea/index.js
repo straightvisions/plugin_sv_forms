@@ -30,14 +30,11 @@ registerBlockType( 'straightvisions/sv-forms-textarea', {
 		inputId: {
 			type: 'string',
 		},
-		
-		// Input Settings
 		defaultValue: {
 			type: 'string',
 		},
-		label: {
-			type: 'string',
-		},
+
+		// Input Settings
 		name: {
 			type: 'string',
 		},
@@ -47,24 +44,21 @@ registerBlockType( 'straightvisions/sv-forms-textarea', {
 		},
 		placeholder: {
 			type: 'string',
-			default: __( 'Message', 'sv_forms' ),
+			default: __( 'Textarea', 'sv_forms' ),
+		},
+		inputFontSize: {
+			type: 'number',
 		},
 
-		// Validation Settings
-		required: {
-			type: 'boolean',
+		// Label Settings
+		label: {
+			type: 'string',
 		},
-		maxlength: {
+		labelFontSize: {
 			type: 'number',
 		},
 
 		// Color Settings
-		labelColor: {
-			type: 'string',
-		},
-		labelColorClass: {
-			type: 'string',
-		},
 		inputColor: {
 			type: 'string',
 		},
@@ -77,13 +71,43 @@ registerBlockType( 'straightvisions/sv-forms-textarea', {
 		inputBackgroundColorClass: {
 			type: 'string',
 		},
+		labelColor: {
+			type: 'string',
+		},
+		labelColorClass: {
+			type: 'string',
+		},
 		inputBorderColor: {
 			type: 'string',
-			default: '#ddd',
 		},
 
 		// Border Settings
 		borderRadius: {
+			type: 'number',	
+			default: 0,
+		},
+		borderWidthTop: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthRight: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthBottom: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthLeft: {
+			type: 'number',
+			default: 0,
+		},
+
+		// Validation Settings
+		required: {
+			type: 'boolean',
+		},
+		maxlength: {
 			type: 'number',
 			default: 0,
 		},

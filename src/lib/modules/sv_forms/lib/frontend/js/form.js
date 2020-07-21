@@ -144,7 +144,7 @@
             success: function( response ) {
                 showThankYou( form, newFormData );
                 // Only for Debug
-                //console.log( response );
+                console.log( response );
             }
         });
     });

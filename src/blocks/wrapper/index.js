@@ -71,6 +71,9 @@ registerBlockType( 'straightvisions/sv-forms', {
 		adminMailContent: {
 			type: 'string',
 		},
+		adminMailFiles: {
+			type: 'string',
+		},
 
 		// User Mail Block
 		userMailSend: {

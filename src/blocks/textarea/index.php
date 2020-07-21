@@ -40,13 +40,11 @@ class textarea extends sv_forms {
 				'editor_style'  	=> 'sv-forms-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(
-					// Textarea Settings
 					'defaultValue' => array(
 						'type' => 'string',
 					),
-					'label' => array(
-						'type' => 'string',
-					),
+
+					// Textarea Settings
 					'name' => array(
 						'type' => 'string',
 					),
@@ -56,24 +54,21 @@ class textarea extends sv_forms {
 					),
 					'placeholder' => array(
 						'type' => 'string',
-						'default' => __( 'Message', 'sv_forms' ),
+						'default' => __( 'Textarea', 'sv_forms' ),
+					),
+					'inputFontSize' => array(
+						'type' => 'number',
 					),
 
-					// Validation Settings
-					'required' => array(
-						'type' => 'bool',
+					// Label Settings
+					'label' => array(
+						'type' => 'string',
 					),
-					'maxlength' => array(
+					'labelFontSize' => array(
 						'type' => 'number',
 					),
 
 					// Color Settings
-					'labelColor' => array(
-						'type' => 'string',
-					),
-					'labelColorClass' => array(
-						'type' => 'string',
-					),
 					'inputColor' => array(
 						'type' => 'string',
 					),
@@ -86,9 +81,14 @@ class textarea extends sv_forms {
 					'inputBackgroundColorClass' => array(
 						'type' => 'string',
 					),
+					'labelColor' => array(
+						'type' => 'string',
+					),
+					'labelColorClass' => array(
+						'type' => 'string',
+					),
 					'inputBorderColor' => array(
 						'type' => 'string',
-						'default' => '#ddd',
 					),
 
 					// Border Settings
@@ -96,9 +96,37 @@ class textarea extends sv_forms {
 						'type' => 'number',
 						'default' => 0,
 					),
+					'borderWidthTop' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthRight' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthBottom' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthLeft' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+
+					// Validation Settings
+					'required' => array(
+						'type' => 'bool',
+					),
+					'maxlength' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
 
 					// Advanced Settings
 					'autofocus' => array(
+						'type' => 'bool',
+					),
+					'readonly' => array(
 						'type' => 'bool',
 					),
 					'disabled' => array(

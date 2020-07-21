@@ -60,7 +60,7 @@ export default ( { props } ) => {
     return(
         <PanelBody
             title={ __( 'Options', 'sv_forms' ) }
-            initialOpen={ true }
+            initialOpen={ false }
         >
             <div className='sv-forms-select-options'>
                 <Button

@@ -30,14 +30,11 @@ registerBlockType( 'straightvisions/sv-forms-date', {
 		inputId: {
 			type: 'string',
 		},
-		
-		// Input Settings
 		defaultValue: {
 			type: 'string',
 		},
-		label: {
-			type: 'string',
-		},
+
+		// Input Settings
 		name: {
 			type: 'string',
 		},
@@ -45,22 +42,76 @@ registerBlockType( 'straightvisions/sv-forms-date', {
 			type: 'string',
 			default: 'date',
 		},
+		inputFontSize: {
+			type: 'number',
+		},
 
-		// Validation Settings
-		required: {
-			type: 'boolean',
+		// Label Settings
+		label: {
+			type: 'string',
+		},
+		labelFontSize: {
+			type: 'number',
 		},
 
 		// Color Settings
+		inputColor: {
+			type: 'string',
+		},
+		inputColorClass: {
+			type: 'string',
+		},
+		inputBackgroundColor: {
+			type: 'string',
+		},
+		inputBackgroundColorClass: {
+			type: 'string',
+		},
 		labelColor: {
 			type: 'string',
 		},
 		labelColorClass: {
 			type: 'string',
 		},
+		inputBorderColor: {
+			type: 'string',
+		},
+
+		// Border Settings
+		borderRadius: {
+			type: 'number',	
+			default: 0,
+		},
+		borderWidthTop: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthRight: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthBottom: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthLeft: {
+			type: 'number',
+			default: 0,
+		},
+
+		// Validation Settings
+		required: {
+			type: 'boolean',
+		},
 
 		// Advanced Settings
 		autofocus: {
+			type: 'boolean',
+		},
+		autocomplete: {
+			type: 'boolean',
+		},
+		readonly: {
 			type: 'boolean',
 		},
 		disabled: {

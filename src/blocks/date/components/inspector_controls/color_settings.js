@@ -1,9 +1,9 @@
 // Required Components
 const { __ } = wp.i18n;
-const { 
-    PanelColorSettings, 
-    getColorObjectByColorValue, 
-    getColorClassName  
+const {
+    PanelColorSettings,
+    getColorObjectByColorValue,
+    getColorClassName
 } = wp.blockEditor;
 
 export default ( { props } ) => {
@@ -14,12 +14,20 @@ export default ( { props } ) => {
         setAttributes,
         attributes: {
             labelColor,
+            inputColor,
+            inputBackgroundColor,
+            inputBorderColor,
         }
     } = props;
 
     // Functions to set the block attributes
-    const setLabelColor         = labelColor        => setAttributes({ labelColor });
-    const setLabelColorClass    = labelColorClass   => setAttributes({ labelColorClass });
+    const setLabelColor                 = labelColor                => setAttributes({ labelColor });
+    const setLabelColorClass            = labelColorClass           => setAttributes({ labelColorClass });
+    const setInputColor                 = inputColor                => setAttributes({ inputColor });
+    const setInputColorClass            = inputColorClass           => setAttributes({ inputColorClass });
+    const setInputBackgroundColor       = inputBackgroundColor      => setAttributes({ inputBackgroundColor });
+    const setInputBackgroundColorClass  = inputBackgroundColorClass => setAttributes({ inputBackgroundColorClass });
+    const setInputBorderColor           = inputBorderColor          => setAttributes({ inputBorderColor });
     
     // Returns an color object if this color is defined in the editor
     const getColorObject = color => {
@@ -48,6 +56,27 @@ export default ( { props } ) => {
                 setLabelColorClass( getColorClass( value ) );
             },
             label: __( 'Label', 'sv_forms' ),
+        },
+        {
+            value: inputColor,
+            onChange: value => { 
+                setInputColor( value );
+                setInputColorClass( getColorClass( value ) );
+            },
+            label: __( 'Input', 'sv_forms' ),
+        },
+        {
+            value: inputBackgroundColor,
+            onChange: value => { 
+                setInputBackgroundColor( value );
+                setInputBackgroundColorClass( getColorClass( value, true ) );
+            },
+            label: __( 'Input Background', 'sv_forms' ),
+        },
+        {
+            value: inputBorderColor,
+            onChange: value => setInputBorderColor( value ),
+            label: __( 'Input Border', 'sv_forms' ),
         },
     ];
 

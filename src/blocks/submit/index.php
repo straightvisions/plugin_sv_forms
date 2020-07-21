@@ -61,11 +61,26 @@ class submit extends sv_forms {
 					),
 					'borderColor' => array(
 						'type' => 'string',
-						'default' => '#ddd',
 					),
 
 					// Border Settings
 					'borderRadius' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthTop' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthRight' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthBottom' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthLeft' => array(
 						'type' => 'number',
 						'default' => 0,
 					),
@@ -138,6 +153,26 @@ class submit extends sv_forms {
 		// Border Radius
 		if ( isset( $this->block_attr['borderRadius'] ) ) {
 			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
+		}
+
+		// Border Width Top
+		if ( isset( $this->block_attr['borderWidthTop'] ) ) {
+			$style[] = 'border-top-width:' . $this->block_attr['borderWidthTop'] . 'px';
+		}
+
+		// Border Width Right
+		if ( isset( $this->block_attr['borderWidthRight'] ) ) {
+			$style[] = 'border-right-width:' . $this->block_attr['borderWidthRight'] . 'px';
+		}
+
+		// Border Width Bottom
+		if ( isset( $this->block_attr['borderWidthBottom'] ) ) {
+			$style[] = 'border-bottom-width:' . $this->block_attr['borderWidthBottom'] . 'px';
+		}
+
+		// Border Width Left
+		if ( isset( $this->block_attr['borderWidthLeft'] ) ) {
+			$style[] = 'border-left-width:' . $this->block_attr['borderWidthLeft'] . 'px';
 		}
 
 		if ( ! empty( $style ) ) {

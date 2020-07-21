@@ -11,13 +11,17 @@ export default ( { props } ) => {
         setAttributes,
         attributes: {
             autofocus,
+            autocomplete,
+            readonly,
             disabled,
         }
     } = props;
 
     // Functions to set the block attributes
-    const setAutofocus  = autofocus =>  setAttributes({ autofocus });
-    const setDisabled   = disabled  =>  setAttributes({ disabled });
+    const setAutofocus      = autofocus     =>  setAttributes({ autofocus });
+    const setAutocomplete   = autocomplete  =>  setAttributes({ autocomplete });
+    const setReadonly       = readonly      =>  setAttributes({ readonly });
+    const setDisabled       = disabled      =>  setAttributes({ disabled });
 
     return(
         <Fragment>
@@ -25,6 +29,16 @@ export default ( { props } ) => {
                 label={ __( 'Autofocus', 'sv_forms' ) }
                 checked={ autofocus }
                 onChange={ () => setAutofocus( ! autofocus )  }
+            />
+            <ToggleControl
+                label={ __( 'Autocomplete', 'sv_forms' ) }
+                checked={ autocomplete }
+                onChange={ () => setAutocomplete( ! autocomplete )  }
+            />
+            <ToggleControl
+                label={ __( 'Read Only', 'sv_forms' ) }
+                checked={ readonly }
+                onChange={ () => setReadonly( ! readonly )  }
             />
             <ToggleControl
                 label={ __( 'Disabled', 'sv_forms' ) }

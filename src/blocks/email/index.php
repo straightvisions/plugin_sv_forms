@@ -40,13 +40,11 @@ class email extends sv_forms {
 				'editor_style'  	=> 'sv-forms-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(					
-					// Input Settings
 					'defaultValue' => array(
 						'type' => 'string',
 					),
-					'label' => array(
-						'type' => 'string',
-					),
+
+					// Input Settings
 					'name' => array(
 						'type' => 'string',
 					),
@@ -56,27 +54,21 @@ class email extends sv_forms {
 					),
 					'placeholder' => array(
 						'type' => 'string',
-						'default' => __( 'E-Mail', 'sv_forms' ),
+						'default' => __( 'E-mail', 'sv_forms' ),
 					),
-
-					// Validation Settings
-					'required' => array(
-						'type' => 'bool',
-					),
-					'minlength' => array(
+					'inputFontSize' => array(
 						'type' => 'number',
 					),
-					'maxlength' => array(
+
+					// Label Settings
+					'label' => array(
+						'type' => 'string',
+					),
+					'labelFontSize' => array(
 						'type' => 'number',
 					),
 
 					// Color Settings
-					'labelColor' => array(
-						'type' => 'string',
-					),
-					'labelColorClass' => array(
-						'type' => 'string',
-					),
 					'inputColor' => array(
 						'type' => 'string',
 					),
@@ -89,13 +81,47 @@ class email extends sv_forms {
 					'inputBackgroundColorClass' => array(
 						'type' => 'string',
 					),
+					'labelColor' => array(
+						'type' => 'string',
+					),
+					'labelColorClass' => array(
+						'type' => 'string',
+					),
 					'inputBorderColor' => array(
 						'type' => 'string',
-						'default' => '#ddd',
 					),
 
 					// Border Settings
 					'borderRadius' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthTop' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthRight' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthBottom' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthLeft' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+
+					// Validation Settings
+					'required' => array(
+						'type' => 'bool',
+					),
+					'minlength' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'maxlength' => array(
 						'type' => 'number',
 						'default' => 0,
 					),
@@ -105,6 +131,9 @@ class email extends sv_forms {
 						'type' => 'bool',
 					),
 					'autocomplete' => array(
+						'type' => 'bool',
+					),
+					'readonly' => array(
 						'type' => 'bool',
 					),
 					'disabled' => array(

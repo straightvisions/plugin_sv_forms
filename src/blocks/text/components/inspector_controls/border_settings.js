@@ -44,17 +44,6 @@ export default ( { props } ) => {
             initialOpen={ false }
         >
             <RangeControl
-                label={ __( 'Border Radius', 'sv_forms' ) }
-                value={ borderRadius }
-                onChange={ value => {
-                    value = ! value ? 0 : value;
-                    setBorderRadius( value );
-                }}
-                allowReset
-                min={ 0 }
-                max={ 50 }
-            />
-            <RangeControl
                 label={ __( 'Border Width', 'sv_forms' ) }
                 value={ borderWidth }
                 onChange={ value => {
@@ -66,6 +55,17 @@ export default ( { props } ) => {
                 allowReset
                 min={ 0 }
                 max={ 10 }
+            />
+            <RangeControl
+                label={ __( 'Border Radius', 'sv_forms' ) }
+                value={ borderRadius }
+                onChange={ value => {
+                    value = ! value ? 0 : value;
+                    setBorderRadius( value );
+                }}
+                allowReset
+                min={ 0 }
+                max={ 50 }
             />
         </PanelBody>
     );

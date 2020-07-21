@@ -32,9 +32,6 @@ registerBlockType( 'straightvisions/sv-forms-file', {
 		},
 
 		// Input Settings
-		label: {
-			type: 'string',
-		},
 		name: {
 			type: 'string',
 		},
@@ -42,19 +39,19 @@ registerBlockType( 'straightvisions/sv-forms-file', {
 			type: 'string',
 			default: 'file',
 		},
+		inputFontSize: {
+			type: 'number',
+		},
 
-		// Validation Settings
-		required: {
-			type: 'boolean',
+		// Label Settings
+		label: {
+			type: 'string',
+		},
+		labelFontSize: {
+			type: 'number',
 		},
 
 		// Color Settings
-		labelColor: {
-			type: 'string',
-		},
-		labelColorClass: {
-			type: 'string',
-		},
 		inputColor: {
 			type: 'string',
 		},
@@ -67,15 +64,41 @@ registerBlockType( 'straightvisions/sv-forms-file', {
 		inputBackgroundColorClass: {
 			type: 'string',
 		},
+		labelColor: {
+			type: 'string',
+		},
+		labelColorClass: {
+			type: 'string',
+		},
 		inputBorderColor: {
 			type: 'string',
-			default: '#ddd',
 		},
 
 		// Border Settings
 		borderRadius: {
 			type: 'number',	
 			default: 0,
+		},
+		borderWidthTop: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthRight: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthBottom: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthLeft: {
+			type: 'number',
+			default: 0,
+		},
+
+		// Validation Settings
+		required: {
+			type: 'boolean',
 		},
 
 		// Advanced Settings

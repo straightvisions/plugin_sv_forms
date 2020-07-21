@@ -68,3 +68,15 @@
 .components-notice.sv-forms-name-check {
 	margin: -15px 0 15px 0;
 }
+
+.components-panel__row.sv-validation-min-max {
+    align-items: flex-start;
+}
+
+.components-panel__row.sv-validation-min-max > .components-base-control:first-child {
+    margin-right: 8px;
+}
+
+.components-panel__row.sv-validation-min-max .components-base-control .components-base-control__field {
+    margin-bottom: 8px;
+}

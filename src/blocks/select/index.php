@@ -40,32 +40,36 @@ class select extends sv_forms {
 				'editor_style'  	=> 'sv-forms-block-editor',
 				'render_callback'	=> array( $this, 'render_block' ),
 				'attributes'		=> array(					
-					// Input Settings
 					'defaultValue' => array(
 						'type' => 'string',
 					),
-					'label' => array(
-						'type' => 'string',
-						'default' => __( 'Select', 'sv_forms' ),
-					),
+
+					// Input Settings
 					'name' => array(
 						'type' => 'string',
 					),
 					'type' => array(
 						'type' => 'string',
-						'default' => 'select',
+						'default' => 'text',
 					),
+					'inputFontSize' => array(
+						'type' => 'number',
+					),
+
+					// Label Settings
+					'label' => array(
+						'type' => 'string',
+					),
+					'labelFontSize' => array(
+						'type' => 'number',
+					),
+					
+					// Options
 					'options' => array(
 						'type' => 'string',
 					),
 
 					// Color Settings
-					'labelColor' => array(
-						'type' => 'string',
-					),
-					'labelColorClass' => array(
-						'type' => 'string',
-					),
 					'inputColor' => array(
 						'type' => 'string',
 					),
@@ -78,19 +82,43 @@ class select extends sv_forms {
 					'inputBackgroundColorClass' => array(
 						'type' => 'string',
 					),
+					'labelColor' => array(
+						'type' => 'string',
+					),
+					'labelColorClass' => array(
+						'type' => 'string',
+					),
 					'inputBorderColor' => array(
 						'type' => 'string',
-						'default' => '#ddd',
 					),
 
-					// Border Radius
+					// Border Settings
 					'borderRadius' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthTop' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthRight' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthBottom' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthLeft' => array(
 						'type' => 'number',
 						'default' => 0,
 					),
 
 					// Advanced Settings
 					'autofocus' => array(
+						'type' => 'bool',
+					),
+					'readonly' => array(
 						'type' => 'bool',
 					),
 					'disabled' => array(

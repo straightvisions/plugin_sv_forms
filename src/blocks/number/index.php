@@ -44,9 +44,8 @@ class number extends sv_forms {
 					'defaultValue' => array(
 						'type' => 'string',
 					),
-					'label' => array(
-						'type' => 'string',
-					),
+
+					// Input Settings
 					'name' => array(
 						'type' => 'string',
 					),
@@ -56,7 +55,63 @@ class number extends sv_forms {
 					),
 					'placeholder' => array(
 						'type' => 'string',
-						'default' => '0'
+						'default' => '0',
+					),
+					'inputFontSize' => array(
+						'type' => 'number',
+					),
+
+					// Label Settings
+					'label' => array(
+						'type' => 'string',
+					),
+					'labelFontSize' => array(
+						'type' => 'number',
+					),
+
+					// Color Settings
+					'inputColor' => array(
+						'type' => 'string',
+					),
+					'inputColorClass' => array(
+						'type' => 'string',
+					),
+					'inputBackgroundColor' => array(
+						'type' => 'string',
+					),
+					'inputBackgroundColorClass' => array(
+						'type' => 'string',
+					),
+					'labelColor' => array(
+						'type' => 'string',
+					),
+					'labelColorClass' => array(
+						'type' => 'string',
+					),
+					'inputBorderColor' => array(
+						'type' => 'string',
+					),
+
+					// Border Settings
+					'borderRadius' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthTop' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthRight' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthBottom' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthLeft' => array(
+						'type' => 'number',
+						'default' => 0,
 					),
 
 					// Validation Settings
@@ -71,36 +126,7 @@ class number extends sv_forms {
 					),
 					'step' => array(
 						'type' => 'number',
-					),
-
-					// Color Settings
-					'labelColor' => array(
-						'type' => 'string',
-					),
-					'labelColorClass' => array(
-						'type' => 'string',
-					),
-					'inputColor' => array(
-						'type' => 'string',
-					),
-					'inputColorClass' => array(
-						'type' => 'string',
-					),
-					'inputBackgroundColor' => array(
-						'type' => 'string',
-					),
-					'inputBackgroundColorClass' => array(
-						'type' => 'string',
-					),
-					'inputBorderColor' => array(
-						'type' => 'string',
-						'default' => '#ddd',
-					),
-
-					// Border Settings
-					'borderRadius' => array(
-						'type' => 'number',
-						'default' => 0,
+						'default' => 1,
 					),
 
 					// Advanced Settings

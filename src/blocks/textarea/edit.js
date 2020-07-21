@@ -105,7 +105,10 @@ export default class extends Component {
             return (
                 <label
                     for={ this.props.attributes.name }
-                    style={{ color: this.props.attributes.labelColor }}
+                    style={{ 
+                        color: this.props.attributes.labelColor,
+                        fontSize: this.props.attributes.labelFontSize
+                    }}
                     className={ this.props.attributes.labelColorClass }
                 >
                     { this.props.attributes.label }
@@ -120,22 +123,51 @@ export default class extends Component {
         const {
             className,
             attributes: {
-                name,
-                label,
-                required,
-                disabled,
-                readonly,
                 defaultValue,
-                maxlength,
+
+                // Input Settings
+                name,
                 placeholder,
+                inputFontSize,
+
+                // Label Settings
+                label,
+
+                // Color Settings
                 inputColor,
                 inputColorClass,
                 inputBackgroundColor,
                 inputBackgroundColorClass,
                 inputBorderColor,
+
+                // Validation Settings
+                required,
+                maxlength,
+
+                // Border Settings
                 borderRadius,
+                borderWidthTop,
+                borderWidthRight,
+                borderWidthBottom,
+                borderWidthLeft,
+
+                // Advanced Settings
+                disabled,
+                readonly,
             }
         } = this.props;
+
+        const style = {
+            color:              inputColor, 
+            backgroundColor:    inputBackgroundColor, 
+            fontSize:           inputFontSize,
+            borderColor:        inputBorderColor,
+            borderRadius:       borderRadius,
+            borderTopWidth:     borderWidthTop,
+            borderRightWidth:   borderWidthRight,
+            borderBottomWidth:  borderWidthBottom,
+            borderLeftWidth:    borderWidthLeft,
+        };
 
         return (
             <Fragment>
@@ -150,12 +182,7 @@ export default class extends Component {
                         value={ defaultValue }
                         maxlength={ maxlength > 0 ? maxlength : -1 }
                         placeholder={ placeholder }
-                        style={{ 
-                            color: inputColor, 
-                            backgroundColor: inputBackgroundColor, 
-                            borderColor: inputBorderColor,
-                            borderRadius: borderRadius 
-                        }}
+                        style={ style }
                         className={ [ 
                             inputColorClass, 
                             inputBackgroundColorClass 

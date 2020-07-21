@@ -36,7 +36,13 @@ export default ( { props } ) => {
                 label={ __( 'Max. Length', 'sv_forms' ) }
                 help={ __( 'Defines the max. character length.', 'sv_forms' ) }
                 value={ maxlength }
-                onChange={ value => setMaxLength( value ) }
+                onChange={ value => { 
+                    value = ! value ? 0 : value; 
+                    setMaxLength( value );
+                }}
+                allowReset
+                min={ 0 }
+                max={ 100 }
             />
         </PanelBody>
     );

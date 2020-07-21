@@ -30,14 +30,11 @@ registerBlockType( 'straightvisions/sv-forms-number', {
 		inputId: {
 			type: 'string',
 		},
-
-		// Input Settings
 		defaultValue: {
 			type: 'string',
 		},
-		label: {
-			type: 'string',
-		},
+
+		// Input Settings
 		name: {
 			type: 'string',
 		},
@@ -48,6 +45,62 @@ registerBlockType( 'straightvisions/sv-forms-number', {
 		placeholder: {
 			type: 'string',
 			default: '0',
+		},
+		inputFontSize: {
+			type: 'number',
+		},
+
+		// Label Settings
+		label: {
+			type: 'string',
+		},
+		labelFontSize: {
+			type: 'number',
+		},
+
+		// Color Settings
+		inputColor: {
+			type: 'string',
+		},
+		inputColorClass: {
+			type: 'string',
+		},
+		inputBackgroundColor: {
+			type: 'string',
+		},
+		inputBackgroundColorClass: {
+			type: 'string',
+		},
+		labelColor: {
+			type: 'string',
+		},
+		labelColorClass: {
+			type: 'string',
+		},
+		inputBorderColor: {
+			type: 'string',
+		},
+
+		// Border Settings
+		borderRadius: {
+			type: 'number',	
+			default: 0,
+		},
+		borderWidthTop: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthRight: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthBottom: {
+			type: 'number',
+			default: 0,
+		},
+		borderWidthLeft: {
+			type: 'number',
+			default: 0,
 		},
 
 		// Validation Settings
@@ -62,36 +115,7 @@ registerBlockType( 'straightvisions/sv-forms-number', {
 		},
 		step: {
 			type: 'number',
-		},
-
-		// Color Settings
-		labelColor: {
-			type: 'string',
-		},
-		labelColorClass: {
-			type: 'string',
-		},
-		inputColor: {
-			type: 'string',
-		},
-		inputColorClass: {
-			type: 'string',
-		},
-		inputBackgroundColor: {
-			type: 'string',
-		},
-		inputBackgroundColorClass: {
-			type: 'string',
-		},
-		inputBorderColor: {
-			type: 'string',
-			default: '#ddd',
-		},
-
-		// Border Settings
-		borderRadius: {
-			type: 'number',
-			default: 0,
+			default: 1,
 		},
 
 		// Advanced Settings
