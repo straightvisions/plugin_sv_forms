@@ -54,6 +54,7 @@
 /* Style: Toggle */
 .wp-block-straightvisions-sv-forms-checkbox.is-style-toggle input[type="checkbox"] {
 	position: relative;
+	flex: 0 0 36px;
 	width: 36px;
 	height: 18px;
 	margin: 0;

@@ -1,3 +1,5 @@
+import templateCountry from '../../templates/country.json';
+
 // Required Components
 const { __ } = wp.i18n;
 const {
@@ -43,7 +45,7 @@ export default ( { props } ) => {
         let newOptions = parsedOptions;
 
         newOptions.splice( index, 1 );
-
+        console.log( JSON.stringify( newOptions ) );
         updateOptions( JSON.stringify( newOptions ) );
     }
 
@@ -53,11 +55,26 @@ export default ( { props } ) => {
         const newOption = { label: '', value: '' };
 
         newOptions.push( newOption );
-
+        
         updateOptions( JSON.stringify( newOptions ) );
     }
-    
-    console.log(options);
+
+    const deleteAllOptions = () => {
+        updateOptions( '[]' );
+    }
+
+    const applyTemplate = template => {
+        let config = [];
+
+        switch( template ) {
+            case 'country':
+                config = templateCountry;
+                break;
+        }
+
+        deleteAllOptions();
+        updateOptions( JSON.stringify( config ) );
+    }
 
     return(
         <PanelBody
@@ -65,12 +82,29 @@ export default ( { props } ) => {
             initialOpen={ false }
         >
             <div className='sv-forms-select-options'>
-                <Button
-                    className='sv-forms-add-option'
-                    onClick={ () => addOption() }
-                >
-                    { __( 'Add Option', 'sv_forms' ) }
-                </Button>
+                <h3>Templates</h3>
+                <div className='sv-forms-template-buttons'>
+                    <Button
+                        className='sv-forms-apply-template'
+                        onClick={ () => applyTemplate( 'country' ) }
+                    >
+                        { __( 'Countries', 'sv_forms' ) }
+                    </Button>
+                </div>
+                <div className='sv-forms-select-options-buttons'>
+                    <Button
+                        className='sv-forms-add-option'
+                        onClick={ () => addOption() }
+                    >
+                        { __( 'Add Option', 'sv_forms' ) }
+                    </Button>
+                    <Button
+                        className='sv-forms-delete-options'
+                        onClick={ () => deleteAllOptions() }
+                    >
+                        { __( 'Delete Options', 'sv_forms' ) }
+                    </Button>
+                </div>
                 {
                     parsedOptions.map( ( option, index ) => {
                         return(

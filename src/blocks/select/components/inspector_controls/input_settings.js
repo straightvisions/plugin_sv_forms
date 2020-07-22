@@ -4,7 +4,7 @@ import { InputsProvider } from '../../../../blocks';
 const { __ } = wp.i18n;
 const { 
     PanelBody,
-    TextControl, 
+    TextControl,
     Notice, 
     FontSizePicker 
 } = wp.components;
@@ -12,7 +12,7 @@ const { fontSizes } = wp.data.select('core/block-editor').getSettings();
 
 export default ( { props, wrapper, inputs } ) => {
     if ( ! props || ! wrapper || ! inputs ) return '';
-
+    
     // Block Attributes
     const { 
         setAttributes,
@@ -43,7 +43,7 @@ export default ( { props, wrapper, inputs } ) => {
             if ( input.name === name && input.ID !== inputId ) {
                 output = 
                     <Notice 
-                        status='warning' 
+                        status='warning'
                         className='sv-forms-name-check'
                         isDismissible={ false }
                     >
