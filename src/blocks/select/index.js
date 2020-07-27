@@ -105,6 +105,11 @@ registerBlockType( 'straightvisions/sv-forms-select', {
 			default: 0,
 		},
 
+		// Validation Settings
+		required: {
+			type: 'boolean',
+		},
+
 		// Advanced Settings
 		autofocus: {
 			type: 'boolean',

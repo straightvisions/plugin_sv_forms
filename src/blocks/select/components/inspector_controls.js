@@ -4,6 +4,7 @@ import LabelSettings from './inspector_controls/label_settings';
 import Options from './inspector_controls/options';
 import ColorSettings from './inspector_controls/color_settings';
 import BorderSettings from './inspector_controls/border_settings';
+import ValidationSettings from './inspector_controls/validation_setting';
 import AdvancedSettings from './inspector_controls/advanced_settings';
 
 const { Fragment } = wp.element;
@@ -20,6 +21,7 @@ export default ( { props, wrapper, inputs } ) => {
                 <Options props={ props } />
                 <ColorSettings props={ props } />
                 <BorderSettings props={ props } />
+                <ValidationSettings props={ props } />
             </InspectorControls>
             <InspectorAdvancedControls>
                 <AdvancedSettings props={ props } />

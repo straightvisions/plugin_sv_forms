@@ -115,6 +115,11 @@ class select extends sv_forms {
 						'default' => 0,
 					),
 
+					// Validation Settings
+					'required' => array(
+						'type' => 'bool',
+					),
+
 					// Advanced Settings
 					'autofocus' => array(
 						'type' => 'bool',

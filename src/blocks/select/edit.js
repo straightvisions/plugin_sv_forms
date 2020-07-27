@@ -146,6 +146,9 @@ export default class extends Component {
                 borderWidthBottom,
                 borderWidthLeft,
 
+                // Validation Settings
+                required,
+
                 // Advanced Settings
                 disabled,
                 readonly,
@@ -172,6 +175,7 @@ export default class extends Component {
                     <SelectControl
                         name={ name }
                         label={ label }
+                        required={ required }
                         value={ defaultValue }
                         onChange={ value => this.setDefaultValue( value ) }
                         options={ parsedOptions }
@@ -180,8 +184,8 @@ export default class extends Component {
                         hideLabelFromVision={ true }
                         style={ style }
                         className={ [ 
-                            inputColorClass, 
-                            inputBackgroundColorClass 
+                            inputColorClass,
+                            inputBackgroundColorClass
                         ] }
                     />
                 </div>
