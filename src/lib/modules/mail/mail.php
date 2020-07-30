@@ -6,25 +6,28 @@ class mail extends modules {
 
 	// Sends a mail to the user and the admin
 	public function send_mails( object $attr, array $data ): mail {
-		$this->send_user_mails( $attr, $data )->send_admin_mails( $attr, $data );
+    	$status = array(
+    	    'user'=>	$this->send_user_mails( $attr, $data ),
+    	    'admin'=>	$this->send_admin_mails( $attr, $data ),
+	    ); // keeping this for debug
 
 		// Deletes all uploaded files from the server, after sended via mail
 		$this->files->delete_files();
 
-		return $this;
+		return $this; // why returning self? should return $status
 	}
 
 	// Sends a mail
-	private function send_mail( $to, string $subject, string $content, array $headers, array $attachments ): mail {
+	private function send_mail( $to, string $subject, string $content, array $headers, array $attachments ) {
 		add_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
 		$mail_status = wp_mail( $to, $subject, $content, $headers, $attachments );
 		remove_filter( 'wp_mail_content_type', function() { return 'text/html'; } );
 
-		return $this;
+		return $mail_status;
 	}
 
 	// Sends a mail to a auser
-	private function send_user_mails( object $attr, array $data ): mail {
+	private function send_user_mails( object $attr, array $data ) {
 		if ( ! $attr || ! $data || ! isset( $attr->userMailSend ) || ! $attr->userMailSend ) return $this;
 		if ( ! isset( $attr->userMailContent ) || empty( $attr->userMailContent ) ) return $this;
 
@@ -61,14 +64,12 @@ class mail extends modules {
 		} else {
 			$headers = array();
 		}
-		
-		$this->send_mail( $to, $subject, $content, $headers );
-
-		return $this;
+	
+		return $this->send_mail( $to, $subject, $content, $headers, array() );
 	}
 	
 	// Sends a mail to an admin
-	private function send_admin_mails( object $attr, array $data ): mail {
+	private function send_admin_mails( object $attr, array $data ) {
 		if ( ! $attr || ! $data || ! isset( $attr->adminMailSend ) || ! $attr->adminMailSend ) return $this;
 		if ( ! isset( $attr->adminMailContent ) || empty( $attr->adminMailContent ) ) return $this;
 
@@ -108,9 +109,7 @@ class mail extends modules {
 		// Attachments
 		$attachments = $this->get_attachments( $attr, $data );
 
-		$this->send_mail( $to, $subject, $content, $headers, $attachments );
-
-		return $this;
+		return $this->send_mail( $to, $subject, $content, $headers, $attachments );
 	}
 
 	// Returns the user mail adress
