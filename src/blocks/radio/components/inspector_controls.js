@@ -3,6 +3,7 @@ import InputSettings from './inspector_controls/input_settings';
 import Options from './inspector_controls/options';
 import AdvancedSettings from './inspector_controls/advanced_settings';
 import ColorSettings from './inspector_controls/color_settings';
+import BorderSettings from './inspector_controls/border_settings';
 
 const { Fragment } = wp.element;
 const { InspectorControls, InspectorAdvancedControls } = wp.blockEditor;
@@ -16,6 +17,7 @@ export default ( { props, wrapper, inputs } ) => {
                 <InputSettings props={ props } wrapper={ wrapper } inputs={ inputs } />
                 <Options props={ props } />
                 <ColorSettings props={ props } />
+                <BorderSettings props={ props } />
             </InspectorControls>
             <InspectorAdvancedControls>
                 <AdvancedSettings props={ props } />

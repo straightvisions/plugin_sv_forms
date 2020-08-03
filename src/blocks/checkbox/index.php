@@ -59,6 +59,28 @@ class checkbox extends sv_forms {
 						'type' => 'string',
 					),
 
+					// Border Settings
+					'borderRadius' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
+					'borderWidthTop' => array(
+						'type' => 'number',
+						'default' => 1,
+					),
+					'borderWidthRight' => array(
+						'type' => 'number',
+						'default' => 1,
+					),
+					'borderWidthBottom' => array(
+						'type' => 'number',
+						'default' => 1,
+					),
+					'borderWidthLeft' => array(
+						'type' => 'number',
+						'default' => 1,
+					),
+
 					// Validation Settings
 					'required' => array(
 						'type' => 'bool',
@@ -69,6 +91,15 @@ class checkbox extends sv_forms {
 						'type' => 'string',
 					),
 					'labelColorClass' => array(
+						'type' => 'string',
+					),
+					'inputBackgroundColor' => array(
+						'type' => 'string',
+					),
+					'inputBackgroundColorClass' => array(
+						'type' => 'string',
+					),
+					'inputBorderColor' => array(
 						'type' => 'string',
 					),
 
@@ -129,6 +160,66 @@ class checkbox extends sv_forms {
 		// Disabled
 		if ( isset( $this->block_attr['disabled'] ) && $this->block_attr['disabled'] ) {
 			$attr[] = 'disabled';
+		}
+
+		// Class
+		$class = array();
+
+		// Input Background Color
+		if ( 
+			isset( $this->block_attr['inputBackgroundColor'] ) 
+			&& $this->block_attr['inputBackgroundColorClass'] 
+		) {
+            $class[] = $this->block_attr['inputBackgroundColorClass'];
+		}
+		
+		if ( ! empty( $class ) ) {
+			$attr[]	= 'class="' . implode( ' ', $class ) . '"';
+		}
+
+		// Style
+		$style = array();
+
+		// Input Background Color
+		if ( 
+			isset( $this->block_attr['inputBackgroundColor'] ) 
+			&& ! $this->block_attr['inputBackgroundColorClass'] 
+		) {
+			$style[] = 'background-color:' . $this->block_attr['inputBackgroundColor'];
+		}
+		
+		// Input Border Color
+		if ( isset( $this->block_attr['inputBorderColor'] ) ) {
+			$style[] = 'border-color:' . $this->block_attr['inputBorderColor'];
+		}
+
+		// Border Radius
+		if ( isset( $this->block_attr['borderRadius'] ) ) {
+			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
+		}
+
+		// Border Width Top
+		if ( isset( $this->block_attr['borderWidthTop'] ) ) {
+			$style[] = 'border-top-width:' . $this->block_attr['borderWidthTop'] . 'px';
+		}
+
+		// Border Width Right
+		if ( isset( $this->block_attr['borderWidthRight'] ) ) {
+			$style[] = 'border-right-width:' . $this->block_attr['borderWidthRight'] . 'px';
+		}
+
+		// Border Width Bottom
+		if ( isset( $this->block_attr['borderWidthBottom'] ) ) {
+			$style[] = 'border-bottom-width:' . $this->block_attr['borderWidthBottom'] . 'px';
+		}
+
+		// Border Width Left
+		if ( isset( $this->block_attr['borderWidthLeft'] ) ) {
+			$style[] = 'border-left-width:' . $this->block_attr['borderWidthLeft'] . 'px';
+		}
+
+		if ( ! empty( $style ) ) {
+			$attr[] = 'style="' . implode( ';', $style ) . '"';
 		}
 
 		return implode( ' ', $attr );

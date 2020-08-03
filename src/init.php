@@ -21,7 +21,7 @@ class init extends \sv_core\core_plugin {
 
         $this->set_section_title( $info['name'] );
         $this->set_section_desc( $info['desc'] );
-        $this->set_section_privacy( '<p>' . $this->get_section_title() . __(' is a forms builder. Admin has total control about data handling.',  'sv_posts').'</p>' );
+        $this->set_section_privacy( '<p>' . $this->get_section_title() . __(' is a forms builder. Admin has total control about data handling.',  'sv_forms').'</p>' );
     }
 }
 

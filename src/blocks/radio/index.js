@@ -57,6 +57,37 @@ registerBlockType( 'straightvisions/sv-forms-radio', {
 		labelColorClass: {
 			type: 'string',
 		},
+		inputBackgroundColor: {
+			type: 'string',
+		},
+		inputBackgroundColorClass: {
+			type: 'string',
+		},
+		inputBorderColor: {
+			type: 'string',
+		},
+
+		// Border Settings
+		borderRadius: {
+			type: 'number',	
+			default: 0,
+		},
+		borderWidthTop: {
+			type: 'number',
+			default: 1,
+		},
+		borderWidthRight: {
+			type: 'number',
+			default: 1,
+		},
+		borderWidthBottom: {
+			type: 'number',
+			default: 1,
+		},
+		borderWidthLeft: {
+			type: 'number',
+			default: 1,
+		},
 
 		// Advanced Settings
 		disabled: {

@@ -12,12 +12,19 @@ export default ( { props } ) => {
     // Block Attributes
     const { 
         setAttributes,
-        attributes: { labelColor }
+        attributes: { 
+            labelColor, 
+            inputBackgroundColor,
+            inputBorderColor,
+        }
     } = props;
 
     // Functions to set the block attributes
-    const setLabelColor         = labelColor        => setAttributes({ labelColor });
-    const setLabelColorClass    = labelColorClass   => setAttributes({ labelColorClass });
+    const setLabelColor                 = labelColor                => setAttributes({ labelColor });
+    const setLabelColorClass            = labelColorClass           => setAttributes({ labelColorClass });
+    const setInputBackgroundColor       = inputBackgroundColor      => setAttributes({ inputBackgroundColor });
+    const setInputBackgroundColorClass  = inputBackgroundColorClass => setAttributes({ inputBackgroundColorClass });
+    const setInputBorderColor           = inputBorderColor          => setAttributes({ inputBorderColor });
     
     // Returns an color object if this color is defined in the editor
     const getColorObject = color => {
@@ -47,12 +54,25 @@ export default ( { props } ) => {
             },
             label: __( 'Label', 'sv_forms' ),
         },
+        {
+            value: inputBackgroundColor,
+            onChange: value => { 
+                setInputBackgroundColor( value );
+                setInputBackgroundColorClass( getColorClass( value, true ) );
+            },
+            label: __( 'Input Background', 'sv_forms' ),
+        },
+        {
+            value: inputBorderColor,
+            onChange: value => setInputBorderColor( value ),
+            label: __( 'Input Border', 'sv_forms' ),
+        },
     ];
 
     return(
         <PanelColorSettings
             title={ __( 'Color Settings', 'sv_forms' ) }
-            initialOpen={ true }
+            initialOpen={ false }
             colorSettings={ colorSettings }
         >
         </PanelColorSettings>

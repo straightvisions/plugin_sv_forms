@@ -120,23 +120,53 @@ export default class extends Component {
         const {
             className,
             attributes: {
+                // Input Settings
+                name,
                 defaultValue,
+
+                // Color Settings
+                inputBackgroundColor,
+                inputBackgroundColorClass,
+                inputBorderColor,
+
+                // Border Settings
+                borderRadius,
+                borderWidthTop,
+                borderWidthRight,
+                borderWidthBottom,
+                borderWidthLeft,
+
+                // Advanced Settings
                 disabled
             }
         } = this.props;
+
         const parsedOptions = this.props.attributes.options ? 
             JSON.parse( this.props.attributes.options )
             : [];
+
+        const style = {
+            backgroundColor:    inputBackgroundColor, 
+            borderColor:        inputBorderColor,
+            borderRadius:       borderRadius,
+            borderTopWidth:     borderWidthTop,
+            borderRightWidth:   borderWidthRight,
+            borderBottomWidth:  borderWidthBottom,
+            borderLeftWidth:    borderWidthLeft,
+        };
 
         return (
             <Fragment>
                 <div className={ className }>
                     { this.Label() }
                     <RadioControl
+                        name={ name }
                         selected={ defaultValue }
                         onChange={ option => this.setDefaultValue( option ) }
                         options={ parsedOptions }
                         disabled={ disabled }
+                        style={ style }
+                        className={ [ inputBackgroundColorClass ] }
                     />
                 </div>
                 <WrapperConsumer>{ wrapper => { this.wrapper = wrapper } }</WrapperConsumer>

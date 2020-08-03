@@ -120,13 +120,41 @@ export default class extends Component {
         const {
             className,
             attributes: {
+                // Input Settings
                 name,
                 value,
                 isChecked,
+
+                // Color Settings
+                inputBackgroundColor,
+                inputBackgroundColorClass,
+                inputBorderColor,
+
+                // Validation Settings
                 required,
+
+                // Border Settings
+                borderRadius,
+                borderWidthTop,
+                borderWidthRight,
+                borderWidthBottom,
+                borderWidthLeft,
+
+                // Advanced Settings
                 disabled,
+                readonly,
             }
         } = this.props;
+
+        const style = {
+            backgroundColor:    inputBackgroundColor, 
+            borderColor:        inputBorderColor,
+            borderRadius:       borderRadius,
+            borderTopWidth:     borderWidthTop,
+            borderRightWidth:   borderWidthRight,
+            borderBottomWidth:  borderWidthBottom,
+            borderLeftWidth:    borderWidthLeft,
+        };
         
         return (
             <Fragment>
@@ -136,7 +164,10 @@ export default class extends Component {
                         value={ value }
                         required={ required }
                         disabled={ disabled }
+                        readonly={ readonly }
                         checked={ isChecked }
+                        style={ style }
+                        className={ [ inputBackgroundColorClass ] }
                         onChange={ () => this.setCheck( ! isChecked ) }
                     />
                     <this.Label />

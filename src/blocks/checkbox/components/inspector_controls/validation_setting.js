@@ -20,7 +20,7 @@ export default ( { props } ) => {
     return(
         <PanelBody
             title={ __( 'Validation Settings', 'sv_forms' ) }
-            initialOpen={ true }
+            initialOpen={ false }
         >
             <ToggleControl
                 label={ __( 'Required', 'sv_forms' ) }
