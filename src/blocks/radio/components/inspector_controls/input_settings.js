@@ -1,8 +1,7 @@
 // Required Components
-import { InputsProvider } from '../../../../blocks';
-
 const { __ } = wp.i18n;
 const { PanelBody, TextControl, Notice } = wp.components;
+const { updateBlockAttributes } = wp.data.dispatch('core/block-editor');
 
 export default ( { props, wrapper, inputs } ) => {
     if ( ! props || ! wrapper || ! inputs ) return '';
@@ -68,7 +67,7 @@ export default ( { props, wrapper, inputs } ) => {
                 newInputs.push( newInput );
             }
     
-            <InputsProvider value={ newInputs } />
+            updateBlockAttributes( wrapper.clientId, { formInputs: JSON.stringify( newInputs ) } );
         }
 
         updateChilds();

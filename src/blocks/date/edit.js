@@ -1,10 +1,11 @@
 // Required Components
 import InspectorControls from './components/inspector_controls';
-import { WrapperConsumer, InputsProvider, InputsConsumer } from '../../blocks';
+import { WrapperConsumer, InputsConsumer } from '../../blocks';
 
 const { select } = wp.data;
 const { BaseControl, DatePicker } = wp.components;
 const { Component, Fragment } = wp.element;
+const { updateBlockAttributes } = wp.data.dispatch('core/block-editor');
 
 export default class extends Component {
     constructor(props) {
@@ -40,7 +41,7 @@ export default class extends Component {
 
             newInputs.push( newInput );
 
-            <InputsProvider value={ newInputs } />
+            updateBlockAttributes( this.wrapper.clientId, { formInputs: JSON.stringify( newInputs ) } );
         }
     }
 
@@ -53,7 +54,7 @@ export default class extends Component {
         if ( index >= 0 ) {
             newInputs.splice( index, 1 );
 
-            <InputsProvider value={ newInputs } />
+            updateBlockAttributes( this.wrapper.clientId, { formInputs: JSON.stringify( newInputs ) } );
         }
     }
 

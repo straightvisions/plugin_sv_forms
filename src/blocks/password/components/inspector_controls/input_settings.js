@@ -1,6 +1,4 @@
 // Required Components
-import { InputsProvider } from '../../../../blocks';
-
 const { __ } = wp.i18n;
 const { 
     PanelBody,
@@ -9,6 +7,7 @@ const {
     FontSizePicker 
 } = wp.components;
 const { fontSizes } = wp.data.select('core/block-editor').getSettings();
+const { updateBlockAttributes } = wp.data.dispatch('core/block-editor');
 
 export default ( { props, wrapper, inputs } ) => {
     if ( ! props || ! wrapper || ! inputs ) return '';
@@ -74,7 +73,7 @@ export default ( { props, wrapper, inputs } ) => {
                 newInputs.push( newInput );
             }
     
-            <InputsProvider value={ newInputs } />
+            updateBlockAttributes( wrapper.clientId, { formInputs: JSON.stringify( newInputs ) } );
         }
 
         updateChilds();

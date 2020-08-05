@@ -18,6 +18,7 @@ export default class extends Component {
         super(...arguments);
 
         this.props = props;
+        this.oldProps = {};
         this.template = [
             ['straightvisions/sv-forms-form'],
             ['straightvisions/sv-forms-thank-you'],
@@ -31,7 +32,7 @@ export default class extends Component {
          * If the current block is a Forms block, the amount of reuseable blocks
          * increases and the current block is missing in the editor, it means 
          * that the current Forms block was transformed into a reuseable block.
-         */
+         *
         const currentReuseableBlocks = __experimentalGetReusableBlocks();
         const currentReuseableBlocksCount = Object.values( currentReuseableBlocks ).length;
 
@@ -52,6 +53,7 @@ export default class extends Component {
                 console.log( this.props.attributes.formLabel + ' is now a reuseable block.' );
             }
         } );
+        */
     }
 
     // React Lifecycle Methos
@@ -66,7 +68,14 @@ export default class extends Component {
         this.toggleBody( false );
     }
 
+    componentWillUpdate = () => {
+        this.oldProps = this.props;
+    }
+
     componentDidUpdate = () => {
+        // Only updates when the attributes have changed
+        if ( _.isEqual( this.props.attributes, this.oldProps.attributes ) ) return;
+
         this.updatePostMeta( 'update' );
     }
 
