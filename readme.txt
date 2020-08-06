@@ -227,6 +227,14 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 * Initial release
 
+== Upgrade Notice ==
+
+= 1.4.17 =
+
+### Bug Fixes
+
+* Fixed a bug where new Form Blocks wouldn't save
+
 == Missing a feature? ==
 
 Please use the plugin support forum here on WordPress.org. We will add your wish - if achievable - on our todo list. Please note that we can not give any time estimate for that list or any feature request.
