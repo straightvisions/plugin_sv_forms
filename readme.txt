@@ -2,9 +2,9 @@
 Contributors: matthias-reuter, matthiasbathke, dennisheiden, adrianchudzynski
 Donate link: https://straightvisions.com
 Tags: form-block, form-builder, contact-form
-Requires PHP: 7.0
+Requires PHP: 7.3
 Requires at least: 5.3.2
-Tested up to: 5.4.2
+Tested up to: 5.5.0
 Stable tag: 1.4.17
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
@@ -29,8 +29,8 @@ Our SV Forms Block for the WordPress Gutenberg Block-Editor offers you full cont
 <a href="https://straightvisions.com/en/projects/sv-forms/">More information and preview</a>
 
 = Requires: =
-* PHP 7.0 or higher
-* WordPress 5.0.x or higher
+* PHP 7.3 or higher
+* WordPress 5.3 or higher
 
 = Plugin Description =
 
