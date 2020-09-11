@@ -1,8 +1,14 @@
 // Select
 .wp-block-straightvisions-sv-forms-select select.components-select-control__input {
-    -webkit-appearance: menulist !important;
-    -moz-appearance: menulist !important;
     min-height: 50px !important;
+}
+
+.wp-block-straightvisions-sv-forms-select .components-flex__item {
+    display: none;
+}
+
+.wp-block-straightvisions-sv-forms-select .components-input-control__backdrop {
+    border: none !important;
 }
 
 // Option Buttons

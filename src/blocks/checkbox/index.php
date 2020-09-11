@@ -59,10 +59,29 @@ class checkbox extends sv_forms {
 						'type' => 'string',
 					),
 
+					// Color Settings
+					'labelColor' => array(
+						'type' => 'string',
+					),
+					'labelColorClass' => array(
+						'type' => 'string',
+					),
+					'inputBackgroundColor' => array(
+						'type' => 'string',
+						'default' => '#FFFFFF'
+					),
+					'inputBackgroundColorClass' => array(
+						'type' => 'string',
+					),
+					'inputBorderColor' => array(
+						'type' => 'string',
+						'default' => '#000000'
+					),
+
 					// Border Settings
-					'borderRadius' => array(
-						'type' => 'number',
-						'default' => 0,
+					'borderStyle' => array(
+						'type' => 'string',
+						'default' => 'solid'
 					),
 					'borderWidthTop' => array(
 						'type' => 'number',
@@ -80,27 +99,14 @@ class checkbox extends sv_forms {
 						'type' => 'number',
 						'default' => 1,
 					),
+					'borderRadius' => array(
+						'type' => 'number',
+						'default' => 0,
+					),
 
 					// Validation Settings
 					'required' => array(
 						'type' => 'bool',
-					),
-
-					// Color Settings
-					'labelColor' => array(
-						'type' => 'string',
-					),
-					'labelColorClass' => array(
-						'type' => 'string',
-					),
-					'inputBackgroundColor' => array(
-						'type' => 'string',
-					),
-					'inputBackgroundColorClass' => array(
-						'type' => 'string',
-					),
-					'inputBorderColor' => array(
-						'type' => 'string',
 					),
 
 					// Advanced Settings
@@ -188,14 +194,14 @@ class checkbox extends sv_forms {
 			$style[] = 'background-color:' . $this->block_attr['inputBackgroundColor'];
 		}
 		
-		// Input Border Color
+		// Border Color
 		if ( isset( $this->block_attr['inputBorderColor'] ) ) {
 			$style[] = 'border-color:' . $this->block_attr['inputBorderColor'];
 		}
 
-		// Border Radius
-		if ( isset( $this->block_attr['borderRadius'] ) ) {
-			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
+		// Border Style
+		if ( isset( $this->block_attr['borderStyle'] ) ) {
+			$style[] = 'border-style:' . $this->block_attr['borderStyle'];
 		}
 
 		// Border Width Top
@@ -216,6 +222,11 @@ class checkbox extends sv_forms {
 		// Border Width Left
 		if ( isset( $this->block_attr['borderWidthLeft'] ) ) {
 			$style[] = 'border-left-width:' . $this->block_attr['borderWidthLeft'] . 'px';
+		}
+
+		// Border Radius
+		if ( isset( $this->block_attr['borderRadius'] ) ) {
+			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
 		}
 
 		if ( ! empty( $style ) ) {

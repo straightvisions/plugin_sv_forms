@@ -48,7 +48,7 @@ class form extends sv_forms {
 						'default' => false,
 					),
 					'placeholderColor' => array(
-						'type' => 'text',
+						'type' => 'string',
 						'default' => '#808080',
 					),
 					

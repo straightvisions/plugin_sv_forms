@@ -24,11 +24,12 @@ export default withSelect( ( select, props ) => {
             borderColor,
 
             // Border Settings
-            borderRadius,
+            borderStyle,
             borderWidthTop,
             borderWidthRight,
             borderWidthBottom,
             borderWidthLeft,
+            borderRadius,
         } 
     } = props;
 
@@ -36,11 +37,12 @@ export default withSelect( ( select, props ) => {
         color:              textColor,
         backgroundColor:    backgroundColor,
         borderColor:        borderColor,
-        borderRadius:       borderRadius,
+        borderStyle:        borderStyle,
         borderTopWidth:     borderWidthTop,
         borderRightWidth:   borderWidthRight,
         borderBottomWidth:  borderWidthBottom,
         borderLeftWidth:    borderWidthLeft,
+        borderRadius:       borderRadius,
     };
 
     // Returns a string in a slug compatible format

@@ -36,40 +36,47 @@ registerBlockType( 'straightvisions/sv-forms-submit', {
 		// Color Settings
 		textColor: {
 			type: 'string',
+			default: '#000000'
 		},
 		textColorClass: {
 			type: 'string',
 		},
 		backgroundColor: {
 			type: 'string',
+			default: '#FFFFFF'
 		},
 		backgroundColorClass: {
 			type: 'string',
 		},
 		borderColor: {
 			type: 'string',
+			default: '#E5E5E5'
 		},
 
 		// Border Settings
-		borderRadius: {
-			type: 'number',	
-			default: 0,
+		borderStyle: {
+			type: 'string',
+			default: 'solid'
 		},
 		borderWidthTop: {
 			type: 'number',
-			default: 0,
+			default: 1,
 		},
 		borderWidthRight: {
 			type: 'number',
-			default: 0,
+			default: 1,
 		},
 		borderWidthBottom: {
 			type: 'number',
-			default: 0,
+			default: 1,
 		},
 		borderWidthLeft: {
 			type: 'number',
-			default: 0,
+			default: 1,
+		},
+		borderRadius: {
+			type: 'number',	
+			default: 5,
 		},
 		
 		// Advanced Settings

@@ -30,7 +30,7 @@ registerBlockType( 'straightvisions/sv-forms-form', {
 			default: false,
 		},
 		placeholderColor: {
-			type: 'text',
+			type: 'string',
 			default: '#808080',
 		},
 		

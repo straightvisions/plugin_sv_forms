@@ -63,12 +63,14 @@ class file extends sv_forms {
 					// Color Settings
 					'inputColor' => array(
 						'type' => 'string',
+						'default' => '#000000'
 					),
 					'inputColorClass' => array(
 						'type' => 'string',
 					),
 					'inputBackgroundColor' => array(
 						'type' => 'string',
+						'default' => '#FFFFFF'
 					),
 					'inputBackgroundColorClass' => array(
 						'type' => 'string',
@@ -81,28 +83,33 @@ class file extends sv_forms {
 					),
 					'inputBorderColor' => array(
 						'type' => 'string',
+						'default' => '#E5E5E5'
 					),
 
 					// Border Settings
-					'borderRadius' => array(
-						'type' => 'number',
-						'default' => 0,
+					'borderStyle' => array(
+						'type' => 'string',
+						'default' => 'solid'
 					),
 					'borderWidthTop' => array(
 						'type' => 'number',
-						'default' => 0,
+						'default' => 1,
 					),
 					'borderWidthRight' => array(
 						'type' => 'number',
-						'default' => 0,
+						'default' => 1,
 					),
 					'borderWidthBottom' => array(
 						'type' => 'number',
-						'default' => 0,
+						'default' => 1,
 					),
 					'borderWidthLeft' => array(
 						'type' => 'number',
-						'default' => 0,
+						'default' => 1,
+					),
+					'borderRadius' => array(
+						'type' => 'number',
+						'default' => 5,
 					),
 
 					// Validation Settings

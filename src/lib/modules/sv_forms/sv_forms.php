@@ -349,14 +349,14 @@ class sv_forms extends modules {
 			$style[] = 'font-size:' . $block_attr['inputFontSize'] . 'px';
 		}
 
-		// Input Border Color
+		// Border Color
 		if ( isset( $block_attr['inputBorderColor'] ) ) {
 			$style[] = 'border-color:' . $block_attr['inputBorderColor'];
 		}
 
-		// Border Radius
-		if ( isset( $block_attr['borderRadius'] ) ) {
-			$style[] = 'border-radius:' . $block_attr['borderRadius'] . 'px';
+		// Border Style
+		if ( isset( $block_attr['borderStyle'] ) ) {
+			$style[] = 'border-style:' . $block_attr['borderStyle'];
 		}
 
 		// Border Width Top
@@ -377,6 +377,11 @@ class sv_forms extends modules {
 		// Border Width Left
 		if ( isset( $block_attr['borderWidthLeft'] ) ) {
 			$style[] = 'border-left-width:' . $block_attr['borderWidthLeft'] . 'px';
+		}
+
+		// Border Radius
+		if ( isset( $block_attr['borderRadius'] ) ) {
+			$style[] = 'border-radius:' . $block_attr['borderRadius'] . 'px';
 		}
 
 		if ( ! empty( $style ) ) {

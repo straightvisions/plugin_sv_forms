@@ -151,11 +151,12 @@ export default class extends Component {
                 maxlength,
 
                 // Border Settings
-                borderRadius,
+                borderStyle,
                 borderWidthTop,
                 borderWidthRight,
                 borderWidthBottom,
                 borderWidthLeft,
+                borderRadius,
 
                 // Advanced Settings
                 disabled,
@@ -168,11 +169,12 @@ export default class extends Component {
             backgroundColor:    inputBackgroundColor, 
             fontSize:           inputFontSize,
             borderColor:        inputBorderColor,
-            borderRadius:       borderRadius,
+            borderStyle:        borderStyle,
             borderTopWidth:     borderWidthTop,
             borderRightWidth:   borderWidthRight,
             borderBottomWidth:  borderWidthBottom,
             borderLeftWidth:    borderWidthLeft,
+            borderRadius:       borderRadius,
         };
 
         return (

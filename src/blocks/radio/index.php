@@ -60,9 +60,9 @@ class radio extends sv_forms {
 					),
 
 					// Border Settings
-					'borderRadius' => array(
-						'type' => 'number',
-						'default' => 0,
+					'borderStyle' => array(
+						'type' => 'string',
+						'default' => 'solid'
 					),
 					'borderWidthTop' => array(
 						'type' => 'number',
@@ -80,6 +80,10 @@ class radio extends sv_forms {
 						'type' => 'number',
 						'default' => 1,
 					),
+					'borderRadius' => array(
+						'type' => 'number',
+						'default' => 10,
+					),
 
 					// Color Settings
 					'labelColor' => array(
@@ -90,12 +94,14 @@ class radio extends sv_forms {
 					),
 					'inputBackgroundColor' => array(
 						'type' => 'string',
+						'default' => '#FFFFFF'
 					),
 					'inputBackgroundColorClass' => array(
 						'type' => 'string',
 					),
 					'inputBorderColor' => array(
 						'type' => 'string',
+						'default' => '#000000'
 					),
 
 					// Advanced Settings
@@ -171,14 +177,14 @@ class radio extends sv_forms {
 			$style[] = 'background-color:' . $this->block_attr['inputBackgroundColor'];
 		}
 		
-		// Input Border Color
+		// Border Color
 		if ( isset( $this->block_attr['inputBorderColor'] ) ) {
 			$style[] = 'border-color:' . $this->block_attr['inputBorderColor'];
 		}
 
-		// Border Radius
-		if ( isset( $this->block_attr['borderRadius'] ) ) {
-			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
+		// Border Style
+		if ( isset( $this->block_attr['borderStyle'] ) ) {
+			$style[] = 'border-style:' . $this->block_attr['borderStyle'];
 		}
 
 		// Border Width Top
@@ -199,6 +205,11 @@ class radio extends sv_forms {
 		// Border Width Left
 		if ( isset( $this->block_attr['borderWidthLeft'] ) ) {
 			$style[] = 'border-left-width:' . $this->block_attr['borderWidthLeft'] . 'px';
+		}
+
+		// Border Radius
+		if ( isset( $this->block_attr['borderRadius'] ) ) {
+			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
 		}
 
 		if ( ! empty( $style ) ) {

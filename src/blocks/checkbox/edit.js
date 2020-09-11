@@ -135,11 +135,12 @@ export default class extends Component {
                 required,
 
                 // Border Settings
-                borderRadius,
+                borderStyle,
                 borderWidthTop,
                 borderWidthRight,
                 borderWidthBottom,
                 borderWidthLeft,
+                borderRadius,
 
                 // Advanced Settings
                 disabled,
@@ -150,11 +151,12 @@ export default class extends Component {
         const style = {
             backgroundColor:    inputBackgroundColor, 
             borderColor:        inputBorderColor,
-            borderRadius:       borderRadius,
+            borderStyle:        borderStyle,
             borderTopWidth:     borderWidthTop,
             borderRightWidth:   borderWidthRight,
             borderBottomWidth:  borderWidthBottom,
             borderLeftWidth:    borderWidthLeft,
+            borderRadius:       borderRadius,
         };
         
         return (

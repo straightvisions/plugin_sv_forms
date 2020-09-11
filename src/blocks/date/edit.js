@@ -141,11 +141,12 @@ export default class extends Component {
                 inputBorderColor,
 
                 // Border Settings
-                borderRadius,
+                borderStyle,
                 borderWidthTop,
                 borderWidthRight,
                 borderWidthBottom,
                 borderWidthLeft,
+                borderRadius,
 
                 // Validation Settings
                 required,
@@ -161,11 +162,12 @@ export default class extends Component {
             backgroundColor:    inputBackgroundColor, 
             fontSize:           inputFontSize,
             borderColor:        inputBorderColor,
-            borderRadius:       borderRadius,
+            borderStyle:        borderStyle,
             borderTopWidth:     borderWidthTop,
             borderRightWidth:   borderWidthRight,
             borderBottomWidth:  borderWidthBottom,
             borderLeftWidth:    borderWidthLeft,
+            borderRadius:       borderRadius,
         };
 
         return (

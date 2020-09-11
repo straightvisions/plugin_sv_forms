@@ -63,12 +63,14 @@ registerBlockType( 'straightvisions/sv-forms-select', {
 		// Color Settings
 		inputColor: {
 			type: 'string',
+			default: '#000000'
 		},
 		inputColorClass: {
 			type: 'string',
 		},
 		inputBackgroundColor: {
 			type: 'string',
+			default: '#FFFFFF'
 		},
 		inputBackgroundColorClass: {
 			type: 'string',
@@ -81,28 +83,33 @@ registerBlockType( 'straightvisions/sv-forms-select', {
 		},
 		inputBorderColor: {
 			type: 'string',
+			default: '#E5E5E5'
 		},
 
 		// Border Settings
-		borderRadius: {
-			type: 'number',	
-			default: 0,
+		borderStyle: {
+			type: 'string',
+			default: 'solid'
 		},
 		borderWidthTop: {
 			type: 'number',
-			default: 0,
+			default: 1,
 		},
 		borderWidthRight: {
 			type: 'number',
-			default: 0,
+			default: 1,
 		},
 		borderWidthBottom: {
 			type: 'number',
-			default: 0,
+			default: 1,
 		},
 		borderWidthLeft: {
 			type: 'number',
-			default: 0,
+			default: 1,
+		},
+		borderRadius: {
+			type: 'number',	
+			default: 5,
 		},
 
 		// Validation Settings

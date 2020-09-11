@@ -45,10 +45,22 @@
     margin: 0;
     max-width: 100%;
     padding: .75em 1em;
-    width: 100%;
     min-height: 40px;
     outline: none;
     box-shadow: none;
     text-decoration: none;
     transition: color .25s ease, background-color .25s, border-color .25s ease;
+}
+
+.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-text input,
+.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-email input,
+.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-url input,
+.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-number input,
+.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-phone input,
+.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-password input,
+.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-textarea textarea,
+.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-select select,
+.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-date input,
+.wp-block-straightvisions-sv-forms-form .wp-block-straightvisions-sv-forms-file input {
+    width: 100%;
 }

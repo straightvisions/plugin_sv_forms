@@ -49,40 +49,47 @@ class submit extends sv_forms {
 					// Color Settings
 					'textColor' => array(
 						'type' => 'string',
+						'default' => '#000000'
 					),
 					'textColorClass'=> array(
 						'type' => 'string',
 					),
 					'backgroundColor' => array(
 						'type' => 'string',
+						'default' => '#FFFFFF'
 					),
 					'backgroundColorClass' => array(
 						'type' => 'string',
 					),
 					'borderColor' => array(
 						'type' => 'string',
+						'default' => '#E5E5E5'
 					),
 
 					// Border Settings
-					'borderRadius' => array(
-						'type' => 'number',
-						'default' => 0,
+					'borderStyle' => array(
+						'type' => 'string',
+						'default' => 'solid'
 					),
 					'borderWidthTop' => array(
 						'type' => 'number',
-						'default' => 0,
+						'default' => 1,
 					),
 					'borderWidthRight' => array(
 						'type' => 'number',
-						'default' => 0,
+						'default' => 1,
 					),
 					'borderWidthBottom' => array(
 						'type' => 'number',
-						'default' => 0,
+						'default' => 1,
 					),
 					'borderWidthLeft' => array(
 						'type' => 'number',
-						'default' => 0,
+						'default' => 1,
+					),
+					'borderRadius' => array(
+						'type' => 'number',
+						'default' => 5,
 					),
 
 					// Advanced Settings
@@ -150,9 +157,9 @@ class submit extends sv_forms {
 			$style[] = 'border-color:' . $this->block_attr['borderColor'];
 		}
 
-		// Border Radius
-		if ( isset( $this->block_attr['borderRadius'] ) ) {
-			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
+		// Border Style
+		if ( isset( $this->block_attr['borderStyle'] ) ) {
+			$style[] = 'border-style:' . $this->block_attr['borderStyle'];
 		}
 
 		// Border Width Top
@@ -173,6 +180,11 @@ class submit extends sv_forms {
 		// Border Width Left
 		if ( isset( $this->block_attr['borderWidthLeft'] ) ) {
 			$style[] = 'border-left-width:' . $this->block_attr['borderWidthLeft'] . 'px';
+		}
+
+		// Border Radius
+		if ( isset( $this->block_attr['borderRadius'] ) ) {
+			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
 		}
 
 		if ( ! empty( $style ) ) {
