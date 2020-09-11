@@ -55,6 +55,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 ### Features
 
 * Added "Border Style" to inspector panel "Border "Settings"
+* Added translation for "German"
 
 ### Improvements
 

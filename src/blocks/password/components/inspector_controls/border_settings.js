@@ -54,7 +54,7 @@ export default ( { props } ) => {
                     { label: __( 'Dotted', 'sv_forms' ), value: 'dotted' },
                     { label: __( 'Dashed', 'sv_forms' ), value: 'dashed' },
                     { label: __( 'Double', 'sv_forms' ), value: 'double' },
-                    { label: __( 'Grooe', 'sv_forms' ), value: 'groove' },
+                    { label: __( 'Groove', 'sv_forms' ), value: 'groove' },
                     { label: __( 'Ridge', 'sv_forms' ), value: 'ridge' },
                     { label: __( 'Inset', 'sv_forms' ), value: 'inset' },
                     { label: __( 'Outset', 'sv_forms' ), value: 'outset' },

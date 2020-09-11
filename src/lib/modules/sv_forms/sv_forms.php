@@ -2,9 +2,14 @@
 namespace sv_forms;
 
 class sv_forms extends modules {
+	protected $lang_dir = '';
+
 	public function init() {
+		$this->lang_dir = plugin_dir_path( $this->get_root()->get_path() ) . 'languages';
+
 		$this->register_scripts()
 			 ->register_blocks()
+			 ->load_plugin_translation()
 			 ->set_section_title( __( 'Dashboard', 'sv_forms' ) )
 			 ->set_section_desc( __( 'Overview & Stats', 'sv_forms' ) )
 			 ->set_section_type( 'tools' )
@@ -120,6 +125,9 @@ class sv_forms extends modules {
 			filemtime( $this->get_root()->get_path( '../dist/blocks.build.js' ) ),
 			true
 		);
+
+		// Loads the ${domain}-${locale}-${handle}.json file, for block translation in the editor
+		wp_set_script_translations( 'sv-forms-block', 'sv_forms', $this->lang_dir );
 
 		if ( $this->check_gutenberg() ) {
 			wp_localize_script( 'sv-forms-block', 'gutenbergPlugin', array( 'version' => GUTENBERG_VERSION ) );
@@ -409,5 +417,11 @@ class sv_forms extends modules {
 		}
 
 		return implode( ' ', $attr );
+	}
+
+	public function load_plugin_translation(): sv_forms {
+		load_plugin_textdomain( 'sv_posts', false, $this->lang_dir );
+
+		return $this;
 	}
 }
