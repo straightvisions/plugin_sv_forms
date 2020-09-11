@@ -420,7 +420,7 @@ class sv_forms extends modules {
 	}
 
 	public function load_plugin_translation(): sv_forms {
-		load_plugin_textdomain( 'sv_posts', false, $this->lang_dir );
+		load_plugin_textdomain( 'sv_forms', false, $this->lang_dir );
 
 		return $this;
 	}
