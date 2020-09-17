@@ -5,7 +5,7 @@ Tags: form-block, form-builder, contact-form
 Requires PHP: 7.3
 Requires at least: 5.3.2
 Tested up to: 5.5.1
-Stable tag: 1.4.19
+Stable tag: 1.5.00
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -49,6 +49,12 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 3. You are using a caching plugin? Don't forget to flush caches now.
 
 == Changelog ==
+
+= 1.5.00 =
+
+### Various
+
+* SV Core improvements
 
 = 1.4.19 =
 
@@ -252,7 +258,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 == Upgrade Notice ==
 
-= 1.4.18 =
+= 1.5.00 =
 
 ### Various
 
