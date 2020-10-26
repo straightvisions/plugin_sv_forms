@@ -85,8 +85,9 @@
 }
 
 // Send To Authors
-.components-base-control.sv-forms-users-select {
-    margin-bottom: 0;
+.block-editor-block-inspector .sv-forms-users-select select.components-select-control__input {
+    min-height: 80px !important;
+    padding: 5px;
 }
 
 button.components-button.sv-forms-users-reset {

@@ -51,7 +51,15 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 == Changelog ==
 
 = 1.5.10 =
-* update core
+
+### Improvements
+
+* Added min-height and padding to mail- and userselect
+
+### Various
+
+* Update Core
+* Updated rest api method to retrieve users
 
 = 1.5.00 =
 

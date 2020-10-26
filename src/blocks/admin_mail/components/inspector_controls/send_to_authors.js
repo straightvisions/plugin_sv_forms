@@ -23,10 +23,15 @@ export default ( { props, authors } ) => {
     // Returns an array with authors options for the SelectControl
     const getAuthorOptions = () => {
         let options = [];
+        console.log('Authors');
+        console.log(authors);
 
         authors.map( author => {
             options.push( { label: author.name, value: author.id } );
         } );
+
+        console.log('Authors Options');
+        console.log(options);
 
         return options;
     };

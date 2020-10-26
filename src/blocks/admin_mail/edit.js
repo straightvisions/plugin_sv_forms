@@ -146,6 +146,7 @@ export default class extends Component {
     }
 
     render = () => {
+        const authors = select( 'core' ).getUsers({ roles: 'administrator, editor, author' });
         return (
             <Fragment>
                 <div className={ this.props.className }>
@@ -170,7 +171,7 @@ export default class extends Component {
                 </div>
                 <WrapperConsumer>{ wrapper => { this.setWrapperAttributes( wrapper ) } }</WrapperConsumer>
                 <InputsConsumer>{ inputs => { 
-                    return <InspectorControls props={ this.props } authors={ select( 'core' ).getAuthors() } wrapper={ this.wrapper } inputs={ inputs } />;
+                    return <InspectorControls props={ this.props } authors={ authors } wrapper={ this.wrapper } inputs={ inputs } />;
                 } }</InputsConsumer>
             </Fragment>
         );

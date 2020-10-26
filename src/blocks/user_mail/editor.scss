@@ -83,8 +83,9 @@
     margin-top: 0 !important;
 }
 // Send To Mails
-.components-base-control.sv-forms-mails-list {
-    margin-bottom: 0;
+.block-editor-block-inspector .sv-forms-mails-select select.components-select-control__input {
+    min-height: 80px !important;
+    padding: 5px;
 }
 
 button.components-button.sv-forms-mails-reset {
