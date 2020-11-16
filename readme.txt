@@ -4,8 +4,8 @@ Donate link: https://straightvisions.com
 Tags: form-block, form-builder, contact-form
 Requires PHP: 7.3
 Requires at least: 5.3.2
-Tested up to: 5.5.1
-Stable tag: 1.5.10
+Tested up to: 5.5.3
+Stable tag: 1.5.11
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -49,6 +49,12 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 3. You are using a caching plugin? Don't forget to flush caches now.
 
 == Changelog ==
+
+= 1.5.11 =
+
+### Various
+
+* SV Core improvements
 
 = 1.5.10 =
 
@@ -269,7 +275,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 == Upgrade Notice ==
 
-= 1.5.00 =
+= 1.5.11 =
 
 ### Various
 
