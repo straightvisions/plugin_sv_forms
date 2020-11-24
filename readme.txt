@@ -50,6 +50,12 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 == Changelog ==
 
+= 1.5.12 =
+
+### Various
+
+* Deactivated nonce check, due to problem with caching
+
 = 1.5.11 =
 
 ### Various

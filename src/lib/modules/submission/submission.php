@@ -11,12 +11,13 @@ class submission extends modules {
 	// This function will be called on form submit via Ajax
 	public function ajax_sv_forms_submit() {
 		if ( ! isset( $_POST) || empty( $_POST ) ) return;
-
+		/* @notice Deactivated due to problem with caching
 		$nonce = isset( $_POST[ $this->get_root()->get_prefix( 'nonce' ) ] ) 
 			? $_POST[ $this->get_root()->get_prefix( 'nonce' ) ] 
 			: false;
 
 		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'sv_forms_submit' ) ) return;
+		*/
 
 		$post_id = isset( $_POST[ $this->get_root()->get_prefix( 'post_id' ) ] ) 
 			? $_POST[ $this->get_root()->get_prefix( 'post_id' ) ] 
