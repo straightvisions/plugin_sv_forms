@@ -5,7 +5,7 @@ Tags: form-block, form-builder, contact-form
 Requires PHP: 7.3
 Requires at least: 5.3.2
 Tested up to: 5.5.3
-Stable tag: 1.5.11
+Stable tag: 1.5.12
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
