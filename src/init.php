@@ -6,8 +6,8 @@ if ( ! class_exists( '\sv_core\core_plugin' ) ) {
 }
 
 class init extends \sv_core\core_plugin {
-	const version 				= 1512;
-	const version_core_match 	= 5101;
+	const version 				= 1513;
+	const version_core_match 	= 5103;
 
     public function load() {
         if ( ! $this->setup( __NAMESPACE__, __FILE__ ) ) {
@@ -19,9 +19,10 @@ class init extends \sv_core\core_plugin {
             'desc'	=> 'Description'
         ));
 
-        $this->set_section_title( $info['name'] );
-        $this->set_section_desc( $info['desc'] );
-        $this->set_section_privacy( '<p>' . $this->get_section_title() . __(' is a forms builder. Admin has total control about data handling.',  'sv_forms').'</p>' );
+        $this->set_section_title( $info['name'] )
+			->set_section_desc( $info['desc'] )
+			->set_section_type('')
+			->set_section_privacy( '<p>' . $this->get_section_title() . __(' is a forms builder. Admin has total control about data handling.',  'sv_forms').'</p>' );
     }
 }
 
