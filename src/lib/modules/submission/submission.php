@@ -18,11 +18,11 @@ class submission extends modules {
 
 		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'sv_forms_submit' ) ) return;
 		*/
-
+		
 		$post_id = isset( $_POST[ $this->get_root()->get_prefix( 'post_id' ) ] ) 
 			? $_POST[ $this->get_root()->get_prefix( 'post_id' ) ] 
 			: false;
-
+		
 		if ( $post_id === false ) return;
 
 		// Variables
@@ -30,6 +30,15 @@ class submission extends modules {
 		$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_forms_forms', true ) );
 		$form_data	= json_decode( stripslashes( $_POST[ $this->get_root()->get_prefix( 'form_data' ) ] ), true );
 		$form_id	= $this->get_input_value( $this->get_root()->get_prefix( 'form_id' ), $form_data );
+		
+		// hotfix reusable blocks ------------------------------------------------
+		foreach($form_data as $key => $fdata){
+			if($fdata['name'] === 'post-id' && empty($fdata['value']) === false){
+				$post_id 	= intval( $fdata['value'] );
+				$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_forms_forms', true ) );
+			}
+		}
+		// hotfix reusable blocks ------------------------------------------------
 		
 		if ( $post_meta && $form_id && $post_meta->$form_id ) {
 			$this->handle_submission( $post_meta->$form_id, $form_data );
@@ -39,7 +48,7 @@ class submission extends modules {
 	// Handles the form submission when it passed the spam guard check
 	private function handle_submission( object $attr, array $data ): submission {
 		$sanitized_data = $this->get_sanitized_data( $attr, $data );
-		
+
 		if ( ! $this->spam_guard_check->run_check( $attr, $sanitized_data ) ) {
 			// Creates custom action hook, that passes a form data array and a form attr object
 			// action name: sv_forms_form_submit
@@ -47,7 +56,7 @@ class submission extends modules {
 
 			// Creates a post witht he submission data in it
 			$this->post->insert_post( $attr, $sanitized_data );
-			
+
 			// Sends a mail to the user and an admin
 			$this->mail->send_mails( $attr, $sanitized_data );
 		}
