@@ -1,5 +1,5 @@
 === SV Forms ===
-Contributors: matthias-reuter, matthiasbathke, dennisheiden, adrianchudzynski
+Contributors: matthias-reuter, matthiasbathke, dennisheiden
 Donate link: https://straightvisions.com
 Tags: form-block, form-builder, contact-form
 Requires PHP: 7.3
