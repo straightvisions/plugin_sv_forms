@@ -10,17 +10,17 @@ class modules extends init {
 	
 	public function init() {
 		// Do not change to following module init order!
-		$this->post->init();			// Always init first!
-		$this->taxonomy->init(); 		// Dependency: post module - Only init after post init
-		$this->archive->init();			// Dependency: taxonomy module - Only init after taxonomy init
+		$this->load_module('post');				// Always init first!
+		$this->load_module('taxonomy'); 		// Dependency: post module - Only init after post init
+		$this->load_module('archive');			// Dependency: taxonomy module - Only init after taxonomy init
 
 		// The following module init order can be changed
-		$this->files->init();
-		$this->submission->init();
-		$this->personal_data->init();
-		$this->sv_forms->init();
+		$this->load_module('files');
+		$this->load_module('submission');
+		$this->load_module('personal_data');
+		$this->load_module('sv_forms');
 
-        $this->freemius->init();
+		$this->load_module('freemius');
 	}
 
 	// Allows to use an array of needles for strpos
