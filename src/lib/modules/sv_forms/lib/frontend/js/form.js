@@ -1,7 +1,7 @@
 // Self executing anonymous function, to make the vars and functions private
 (function( jQuery ) {
     // Variables
-    const localized = js_sv_forms_modules_sv_forms_scripts_form_js;
+    const localized = js_sv_forms_sv_forms_scripts_form_js;
     let formsID = false;
 
     // Extends the JS String Object with a function that is similar to str_replace() function from PHP
