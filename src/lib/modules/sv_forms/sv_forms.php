@@ -316,7 +316,7 @@ class sv_forms extends modules {
 		// Input Color
 		if ( 
 			isset( $block_attr['inputColor'] ) 
-			&& $block_attr['inputColorClass'] 
+			&& isset($block_attr['inputColorClass'] )
 		) {
             $class[] = $block_attr['inputColorClass'];
 		}
@@ -324,7 +324,7 @@ class sv_forms extends modules {
 		// Input Background Color
 		if ( 
 			isset( $block_attr['inputBackgroundColor'] ) 
-			&& $block_attr['inputBackgroundColorClass'] 
+			&& isset($block_attr['inputBackgroundColorClass'] )
 		) {
             $class[] = $block_attr['inputBackgroundColorClass'];
 		}
@@ -339,7 +339,7 @@ class sv_forms extends modules {
 		// Input Color
 		if ( 
 			isset( $block_attr['inputColor'] ) 
-			&& ! $block_attr['inputColorClass'] 
+			&& ! isset($block_attr['inputColorClass'] )
 		) {
 			$style[] = 'color:' . $block_attr['inputColor'];
 		}
@@ -347,7 +347,7 @@ class sv_forms extends modules {
 		// Input Background Color
 		if ( 
 			isset( $block_attr['inputBackgroundColor'] ) 
-			&& ! $block_attr['inputBackgroundColorClass'] 
+			&& ! isset($block_attr['inputBackgroundColorClass'] )
 		) {
 			$style[] = 'background-color:' . $block_attr['inputBackgroundColor'];
 		}
