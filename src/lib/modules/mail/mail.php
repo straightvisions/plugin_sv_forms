@@ -176,22 +176,32 @@ class mail extends modules {
 
 	// Replaces all input value place holders, with their respectively input values
 	private function replace_input_values( string $content, array $data ): string {
+		$output  = $content;
 		// Finds all string that starts and ends with %
 		preg_match_all( '/%(.*?)%/s', $content, $input_names );
 
 		$input_values = array();
 
+		
 		foreach( $input_names[1] as $index => $name ) {
+
+	
 			$value = $this->get_input_value( $name, $data );
 
 			if ( $value && ! is_array( $value ) ) {
 				$input_values[ $index ] = $this->get_input_value( $name, $data );
 			}
 		}
+	
+		foreach($input_names[0] as $key => $name){
+			if( isset($input_values[$key]) ){
+				$output = str_replace( $name,  $input_values[$key], $output);
+			}else{
+				$output = str_replace( $name,  '--', $output);
+			}
+		}
 
-		$parsed_content = str_replace( $input_names[0], $input_values, $content );
-
-		return $parsed_content;
+		return $output;
 	}
 	
 	// Cleans the mail content from html comments, php comments and empty lines
