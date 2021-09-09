@@ -133,6 +133,7 @@ export default class extends Component {
                         value={ defaultValue }
                         onChange={ value => this.setDefaultValue( value ) }
                         hideLabelFromVision={ true }
+                        autocomplete='never'
                     />
                 </div>
                 <WrapperConsumer>{ wrapper => { this.wrapper = wrapper } }</WrapperConsumer>

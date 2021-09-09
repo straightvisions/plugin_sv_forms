@@ -14,7 +14,7 @@ export default class extends Component {
         this.props = props;
         this.wrapper = {};
         this.inputs = [];
-    }
+    };
 
     // React Lifecycle Methos
     componentDidMount = () => {
@@ -24,12 +24,12 @@ export default class extends Component {
 
         this.setFormInputs();
         this.updateChilds();
-    }
+    };
 
     componentWillUnmount = () => {
         this.removeFormInput();
         this.updateChilds();
-    }
+    };
 
     // Updates the formInput attribute in the wrapper block
     setFormInputs = () => {
@@ -43,7 +43,7 @@ export default class extends Component {
 
             updateBlockAttributes( this.wrapper.clientId, { formInputs: JSON.stringify( newInputs ) } );
         }
-    }
+    };
 
     // Removes this block from the formInputs array
     removeFormInput = () => {
@@ -56,7 +56,7 @@ export default class extends Component {
 
             updateBlockAttributes( this.wrapper.clientId, { formInputs: JSON.stringify( newInputs ) } );
         }
-    }
+    };
 
     // Updates the child blocks to force a rerender of them
     updateChilds = () => {
@@ -73,7 +73,7 @@ export default class extends Component {
                 wp.data.dispatch('core/block-editor').updateBlock( block.clientId, { attributes: block.attributes } );
             }
         } );
-    }
+    };
 
     // Checks if the input block is a duplicate
     isDuplicate = () => {
@@ -95,7 +95,7 @@ export default class extends Component {
         } );
 
         return isDuplicate;
-    }
+    };
 
     // Updates the defaultValue attribute of this block
     setDefaultValue = defaultValue => this.props.setAttributes({ defaultValue });
@@ -195,6 +195,7 @@ export default class extends Component {
                         ] }
                         onChange={ value => this.setDefaultValue( value ) }
                         hideLabelFromVision={ true }
+                        autocomplete='never'
                     />
                 </div>
                 <WrapperConsumer>{ wrapper => { this.wrapper = wrapper } }</WrapperConsumer>

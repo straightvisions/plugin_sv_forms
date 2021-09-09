@@ -5,7 +5,7 @@ import edit from './edit';
 
 const { __ } = wp.i18n;
 const { InnerBlocks } = wp.blockEditor;
-const { registerBlockType } = wp.blocks
+const { registerBlockType } = wp.blocks;
 
 registerBlockType( 'straightvisions/sv-forms-admin-mail', {
 	title: __( 'Admin Mail', 'sv_forms' ),

@@ -25,7 +25,7 @@ export default class extends Component {
      // React Lifecycle Methos
     componentDidMount = () => {
         this.toggleBody( false );
-    }
+    };
 
     // Returns the innerBlocks content as string
     getMailContent = () => {
@@ -33,7 +33,7 @@ export default class extends Component {
         const content = innerBlocks.map( block => { return  getBlockContent( block ) } ).join( '' );
 
         return content;
-    }
+    };
 
     // Updates the wrapper attributes
     setWrapperAttributes = wrapper => {
@@ -61,7 +61,7 @@ export default class extends Component {
         };
 
         wrapper.setAttributes( newAttributes );
-    }
+    };
 
     // Togles the collapsed state of the body
     toggleBody = change => {
@@ -91,7 +91,7 @@ export default class extends Component {
                 body.slideDown();
             }
         }
-    }
+    };
 
     // Shows a snackbar notice to the user, that the content got copied to the clippboard
     showNotice = buttonText => {
@@ -103,7 +103,7 @@ export default class extends Component {
                 type: 'snackbar' 
             }
         ) 
-    }
+    };
 
     // Creates a clippboard button with the input name as value
     InputValueButton = name => {
@@ -130,7 +130,7 @@ export default class extends Component {
         ) );
 
         return <InputCopyButton />;
-    }
+    };
 
     // Returns the available input values
     getInputValues = inputs => {
@@ -143,7 +143,7 @@ export default class extends Component {
         } );
 
         return <div className='sv_forms_input_values'>{ output }</div>;
-    }
+    };
 
     render = () => {
         const authors = select( 'core' ).getUsers({ roles: 'administrator, editor, author' });

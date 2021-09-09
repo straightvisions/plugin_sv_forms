@@ -189,6 +189,7 @@ export default class extends Component {
                             ] }
                             onChange={ value => this.setDefaultValue( value ) }
                             hideLabelFromVision={ true }
+                            autocomplete='never'
                         />
                     </BaseControl>
                 </div>
