@@ -85,7 +85,7 @@ class submission extends modules {
 				case 'checkbox':
 				case 'radio':
 				case 'select':
-				case 'tel': 
+				case 'phone':
 					$new_data['value'] = sanitize_text_field( $data_item['value'] );
 					break;
 				case 'textarea':
