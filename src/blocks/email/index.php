@@ -54,7 +54,7 @@ class email extends sv_forms {
 					),
 					'placeholder' => array(
 						'type' => 'string',
-						'default' => __( 'E-mail', 'sv_forms' ),
+						'default' => __( 'E-Mail', 'sv_forms' ),
 					),
 					'inputFontSize' => array(
 						'type' => 'number',
