@@ -35,7 +35,7 @@
             const formInput = formData.find( input => { return name === input.name; } );
 
             if ( formInput ) {
-                replace.push( formInput.value );
+                replace.push( jQuery(formInput.value).text() );
             } else {
                 replace.push( '' );
             }
