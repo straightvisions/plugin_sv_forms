@@ -42,7 +42,7 @@ export default ( { props } ) => {
                 }}
                 allowReset
                 min={ 0 }
-                max={ 100 }
+                max={ 2000 }
             />
         </PanelBody>
     );
