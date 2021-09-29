@@ -114,15 +114,15 @@ class file extends sv_forms {
 
 					// Validation Settings
 					'required' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 
 					// Advanced Settings
 					'autofocus' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'disabled' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'className' => array(
 						'type' => 'string',

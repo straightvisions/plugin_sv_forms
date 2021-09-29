@@ -122,7 +122,7 @@ class textarea extends sv_forms {
 
 					// Validation Settings
 					'required' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'maxlength' => array(
 						'type' => 'number',
@@ -131,13 +131,13 @@ class textarea extends sv_forms {
 
 					// Advanced Settings
 					'autofocus' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'readonly' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'disabled' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'className' => array(
 						'type' => 'string',

@@ -20,13 +20,13 @@ registerBlockType( 'straightvisions/sv-forms-spam-guard', {
 	attributes: {
 		// Honeypot Settings
 		honeypot: {
-			type: 'bool',
+			type: 'boolean',
 			default: true,
 		},
 
 		// Time Trap Settings
 		timeTrap: {
-			type: 'bool',
+			type: 'boolean',
 			default: true,
 		},
 		timeTrapWindow: {

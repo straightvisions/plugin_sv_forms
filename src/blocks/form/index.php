@@ -44,7 +44,7 @@ class form extends sv_forms {
 						'type' => 'string',
 					),
 					'collapsed' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 						'default' => false,
 					),
 					'placeholderColor' => array(

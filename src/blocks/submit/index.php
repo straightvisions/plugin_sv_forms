@@ -115,21 +115,16 @@ class submit extends sv_forms {
 
 		// Text Color
 		if ( 
-			isset( $this->block_attr['textColor'] ) 
-			&& $this->block_attr['textColorClass'] 
-		) {
+			isset( $this->block_attr['textColorClass'] ) && empty($this->block_attr['textColorClass']) === false ) {
             $class[] = $this->block_attr['textColorClass'];
 		}
 
 		// Background Color
-		if ( 
-			isset( $this->block_attr['backgroundColor'] ) 
-			&& $this->block_attr['backgroundColorClass'] 
-		) {
+		if ( isset( $this->block_attr['backgroundColorClass'] ) && empty($this->block_attr['backgroundColorClass']) === false ) {
             $class[] = $this->block_attr['backgroundColorClass'];
 		}
 		
-		if ( ! empty( $class ) ) {
+		if ( empty( $class ) === false ) {
 			$attr[]	= 'class="' . implode( ' ', $class ) . '"';
 		}
 
@@ -137,53 +132,47 @@ class submit extends sv_forms {
 		$style = array();
 
 		// Text Color
-		if ( 
-			isset( $this->block_attr['textColor'] ) 
-			&& ! $this->block_attr['textColorClass'] 
-		) {
+		if ( isset( $this->block_attr['textColor'] ) && empty($this->block_attr['textColor']) === false ) {
 			$style[] = 'color:' . $this->block_attr['textColor'];
 		}
 
 		// Background Color
-		if ( 
-			isset( $this->block_attr['backgroundColor'] ) 
-			&& ! $this->block_attr['backgroundColorClass'] 
-		) {
+		if ( isset( $this->block_attr['backgroundColor'] ) && empty($this->block_attr['backgroundColor']) === false ) {
 			$style[] = 'background-color:' . $this->block_attr['backgroundColor'];
 		}
 
 		// Border Color
-		if ( isset( $this->block_attr['borderColor'] ) ) {
+		if ( isset( $this->block_attr['borderColor'] ) && empty($this->block_attr['borderColor']) === false ) {
 			$style[] = 'border-color:' . $this->block_attr['borderColor'];
 		}
 
 		// Border Style
-		if ( isset( $this->block_attr['borderStyle'] ) ) {
+		if ( isset( $this->block_attr['borderStyle'] ) && empty($this->block_attr['borderStyle']) === false ) {
 			$style[] = 'border-style:' . $this->block_attr['borderStyle'];
 		}
 
 		// Border Width Top
-		if ( isset( $this->block_attr['borderWidthTop'] ) ) {
+		if ( isset( $this->block_attr['borderWidthTop'] ) && empty($this->block_attr['borderWidthTop']) === false ) {
 			$style[] = 'border-top-width:' . $this->block_attr['borderWidthTop'] . 'px';
 		}
 
 		// Border Width Right
-		if ( isset( $this->block_attr['borderWidthRight'] ) ) {
+		if ( isset( $this->block_attr['borderWidthRight'] ) && empty($this->block_attr['borderWidthRight']) === false ) {
 			$style[] = 'border-right-width:' . $this->block_attr['borderWidthRight'] . 'px';
 		}
 
 		// Border Width Bottom
-		if ( isset( $this->block_attr['borderWidthBottom'] ) ) {
+		if ( isset( $this->block_attr['borderWidthBottom'] ) && empty($this->block_attr['borderWidthBottom']) === false ) {
 			$style[] = 'border-bottom-width:' . $this->block_attr['borderWidthBottom'] . 'px';
 		}
 
 		// Border Width Left
-		if ( isset( $this->block_attr['borderWidthLeft'] ) ) {
+		if ( isset( $this->block_attr['borderWidthLeft'] ) && empty($this->block_attr['borderWidthLeft']) === false ) {
 			$style[] = 'border-left-width:' . $this->block_attr['borderWidthLeft'] . 'px';
 		}
 
 		// Border Radius
-		if ( isset( $this->block_attr['borderRadius'] ) ) {
+		if ( isset( $this->block_attr['borderRadius'] ) && empty($this->block_attr['borderRadius']) === false ) {
 			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
 		}
 

@@ -58,7 +58,7 @@ class range extends sv_forms {
 
 					// Validation Settings
 					'required' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'min' => array(
 						'type' => 'number',
@@ -75,14 +75,14 @@ class range extends sv_forms {
 
 					// Display Settings
 					'showValue' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 						'default' => true,
 					),
 					'showMin' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'showMax' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 
 					// Color Settings
@@ -95,10 +95,10 @@ class range extends sv_forms {
 
 					// Advanced Settings
 					'autofocus' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'disabled' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'className' => array(
 						'type' => 'string',

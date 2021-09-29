@@ -122,7 +122,7 @@ class phone extends sv_forms {
 
 					// Validation Settings
 					'required' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'minlength' => array(
 						'type' => 'number',
@@ -135,16 +135,16 @@ class phone extends sv_forms {
 
 					// Advanced Settings
 					'autofocus' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'autocomplete' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'readonly' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'disabled' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'className' => array(
 						'type' => 'string',

@@ -42,7 +42,7 @@ class checkbox extends sv_forms {
 				'attributes'		=> array(
 					// Input Settings
 					'isChecked' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'label' => array(
 						'type' => 'string',
@@ -106,12 +106,12 @@ class checkbox extends sv_forms {
 
 					// Validation Settings
 					'required' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 
 					// Advanced Settings
 					'disabled' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'className' => array(
 						'type' => 'string',

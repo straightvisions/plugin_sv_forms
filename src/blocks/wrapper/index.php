@@ -81,7 +81,7 @@ class wrapper extends sv_forms {
 						'type' => 'string',
 					),
 					'saveSubmissions' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 						'default' => true,
 					),
 					'formInputs' => array(
@@ -95,7 +95,7 @@ class wrapper extends sv_forms {
 
 					// Admin Mail Block
 					'adminMailSend' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'adminMailToUsers' => array(
 						'type' => 'string',
@@ -143,7 +143,7 @@ class wrapper extends sv_forms {
 
 					// User Mails
 					'userMail' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'userMailInputName' => array(
 						'type' => 'string',
@@ -167,12 +167,12 @@ class wrapper extends sv_forms {
 					// Spam Guard Settings
 					// Honeypot
 					'sgHoneypot' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 
 					// Time Trap
 					'sgTimeTrap' => array(
-						'type' => 'bool',
+						'type' => 'boolean',
 					),
 					'sgTimeTrapWindow' => array(
 						'type' => 'number',
