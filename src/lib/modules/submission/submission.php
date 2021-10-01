@@ -36,10 +36,10 @@ class submission extends modules {
 			if($fdata['name'] === 'post-id' && empty($fdata['value']) === false){
 				$post_id 	= intval( $fdata['value'] );
 				$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_forms_forms', true ) );
+				break;
 			}
 		}
 		// hotfix reusable blocks ------------------------------------------------
-		
 		if ( $post_meta && $form_id && $post_meta->$form_id ) {
 			$this->handle_submission( $post_meta->$form_id, $form_data );
 		}
