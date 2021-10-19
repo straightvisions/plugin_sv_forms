@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SV Forms\n"
-"POT-Creation-Date: 2021-09-13 17:23+0200\n"
-"PO-Revision-Date: 2021-09-13 17:25+0200\n"
+"POT-Creation-Date: 2021-10-19 15:09+0200\n"
+"PO-Revision-Date: 2021-10-19 15:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -103,7 +103,8 @@ msgstr "Name"
 #: dist/blocks.build.js:1
 #: src/blocks/admin_mail/components/inspector_controls/send_to_mails.js:73
 #: src/blocks/email/index.js:10 src/blocks/email/index.js:24
-#: src/blocks/email/index.js:47 src/blocks/form/edit.js:25
+#: src/blocks/email/index.js:47 src/blocks/email/index.php:57
+#: src/blocks/form/edit.js:25
 msgid "E-Mail"
 msgstr "E-Mail"
 
@@ -853,8 +854,8 @@ msgstr "Nur lesbar"
 #: src/blocks/textarea/components/inspector_controls/advanced_settings.js:37
 #: src/blocks/url/components/inspector_controls/advanced_settings.js:44
 #: src/core_plugin/core/info/backend/tpl/about.php:114
-#: src/core_plugin/core/scripts/scripts.php:181
-#: src/core_plugin/core/scripts/scripts.php:191
+#: src/core_plugin/core/scripts/scripts.php:227
+#: src/core_plugin/core/scripts/scripts.php:237
 msgid "Disabled"
 msgstr "Deaktiviert"
 
@@ -1245,10 +1246,6 @@ msgstr "Versteckte Eingabe"
 msgid "Hidden Input: "
 msgstr "Versteckte Eingabe: "
 
-#: src/blocks/email/index.php:57
-msgid "E-mail"
-msgstr "E-Mail"
-
 #: src/core_plugin/core/abstract.php:88
 msgid "Class"
 msgstr "Klasse"
@@ -1276,26 +1273,26 @@ msgstr "Hilfreiche Tools &amp; Helfer"
 msgid "Common"
 msgstr "Allgemein"
 
-#: src/core_plugin/core/abstract.php:705
+#: src/core_plugin/core/abstract.php:709
 msgid "No Title defined."
 msgstr "Kein Titel definiert."
 
-#: src/core_plugin/core/abstract.php:725
+#: src/core_plugin/core/abstract.php:729
 msgid "No description defined."
 msgstr "Keine Beschreibung definiert."
 
-#: src/core_plugin/core/abstract.php:735
+#: src/core_plugin/core/abstract.php:739
 msgid "No privacy statement defined."
 msgstr "Keine Datenschutzerklärung definiert."
 
-#: src/core_plugin/core/abstract.php:812
-#: src/core_plugin/core/scripts/scripts.php:86
+#: src/core_plugin/core/abstract.php:816
+#: src/core_plugin/core/scripts/scripts.php:118
 msgid "Settings"
 msgstr "Einstellungen"
 
 #: src/core_plugin/core/abstract_template_sv_archive.php:29
 #: src/core_plugin/core/abstract_template_sv_content.php:29
-#: src/core_plugin/core/settings/modules/setting_group/setting_group.php:63
+#: src/core_plugin/core/settings/modules/setting_group/setting_group.php:72
 msgid "Entry"
 msgstr "Eintrag"
 
@@ -1644,35 +1641,35 @@ msgstr "Allgemein"
 msgid "Scripts Overview"
 msgstr "Skriptübersicht"
 
-#: src/core_plugin/core/scripts/scripts.php:48
+#: src/core_plugin/core/scripts/scripts.php:50
 msgid "Scripts"
 msgstr "Skripte"
 
-#: src/core_plugin/core/scripts/scripts.php:49
+#: src/core_plugin/core/scripts/scripts.php:51
 msgid "Override Scripts Loading."
 msgstr "Ladeeinstellungen der Scripte überschreiben."
 
-#: src/core_plugin/core/scripts/scripts.php:77
+#: src/core_plugin/core/scripts/scripts.php:109
 msgid "SV100"
 msgstr "SV100"
 
-#: src/core_plugin/core/scripts/scripts.php:98
+#: src/core_plugin/core/scripts/scripts.php:130
 msgid "Clear Cache"
 msgstr "Cache leeren"
 
-#: src/core_plugin/core/scripts/scripts.php:145
+#: src/core_plugin/core/scripts/scripts.php:191
 msgid "Flush cache for all CSS files"
 msgstr "Leere Cache für alle CSS Dateien"
 
-#: src/core_plugin/core/scripts/scripts.php:146
+#: src/core_plugin/core/scripts/scripts.php:192
 msgid "All cached CSS Files will be regenerated"
 msgstr "Alle gecachten CSS Dateien werden neu generiert"
 
-#: src/core_plugin/core/scripts/scripts.php:151
+#: src/core_plugin/core/scripts/scripts.php:197
 msgid "Disable all CSS per Default"
 msgstr "Alle CSS per Standard abschalten"
 
-#: src/core_plugin/core/scripts/scripts.php:152
+#: src/core_plugin/core/scripts/scripts.php:198
 msgid ""
 "CSS enqueued will be disabled by default - you may override this later down "
 "below."
@@ -1680,11 +1677,11 @@ msgstr ""
 "CSS-Anmeldeformular wird standardmäßig deaktiviert - Du kannst dies später "
 "weiter unten überschreiben."
 
-#: src/core_plugin/core/scripts/scripts.php:157
+#: src/core_plugin/core/scripts/scripts.php:203
 msgid "Disable all JS per Default"
 msgstr "Alle JS per Standard abschalten"
 
-#: src/core_plugin/core/scripts/scripts.php:158
+#: src/core_plugin/core/scripts/scripts.php:204
 msgid ""
 "JS enqueued will be disabled by default - you may override this later down "
 "below."
@@ -1692,39 +1689,39 @@ msgstr ""
 "JS Einreihung wird standardmäßig deaktiviert. Du kannst dies später weiter "
 "unten überschreiben."
 
-#: src/core_plugin/core/scripts/scripts.php:183
-#: src/core_plugin/core/scripts/scripts.php:189
+#: src/core_plugin/core/scripts/scripts.php:229
+#: src/core_plugin/core/scripts/scripts.php:235
 msgid "Inline"
 msgstr "Inline"
 
-#: src/core_plugin/core/scripts/scripts.php:183
-#: src/core_plugin/core/scripts/scripts.php:190
+#: src/core_plugin/core/scripts/scripts.php:229
+#: src/core_plugin/core/scripts/scripts.php:236
 msgid "Attached"
 msgstr "Angehängt"
 
-#: src/core_plugin/core/scripts/scripts.php:188
+#: src/core_plugin/core/scripts/scripts.php:234
 msgid "Default"
 msgstr "Standard"
 
-#: src/core_plugin/core/scripts/scripts.php:209
-#: src/core_plugin/core/scripts/scripts.php:219
+#: src/core_plugin/core/scripts/scripts.php:254
+#: src/core_plugin/core/scripts/scripts.php:264
 msgid "Flush Cache"
 msgstr "Cache leeren"
 
-#: src/core_plugin/core/scripts/scripts.php:210
-#: src/core_plugin/core/scripts/scripts.php:220
+#: src/core_plugin/core/scripts/scripts.php:255
+#: src/core_plugin/core/scripts/scripts.php:265
 msgid "Cache Active"
 msgstr "Cache Aktiv"
 
-#: src/core_plugin/core/scripts/scripts.php:454
+#: src/core_plugin/core/scripts/scripts.php:519
 msgid "Script \""
 msgstr "Skript \""
 
-#: src/core_plugin/core/settings/modules/setting_group/setting_group.php:50
+#: src/core_plugin/core/settings/modules/setting_group/setting_group.php:59
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: src/core_plugin/core/settings/modules/setting_group/setting_group.php:63
+#: src/core_plugin/core/settings/modules/setting_group/setting_group.php:72
 msgid "Group #"
 msgstr "Gruppe #"
 
@@ -1748,8 +1745,8 @@ msgstr "Speichern (klassisch)"
 msgid "Save (AJAX)"
 msgstr "Speichern (AJAX)"
 
-#: src/core_plugin/core/settings/settings.php:761
-#: src/core_plugin/core/settings/settings.php:804
+#: src/core_plugin/core/settings/settings.php:762
+#: src/core_plugin/core/settings/settings.php:805
 msgid "Settings Template not found: "
 msgstr "Template für Einstellungen nicht gefunden: "
 
@@ -2004,6 +2001,9 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://straightvisions.com"
 msgstr "https://straightvisions.com"
+
+#~ msgid "E-mail"
+#~ msgstr "E-Mail"
 
 #~ msgid "SEND"
 #~ msgstr "SENDEN"
