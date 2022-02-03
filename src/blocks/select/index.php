@@ -162,14 +162,15 @@ class select extends sv_forms {
 
 	protected function get_options(): string {
 		$options = array();
-
-		foreach( json_decode( $this->block_attr['options'] ) as $option ) {
+		$block_attr = $this->block_attr;
+		
+		$default_value = isset( $block_attr['defaultValue'] ) ? $block_attr['defaultValue'] :  '';
+		$value = $this->get_input_value_from_url_params( $block_attr['name'], $default_value );
+		
+		foreach( json_decode( $block_attr['options'] ) as $option ) {
 			$el	= '<option value="' . $option->value .'"';
 
-			if ( 
-				isset( $this->block_attr['defaultValue'] ) 
-				&& $this->block_attr['defaultValue'] === $option->value 
-			) {
+			if ( $value === $option->value ) {
 				$el .= ' selected';
 			}
 
