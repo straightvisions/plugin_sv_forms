@@ -184,7 +184,7 @@ class checkbox extends sv_forms {
 
 		// Input Background Color
 		if ( 
-			isset( $block_attr['inputBackgroundColor'] ) 
+			isset( $block_attr['inputBackgroundColor'] ) && isset( $block_attr['inputBackgroundColorClass'] )
 			&& $block_attr['inputBackgroundColorClass'] 
 		) {
             $class[] = $block_attr['inputBackgroundColorClass'];
@@ -199,8 +199,8 @@ class checkbox extends sv_forms {
 
 		// Input Background Color
 		if ( 
-			isset( $block_attr['inputBackgroundColor'] ) 
-			&& ! $block_attr['inputBackgroundColorClass'] 
+			isset( $block_attr['inputBackgroundColor'] ) && ( isset( $block_attr['inputBackgroundColorClass'] ) === false
+			|| empty($block_attr['inputBackgroundColorClass']) === false )
 		) {
 			$style[] = 'background-color:' . $block_attr['inputBackgroundColor'];
 		}
