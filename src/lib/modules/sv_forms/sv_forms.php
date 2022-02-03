@@ -256,7 +256,7 @@ class sv_forms extends modules {
 	// Returns the input attr for the default template input
 	protected function get_default_input_attr( array $block_attr ): string {
 		$attr = array();
-
+		
 		// Type
 		if ( isset( $block_attr['type'] ) ) {
 			$attr[] = 'type="' . $block_attr['type'] .  '"';
@@ -268,13 +268,14 @@ class sv_forms extends modules {
 
 			// Name
 			$attr[] = 'name="' . $block_attr['name'] . '"';
+		}else{
+			$block_attr['name'] = 'unknown'; // fallback
 		}
 
 		// Value
-		if ( isset( $block_attr['defaultValue'] ) ) {
-			$attr[]	= 'value="' . $block_attr['defaultValue'] . '"';
-		}
-
+		$default_value = isset( $block_attr['defaultValue'] ) ? $block_attr['defaultValue'] :  '';
+		$attr[]	= 'value="' . $this->get_input_value_from_url_params( $block_attr['name'], $default_value ) . '"';
+		
 		// Placeholder
 		if ( isset( $block_attr['placeholder'] ) ) {
 			$attr[] = 'placeholder="' . $block_attr['placeholder'] . '"';
@@ -417,6 +418,24 @@ class sv_forms extends modules {
 		}
 
 		return implode( ' ', $attr );
+	}
+	
+	public function get_input_value_from_url_params(string $name, string $default): string{
+		$output = $default;
+		
+		$params = $this->get_url_params();
+		
+		if(empty($params) === false && empty($params[$name]) === false){
+			
+			$output = \sanitize_text_field( $params[$name] );
+			
+		}
+		
+		return $output;
+	}
+	
+	private function get_url_params(){
+		return $_GET;
 	}
 
 	public function load_plugin_translation(): sv_forms {
