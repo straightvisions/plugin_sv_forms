@@ -64,21 +64,22 @@ class hidden extends sv_forms {
 	// Returns a string with all attributes for the input
 	protected function get_input_attr(): string {		
 		$attr = array();
-
+		$block_attr = $this->block_attr;
 		// Type
-		if ( isset( $this->block_attr['type'] ) ) {
-			$attr[] = 'type="' . $this->block_attr['type'] .  '"';
+		if ( isset( $block_attr['type'] ) ) {
+			$attr[] = 'type="' . $block_attr['type'] .  '"';
 		}
 
 		// Name
-		if ( isset( $this->block_attr['name'] ) ) {
-			$attr[] = 'name="' . $this->block_attr['name'] . '"';
+		if ( isset( $block_attr['name'] ) ) {
+			$attr[] = 'name="' . $block_attr['name'] . '"';
+		}else{
+			$attr[] = 'name="unknown"'; // fallback
 		}
 
 		// Value
-		if ( isset( $this->block_attr['defaultValue'] ) ) {
-			$attr[]	= 'value="' . $this->block_attr['defaultValue'] . '"';
-		}
+		$default_value = isset( $block_attr['defaultValue'] ) ? $block_attr['defaultValue'] :  '';
+		$attr[]	= 'value="' . $this->get_root()->sv_forms->get_input_value_from_url_params( $block_attr['name'], $default_value ) . '"';
 
 		$attr[] = 'tabindex="-1" autocomplete="off"';
 
@@ -87,8 +88,8 @@ class hidden extends sv_forms {
 		$class[]	= 'wp-block-straightvisions-sv-forms-hidden';
 
 		// Additional Classes
-		if ( isset( $this->block_attr['className'] ) ) { 
-			$class[] = $this->block_attr['className'];
+		if ( isset( $block_attr['className'] ) ) { 
+			$class[] = $block_attr['className'];
 		}
 		
 		if ( ! empty( $class ) ) {
