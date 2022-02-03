@@ -134,37 +134,48 @@ class checkbox extends sv_forms {
 	// Returns a string with all attributes for the input
 	protected function get_input_attr(): string {
 		$attr = array();
-
+		$block_attr = $this->block_attr;
+		
 		// Type
-		$attr[]	= 'type="' . $this->block_attr['type'] . '"';
+		$attr[]	= 'type="' . $block_attr['type'] . '"';
 
 		// ID
-		if ( isset( $this->block_attr['value'] ) && ! empty( $this->block_attr['value'] ) ) {
-			$attr[]	= 'id="' . $this->block_attr['value'] . '"';
+		if ( isset( $block_attr['value'] ) && ! empty( $block_attr['value'] ) ) {
+			$attr[]	= 'id="' . $block_attr['value'] . '"';
 		}
 
 		// Name
-		if ( isset( $this->block_attr['name'] ) ) {
-			$attr[] = 'name="' . $this->block_attr['name'] . '"';
+		if ( isset( $block_attr['name'] ) ) {
+			$attr[] = 'name="' . $block_attr['name'] . '"';
 		}
 
 		// Value
-		if ( isset( $this->block_attr['value'] ) && ! empty( $this->block_attr['value'] ) ) {
-			$attr[]	= 'value="' . $this->block_attr['value'] . '"';
+		$default_value = isset( $block_attr['defaultValue'] ) ? $block_attr['defaultValue'] :  '';
+		$value = $this->get_input_value_from_url_params( $block_attr['name'], $default_value );
+		
+		if ( empty( $value ) === false ) {
+			$attr[]	= 'value="' . $value . '"';
 		}
 
 		// Checked
-		if ( isset( $this->block_attr['isChecked'] ) && $this->block_attr['isChecked'] ) {
+		if ( isset( $block_attr['isChecked'] ) && $block_attr['isChecked'] ) {
 			$attr[]	= 'checked';
 		}
-
+		
+		// Checked true if value 1 is set
+		if ( isset( $block_attr['isChecked'] ) === false || empty( $block_attr['isChecked'] ) === true ) {
+			if( empty($value) === false ){ // this will include value = 0
+				$attr[]	= 'checked';
+			}
+		}
+		
 		// Required
-		if ( isset( $this->block_attr['required'] ) && $this->block_attr['required'] ) {
+		if ( isset( $block_attr['required'] ) && $block_attr['required'] ) {
 			$attr[] = 'required';
 		}
 
 		// Disabled
-		if ( isset( $this->block_attr['disabled'] ) && $this->block_attr['disabled'] ) {
+		if ( isset( $block_attr['disabled'] ) && $block_attr['disabled'] ) {
 			$attr[] = 'disabled';
 		}
 
@@ -173,10 +184,10 @@ class checkbox extends sv_forms {
 
 		// Input Background Color
 		if ( 
-			isset( $this->block_attr['inputBackgroundColor'] ) 
-			&& $this->block_attr['inputBackgroundColorClass'] 
+			isset( $block_attr['inputBackgroundColor'] ) 
+			&& $block_attr['inputBackgroundColorClass'] 
 		) {
-            $class[] = $this->block_attr['inputBackgroundColorClass'];
+            $class[] = $block_attr['inputBackgroundColorClass'];
 		}
 		
 		if ( ! empty( $class ) ) {
@@ -188,45 +199,45 @@ class checkbox extends sv_forms {
 
 		// Input Background Color
 		if ( 
-			isset( $this->block_attr['inputBackgroundColor'] ) 
-			&& ! $this->block_attr['inputBackgroundColorClass'] 
+			isset( $block_attr['inputBackgroundColor'] ) 
+			&& ! $block_attr['inputBackgroundColorClass'] 
 		) {
-			$style[] = 'background-color:' . $this->block_attr['inputBackgroundColor'];
+			$style[] = 'background-color:' . $block_attr['inputBackgroundColor'];
 		}
 		
 		// Border Color
-		if ( isset( $this->block_attr['inputBorderColor'] ) ) {
-			$style[] = 'border-color:' . $this->block_attr['inputBorderColor'];
+		if ( isset( $block_attr['inputBorderColor'] ) ) {
+			$style[] = 'border-color:' . $block_attr['inputBorderColor'];
 		}
 
 		// Border Style
-		if ( isset( $this->block_attr['borderStyle'] ) ) {
-			$style[] = 'border-style:' . $this->block_attr['borderStyle'];
+		if ( isset( $block_attr['borderStyle'] ) ) {
+			$style[] = 'border-style:' . $block_attr['borderStyle'];
 		}
 
 		// Border Width Top
-		if ( isset( $this->block_attr['borderWidthTop'] ) ) {
-			$style[] = 'border-top-width:' . $this->block_attr['borderWidthTop'] . 'px';
+		if ( isset( $block_attr['borderWidthTop'] ) ) {
+			$style[] = 'border-top-width:' . $block_attr['borderWidthTop'] . 'px';
 		}
 
 		// Border Width Right
-		if ( isset( $this->block_attr['borderWidthRight'] ) ) {
-			$style[] = 'border-right-width:' . $this->block_attr['borderWidthRight'] . 'px';
+		if ( isset( $block_attr['borderWidthRight'] ) ) {
+			$style[] = 'border-right-width:' . $block_attr['borderWidthRight'] . 'px';
 		}
 
 		// Border Width Bottom
-		if ( isset( $this->block_attr['borderWidthBottom'] ) ) {
-			$style[] = 'border-bottom-width:' . $this->block_attr['borderWidthBottom'] . 'px';
+		if ( isset( $block_attr['borderWidthBottom'] ) ) {
+			$style[] = 'border-bottom-width:' . $block_attr['borderWidthBottom'] . 'px';
 		}
 
 		// Border Width Left
-		if ( isset( $this->block_attr['borderWidthLeft'] ) ) {
-			$style[] = 'border-left-width:' . $this->block_attr['borderWidthLeft'] . 'px';
+		if ( isset( $block_attr['borderWidthLeft'] ) ) {
+			$style[] = 'border-left-width:' . $block_attr['borderWidthLeft'] . 'px';
 		}
 
 		// Border Radius
-		if ( isset( $this->block_attr['borderRadius'] ) ) {
-			$style[] = 'border-radius:' . $this->block_attr['borderRadius'] . 'px';
+		if ( isset( $block_attr['borderRadius'] ) ) {
+			$style[] = 'border-radius:' . $block_attr['borderRadius'] . 'px';
 		}
 
 		if ( ! empty( $style ) ) {
