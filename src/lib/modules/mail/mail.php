@@ -2,7 +2,12 @@
 namespace sv_forms;
 
 class mail extends modules {  
-    public function init() {}
+    public function init() {
+    	// plugin_module_hint
+	    add_filter( 'sv_forms_mail_user_content', array($this, 'filter_user_email_content'), 10, 1 );
+	    add_filter( 'sv_forms_mail_admin_content', array($this, 'filter_admin_email_content'), 10, 1 );
+    	
+    }
 
 	// Sends a mail to the user and the admin
 	public function send_mails( object $attr, array $data ): mail {
@@ -15,6 +20,14 @@ class mail extends modules {
 		$this->files->delete_files();
 
 		return $this; // why returning self? should return $status
+	}
+	
+	public function filter_user_email_content(string $string){
+    	return $string;
+	}
+	
+	public function filter_admin_email_content(string $string){
+		return $string;
 	}
 
 	// Sends a mail
@@ -48,7 +61,7 @@ class mail extends modules {
 		);
 
 		$content = $this->get_mail( $content_attr, $data );
-
+		$content = apply_filters( 'sv_forms_mail_user_content', $content);
 		// Headers
 		if ( 
 			isset( $attr->userMailFromTitle ) 
@@ -89,7 +102,7 @@ class mail extends modules {
 			'content'       => $attr->adminMailContent,
 		);
 		$content = $this->get_mail( $content_attr, $data );
-
+		$content = apply_filters( 'sv_forms_mail_admin_content', $content);
 		// Headers
 		if ( 
 			isset( $attr->adminMailFromTitle ) 
