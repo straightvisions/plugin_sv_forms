@@ -37,6 +37,7 @@ registerBlockType( 'straightvisions/sv-forms-phone', {
 		// Input Settings
 		name: {
 			type: 'string',
+			default: 'phone',
 		},
 		type: {
 			type: 'string',
