@@ -92,3 +92,17 @@
 	margin: 0;
 	outline: none;
 }
+
+
+/* checkbox alignment fix experimental */
+.wp-block-straightvisions-sv-forms-checkbox.alignleft{
+	display:inline;
+	margin-top:2px;
+	margin-right:0;
+	float:left;
+}
+
+.wp-block-straightvisions-sv-forms-checkbox.alignleft+p{
+	padding-left:40px;
+	max-width:100% !important;
+}
