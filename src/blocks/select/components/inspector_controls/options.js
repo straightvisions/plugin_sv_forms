@@ -38,16 +38,15 @@ export default ( { props } ) => {
         newOptions[ index ][ prop ] = value;
 
         updateOptions( JSON.stringify( newOptions ) );
-    }
+    };
 
     // Deletes an option
     const deleteOption = index => {
         let newOptions = parsedOptions;
 
         newOptions.splice( index, 1 );
-        console.log( JSON.stringify( newOptions ) );
         updateOptions( JSON.stringify( newOptions ) );
-    }
+    };
 
     // Adds an option
     const addOption = () => {
@@ -57,11 +56,11 @@ export default ( { props } ) => {
         newOptions.push( newOption );
         
         updateOptions( JSON.stringify( newOptions ) );
-    }
+    };
 
     const deleteAllOptions = () => {
         updateOptions( '[]' );
-    }
+    };
 
     const applyTemplate = template => {
         let config = [];
@@ -74,7 +73,7 @@ export default ( { props } ) => {
 
         deleteAllOptions();
         updateOptions( JSON.stringify( config ) );
-    }
+    };
 
     return(
         <PanelBody

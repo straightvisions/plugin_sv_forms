@@ -26,34 +26,6 @@ export default class extends Component {
             ['straightvisions/sv-forms-admin-mail'],
         ];
 
-        /**
-         * Eventlistener that listens on changes in the reuseable blocks count.
-         * 
-         * If the current block is a Forms block, the amount of reuseable blocks
-         * increases and the current block is missing in the editor, it means 
-         * that the current Forms block was transformed into a reuseable block.
-         *
-        const currentReuseableBlocks = __experimentalGetReusableBlocks();
-        const currentReuseableBlocksCount = Object.values( currentReuseableBlocks ).length;
-
-        wp.data.subscribe( () => {
-            if ( this.props.name !== 'straightvisions/sv-forms' ) return false;
-
-            const newReuseableBlocks = __experimentalGetReusableBlocks();
-            const newReuseableBlocksCount = Object.values( newReuseableBlocks ).length;
-
-            // Checks if the reuseable blocks count has changed
-            const reuseableBlockAdded = currentReuseableBlocksCount < newReuseableBlocksCount ? true : false;
-
-            // Checks if the current block exists
-            const currentBlockExists = getBlock( this.props.clientId ) ? true : false;
-
-            // The current block was converted into a reuseable block
-            if ( reuseableBlockAdded && ! currentBlockExists ) { 
-                console.log( this.props.attributes.formLabel + ' is now a reuseable block.' );
-            }
-        } );
-        */
     }
 
     // React Lifecycle Methos
@@ -66,22 +38,22 @@ export default class extends Component {
         }
 
         this.toggleBody( false );
-    }
+    };
 
     componentWillUpdate = () => {
         this.oldProps = this.props;
-    }
+    };
 
     componentDidUpdate = () => {
         // Only updates when the attributes have changed
         if ( _.isEqual( this.props.attributes, this.oldProps.attributes ) ) return;
 
         this.updatePostMeta( 'update' );
-    }
+    };
 
     componentWillUnmount = () => {
         this.updatePostMeta( 'remove' );
-    }
+    };
 
     // Checks if the block already exists inside the current post
     doesFormExist = () => {
@@ -91,7 +63,7 @@ export default class extends Component {
         if ( ! currentForms || ! currentForms[ this.props.attributes.formId ] ) return false;
 
         return true;
-    }
+    };
 
     // Checks if this block is a duplicate of an existing one in the current post
     isDuplicate = () => {
@@ -112,7 +84,7 @@ export default class extends Component {
         }
 
         return false;
-    }
+    };
 
     // Updates the current post meta with the block attributes
     updatePostMeta = action => {
@@ -123,22 +95,10 @@ export default class extends Component {
 
         switch ( action ) {
             case 'update':
-                //console.log( '=== UPDATE ===' );
-                //console.log( 'Form ID: ', this.props.attributes.formId )
-                //console.log( 'Before: ', currentForms );
-
                 currentForms[ this.props.attributes.formId ] = this.props.attributes;
-
-                //console.log( 'After: ', currentForms );
                 break;
             case 'remove':
-                //console.log( '=== REMOVE ===' );
-                //console.log( 'Form ID: ', this.props.attributes.formId )
-                //console.log( 'Before: ', currentForms );
-
                 delete currentForms[ this.props.attributes.formId ];
-
-                //console.log( 'After: ', currentForms );
                 break;
 
         }
@@ -146,7 +106,7 @@ export default class extends Component {
         const newMeta = { ...currentMeta, _sv_forms_forms: JSON.stringify( currentForms ) };
 
         editPost( { meta: newMeta } );
-    }
+    };
 
     // Togles the collapsed state of the body
     toggleBody = change => {
@@ -176,13 +136,13 @@ export default class extends Component {
                 body.slideDown();
             }
         }
-    }
+    };
 
     updateFormInputs = inputs => {
         if ( inputs.length > 0 ) {
             this.props.setAttributes({ formInputs: JSON.stringify( inputs ) });
         }
-    }
+    };
 
     render = () => {
         return (

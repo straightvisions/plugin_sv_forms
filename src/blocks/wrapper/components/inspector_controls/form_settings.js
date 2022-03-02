@@ -30,8 +30,8 @@ export default ( { props } ) => {
         const newMeta           = { ...currentMeta, _sv_forms_forms: "{}" };
 
         editPost( { meta: newMeta } );
-        console.log( __( 'Meta Field _sv_forms_forms was cleard.', 'sv_forms' ) );
-    }
+        
+    };
 
     return(
         <PanelBody 

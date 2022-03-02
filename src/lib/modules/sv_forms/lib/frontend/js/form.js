@@ -143,8 +143,6 @@
             data: ajaxData,
             success: function( response ) {
                 showThankYou( form, newFormData );
-                // Only for Debug
-                console.log( response );
             }
         });
     });
