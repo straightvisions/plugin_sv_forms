@@ -420,10 +420,14 @@ class sv_forms extends modules {
 		return implode( ' ', $attr );
 	}
 	
-	public function get_input_value_from_url_params(string $name, string $default): string{
+	public function get_input_value_from_url_params($name = '', $default = ''): string{
 		$output = $default;
 		
 		$params = $this->get_url_params();
+		
+		if(empty($name)){
+			$name = 'unknown';
+		}
 		
 		if(empty($params) === false && empty($params[$name]) === false){
 			
