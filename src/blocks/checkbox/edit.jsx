@@ -1,5 +1,5 @@
 // Required Components
-import InspectorControls from './components/inspector_controls';
+import InspectorControls from './components/inspector_controls.jsx';
 import { WrapperConsumer, InputsConsumer } from '../../blocks';
 
 const { select } = wp.data;
