@@ -19,8 +19,25 @@ export default ( { props, wrapper, inputs } ) => {
     } = props;
 
     // Functions to set the block attributes
-    const setLabel  = label => setAttributes({ label });
-    const setName   = name  => setAttributes({ name });
+    const setLabel  = label => {
+    	if(name === '' || typeof name === 'undefined'){
+		    setAttributes({ label, name: getFormatedName(label)});
+	    }else{
+		    setAttributes({ label });
+	    }
+    	
+    };
+    const setName   = name  => {
+    	if(name === '' || typeof name === 'undefined'){
+		    if(label === '' || typeof label === 'undefined'){
+			    setAttributes({ name: __('unknown', 'sv_forms') })
+		    }else{
+			    setAttributes({ name: getFormatedName(label)});
+		    }
+	    }else{
+		    setAttributes({ name })
+	    }
+    };
     const setValue  = value => setAttributes({ value });
 
     // Returns the input name in a valid format
@@ -31,11 +48,15 @@ export default ( { props, wrapper, inputs } ) => {
     };
 
     // Returns a notice when the input name is already in use
+    const NameCheckTest = (input) =>{
+        return input.name === name && input.ID !== inputId;
+    };
+    
     const NameCheck = () => {
         let output = null;
 
         inputs.map( input => {
-            if ( input.name === name && input.ID !== inputId ) {
+            if ( NameCheckTest(input) ) {
                 output = 
                     <Notice 
                         status='warning' 
@@ -71,7 +92,7 @@ export default ( { props, wrapper, inputs } ) => {
         }
 
         updateChilds();
-    }
+    };
 
     const updateChilds = () => {
         const childBlocks = [
@@ -87,7 +108,7 @@ export default ( { props, wrapper, inputs } ) => {
                 wp.data.dispatch('core/block-editor').updateBlock( block.clientId, { attributes: block.attributes } );
             }
         } );
-    }
+    };
 
     return(
         <PanelBody

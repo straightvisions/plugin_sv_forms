@@ -1,7 +1,7 @@
 // Required Components
 import './editor.scss';
 import icon from './icons/block';
-import edit from './edit';
+import edit from './edit.jsx';
 
 const { __ } = wp.i18n;
 const { 
@@ -43,7 +43,7 @@ registerBlockType( 'straightvisions/sv-forms-checkbox', {
 			default: __( 'Checkbox', 'sv_forms' )
 		},
 		name: {
-			type: 'string',
+			type: 'string'
 		},
 		type: {
 			type: 'string',
