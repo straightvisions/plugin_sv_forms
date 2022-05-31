@@ -50,6 +50,9 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 == Changelog ==
 
+= 1.9.00 =
+* Core Update
+
 = 1.8.11 =
 ### Various
 
@@ -324,7 +327,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 == Upgrade Notice ==
 
-= 1.8.11 =
+= 1.9.00 =
 * Core Update
 
 == Missing a feature? ==
