@@ -156,7 +156,7 @@ class radio extends sv_forms {
 
 		// Input Background Color
 		if ( 
-			isset( $this->block_attr['inputBackgroundColor'] ) 
+			isset( $this->block_attr['inputBackgroundColorClass'] )
 			&& $this->block_attr['inputBackgroundColorClass'] 
 		) {
             $class[] = $this->block_attr['inputBackgroundColorClass'];
@@ -172,7 +172,7 @@ class radio extends sv_forms {
 		// Input Background Color
 		if ( 
 			isset( $this->block_attr['inputBackgroundColor'] ) 
-			&& ! $this->block_attr['inputBackgroundColorClass'] 
+			&& ! $this->block_attr['inputBackgroundColor']
 		) {
 			$style[] = 'background-color:' . $this->block_attr['inputBackgroundColor'];
 		}
