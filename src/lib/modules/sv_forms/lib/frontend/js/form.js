@@ -55,8 +55,10 @@
             el.html( parsedContent );
             el.insertAfter( form );
 
-            form.hide( 'slow', function() {
-                el.show( 'slow' );
+            form.hide( 'fast', function() {
+                el.show( 'slow' , function() {
+                    document.querySelector('.wp-block-straightvisions-sv-forms-thank-you').scrollIntoView(false);
+                });
             } );
         }
     }
