@@ -46,6 +46,9 @@ class sv_forms extends modules {
 		$this->get_script( 'email' )
 			 ->set_path( 'lib/frontend/css/email.css' );
 
+		$this->get_script( 'hidden' )
+		     ->set_path( 'lib/frontend/css/hidden.css' );
+
 		$this->get_script( 'phone' )
 			 ->set_path( 'lib/frontend/css/phone.css' );
 
