@@ -261,7 +261,7 @@ class sv_forms extends modules {
 		$attr = array();
 		
 		// Type
-		if ( isset( $block_attr['type'] ) ) {
+		if ( isset( $block_attr['type'] ) && $block_attr['type'] !== 'textarea' ) {
 			$attr[] = 'type="' . $block_attr['type'] .  '"';
 		}
 
@@ -276,9 +276,11 @@ class sv_forms extends modules {
 		}
 
 		// Value
-		$default_value = isset( $block_attr['defaultValue'] ) ? $block_attr['defaultValue'] :  '';
-		$attr[]	= 'value="' . $this->get_input_value_from_url_params( $block_attr['name'], $default_value ) . '"';
-		
+		if($block_attr['type'] !== 'textarea') {
+			$default_value = isset($block_attr['defaultValue']) ? $block_attr['defaultValue'] : '';
+			$attr[] = 'value="' . $this->get_input_value_from_url_params($block_attr['name'], $default_value) . '"';
+		}
+
 		// Placeholder
 		if ( isset( $block_attr['placeholder'] ) ) {
 			$attr[] = 'placeholder="' . $block_attr['placeholder'] . '"';
