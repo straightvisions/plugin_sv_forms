@@ -6,7 +6,6 @@ class mail extends modules {
     	// plugin_module_hint
 	    add_filter( 'sv_forms_mail_user_content', array($this, 'filter_user_email_content'), 10, 1 );
 	    add_filter( 'sv_forms_mail_admin_content', array($this, 'filter_admin_email_content'), 10, 1 );
-    	
     }
 
 	// Sends a mail to the user and the admin
@@ -195,17 +194,14 @@ class mail extends modules {
 
 		$input_values = array();
 
-		
 		foreach( $input_names[1] as $index => $name ) {
-
-	
 			$value = $this->get_input_value( $name, $data );
 
 			if ( $value && ! is_array( $value ) ) {
 				$input_values[ $index ] = $this->get_input_value( $name, $data );
 			}
 		}
-	
+
 		foreach($input_names[0] as $key => $name){
 			if( isset($input_values[$key]) ){
 				$output = str_replace( $name,  $input_values[$key], $output);

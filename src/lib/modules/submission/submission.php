@@ -11,35 +11,13 @@ class submission extends modules {
 	// This function will be called on form submit via Ajax
 	public function ajax_sv_forms_submit() {
 		if ( ! isset( $_POST) || empty( $_POST ) ) return;
-		/* @notice Deactivated due to problem with caching
-		$nonce = isset( $_POST[ $this->get_root()->get_prefix( 'nonce' ) ] ) 
-			? $_POST[ $this->get_root()->get_prefix( 'nonce' ) ] 
-			: false;
-
-		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'sv_forms_submit' ) ) return;
-		*/
-		
-		$post_id = isset( $_POST[ $this->get_root()->get_prefix( 'post_id' ) ] ) 
-			? $_POST[ $this->get_root()->get_prefix( 'post_id' ) ] 
-			: false;
-		
-		if ( $post_id === false ) return;
 
 		// Variables
-		$post_id 	= intval( $post_id );
-		$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_forms_forms', true ) );
 		$form_data	= json_decode( stripslashes( $_POST[ $this->get_root()->get_prefix( 'form_data' ) ] ), true );
 		$form_id	= $this->get_input_value( $this->get_root()->get_prefix( 'form_id' ), $form_data );
-		
-		// hotfix reusable blocks ------------------------------------------------
-		foreach($form_data as $key => $fdata){
-			if($fdata['name'] === 'post-id' && empty($fdata['value']) === false){
-				$post_id 	= intval( $fdata['value'] );
-				$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_forms_forms', true ) );
-				break;
-			}
-		}
-		// hotfix reusable blocks ------------------------------------------------
+		$post_id	= $this->get_input_value( $this->get_root()->get_prefix( 'post_id' ), $form_data );
+		$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_forms_forms', true ) );
+
 		if ( $post_meta && $form_id && $post_meta->$form_id ) {
 			$this->handle_submission( $post_meta->$form_id, $form_data );
 		}
@@ -54,7 +32,7 @@ class submission extends modules {
 			// action name: sv_forms_form_submit
 			do_action( $this->get_root()->get_prefix( 'form_submit' ), $sanitized_data, $attr );
 
-			// Creates a post witht he submission data in it
+			// Creates a post with the submission data in it
 			$this->post->insert_post( $attr, $sanitized_data );
 
 			// Sends a mail to the user and an admin
@@ -73,11 +51,6 @@ class submission extends modules {
 		$validated_data = $this->get_valid_data( json_decode( $attr->formInputs ), $data );
 
 		foreach( $validated_data as $data_item ) {
-			$new_data = array(
-				'name'	=> $data_item['name'],
-				'type'	=> $data_item['type'],
-			);
-
 			switch( $data_item['type'] ) {
 				case 'text':
 				case 'hidden':
@@ -86,34 +59,32 @@ class submission extends modules {
 				case 'radio':
 				case 'select':
 				case 'phone':
-					$new_data['value'] = sanitize_text_field( $data_item['value'] );
+					$data_item['value'] = sanitize_text_field( $data_item['value'] );
 					break;
 				case 'textarea':
-					$new_data['value'] = sanitize_textarea_field( $data_item['value'] );
+					$data_item['value'] = sanitize_textarea_field( $data_item['value'] );
 					break;
 				case 'email':
-					$new_data['value'] = sanitize_email( $data_item['value'] );
+					$data_item['value'] = sanitize_email( $data_item['value'] );
 					break;
 				case 'url':
-					$new_data['value'] = esc_url_raw( $data_item['value'] );
+					$data_item['value'] = esc_url_raw( $data_item['value'] );
 					break;
 				case 'number':
 				case 'range':
-					$new_data['value'] = intval( $data_item['value'] );
+					$data_item['value'] = intval( $data_item['value'] );
 					break;
 				case 'date':
-					$new_data['value'] = preg_replace( '([^0-9-])', '', $data_item['value'] );
+					$data_item['value'] = preg_replace( '([^0-9-])', '', $data_item['value'] );
 					break;
 				case 'file':
 					if ( count( $_FILES ) > 0 ) {
-						$new_data['value'] = $this->get_file_path( $_FILES[ $new_data['name'] ] );
+						$data_item['value'] = $this->get_file_path( $_FILES[ $data_item['name'] ] );
 					}
 					break;
 			}
 
-			if ( isset( $new_data['value'] ) && ! empty( $new_data['value'] ) ) {
-				$sanitized_data[] = $new_data;
-			}
+			$sanitized_data[] = $data_item;
 		}
 
 		return $sanitized_data;
@@ -143,7 +114,8 @@ class submission extends modules {
 		// and the submitted form input names and types
 		foreach( $attr_data as $attr_item ) {
 			foreach( $form_data as $form_item ) {
-				if ( $attr_item->name === $form_item['name'] && $attr_item->type === $form_item['type'] ) {
+				if ( $attr_item->name === $form_item['name'] ) {
+					$form_item['type']	= $attr_item->type; // do not allow frontend type override
 					$validated_data[] = $form_item;
 				}
 			}

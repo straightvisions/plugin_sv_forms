@@ -72,7 +72,7 @@
         formData.map( field => {
             const el = form.find(':input[name="' + field.name + '"]');
 
-            if ( el.length > 0 && el.attr('type') && el.attr('type') !== "" ) {
+            if ( el.length > 0 ) {
                 if ( el.val() !== "" || el.attr('name') === 'sv_forms_sg_hp' ) {
                     let newField = {
                         name: field.name,
@@ -110,21 +110,17 @@
                 }
             }
         });
-
-        const postID = (formsID && localized[formsID]) ? localized[formsID] : false;
+        
         const ajaxData = new FormData();
 
         ajaxData.append( 'action', 'sv_forms_submit' );
-        ajaxData.append( 'sv_forms_nonce', localized.sv_forms_nonce );
-        ajaxData.append( 'sv_forms_post_id', postID );
-
+        
         formFiles.map( key => {
             const el = jQuery( formFiles[key] );
             
             if ( el.attr('name') !== "" && el.val() !== "" ) {
                 let newField = {
                     name: el.attr('name'),
-                    type: el.attr('type'),
                     value: el.val(),
                 };
 
