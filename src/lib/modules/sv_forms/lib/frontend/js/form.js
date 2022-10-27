@@ -137,7 +137,12 @@
             contentType: false,
             processData: false,
             data: ajaxData,
+            beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
+                jQuery('.sv_forms_sv_forms_wrapper_loader').addClass('show')
+                jQuery('.wp-block-straightvisions-sv-forms-form').hide();
+            },
             success: function( response ) {
+                jQuery('.sv_forms_sv_forms_wrapper_loader').removeClass('show')
                 showThankYou( form, newFormData );
             }
         });
