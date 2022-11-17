@@ -132,9 +132,7 @@ class sv_forms extends modules {
 		// Loads the ${domain}-${locale}-${handle}.json file, for block translation in the editor
 		wp_set_script_translations( 'sv-forms-block', 'sv_forms', $this->lang_dir );
 
-		if ( $this->check_gutenberg() ) {
-			wp_localize_script( 'sv-forms-block', 'gutenbergPlugin', array( 'version' => GUTENBERG_VERSION ) );
-		}
+		wp_localize_script( 'sv-forms-block', 'gutenbergPlugin', array( 'version' => GUTENBERG_VERSION ) );
 	
 		wp_register_style(
 			'sv-forms-block-editor',
@@ -174,14 +172,6 @@ class sv_forms extends modules {
 				),
 			)
 		);
-	}
-
-	// Checks if the gutenberg plugin is active and if the version is compatible
-	private function check_gutenberg() {
-		if ( ! is_plugin_active('gutenberg/gutenberg.php') ) return false;
-		if ( floatval( GUTENBERG_VERSION ) < 6.7 ) return false;
-
-		return true;
 	}
 
 	// Returns the wrapper class for the default template input
