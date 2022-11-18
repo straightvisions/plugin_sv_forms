@@ -131,9 +131,7 @@ class sv_forms extends modules {
 
 		// Loads the ${domain}-${locale}-${handle}.json file, for block translation in the editor
 		wp_set_script_translations( 'sv-forms-block', 'sv_forms', $this->lang_dir );
-
-		wp_localize_script( 'sv-forms-block', 'gutenbergPlugin', array( 'version' => GUTENBERG_VERSION ) );
-	
+		
 		wp_register_style(
 			'sv-forms-block-editor',
 			$this->get_root()->get_url( '../dist/blocks.editor.build.css' ),
