@@ -152,13 +152,13 @@ export default class extends Component {
                         <div className='sv_forms_label_wrapper'>
                             <div className='sv_forms_form_label'>{ this.props.attributes.formLabel }</div>
                             <Button onClick={ () => this.toggleBody( true ) }>
-                                <span class='dashicons dashicons-visibility'></span>
+                                <span className='dashicons dashicons-visibility'></span>
                             </Button>
                         </div>
                         <div className='sv_forms_form_id'>Form ID: { this.props.attributes.formId }</div>
                         <div className='sv_forms_title'>{ __( 'SV Forms', 'sv_forms' ) }</div>
                     </div>
-                    <div class='sv_forms_body'>
+                    <div className='sv_forms_body'>
                         <WrapperProvider value={ this.props }>
                             <InnerBlocks 
                                 allowedBlocks={ this.template }

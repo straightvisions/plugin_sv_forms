@@ -132,7 +132,7 @@ export default class extends Component {
                         <div className='sv_forms_title_wrapper'>
                             <div className='sv_forms_title'>{ __( 'Thank You Message', 'sv_forms' ) }</div>
                             <Button onClick={ () => this.toggleBody( true ) }>
-                                <span class='dashicons dashicons-visibility'></span>
+                                <span className='dashicons dashicons-visibility'></span>
                             </Button>
                         </div>
                         <div className='sv_forms_input_values_wrapper'>
@@ -140,7 +140,7 @@ export default class extends Component {
                             <InputsConsumer>{ inputs => this.getInputValues( inputs ) }</InputsConsumer>
                         </div>
                     </div>
-                    <div class='sv_forms_body'>
+                    <div className='sv_forms_body'>
                         <InnerBlocks 
                             allowedBlocks={ this.getAllowedBlocks() }
                             templateLock={ false } 

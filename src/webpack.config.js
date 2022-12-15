@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
 	cache: true,
@@ -8,7 +9,7 @@ module.exports = {
 		filename: 'sv-forms.build.min.js', // the name of the bundle
 		publicPath: '/',
 	},
-	plugins: [],
+	plugins: [new MiniCssExtractPlugin()],
 	module: {
 		rules: [
 			{
@@ -18,10 +19,8 @@ module.exports = {
 					loader: 'babel-loader',
 				},
 			},
-			{
-				test: /\.(sa|sc|c)ss$/, // styles files
-				use: ['style-loader', 'css-loader', 'postcss-loader'],
-			},
+			{ test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader'] },
+			{ test: /\.scss$/, use: [MiniCssExtractPlugin.loader, 'css-loader', {loader: 'postcss-loader'}, 'sass-loader'] },
 		],
 	}
 };

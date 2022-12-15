@@ -109,7 +109,7 @@ export default class extends Component {
                         <div className='sv_forms_title_wrapper'>
                             <div className='sv_forms_title'>{ __( 'Form', 'sv_forms' ) }</div>
                             <Button onClick={ () => this.toggleBody( true ) }>
-                                <span class='dashicons dashicons-visibility'></span>
+                                <span className='dashicons dashicons-visibility'></span>
                             </Button>
                         </div>
                     </div>

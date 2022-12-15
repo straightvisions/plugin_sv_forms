@@ -132,13 +132,13 @@ class sv_forms extends modules {
 		if ( $this->check_gutenberg() ) {
 			wp_localize_script( 'sv-forms-block', 'gutenbergPlugin', array( 'version' => GUTENBERG_VERSION ) );
 		}
-	/*
+
 		wp_register_style(
 			'sv-forms-block-editor',
-			$this->get_root()->get_url( '../dist/blocks.editor.build.css' ),
+			$this->get_root()->get_url( '../dist/main.css' ),
 			array( 'wp-edit-blocks' ),
-			filemtime( $this->get_root()->get_path( '../dist/blocks.editor.build.css' ) )
-		);*/
+			filemtime( $this->get_root()->get_path( '../dist/main.css' ) )
+		);
 
 		return $this;
 	}

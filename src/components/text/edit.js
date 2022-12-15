@@ -180,7 +180,7 @@ export default class extends Component {
         return (
             <Fragment>
                 <div className={ className }>
-                    {this.Label}
+                    {this.Label()}
                     <TextControl
                         type={ type }
                         name={ name }
