@@ -92,7 +92,7 @@ class sv_forms extends modules {
 
 	// Loops through the blocks directory and registers all blocks in it
 	private function register_blocks() {
-		$dir = $this->get_root()->get_path( 'blocks' );
+		$dir = $this->get_root()->get_path( 'components' );
 		$dir_array = array_diff( scandir( $dir ), array( '..', '.' ) );
 		
 		foreach( $dir_array as $key => $value ) {
@@ -120,9 +120,9 @@ class sv_forms extends modules {
 
 		wp_register_script(
 			'sv-forms-block',
-			$this->get_root()->get_url( '../dist/blocks.build.js' ),
+			$this->get_root()->get_url( '../dist/sv-forms.build.min.js' ),
 			array( 'jquery', 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
-			filemtime( $this->get_root()->get_path( '../dist/blocks.build.js' ) ),
+			filemtime( $this->get_root()->get_path( '../dist/sv-forms.build.min.js' ) ),
 			true
 		);
 
@@ -132,13 +132,13 @@ class sv_forms extends modules {
 		if ( $this->check_gutenberg() ) {
 			wp_localize_script( 'sv-forms-block', 'gutenbergPlugin', array( 'version' => GUTENBERG_VERSION ) );
 		}
-	
+	/*
 		wp_register_style(
 			'sv-forms-block-editor',
 			$this->get_root()->get_url( '../dist/blocks.editor.build.css' ),
 			array( 'wp-edit-blocks' ),
 			filemtime( $this->get_root()->get_path( '../dist/blocks.editor.build.css' ) )
-		);
+		);*/
 
 		return $this;
 	}

@@ -229,7 +229,7 @@ class mail extends modules {
 	// Returns the CSS styles for the mail content
 	private function get_styles(): string {
 		// Default Block Styles
-		$dir 		= $this->get_root()->get_path( 'lib/modules/mail/css/blocks/min' );
+		$dir 		= $this->get_root()->get_path( 'lib/modules/mail/css/components/min' );
 		$dir_array 	= array_diff( scandir( $dir ), array( '..', '.' ) );
 		$styles 	= '<style type="text/css">';
 
