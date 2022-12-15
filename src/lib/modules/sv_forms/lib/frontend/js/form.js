@@ -62,6 +62,18 @@
             } );
         }
     }
+    
+    const handleFetchState = ( form, state ) => {
+        let children = jQuery(form).find(':input');
+        if(state === true){
+            children.prop('readonly', true);
+            form.addClass('loading');
+        }else{
+            children.prop('readonly', false);
+            form.removeClass('loading');
+        }
+      
+    }
 
     jQuery( 'form.wp-block-straightvisions-sv-forms-form' ).submit( function( e ) {
         e.preventDefault();
@@ -143,8 +155,14 @@
             contentType: false,
             processData: false,
             data: ajaxData,
+            beforeSend: function( xhr ) {
+                handleFetchState( form, true );
+            },
             success: function( response ) {
                 showThankYou( form, newFormData );
+            },
+            done: function(){
+                handleFetchState( form, false );
             }
         });
     });
