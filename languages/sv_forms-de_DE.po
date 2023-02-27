@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SV Forms\n"
-"POT-Creation-Date: 2021-10-19 15:09+0200\n"
-"PO-Revision-Date: 2021-10-19 15:09+0200\n"
+"POT-Creation-Date: 2023-02-27 17:11+0100\n"
+"PO-Revision-Date: 2023-02-27 17:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
-"X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: sv_forms.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
 
 #. Plugin Name of the plugin/theme
-#: dist/blocks.build.js:1 src/blocks/wrapper/edit.js:199
+#: dist/blocks.build.js:1 src/blocks/wrapper/edit.js:159
 #: src/blocks/wrapper/index.js:11 src/blocks/wrapper/index.js:16
 msgid "SV Forms"
 msgstr "SV Forms"
@@ -43,11 +43,6 @@ msgstr "Formular"
 #: src/blocks/wrapper/index.js:39
 msgid "Contact Form"
 msgstr "Kontaktformular"
-
-#: dist/blocks.build.js:1
-#: src/blocks/wrapper/components/inspector_controls/form_settings.js:33
-msgid "Meta Field _sv_forms_forms was cleard."
-msgstr "Meta Feld _sv_forms_forms wurde geleert."
 
 #: dist/blocks.build.js:1
 #: src/blocks/wrapper/components/inspector_controls/form_settings.js:38
@@ -82,7 +77,6 @@ msgid "Form Block"
 msgstr "Formularblock"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/input_settings.js:103
 #: src/blocks/date/components/inspector_controls/input_settings.js:102
 #: src/blocks/email/components/inspector_controls/input_settings.js:104
 #: src/blocks/file/components/inspector_controls/input_settings.js:102
@@ -123,7 +117,6 @@ msgid "Input Placeholder Color"
 msgstr "Platzhalter Farbe"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/color_settings.js:74
 #: src/blocks/date/components/inspector_controls/color_settings.js:85
 #: src/blocks/email/components/inspector_controls/color_settings.js:85
 #: src/blocks/file/components/inspector_controls/color_settings.js:85
@@ -241,7 +234,7 @@ msgid "Select E-Mail Blocks:"
 msgstr "E-Mail-Blöcke auswählen:"
 
 #: dist/blocks.build.js:1
-#: src/blocks/admin_mail/components/inspector_controls/send_to_authors.js:76
+#: src/blocks/admin_mail/components/inspector_controls/send_to_authors.js:71
 #: src/blocks/user_mail/components/inspector_controls/send_to_mails.js:90
 msgid "Reset Selection"
 msgstr "Auswahl leeren"
@@ -263,12 +256,12 @@ msgid "SV Forms Admin Mail"
 msgstr "SV Forms Admin Mail"
 
 #: dist/blocks.build.js:1
-#: src/blocks/admin_mail/components/inspector_controls/send_to_authors.js:60
+#: src/blocks/admin_mail/components/inspector_controls/send_to_authors.js:55
 msgid "Send to Authors"
 msgstr "Senden an Autoren"
 
 #: dist/blocks.build.js:1
-#: src/blocks/admin_mail/components/inspector_controls/send_to_authors.js:67
+#: src/blocks/admin_mail/components/inspector_controls/send_to_authors.js:62
 msgid "Select User:"
 msgstr "Benutzer auswählen:"
 
@@ -350,7 +343,6 @@ msgid "Text Input"
 msgstr "Texteingabe"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/input_settings.js:45
 #: src/blocks/date/components/inspector_controls/input_settings.js:49
 #: src/blocks/email/components/inspector_controls/input_settings.js:51
 #: src/blocks/file/components/inspector_controls/input_settings.js:49
@@ -368,7 +360,6 @@ msgid "This input name is already in use!"
 msgstr "Dieser Eingabename wird bereits verwendet!"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/input_settings.js:94
 #: src/blocks/date/components/inspector_controls/input_settings.js:98
 #: src/blocks/email/components/inspector_controls/input_settings.js:100
 #: src/blocks/file/components/inspector_controls/input_settings.js:98
@@ -410,8 +401,6 @@ msgid "Label Settings"
 msgstr "Label-Einstellungen"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/color_settings.js:55
-#: src/blocks/checkbox/components/inspector_controls/input_settings.js:98
 #: src/blocks/date/components/inspector_controls/color_settings.js:58
 #: src/blocks/date/components/inspector_controls/label_settings.js:32
 #: src/blocks/email/components/inspector_controls/color_settings.js:58
@@ -431,15 +420,13 @@ msgstr "Label-Einstellungen"
 #: src/blocks/range/components/inspector_controls/input_settings.js:96
 #: src/blocks/select/components/inspector_controls/color_settings.js:58
 #: src/blocks/select/components/inspector_controls/label_settings.js:32
-#: src/blocks/select/components/inspector_controls/options.js:114
+#: src/blocks/select/components/inspector_controls/options.js:113
 #: src/blocks/text/components/inspector_controls/color_settings.js:58
 #: src/blocks/text/components/inspector_controls/label_settings.js:32
 #: src/blocks/textarea/components/inspector_controls/color_settings.js:58
 #: src/blocks/textarea/components/inspector_controls/label_settings.js:32
 #: src/blocks/url/components/inspector_controls/color_settings.js:58
 #: src/blocks/url/components/inspector_controls/label_settings.js:32
-#: src/core_plugin/core/abstract_template_sv_archive.php:297
-#: src/core_plugin/core/abstract_template_sv_content.php:289
 msgid "Label"
 msgstr "Beschriftung"
 
@@ -457,7 +444,6 @@ msgid "Input"
 msgstr "Eingabe"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/color_settings.js:63
 #: src/blocks/date/components/inspector_controls/color_settings.js:74
 #: src/blocks/email/components/inspector_controls/color_settings.js:74
 #: src/blocks/file/components/inspector_controls/color_settings.js:74
@@ -472,7 +458,6 @@ msgid "Input Background"
 msgstr "Eingabe-Hintergrund"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/color_settings.js:68
 #: src/blocks/date/components/inspector_controls/color_settings.js:79
 #: src/blocks/email/components/inspector_controls/color_settings.js:79
 #: src/blocks/file/components/inspector_controls/color_settings.js:79
@@ -488,7 +473,6 @@ msgid "Input Border"
 msgstr "Eingabe-Border"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/border_settings.js:46
 #: src/blocks/date/components/inspector_controls/border_settings.js:46
 #: src/blocks/email/components/inspector_controls/border_settings.js:46
 #: src/blocks/file/components/inspector_controls/border_settings.js:46
@@ -505,7 +489,6 @@ msgid "Border Settings"
 msgstr "Border Einstellungen"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/border_settings.js:50
 #: src/blocks/date/components/inspector_controls/border_settings.js:50
 #: src/blocks/email/components/inspector_controls/border_settings.js:50
 #: src/blocks/file/components/inspector_controls/border_settings.js:50
@@ -523,7 +506,6 @@ msgid "Border Style"
 msgstr "Border Style"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/border_settings.js:53
 #: src/blocks/date/components/inspector_controls/border_settings.js:53
 #: src/blocks/email/components/inspector_controls/border_settings.js:53
 #: src/blocks/file/components/inspector_controls/border_settings.js:53
@@ -540,7 +522,6 @@ msgid "Solid"
 msgstr "Solid"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/border_settings.js:54
 #: src/blocks/date/components/inspector_controls/border_settings.js:54
 #: src/blocks/email/components/inspector_controls/border_settings.js:54
 #: src/blocks/file/components/inspector_controls/border_settings.js:54
@@ -557,7 +538,6 @@ msgid "Dotted"
 msgstr "Dotted"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/border_settings.js:55
 #: src/blocks/date/components/inspector_controls/border_settings.js:55
 #: src/blocks/email/components/inspector_controls/border_settings.js:55
 #: src/blocks/file/components/inspector_controls/border_settings.js:55
@@ -574,7 +554,6 @@ msgid "Dashed"
 msgstr "Dashed"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/border_settings.js:56
 #: src/blocks/date/components/inspector_controls/border_settings.js:56
 #: src/blocks/email/components/inspector_controls/border_settings.js:56
 #: src/blocks/file/components/inspector_controls/border_settings.js:56
@@ -591,7 +570,6 @@ msgid "Double"
 msgstr "Double"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/border_settings.js:57
 #: src/blocks/date/components/inspector_controls/border_settings.js:57
 #: src/blocks/email/components/inspector_controls/border_settings.js:57
 #: src/blocks/file/components/inspector_controls/border_settings.js:57
@@ -608,7 +586,6 @@ msgid "Groove"
 msgstr "Groove"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/border_settings.js:58
 #: src/blocks/date/components/inspector_controls/border_settings.js:58
 #: src/blocks/email/components/inspector_controls/border_settings.js:58
 #: src/blocks/file/components/inspector_controls/border_settings.js:58
@@ -625,7 +602,6 @@ msgid "Ridge"
 msgstr "Ridge"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/border_settings.js:59
 #: src/blocks/date/components/inspector_controls/border_settings.js:59
 #: src/blocks/email/components/inspector_controls/border_settings.js:59
 #: src/blocks/file/components/inspector_controls/border_settings.js:59
@@ -642,7 +618,6 @@ msgid "Inset"
 msgstr "Inset"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/border_settings.js:60
 #: src/blocks/date/components/inspector_controls/border_settings.js:60
 #: src/blocks/email/components/inspector_controls/border_settings.js:60
 #: src/blocks/file/components/inspector_controls/border_settings.js:60
@@ -659,7 +634,6 @@ msgid "Outset"
 msgstr "Outset"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/border_settings.js:61
 #: src/blocks/date/components/inspector_controls/border_settings.js:61
 #: src/blocks/email/components/inspector_controls/border_settings.js:61
 #: src/blocks/file/components/inspector_controls/border_settings.js:61
@@ -674,10 +648,9 @@ msgstr "Outset"
 #: src/blocks/textarea/components/inspector_controls/border_settings.js:61
 #: src/blocks/url/components/inspector_controls/border_settings.js:61
 msgid "Hidden"
-msgstr "Outset"
+msgstr "Verborgen"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/border_settings.js:62
 #: src/blocks/date/components/inspector_controls/border_settings.js:62
 #: src/blocks/email/components/inspector_controls/border_settings.js:62
 #: src/blocks/file/components/inspector_controls/border_settings.js:62
@@ -694,7 +667,6 @@ msgid "None"
 msgstr "None"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/border_settings.js:69
 #: src/blocks/date/components/inspector_controls/border_settings.js:69
 #: src/blocks/email/components/inspector_controls/border_settings.js:69
 #: src/blocks/file/components/inspector_controls/border_settings.js:69
@@ -712,7 +684,6 @@ msgid "Border Width"
 msgstr "Border Breite"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/border_settings.js:82
 #: src/blocks/date/components/inspector_controls/border_settings.js:82
 #: src/blocks/email/components/inspector_controls/border_settings.js:82
 #: src/blocks/file/components/inspector_controls/border_settings.js:82
@@ -730,7 +701,6 @@ msgid "Border Radius"
 msgstr "Border Radius"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/validation_setting.js:22
 #: src/blocks/date/components/inspector_controls/validation_setting.js:24
 #: src/blocks/email/components/inspector_controls/validation_setting.js:29
 #: src/blocks/file/components/inspector_controls/validation_setting.js:22
@@ -746,7 +716,6 @@ msgid "Validation Settings"
 msgstr "Verifizierungs-Einstellungen"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/validation_setting.js:26
 #: src/blocks/date/components/inspector_controls/validation_setting.js:28
 #: src/blocks/email/components/inspector_controls/validation_setting.js:33
 #: src/blocks/file/components/inspector_controls/validation_setting.js:26
@@ -838,7 +807,6 @@ msgid "Read Only"
 msgstr "Nur lesbar"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/advanced_settings.js:21
 #: src/blocks/date/components/inspector_controls/advanced_settings.js:44
 #: src/blocks/email/components/inspector_controls/advanced_settings.js:44
 #: src/blocks/file/components/inspector_controls/advanced_settings.js:30
@@ -849,13 +817,13 @@ msgstr "Nur lesbar"
 #: src/blocks/radio/components/inspector_controls/options.js:89
 #: src/blocks/range/components/inspector_controls/advanced_settings.js:30
 #: src/blocks/select/components/inspector_controls/advanced_settings.js:37
-#: src/blocks/select/components/inspector_controls/options.js:127
+#: src/blocks/select/components/inspector_controls/options.js:126
 #: src/blocks/text/components/inspector_controls/advanced_settings.js:44
 #: src/blocks/textarea/components/inspector_controls/advanced_settings.js:37
 #: src/blocks/url/components/inspector_controls/advanced_settings.js:44
 #: src/core_plugin/core/info/backend/tpl/about.php:114
-#: src/core_plugin/core/scripts/scripts.php:227
-#: src/core_plugin/core/scripts/scripts.php:237
+#: src/core_plugin/core/scripts/scripts.php:234
+#: src/core_plugin/core/scripts/scripts.php:243
 msgid "Disabled"
 msgstr "Deaktiviert"
 
@@ -939,7 +907,7 @@ msgid "Defines the values steps."
 msgstr "Definiert die Werteschritte."
 
 #: dist/blocks.build.js:1 src/blocks/phone/index.js:10
-#: src/blocks/phone/index.js:24 src/blocks/phone/index.js:47
+#: src/blocks/phone/index.js:24 src/blocks/phone/index.js:48
 #: src/blocks/phone/index.php:57
 msgid "Phone"
 msgstr "Telefon"
@@ -1004,9 +972,12 @@ msgid "Checkbox Input"
 msgstr "Checkbox Eingabe"
 
 #: dist/blocks.build.js:1
-#: src/blocks/checkbox/components/inspector_controls/input_settings.js:112
+msgid "unknown"
+msgstr "unbekannt"
+
+#: dist/blocks.build.js:1
 #: src/blocks/radio/components/inspector_controls/options.js:82
-#: src/blocks/select/components/inspector_controls/options.js:120
+#: src/blocks/select/components/inspector_controls/options.js:119
 msgid "Value"
 msgstr "Wert"
 
@@ -1034,19 +1005,19 @@ msgstr "Optionen"
 
 #: dist/blocks.build.js:1
 #: src/blocks/radio/components/inspector_controls/options.js:61
-#: src/blocks/select/components/inspector_controls/options.js:81
+#: src/blocks/select/components/inspector_controls/options.js:80
 msgid "Options"
 msgstr "Einstellungen"
 
 #: dist/blocks.build.js:1
 #: src/blocks/radio/components/inspector_controls/options.js:69
-#: src/blocks/select/components/inspector_controls/options.js:99
+#: src/blocks/select/components/inspector_controls/options.js:98
 msgid "Add Option"
 msgstr "Option hinzufügen"
 
 #: dist/blocks.build.js:1
 #: src/blocks/radio/components/inspector_controls/options.js:94
-#: src/blocks/select/components/inspector_controls/options.js:132
+#: src/blocks/select/components/inspector_controls/options.js:131
 msgid "Delete Option"
 msgstr "Option löschen"
 
@@ -1073,12 +1044,12 @@ msgid "Please select..."
 msgstr "Bitte wählen..."
 
 #: dist/blocks.build.js:1
-#: src/blocks/select/components/inspector_controls/options.js:91
+#: src/blocks/select/components/inspector_controls/options.js:90
 msgid "Countries"
 msgstr "Länder"
 
 #: dist/blocks.build.js:1
-#: src/blocks/select/components/inspector_controls/options.js:105
+#: src/blocks/select/components/inspector_controls/options.js:104
 msgid "Delete Options"
 msgstr "Optionen löschen"
 
@@ -1132,8 +1103,6 @@ msgstr "Kennworteingabe"
 
 #: dist/blocks.build.js:1 src/blocks/date/index.js:10
 #: src/blocks/date/index.js:24
-#: src/core_plugin/core/abstract_template_sv_archive.php:81
-#: src/core_plugin/core/abstract_template_sv_content.php:81
 msgid "Date"
 msgstr "Datum"
 
@@ -1246,30 +1215,28 @@ msgstr "Versteckte Eingabe"
 msgid "Hidden Input: "
 msgstr "Versteckte Eingabe: "
 
-#: src/core_plugin/core/abstract.php:88
+#: src/core_plugin/core/abstract.php:91
 msgid "Class"
 msgstr "Klasse"
 
-#: src/core_plugin/core/abstract.php:90
+#: src/core_plugin/core/abstract.php:93
 msgid "could not be loaded (tried to load class-file"
 msgstr "konnte nicht geladen werden (versucht, die Klassendatei zu laden"
 
-#: src/core_plugin/core/abstract.php:162 src/core_plugin/core/abstract.php:180
-#: src/core_plugin/core/abstract.php:198
+#: src/core_plugin/core/abstract.php:165 src/core_plugin/core/abstract.php:183
+#: src/core_plugin/core/abstract.php:201
 msgid "not defined"
 msgstr "nicht definiert"
 
-#: src/core_plugin/core/abstract.php:286
+#: src/core_plugin/core/abstract.php:289
 msgid "Configuration &amp; Settings"
 msgstr "Konfiguration &amp; Einstellungen"
 
-#: src/core_plugin/core/abstract.php:287
+#: src/core_plugin/core/abstract.php:290
 msgid "Helpful tools &amp; helper"
 msgstr "Hilfreiche Tools &amp; Helfer"
 
-#: src/core_plugin/core/abstract.php:396
-#: src/core_plugin/core/abstract_template_sv_archive.php:25
-#: src/core_plugin/core/abstract_template_sv_content.php:25
+#: src/core_plugin/core/abstract.php:399
 msgid "Common"
 msgstr "Allgemein"
 
@@ -1286,110 +1253,16 @@ msgid "No privacy statement defined."
 msgstr "Keine Datenschutzerklärung definiert."
 
 #: src/core_plugin/core/abstract.php:816
-#: src/core_plugin/core/scripts/scripts.php:118
+#: src/core_plugin/core/scripts/scripts.php:129
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: src/core_plugin/core/abstract_template_sv_archive.php:29
-#: src/core_plugin/core/abstract_template_sv_content.php:29
-#: src/core_plugin/core/settings/modules/setting_group/setting_group.php:72
-msgid "Entry"
-msgstr "Eintrag"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:33
-#: src/core_plugin/core/abstract_template_sv_content.php:33
-msgid "Empty"
-msgstr "Leer"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:37
-#: src/core_plugin/core/abstract_template_sv_content.php:37
-msgid "Header"
-msgstr "Kopfbereich"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:41
-#: src/core_plugin/core/abstract_template_sv_content.php:41
-msgid "Footer"
-msgstr "Fußzeile"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:45
-#: src/core_plugin/core/abstract_template_sv_content.php:45
-msgid "Sidebar Top"
-msgstr "Seitenleiste Oben"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:49
-#: src/core_plugin/core/abstract_template_sv_content.php:49
-msgid "Sidebar Right"
-msgstr "Sidebar rechts"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:53
-#: src/core_plugin/core/abstract_template_sv_content.php:53
-msgid "Sidebar Bottom"
-msgstr "Seitenleiste Unten"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:57
-#: src/core_plugin/core/abstract_template_sv_content.php:57
-msgid "Sidebar Left"
-msgstr "Sidebar links"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:61
-#: src/core_plugin/core/abstract_template_sv_content.php:61
-msgid "Featured Image"
-msgstr "Beitragsbild"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:65
-#: src/core_plugin/core/abstract_template_sv_content.php:65
-msgid "Title"
-msgstr "Titel"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:69
-#: src/core_plugin/core/abstract_template_sv_content.php:69
-msgid "Excerpt"
-msgstr "Auszug"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:73
-#: src/core_plugin/core/abstract_template_sv_content.php:73
-msgid "Read More"
-msgstr "weiterlesen"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:77
-#: src/core_plugin/core/abstract_template_sv_content.php:77
-msgid "Author"
-msgstr "Autor"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:85
-#: src/core_plugin/core/abstract_template_sv_content.php:85
-msgid "Date Modified"
-msgstr "Datum letzte Bearbeitung"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:89
-#: src/core_plugin/core/abstract_template_sv_content.php:89
-msgid "Categories"
-msgstr "Kategorie"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:287
-#: src/core_plugin/core/abstract_template_sv_content.php:279
-msgid "Extra Styles"
-msgstr "Extra Styles"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:294
-#: src/core_plugin/core/abstract_template_sv_content.php:286
-msgid "Style Label"
-msgstr "Beschriftung"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:295
-#: src/core_plugin/core/abstract_template_sv_content.php:287
-msgid "A label to differentiate your Styles."
-msgstr "Eine Beschriftung, um deine Styles zu unterscheiden."
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:303
-#: src/core_plugin/core/abstract_template_sv_content.php:295
-msgid "Slug"
-msgstr "Slug"
-
-#: src/core_plugin/core/abstract_template_sv_archive.php:304
-#: src/core_plugin/core/abstract_template_sv_content.php:296
-msgid "This slug is used for the helper classes."
-msgstr "Dieser Slug wird für die Helferklassen verwendet."
+#: src/core_plugin/core/abstract.php:1107
+#, php-format
+msgid "%s Minute"
+msgid_plural "%s Minutes"
+msgstr[0] "%s Minute"
+msgstr[1] "%s Minuten"
 
 #: src/core_plugin/core/ajax_fragmented_requests/backend/tpl/form.php:3
 msgid "Start"
@@ -1415,7 +1288,7 @@ msgstr "Über"
 
 #: src/core_plugin/core/backend/tpl/about.php:10
 #: src/core_plugin/core/info/backend/tpl/about.php:21
-#: src/core_plugin/core_plugin.php:42 src/core_plugin/core_plugin.php:43
+#: src/core_plugin/core_plugin.php:66 src/core_plugin/core_plugin.php:67
 msgid "Info"
 msgstr "Info"
 
@@ -1521,53 +1394,53 @@ msgstr "http://www.gnu.org/licenses/"
 msgid "Privacy Statement"
 msgstr "Datenschutzerklärung"
 
-#: src/core_plugin/core/core.php:113
+#: src/core_plugin/core/core.php:112
 msgid ""
 "Please check that all SV products are up to date. You may need to update "
 msgstr ""
 "Bitte überprüfe, dass alle SV Produkte auf dem aktuellen Stand sind. "
 "Folgende müssen möglicherweise aktualisiert werden "
 
-#: src/core_plugin/core/core.php:114
+#: src/core_plugin/core/core.php:113
 msgid "SV Core was loaded by"
 msgstr "SV Core wurde geladen von"
 
-#: src/core_plugin/core/core.php:116
+#: src/core_plugin/core/core.php:115
 msgid "with version:"
 msgstr "mit Version:"
 
-#: src/core_plugin/core/core.php:117
+#: src/core_plugin/core/core.php:116
 #, php-format
 msgid "but %s v%s requires core-version"
 msgstr "aber %s v%s benötigt Core-Version"
 
-#: src/core_plugin/core/core.php:160 src/core_plugin/core/core.php:166
-#: src/core_plugin/core/core.php:303 src/core_plugin/core/core.php:322
-#: src/core_plugin/core/core.php:474
+#: src/core_plugin/core/core.php:159 src/core_plugin/core/core.php:165
+#: src/core_plugin/core/core.php:302 src/core_plugin/core/core.php:321
+#: src/core_plugin/core/core.php:473
 msgid "Setting saved"
 msgstr "Einstellung gespeichert"
 
-#: src/core_plugin/core/core.php:305
+#: src/core_plugin/core/core.php:304
 msgid "Nonce check failed / Empty data."
 msgstr "Nonce-Prüfung fehlgeschlagen / Leere Daten."
 
-#: src/core_plugin/core/core.php:313
+#: src/core_plugin/core/core.php:312
 msgid "Nothing to update."
 msgstr "Nichts zu aktualisieren."
 
-#: src/core_plugin/core/core.php:326
+#: src/core_plugin/core/core.php:325
 msgid "You are unauthorized to perform this action."
 msgstr "Du bist nicht berechtigt, diese Aktion durchzuführen."
 
-#: src/core_plugin/core/core.php:332
+#: src/core_plugin/core/core.php:331
 msgid "Nonce check cannot fail."
 msgstr "Nonce-Prüfung kann nicht fehlschlagen."
 
-#: src/core_plugin/core/core.php:366
+#: src/core_plugin/core/core.php:365
 msgid "Website enhanced by straightvisions.com"
 msgstr "Website enhanced by straightvisions.com"
 
-#: src/core_plugin/core/core.php:437
+#: src/core_plugin/core/core.php:436
 #: src/core_plugin/core/info/backend/tpl/about.php:62
 msgid "Expert Mode"
 msgstr "Experten-Modus"
@@ -1641,35 +1514,35 @@ msgstr "Allgemein"
 msgid "Scripts Overview"
 msgstr "Skriptübersicht"
 
-#: src/core_plugin/core/scripts/scripts.php:50
+#: src/core_plugin/core/scripts/scripts.php:51
 msgid "Scripts"
 msgstr "Skripte"
 
-#: src/core_plugin/core/scripts/scripts.php:51
+#: src/core_plugin/core/scripts/scripts.php:52
 msgid "Override Scripts Loading."
 msgstr "Ladeeinstellungen der Scripte überschreiben."
 
-#: src/core_plugin/core/scripts/scripts.php:109
+#: src/core_plugin/core/scripts/scripts.php:120
 msgid "SV100"
 msgstr "SV100"
 
-#: src/core_plugin/core/scripts/scripts.php:130
+#: src/core_plugin/core/scripts/scripts.php:141
 msgid "Clear Cache"
 msgstr "Cache leeren"
 
-#: src/core_plugin/core/scripts/scripts.php:191
+#: src/core_plugin/core/scripts/scripts.php:198
 msgid "Flush cache for all CSS files"
 msgstr "Leere Cache für alle CSS Dateien"
 
-#: src/core_plugin/core/scripts/scripts.php:192
+#: src/core_plugin/core/scripts/scripts.php:199
 msgid "All cached CSS Files will be regenerated"
 msgstr "Alle gecachten CSS Dateien werden neu generiert"
 
-#: src/core_plugin/core/scripts/scripts.php:197
+#: src/core_plugin/core/scripts/scripts.php:204
 msgid "Disable all CSS per Default"
 msgstr "Alle CSS per Standard abschalten"
 
-#: src/core_plugin/core/scripts/scripts.php:198
+#: src/core_plugin/core/scripts/scripts.php:205
 msgid ""
 "CSS enqueued will be disabled by default - you may override this later down "
 "below."
@@ -1677,11 +1550,11 @@ msgstr ""
 "CSS-Anmeldeformular wird standardmäßig deaktiviert - Du kannst dies später "
 "weiter unten überschreiben."
 
-#: src/core_plugin/core/scripts/scripts.php:203
+#: src/core_plugin/core/scripts/scripts.php:210
 msgid "Disable all JS per Default"
 msgstr "Alle JS per Standard abschalten"
 
-#: src/core_plugin/core/scripts/scripts.php:204
+#: src/core_plugin/core/scripts/scripts.php:211
 msgid ""
 "JS enqueued will be disabled by default - you may override this later down "
 "below."
@@ -1689,39 +1562,43 @@ msgstr ""
 "JS Einreihung wird standardmäßig deaktiviert. Du kannst dies später weiter "
 "unten überschreiben."
 
-#: src/core_plugin/core/scripts/scripts.php:229
-#: src/core_plugin/core/scripts/scripts.php:235
+#: src/core_plugin/core/scripts/scripts.php:236
+#: src/core_plugin/core/scripts/scripts.php:241
 msgid "Inline"
 msgstr "Inline"
 
-#: src/core_plugin/core/scripts/scripts.php:229
 #: src/core_plugin/core/scripts/scripts.php:236
+#: src/core_plugin/core/scripts/scripts.php:242
 msgid "Attached"
 msgstr "Angehängt"
 
-#: src/core_plugin/core/scripts/scripts.php:234
+#: src/core_plugin/core/scripts/scripts.php:240
 msgid "Default"
 msgstr "Standard"
 
-#: src/core_plugin/core/scripts/scripts.php:254
-#: src/core_plugin/core/scripts/scripts.php:264
+#: src/core_plugin/core/scripts/scripts.php:260
+#: src/core_plugin/core/scripts/scripts.php:270
 msgid "Flush Cache"
 msgstr "Cache leeren"
 
-#: src/core_plugin/core/scripts/scripts.php:255
-#: src/core_plugin/core/scripts/scripts.php:265
+#: src/core_plugin/core/scripts/scripts.php:261
+#: src/core_plugin/core/scripts/scripts.php:271
 msgid "Cache Active"
 msgstr "Cache Aktiv"
 
-#: src/core_plugin/core/scripts/scripts.php:519
+#: src/core_plugin/core/scripts/scripts.php:558
 msgid "Script \""
 msgstr "Skript \""
 
-#: src/core_plugin/core/settings/modules/setting_group/setting_group.php:59
+#: src/core_plugin/core/settings/modules/setting_group/setting_group.php:51
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: src/core_plugin/core/settings/modules/setting_group/setting_group.php:72
+#: src/core_plugin/core/settings/modules/setting_group/setting_group.php:64
+msgid "Entry"
+msgstr "Eintrag"
+
+#: src/core_plugin/core/settings/modules/setting_group/setting_group.php:64
 msgid "Group #"
 msgstr "Gruppe #"
 
@@ -1737,16 +1614,12 @@ msgstr "Du brauchst mindestens"
 msgid "characters."
 msgstr "Zeichen."
 
-#: src/core_plugin/core/settings/settings.php:605
-msgid "Save (classic)"
-msgstr "Speichern (klassisch)"
+#: src/core_plugin/core/settings/settings.php:620
+msgid "Save"
+msgstr "Speichern"
 
-#: src/core_plugin/core/settings/settings.php:605
-msgid "Save (AJAX)"
-msgstr "Speichern (AJAX)"
-
-#: src/core_plugin/core/settings/settings.php:762
-#: src/core_plugin/core/settings/settings.php:805
+#: src/core_plugin/core/settings/settings.php:777
+#: src/core_plugin/core/settings/settings.php:820
 msgid "Settings Template not found: "
 msgstr "Template für Einstellungen nicht gefunden: "
 
@@ -1754,7 +1627,7 @@ msgstr "Template für Einstellungen nicht gefunden: "
 #: src/core_plugin/core/settings/tpl/setting_border_tpl/border_color.php:20
 #: src/core_plugin/core/settings/tpl/setting_box_shadow_tpl/color.php:11
 #: src/core_plugin/core/settings/tpl/setting_box_shadow_tpl/color.php:13
-#: src/core_plugin/core/settings/tpl/setting_color.php:9
+#: src/core_plugin/core/settings/tpl/setting_color.php:19
 #: src/core_plugin/core/settings/tpl/setting_font_tpl/color.php:5
 #: src/core_plugin/core/settings/tpl/setting_font_tpl/color.php:8
 msgid "Toggle Color Picker"
@@ -1832,24 +1705,24 @@ msgstr "Keine Seite ausgewählt"
 msgid "Delete File"
 msgstr "Datei löschen"
 
-#: src/core_plugin/core_plugin.php:31 src/core_plugin/core_plugin.php:32
+#: src/core_plugin/core_plugin.php:55 src/core_plugin/core_plugin.php:56
 msgid "straightvisions"
 msgstr "straightvisions"
 
-#: src/core_plugin/dependencies/sv_dependencies.php:43
+#: src/core_plugin/dependencies/sv_dependencies.php:34
 msgid "You need to update your PHP version to run"
 msgstr ""
 "Du musst deine PHP Version aktualisieren, damit unsere Produkte funktionieren"
 
-#: src/core_plugin/dependencies/sv_dependencies.php:45
+#: src/core_plugin/dependencies/sv_dependencies.php:36
 msgid "Actual version is:"
 msgstr "Installierte Version:"
 
-#: src/core_plugin/dependencies/sv_dependencies.php:46
+#: src/core_plugin/dependencies/sv_dependencies.php:37
 msgid "required is"
 msgstr "Erforderlich"
 
-#: src/core_plugin/dependencies/sv_dependencies.php:55
+#: src/core_plugin/dependencies/sv_dependencies.php:46
 msgid "You need to install and activate our SV Core plugin to run"
 msgstr "Du musst unser SV Core Plugin installieren und aktivieren"
 
@@ -1891,11 +1764,11 @@ msgstr "Benutzer-Mail erneut senden"
 msgid "Resend Admin Mail"
 msgstr "Admin-Mail erneut senden"
 
-#: src/lib/modules/mail/mail.php:41
+#: src/lib/modules/mail/mail.php:53
 msgid "Thank You"
 msgstr "Vielen Dank"
 
-#: src/lib/modules/mail/mail.php:83
+#: src/lib/modules/mail/mail.php:95
 msgid "New Form Submission"
 msgstr "Neue Formular Einträge"
 
@@ -2001,6 +1874,72 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://straightvisions.com"
 msgstr "https://straightvisions.com"
+
+#~ msgid "Meta Field _sv_forms_forms was cleard."
+#~ msgstr "Meta Feld _sv_forms_forms wurde geleert."
+
+#~ msgid "Empty"
+#~ msgstr "Leer"
+
+#~ msgid "Header"
+#~ msgstr "Kopfbereich"
+
+#~ msgid "Footer"
+#~ msgstr "Fußzeile"
+
+#~ msgid "Sidebar Top"
+#~ msgstr "Seitenleiste Oben"
+
+#~ msgid "Sidebar Right"
+#~ msgstr "Sidebar rechts"
+
+#~ msgid "Sidebar Bottom"
+#~ msgstr "Seitenleiste Unten"
+
+#~ msgid "Sidebar Left"
+#~ msgstr "Sidebar links"
+
+#~ msgid "Featured Image"
+#~ msgstr "Beitragsbild"
+
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#~ msgid "Excerpt"
+#~ msgstr "Auszug"
+
+#~ msgid "Read More"
+#~ msgstr "weiterlesen"
+
+#~ msgid "Author"
+#~ msgstr "Autor"
+
+#~ msgid "Date Modified"
+#~ msgstr "Datum letzte Bearbeitung"
+
+#~ msgid "Categories"
+#~ msgstr "Kategorie"
+
+#~ msgid "Extra Styles"
+#~ msgstr "Extra Styles"
+
+#~ msgid "Style Label"
+#~ msgstr "Beschriftung"
+
+#~ msgid "A label to differentiate your Styles."
+#~ msgstr "Eine Beschriftung, um deine Styles zu unterscheiden."
+
+#~ msgid "Slug"
+#~ msgstr "Slug"
+
+#~ msgid "This slug is used for the helper classes."
+#~ msgstr "Dieser Slug wird für die Helferklassen verwendet."
+
+#~ msgid "Save (classic)"
+#~ msgstr "Speichern (klassisch)"
+
+#~ msgid "Save (AJAX)"
+#~ msgstr "Speichern (AJAX)"
 
 #~ msgid "E-mail"
 #~ msgstr "E-Mail"
