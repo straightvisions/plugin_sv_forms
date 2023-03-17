@@ -15,7 +15,12 @@ class submission extends modules {
 		// Variables
 		$form_data	= json_decode( stripslashes( $_POST[ $this->get_root()->get_prefix( 'form_data' ) ] ), true );
 		$form_id	= $this->get_input_value( $this->get_root()->get_prefix( 'form_id' ), $form_data );
-		$post_id	= $this->get_input_value( $this->get_root()->get_prefix( 'post_id' ), $form_data );
+        // HOTFIX WRONG FILTERED ID ----------------------------------------------------------------
+        $post_id = isset( $_POST[ $this->get_root()->get_prefix( 'post_id' ) ] )
+            ? $_POST[ $this->get_root()->get_prefix( 'post_id' ) ]
+            : false;
+		//$post_id	= $this->get_input_value( $this->get_root()->get_prefix( 'post_id' ), $form_data );
+        // HOTFIX WRONG FILTERED ID ----------------------------------------------------------------
 		$post_meta 	= json_decode( get_post_meta( $post_id, '_sv_forms_forms', true ) );
 
 		if ( $post_meta && $form_id && $post_meta->$form_id ) {

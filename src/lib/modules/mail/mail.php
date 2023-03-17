@@ -38,7 +38,7 @@ class mail extends modules {
 		return $mail_status;
 	}
 
-	// Sends a mail to a auser
+	// Sends a mail to user
 	private function send_user_mails( object $attr, array $data ) {
 		if ( ! $attr || ! $data || ! isset( $attr->userMailSend ) || ! $attr->userMailSend ) return $this;
 		if ( ! isset( $attr->userMailContent ) || empty( $attr->userMailContent ) ) return $this;

@@ -67,7 +67,7 @@
         const form          = jQuery( this );
         const formData      = form.serializeArray();
         const formFiles     = form.find('input[type="file"]');
-        const newFormData   = [];
+        let newFormData   = [];
 
         formData.map( field => {
             const el = form.find(':input[name="' + field.name + '"]');
@@ -114,6 +114,15 @@
         const ajaxData = new FormData();
 
         ajaxData.append( 'action', 'sv_forms_submit' );
+        
+        // HOTFIX WRONG FILTERED ID -------------------------
+        const postID = (formsID && localized[formsID]) ? localized[formsID] : false;
+        // remove the broken ID
+        newFormData = newFormData.filter(obj => obj.name !== 'sv_forms_post_id');
+        // add the correct id from localize
+        ajaxData.append( 'sv_forms_post_id', postID );
+        // HOTFIX WRONG FILTERED ID -------------------------
+        
         
         formFiles.map( key => {
             const el = jQuery( formFiles[key] );
