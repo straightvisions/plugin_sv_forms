@@ -4,8 +4,8 @@ Donate link: https://straightvisions.com
 Tags: form-block, form-builder, contact-form
 Requires PHP: 7.3
 Requires at least: 5.3.2
-Tested up to: 6.0.0
-Stable tag: 1.9.00
+Tested up to: 6.1.1
+Stable tag: 2.1.00
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -49,6 +49,15 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 3. You are using a caching plugin? Don't forget to flush caches now.
 
 == Changelog ==
+
+= 2.1.00 =
+* Change Submission Meta Data from single field JSON to multi fields raw
+
+= 2.0.01 =
+* Hotfix
+
+= 2.0.00 =
+* Core Update
 
 = 1.9.00 =
 * Core Update
@@ -326,9 +335,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 * Initial release
 
 == Upgrade Notice ==
-
-= 1.9.00 =
-* Core Update
+Change Submission Meta Data from single field JSON to multi fields raw
 
 == Missing a feature? ==
 

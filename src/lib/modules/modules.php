@@ -19,6 +19,8 @@ class modules extends init {
 		$this->load_module('submission');
 		$this->load_module('personal_data');
 		$this->load_module('sv_forms');
+
+		$this->load_module('update');
 	}
 
 	// Allows to use an array of needles for strpos

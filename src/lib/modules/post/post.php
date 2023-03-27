@@ -103,29 +103,24 @@ class post extends modules {
 
     // Returns the submission data as post meta array
     private function get_post_meta( object $attr, array $data ): array {
-        // Meta Keys
-        $post_id_key 			= '_' . $this->get_root()->get_prefix( 'post_id' );
-        $form_id_key 			= '_' . $this->get_root()->get_prefix( 'form_id' );
-        $form_data_key 		    = '_' . $this->get_root()->get_prefix( 'form_data' );
-        $user_mail_sent_key		= '_' . $this->get_root()->get_prefix( 'user_mail_sent' );
-        $user_mail_mails_key    = '_' . $this->get_root()->get_prefix( 'user_mail_mails' );
-        $admin_mail_sent_key    = '_' . $this->get_root()->get_prefix( 'admin_mail_sent' );
-        $admin_mail_users_key   = '_' . $this->get_root()->get_prefix( 'admin_mail_mails' );
-        $admin_mail_mails_key	= '_' . $this->get_root()->get_prefix( 'admin_mail_mails' );
+		$data_assoc = array();
+		foreach($data as $field){
+			$data_assoc['_'.$this->get_root()->get_prefix($field['name'])]		= $field['value'];
+		}
 
-        // Meta Array
-        $meta = array(
-            $post_id_key 			=> $attr->postId,
-            $form_id_key			=> $attr->formId,
-            $form_data_key 		    => json_encode( $data ),
-            $user_mail_sent_key     => $attr->userMailSend ? 1 : 0,
-            $user_mail_mails_key    => $attr->userMailToMails,
-            $admin_mail_sent_key    => $attr->adminMailSend ? 1 : 0,
-            $admin_mail_users_key   => $attr->adminMailToUsers,
-            $admin_mail_mails_key   => $attr->adminMailToMails,
-        );
-
-        return $meta;
+        return array_merge(
+			$data_assoc,
+			// form common fields
+			array(
+				'_' . $this->get_root()->get_prefix( 'post_id' ) 			=> $attr->postId,
+				'_' . $this->get_root()->get_prefix( 'form_id' )			=> $attr->formId,
+				'_' . $this->get_root()->get_prefix( 'user_mail_sent' )     => $attr->userMailSend ? 1 : 0,
+				'_' . $this->get_root()->get_prefix( 'user_mail_mails' )    => $attr->userMailToMails,
+				'_' . $this->get_root()->get_prefix( 'admin_mail_sent' )    => $attr->adminMailSend ? 1 : 0,
+				'_' . $this->get_root()->get_prefix( 'admin_mail_mails' )   => $attr->adminMailToUsers,
+				'_' . $this->get_root()->get_prefix( 'admin_mail_mails' )   => $attr->adminMailToMails,
+			)
+		);
     }
 
     // Adds the submission as a new post
