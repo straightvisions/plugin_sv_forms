@@ -10,19 +10,18 @@
 		public function admin_init() {
 			if($this->get_previous_version() < 2100) {
 				$this->register_cron(2100);
-			}else{
-				wp_clear_scheduled_hook( $this->get_prefix('2100'));
 			}
 		}
 		public function v2100(){
 			$posts	= get_posts([
 				'post_type'     => 'sv_forms_submit',
-				'numberposts'   => 10000,
+				'numberposts'   => 1000,
 				'meta_key'		=> '_sv_forms_form_data'
 			]);
 
 			if(!$posts){
 				$this->update_version(2100);
+				wp_clear_scheduled_hook( $this->get_prefix('2100'));
 				return;
 			}
 
