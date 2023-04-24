@@ -1,5 +1,5 @@
 // Self executing anonymous function, to make the vars and functions private
-(function() {
+(function( jQuery ) {
 	// Variables
 	const localized = js_sv_forms_sv_forms_scripts_form_js;
 	let formsID = false;
@@ -35,7 +35,7 @@
 			const formInput = formData.find( input => { return name === input.name; } );
 			
 			if ( formInput ) {
-				replace.push( formInput.value );
+				replace.push( jQuery(formInput.value).text() );
 			} else {
 				replace.push( '' );
 			}
@@ -47,98 +47,113 @@
 	}
 	
 	const showThankYou = ( form, formData ) => {
-		const el = form.parentElement.querySelector( '.wp-block-straightvisions-sv-forms-thank-you' );
+		const el = form.parent().find( '.wp-block-straightvisions-sv-forms-thank-you' );
 		
-		if ( el && el.innerHTML.replace(/\s/g, "") ) {
-			const parsedContent = getParsedContent( el.innerHTML, formData );
+		if ( el.length > 0 && el.html().replace(/\s/g, "") ) {
+			const parsedContent = getParsedContent( el.html(), formData );
 			
-			el.innerHTML = parsedContent;
-			form.parentElement.insertBefore( el, form.nextSibling );
+			el.html( parsedContent );
+			el.insertAfter( form );
 			
-			form.style.display = 'none';
-			el.style.display = 'block';
+			form.hide( 'slow', function() {
+				el.show( 'slow' );
+			} );
 		}
 	}
 	
-	document.querySelectorAll( 'form.wp-block-straightvisions-sv-forms-form' ).forEach( form => {
-		form.addEventListener( 'submit', function( e ) {
-			e.preventDefault();
+	jQuery( 'form.wp-block-straightvisions-sv-forms-form' ).submit( function( e ) {
+		e.preventDefault();
+		
+		const form          = jQuery( this );
+		const formData      = form.serializeArray();
+		const formFiles     = form.find('input[type="file"]');
+		let newFormData   = [];
+		
+		formData.map( field => {
+			const el = form.find(':input[name="' + field.name + '"]');
 			
-			const formData = new FormData(this);
-			const formFiles = form.querySelectorAll('input[type="file"]');
-			let newFormData = [];
-			
-			formData.forEach( field => {
-				const el = form.querySelector(':input[name="' + field[0] + '"]');
-				
-				if ( el ) {
-					if ( el.value !== "" || el.getAttribute('name') === 'sv_forms_sg_hp' ) {
-						let newField = {
-							name: field[0],
-							type: el.type,
-							value: field[1],
-						};
-						
-						if ( field[0] === 'sv_forms_form_id' ) {
-							formsID = field[1];
-						}
-						
-						// The following code checks for specific input types
-						// and stores their label instead of the value
-						let labelText = false;
-						
-						switch ( newField.type ) {
-							case 'select-one':
-								labelText = el.options[el.selectedIndex].text;
-								break;
-							case 'radio':
-								const radio = form.querySelector(':input[type="radio"][name="' + newField.name + '"][value="' + newField.value + '"]');
-								
-								if ( radio && radio.value && radio.value !== '' ) {
-									labelText = radio.parentElement.querySelector('label[for="' + newField.name + '"]').textContent;
-								}
-								
-								break;
-						}
+			if ( el.length > 0 ) {
+				if ( el.val() !== "" || el.attr('name') === 'sv_forms_sg_hp' ) {
+					let newField = {
+						name: field.name,
+						type: el.attr('type'),
+						value: field.value,
+					};
 					
-							if ( labelText && labelText !== '' ) {
-								newField.value = labelText;
+					if ( field.name === 'sv_forms_form_id' ) {
+						formsID = field.value;
+					}
+					
+					// The following code checks for specific input types
+					// and stores their label instead of the value
+					let labelText = false;
+					
+					switch ( newField.type ) {
+						case 'select':
+							labelText = el.find('option[value="' + newField.value + '"]').text();
+							break;
+						case 'radio':
+							const radio = form.find(':input[type="radio"][name="' + newField.name + '"][value="' + newField.value + '"]');
+							
+							if ( radio.length > 0 && radio.val() && radio.val() !== '' ) {
+								labelText = radio.parent().find('label[for="' + newField.name + '"]').text()
 							}
 							
-							newFormData.push( newField );
-						}
+							break;
 					}
-			});
-			
-			// Append file input values to form data
-			if ( formFiles && formFiles.length > 0 ) {
-				formFiles.forEach( fileInput => {
-					if ( fileInput.files && fileInput.files[0] ) {
-						let newField = {
-							name: fileInput.name,
-							type: 'file',
-							value: fileInput.files[0],
-						};
-						newFormData.push( newField );
+					
+					if ( labelText && labelText !== '' ) {
+						newField.value = labelText;
 					}
-				});
-			}
-			
-			// Send form data to server
-			const xhr = new XMLHttpRequest();
-			xhr.open( 'POST', localized.ajaxurl, true );
-			xhr.setRequestHeader( 'Content-Type', 'application/json;charset=UTF-8' );
-			xhr.onload = function() {
-				if (xhr.status === 200) {
-					showThankYou( form, newFormData );
-				} else {
-					console.error( 'Error submitting form: ' + xhr.statusText );
+					
+					newFormData.push( newField );
 				}
-			};
-			xhr.onerror = function() {
-				console.error( 'Error submitting form: ' + xhr.statusText );
-			};
-			xhr.send( JSON.stringify( { action: 'sv_forms_submit_form', form_id: formsID, form_data: newFormData } ) );
+			}
+		});
+		
+		const ajaxData = new FormData();
+		
+		ajaxData.append( 'action', 'sv_forms_submit' );
+		
+		// HOTFIX WRONG FILTERED ID -------------------------
+		const postID = (formsID && localized[formsID]) ? localized[formsID] : false;
+		// remove the broken ID
+		newFormData = newFormData.filter(obj => obj.name !== 'sv_forms_post_id');
+		// add the correct id from localize
+		ajaxData.append( 'sv_forms_post_id', postID );
+		// HOTFIX WRONG FILTERED ID -------------------------
+		
+		
+		formFiles.map( key => {
+			const el = jQuery( formFiles[key] );
+			
+			if ( el.attr('name') !== "" && el.val() !== "" ) {
+				let newField = {
+					name: el.attr('name'),
+					value: el.val(),
+				};
+				
+				newFormData.push( newField );
+				ajaxData.append( newField.name, el.prop('files')[0] );
+			}
+		} );
+		
+		ajaxData.append( 'sv_forms_form_data', JSON.stringify( newFormData ) );
+		
+		jQuery.ajax({
+			url: localized.sv_forms_ajaxurl,
+			type: 'POST',
+			contentType: false,
+			processData: false,
+			data: ajaxData,
+			beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
+				jQuery('.sv_forms_sv_forms_wrapper_loader').addClass('show')
+				jQuery('.wp-block-straightvisions-sv-forms-form').hide();
+			},
+			success: function( response ) {
+				jQuery('.sv_forms_sv_forms_wrapper_loader').removeClass('show')
+				showThankYou( form, newFormData );
+			}
 		});
 	});
-})();
+}( jQuery ));

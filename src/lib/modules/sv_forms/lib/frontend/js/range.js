@@ -4,15 +4,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     ranges.forEach(function(range) {
         range.addEventListener('input', function() {
-            const number = this.parentNode.querySelector('input[type="number"]');
-            number.value = this.value;
+            const number = this.parentNode.parentNode.querySelector('input[type="number"]');
+            if (number) {
+                number.value = this.value;
+            }
         });
     });
     
     numbers.forEach(function(number) {
         number.addEventListener('input', function() {
             const range = this.parentNode.querySelector('input[type="range"]');
-            range.value = this.value;
+            if (range) {
+                range.value = this.value;
+            }
         });
     });
 });
