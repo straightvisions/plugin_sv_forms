@@ -2,10 +2,10 @@
 Contributors: matthias-reuter, matthiasbathke, dennisheiden
 Donate link: https://straightvisions.com
 Tags: form-block, form-builder, contact-form
-Requires PHP: 7.3
-Requires at least: 5.3.2
-Tested up to: 6.1.1
-Stable tag: 2.1.00
+Requires PHP: 8.0
+Requires at least: 6.0
+Tested up to: 6.2.2
+Stable tag: 2.0.02
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
