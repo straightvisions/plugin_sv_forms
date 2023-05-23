@@ -82,12 +82,10 @@ class sv_forms extends modules {
 		// Scripts
 		$this->get_script( 'form_js' )
 			 ->set_path( 'lib/frontend/js/form.js' )
-			 ->set_deps( array( 'jquery' ) )
 			 ->set_type( 'js' );
 
 		$this->get_script( 'range_js' )
 			 ->set_path( 'lib/frontend/js/range.js' )
-			 ->set_deps( array( 'jquery' ) )
 			 ->set_type( 'js' );
 
 		return $this;
