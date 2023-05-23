@@ -50,8 +50,10 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 == Changelog ==
 
-= 2.1.00 =
+= 2.0.02 =
+* Core Update
 * Change Submission Meta Data from single field JSON to multi fields raw
+* Frontend JS converted to vanilla JS to avoid jQuery dependency
 
 = 2.0.01 =
 * Hotfix
@@ -335,7 +337,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 * Initial release
 
 == Upgrade Notice ==
-Change Submission Meta Data from single field JSON to multi fields raw
+Core Update, Change Submission Meta Data from single field JSON to multi fields raw, Frontend JS converted to vanilla JS to avoid jQuery dependency
 
 == Missing a feature? ==
 
