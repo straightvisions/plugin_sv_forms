@@ -121,9 +121,9 @@ class sv_forms extends modules {
 
 		wp_register_script(
 			'sv-forms-block',
-			$this->get_root()->get_url( '../dist/blocks.build.js' ),
+			$this->get_root()->get_url( '../dist/sv-forms.build.min.js' ),
 			array( 'jquery', 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
-			filemtime( $this->get_root()->get_path( '../dist/blocks.build.js' ) ),
+			filemtime( $this->get_root()->get_path( '../dist/sv-forms.build.min.js' ) ),
 			true
 		);
 

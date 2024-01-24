@@ -173,7 +173,7 @@ export default class extends Component {
                         className={ [ inputBackgroundColorClass ] }
                         onChange={ () => this.setCheck( ! isChecked ) }
                     />
-                    <this.Label />
+                    {this.Label}
                 </div>
                 <WrapperConsumer>{ wrapper => { this.wrapper = wrapper } }</WrapperConsumer>
                 <InputsConsumer>{ inputs => { 

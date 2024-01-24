@@ -174,7 +174,7 @@ export default class extends Component {
             <Fragment>
                 <div className={ className }>
                     <BaseControl>
-                        <this.Label />
+                        {this.Label}
                         <DatePicker
                             name={ name }
                             label={ label }

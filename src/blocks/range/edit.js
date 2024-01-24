@@ -134,7 +134,7 @@ export default class extends Component {
         return (
             <Fragment>
                 <div className={ className }>
-                    <this.Label />
+                    {this.Label}
                     <RangeControl
                         name={ name }
                         required={ required }
