@@ -6,7 +6,7 @@ import SendToMails from './inspector_controls/send_to_mails';
 const { InspectorControls } = wp.blockEditor;
 
 export default ( { props, authors, wrapper, inputs } ) => {
-    if ( ! props || ! authors || ! wrapper || ! inputs ) return '';
+    // if ( ! props || ! authors || ! wrapper || ! inputs ) return '';
 
     return(
         <InspectorControls>

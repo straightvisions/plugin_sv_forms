@@ -10,7 +10,7 @@ const { Fragment } = wp.element;
 const { InspectorControls, InspectorAdvancedControls } = wp.blockEditor;
 
 export default ( { props, wrapper, inputs } ) => {
-    if ( ! props || ! wrapper || ! inputs ) return '';
+    // if ( ! props || ! wrapper || ! inputs ) return ''; // @todo this is broken somehow?
 
     return(
         <Fragment>
