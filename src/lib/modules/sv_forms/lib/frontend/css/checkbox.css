@@ -7,6 +7,10 @@
 
 .wp-block-straightvisions-sv-forms-checkbox input[type="checkbox"] + label {
 	margin: 0 0 0 .75em;
+	cursor:pointer;
+}
+.wp-block-straightvisions-sv-forms-checkbox input[type="checkbox"] + label a {
+	text-decoration:underline;
 }
 
 /* Style: Checkbox (Default) */

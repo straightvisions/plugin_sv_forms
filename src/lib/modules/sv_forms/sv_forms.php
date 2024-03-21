@@ -194,7 +194,7 @@ class sv_forms extends modules {
 
 		// For
 		if ( isset( $block_attr['name'] ) ) {
-			$attr[]	= 'for="' . $block_attr['name'] . '"';
+			$attr[]	= 'for="' . $this->get_root()->get_prefix($block_attr['name']) . '"';
 		}
 
 		// Class

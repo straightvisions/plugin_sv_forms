@@ -140,8 +140,8 @@ class checkbox extends sv_forms {
 		$attr[]	= 'type="' . $block_attr['type'] . '"';
 
 		// ID
-		if ( isset( $block_attr['value'] ) && ! empty( $block_attr['value'] ) ) {
-			$attr[]	= 'id="' . $block_attr['value'] . '"';
+		if ( isset( $block_attr['name'] ) && ! empty( $block_attr['name'] ) ) {
+			$attr[]	= 'id="' . $this->get_root()->get_prefix($block_attr['name']) . '"';
 		}
 
 		// Name
