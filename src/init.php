@@ -6,7 +6,7 @@ if ( ! class_exists( '\sv_core\core_plugin' ) ) {
 }
 
 class init extends \sv_core\core_plugin {
-	const version 				= 2004;
+	const version 				= 2005;
 	const version_core_match 	= 10000;
 
     public function load() {

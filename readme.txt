@@ -5,7 +5,7 @@ Tags: form-block, form-builder, contact-form
 Requires PHP: 8.0
 Requires at least: 6.0
 Tested up to: 6.5.5
-Stable tag: 2.0.04
+Stable tag: 2.0.05
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
@@ -28,10 +28,6 @@ Our SV Forms Block for the WordPress Gutenberg Block-Editor offers you full cont
 
 <a href="https://straightvisions.com/en/projects/sv-forms/">More information and preview</a>
 
-= Requires: =
-* PHP 7.3 or higher
-* WordPress 5.3 or higher
-
 = Plugin Description =
 
 SV Forms is a block that allows you to create forms in Gutenberg, with ease.
@@ -49,6 +45,9 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 3. You are using a caching plugin? Don't forget to flush caches now.
 
 == Changelog ==
+
+= 2.0.05=
+* Core Update
 
 = 2.0.04=
 * Core Update
