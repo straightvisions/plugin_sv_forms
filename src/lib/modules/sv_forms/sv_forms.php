@@ -1,6 +1,8 @@
 <?php
 namespace sv_forms;
 
+use AllowDynamicProperties;
+#[AllowDynamicProperties]
 class sv_forms extends modules {
 	protected $lang_dir = '';
 
